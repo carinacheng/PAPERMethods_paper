@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  27 JUN 2017 18:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 JUN 2017 16:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -680,119 +680,122 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 Class revtex4-1 Warning: Assuming \noaffiliation for authors.
 
-
-Underfull \hbox (badness 1173) in paragraph at lines 88--89
-\OT1/cmr/m/n/10 ob-ser-va-tions. Sec-tion 3 presents two key com-po-
- []
-
-<paper_dipole.png, id=31, 786.2976pt x 589.7232pt>
+[1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<paper_dipole.png, id=59, 786.2976pt x 589.7232pt>
 File: paper_dipole.png Graphic file (type png)
  <use paper_dipole.png>
-Package pdftex.def Info: paper_dipole.png used on input line 97.
-(pdftex.def)             Requested size: 205.24841pt x 153.93678pt.
+Package pdftex.def Info: paper_dipole.png used on input line 98.
+(pdftex.def)             Requested size: 239.45448pt x 179.59422pt.
 
-<antenna_layout.png, id=32, 518.1759pt x 396.0396pt>
+<antenna_layout.png, id=60, 518.1759pt x 396.0396pt>
 File: antenna_layout.png Graphic file (type png)
  <use antenna_layout.png>
-Package pdftex.def Info: antenna_layout.png used on input line 98.
-(pdftex.def)             Requested size: 201.4078pt x 153.93678pt.
+Package pdftex.def Info: antenna_layout.png used on input line 99.
+(pdftex.def)             Requested size: 234.97972pt x 179.59422pt.
 
-[1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2pdfTeX warning (ext4): destination with the same identifier (name{equation.3.
-4}) has been already used, duplicate ignored
+<frp.png, id=72, 578.16pt x 433.62pt>
+File: frp.png Graphic file (type png)
+ <use frp.png>
+Package pdftex.def Info: frp.png used on input line 128.
+(pdftex.def)             Requested size: 242.26653pt x 181.6957pt.
+ [2] [3 <./paper_dipole.png> <./antenna_layout.png> <./frp.png>] [4pdfTeX warni
+ng (ext4): destination with the same identifier (name{equation.4.9}) has been a
+lready used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.160 
-       <./paper_dipole.png> <./antenna_layout.png>]
-<sigloss1_noise.png, id=88, 1084.05pt x 505.89pt>
+l.241 
+      ] <sigloss1_noise.png, id=125, 1084.05pt x 505.89pt>
 File: sigloss1_noise.png Graphic file (type png)
- <use sigloss1_noise.png>
-Package pdftex.def Info: sigloss1_noise.png used on input line 182.
+
+<use sigloss1_noise.png>
+Package pdftex.def Info: sigloss1_noise.png used on input line 248.
 (pdftex.def)             Requested size: 513.11743pt x 239.45883pt.
 
-<ps1_noise_nosigloss.png, id=91, 361.35pt x 433.62pt>
+<ps1_noise_nosigloss.png, id=128, 361.35pt x 433.62pt>
 File: ps1_noise_nosigloss.png Graphic file (type png)
 
 <use ps1_noise_nosigloss.png>
-Package pdftex.def Info: ps1_noise_nosigloss.png used on input line 193.
+Package pdftex.def Info: ps1_noise_nosigloss.png used on input line 259.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- <ps1_noise.png, id=92, 361.35pt x 433.62pt>
+ <ps1_noise.png, id=129, 361.35pt x 433.62pt>
 File: ps1_noise.png Graphic file (type png)
 
 <use ps1_noise.png>
-Package pdftex.def Info: ps1_noise.png used on input line 194.
+Package pdftex.def Info: ps1_noise.png used on input line 260.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- <sigloss2_noise.png, id=96, 1084.05pt x 505.89pt>
+ <sigloss2_noise.png, id=133, 1084.05pt x 505.89pt>
 File: sigloss2_noise.png Graphic file (type png)
 
 <use sigloss2_noise.png>
-Package pdftex.def Info: sigloss2_noise.png used on input line 207.
+Package pdftex.def Info: sigloss2_noise.png used on input line 273.
 (pdftex.def)             Requested size: 513.11743pt x 239.45883pt.
- <ps2_noise_nosigloss.png, id=97, 361.35pt x 433.62pt>
+
+<ps2_noise_nosigloss.png, id=134, 361.35pt x 433.62pt>
 File: ps2_noise_nosigloss.png Graphic file (type png)
 
 <use ps2_noise_nosigloss.png>
-Package pdftex.def Info: ps2_noise_nosigloss.png used on input line 214.
+Package pdftex.def Info: ps2_noise_nosigloss.png used on input line 280.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- <ps2_noise.png, id=98, 361.35pt x 433.62pt>
+ <ps2_noise.png, id=135, 361.35pt x 433.62pt>
 File: ps2_noise.png Graphic file (type png)
 
 <use ps2_noise.png>
-Package pdftex.def Info: ps2_noise.png used on input line 215.
+Package pdftex.def Info: ps2_noise.png used on input line 281.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- [3] <sigloss2_data.png, id=112, 1084.05pt x 505.89pt>
+ <sigloss2_data.png, id=138, 1084.05pt x 505.89pt>
 File: sigloss2_data.png Graphic file (type png)
 
 <use sigloss2_data.png>
-Package pdftex.def Info: sigloss2_data.png used on input line 238.
+Package pdftex.def Info: sigloss2_data.png used on input line 304.
 (pdftex.def)             Requested size: 513.11743pt x 239.45883pt.
- <ps2_data_nosigloss.png, id=113, 361.35pt x 433.62pt>
+ <ps2_data_nosigloss.png, id=139, 361.35pt x 433.62pt>
 File: ps2_data_nosigloss.png Graphic file (type png)
 
 <use ps2_data_nosigloss.png>
-Package pdftex.def Info: ps2_data_nosigloss.png used on input line 245.
+Package pdftex.def Info: ps2_data_nosigloss.png used on input line 311.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- <ps2_data.png, id=114, 361.35pt x 433.62pt>
+ <ps2_data.png, id=140, 361.35pt x 433.62pt>
 File: ps2_data.png Graphic file (type png)
 
 <use ps2_data.png>
-Package pdftex.def Info: ps2_data.png used on input line 246.
+Package pdftex.def Info: ps2_data.png used on input line 312.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- <eigenspectrum.png, id=116, 578.16pt x 433.62pt>
+ <eigenspectrum.png, id=142, 578.16pt x 433.62pt>
 File: eigenspectrum.png Graphic file (type png)
 
 <use eigenspectrum.png>
-Package pdftex.def Info: eigenspectrum.png used on input line 255.
+Package pdftex.def Info: eigenspectrum.png used on input line 321.
 (pdftex.def)             Requested size: 205.24384pt x 153.93286pt.
- <covariance.png, id=117, 578.16pt x 433.62pt>
+ <covariance.png, id=143, 578.16pt x 433.62pt>
 File: covariance.png Graphic file (type png)
 
 <use covariance.png>
-Package pdftex.def Info: covariance.png used on input line 256.
+Package pdftex.def Info: covariance.png used on input line 322.
 (pdftex.def)             Requested size: 205.24384pt x 153.93286pt.
-
-Underfull \hbox (badness 1590) in paragraph at lines 263--264
+ [5]
+Underfull \hbox (badness 1590) in paragraph at lines 329--330
 []\OT1/cmr/bx/n/10 [TO DO: de-cide on/explain/show dif-fer-ent
  []
 
-(./PAPER.bbl [4 <./sigloss1_noise.png>])
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 280.
- [5 <./ps1_noise_nosigloss.png> <./ps1_noise.png> <./sigloss2_noise.png>] [6 <.
-/ps2_noise_nosigloss.png> <./ps2_noise.png> <./sigloss2_data.png>] [7 <./ps2_da
-ta_nosigloss.png> <./ps2_data.png> <./eigenspectrum.png> <./covariance.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 280.
+(./PAPER.bbl)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 346.
+ [6 <./sigloss1_noise.png>] [7 <./ps1_noise_nosigloss.png> <./ps1_noise.png> <.
+/sigloss2_noise.png>] [8 <./ps2_noise_nosigloss.png> <./ps2_noise.png> <./siglo
+ss2_data.png>] [9 <./ps2_data_nosigloss.png> <./ps2_data.png> <./eigenspectrum.
+png> <./covariance.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 346.
  (./PAPER.aux)
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 280.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 346.
  ) 
 Here is how much of TeX's memory you used:
- 10411 strings out of 493014
- 143910 string characters out of 6133351
- 295080 words of memory out of 5000000
- 13753 multiletter control sequences out of 15000+600000
+ 10445 strings out of 493014
+ 144434 string characters out of 6133351
+ 300482 words of memory out of 5000000
+ 13772 multiletter control sequences out of 15000+600000
  13278 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,11n,53p,1201b,529s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,11n,53p,1379b,346s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></u
@@ -810,10 +813,10 @@ ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on PAPER.pdf (7 pages, 3889366 bytes).
+Output written on PAPER.pdf (9 pages, 3937143 bytes).
 PDF statistics:
- 222 PDF objects out of 1000 (max. 8388607)
- 169 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 260 PDF objects out of 1000 (max. 8388607)
+ 202 compressed objects within 3 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

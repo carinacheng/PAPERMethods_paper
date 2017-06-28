@@ -71,6 +71,7 @@ et al.
 %\altaffiltext{8}{School of Earth and Space Exploration, Arizona State U., Tempe, AZ}
 
 \begin{abstract}
+The Epoch of Reionization (EoR) is an uncharted era in our Universe's history during which the birth of the first stars and galaxies led to the ionization of the omnipresent neutral hydrogen. This important epoch of our cosmic dawn harbors a wealth of information regarding the environment during this transformative time, including insight into the nature of the first luminous sources and implications about cosmological parameters. There are many experiments investigating the EoR by tracing the $21$ cm line of neutral hydrogen, a signal which is very faint and difficult to isolate. As instruments become more sensitive and a statistical power spectrum detection is in our foreseeable future, it has become increasingly important to develop techniques that help ensure that a potential detection isn't washed out or mistaken for something else. In this paper, we focus on two crucial ingredients for a power spectrum detection - a method for the accurate injection and recovery of an EoR signal, and jack-knife tests that can tease out foregrounds and systematics that contaminate our signal. We describe and apply these methods using data taken by the 64-element configuration of the Donald C. Baker Precision Array for Probing the Epoch of Reionization (PAPER).
 \end{abstract}
 
 
@@ -85,7 +86,7 @@ Although a detection of the EoR has not currently been made to-date, there are s
 
 The major challenge that faces all 21 cm experiments is in isolating a small signal that is buried underneath foregrounds and instrumental systematics that are 4-5 orders of magnitude brighter. A clean measurement therefore requires an intimate understanding of the instrument and a very careful, thorough understanding of data analysis choices. With HERA on the horizon and continual progress being made in the field, it is becoming increasingly more important to develop methods that can both reinforce a potential real detection and explain any false ones. In this paper, we present approaches to both of these issues using data from the 64-element configuration of PAPER. We place special emphasis on the accurate injection and recovery of a fake EoR signal in order to assess signal loss associated with different weighting techniques, as well as the importance of using jack-knife tests to investigate sources of bias.
 
-This paper is organized as follows. In section 2 we give a brief overview of the PAPER-64 array and observations. Section 3 presents two key components of any power spectrum analysis pipeline - accurately quantifying signal loss that may result from data analysis choices, and choosing a weighting scheme to maximum foreground down-weighting without amassing large amounts of signal loss. In Section 4 we highlight useful jack-knife tests that can help discriminate between excess detections from foregrounds. We conclude in Section 5.
+This paper is organized as follows. In section 2 we give a brief overview of the PAPER-64 array and observations. In section 3 we describe our power spectrum estimation pipeline. Section 4 presents two key components of any power spectrum analysis pipeline - accurately quantifying signal loss that may result from data analysis choices, and choosing a weighting scheme to maximum foreground down-weighting without amassing large amounts of signal loss. In Section 5 we highlight useful jack-knife tests that can help discriminate between excess detections from foregrounds. We conclude in Section 6.
 
 \section{Observations}
 \label{sec:Obs}
@@ -94,28 +95,93 @@ The Donald C. Baker Precision Array for Probing the Epoch of Reionization (PAPER
 
 \begin{figure*}
 	\centering
-	\includegraphics[height=0.3\textwidth]{paper_dipole.png}
-	\includegraphics[height=0.3\textwidth]{antenna_layout.png}
+	\includegraphics[height=0.35\textwidth]{paper_dipole.png}
+	\includegraphics[height=0.35\textwidth]{antenna_layout.png}
 	\caption{PAPER dipole in South Africa (left) and PAPER-64 antenna layout (right).}
 	\label{fig:paper}
 \end{figure*}
 
 PAPER-64 observed for a total of 135 nights between 2012-2013. The correlator processes a bandwidth of 100-200 MHz, corresponding to a redshift range of 6-12. For more information about the backend system of PAPER-64 and its observations, we refer the reader to \cc{??} and \citet{ali_et_al2015}.
 
-Because there is a detailed discussion of the PAPER-64 data reduction pipeline in \citet{ali_et_al2015}, here we will only briefly summarize the data processing steps prior to the power spectrum analysis.
+Because there is a detailed discussion of the PAPER-64 data reduction pipeline in \citet{ali_et_al2015}, here we will only briefly summarize the data processing steps prior to the power spectrum analysis. 
 
-\cc{TO DO: summarize redundant\&absolute calibration, fg-clean, LST-binning, FRF}
+Beginning with compressed data products which have been cleaned of radio frequency interference (RFI) at the $6\sigma$ level and then down-sampled (to $42.9$ s integrations, $203$ frequency channels), we then employ the technique of redundant calibration as a means of calibrating for individual antenna gains without needing to use information about the sky. Because PAPER is laid out on a grid, antenna calibration parameters can be found through the use redundancy. Namely, baselines of the same length and orientation should measure the same sky signal, but in practice there are differences due to instrumental effects caused by antennas, cables, and receivers. Using the basis of redundancy, however, allows us to set up a system of equations to solve for a complex gain per antenna that brings all baseline of a particular type into alignment. We do this using the package OMNICAL.
+
+We next solve for the array's overall phase and gain calibration parameters using a standard self calibration method. We used radio sources Pictor A, Fornax A, and the Crab Nebula to fit for an overall phase solution, and set our overall flux scale using Pictor A as a calibrator source. Although PAPER-64 data exists for all $4$ polarizations, we only use the $xx$ and $yy$ polarization data to form Stokes I as $V_{I} = \frac{1}{2}(V_{XX} + V_{YY})$.
+
+Eliminating bright foregrounds remains a challenging yet crucial component of any 21 cm data analysis. There are many techniques to go about foreground removal, including spectral polynomial fitting, principle component analysis, Fourier-mode filtering, non-parametric subtractions, and inverse covariance weighting. PAPER uses a delay-spectrum filtering method which was first explained and applied in \citet{parsons_et_al2014}. In short, the delay-filtering technique employs the spectrally smooth nature of foregrounds, which are consequently localized in delay-space, the Fourier dual to frequency. We subtract all components that fall within the horizon limit for a specific baseline type in delay-space, plus a $15$ ns buffer, thus gaining about $\sim4$ orders of magnitude in sensitivity. 
+
+Finally, after removing an additional layer of RFI (values $3\sigma$ above the median), we average together all our data into two datasets: even julian dates and odd julian dates. A total of $124$ nights of data comprises this average, and we use these two datasets as a starting point for constructing power spectrum estimates.
 
 \section{Power Spectrum Analysis}
 \label{sec:PS}
 
-We use optimal quadratic estimators as explained by \cc{??} in order to form our final power spectrum quantities. For the reader's convenience, we summarize the method here, as well as highlight changes that we have made for our most recent analysis.
+\subsection{Fringe-Rate-Filtering}
+\label{sec:FRF}
 
-\cc{TO DO: summarize OQE formalism and bootstrapping}
-\cc{Don't forget to explain new PS channels, like noise and eor, and how they're created}
+As shown in \citet{parsons_et_al2016}, a fringe-rate filter allows us to maximize our sensitivity even further by averaging visibilities in time. We apply this filter in the fringe-rate domain, the Fourier-dual to time, and it effectively amounts to increasing our data's integration time. Another way to describe the filter is that it weights different parts of the sky (which rotate at different ``fringe-rates") by the antenna beam. This allows us to up-weight parts of the sky high in the primary beam, and down-weight those that are less sensitive.
 
-\subsection{Signal Loss Formalism}
+In \citet{ali_et_al2015}, the filter applied was degraded (widened in fringe-rate space) from an optimal one that can be constructed based on the integration time of the data. This was chosen to decrease the resulting integration time, therefore increasing the number of independent modes and reducing signal loss associated with applying optimal quadratic estimators (OQE) on data with too few modes.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\columnwidth]{frp.png}
+	\caption{The optimal fringe-rate filter used in the analysis, normalized to $1$.}
+	\label{fig:frp}
+\end{figure}
+
+New to our updated PAPER-64 analysis is the use of the optimal fringe-rate filter, which maximizes our sensitivity. With the development of a robust method for assessing signal loss (see Section \ref{sec:Sigloss}), we feel comfortable using a narrow filter (Figure \ref{fig:frp}), resulting in an effective integration time of $3857$ s (see Section \ref{sec:PSSense} for calculation) and $8$ total independent modes for our $8.5$ hours of LST. 
+
+In practice, the optimal fringe-rate profile is computed for a fiducial $30$ m baseline at $150$ MHz, the center frequency in our band. The filter is implemented on a per baseline basis by convolving the time-domain visibilities with the Fourier transform of the fringe-rate filter, resulting in averaged visibilities yielding $\sim 2$ orders of magnitude in sensitivity.
+
+\subsection{Power Spectrum Estimation}
+\label{sec:PSEst}
+
+To form power spectrum quantities using our two fringe-rate filtered, LST-binned datasets, we use OQE methods as described by \cc{??}. A summary of the method is as follows. We begin with our data vector $\textbf{x}$, which contains our visibilities that have the shape ($times$, $frequencies$) for each baseline and data group (`even' or `odd'). As part of our bootstrapping routine (and to speed things up), we divide up our total number of baselines into $5$ random, equal-sized groups, where no baselines are repeated within or between groups. For the \citet{ali_et_al2015} method, each group is then sampled with replacement to create a new group, of the same size, that can have repeated baselines inside it. We discover that in doing so, we are sacrificing some of our sensitivity since this results in there being 3-4 repeated baselines per group. In order to maximize our sensitivity but still apply random sampling for use in error estimation, we instead form new groups using all independent baselines except the very last one. For example, if we have $10$ baselines in a group, we use the first $9$, and then fill the last slot randomly out of the $10$. We do this for all $5$ groups. This is still a valid means of bootstrapping because there are many more possibilities of baseline groupings than the number of bootstraps we run ($20$).
+
+Taking $\textbf{x}$ to be averaged data from all baselines within a group, we now have $10$ possible data vectors (for $5$ groups and $2$ datasets). We next form the quantity $\hat{q}_{\alpha}$:
+
+\begin{equation}
+\hat{q}_{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{C}^{-1}\textbf{Q}_{\alpha}\textbf{C}^{-1}\textbf{x}-b_{\alpha}
+\end{equation}
+
+where $\textbf{C}$ is the covariance matrix defined to be $\textbf{C} \equiv \langle\textbf{x}\textbf{x}^{\dagger}\rangle$. The matrix $\textbf{Q}$ is an operator that takes our frequency-domain visibilities and Fourier-transforms them into power spectrum space. A noise bias $b_{\alpha}$ is subtracted off. The index $\alpha$ represents each $k_{\parallel}$ bin, where $k_{\parallel}$ is the Fourier-dual to frequency.
+
+Notice that there are two quantities of $\textbf{C}^{-1}\textbf{x}$ in the expression for $\hat{q}$, representing two copies of inverse covariance weighted data. We perform all possible cross-multiplications of this quantity, except between the same datasets (`even' with `even', for example) and same groups (`baseline group 1' with `baseline group 1', for example). We avoid these computations to prevent auto power shared between the two quantities from introducing biases. 
+
+The rest of the OQE formalism is identical to \citet{ali_et_al2015}. We normalize our power spectrum estimates using the matrix $\textbf{M}$:
+
+\begin{equation}
+\hat{\textbf{p}} = \textbf{M}\hat{\textbf{q}}
+\end{equation}
+
+where $\hat{\textbf{p}}$ is the normalized estimate of the true power spectrum $\textbf{p}$. $\textbf{M}$ is related to the Fisher matrix $\textbf{F}$ by:
+
+\begin{eqnarray}
+\textbf{F}_{\alpha\beta} &=& \frac{1}{2}tr(\textbf{C}^{-1}\textbf{Q}_{\alpha}\textbf{C}^{-1}\textbf{Q}_{\beta}) \\
+\textbf{W} &=& \textbf{MF}
+\end{eqnarray}
+
+Finally, our final power spectrum is:
+
+\begin{equation}
+\hat{\textbf{p}} = \textbf{Wp}
+\end{equation}
+
+Our final power spectrum quantities are 1-dimensional functions of $k$. We compute $20$ bootstraps of these quantities, where each bootstrap creates baseline groups randomly.
+
+\cc{Explain new PS channels, like noise and eor, and how they're created}
+
+\subsection{Power Spectrum Sensitivity}
+\label{sec:PSSense}
+
+\cc{Add info on how we calculate effective inttime and adjust beam factor because of FRF}
+
+\section{Signal Loss}
 \label{sec:Sigloss}
+
+\subsection{Formalism}
+\label{sec:Formalism}
 
 Based on our analysis pipeline, potential signal loss is a real and significant issue. More specifically, when applying inverse covariance weighting, $\textbf{C}^{-1}$ is empirically estimated from the data itself, which has the consequence of over-fitting the noise in the data, producing power spectra values well below the thermal noise limit that is predicted based on observation parameters. This is especially prevalent when weighting fringe-rate-filtered data, which has so few independent time modes to begin with, leading to a noisier dataset. Being able to accurately quantify this loss is crucial in interpreting and providing credibility to any power spectrum limits. 
 
@@ -160,10 +226,10 @@ We see that our naive expression for $P_{out}$ is the first term, but there also
 
 For the unweighted case ($\textbf{C} \equiv \textbf{I}$), we expect $P_{out}$ and $P_{in}$ to be equal, and hence the ratio of $P_{in} / P_{out}$ to be 1. For the weighted case, this is not true due to signal loss. In order to quantify the loss, we look at the ratio of $P_{in}$ to $P_{out}$ as the amplitude level of the injected signal \textbf{e} is increased. In the next section, we highlight two methods that yield similar results for the determination of signal loss using $P_{in}$ and $P_{out}$
 
-\subsection{Signal Loss in Practice}
+\subsection{Application}
 \label{sec:siglossprac}
 
-Recall that fringe-rate-filtered noise, which mimics the level of noise in our actual PAPER-64 dataset, is a channel in our power spectrum pipeline. We can compute signal loss quantities of interest for the noise $\textbf{n}$ similar to the expressions we featured previously for data $\textbf{x}$. 
+Recall that fringe-rate filtered noise, which mimics the level of noise in our actual PAPER-64 dataset, is a channel in our power spectrum pipeline. We can compute signal loss quantities of interest for the noise $\textbf{n}$ similar to the expressions we featured previously for data $\textbf{x}$. 
 
 \begin{eqnarray}
 P_{in} &\propto& \textbf{e}^{\dagger}\textbf{I}^{-1}\textbf{Q}\textbf{I}^{-1}\textbf{e} \\
@@ -222,7 +288,7 @@ One thing to note is that for both methods, we have been careful to validate tha
 
 With our signal loss formalism established, we now have the capability of experimenting with different weighting options for $\textbf{C}$. Our goal here is to choose a weighting method that successfully down-weights foregrounds and systematics in our data without generating large amounts of signal loss. We have found that the balance between the two is a delicate one and requires \cc{?? finish sentence...}. 
 
-We now turn our attention to power spectra using the 30 m East/West baselines of PAPER-64. Our dataset spans $8.5$ hours of LST ($.1$-$8.6$ hrs), includes a total of $51$ baselines, and is fringe-rate-filtered using an optimal fringe-rate-filter. We have two datasets (even days and odd days), and only cross-multiply data from different days and different baselines. We are interested in $21$ frequency channels (channels 95-115), which yields a power spectrum for a redshift of $z=8.4$. 
+We now turn our attention to power spectra using the 30 m East/West baselines of PAPER-64. Our dataset spans $8.5$ hours of LST ($.1$-$8.6$ hrs), includes a total of $51$ baselines, and is fringe-rate filtered using an optimal fringe-rate filter. We have two datasets (even days and odd days), and only cross-multiply data from different days and different baselines. We are interested in $21$ frequency channels (channels 95-115), which yields a power spectrum for a redshift of $z=8.4$. 
 
 Using full inverse covariance weighting, our results are not too dissimilar to that of pure noise. Signal loss factors (Figure \ref{fig:sigloss2_data}) are of similar order of magnitude, and our power spectrum blows up past the unweighted version after signal loss correction (Figure \ref{fig:ps2_data}).
 
@@ -248,7 +314,7 @@ Using full inverse covariance weighting, our results are not too dissimilar to t
 	\label{fig:ps2_data}
 \end{figure*}
 
-Looking into this behavior in more detail, we investigate the shape of the eigenspectrum of $\textbf{C}$ for a typical baseline used in the analysis. Figure \ref{fig:eigenspectrum} shows this spectrum for baseline (1,4). Most obviously, the spectrum is steep, spanning 4 orders of magnitude. Not as obvious is the effect of this shape on our results. When the matrix $\textbf{C}$ is inverted to form $\textbf{C}^{-1}$, the effect of the steepness of the eigenspectrum is to up-weight very few modes of the sky while the rest are drastically down-weighted. More specifically, our fringe-rate-filtered data contains a finite, small number of independent modes, thereby resulting in a covariance matrix that can be described by just a few modes. Beyond the first few modes, the eigenvalues of each additional mode falls of dramatically. When inverting, we end up not only down-weighting those initial modes but severely up-weighting a few insignificant ones. Because of our weighting choice, signal loss blows up as it thinks we only have a couple modes in our data.
+Looking into this behavior in more detail, we investigate the shape of the eigenspectrum of $\textbf{C}$ for a typical baseline used in the analysis. Figure \ref{fig:eigenspectrum} shows this spectrum for baseline (1,4). Most obviously, the spectrum is steep, spanning 4 orders of magnitude. Not as obvious is the effect of this shape on our results. When the matrix $\textbf{C}$ is inverted to form $\textbf{C}^{-1}$, the effect of the steepness of the eigenspectrum is to up-weight very few modes of the sky while the rest are drastically down-weighted. More specifically, our fringe-rate filtered data contains a finite, small number of independent modes, thereby resulting in a covariance matrix that can be described by just a few modes. Beyond the first few modes, the eigenvalues of each additional mode falls of dramatically. When inverting, we end up not only down-weighting those initial modes but severely up-weighting a few insignificant ones. Because of our weighting choice, signal loss blows up as it thinks we only have a couple modes in our data.
 
 \begin{figure*}
 	\centering
