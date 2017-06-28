@@ -1,0 +1,69 @@
+\begin{thebibliography}{14}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Ali} {et~al.}(2015){Ali}, {Parsons}, {Zheng}, {Pober}, {Liu},
+  {Aguirre}, {Bradley}, {Bernardi}, {Carilli}, {Cheng}, {DeBoer}, {Dexter},
+  {Grobbelaar}, {Horrell}, {Jacobs}, {Klima}, {MacMahon}, {Maree}, {Moore},
+  {Razavi}, {Stefan}, {Walbrugh}, \& {Walker}}]{ali_et_al2015}
+{Ali}, Z.~S., {et~al.} 2015, \apj, 809, 61
+
+\bibitem[{{Bowman} \& {Rogers}(2010)}]{bowman2010}
+{Bowman}, J.~D., \& {Rogers}, A.~E.~E. 2010, \nat, 468, 796
+
+\bibitem[{{Burns} {et~al.}(2012){Burns}, {Lazio}, {Bale}, {Bowman}, {Bradley},
+  {Carilli}, {Furlanetto}, {Harker}, {Loeb}, \& {Pritchard}}]{burns2012}
+{Burns}, J.~O., {et~al.} 2012, Advances in Space Research, 49, 433
+
+\bibitem[{{Ellingson} {et~al.}(2009){Ellingson}, {Clarke}, {Cohen}, {Craig},
+  {Kassim}, {Pihlstrom}, {Rickard}, \& {Taylor}}]{ellingson_et_al2009}
+{Ellingson}, S.~W., {Clarke}, T.~E., {Cohen}, A., {Craig}, J., {Kassim}, N.~E.,
+  {Pihlstrom}, Y., {Rickard}, L.~J., \& {Taylor}, G.~B. 2009, IEEE Proceedings,
+  97, 1421
+
+\bibitem[{{Greenhill} \& {Bernardi}(2012)}]{greenhill_bernardi2012}
+{Greenhill}, L.~J., \& {Bernardi}, G. 2012, ArXiv e-prints
+
+\bibitem[{{Paciga} {et~al.}(2013){Paciga}, {Albert}, {Bandura}, {Chang},
+  {Gupta}, {Hirata}, {Odegova}, {Pen}, {Peterson}, {Roy}, {Shaw}, {Sigurdson},
+  \& {Voytek}}]{paciga_et_al2013}
+{Paciga}, G., {et~al.} 2013, \mnras
+
+\bibitem[{{Parsons} {et~al.}(2010){Parsons}, {Backer}, {Foster}, {Wright},
+  {Bradley}, {Gugliucci}, {Parashare}, {Benoit}, {Aguirre}, {Jacobs},
+  {Carilli}, {Herne}, {Lynch}, {Manley}, \& {Werthimer}}]{parsons_et_al2010}
+{Parsons}, A.~R., {et~al.} 2010, \aj, 139, 1468
+
+\bibitem[{{Patra} {et~al.}(2015){Patra}, {Subrahmanyan}, {Sethi}, {Udaya
+  Shankar}, \& {Raghunathan}}]{patra2015}
+{Patra}, N., {Subrahmanyan}, R., {Sethi}, S., {Udaya Shankar}, N., \&
+  {Raghunathan}, A. 2015, \apj, 801, 138
+
+\bibitem[{{Peterson}(2004)}]{peterson_et_al2004}
+{Peterson}, U.-L.~P.~X.-P.~W.~J. 2004, ArXiv Astrophysics e-prints
+
+\bibitem[{{Sokolowski} {et~al.}(2015){Sokolowski}, {Tremblay}, {Wayth},
+  {Tingay}, {Clarke}, {Roberts}, {Waterson}, {Ekers}, {Hall}, {Lewis},
+  {Mossammaparast}, {Padhi}, {Schlagenhaufer}, {Sutinjo}, \&
+  {Tickner}}]{sokolowski2015}
+{Sokolowski}, M., {et~al.} 2015, \pasa, 32, e004
+
+\bibitem[{{Tingay} {et~al.}(2013){Tingay}, {Goeke}, {Bowman}, {Emrich}, {Ord},
+  {Mitchell}, {Morales}, {Booler}, {Crosse}, {Wayth},
+  {et~al.}}]{tingay_et_al2013}
+{Tingay}, S.~J., {et~al.} 2013, \pasa, 30, 7
+
+\bibitem[{{van Haarlem} {et~al.}(2013){van Haarlem}, {Wise}, {Gunst}, {Heald},
+  {McKean}, {Hessels}, {de Bruyn}, {Nijboer}, {Swinbank}, {Fallows},
+  {et~al.}}]{van_haarlem_et_al2013}
+{van Haarlem}, M.~P., {et~al.} 2013, \aap, 556, A2
+
+\bibitem[{{Voytek} {et~al.}(2014){Voytek}, {Natarajan}, {J{\'a}uregui
+  Garc{\'{\i}}a}, {Peterson}, \& {L{\'o}pez-Cruz}}]{voytek2014}
+{Voytek}, T.~C., {Natarajan}, A., {J{\'a}uregui Garc{\'{\i}}a}, J.~M.,
+  {Peterson}, J.~B., \& {L{\'o}pez-Cruz}, O. 2014, \apjl, 782, L9
+
+\bibitem[{{Wu}(2009)}]{wu2009}
+{Wu}, X. 2009, in Bulletin of the American Astronomical Society, Vol.~41,
+  American Astronomical Society Meeting Abstracts \#213, 474
+
+\end{thebibliography}
