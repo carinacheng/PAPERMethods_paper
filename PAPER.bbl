@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{18}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Ali} {et~al.}(2015){Ali}, {Parsons}, {Zheng}, {Pober}, {Liu},
@@ -13,6 +13,17 @@
 \bibitem[{{Burns} {et~al.}(2012){Burns}, {Lazio}, {Bale}, {Bowman}, {Bradley},
   {Carilli}, {Furlanetto}, {Harker}, {Loeb}, \& {Pritchard}}]{burns2012}
 {Burns}, J.~O., {et~al.} 2012, Advances in Space Research, 49, 433
+
+\bibitem[{DeBoer {et~al.}(2017)DeBoer, Parsons, Aguirre, Alexander, Ali,
+  Beardsley, Bernardi, Bowman, Bradley, Carilli, Cheng, de~Lera~Acedo, Dillon,
+  Ewall-Wice, Fadana, Fagnoni, Fritz, Furlanetto, Glendenning, Greig,
+  Grobbelaar, Hazelton, Hewitt, Hickish, Jacobs, Julius, Kariseb, Kohn,
+  Lekalake, Liu, Loots, MacMahon, Malan, Malgas, Maree, Martinot, Mathison,
+  Matsetela, Mesinger, Morales, Neben, Patra, Pieterse, Pober, Razavi-Ghods,
+  Ringuette, Robnett, Rosie, Sell, Smith, Syce, Tegmark, Thyagarajan, Williams,
+  \& Zheng}]{deboer_et_al2017}
+DeBoer, D.~R., {et~al.} 2017, Publications of the Astronomical Society of the
+  Pacific, 129, 045001
 
 \bibitem[{{Ellingson} {et~al.}(2009){Ellingson}, {Clarke}, {Cohen}, {Craig},
   {Kassim}, {Pihlstrom}, {Rickard}, \& {Taylor}}]{ellingson_et_al2009}
@@ -49,6 +60,11 @@
 
 \bibitem[{{Peterson}(2004)}]{peterson_et_al2004}
 {Peterson}, U.-L.~P.~X.-P.~W.~J. 2004, ArXiv Astrophysics e-prints
+
+\bibitem[{{Pober} {et~al.}(2014){Pober}, {Liu}, {Dillon}, {Aguirre}, {Bowman},
+  {Bradley}, {Carilli}, {DeBoer}, {Hewitt}, {Jacobs},
+  {et~al.}}]{pober_et_al2014}
+{Pober}, J.~C., {et~al.} 2014, \apj, 782, 66
 
 \bibitem[{{Sokolowski} {et~al.}(2015){Sokolowski}, {Tremblay}, {Wayth},
   {Tingay}, {Clarke}, {Roberts}, {Waterson}, {Ekers}, {Hall}, {Lewis},
