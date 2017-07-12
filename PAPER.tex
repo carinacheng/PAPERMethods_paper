@@ -82,7 +82,7 @@ By about one billion years after the Big Bang, the very first stars and galaxies
 
 One promising technique to probe the EoR is to target the 21 cm wavelength emission that is emitted by neutral hydrogen via its spin-flip transition. This technique is powerful because it can be observed as a function of redshift --- that is, the wavelength of the signal reaching our telescopes can be directly mapped to a distance from where the emission originated before stretching out as it traveled through expanding space. The 21 cm line therefore offers a window into the evolution of ionization, temperature, and density fluctuations on cosmic scales.
 
-Although a detection of the EoR remains elusive, there are several radio telescope experiments that have succeeded in using the 21 cm signal from hydrogen to place constraints on the brightness of the EoR. Examples of experiments investigating the mean brightness temperature of the EoR relative to the CMB are EDGES (\citealt{bowman2010}), the LWA (\citealt{ellingson_et_al2009}), LEDA (\citealt{greenhill_bernardi2012}), DARE (\citealt{burns2012}), SciHi (\citealt{voytek2014}), BIGHORNS (\citealt{sokolowski2015}), and SARAS (\citealt{patra2015}). Radio interferometers which seek to measure statistical power spectra include the GMRT (\citealt{paciga_et_al2013}), LOFAR (\citealt{van_haarlem_et_al2013}), the MWA (\citealt{tingay_et_al2013}), the 21CMA (\citealt{peterson_et_al2004}, \citealt{wu2009}), and PAPER (\citealt{parsons_et_al2010}). The Hydrogen Epoch of Reionization Array (HERA), which is currently being built, is a next-generation instrument that aims to combine lessons learned from previous experiments and is forecasted to be able to make a successful $23\sigma$ detection with an eventual $350$ elements, using current analysis techniques (\citealt{deboer_et_al2017}, \citealt{pober_et_al2014}).
+Although a detection of the EoR remains elusive, there are several radio telescope experiments that have succeeded in using the 21 cm signal from hydrogen to place constraints on the brightness of the EoR. Examples of experiments investigating the mean brightness temperature of the EoR relative to the CMB are the Experiment to Detect the Global EoR Signature (EDGES, \citealt{bowman2010}), the Long Wavelength Array (LWA, \citealt{ellingson_et_al2009}),  the Large Aperture Experiment to Detect the Dark Ages (LEDA, \citealt{greenhill_bernardi2012}), the Dark Ages Radio Explorer (DARE, \citealt{burns2012}), the Sonda Cosmol\'ogica de las Islas para la Detecci\'on de Hidr\'ogeno NeutroSciHi (SCI-HI, \citealt{voytek2014}), the Broadband Instrument for Global HydrOgen ReioNisation Signal (BIGHORNS, \citealt{sokolowski2015}), and the Shaped Antenna measurement of the background RAdio Spectrum (SARAS, \citealt{patra2015}). Radio interferometers which seek to measure statistical power spectra include the Giant Metre-wave Radio Telescope (GMRT, \citealt{paciga_et_al2013}), the LOw Frequency ARray (LOFAR,\citealt{van_haarlem_et_al2013}), the Murchison Widefield Array (MWA, \citealt{tingay_et_al2013}), the 21 Centimeter Array (21CMA, \citealt{peterson_et_al2004}, \citealt{wu2009}), and PAPER (\citealt{parsons_et_al2010}). The Hydrogen Epoch of Reionization Array (HERA), which is currently being built, is a next-generation instrument that aims to combine lessons learned from previous experiments and is forecasted to be able to make a successful $23\sigma$ detection with an eventual $350$ elements, using current analysis techniques (\citealt{deboer_et_al2017}, \citealt{pober_et_al2014}).
 
 The major challenge that faces all 21 cm experiments is isolating a small signal that is buried underneath foregrounds and instrumental systematics that are 4-5 orders of magnitude brighter. A clean measurement therefore requires an intimate understanding of the instrument and a rigorous study of data analysis choices. With continual progress being made in the field and HERA on the horizon, it is becoming increasingly important to understand how the methods we choose interact with each other to affect power spectrum results. In this paper, we discuss three themes essential to a $21$ cm power spectrum analysis and how data analysis choices affect each. We approach these themes from a broad perspective, and then perform a detailed case study using data from the 64-element configuration of PAPER.
 
@@ -91,25 +91,13 @@ This paper is organized as follows. In section 2 we introduce the three themes o
 \section{Power Spectrum Themes and Techniques}
 \label{sec:Themes}
 
-A typical dataset for a $21$ cm experiment involves many axes. Visibility measurements, the standard data product for radio telescopes, are saved for many baselines and baseline-types. These visibilities are comprised of many integrations and a spectrum of frequency channels. Data collection can span months and years and can involve multiple polarizations. The data itself contains not only an EoR signal, but layers of bright foregrounds, radio frequency interference, instrumental noise, and other systematics.
+We seek to measure the statistical $21$ cm power spectrum. As such, we require robust methods that determine accurate confidence intervals and rigorous techniques to identify and suppress systematics. Additionally, because of the challenge in isolating a faint signal, we desire to maximize our sensitivity through filtering and weighting techniques.
 
-The job for $21$ cm data analysts is to sift through terabytes of data to ultimately make a power spectrum, a statistical result that encodes the variance of a dataset. In other words, a power spectrum measures the strength of the $21$ cm signal on various spatial scales of the sky, a powerful measurement that can be used to trace the evolution of neutral hydrogen during the EoR. There are, however, many data analysis choices that affect both the variance of the dataset itself and how it is measured. 
+There are many choices for a data analyst, such as how to optimally combine time-ordered measurements, how to best and most accurately estimate its variance, and how to weight data in a way that suppresses contaminated modes while not destroying an EoR signal. Common techniques such as averaging data, weighting, bootstrapping, and jack-knife testing each affect data in different ways and reveal different lessons.
 
-Simply stated, we desire to maximize the sensitivity of a dataset as much as possible, while being confident about the result and able to account for irregularities. There are many choices as a data analyst, such as how to optimally combine time-ordered measurements, how to best and most accurately estimate its variance, and how to weight data in a way that suppresses uninteresting modes while not destroying an EoR signal. Common techniques such as averaging data, inverse covariance weighting, bootstrapping, and jack-knife testing each affect data in different ways and reveal different lessons.
+There are tradeoffs between these power spectrum techniques which impact resulting limits. For example, an aggressive filtering method may succeed in eliminating interfering systematics but comes at the cost of losing the EoR signal. A chosen weighting scheme may maximize sensitivity but fail to suppress foregrounds.
 
-There are often tradeoffs between techniques. For example, \cc{cite papers such as Josh's}. 
-
-In this paper, we focus on four power spectrum techniques and their affect on three umbrella $21$ cm power spectrum themes. We will give brief definitions now, and build intuition for each theme in the sections to follow.
-
-\begin{center}
-Power Spectrum Techniques
-\end{center}
-\begin{itemize}
-\item \textbf{Fringe-rate filtering:} The concept of a fringe-rate filter is similar to averaging data in time. We explain our filter in more detail in Section \ref{sec:CaseStudy}, but a broad description is that a fringe-rate filter increases the sensitivity of a dataset and reduces the number of independent samples by an amount dependent on the width of the averaging window.
-\item \textbf{Inverse covariance weighting:} Of the same flavor as inverse variance weighting, inverse covariance weighting weights a dataset by minimizing the covariance between frequency channels. This weighting has the effect of down-weighting correlated information and up-weighting noise-like information.
-\item \textbf{Bootstrapping:} This is a useful method for estimating errors of a dataset from itself. By randomly drawing samples of the data, the spread in those numbers gives us our errors.
-\item \textbf{Jack-Knife testing:} A resampling technique useful for estimating bias, jack-knives can be taken along different dimensions of a dataset to cross-validate results.
-\end{itemize}
+In this paper, we focus on four power spectrum techniques and their effect on three overarching $21$ cm power spectrum themes. We will give brief definitions now, and build intuition for each theme in the sections to follow.
 
 \begin{center}
 Power Spectrum Themes
@@ -120,85 +108,200 @@ Power Spectrum Themes
 \item \textbf{Bias:} There are several possible sources of bias in a visibility measurement that can leak its way into a power spectrum. It is important to identity them in order to interpret results and develop techniques to suppress contamination.
 \end{itemize}
 
+\begin{center}
+Power Spectrum Techniques
+\end{center}
+\begin{itemize}
+\item \textbf{Fringe-rate filtering:} The concept of a fringe-rate filter is similar to averaging data in time. We explain our filter in more detail in Section \ref{sec:CaseStudy}, but a broad description is that a fringe-rate filter increases the sensitivity of a dataset and reduces the number of independent samples by an amount dependent on the width of the averaging window.
+\item \textbf{Weighting:} A dataset can be weighted to emphasize certain features and minimize others. One particular flavor of weighting is inverse covariance weighting, which weights a dataset by minimizing the covariance between frequency channels. This weighting has the effect of down-weighting correlated information (i.e. foregrounds) and up-weighting noise-like information (i.e. EoR).
+\item \textbf{Bootstrapping:} This is a useful method for estimating errors of a dataset from itself. By randomly drawing many samples of the data, we get a sense of its inherent variance.
+\item \textbf{Jack-Knife testing:} A resampling technique useful for estimating bias, jack-knives can be taken along different dimensions of a dataset to cross-validate results.
+\end{itemize}
+
 We will now discuss the three themes more in depth and discuss how certain power spectrum techniques affect each.
 
 \subsection{Signal Loss}
 \label{sec:SiglossOverview}
 
-Signal loss refers to the loss of a cosmological signal in a dataset. It can arise in a variety of ways at multiple stages in an analysis pipeline. Here we focus on signal loss originating from empirically estimating covariance matrices, a method that succeeds in down-weighting foregrounds but can carry the risk of large amounts of signal loss. We will develop our intuition and motivate the effect of signal loss using a toy model simulation.
+Signal loss refers to the loss of a cosmological signal in a dataset. It can arise through a variety of ways in an analysis pipeline, such as fitting a polynomial during calibration or applying a delay-domain filter. Here we focus on signal loss associated with applying a weight matrix to data. Driven by sensitivity needs, we would like to use a weighting method that succeeds in down-weighting foregrounds. However, as we'll investigate, this can carry the risk of large amounts of signal loss. 
 
-Suppose we have a very simple dataset which contains 2-dimensional data (representing $100$ time integrations and $20$ frequency channels). The data is comprised of a sine-wave foreground that varies in time, and a complex, random-noise EoR signal (Figure \ref{fig:toy_sigloss1}, left). 
+Before we demonstrate how different weighting matrices affect signal loss, we first recap how weights are related to the power spectrum estimation technique of optimal quadratic estimators (OQE, \citealt{liu_et_al2014b}). A summary of the method is as follows. 
+
+We begin with our data vector $\textbf{x}$, which contains our visibilities that have the shape ($times$, $frequencies$). We form the quantity $\hat{q}_{\alpha}$:
+
+\begin{equation}
+\label{eq:qhat}
+\hat{q}_{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{w}\textbf{Q}_{\alpha}\textbf{w}\textbf{x}
+\end{equation}
+
+where $\textbf{w}$ is a weighting matrix (for example, inverse covariance weighting would set $\textbf{w} = \textbf{C}^{-1}$). The matrix $\textbf{Q}$ is an operator that takes our frequency-domain visibilities and Fourier-transforms them into power spectrum space. The index $\alpha$ represents each $k_{\parallel}$ bin, where $k_{\parallel}$ is the Fourier-dual to frequency.
+
+We normalize our power spectrum estimates using the matrix $\textbf{M}$:
+
+\begin{equation}
+\hat{\textbf{p}} = \textbf{M}\hat{\textbf{q}}
+\end{equation}
+
+where $\hat{\textbf{p}}$ is the normalized estimate of the true power spectrum $\textbf{p}$. We compute $\textbf{M}$ using the Fisher matrix $\textbf{F}$, defined as:
+
+\begin{eqnarray}
+\textbf{F}_{\alpha\beta} &=& \frac{1}{2}tr(\textbf{w}\textbf{Q}_{\alpha}\textbf{w}\textbf{Q}_{\beta}). 
+\end{eqnarray}
+
+We have a choice for $\textbf{M}$, and for simplicity in this section we set $\textbf{M} = \textbf{I}$, the identity matrix. This is not the case for the analysis of PAPER-64 data, which we describe in Section \ref{sec:PS}. Together, $\textbf{M}$ and $\textbf{F}$ form our window function:
+
+\begin{eqnarray}
+\textbf{W} = \textbf{MF}.
+\end{eqnarray} 
+
+Finally, our final power spectrum is:
+
+\begin{equation}
+\textbf{p} = \textbf{W}\hat{\textbf{p}}.
+\end{equation}
+
+In the next sections, we will experiment with different weighting matrices $\textbf{w}$ and their impact on the resulting power spectra $\textbf{p}$.
+
+\subsubsection{Toy Model: Inverse Covariance Weighting}
+
+One choice for a weight matrix $\textbf{w}$ is an inverse covariance matrix. This type of weighting is attractive for power spectrum analyses because it is an aggressive way to down-weight foregrounds. The covariance matrix $\textbf{C}$ is empirically derived from a data vector $\textbf{x}$ and defined as:
+
+\begin{equation}
+\textbf{C} \equiv \langle\textbf{xx}^{\dagger}\rangle,
+\end{equation}
+
+assuming $\langle\textbf{x}\rangle = 0$. The inverse covariance matrix is therefore $\textbf{C}^{-1}$.
+
+Because $\textbf{C}$ is computed from the data itself and its inverse is then applied to the data, it carries the risk of over-fitting information in the data and destroying signal. In contrast to $\textbf{C}$, another choice for a weighting matrix is the identity matrix $\textbf{I}$. We will refer to this choice as `unweighted', since using the identity does not alter (doesn't upweight or downweight) the data at all, and therefore does not have signal loss.
+
+We will now build our intuition into how inverse covariance weighting can lead to signal loss through the use of a toy model. Suppose we have a very simple dataset that contains 2-dimensional data (representing $100$ time integrations and $20$ frequency channels). This model represents realistic dimensions of an $\sim$hour of PAPER data which could be used for a power spectrum analysis. We create a fake bright foreground signal, $\textbf{x}_{FG}$, as a complex sinusoid that varies in time and frequency, as well as a fake EoR signal, $\textbf{x}_{EoR}$, as complex, random-noise. Adding the two together forms our combined dataset, $\textbf{x}$, which we will be applying different weighting schemes to. The three data vectors are shown on the left in Figure \ref{fig:toy_sigloss1}, and our ultimate goal is to suppress the foregrounds perfectly without destroying EoR.
 
 \begin{figure*}
 	\centering
-	\includegraphics[height=0.3\textwidth]{plots/toy_sigloss1.png}
-	\includegraphics[height=0.3\textwidth]{plots/toy_sigloss2.png}
+	\includegraphics[trim={0.3cm 0.2cm 0cm 0.3cm},clip,height=0.3\textwidth]{plots/toy_sigloss1.png}
+	\includegraphics[trim={0.3cm 0.2cm 0cm 0.3cm},clip,height=0.3\textwidth]{plots/toy_sigloss2.png}
 	\caption{Left: Our toy model dataset contains a sine-wave foreground that varies in time and random noise as an EoR signal. Real parts are shown here. Right: Eigenspectrum of foregrounds only (blue), EoR only (red), and both (green)}
 	\label{fig:toy_sigloss1}
 \end{figure*}
 
-Before we demonstrate how signal loss can arise, we first look at the eigenspectrum of the covariance matrix that describes our data. That is, if $\textbf{x}$ is our dataset which contains both the foreground and EoR, its covariance matrix is empirically defined as $\textbf{C} \equiv \textbf{xx}^{\dagger}$. The eigenspectrum, which encodes useful information about the strengths of different frequency modes, is shown in the right plot of Figure \ref{fig:toy_sigloss1}. It is obvious that there is only 1 eigenmode in the foreground-only dataset (since we used one sine-wave), and therefore most of the information in our combined dataset is contained in the first mode. 
-
-We would like to use inverse covariance weighting to down-weight the foregrounds in our dataset. To do so, we compute $\textbf{C}^{-1}$ and use optimal quadratic estimators (see Section \ref{sec:PS} for more details) to Fourier-transform our data along the `frequency' axis and form a power spectrum. As an explicit check, we use information from only the first eigenmode, and zero out the others. We do this because we know that the foregrounds can be perfectly described by only the first mode, so it should be all that we need to down-weight them.
-
-Figure \ref{fig:toy_sigloss3} shows the unweighted (using the identity matrix $\textbf{I}$ instead of $\textbf{C}$) power spectrum for the foreground-only data in blue, the unweighted power spectrum for the EoR-only data in red, and the weighted power spectrum for the combined dataset in green. There is one peak in blue from our one foreground mode. 
+We compute the power spectrum of $\textbf{x}$ using OQE formalism and a weighting matrix of $\textbf{C}^{-1}$. The result is shown in green in the left plot of Figure \ref{fig:toy_sigloss3}. Also plotted in the figure are the unweighted power spectrum of $\textbf{x}_{FG}$ (blue) and $\textbf{x}_{EoR}$ (red). 
 
 \begin{figure*}
 	\centering
-	\includegraphics[height=0.3\textwidth]{plots/toy_sigloss4.png}
-	\includegraphics[height=0.3\textwidth]{plots/toy_sigloss3.png}
-	\caption{Power spectrum of foregrounds only (blue), EoR only (red), and the combined dataset (green). Contrasted are the effect of using information from the first eigenmode only (left), and full inverse covariance weighting (right).}
+	\includegraphics[trim={0.3cm 0.2cm 1cm 0.3cm},clip,height=0.3\textwidth]{plots/toy_sigloss3.png}
+	\includegraphics[trim={1cm 0.2cm 0cm 0.3cm},clip,height=0.3\textwidth]{plots/toy_sigloss4.png}
+	\caption{Power spectrum of foregrounds only (blue), EoR only (red), and the combined dataset (green). Contrasted are the effect of using inverse covariance weighting (left) and information from the first eigenmode only (right).}
 	\label{fig:toy_sigloss3}
 \end{figure*}
 
-From the left plot, we see that by down-weighting the first mode, we can perfectly recover EoR. This is in principle the reason why inverse covariance weighting is so attractive for $21$ cm data. If we could perfectly model our foregrounds, we could down-weight them without any signal loss. However, this is not the case in reality, since we can't distinguish between foreground and EoR modes.
+Examining this case, our inverse covariance weighted result successfully suppresses foregrounds. This is in principle the reason why inverse covariance weighting is so attractive for $21$ cm data. It is also evident that our result almost recovers the EoR signal --- it exhibits the correct shape, but the amplitude level is slightly low. This is actually evidence of a small amount of signal loss. In order to understand how this occurs, we need to closely study our covariance matrix $\textbf{C}$.
 
-If we did not know that our foreground information is contained in only one mode, a naive approach would be to use full inverse covariance weighting (using information from all eigenmodes). Examining this case, our full inverse covariance weighted result (Figure \ref{fig:toy_sigloss3}, right) almost recovers the EoR signal. It exhibits the correct shape, but the amplitude level is slightly low. This is actually evidence of a small amount of signal loss. In this toy model, the amount of signal loss is small, but we can exaggerate the effect and investigate its cause by `fringe-rate filtering' our toy model dataset.
+It turns out that the eigenspectrum of $\textbf{C}$ offers a window into understanding how inverse covariance weighting affects data. An eigenspectrum ranks the eigenvalues of $\textbf{C}$ from highest to lowest and can be thought of as a spectrum of weights that are given to each frequency mode in the data. The eigenspectrum of the identity matrix $\textbf{I}$ is flat (all $1$'s) because it gives equal weighting to all modes. 
 
-Since fringe-rate filtering is similar in practice to averaging in time, we average every $4$ time integrations together, yielding $25$ independent samples in time (Figure \ref{fig:toy_sigloss5}, left). We choose these numbers so that the total number of independent samples is similar to the number of frequency channels (our matrices will be full rank). The resulting eigenspectra (Figure \ref{fig:toy_sigloss5}, right), as compared to those in Figure \ref{fig:toy_sigloss1}, begin to fall for the last few eigenmodes. Although a subtle feature, it has large consequences on the resulting power spectra.
+For our toy model, the eigenspectra of $\textbf{C}_{FG}$, $\textbf{C}_{EoR}$, and $\textbf{C}$ are shown in the right plot of Figure \ref{fig:toy_sigloss1}. The blue curve peaks only at the zeroth eigenmode, revealing that the foregrounds can be described by a single eigenmode. This is a direct consequence of how it was constructed (only one sinusoid). In fact, the blue peak in Figure \ref{fig:toy_sigloss3} is also a direct result of our foreground's construction. The eigenspectrum of EoR, however, is fairly flat, signifying that its covariance matrix is similar to an identity matrix. This makes sense because the EoR signal consists of random noise, which should only have strong frequency-frequency correlations when two frequencies are the same.
+
+The eigenmodes with the highest eigenvalues will be down-weighted the most (i.e. when the spectrum is inverted, they will be given the smallest weights). In contrast, the modes with the smallest eigenvalues will be up-weighted the most. In other words, if an eigenspectrum is not perfectly flat, all modes will be given different weights and it is possible to up-weight a few modes much more than others. The subtle slope of the eigenspectrum in this toy example gives rise to a small amount of signal loss because it is possible to overfit a few modes (the highest weighted ones) ever so slightly. We will see in the next section how this effect can be exaggerated as the `steepness' of the spectrum changes.
+
+Using what we've learned about the eigenspectrum, we can tweak it in a simple way to suppress foregrounds and yield zero signal loss. Namely, we can zero out all eigenmodes except the first one, thereby down-weighting the foregrounds perfectly and nothing else. The result is shown in the right plot of Figure \ref{fig:toy_sigloss3}. In this case, we perfectly recover EoR, demonstrating that if we can perfectly model our foregrounds, we can down-weight them without signal loss. However, this is not the case in reality since we aren't able to distinguish between foreground and EoR modes.
+
+\subsubsection{Toy Model: Fringe-Rate Filtering}
+
+We have shown how signal loss can arise due to unintentionally up-weighting eigenmodes with small eigenvalues (overfitting the noise). We will next show how this effect is exaggerated with a reduction of the total number of independent samples in a dataset. 
+
+A fringe-rate filter is an analysis technique designed to maximize sensitivity by integrating in time (\citealt{parsons_et_al2016}). To mimic this filter, we average every $4$ time integrations of our toy model dataset together, yielding $25$ independent samples in time (Figure \ref{fig:toy_sigloss5}, left). We choose these numbers so that the total number of independent samples is similar to the number of frequency channels (our matrices will be full rank). The resulting eigenspectra (Figure \ref{fig:toy_sigloss5}, right), as compared to those in Figure \ref{fig:toy_sigloss1}, fall more steeply for last few eigenmodes. This shape has large consequences on the resulting power spectra.
 
 \begin{figure*}
 	\centering
-	\includegraphics[height=0.3\textwidth]{plots/toy_sigloss5.png}
-	\includegraphics[height=0.3\textwidth]{plots/toy_sigloss6.png}
+	\includegraphics[trim={0.3cm 0.2cm 0.3cm 0.3cm},clip,height=0.3\textwidth]{plots/toy_sigloss5.png}
+	\includegraphics[trim={0.3cm 0.2cm 0.3cm 0.3cm},clip,height=0.3\textwidth]{plots/toy_sigloss6.png}
 	\caption{Left: Our `fringe-rate filtered' toy model dataset. It contains $25$ independent samples in time. Real parts are shown here. Right: Eigenspectrum of foregrounds only (blue), EoR only (red), and both (green).}
 	\label{fig:toy_sigloss5}
 \end{figure*}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/toy_sigloss7.png}
+	\includegraphics[trim={0.3cm 0.3cm 0.3cm 0.3cm},clip,width=\columnwidth]{plots/toy_sigloss7.png}
 	\caption{Power spectrum of foregrounds only (blue), EoR only (red), and the full inverse covariance weighted combined dataset (green) for a time-averaged dataset (fewer independent modes).}
 	\label{fig:toy_sigloss7}
 \end{figure}
 
-Applying full inverse covariance weighting to this dataset results in the power spectra shown in Figure \ref{fig:toy_sigloss7}. It is clear that there is a much larger amount of signal loss for this time-averaged dataset. The subtle drop-off in the eigenspectrum shape suggests that when the spectrum is inverted, a few modes are up-weighted more strongly than the rest. This means that most of our power spectrum information is coming from only the last few modes, and as a result, is a noisier estimate. This is evident by noticing that the green curve in Figure \ref{fig:toy_sigloss7} not only exhibits signal loss, but also fails to trace the shape of the unweighted EoR power spectrum.
+Applying inverse covariance weighting to this dataset results in the power spectra shown in Figure \ref{fig:toy_sigloss7}. There is a much larger amount of signal loss for this time-averaged dataset. To reiterate, the drop-off in the eigenspectrum shape suggests that when the spectrum is inverted, a few modes are up-weighted much more strongly than the rest. This dramatic up-weighting drowns out the EoR signal, giving rise to signal loss. Additionally, most of our power spectrum information is coming from only the last few modes and as a result, is a noisier estimate. This is evident by noticing that the green curve in Figure \ref{fig:toy_sigloss7} fails to trace the shape of the unweighted EoR power spectrum.
 
-Using our toy model, we have shown that signal loss can arise from inverse covariance weighting due to unintentionally up-weighting eigenmodes with very small eigenvalues (overfitting the noise). We have also shown that this effect is made larger by reducing the total number of independent samples in a dataset. In reality, $21$ cm data from PAPER-64 exhibits $\sim3$ orders of magnitude of signal loss when combining the use of an optimal fringe-rate filter and full inverse covariance weighting. 
+Using our toy model, we have seen that a sensitivity driven analysis technique like fringe-rate filtering has trade-offs of signal loss and noisier estimates. Longer integrations increase sensitivity but reduce the number of independent samples, resulting in steep drop-offs in eigenspectra. For PAPER-64 data, we see $\sim3$ orders of magnitude of signal loss when combining the use of an optimal fringe-rate filter and inverse covariance weighting. 
 
-Going back to our time-averaged simulation data, we will now describe several ways to alter the covariance matrix $\textbf{C}$ in order to avoid signal loss. Recall that $\textbf{C}$ is computed from the dataset itself, leading to the up-weighting of very noisy, non-existent modes. In practice we compute $\textbf{C}$ this way because we do not know how to accurately model the matrix. But for our toy model, we know that our simulated, perfectly-noisy EoR should have a covariance matrix that mimics the identity matrix, with its variance encoded along the diagonal. If we model $\textbf{C}_{EoR}$ as such and add it to $\textbf{C}_{FG} = \textbf{x}_{FG}\textbf{x}_{FG}^{\dagger}$ to obtain a final $\textbf{C}$ to use in weighting (instead of computing it based on $(\textbf{x}_{FG} + \textbf{x}_{EoR})$), we see that there is no signal loss (Figure \ref{fig:toy_sigloss8}, upper left).
+\subsubsection{Toy Model: Other Weighting}
+
+In a previous section we showed how altering an eigenspectrum can make the difference between zero and some signal loss, if we can distinguish between foreground eigenmodes and EoR eigenmodes. We will now use our toy model to describe several other ways to alter a covariance matrix $\textbf{C}$ in order to minimize signal loss. 
+
+As a first test, we know that our simulated EoR should have a covariance matrix that mimics the identity matrix, with its variance encoded along the diagonal. If we model $\textbf{C}_{EoR}$ as such, instead of computing it based on the dataset itself, and add it to $\textbf{C}_{FG} = \textbf{x}_{FG}\textbf{x}_{FG}^{\dagger}$ to obtain a final $\textbf{C}$ to use in weighting, we see that there is negligible signal loss (Figure \ref{fig:toy_sigloss8}, upper left).
 
 \begin{figure*}
 	\centering
-	\includegraphics[height=0.25\textwidth]{plots/toy_sigloss10.png}
-	\includegraphics[height=0.25\textwidth]{plots/toy_sigloss8.png}
-	\includegraphics[height=0.25\textwidth]{plots/toy_sigloss9.png}
-	\includegraphics[height=0.25\textwidth]{plots/toy_sigloss11.png}
+	\includegraphics[trim={0.4cm 0.8cm 1.3cm 1cm},clip,height=0.25\textwidth]{plots/toy_sigloss10.png}
+	\includegraphics[trim={1cm 0.8cm 1.3cm 1cm},clip,height=0.25\textwidth]{plots/toy_sigloss8.png}
+	\includegraphics[trim={0.4cm 0.8cm 1.3cm 1cm},clip,height=0.25\textwidth]{plots/toy_sigloss9.png}
+	\includegraphics[trim={1cm 0.8cm 1.3cm 1cm},clip,height=0.25\textwidth]{plots/toy_sigloss11.png}
 	\caption{Power spectra of foregrounds only (blue), EoR only (red), and the weighted combined dataset (green). We show four alternate weighting options that each avoid signal loss, including modeling the covariance matrix of EoR (upper left), regularizing $\textbf{C}$ by adding an identity matrix to it (upper right), using only the first few eigenmodes of $\textbf{C}$ (lower left), and multiplying an identity matrix to $\textbf{C}$ (lower right).}
 	\label{fig:toy_sigloss8}
 \end{figure*}
 
-The next three panels of Figure \ref{fig:toy_sigloss8} each involve methods that regularize the matrix $\textbf{C}$ after it is computed from the foreground + EoR dataset. By regularizing $\textbf{C}$, we are flattening out its eigenspectrum. Therefore, some modes will be down-weighted, but the rest will be treated with similar weights. In other words, we won't be up-weighting the last few noisy modes. 
+The next three panels of Figure \ref{fig:toy_sigloss8} each involve methods that regularize the matrix $\textbf{C}$ after it is computed from the foreground + EoR dataset. By regularizing $\textbf{C}$, we are flattening out its eigenspectrum. Therefore, some modes will be down-weighted, but the rest will be treated with similar weights. Hence, we won't be up-weighting the last few noisy modes. 
 
-Regularization schemes that we are highlighting here are adding an identity matrix to $\textbf{C}$ (Figure \ref{fig:toy_sigloss8}, upper right), killing all but the first three eigenmodes of $\textbf{C}$ (lower left), and multiplying an identity matrix to $\textbf{C}$ (lower right). Each avoids signal loss, but it is clear that two of the methods down-weight foregrounds much better than the third. For this toy model, our foregrounds are spread out in frequency and therefore have non-negligible frequency-frequency correlations. Therefore, when multiplying $\textbf{C}$ by an identity matrix, we are only preserving correlations between the same frequencies. Hence, because we killed off information from all other frequency combinations, we do a poor job suppressing the foreground.  
+Regularization schemes that we are highlighting here are adding an identity matrix to $\textbf{C}$ (Figure \ref{fig:toy_sigloss8}, upper right), killing all but the first three eigenmodes of $\textbf{C}$ (lower left), and multiplying an identity matrix to $\textbf{C}$ (lower right). Each avoids signal loss, but it is clear that two of the methods down-weight foregrounds much better than the third. For this toy model, our foregrounds are spread out in frequency and therefore have non-negligible frequency-frequency correlations. Therefore, when multiplying $\textbf{C}$ by an identity matrix, we are only preserving correlations between the same frequencies. Because we killed off information from all other frequency combinations, we do a poor job suppressing the foreground.  
 
-Although this method did not successfully recover EoR for this particular simulation, it is important that we show that there are many options for estimating a covariance matrix, and some may work better than others based on the dataset. One may imagine a situation where a particular systematic is contained to an isolated frequency. In such a case, preserving only the diagonal elements of $\textbf{C}$ would be an effective way of removing this contamination. In Section \ref{sec:Sigloss}, we apply the lessons we've learned about signal loss and its interaction with fringe-rate filtering and inverse covariance weighting to PAPER-64 data.
+Although this method did not successfully recover EoR for this particular simulation, it is important that we show that there are many options for estimating a covariance matrix, and some may work better than others based on the dataset. One may imagine a situation where a particular systematic is contained to an isolated frequency. In such a case, preserving only the diagonal elements of $\textbf{C}$ would be an effective way of removing this contamination. 
+
+In summary, we have a choice of how to weight $21$ cm data. Ideally, we want to down-weight bright foregrounds without removing the underlying cosmological signal. Inverse covariance weighting is an optimal weighting for dealing with foregrounds, but its aggressiveness results in sloped eigenspectra shapes, the overfitting of noise, and thus signal loss. The application of a fringe-rate filter heightens this effect by reducing the number of independent samples and steepening eigenspectra further. Rather than use inverse covariance weighting, there are several alternate ways to regularize covariance matrices and flatten out eigenspectra to minimize signal loss. In Section \ref{sec:Sigloss}, we apply the lessons we've learned about signal loss and its interaction with fringe-rate filtering and inverse covariance weighting to PAPER-64 data.
 
 \subsection{Error Estimation}
 \label{sec:ErrorOverview}
 
+Two ways of estimating errors on a power spectrum measurement are exploring the variance of a dataset, and computing a theoretical error estimate based on an instrument's system temperature and observational parameters. In a perfect world, both methods would match up. However, in practice the two don't always agree due to contaminates in the data that prevent it from being perfectly noise-limited. Therefore, it is important to place error bars on our measurements that have been derived from its inherent variance.
+
+A common technique used to estimate the variance in a dataset is bootstrapping. Bootstrapping is a metric that relies on sampling with replacement and allows the estimation of a sampling distribution. For example, power spectrum measurements of $21$ cm data can be made along many axes, including time and baselines. Through the process of bootstrapping, we can obtain error bars for our results which represent the underlying distribution of power spectra values that are allowed by our measurements.
+
+Again, we focus on simple toy models to highlight two traps that one can fall into when bootstrapping power spectra. Suppose we have a Gaussian random noise dataset of length $1000$ and variance of $1$. We are interested in the average of the dataset, and therefore predict that the error on the mean should obey $1/\sqrt{N}$, where $N$ is the number of samples (in this case, $1000$). 
+
+We form $100$ bootstraps, each comprised of an array of length $1000$ that is created by random sampling the original data with replacement. The standard deviation over the $100$ bootstraps gives an error estimation for our dataset. As shown in Figure \ref{fig:toy_error1} (grey star), the error computed from bootstrapping matches our theoretical prediction.
+
+One major caveat of bootstrapping is that the method is no longer valid when working with correlated data. In other words, bootstrapping assumes completely independent samples. Therefore, the use of a fringe-rate filter, which averages data in time to increase sensitivity, creates a situation in which bootstrapping can under-estimate errors.
+
+Going back to our toy model, we apply a sliding boxcar average to $10$ samples at a time, thus reducing the number of independent samples to $1000/10 = 100$. Bootstrapping this time-averaged noise, using the same exact method as described earlier (drawing the same number of samples as the length of the dataset), under-estimates the error by a factor of $\sim3$. This occurs because we are drawing more samples than independent ones available. In fact, the error derived from bootstrapping is a strong function of the number of samples that are drawn (Figure \ref{fig:toy_error1}, black points), and we can both under-estimate the error by drawing too many or over-estimate it by drawing too few. However, in this case we know that we have $100$ independent samples, and the error associated with drawing $100$ samples with replacement does match the theoretical prediction as expected.
+
+This examples highlights the importance of understanding how analysis techniques (like a fringe-rate filter) can affect a common statistical procedure (like bootstrapping). Bootstrapping as a means of estimating power spectrum errors from real fringe-rate filtered data requires precise knowledge of the number of independent samples, which is not a trivial task.
+
+\begin{figure}
+	\centering
+	\includegraphics[trim={0.3cm 0.3cm 0.3cm 0.3cm},width=\columnwidth]{plots/toy_error1.png}
+	\caption{Error estimation produced by bootstrapping as a function of the number of samples drawn when sampling with replacement. The grey star represents the error associated with drawing $1000$ samples from a length $1000$ array of random noise. The black points correspond to time-averaged data and illustrate how errors can be underestimated if drawing more samples than independent ones in the data. There are $100$ independent samples in the time-averaged data and using this number does indeed match the theoretical error prediction.}
+	\label{fig:toy_error1}
+\end{figure}
+
+We will now discuss a second subtle feature of bootstrapping that can lead to an over-estimation of errors. Suppose we have $1000$ baselines (another appropriate axis for bootstrapping power spectra), each an independent measurement of the sky. Bootstrap theory requires a bootstrap to comprise of some combination of the $1000$ baselines. If all $1000$ spaces are filled randomly, there is in fact a high probability that baselines will be repeated in a sample (sometimes many times). Thus, bootstrapping in this way negatively affects power spectrum sensitivity because the number of independent baselines in a sample can be significantly lower than the total number of baselines.
+
+In order to maximize sensitivity, we use a slightly modified bootstrapping method. We first shuffle all the baselines for a bootstrap, take the first $999$, and then fill the last slot randomly with replacement. There's a small chance it will yield $1000$ independent samples, but even with $999$ our sensitivity is nearly maximized. One may wonder whether this change is still a legitimate way of error estimating since the number of possible random samples for a single bootstrap has dramatically decreased. However, as long as this number is still much greater than the number of bootstraps we perform, it is a valid way to uncover the inherent variability in a dataset. 
+
+For our toy model, the fraction of independent baselines using this method ($999/1000$) is over $1.5$ times greater than the aforementioned approach. These two methods converge for small numbers of samples, when filling a few spots randomly is nearly the same as filling only the last spot randomly. The evolution of both of these methods as a function of number of baselines is shown in Figure \ref{fig:toy_error2}. In order to reduce the number of baselines, we divide our $1000$ baselines into $N$ groups, where the number of baselines in a group is $1000/N$. No baselines are repeated within or between groups, until a bootstrapping method is applied to each (either sampling all elements with replacement, or only the last one).
+
+It is clear that the fraction of independent baselines in a group is always greater using our new sampling approach, with the greatest discrepancy for small number of groups (large number of baselines per group). An analog for the y-axis in Figure \ref{fig:toy_error2} is the final power spectrum sensitivity in temperature-squared space, which decreases as the square root of the number of baselines that are averaged together for a measurement.
+
+In summary, bootstrapping is still an effective and straightforward way to estimate errors of a dataset. However, one must be careful about violating independence assumptions, as it is possible to under-estimate errors by over-sampling data. Additionally, small changes in the way datasets are randomly sampled can ensure that the overall sensitivity is maximized.
+
+\begin{figure}
+	\centering
+	\includegraphics[trim={0.3cm 0.3cm 0.3cm 0.3cm},width=\columnwidth]{plots/toy_error2.png}
+	\caption{Fraction of independent baselines in a baseline group as a function of the number of baselines in a group. A fraction of $1.0$ means that all baselines in a group are independent, and therefore sensitivity is maximized (alternatively, this axis can be treated as a power spectrum sensitivity in temperature-squared space). Two bootstrapping methods are shown here --- sampling all elements with replacement (grey) and sampling only the last element with replacement (black). The former over-estimates error bars by not maximizing baseline sensitivity to its full capacity.}
+	\label{fig:toy_error2}
+\end{figure}
+
+We have discussed the interplay between two of our power spectrum techniques --- fringe-rate filtering and bootstrapping --- and how they affect the theme of error bar estimation. In addition to these, inverse covariance weighting can also affect error bars. Specifically, a power spectrum measurement and its errors are susceptible to blowing up when the number of non-zero eigenmodes are less than the number of independent samples in a dataset (i.e. the covariance matrix is not full rank). \cc{Not really sure how to explain this or how much detail to get into here...}
+
+Our fourth power spectrum technique, jack-knife testing, is also related to error estimation. Splitting data along various axes and performing the same power spectrum analysis on each provides a test of robustness. If the same errors are obtained for each data subset, we can have confidence that they are unbiased.
+
 \subsection{Bias}
 \label{sec:BiasOverview}
+
+As alluded to in the previous section, jack-knife testing is a powerful way to tease out biases by studying how power spectrum measurements of different subsets of data vary. Biases can arise due to... 
 
 \section{Case Study: PAPER-64}
 \label{sec:CaseStudy}
@@ -235,39 +338,17 @@ Finally, our last analysis step before power spectrum estimation is the use of a
 \subsection{Power Spectrum Estimation}
 \label{sec:PS}
 
-To form power spectrum quantities using our two fringe-rate filtered, LST-binned datasets, we use OQE methods as described by \cc{??}. A summary of the method is as follows. 
+To form power spectrum quantities using our two fringe-rate filtered, LST-binned datasets, we use OQE methods as summarized in Section \ref{sec:SiglossOverview}. Here we will describe its application to PAPER-64 data. 
 
-We begin with our data vector $\textbf{x}$, which contains our visibilities that have the shape ($times$, $frequencies$) for each baseline and data group (`even' or `odd'). As part of our bootstrapping routine (and to speed things up), we divide up our total number of baselines into $5$ random, equal-sized groups. Taking $\textbf{x}$ to be averaged data from all baselines within a group, we now have $10$ possible data vectors (for $5$ groups and $2$ datasets). We next form the quantity $\hat{q}_{\alpha}$:
+We have a $2$-dimensional data vector $\textbf{x}$ for each baseline and data group (`even' or `odd'). As part of our bootstrapping routine (and to speed things up), we divide up our total number of baselines into $5$ random, equal-sized groups. Taking $\textbf{x}$ to be averaged data from all baselines within a group, we now have $10$ possible data vectors (for $5$ groups and $2$ datasets). 
 
-\begin{equation}
-\hat{q}_{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{C}^{-1}\textbf{Q}_{\alpha}\textbf{C}^{-1}\textbf{x}-b_{\alpha}
-\end{equation}
+We use a weight matrix of $\textbf{w} = \cc{???}$ in our analysis.
 
-where $\textbf{C}$ is the covariance matrix defined to be $\textbf{C} \equiv \langle\textbf{x}\textbf{x}^{\dagger}\rangle$. The matrix $\textbf{Q}$ is an operator that takes our frequency-domain visibilities and Fourier-transforms them into power spectrum space. A noise bias $b_{\alpha}$ is subtracted off. The index $\alpha$ represents each $k_{\parallel}$ bin, where $k_{\parallel}$ is the Fourier-dual to frequency.
+Notice that there are two quantities of $\textbf{w}\textbf{x}$ in the expression for $\hat{\textbf{q}}$ in Equation \ref{eq:qhat}, representing two copies of weighted data. We perform all possible cross-multiplications of this quantity, except between the same datasets (`even' with `even', for example) and same groups (`baseline group 1' with `baseline group 1', for example). We avoid these computations to prevent the introduction of biases from shared auto power.
 
-Notice that there are two quantities of $\textbf{C}^{-1}\textbf{x}$ in the expression for $\hat{q}$, representing two copies of inverse covariance weighted data. We perform all possible cross-multiplications of this quantity, except between the same datasets (`even' with `even', for example) and same groups (`baseline group 1' with `baseline group 1', for example). We avoid these computations to prevent the introduction of biases from shared auto power.
+As mentioned previously, we have a choice for our normalization matrix $\textbf{M}$. For our analysis, we choose to compute it by taking the Cholesky decomposition of $\textbf{F}$. Namely, we decompose the Fisher matrix such that $\textbf{F} = \textbf{L}\textbf{L}^{\dagger}$, where $\textbf{L}$ is a lower triangular matrix. Next, we construct $\textbf{M} = \textbf{D}\textbf{L}^{-1}$, where \textbf{D} is a diagonal matrix. Hence, our window function $\textbf{W} = \textbf{MF}$ becomes $\textbf{W} = \textbf{D}\textbf{L}^{\dagger}$ and is an upper triangular matrix. This window function was constructed in a way to prevent the leakage of foreground power from low $k$ to high $k$ modes. Specifically, we order the elements in $\textbf{F}$ in such a way so that power can leak from high $k$ modes to low $k$ modes, but not vice versa. Since most foreground power shows up at low $k$'s, this method ensures a window function that retains clean, noise-dominated measurements.
 
-Finally, we normalize our power spectrum estimates using the matrix $\textbf{M}$:
-
-\begin{equation}
-\hat{\textbf{p}} = \textbf{M}\hat{\textbf{q}}
-\end{equation}
-
-where $\hat{\textbf{p}}$ is the normalized estimate of the true power spectrum $\textbf{p}$. We compute $\textbf{M}$ using the Fisher matrix $\textbf{F}$, defined as:
-
-\begin{eqnarray}
-\textbf{F}_{\alpha\beta} &=& \frac{1}{2}tr(\textbf{C}^{-1}\textbf{Q}_{\alpha}\textbf{C}^{-1}\textbf{Q}_{\beta}). \\
-\end{eqnarray}
-
-We have a choice for $\textbf{M}$, and we choose to compute it by taking the Cholesky decomposition of $\textbf{F}$. Namely, we decompose the Fisher matrix such that $\textbf{F} = \textbf{L}\textbf{L}^{\dagger}$, where $\textbf{L}$ is a lower triangular matrix. Next, we construct $\textbf{M} = \textbf{D}\textbf{L}^{-1}$, where \textbf{D} is a diagonal matrix. Hence, our window function $\textbf{W} = \textbf{MF}$ becomes $\textbf{W} = \textbf{D}\textbf{L}^{\dagger}$ and is an upper triangular matrix. This window function was constructed in a way to prevent the leakage of foreground power from low $k$ to high $k$ modes. Specifically, we order the elements in $\textbf{F}$ in such a way so that power can leak from high $k$ modes to low $k$ modes, but not vice versa. Since most foreground power shows up at low $k$'s, this method ensures a window function that retains clean, noise-dominated measurements.
-
-Finally, our final power spectrum is:
-
-\begin{equation}
-\hat{\textbf{p}} = \textbf{Wp}
-\end{equation}
-
-In practice, we end up with a 2-dimensional power spectrum quantity, which is a function of both time and $k$. We compute $20$ bootstraps of these quantities, where each bootstrap creates baseline groups randomly. We form both the quantity $\textbf{P(k)}$ and the folded version $\Delta^{2}\textbf{(k)}$, defined as:
+In practice, our final power spectrum result is a $2$-dimensional quantity (a function of both time and $k$). We compute $20$ bootstraps of these quantities, where each bootstrap creates baseline groups randomly. We form both the quantity $\textbf{P(k)}$ and the folded version $\Delta^{2}\textbf{(k)}$, defined as:
 
 \begin{equation}
 \Delta^{\textbf{2}}\textbf{(k)} = \frac{k^{3}}{2\pi^{2}}\hat{\textbf{p}}\textbf{(k)}

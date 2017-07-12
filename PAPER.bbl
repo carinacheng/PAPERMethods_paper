@@ -1,4 +1,4 @@
-\begin{thebibliography}{18}
+\begin{thebibliography}{19}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Ali} {et~al.}(2015){Ali}, {Parsons}, {Zheng}, {Pober}, {Liu},
@@ -33,6 +33,9 @@ DeBoer, D.~R., {et~al.} 2017, Publications of the Astronomical Society of the
 
 \bibitem[{{Greenhill} \& {Bernardi}(2012)}]{greenhill_bernardi2012}
 {Greenhill}, L.~J., \& {Bernardi}, G. 2012, ArXiv e-prints
+
+\bibitem[{{Liu} {et~al.}(2014){Liu}, {Parsons}, \& {Trott}}]{liu_et_al2014b}
+{Liu}, A., {Parsons}, A.~R., \& {Trott}, C.~M. 2014, \prd, 90, 023019
 
 \bibitem[{{Paciga} {et~al.}(2013){Paciga}, {Albert}, {Bandura}, {Chang},
   {Gupta}, {Hirata}, {Odegova}, {Pen}, {Peterson}, {Roy}, {Shaw}, {Sigurdson},
