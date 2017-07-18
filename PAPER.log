@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  17 JUL 2017 16:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2017 14:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -905,22 +905,29 @@ Underfull \hbox (badness 1590) in paragraph at lines 545--546
 [14 <./plots/ps1_noise_nosigloss.png> <./plots/ps1_noise.png> <./plots/sigloss2
 _noise.png>] [15 <./plots/ps2_noise_nosigloss.png> <./plots/ps2_noise.png>]
 [16 <./plots/sigloss2_data.png> <./plots/ps2_data_nosigloss.png> <./plots/ps2_d
-ata.png>] (./PAPER.bbl [17 <./plots/eigenspectrum.png> <./plots/covariance.png>
-])
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 609.
- [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 609.
- (./PAPER.aux)
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 609.
+ata.png>] [17 <./plots/eigenspectrum.png> <./plots/covariance.png>]
+<plots/data_errors.png, id=378, 578.16pt x 433.62pt>
+File: plots/data_errors.png Graphic file (type png)
+
+<use plots/data_errors.png>
+Package pdftex.def Info: plots/data_errors.png used on input line 597.
+(pdftex.def)             Requested size: 242.26653pt x 181.6957pt.
+ (./PAPER.bbl)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 618.
+ [18 <./plots/data_errors.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 618.
+
+(./PAPER.aux)
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 618.
  ) 
 Here is how much of TeX's memory you used:
- 10617 strings out of 493014
- 148077 string characters out of 6133351
- 300244 words of memory out of 5000000
- 13889 multiletter control sequences out of 15000+600000
+ 10624 strings out of 493014
+ 148221 string characters out of 6133351
+ 300269 words of memory out of 5000000
+ 13894 multiletter control sequences out of 15000+600000
  13623 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,11n,53p,1738b,525s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,11n,53p,1738b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></u
@@ -934,17 +941,20 @@ al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local
 exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/tex
 live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texli
 ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/
-2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/201
-6/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (18 pages, 4713968 bytes).
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/201
+6/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2016/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2016/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-dist/font
+s/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on PAPER.pdf (18 pages, 4792797 bytes).
 PDF statistics:
- 466 PDF objects out of 1000 (max. 8388607)
- 356 compressed objects within 4 object streams
- 94 named destinations out of 1000 (max. 500000)
- 202 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 484 PDF objects out of 1000 (max. 8388607)
+ 369 compressed objects within 4 object streams
+ 95 named destinations out of 1000 (max. 500000)
+ 207 words of extra memory for PDF output out of 10000 (max. 10000000)
 
