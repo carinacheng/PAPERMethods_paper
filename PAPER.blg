@@ -4,44 +4,44 @@ The top-level auxiliary file: PAPER.aux
 The style file: apj.bst
 Database file #1: PAPERNotes.bib
 Database file #2: refs.bib
-You've used 22 entries,
+You've used 28 entries,
             2988 wiz_defined-function locations,
-            781 strings with 11853 characters,
-and the built_in function-call counts, 11564 in all, are:
-= -- 794
-> -- 1078
-< -- 5
-+ -- 362
-- -- 338
-* -- 1156
-:= -- 2264
-add.period$ -- 22
-call.type$ -- 22
-change.case$ -- 141
-chr.to.int$ -- 22
-cite$ -- 22
-duplicate$ -- 409
-empty$ -- 590
-format.name$ -- 415
-if$ -- 2189
-int.to.chr$ -- 1
+            810 strings with 14109 characters,
+and the built_in function-call counts, 15017 in all, are:
+= -- 1024
+> -- 1423
+< -- 6
++ -- 482
+- -- 447
+* -- 1512
+:= -- 2935
+add.period$ -- 28
+call.type$ -- 28
+change.case$ -- 181
+chr.to.int$ -- 27
+cite$ -- 28
+duplicate$ -- 521
+empty$ -- 755
+format.name$ -- 546
+if$ -- 2840
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 21
-newline$ -- 70
-num.names$ -- 88
-pop$ -- 137
+missing$ -- 27
+newline$ -- 88
+num.names$ -- 112
+pop$ -- 175
 preamble$ -- 1
-purify$ -- 141
+purify$ -- 181
 quote$ -- 0
-skip$ -- 349
+skip$ -- 446
 stack$ -- 0
-substring$ -- 436
-swap$ -- 8
+substring$ -- 575
+swap$ -- 10
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 198
+type$ -- 252
 warning$ -- 0
-while$ -- 63
+while$ -- 83
 width$ -- 0
-write$ -- 220
+write$ -- 280
