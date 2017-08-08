@@ -1,4 +1,4 @@
-\documentclass[preprint2,numberedappendix,tighten,twocolappendix]{aastex6}  % USE THIS TO MAKE BIB, THEN FORMAT USING EMULATEAPJ
+\documentclass[preprint2,numberedappendix,tighten]{aastex6}  % USE THIS TO MAKE BIB, THEN FORMAT USING EMULATEAPJ
 %\documentclass[twocolumn,apj,numberedappendix]{emulateapj}
 \shorttitle{Data Analysis Methods for the Detection of the Epoch of Reionization}
 \shortauthors{Cheng et al.}
@@ -24,7 +24,13 @@
 %\def\Tt{\tilde{T}}
 %\def\tb{\langle T_b\rangle}
 %\newcommand{\vis}{\mathbf{v}}
-%\newcommand{\x}{\mathbf{x}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\Chat}{\mathbf{\hat{C}}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\Fhat}{\mathbf{\hat{F}}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\I}{\mathbf{I}}
 %\newcommand{\xhat}{\hat{\mathbf{x}}}
 %\newcommand{\nhat}{\hat{\mathbf{n}}}
 %\newcommand{\A}{\mathbf{A}}
@@ -33,7 +39,8 @@
 %\newcommand{\khat}{\hat{\mathbf{k}}}
 %\newcommand{\btheta}{\boldsymbol \theta}
 
-\newcommand{\cc}[1]{{\color{purple} \textbf{[#1]}}}
+\newcommand{\cc}[1]{{\color{purple} \textbf{[CC: #1]}}}
+\newcommand{\acl}[1]{{\color{red} \textbf{[ACL:  #1]}}}
 
 \begin{document}
 \title{Data Analysis Methods for the Detection of the Epoch of Reionization}
@@ -676,6 +683,88 @@ Power spectrum estimates for PAPER-64 fringe-rate filtered data are shown in Fig
 \cc{NSF Graduate Research Fellowship Program (GRFP) Fellowship}
 \cc{UC Berkeley Chancellor's Fellowship}
 \label{sec:Ack}
+
+\appendix
+\section{A toy model for signal loss}
+\label{sec:SigLossToy}
+
+In this Appendix, we examine a toy model for signal loss. Our goal is to build intuition by deriving an analytic formula for power spectrum signal loss. We will also show that in general, signal loss appears as a multiplicative bias on one's power spectrum estimate.
+
+The minimum-variance quadratic estimator $\hat{p}_\alpha$ for the $\alpha$th bandpower of the power spectrum is given by \acl{We need to decide whether the Q matrices have their Greek indices as upper or lower indices.} \acl{Also need to state in a footnote that for this section only we'll assume without loss of generality that the data are real}
+\begin{equation}
+\hat{p}_\alpha = \frac{1} {2 \F_{\alpha \alpha} }\x^t \C^{-1} \Q^{\alpha} \C^{-1} \x,
+\end{equation}
+where
+\begin{equation}
+F_{\alpha \alpha} \equiv \frac{1}{2} \textrm{tr} \left( \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \right)
+\end{equation}
+is the $\alpha$th diagonal element of the Fisher matrix. In our case, however, we do not have \emph{a priori} knowledge of the covariance matrix. Thus, we replace $\C$ with $\Chat$, its data-derived approximation. Our estimator then becomes
+\begin{equation}
+\label{eq:phatloss}
+\hat{p}_\alpha^\textrm{loss} = \frac{1} {2 \F_{\alpha \alpha} }\x^t \Chat^{-1} \Q^{\alpha} \Chat^{-1} \x,
+\end{equation}
+where
+\begin{equation}
+\hat{F}_{\alpha \alpha} \equiv \frac{1}{2} \textrm{tr} \left( \Chat^{-1} \Q^\alpha \Chat^{-1} \Q^\alpha \right),
+\end{equation}
+with the label ``loss" to foreshadow the fact that this will be an estimator with signal loss (i.e., a multiplicative bias of less than unity). We will now provide an explicit demonstration of this by modeling the estimated covariance as
+\begin{equation}
+\label{eq:ChatDef}
+\Chat = (1-\eta) \C + \eta \x \x^t,
+\end{equation}
+where $\eta$ is parameter quantifying our success at estimating the true covariance matrix. If $\eta = 1$, our covariance estimate has perfectly modeled the true covariance and $\Chat = \C$. On the other hand, if $\eta =0$, then our covariance estimate is based purely on the one realization of the covariance that is our actual data, and we would expect a high level of overfitting and signal loss.
+
+Our strategy for computing the signal loss will be to insert Eq. \eqref{eq:ChatDef} \acl{Make sure we're consistent w.r.t. ``Equation" vs. ``Eq."} into Eq. \eqref{eq:phatloss} and to express the resulting estimator $\hat{p}_\alpha^\textrm{loss}$ in terms of $\hat{p}_\alpha$. We begin by expressing $\Chat^{-1}$ in terms of $\C^{-1}$ using the Woodbury identity so that
+\begin{equation}
+\Chat^{-1}\x = \frac{\C^{-1}\x}{1-\eta} \left[ 1 - \frac{\eta g}{1+ \eta (g-1)}\right],
+\end{equation}
+where we have defined $g \equiv \x^t \C^{-1} \x$. Inserting this into our Fisher estimate we have
+\begin{equation}
+\hat{F}_{\alpha \alpha} = \frac{F_{\alpha \alpha}}{(1-\eta)^2} \left[ 1 -\frac{\eta g}{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta g}{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right],
+\end{equation}
+where $h_\alpha \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \x $ and $h_{\alpha \alpha} \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1}\x $. Note that $g$, $h_\alpha$, and $h_{\alpha \alpha}$ are all random variables, since they depend on $\x$. Inserting these expressions into our estimator gives
+\begin{eqnarray}
+\label{eq:phatlossexpanded}
+\hat{p}_\alpha^\textrm{loss} &=& \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \frac{\eta g}{1+ \eta (g-1)}\right]^2  \left[ 1 -\frac{\eta g}{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta g}{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right]^{-1} \nonumber \\
+&=& \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}}\left(1-2\beta + \beta^2\right)\sum_{n=0}^\infty \sum_{k=0}^n {n \choose k} \left( \frac{\beta h_{\alpha \alpha}}{F_{\alpha \alpha}}\right)^k \left( - \frac{\beta^2 h_\alpha^2}{F_{\alpha \alpha}}\right)^{n-k},
+\end{eqnarray}
+where $\beta \equiv \eta g/[1+ \eta (g-1)]$. To proceed, we take the ensemble average of $\hat{p}_\alpha^\textrm{loss}$ to understand its average statistical properties. Inspecting Eq. \eqref{eq:phatlossexpanded}, we see that its expectation value is a linear sum of terms of the form $\langle \beta^a h_\alpha^b h_{\alpha \alpha}^c \rangle$, where $a$, $b$, and $c$ are integers. Expanding $\beta$ in powers of $g$, we have
+\begin{equation}
+\label{eq:betahh}
+\langle \beta^a h_\alpha^b h_{\alpha \alpha}^c \rangle = \sum_{m_1 = 1}^\infty \cdots \sum_{m_a = 1}^\infty \frac{(-\eta)^{m_1 + \dots + m_a}}{(1-\eta)^{m_1 + \dots + m_a}} \langle g^{m_1 + \dots + m_a} h_\alpha^b h_{\alpha \alpha}^c \rangle.
+\end{equation}
+Writing out the ensemble averaged quantity on the right hand side and defining $M \equiv m_1 + \dots + m_a$ yields
+\begin{eqnarray}
+\langle g^{m_1 + \dots + m_a} h_\alpha^b h_{\alpha \alpha}^c \rangle &=& \langle (\x^t \C^{-1} \x)^M (\x^t \C^{-1} \Q^\alpha \C^{-1} \x)^b (\x^t \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1}\x )^c \rangle \nonumber \\
+&=& \sum_{i_1}^N \sum_{j_1}^N \cdots  \sum_{k_1}^N \sum_{l_1}^N \cdots  \sum_{p_1}^N \sum_{q_1}^N \cdots  ( \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} )_{p_1 q_1} \dots (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1})_{p_c q_c}  \nonumber \\
+&&  \times ( \C^{-1} \Q^\alpha \C^{-1})_{k_1 l_1} \dots ( \C^{-1} \Q^\alpha \C^{-1})_{k_b l_b} \C^{-1}_{i_1 j_1}\dots \C^{-1}_{i_M j_M} \langle x_{i_1} x_{j_1} \dots   x_{k_1} x_{l_1} \dots  x_{p_1} x_{q_1} \dots \rangle, \quad
+\end{eqnarray}
+where $N$ is the length of vector $\x$, i.e., the number of data points. To further simplify this expression, we assume that the data are Gaussian distributed. The expectation value on the right hand side can then be reduced to a sum of product of covariances, where each term in the sum is comprised of a particular way to partition the copies of $x$ into pairs. However, in the limit of large $N$ one particular partitioning dominates, and the result can be approximated as \acl{Should probably explain this more fully}
+\begin{equation}
+\langle g^{m_1 + \dots + m_a} h_\alpha^b h_{\alpha \alpha}^c \rangle \approx N^{m_1 + \dots + m_a} \left[ \textrm{tr} (\C^{-1} \Q^\alpha )\right]^b (2 F_{\alpha \alpha})^c,
+\end{equation}
+and re-inserting this into Eq. \eqref{eq:betahh} yields
+\begin{equation}
+\langle \beta^a h_\alpha^b h_{\alpha \alpha}^c \rangle \approx \left[ \frac{\eta N}{1+\eta (N-1)} \right]^a \left[ \textrm{tr} (\C^{-1} \Q^\alpha )\right]^b (2 F_{\alpha \alpha})^c.
+\end{equation}
+With this result, taking the ensemble average of Eq. \eqref{eq:phatlossexpanded} is relatively straightforward. One simply replaces every copy of $\beta$ with $\beta_N \equiv \eta N / [1 + \eta (N-1)]$, every copy of $h_\alpha$ with $ \textrm{tr} (\C^{-1} \Q^\alpha )$, and every copy of $h_{\alpha \alpha}$ with $2F_{\alpha \alpha}$. Performing these substitutions and recalling \acl{make sure the reader will indeed be recalling at this point} that $\langle \hat{p}_\alpha \rangle = \langle h_\alpha \rangle / 2 F_{\alpha \alpha}$, we obtain
+\begin{equation}
+\frac{\langle \hat{p}_\alpha^\textrm{loss} \rangle}{\langle \hat{p}_\alpha \rangle} = \frac{(1-\beta_N)^2}{1- 2\beta_N + \beta_N^2 \left[ \textrm{tr} (\C^{-1} \Q^\alpha) \right]^2 / F_{\alpha \alpha}}.
+\end{equation}
+This quantity is in general less than unity, and quantifies the signal loss relative to the ideal estimator $\hat{p}_\alpha$ where we know the true covariance $\C$. As an illustrative example, for cases where $\C \propto \I$, this reduces to
+\begin{equation}
+\frac{\langle \hat{p}_\alpha^\textrm{loss} \rangle}{\langle \hat{p}_\alpha \rangle} \Bigg{|}_{\C \propto \I} = \frac{(1-\beta_N)^2}{(1-\beta_N)^2 + \beta_N^2} = \frac{(1-\eta)^2}{(1-\eta)^2 + N^2 \eta^2}.
+\end{equation}
+This is shown in Figure \ref{fig:analytic_sig_loss} for $N=20$. As expected, the signal loss factor is unity for $\eta$ (perfect estimation of $\C$) and goes to zero as $\eta$ approaches $1$.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\columnwidth]{plots/analytic_sig_loss.pdf}
+	\caption{Power spectrum signal loss for $N=20$ for a toy model where $\Chat = (1-\eta) \C + \eta \x \x^t$.}
+	\label{fig:analytic_sig_loss}
+\end{figure}
+
+In general, one's estimate of the covariance will not be expressible in the form given by Eq. \eqref{eq:ChatDef}. However, the qualitative point here is that the signal loss can be expressed as a multiplicative factor. Even if $\Chat$ is more complicated than the form used for this toy model, the same mathematical technique of expressing the estimator as a series of higher-point functions, reducing these functions (assuming Gaussianity) to two-point functions, and re-summing any power series will show that the signal loss is a multiplicative factor. \acl{I can express this last bit more eloquently, but it's late and I'm tired and need to eat dinner.}
+
 
 \bibliographystyle{apj}
 \bibliography{refs}
