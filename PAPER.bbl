@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{29}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Ali} {et~al.}(2015){Ali}, {Parsons}, {Zheng}, {Pober}, {Liu},
@@ -6,6 +6,9 @@
   {Grobbelaar}, {Horrell}, {Jacobs}, {Klima}, {MacMahon}, {Maree}, {Moore},
   {Razavi}, {Stefan}, {Walbrugh}, \& {Walker}}]{ali_et_al2015}
 {Ali}, Z.~S., {et~al.} 2015, \apj, 809, 61
+
+\bibitem[{{Bond} {et~al.}(1998){Bond}, {Jaffe}, \& {Knox}}]{bond_et_al1998}
+{Bond}, J.~R., {Jaffe}, A.~H., \& {Knox}, L. 1998, \prd, 57, 2117
 
 \bibitem[{{Bowman} \& {Rogers}(2010)}]{bowman2010}
 {Bowman}, J.~D., \& {Rogers}, A.~E.~E. 2010, \nat, 468, 796
@@ -56,11 +59,6 @@ Keating, G.~K., Marrone, D.~P., Bower, G.~C., Leitch, E., Carlstrom, J.~E., \&
 \bibitem[{Liu \& Tegmark(2011)}]{liu_tegmark2011}
 Liu, A., \& Tegmark, M. 2011, Phys. Rev. D, 83, 103006
 
-\bibitem[{Moore {et~al.}(2013)Moore, Aguirre, Parsons, Jacobs, \&
-  Pober}]{moore_et_al2013}
-Moore, D.~F., Aguirre, J.~E., Parsons, A.~R., Jacobs, D.~C., \& Pober, J.~C.
-  2013, The Astrophysical Journal, 769, 154
-
 \bibitem[{{Paciga} {et~al.}(2013){Paciga}, {Albert}, {Bandura}, {Chang},
   {Gupta}, {Hirata}, {Odegova}, {Pen}, {Peterson}, {Roy}, {Shaw}, {Sigurdson},
   \& {Voytek}}]{paciga_et_al2013}
@@ -104,14 +102,24 @@ Moore, D.~F., Aguirre, J.~E., Parsons, A.~R., Jacobs, D.~C., \& Pober, J.~C.
   {Tickner}}]{sokolowski2015}
 {Sokolowski}, M., {et~al.} 2015, \pasa, 32, e004
 
-\bibitem[{Thyagarajan {et~al.}(2013)Thyagarajan, Shankar, Subrahmanyan, Arcus,
-  Bernardi, Bowman, Briggs, Bunton, Cappallo, Corey, deSouza, Emrich, Gaensler,
-  Goeke, Greenhill, Hazelton, Herne, Hewitt, Johnston-Hollitt, Kaplan, Kasper,
-  Kincaid, Koenig, Kratzenberg, Lonsdale, Lynch, McWhirter, Mitchell, Morales,
-  Morgan, Oberoi, Ord, Pathikulangara, Remillard, Rogers, Roshi, Salah, Sault,
-  Srivani, Stevens, Thiagaraj, Tingay, Wayth, Waterson, Webster, Whitney,
-  Williams, Williams, \& Wyithe}]{thyagarajan_et_al2013}
-Thyagarajan, N., {et~al.} 2013, The Astrophysical Journal, 776, 6
+\bibitem[{Switzer {et~al.}(2015)Switzer, Chang, Masui, Pen, \&
+  Voytek}]{switzer_et_al2015}
+Switzer, E.~R., Chang, T.-C., Masui, K.~W., Pen, U.-L., \& Voytek, T.~C. 2015,
+  The Astrophysical Journal, 815, 51
+
+\bibitem[{{Tegmark}(1997)}]{tegmark_et_al1997a}
+{Tegmark}, M. 1997, \prd, 55, 5895
+
+\bibitem[{{Thyagarajan} {et~al.}(2013){Thyagarajan}, {Udaya Shankar},
+  {Subrahmanyan}, {Arcus}, {Bernardi}, {Bowman}, {Briggs}, {Bunton},
+  {Cappallo}, {Corey}, {deSouza}, {Emrich}, {Gaensler}, {Goeke}, {Greenhill},
+  {Hazelton}, {Herne}, {Hewitt}, {Johnston-Hollitt}, {Kaplan}, {Kasper},
+  {Kincaid}, {Koenig}, {Kratzenberg}, {Lonsdale}, {Lynch}, {McWhirter},
+  {Mitchell}, {Morales}, {Morgan}, {Oberoi}, {Ord}, {Pathikulangara},
+  {Remillard}, {Rogers}, {Anish Roshi}, {Salah}, {Sault}, {Srivani}, {Stevens},
+  {Thiagaraj}, {Tingay}, {Wayth}, {Waterson}, {Webster}, {Whitney}, {Williams},
+  {Williams}, \& {Wyithe}}]{thyagarajan_et_al2013}
+{Thyagarajan}, N., {et~al.} 2013, \apj, 776, 6
 
 \bibitem[{{Tingay} {et~al.}(2013){Tingay}, {Goeke}, {Bowman}, {Emrich}, {Ord},
   {Mitchell}, {Morales}, {Booler}, {Crosse}, {Wayth},
@@ -136,13 +144,5 @@ Vedantham, H., Shankar, N.~U., \& Subrahmanyan, R. 2012, The Astrophysical
 \bibitem[{{Wu}(2009)}]{wu2009}
 {Wu}, X. 2009, in Bulletin of the American Astronomical Society, Vol.~41,
   American Astronomical Society Meeting Abstracts \#213, 474
-
-\bibitem[{{Zheng} {et~al.}(2014){Zheng}, {Tegmark}, {Buza}, {Dillon},
-  {Gharibyan}, {Hickish}, {Kunz}, {Liu}, {Losh}, {Lutomirski}, {Morrison},
-  {Narayanan}, {Perko}, {Rosner}, {Sanchez}, {Schutz}, {Tribiano}, {Valdez},
-  {Yang}, {Adami}, {Zelko}, {Zheng}, {Armstrong}, {Bradley}, {Dexter},
-  {Ewall-Wice}, {Magro}, {Matejek}, {Morgan}, {Neben}, {Pan}, {Penna},
-  {Peterson}, {Su}, {Villasenor}, {Williams}, \& {Zhu}}]{zheng_et_al2014}
-{Zheng}, H., {et~al.} 2014, \mnras, 445, 1084
 
 \end{thebibliography}
