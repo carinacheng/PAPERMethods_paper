@@ -90,9 +90,9 @@ One promising technique to probe the EoR is to target the 21 cm wavelength emiss
 
 Although a detection of the EoR remains elusive, there are several radio telescope experiments that have succeeded in using the 21 cm signal from hydrogen to place constraints on the brightness of the EoR. Examples of experiments investigating the mean brightness temperature of the EoR relative to the CMB are the Experiment to Detect the Global EoR Signature (EDGES; \citealt{bowman2010}), the Long Wavelength Array (LWA; \citealt{ellingson_et_al2009}),  the Large Aperture Experiment to Detect the Dark Ages (LEDA; \citealt{greenhill_bernardi2012}), the Dark Ages Radio Explorer (DARE; \citealt{burns2012}), the Sonda Cosmol\'ogica de las Islas para la Detecci\'on de Hidr\'ogeno NeutroSciHi (SCI-HI; \citealt{voytek2014}), the Broadband Instrument for Global HydrOgen ReioNisation Signal (BIGHORNS; \citealt{sokolowski2015}), and the Shaped Antenna measurement of the background RAdio Spectrum (SARAS; \citealt{patra2015}). Radio interferometers which seek to measure statistical power spectra include the Giant Metre-wave Radio Telescope (GMRT; \citealt{paciga_et_al2013}), the LOw Frequency ARray (LOFAR;\citealt{van_haarlem_et_al2013}), the Murchison Widefield Array (MWA; \citealt{tingay_et_al2013}), the 21 Centimeter Array (21CMA; \citealt{peterson_et_al2004}; \citealt{wu2009}), and PAPER (\citealt{parsons_et_al2010}). The Hydrogen Epoch of Reionization Array (HERA), which is currently being built, is a next-generation instrument that aims to combine lessons learned from previous experiments and is forecasted to be able to make a successful high-significance power spectrum detection with an eventual $350$ elements using current analysis techniques (\citealt{deboer_et_al2017}; \citealt{pober_et_al2014}).
 
-The major challenge that faces all 21 cm experiments is isolating a small signal that is buried underneath foregrounds and instrumental systematics that are, when combined, 4-5 orders of magnitude brighter. A clean measurement therefore requires an intimate understanding of the instrument and a rigorous study of data analysis choices. With continual progress being made in the field and HERA on the horizon, it is becoming increasingly important to understand how the methods we choose interact with each other to affect power spectrum results. More specifically, it is imperative to develop techniques and tests that ensure the accuracy and reliability of a potential EoR detection. In this paper, we discuss three themes that are essential to investigate for a robust $21$ cm power spectrum analysis. We also highlight four power spectrum techniques and their trade-offs, traps, and connections to the themes . We first approach the themes from a broad perspective, and then perform a detailed case study using data from the 64-element configuration of PAPER.
+The major challenge that faces all 21 cm experiments is isolating a small signal that is buried underneath foregrounds and instrumental systematics that are, when combined, 4-5 orders of magnitude brighter. A clean measurement therefore requires an intimate understanding of the instrument and a rigorous study of data analysis choices. With continual progress being made in the field and HERA on the horizon, it is becoming increasingly important to understand how the methods we choose interact with each other to affect power spectrum results. More specifically, it is imperative to develop techniques and tests that ensure the accuracy and reliability of a potential EoR detection. In this paper, we discuss three themes that are essential to investigate for a robust $21$ cm power spectrum analysis. We also highlight four power spectrum techniques and their trade-offs, traps, and connections to the themes. We first approach the themes from a broad perspective, and then perform a detailed case study using data from the 64-element configuration of PAPER.
 
-This paper is organized as follows. In section 2 we introduce the three themes of our focus, using a toy model to develop intuition for each one. Section 3 presents a case study into each theme using data from the PAPER-64 array, highlighting key changes from \citet{ali_et_al2015}. We conclude in Section 7.
+This paper is organized as follows. In section 2 we introduce the three themes of our focus, using a toy model to develop intuition for each one. Section 3 presents a case study into each theme using data from the PAPER-64 array, highlighting key changes from \citet{ali_et_al2015} which have led to a revised PAPER-64 power spectrum limit. We conclude in Section 4.
 
 \section{Power Spectrum Themes and Techniques}
 \label{sec:Themes}
@@ -334,7 +334,7 @@ Because foreground spectra are smooth in frequency, they preferentially show up 
 
 Despite making power spectrum measurements outside of the wedge in the ``EoR window", foreground detections are still common at low $k$ values. This leakage can be attributed to convolution kernels associated with Fourier-transforming visibilities into delay-space. In other words, smooth-spectrum foregrounds appear as $\delta$-functions in delay-space, convolved by the Fourier transform of the source spectrum and the antenna response, both of which could smear out the foregrounds and cause leakage outside the wedge.
 
-There are analysis techniques to mitigate the effects of foreground leakage and prevent information from low $k's$ from spreading to high $k$ values. For example, narrow window functions can be used to minimize the covariance of a particular $k$ value with other ones (\citealt{liu_et_al2014b}). \cc{math!} In other words, one can construct an estimator using OQE that forces a window function to have a minimum response to low $k$ values. The PAPER-64 window function is constructed in such a way, specifically to prevent foregrounds that live at low $k's$ from contaminating higher $k$-modes (see Section \ref{sec:Bias}). Minimizing foreground leakage in this way however, comes with the trade-off of compromising power spectrum sensitivity, since narrow window functions increases errors for each $k$-mode \cc{develop more or cite?}. 
+There are analysis techniques to mitigate the effects of foreground leakage and prevent information from low $k's$ from spreading to high $k$ values. For example, narrow window functions can be used to minimize the covariance of a particular $k$ value with other ones (\citealt{liu_et_al2014b}). In other words, one can construct an estimator using OQE that forces a window function to have a minimum response to low $k$ values. The PAPER-64 window function is constructed in such a way, specifically to prevent foregrounds that live at low $k's$ from contaminating higher $k$-modes (see Section \ref{sec:Bias}). Minimizing foreground leakage in this way however, comes with the trade-off of compromising power spectrum sensitivity, since narrow window functions increases errors for each $k$-mode \cc{develop more or cite?}. 
 
 Confirming foreground detections at higher $k$'s is more difficult. In the next section, we will present some tests that can help distinguish these excesses from that of EoR. 
 
@@ -401,7 +401,7 @@ In the previous sections we have discussed three overarching $21$ cm power spect
 
 We now present a case study of these same three themes using data from the PAPER experiment. We use the intuition we've developed through our toy model simulations in order to make smartly-motivated data analysis choices for PAPER. In light of our new understandings, we also highlight major changes since \citet{ali_et_al2015}.
 
-As a brief review, PAPER is a dedicated $21$ cm experiment located in the Karoo Desert in South Africa. The PAPER-64 configuration consists of 64 dual-polarization drift-scan elements (Figure \ref{fig:paper}) that are arranged in a grid layout. For our case study, we focus solely on Stokes I data from PAPER's $30$ m East/West baselines, of which there are a total of $56$. For information about the backend system of PAPER-64, its observations, and data reduction pipeline, we refer the reader to \citet{parsons_et_al2010} and \citet{ali_et_al2015}.
+As a brief review, PAPER is a dedicated $21$ cm experiment located in the Karoo Desert in South Africa. The PAPER-64 configuration consists of 64 dual-polarization drift-scan elements (Figure \ref{fig:paper}) that are arranged in a grid layout. For our case study, we focus solely on Stokes I data from PAPER's $30$ m East/West baselines. For information about the backend system of PAPER-64, its observations, and data reduction pipeline, we refer the reader to \citet{parsons_et_al2010} and \citet{ali_et_al2015}.
 
 \begin{figure}
 	\centering
@@ -426,7 +426,7 @@ The previously best published $21$ cm upper limit result from (\citealt{ali_et_a
 
 \noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$ h Mpc$^{-1}$ at $z = 8.4$. The revision of this limit stems mostly from previously underestimated signal loss and underestimated error bars \cc{cite retraction paper}, both of which we address in the case study. 
 
-We note that the PAPER-64 dataset that we use in this case study differs from that in \citet{ali_et_al2015} only by the fringe-rate filter. In \citet{ali_et_al2015}, the applied filter was degraded by widening it in fringe-rate space. This was chosen in order to increase the number of independent modes and reduce signal loss. With the development of a robust method for assessing signal loss, we feel comfortable using a narrow filter --- the optimal fringe-rate filter --- in order to maximize sensitivity. This filter is computed for a fiducial $30$ m baseline at $150$ MHz, the center frequency in our band. The filter in both the fringe-rate domain and time domain is shown in Figure \ref{fig:frp}.
+For our analysis, we use $8$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines. All power spectrum results are produced using channels $95$-$115$, corresponding to a center redshift of $z=8.4$. We note that the PAPER-64 dataset that we use in this case study differs from that in \citet{ali_et_al2015} mainly by the fringe-rate filter. In \citet{ali_et_al2015}, the applied filter was degraded by widening it in fringe-rate space. This was chosen in order to increase the number of independent modes and reduce signal loss. With the development of a robust method for assessing signal loss, we feel comfortable using a narrow filter --- the optimal fringe-rate filter --- in order to maximize sensitivity. This filter is computed for a fiducial $30$ m baseline at $150$ MHz, the center frequency in our band. The filter in both the fringe-rate domain and time domain is shown in Figure \ref{fig:frp}.
 
 \begin{figure}
 	\centering
@@ -491,20 +491,14 @@ For the unweighted case ($\textbf{R} \equiv \textbf{I}$), we expect $P_{out}$ an
 
 \subsubsection{Signal Loss in Practice}
 
-We now shift our attention towards computing signal loss for our fringe-rate filtered PAPER-64 dataset.  To recap, we use 30 m East/West baselines of PAPER-64. Our dataset spans $8$ hours of LST ($.5$-$8.6$ hrs), includes a total of $51$ baselines, and is fringe-rate filtered using an optimal fringe-rate filter. We have two datasets (even days and odd days), and only cross-multiply data from different days and different baselines. We are interested in $21$ frequency channels (channels 95-115), which yields a power spectrum for a redshift of $z=8.4$. 
+\cc{This section needs to be filled in once our method is finalized...}
 
-While our methodology outlined below is robust to any weighting scheme, here we demonstrate the computation using inverse covariance weighting ($\textbf{R} = \textbf{C}^{-1}$), which leads to substantial loss. With this weighting, our expressions for $P_{in}$ and $P_{out}$ become:
+We now shift our attention towards computing signal loss for our fringe-rate filtered PAPER-64 dataset. While our methodology outlined below is robust to any weighting scheme, here we demonstrate the computation using inverse covariance weighting ($\textbf{R} = \textbf{C}^{-1}$), which leads to substantial loss. With this weighting, our expressions for $P_{in}$ and $P_{out}$ become:
 
 \begin{eqnarray}
 P_{in,\alpha} &\propto& \textbf{e}^{\dagger}\textbf{I}\textbf{Q}_{\alpha}\textbf{I}\textbf{e} \\
 P_{out,\alpha} &\propto& \textbf{r}^{\dagger}\textbf{C}_{r}^{-1}\textbf{Q}_{\alpha}\textbf{C}_{r}^{-1}\textbf{r} - \textbf{x}^{\dagger}\textbf{C}_{x}^{-1}\textbf{Q}_{\alpha}\textbf{C}_{x}^{-1}\textbf{x} 
 \end{eqnarray}
-
-Using the input and output power spectrum estimates for a range of EoR amplitudes, we next describe two methods to determine signal loss associated with the over-fitting of noise from inverse covariance weighting of PAPER-64 data. \cc{describing both methods may be overkill?}
-
-The first method is very straightforward. Post-bootstrapping, our final power spectrum estimates are 1-dimensional and only a function of $k$. For each $k$, we simply look at $P_{out}$ as a function of $P_{in}$, as shown in Figure \ref{fig:sigloss1_data}. The shape of this function can be explained as follows. At small injection levels (small $\textbf{e}$), $P_{out}$ and $P_{in}$ are equal, and there is no signal loss. As the amplitude of EoR increases, we then move into a regime where the final output power spectrum is lower than the unweighted input one. This is dangerous, because without correcting for this effect one might be led to underestimate the EoR signal. The peculiar tail at very low injection levels (where $P_{out} > P_{in}$) is not a physical feature, but rather illustrates that there is some non-negligible power in the cross-terms of Equation \ref{eq:crossterm} when $\textbf{e}$ is very small.
-
-For this method, we interpolate the signal loss factor (per $k$), computed as $P_{in}/P_{out}$, at a $P_{out}$ value equal to the $2\sigma$ power spectrum upper limit of our data. In other words, we look at $\hat{\textbf{p}}_{\alpha} \propto \textbf{x}^{\dagger}\textbf{C}_{x}^{-1}\textbf{Q}_{\alpha}\textbf{C}_{x}^{-1}\textbf{x}$, compute its $2\sigma$ upper limit (mean over bootstraps + $2 \times $standard deviation over bootstraps), and interpolate the value of $P_{in}/P_{out}$ at this value. We therefore end up with one signal loss correction factor per $k$. 
 
 %\begin{figure*}
 %	\centering
@@ -513,28 +507,19 @@ For this method, we interpolate the signal loss factor (per $k$), computed as $P
 %	\label{fig:sigloss1_data}
 %\end{figure*}
 
-Our second method for estimating signal loss is similar to the first, but more comprehensive in a statistical sense. Instead of looking at input and output power spectra after bootstrapping, we now look at their values for every bootstrap in order to get a sense of their distributions. Figure \ref{fig:sigloss2_data} plots $P_{in}$ vs. $P_{out}$ for $20$ bootstraps, and as expected, the function now has a spread in the width-direction in comparison to what was plotted in Figure \ref{fig:sigloss1_data}, but otherwise shows a familiar trend. Similarly, our weighted power spectra also has a defined spread due to bootstrapping.
-
 %\begin{figure*}
 %	\centering
 %	\includegraphics[width=1.0\textwidth]{plots/sigloss2_data.png}
 %	\caption{$P_{in}$ vs. $P_{out}$ (black) for 15 injection levels, 20 bootstraps, and 21 $k$'s. The transparent grey region represents all PAPER-64 bootstrapped estimates.}
 %	\label{fig:sigloss2_data}
-%\end{figure*}
+%\end{figure*} 
 
-Using these two distributions ($P_{in}/P_{out}$ and $\hat{\textbf{p}}$), we can create bins along the $\hat{\textbf{p}}$ axis to yield histograms of signal loss factors for each bin. We similarly sort the values of $\hat{\textbf{p}}$ into the same bins, and multiply the probability of $\hat{\textbf{p}}$ per bin (the number of values falling into that bin, divided by the total) with the signal loss factors in that bin, essentially computing a weighted average across all bins to obtain a final signal loss factor per $k$. The signal loss results for this method are very similar to the previous method. For future power spectrum results, we choose to use the second method because it computes final signal loss values using our full distributions of measurements.
-
-\cc{This next paragraph needs to be worked on. What I'm going for is a plot that `proves' our signal loss method is correct, but it's hard to show since the combination of inverse covariance weighting + signal loss correction produces results that are HIGHER than the unweighted level. The plot shown below uses PS points instead of error bars, which brings them into closer agreement...}
-To verify our signal loss computations, we compare the unweighted power spectrum estimate of EoR (`true' EoR) with the signal loss corrected weighted power spectrum estimate of EoR + data in a regime where the injected EoR is very large (since there is minimal signal loss for small EoR). We compare these two quantities because we must ensure that our weighted combined dataset, after signal loss correction, does not lie below the level of EoR. From Figure \ref{fig:sigloss_beforeafter}, we see over $3$ orders of magnitude of signal loss associated with the inverse covariance weighting of fringe-rate filtered PAPER-64 data. The power spectrum, post-correction, lies just above the EoR-only power spectrum. However, it exhibits a different shape due to \cc{??}. 
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\columnwidth]{plots/sigloss_beforeafter.png}
-	\caption{Power spectrum estimates of the combined EoR + PAPER-64 dataset, pre (squares) and post (circles) signal loss correction. The dashed blue line is the unweighted power spectrum estimate of EoR alone.}
-	\label{fig:sigloss_beforeafter}
-\end{figure}
-
-One thing to note is that for both methods, we have been careful to validate that the computations yield no signal loss (signal loss factors of $1$) for the unweighted power spectrum case, as is expected. This is important in confirming that signal loss is a direct result of the choice for $\textbf{C}$. Similarly, we can compute signal loss for intermediate cases as well, such as a regularized $\textbf{C}$ which exhibits some lossiness, but not as much as inverse covariance weighting.
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=\columnwidth]{plots/sigloss_beforeafter.png}
+%	\caption{Power spectrum estimates of the combined EoR + PAPER-64 dataset, pre (squares) and post (circles) signal loss correction. The dashed blue line is the unweighted power spectrum estimate of EoR alone.}
+%	\label{fig:sigloss_beforeafter}
+%\end{figure}
 
 %\begin{figure*}
 %	\centering
@@ -554,31 +539,41 @@ One thing to note is that for both methods, we have been careful to validate tha
 \subsubsection{Data Weighting}
 \label{sec:Weight}
 
+\cc{This section is under construction...}
+
 With our signal loss formalism established, we now have the capability of experimenting with different weighting options for $\textbf{R}$. Our goal here is to choose a weighting method that successfully down-weights foregrounds and systematics in our data without generating large amounts of signal loss. We have found that the balance between the two is a delicate one and requires a careful understanding and altering of covariance matrices.
 
 Using full inverse covariance weighting, our power spectrum results before and after signal loss correction is shown in Figure \ref{fig:ps2_data}. Prior to signal loss correction, it is clear that the power spectrum is unfeasible because it is well below the theoretical noise level prediction. Post-correction, the power spectrum values blow up much higher than both the theory and unweighted power spectrum. 
 
-\begin{figure*}
-	\centering
-	\includegraphics[width=0.4\textwidth]{plots/ps2_data_nosigloss.png}
-	\includegraphics[width=0.4\textwidth]{plots/ps2_data.png}
-	\caption{Full inverse covariance weighted power spectrum of PAPER-64 data (black points, with $2\sigma$ error bars) before signal loss correction (left) and after (right). The dashed blue line is the unweighted power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical noise level prediction based on observational parameters.}
-	\label{fig:ps2_data}
-\end{figure*}
+%\begin{figure*}
+%	\centering
+%	\includegraphics[width=0.4\textwidth]{plots/ps2_data_nosigloss.png}
+%	\includegraphics[width=0.4\textwidth]{plots/ps2_data.png}
+%	\caption{Full inverse covariance weighted power spectrum of PAPER-64 data (black points, with $2\sigma$ error bars) before signal loss correction (left) and after (right). The dashed blue line is the unweighted power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical noise level prediction based on observational parameters.}
+%	\label{fig:ps2_data}
+%\end{figure*}
 
-Following our toy model investigation in Section \ref{sec:SiglossOverview}, we investigate the shape of the eigenspectrum of $\textbf{C}$ for a typical baseline used in the analysis. Figure \ref{fig:eigenspectrum} shows this spectrum for baseline (1,4). The spectrum is very steep, spanning 4 orders of magnitude, implying that a couple modes are weighted much more than the rest. In fact, this behavior is much more extreme than we saw in the toy model, whose eigenspectrum (for the `fringe-rate filtered' case) only started to vividly steepen for the last few eigenmodes. The consequence of assigning individual weights to many more modes than are present in the data is significant --- to the point of resulting in power spectrum values that are higher than if no weighting scheme was used at all.
+Following our toy model investigation in Section \ref{sec:SiglossOverview}, we investigate the shape of the eigenspectrum of $\textbf{C}$ for a typical baseline used in the analysis. Figure \ref{fig:eigenspectrum} shows this spectrum for baseline (1,4). The spectrum is very steep, spanning 4 orders of magnitude, implying that different modes are given dramatically different weights. In fact, this behavior is much more extreme than we saw in the toy model, whose eigenspectrum (for the `fringe-rate filtered' case) only started to vividly steepen for the last few eigenmodes. The consequence of assigning individual weights to many more modes than are present in the data is significant --- to the point of resulting in power spectrum values that are higher than if no weighting scheme was used at all.
 
-\begin{figure*}
-	\centering
-	\includegraphics[width=0.4\textwidth]{plots/eigenspectrum.png}
-	\includegraphics[width=0.4\textwidth]{plots/covariance.png}
-	\caption{Eigenspectrum for $\textbf{C}$ for baseline (1,4) for the 21 channels ofs interest (left) and covariance matrix $\textbf{C}$ for the same baseline (right).}
-	\label{fig:eigenspectrum}
-\end{figure*}
+%\begin{figure*}
+%	\centering
+%	\includegraphics[width=0.4\textwidth]{plots/eigenspectrum.png}
+%	\includegraphics[width=0.4\textwidth]{plots/covariance.png}
+%	\caption{Eigenspectrum for $\textbf{C}$ for baseline (1,4) for the 21 channels ofs interest (left) and covariance matrix $\textbf{C}$ for the same baseline (right).}
+%	\label{fig:eigenspectrum}
+%\end{figure*}
 
 The full inverse covariance treatment of our data is suboptimal to the unweighted case, meaning that choosing such a weighting does not help suppress systematics as we intended. Now we would like to find a weighting method that does successfully down-weight contaminants in our data and make some improvement over the unweighted power spectrum. There are many choices for determining the covariance matrix $\textbf{C}$, as described in Section \ref{sec:SiglossOverview}, but here we will illustrate \cc{?} promising ones as applied to PAPER-64.
 
 \cc{Should I just show the identity multiplication scheme that seems to be the best? Show lots of options? Mention different options but not show the results?}
+
+\begin{figure*}
+	\centering
+	\includegraphics[width=0.4\textwidth]{plots/ps1_data_nosigloss.png}
+	\includegraphics[width=0.4\textwidth]{plots/ps2_data_nosigloss.png}
+	\caption{Highest sensitivity power spectrum of PAPER-64 using $\hat{\textbf{C}}_{eff} = \hat{\textbf{C}} * \textbf{I}$ (minimal signal loss). Black and grey points correspond to positive and negative power spectrum values, respectively, with $2\sigma$ error bars also plotted. The dashed blue line is the unweighted power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical noise level prediction based on observational parameters. This power spectrum result differs from \citet{ali_et_al2015} in that it only uses data from one type of baseline ($30$ m East/West baselines) instead of three. Additionally, an optimal fringe-rate filter was used instead of a degraded one. Major differences from previously published results stem from revisions regarding signal loss, bootstrapping, and the theoretical error computation.}
+	\label{fig:ps1_data}
+\end{figure*}
 
 \subsection{Case Study: Error Estimation}
 \label{sec:Error}
@@ -705,6 +700,9 @@ In addition to mitigating foreground bias at high $k$'s, two other sources of bi
 To mitigate crosstalk bias, which appears as a static bias in time, we apply a fringe-rate filter that suppresses fringe-rates of zero. Figure \ref{fig:frp} shows that the filter response is zero for such static signals. The effect of filtering out zero fringe-rates on power spectrum results is shown in \citet{ali_et_al2015}. Most notably, power spectrum detections exist at all $k$'s without crosstalk removal and these are detections that, depending on the power spectrum level, could be mistaken for EoR. 
 
 \subsubsection{Jack-Knife Tests}
+
+The highest sensitivity power spectrum results using PAPER-64 data, shown in Figure \ref{fig:ps1_data}, have positive biases. As discussed in Section \ref{sec:BiasTypes}, the detections that appear at low $k$ values are most likely attributable to foreground leakage. However, the positive biases at higher $k$ values require further investigation. 
+
 
 \cc{Describe some jackknife tests done on PAPER-64 data, such as random signs to baselines and even/odd summing and differencing} \\
 \cc{Need to explain positive bias still... not sure where it comes from yet!}
