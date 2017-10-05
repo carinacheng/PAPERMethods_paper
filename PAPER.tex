@@ -747,46 +747,46 @@ where $\eta$ is parameter quantifying our success at estimating the true covaria
 
 Our strategy for computing the signal loss will be to insert Eq. \eqref{eq:ChatDef} \acl{Make sure we're consistent w.r.t. ``Equation" vs. ``Eq."} into Eq. \eqref{eq:phatloss} and to express the resulting estimator $\hat{p}_\alpha^\textrm{loss}$ in terms of $\hat{p}_\alpha$. We begin by expressing $\Chat^{-1}$ in terms of $\C^{-1}$ using the Woodbury identity so that
 \begin{equation}
-\Chat^{-1}\x = \frac{\C^{-1}\x}{1-\eta} \left[ 1 - \frac{\eta g}{1+ \eta (g-1)}\right],
+\Chat^{-1} = \frac{\C^{-1}}{1-\eta} \left[ \I - \frac{\eta \x \x^t \C^{-1}}{1+ \eta (g-1)}\right],
 \end{equation}
 where we have defined $g \equiv \x^t \C^{-1} \x$. Inserting this into our Fisher estimate we have
 \begin{equation}
-\hat{F}_{\alpha \alpha} = \frac{F_{\alpha \alpha}}{(1-\eta)^2} \left[ 1 -\frac{\eta g}{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta g}{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right],
+\hat{F}_{\alpha \alpha} = \frac{F_{\alpha \alpha}}{(1-\eta)^2} \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right],
 \end{equation}
 where $h_\alpha \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \x $ and $h_{\alpha \alpha} \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1}\x $. Note that $g$, $h_\alpha$, and $h_{\alpha \alpha}$ are all random variables, since they depend on $\x$. Inserting these expressions into our estimator gives
 \begin{eqnarray}
 \label{eq:phatlossexpanded}
-\hat{p}_\alpha^\textrm{loss} &=& \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \frac{\eta g}{1+ \eta (g-1)}\right]^2  \left[ 1 -\frac{\eta g}{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta g}{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right]^{-1} \nonumber \\
-&=& \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}}\left(1-2\beta + \beta^2\right)\sum_{n=0}^\infty \sum_{k=0}^n {n \choose k} \left( \frac{\beta h_{\alpha \alpha}}{F_{\alpha \alpha}}\right)^k \left( - \frac{\beta^2 h_\alpha^2}{F_{\alpha \alpha}}\right)^{n-k},
+\hat{p}_\alpha^\textrm{loss} &=& \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \frac{\eta g}{1+ \eta (g-1)}\right]^2  \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right]^{-1} \nonumber \\
+&=& \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}}\left(1-2\beta + \beta^2\right)\sum_{n=0}^\infty \sum_{k=0}^n {n \choose k} \left( \frac{\varepsilon h_{\alpha \alpha}}{F_{\alpha \alpha}}\right)^k \left( - \frac{\varepsilon^2 h_\alpha^2}{2 F_{\alpha \alpha}}\right)^{n-k},
 \end{eqnarray}
-where $\beta \equiv \eta g/[1+ \eta (g-1)]$. To proceed, we take the ensemble average of $\hat{p}_\alpha^\textrm{loss}$ to understand its average statistical properties. Inspecting Eq. \eqref{eq:phatlossexpanded}, we see that its expectation value is a linear sum of terms of the form $\langle \beta^a h_\alpha^b h_{\alpha \alpha}^c \rangle$, where $a$, $b$, and $c$ are integers. Expanding $\beta$ in powers of $g$, we have
+where $\beta \equiv \eta g/[1+ \eta (g-1)]$ and $\varepsilon \equiv \beta / g$. To proceed, we take the ensemble average of $\hat{p}_\alpha^\textrm{loss}$ to understand its average statistical properties. Inspecting Eq. \eqref{eq:phatlossexpanded}, we see that its expectation value is a linear sum of terms of the form $\langle \beta^a h_\alpha^b h_{\alpha \alpha}^c \rangle$, where $a$, $b$, and $c$ are integers. Expanding $\beta$ in powers of $g$, we have
 \begin{equation}
 \label{eq:betahh}
-\langle \beta^a h_\alpha^b h_{\alpha \alpha}^c \rangle = \sum_{m_1 = 1}^\infty \cdots \sum_{m_a = 1}^\infty \frac{(-\eta)^{m_1 + \dots + m_a}}{(1-\eta)^{m_1 + \dots + m_a}} \langle g^{m_1 + \dots + m_a} h_\alpha^b h_{\alpha \alpha}^c \rangle.
+\langle \beta^a h_\alpha^b h_{\alpha \alpha}^c \varepsilon^d \rangle = \sum_{m_1 = 1}^\infty \cdots \sum_{m_{a+d} = 1}^\infty \frac{(-\eta)^{m_1 + \dots + m_{a+d}}}{(1-\eta)^{m_1 + \dots + m_a}} \langle g^{m_1 + \dots + m_{a+d}-d} h_\alpha^b h_{\alpha \alpha}^c \rangle.
 \end{equation}
-Writing out the ensemble averaged quantity on the right hand side and defining $M \equiv m_1 + \dots + m_a$ yields
+Writing out the ensemble averaged quantity on the right hand side and defining $M \equiv m_1 + \dots + m_{a+d}$ yields
 \begin{eqnarray}
-\langle g^{m_1 + \dots + m_a} h_\alpha^b h_{\alpha \alpha}^c \rangle &=& \langle (\x^t \C^{-1} \x)^M (\x^t \C^{-1} \Q^\alpha \C^{-1} \x)^b (\x^t \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1}\x )^c \rangle \nonumber \\
+\langle g^{m_1 + \dots + m_{a+d}} h_\alpha^b h_{\alpha \alpha}^c \rangle &=& \langle (\x^t \C^{-1} \x)^M (\x^t \C^{-1} \Q^\alpha \C^{-1} \x)^b (\x^t \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1}\x )^c \rangle \nonumber \\
 &=& \sum_{i_1}^N \sum_{j_1}^N \cdots  \sum_{k_1}^N \sum_{l_1}^N \cdots  \sum_{p_1}^N \sum_{q_1}^N \cdots  ( \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} )_{p_1 q_1} \dots (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1})_{p_c q_c}  \nonumber \\
 &&  \times ( \C^{-1} \Q^\alpha \C^{-1})_{k_1 l_1} \dots ( \C^{-1} \Q^\alpha \C^{-1})_{k_b l_b} \C^{-1}_{i_1 j_1}\dots \C^{-1}_{i_M j_M} \langle x_{i_1} x_{j_1} \dots   x_{k_1} x_{l_1} \dots  x_{p_1} x_{q_1} \dots \rangle, \quad
 \end{eqnarray}
 where $N$ is the length of vector $\x$, i.e., the number of data points. To further simplify this expression, we assume that the data are Gaussian distributed. The expectation value on the right hand side can then be reduced to a sum of product of covariances, where each term in the sum is comprised of a particular way to partition the copies of $x$ into pairs. However, in the limit of large $N$ one particular partitioning dominates, and the result can be approximated as \acl{Should probably explain this more fully}
 \begin{equation}
-\langle g^{m_1 + \dots + m_a} h_\alpha^b h_{\alpha \alpha}^c \rangle \approx N^{m_1 + \dots + m_a} \left[ \textrm{tr} (\C^{-1} \Q^\alpha )\right]^b (2 F_{\alpha \alpha})^c,
+\langle g^{m_1 + \dots + m_{a+d}} h_\alpha^b h_{\alpha \alpha}^c \rangle \approx N^{m_1 + \dots + m_{a+d}} \left[ \textrm{tr} (\C^{-1} \Q^\alpha )\right]^b (2 F_{\alpha \alpha})^c,
 \end{equation}
 and re-inserting this into Eq. \eqref{eq:betahh} yields
 \begin{equation}
-\langle \beta^a h_\alpha^b h_{\alpha \alpha}^c \rangle \approx \left[ \frac{\eta N}{1+\eta (N-1)} \right]^a \left[ \textrm{tr} (\C^{-1} \Q^\alpha )\right]^b (2 F_{\alpha \alpha})^c.
+\langle \beta^a h_\alpha^b h_{\alpha \alpha}^c \varepsilon^d \rangle \approx \left[ \frac{\eta N}{1+\eta (N-1)} \right]^a \left[ \frac{\eta }{1+\eta (N-1)} \right]^d \left[ \textrm{tr} (\C^{-1} \Q^\alpha )\right]^b (2 F_{\alpha \alpha})^c.
 \end{equation}
-With this result, taking the ensemble average of Eq. \eqref{eq:phatlossexpanded} is relatively straightforward. One simply replaces every copy of $\beta$ with $\beta_N \equiv \eta N / [1 + \eta (N-1)]$, every copy of $h_\alpha$ with $ \textrm{tr} (\C^{-1} \Q^\alpha )$, and every copy of $h_{\alpha \alpha}$ with $2F_{\alpha \alpha}$. Performing these substitutions and recalling \acl{make sure the reader will indeed be recalling at this point} that $\langle \hat{p}_\alpha \rangle = \langle h_\alpha \rangle / 2 F_{\alpha \alpha}$, we obtain
+With this result, taking the ensemble average of Eq. \eqref{eq:phatlossexpanded} is relatively straightforward. One simply replaces every copy of $\beta$ with $\beta_N \equiv \eta N / [1 + \eta (N-1)]$, every copy of $\varepsilon$ with $\varepsilon_N \equiv  \eta  / [1 + \eta (N-1)]$, every copy of $h_\alpha$ with $ \textrm{tr} (\C^{-1} \Q^\alpha )$, and every copy of $h_{\alpha \alpha}$ with $2F_{\alpha \alpha}$. Performing these substitutions and recalling \acl{make sure the reader will indeed be recalling at this point} that $\langle \hat{p}_\alpha \rangle = \langle h_\alpha \rangle / 2 F_{\alpha \alpha}$, we obtain
 \begin{equation}
-\frac{\langle \hat{p}_\alpha^\textrm{loss} \rangle}{\langle \hat{p}_\alpha \rangle} = \frac{(1-\beta_N)^2}{1- 2\beta_N + \beta_N^2 \left[ \textrm{tr} (\C^{-1} \Q^\alpha) \right]^2 / F_{\alpha \alpha}}.
+\frac{\langle \hat{p}_\alpha \rangle}{\langle \hat{p}_\alpha^\textrm{loss} \rangle} = \frac{1- 2\varepsilon_N + \varepsilon_N^2 \left[ \textrm{tr} (\C^{-1} \Q^\alpha) \right]^2 / 2F_{\alpha \alpha}}{(1-\beta_N)^2}.
 \end{equation}
 This quantity is in general less than unity, and quantifies the signal loss relative to the ideal estimator $\hat{p}_\alpha$ where we know the true covariance $\C$. As an illustrative example, for cases where $\C \propto \I$, this reduces to
 \begin{equation}
-\frac{\langle \hat{p}_\alpha^\textrm{loss} \rangle}{\langle \hat{p}_\alpha \rangle} \Bigg{|}_{\C \propto \I} = \frac{(1-\beta_N)^2}{(1-\beta_N)^2 + \beta_N^2} = \frac{(1-\eta)^2}{(1-\eta)^2 + N^2 \eta^2}.
+\frac{\langle \hat{p}_\alpha \rangle}{\langle \hat{p}_\alpha^\textrm{loss} \rangle}  \Bigg{|}_{\C \propto \I} = \left( \frac{1-\varepsilon_N}{1-\beta_N} \right)^2 = \left[\frac{1+ \eta(N-2)}{1- \eta}\right]^2.
 \end{equation}
-This is shown in Figure \ref{fig:analytic_sig_loss} for $N=20$. As expected, the signal loss factor is unity for $\eta=0$ (perfect estimation of $\C$) and goes to zero as $\eta$ approaches $1$.
+This is shown in Figure \ref{fig:analytic_sig_loss} for $N=20$. As expected, the signal loss factor is unity for $\eta=0$ (perfect estimation of $\C$) and goes to infinity as $\eta$ approaches $1$.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\columnwidth]{plots/analytic_sig_loss.pdf}
