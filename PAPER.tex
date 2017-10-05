@@ -466,7 +466,7 @@ P_{out,\alpha} \equiv \hat{\textbf{p}}_{e,\alpha} &=& \hat{\textbf{p}}_{r,\alpha
 
 It is noted that the output power spectrum is comprised of two terms: the weighted power spectrum associated with \textbf{r}, and that of data \textbf{x} alone. 
 
-One may wonder why $P_{out}$ cannot be computed simply as the weighted power spectrum of $\textbf{e}$ alone, namely $P_{out,\alpha} \propto \textbf{e}^{\dagger}\textbf{R}_{e}\textbf{Q}_{\alpha}\textbf{R}_{e}\textbf{e}$. Expanding Equation \ref{eq:sigloss}, we see that $P_{out}$ is comprised of multiple terms:
+One may wonder why $P_{out}$ cannot be computed simply as the weighted power spectrum of $\textbf{e}$ alone, namely $P_{out,\alpha} \propto \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}_{\alpha}\textbf{R}_{r}\textbf{e}$. Expanding Equation \ref{eq:sigloss}, we see that $P_{out}$ is comprised of multiple terms:
 
 \begin{eqnarray}
 \label{eq:crossterm}
@@ -475,12 +475,12 @@ P_{out,\alpha} &\propto& (\textbf{x}+\textbf{e})^{\dagger}\textbf{R}_{r}\textbf{
 &+& \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}_{\alpha}\textbf{R}_{r}\textbf{x} - \textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}_{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
 
-Taking the case of very large $\textbf{e}$, so that $\textbf{R}_{r} \sim \textbf{R}_{e}$ and any terms involving only $\textbf{x}$ are small, yields:
+Taking the case of very large $\textbf{e}$ so that any terms involving only $\textbf{x}$ are small, yields:
 
 \begin{eqnarray}
 \label{eq:pout_expand}
-P_{out, \alpha,\textbf{e} \gg \textbf{x}} &\propto& \textbf{e}^{\dagger}\textbf{R}_{e}\textbf{Q}_{\alpha}\textbf{R}_{e}\textbf{e} + \textbf{x}^{\dagger}\textbf{R}_{e}\textbf{Q}_{\alpha}\textbf{R}_{e}\textbf{e} \nonumber \\
-&+& \textbf{e}^{\dagger}\textbf{R}_{e}\textbf{Q}_{\alpha}\textbf{R}_{e}\textbf{x}.
+P_{out, \alpha,\textbf{e} \gg \textbf{x}} &\propto& \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}_{\alpha}\textbf{R}_{r}\textbf{e} + \textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}_{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
+&+& \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}_{\alpha}\textbf{R}_{r}\textbf{x}.
 \end{eqnarray}
 
 We see that our naive expression for $P_{out}$ is the first term in Equation \ref{eq:pout_expand}, but there are also two additional terms. An initial assumption would be that the cross-terms that involve both $\textbf{e}$ and $\textbf{x}$ should be zero, since foregrounds and the cosmological signal are physically unrelated. In \citet{ali_et_al2015}, this assumption is used, and the first term in Equation \ref{eq:pout_expand} is directly compared to the input (unweighted) power spectrum to compute signal loss.
