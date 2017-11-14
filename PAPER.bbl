@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{31}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Ali} {et~al.}(2015){Ali}, {Parsons}, {Zheng}, {Pober}, {Liu},
@@ -16,6 +16,10 @@
 \bibitem[{{Burns} {et~al.}(2012){Burns}, {Lazio}, {Bale}, {Bowman}, {Bradley},
   {Carilli}, {Furlanetto}, {Harker}, {Loeb}, \& {Pritchard}}]{burns2012}
 {Burns}, J.~O., {et~al.} 2012, Advances in Space Research, 49, 433
+
+\bibitem[{Datta {et~al.}(2010)Datta, Bowman, \& Carilli}]{datta_et_al2010}
+Datta, A., Bowman, J.~D., \& Carilli, C.~L. 2010, The Astrophysical Journal,
+  724, 526
 
 \bibitem[{DeBoer {et~al.}(2017)DeBoer, Parsons, Aguirre, Alexander, Ali,
   Beardsley, Bernardi, Bowman, Bradley, Carilli, Cheng, de~Lera~Acedo, Dillon,
@@ -91,10 +95,15 @@ Liu, A., \& Tegmark, M. 2011, Phys. Rev. D, 83, 103006
 \bibitem[{{Peterson}(2004)}]{peterson_et_al2004}
 {Peterson}, U.-L.~P.~X.-P.~W.~J. 2004, ArXiv Astrophysics e-prints
 
+\bibitem[{{Pober} {et~al.}(2013){Pober}, {Parsons}, {DeBoer}, {McDonald},
+  {McQuinn}, {Aguirre}, {Ali}, {Bradley}, {Chang}, \&
+  {Morales}}]{pober_et_al2013}
+{Pober}, J.~C., {et~al.} 2013, \aj, 145, 65
+
 \bibitem[{{Pober} {et~al.}(2014){Pober}, {Liu}, {Dillon}, {Aguirre}, {Bowman},
   {Bradley}, {Carilli}, {DeBoer}, {Hewitt}, {Jacobs},
   {et~al.}}]{pober_et_al2014}
-{Pober}, J.~C., {et~al.} 2014, \apj, 782, 66
+---. 2014, \apj, 782, 66
 
 \bibitem[{{Sokolowski} {et~al.}(2015){Sokolowski}, {Tremblay}, {Wayth},
   {Tingay}, {Clarke}, {Roberts}, {Waterson}, {Ekers}, {Hall}, {Lewis},
