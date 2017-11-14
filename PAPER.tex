@@ -704,12 +704,12 @@ The second aspect of bootstrapping discussed in Section \ref{sec:ErrorOverview} 
 
 First, we speed things up in our pipeline by separating our total number of baselines into $5$ groups (yielding $10$ baselines per group), where there are no repeated baselines within or between groups. In \citet{ali_et_al2015}, each group is then sampled with replacement to create a new group of the same size, which can have repeated baselines inside it. In doing so, we are sacrificing some of our sensitivity since there ends up being $3$-$4$ repeated baselines per group (Figure \ref{fig:toy_error2} shows the fraction of independent samples to be $\sim55\%$ for $10$ total independent samples) . In order to maximize our sensitivity but still apply random sampling for use in error estimation, we instead form new groups using all independent baselines except the very last one, which we fill randomly. We use this method for every bootstrap, creating new groups and sampling the last spot randomly each time.
 
-Power spectrum estimates showcasing these bootstrapping changes for PAPER-64 fringe-rate filtered data are shown in Figure \ref{fig:data_errors}. The estimates use a weighting matrix of $\textbf{C}_{eff}^{-1}$ in order to minimize signal loss. We show upper limits ($2\sigma$ error bars) for three different results. Our revised error estimation method is in black, where we only bootstrap along the baseline axis and we maximize sensitivity by random sampling only the last baseline in each group. The red curve uses a similar method except all baselines are randomly sampled, leading to a higher power spectrum estimate because some baselines are repeated per group. In blue, we bootstrap along both the baseline and time axes, drawing as many samples as there are in the data. We under-estimate errors in doing so because we are drawing many more samples than independent ones.
+Power spectrum estimates showcasing these bootstrapping changes for PAPER-64 fringe-rate filtered data are shown in Figure \ref{fig:data_errors}. The estimates are unweighted in order to disentangle the effects of bootstrapping from signal loss. We show upper limits ($2\sigma$ error bars) for three different results. Our revised error estimation method is in black, where we only bootstrap along the baseline axis and we maximize sensitivity by random sampling only the last baseline in each group. The blue curve uses a similar method except all baselines are randomly sampled, leading to a higher power spectrum estimate because some baselines are repeated per group. In red, we bootstrap along both the baseline and time axes, drawing as many samples as there are in the data. We under-estimate errors in doing so because we are drawing many more samples than independent ones.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{plots/data_errors.png}
-	\caption{$2\sigma$ upper limit power spectrum estimates using PAPER-64 data and three different bootstrapping methods. The data is fringe-rate filtered and a weighting matrix of $\textbf{C}_{eff}^{-1}$ is used in order to minimize signal loss. Three different bootstrapping methods are shown: the black and red use methods where bootstrapping occurs on the baseline axis only (not the time axis), and they differ by how the baselines are randomly sampled. It is evident that sensitivity is maximized when baselines are sampled in a way that ensures mostly independent samples (only the last baseline spot is sampled randomly). The blue result bootstraps over both the baseline and time axes, and illustrates how errors can be under-estimated if sampling more values than independent ones (fringe-rate filtering reduces the number of independent samples).}
+	\caption{$2\sigma$ power spectrum errors (not upper limits) using PAPER-64 data and three different bootstrapping methods. The data is fringe-rate filtered and a weighting matrix of $\textbf{I}$ (unweighted) is used in order to disentangle the effects of bootstrapping from signal loss. Three different bootstrapping methods are shown: the blue and black use methods where bootstrapping occurs on the baseline axis only (not the time axis), and they differ by how the baselines are randomly sampled. It is evident that sensitivity is maximized when baselines are sampled in a way that ensures mostly independent samples (only the last baseline spot is sampled randomly), as shown by the black curve. In red, bootstrapping occurs over both the baseline and time axes, illustrating how errors can be under-estimated if sampling more values than independent ones (fringe-rate filtering reduces the number of independent samples).}
 	\label{fig:data_errors}
 \end{figure}
 
@@ -754,25 +754,66 @@ In addition to mitigating foreground bias at high $k$'s, two other sources of bi
 
 To mitigate crosstalk bias, which appears as a static bias in time, we apply a fringe-rate filter that suppresses fringe-rates of zero. Figure \ref{fig:frp} shows that the filter response is zero for such static signals. The effect of filtering out zero fringe-rates on power spectrum results is shown in \citet{ali_et_al2015}. Most notably, power spectrum detections exist at all $k$'s without crosstalk removal and these are detections that, depending on the power spectrum level, could be mistaken for EoR. 
 
-\subsubsection{Jack-Knife Tests}
+\subsubsection{Jackknife Tests}
 
-The highest sensitivity power spectrum result using PAPER-64 data and all revised methods, shown in Figure \ref{fig:ps1_data}, has positive biases. As discussed in Section \ref{sec:BiasTypes}, the detections that appear at low $k$ values are most likely attributable to foreground leakage. However, the positive biases at higher $k$ values require further investigation. 
+The highest sensitivity power spectrum result using PAPER-64 data and all revised methods, shown in Figure \ref{fig:ps1_data}, has positive biases at low $k$ values. As discussed in Section \ref{sec:BiasTypes}, these detections are most likely attributable to foreground leakage. Here we demonstrate $3$ null tests performed on PAPER-64 data that verify that the positive detections are indeed due to foreground variation and not attributable to EoR.
 
-\cc{THIS NEXT PART IS INCOMPLETE.}
+The $3$ null test results are shown in Figure \ref{fig:null}, with each test described as the following:
 
-\cc{To Do: Describe some jackknife tests done on PAPER-64 data, such as random signs to baselines and even/odd summing and differencing} 
+\begin{itemize}
+\item Original (black): This is identical to the power spectrum in Figure \ref{fig:ps1_data} and represents the best revised PAPER-64 power spectrum (one baseline type only) with weighting matrix $\textbf{C}_{eff}$. There are clear detections at low $k$'s.
+\item Even/Odd (blue): We split our dataset into even (e) and odd (o) days, where $\textbf{x}_{1} = e + o$ and $\textbf{x}_{2} = e - o$. We form datasets in this way to ensure that we use the full sensitivity of our data. When cross-multiplied, we obtain:
+\begin{equation}
+\textbf{x}_{1}\textbf{x}_{2}^{\dagger} = ee^{\dagger} - eo^{\dagger} + oe^{\dagger} - oo^{\dagger}
+\end{equation}
+If the same sky signal is in both the even and odd datasets, we expect it to cancel out.
+\item Baselines (green): We split our dataset into two halves, where each contains half of the total baselines used in the analysis. Again, we form $\textbf{x}_{1} = b_{1} + b_{2}$ and $\textbf{x}_{2} = b_{1} - b_{2}$, where $b_{1}$ is the first baseline group and $b_{2}$ is the second baseline group.
+\item LST (purple): We split our dataset into two halves based on LST, namely $t_{1}$ (LSTs 0.5-4.6 hours) and $t_{2}$ (LSTs 4.6-8.6 hours). We form our two datasets as $\textbf{x}_{1} = t_{1} + t_{2}$ and $\textbf{x}_{2} = t_{1} - t_{2}$
+\end{itemize}
 
-\cc{To Do: Describe null tests that PAPER-64 fails... for example, it fails null tests in LST, which implies that our excesses are likely residual foregrounds}
+\begin{figure}
+	\centering
+	\includegraphics[width=\columnwidth]{plots/null.png}
+	\caption{Results of $3$ null tests compared to the PAPER-64 revised power spectrum (black) and estimated $2\sigma$ errors (grey shaded region). For each, we took jackknives along different axes of the dataset - by julian days (separating even and odd days; blue), by baselines (green), and by LST (purple). We expect the sky signal to disappear for a `passing' null test. We find that the biases in our power spectrum are likely caused by variation of foregrounds in LST, and are not attributable to particular baselines or days of data.}
+	\label{fig:null}
+\end{figure}
+
+Investigating Figure \ref{fig:null}, we find that both the baselines and even/odd null tests are consistent with noise. We note that the error bars for the baselines test (green) are especially small --- this is because the signal is effectively cancelled out prior to cross-multiplication (when forming baseline groups). 
+
+The null test in LST (purple) is much more illuminating. The fact that there are many power spectrum points outside the estimated error region signifies that the bias we see is likely from foregrounds that vary in LST. In other words, $t_{1}$ and $t_{2}$ differ by an amount greater than thermal noise and they do not effectively cancel out the sky signal during cross-multiplication. The errors on this null test are also large, also reflective of residual foregrounds. 
+
+We do not investigate the detailed nature of the residual foregrounds in this paper, though one could imagine performing many similar null tests with a sliding window of $t_{1}$'s and $t_{2}$'s. This would illuminate the particular LST range that introduces the foreground bias (or whether the bias is constant in LST), and could potentially be traced to a individual bright radio source. This type of detailed analysis will be critical at EoR sensitivities, however, for the purpose of this paper we are not surprised that the bias we see comes from foregrounds in regions where we expect leakage.
 
 % CONCLUSION ---------------------------------------------------------------------------------
 
 \section{Conclusion}
 \label{sec:Con}
 
-We quote a best $2\sigma$ upper limit of $(158.0$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, a higher limit than \citet{ali_et_al2015} by a factor of $\sim50$ in mK$^{2}$
+Although current $21$cm published power spectrum upper limits lie a $\sim$couple orders of magnitude above predicted EoR levels, ongoing analyses of deeper sensitivity datasets from PAPER, MWA, and LOFAR, as well as next generation instruments like HERA, expect to continue to push towards EoR sensitivities. As the field progresses towards a coveted detection, we have shown that it is crucial for future analyses to have a rigorous understanding of signal loss in an analysis pipeline, be able to accurately and robustly calculate both power spectrum and theoretical errors, and consistently undergo a comprehensive set of jackknive and null tests.
+
+In particular, in this paper we have investigated the subtleties and tradeoffs of common $21$cm power spectrum techniques on signal loss, error estimation, and bias, which can be summarized as follows:
+
+\begin{itemize}
+\item Substantial signal loss can result when weighting data using empirically estimated covariances. Loss of the $21$cm signal is especially significant if more eigenmodes are down-weighted than exist in the data (having an under-constrained covariance matrix). Hence, there exists a trade-off between sensitivity driven time-averaging techniques such as fringe-rate filtering and signal loss. 
+\item Signal injection and recovery simulations can be used to quantify signal loss. However, a signal-only simulation can underestimate loss by failing to account for spurious correlations between the data and signal. 
+\item Errors that are estimated via bootstrapping can be underestimated if samples in the dataset are correlated. If the number of independent samples in a dataset is well-determined, bootstrapping is a simple and accurate way of estimating errors.
+\item An EoR detection must pass all null tests. Similarly, performing jackknife tests along multiple axes of a dataset is necessary for confidence in a true EoR detection, and can also be used to tease out systematics.
+\end{itemize}
+
+As a consequence of our investigations, we have also revised power spectrum results from PAPER-64. For an analysis of only one baseline type, we quote a new $2\sigma$ upper limit of $(158.0$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, a higher limit than \citet{ali_et_al2015} by a factor of $\sim50$ in mK$^{2}$. The reasons for a previously underestimated limit and ways in which our new analysis differs can be summarized by the following:
+
+\begin{itemize}
+\item Signal loss, previously found to be $<2\%$ in \citet{ali_et_al2015}, was underestimated by a factor of $\sim$$1000$. Because PAPER-64 is limited by its number of samples, we use a regularized covariance weighting in our revised analysis to minimize loss, thereby increasing the original PAPER-64 limit in mK$^{2}$ by a factor of $\sim$$50$ instead of $1000$. Underestimated signal loss represents the bulk of our revision.
+\item Power spectrum errors, originally computed by bootstrapping, were underestimated by a factor of $\sim$$2$ due to oversampling data with a reduced number of independent samples from fringe-rate filtering. They were also overestimated by a factor of $\sim$$2$ from using a suboptimal way of combining baselines into groups when forming power spectra. Hence, the net change for our error estimation is negligible, though the intuition behind the previous estimation was incorrect.
+\item Several factors used in an analytic expression to predict the noise-level in PAPER-64 data were revised, yielding an increase in predicted sensitivity level by a factor of $\sim$$7$. We have verified our revised prediction extensively using pure noise simulations.
+\end{itemize}
+
+The $21$cm future is exciting, as new experiments have sensitivities that expect to reach and surpass EoR levels, improved foreground mitigation/removal strategies are being developed, and simulations are being designed to better understand instruments. On the power spectrum analysis side, we recognize that there is still much work to do. Even with robust signal loss simulations and precise error calculations, we are currently limited by data volume and foreground suppression strategies. However, the future promises to bring higher sensitivity $21$ cm measurements, better foreground and instrumental models, more effective and less lossy weighting techniques --- and with all that, an improved understanding of reionization and our early Universe.
+
+% ACKNOWLEDGEMENTS ---------------------------------------------------------------------------------
 
 \section{Acknowledgements}
-The author would like acknowledge the UC Berkeley Chancellor's Fellowship, National Science Foundation Graduate Research Fellowship (grant \cc{fill in}), and thank Eric Switzer for helpful discussions. PAPER is supported by grants from the National Science Foundation (awards 0804508, 1129258, and 1125558). ARP, JCP, and DCJ would also like to acknowledge NSF support (awards 1352519, 1302774, and 1401708, respectively). JEA would like to acknowledge a generous grant from the Mount Cuba Astronomical Association for computing resources. We also graciously thank SKA-SA for site infrastructure and observing support.
+The author would like acknowledge the UC Berkeley Chancellor's Fellowship, National Science Foundation Graduate Research Fellowship (Division of Graduate Education award 1106400), and thank Eric Switzer for helpful discussions. PAPER is supported by grants from the National Science Foundation (awards 0804508, 1129258, and 1125558). ARP, JCP, and DCJ would also like to acknowledge NSF support (awards 1352519, 1302774, and 1401708, respectively). JEA would like to acknowledge a generous grant from the Mount Cuba Astronomical Association for computing resources. We also graciously thank SKA-SA for site infrastructure and observing support.
 \label{sec:Ack}
 
 % APPENDIX ---------------------------------------------------------------------------------
@@ -780,6 +821,8 @@ The author would like acknowledge the UC Berkeley Chancellor's Fellowship, Natio
 \appendix
 \section{A toy model for signal loss}
 \label{sec:sigloss_appendix}
+
+\cc{Note to Adrian: I standardized all Q indices to be superscripts instead of subscripts. Also standardized equations to be ``Equation eqref" (spell out Equation, and use eqref for references)}
 
 In this Appendix, we examine a toy model for signal loss. Our goal is to build intuition by deriving an analytic formula for power spectrum signal loss. We will also show that in general, signal loss appears as a multiplicative bias on one's power spectrum estimate.
 

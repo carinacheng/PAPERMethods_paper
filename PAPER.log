@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  10 NOV 2017 13:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  13 NOV 2017 19:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -876,12 +876,12 @@ File: plots/ps2_data.png Graphic file (type png)
 Package pdftex.def Info: plots/ps2_data.png used on input line 579.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/sigloss_modeloop.png, id=409, 578.16pt x 433.62pt>
+<plots/sigloss_modeloop.png, id=409, 867.24pt x 578.16pt>
 File: plots/sigloss_modeloop.png Graphic file (type png)
 
 <use plots/sigloss_modeloop.png>
 Package pdftex.def Info: plots/sigloss_modeloop.png used on input line 595.
-(pdftex.def)             Requested size: 513.11743pt x 384.85533pt.
+(pdftex.def)             Requested size: 513.11743pt x 342.09068pt.
 
 <plots/ps1_data_reg.png, id=414, 361.35pt x 433.62pt>
 File: plots/ps1_data_reg.png Graphic file (type png)
@@ -898,21 +898,21 @@ Package pdftex.def Info: plots/ps2_data_reg.png used on input line 609.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
  [16] [17 <./plots/ps2_data_nosigloss.png> <./plots/ps2_data.png>] [18 <./plots
 /sigloss_modeloop.png>]
-<plots/sense_check.png, id=474, 286.9119pt x 341.8371pt>
+<plots/sense_check.png, id=475, 286.9119pt x 341.8371pt>
 File: plots/sense_check.png Graphic file (type png)
 
 <use plots/sense_check.png>
 Package pdftex.def Info: plots/sense_check.png used on input line 669.
 (pdftex.def)             Requested size: 242.26653pt x 288.6486pt.
 
-<plots/ps1_noise_reg.png, id=483, 361.35pt x 433.62pt>
+<plots/ps1_noise_reg.png, id=484, 361.35pt x 433.62pt>
 File: plots/ps1_noise_reg.png Graphic file (type png)
 
 <use plots/ps1_noise_reg.png>
 Package pdftex.def Info: plots/ps1_noise_reg.png used on input line 686.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_noise_reg.png, id=484, 361.35pt x 433.62pt>
+<plots/ps2_noise_reg.png, id=485, 361.35pt x 433.62pt>
 File: plots/ps2_noise_reg.png Graphic file (type png)
 
 <use plots/ps2_noise_reg.png>
@@ -920,10 +920,10 @@ Package pdftex.def Info: plots/ps2_noise_reg.png used on input line 687.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
  [19 <./plots/ps1_data_reg.png> <./plots/ps2_data_reg.png>]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 697.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 698.
 
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 697.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 698.
 
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
@@ -935,39 +935,51 @@ File: plots/data_errors.png Graphic file (type png)
 Package pdftex.def Info: plots/data_errors.png used on input line 711.
 (pdftex.def)             Requested size: 242.26653pt x 181.6957pt.
  [20 <./plots/sense_check.png>] [21 <./plots/ps1_noise_reg.png> <./plots/ps2_no
-ise_reg.png> <./plots/data_errors.png>] [22]
+ise_reg.png> <./plots/data_errors.png>]
+<plots/null.png, id=539, 578.16pt x 433.62pt>
+File: plots/null.png Graphic file (type png)
+ <use plots/null.png>
+Package pdftex.def Info: plots/null.png used on input line 776.
+(pdftex.def)             Requested size: 242.26653pt x 181.6957pt.
+ [22 <./plots/null.png>] [23]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 822.
+(amsmath)                 on input line 865.
 
-[23] <plots/analytic_sig_loss.pdf, id=568, 578.16pt x 433.62pt>
+[24] <plots/analytic_sig_loss.pdf, id=580, 578.16pt x 433.62pt>
 File: plots/analytic_sig_loss.pdf Graphic file (type pdf)
 
 <use plots/analytic_sig_loss.pdf>
-Package pdftex.def Info: plots/analytic_sig_loss.pdf used on input line 854.
+Package pdftex.def Info: plots/analytic_sig_loss.pdf used on input line 897.
 (pdftex.def)             Requested size: 307.87358pt x 230.9026pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.855 ...re $\Chat = (1-\eta) \C + \eta \x \x^t$.}
-                                                   (./PAPER.bbl [24 <./plots/an
-alytic_sig_loss.pdf>])
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 866.
- [25]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 866.
+l.898 ...re $\Chat = (1-\eta) \C + \eta \x \x^t$.}
+                                                   (./PAPER.bbl
+Overfull \vbox (14.2941pt too high) has occurred while \output is active []
+
+
+Overfull \vbox (14.2941pt too high) has occurred while \output is active []
+
+
+[25 <./plots/analytic_sig_loss.pdf>])
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 909.
+ [26]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 909.
  (./PAPER.aux)
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 866.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 909.
  ) 
 Here is how much of TeX's memory you used:
- 10757 strings out of 493014
- 150578 string characters out of 6133351
- 305917 words of memory out of 5000000
- 13983 multiletter control sequences out of 15000+600000
+ 10764 strings out of 493014
+ 150686 string characters out of 6133351
+ 313646 words of memory out of 5000000
+ 13987 multiletter control sequences out of 15000+600000
  13623 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,11n,53p,1760b,574s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,11n,53p,1760b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></u
@@ -991,10 +1003,10 @@ st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2016/texmf-dist
 onts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2016/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (25 pages, 5847590 bytes).
+Output written on PAPER.pdf (26 pages, 5898383 bytes).
 PDF statistics:
- 728 PDF objects out of 1000 (max. 8388607)
- 553 compressed objects within 6 object streams
- 135 named destinations out of 1000 (max. 500000)
- 245 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 742 PDF objects out of 1000 (max. 8388607)
+ 564 compressed objects within 6 object streams
+ 138 named destinations out of 1000 (max. 500000)
+ 250 words of extra memory for PDF output out of 10000 (max. 10000000)
 
