@@ -708,7 +708,7 @@ Power spectrum estimates with these bootstrapping changes for PAPER-64 fringe-ra
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/data_errors.png}
+	\includegraphics[trim={0.3cm 0.3cm 0.3cm 0.3cm},width=\columnwidth]{plots/data_errors.png}
 	\caption{$2\sigma$ power spectrum errors (not upper limits) using PAPER-64 data and three different bootstrapping methods. The data is fringe-rate filtered and a weighting matrix of $\textbf{I}$ (unweighted) is used in order to disentangle the effects of bootstrapping from signal loss. Three different bootstrapping methods are shown: the blue and black use methods where bootstrapping occurs on the baseline axis only (not the time axis), and they differ by how the baselines are randomly sampled. It is evident that sensitivity is maximized when baselines are sampled in a way that ensures mostly independent samples (only the last baseline spot is sampled randomly), as shown by the black curve. In red, bootstrapping occurs over both the baseline and time axes, illustrating how errors can be under-estimated if sampling more values than independent ones (fringe-rate filtering reduces the number of independent samples).}
 	\label{fig:data_errors}
 \end{figure}

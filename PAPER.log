@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  14 NOV 2017 18:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  15 NOV 2017 11:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -950,7 +950,7 @@ File: plots/data_errors.png Graphic file (type png)
 
 <use plots/data_errors.png>
 Package pdftex.def Info: plots/data_errors.png used on input line 711.
-(pdftex.def)             Requested size: 242.26653pt x 181.6957pt.
+(pdftex.def)             Requested size: 242.26653pt x 179.8559pt.
  [20 <./plots/sense_check.png>] [21 <./plots/ps1_noise_reg.png> <./plots/ps2_no
 ise_reg.png> <./plots/data_errors.png>]
 <plots/null.png, id=559, 578.16pt x 433.62pt>
@@ -1014,7 +1014,7 @@ st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2016/texmf-dist
 onts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2016/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (26 pages, 2835291 bytes).
+Output written on PAPER.pdf (26 pages, 2836017 bytes).
 PDF statistics:
  763 PDF objects out of 1000 (max. 8388607)
  587 compressed objects within 6 object streams
