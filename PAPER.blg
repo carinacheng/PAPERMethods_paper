@@ -1,47 +1,47 @@
-This is BibTeX, Version 0.99d (TeX Live 2016)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: PAPER.aux
 The style file: apj.bst
 Database file #1: PAPERNotes.bib
 Database file #2: refs.bib
-You've used 31 entries,
+You've used 33 entries,
             2988 wiz_defined-function locations,
-            826 strings with 13994 characters,
-and the built_in function-call counts, 15889 in all, are:
-= -- 1132
-> -- 1414
+            837 strings with 14537 characters,
+and the built_in function-call counts, 16852 in all, are:
+= -- 1206
+> -- 1491
 < -- 7
-+ -- 475
-- -- 441
-* -- 1555
-:= -- 3086
-add.period$ -- 31
-call.type$ -- 31
-change.case$ -- 200
-chr.to.int$ -- 30
-cite$ -- 31
-duplicate$ -- 576
-empty$ -- 835
-format.name$ -- 547
-if$ -- 3031
-int.to.chr$ -- 2
++ -- 504
+- -- 465
+* -- 1651
+:= -- 3270
+add.period$ -- 33
+call.type$ -- 33
+change.case$ -- 214
+chr.to.int$ -- 31
+cite$ -- 33
+duplicate$ -- 613
+empty$ -- 887
+format.name$ -- 578
+if$ -- 3214
+int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 30
-newline$ -- 97
-num.names$ -- 124
-pop$ -- 193
+missing$ -- 32
+newline$ -- 103
+num.names$ -- 132
+pop$ -- 206
 preamble$ -- 1
-purify$ -- 200
+purify$ -- 214
 quote$ -- 0
-skip$ -- 493
+skip$ -- 520
 stack$ -- 0
-substring$ -- 631
-swap$ -- 10
+substring$ -- 669
+swap$ -- 12
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 279
+type$ -- 297
 warning$ -- 0
-while$ -- 95
+while$ -- 101
 width$ -- 0
-write$ -- 310
+write$ -- 330
