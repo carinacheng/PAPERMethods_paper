@@ -780,8 +780,6 @@ In Section \ref{sec:BiasOverview} we highlighted some common sources of bias tha
 
 \subsubsection{Mitigating Bias}
 
-\cc{Should we even include this next section? I included it to follow-up on Section 2.3.1, but it's not saying anything new...}
-
 We briefly discuss one way in which we mitigate foreground leakage in a power spectrum estimate, and two in which we suppress noise biases. These methods are not novel to this analysis but here we frame them in the context of minimizing false (non-EoR) detections.
 
 Tailoring window functions is one way to suppress foreground biases. As alluded to in Section \ref{sec:SiglossOverview}, we have a choice for the normalization matrix $\textbf{M}$ in Equation \eqref{eq:phat}. For the analysis of PAPER-64 data, we compute $\textbf{M}$ using the Fisher matrix $\textbf{F}$, defined as:
@@ -849,7 +847,7 @@ We do not investigate the detailed nature of the residual foregrounds in this pa
 \section{Conclusion}
 \label{sec:Con}
 
-Although current $21$ cm published power spectrum upper limits lie a couple orders of magnitude above predicted EoR levels, ongoing analyses of deeper sensitivity datasets from PAPER, MWA, and LOFAR, as well as next generation instruments like HERA, are expected to continue to push towards EoR sensitivities. As the field progresses towards a detection, we have shown that it is crucial for future analyses to have a rigorous understanding of signal loss in an analysis pipeline, be able to accurately and robustly calculate both power spectrum and theoretical errors, and consistently undergo a comprehensive set of jackknife and null tests.
+Although current $21$ cm published power spectrum upper limits lie several orders of magnitude above predicted EoR levels, ongoing analyses of deeper sensitivity datasets from PAPER, MWA, and LOFAR, as well as next generation instruments like HERA, are expected to continue to push towards EoR sensitivities. As the field progresses towards a detection, we have shown that it is crucial for future analyses to have a rigorous understanding of signal loss in an analysis pipeline, be able to accurately and robustly calculate both power spectrum and theoretical errors, and consistently undergo a comprehensive set of jackknife and null tests.
 
 In particular, in this paper we have investigated the subtleties and tradeoffs of common $21$ cm power spectrum techniques on signal loss, error estimation, and bias, which can be summarized as follows:
 
@@ -865,7 +863,7 @@ As a consequence of our investigations, we have also revised power spectrum resu
 \begin{itemize}
 \item Signal loss, previously found to be $<2\%$ in P64, was underestimated by a factor of $\sim$$1000$ for inverse covariance weighting. For our new analysis, we use a regularized covariance weighting method to minimize loss (Section \ref{sec:Weight}). However, because our revised weighting method is not as aggressive as the former, our results are still a factor of $\sim7$ mK higher than previous limits. Underestimated signal loss therefore represents the bulk of our revision. We note that PAPER's analysis is not the first to underestimate loss; results from the GMRT (\citealt{paciga_et_al2013}) were also revised from new signal loss calculations associated with their singular value decomposition foreground filter.
 \item Power spectrum errors, originally computed by bootstrapping, were underestimated by a factor of $\sim$$2$ due to oversampling data whose effective number of independent samples was reduced from fringe-rate filtering. They were also overestimated by a factor of $\sim$$2$ from using a suboptimal way of combining baselines into groups when forming power spectra (Section \ref{sec:Boot}). Hence, the net change for our error estimation is negligible, though the rationale behind the previous estimation was incorrect.
-\item Several factors used in an analytic expression to predict the noise-level in PAPER-64 data were revised, yielding a decrease in predicted sensitivity level by a factor of $\sim$$3$ in mK (Section \ref{sec:PSSense}). We have verified our revised prediction extensively using pure noise simulations. We note that our sensitivity prediction is revised by a factor less than our power spectrum result, implying that the theoretical prediction for noise in P64 was too high for its data points.
+\item Several factors used in an analytic expression to predict the noise-level in PAPER-64 data were revised, yielding a decrease in predicted sensitivity level by a factor of $\sim$$3$ in mK (Section \ref{sec:PSSense}). We have verified our revised prediction extensively using pure noise simulations. We note that our sensitivity prediction is revised by a factor less than our power spectrum result, implying that if taken at face value, the theoretical prediction for noise in P64 was too high for its data points.
 \end{itemize}
 
 The $21$ cm future is exciting, as new experiments have sensitivities that expect to reach and surpass EoR levels, improved foreground mitigation/removal strategies are being developed, and simulations are being designed to better understand instruments. On the power spectrum analysis side, robust signal loss simulations, precise error calculations, and comprehensive jackknife tests will play critical roles in accurate $21$ cm results. Looking ahead, the future promises to bring higher sensitivity measurements, better foreground and instrumental models, more effective and less lossy weighting techniques --- and with all that, an improved understanding of reionization and our early Universe.
@@ -873,7 +871,7 @@ The $21$ cm future is exciting, as new experiments have sensitivities that expec
 % ACKNOWLEDGEMENTS ---------------------------------------------------------------------------------
 
 \section{Acknowledgements}
-CC would like to acknowledge the UC Berkeley Chancellor's Fellowship, National Science Foundation Graduate Research Fellowship (Division of Graduate Education award 1106400), and thank Eric Switzer for helpful discussions. PAPER and HERA are supported by grants from the National Science Foundation (awards 1440343, and 1636646). ARP, JCP, DCJ, and JEA would also like to acknowledge NSF support (awards 1352519, 1302774, 1401708, and 1455151, respectively). We also graciously thank SKA-SA for site infrastructure and observing support.
+CC would like to acknowledge the UC Berkeley Chancellor's Fellowship, National Science Foundation Graduate Research Fellowship (Division of Graduate Education award 1106400), and thank Eric Switzer for helpful discussions. PAPER and HERA are supported by grants from the National Science Foundation (awards 1440343, and 1636646). ARP, DCJ, and JEA would also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, respectively). We also graciously thank SKA-SA for site infrastructure and observing support.
 \label{sec:Ack}
 
 % APPENDIX ---------------------------------------------------------------------------------
