@@ -1180,7 +1180,7 @@ weighting contaminants with minimizing the loss of EoR.
 	\includegraphics[width=0.4\textwidth]{plots/ps2_data.png}
 	\caption{Full inverse covariance weighted power spectrum of PAPER-64 data (positive (black) and negative (grey) points, 
 with $2\sigma$ error bars) before signal loss correction (left) and after (right). The dashed blue line is the unweighted power 
-spectrum ($2\sigma$ upper limit). The solid green line is the theoretical noise level prediction based on observational 
+spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on observational 
 parameters, whose calculation is detailed in Section \ref{sec:PSSense}.}
 	\label{fig:ps2_data}
 \end{figure*}
@@ -1256,11 +1256,11 @@ a higher limit than P64 by a factor of $\sim7$ in mK (though we only use one bas
 	\includegraphics[width=0.4\textwidth]{plots/ps2_data_reg.png}
 	\caption{Power spectrum of PAPER-64 using $\hat{\textbf{C}}_{eff}$. Black and grey points correspond to positive and 
 negative power spectrum values, respectively, with $2\sigma$ error bars also plotted. The dashed blue line is the unweighted 
-power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical noise level prediction based on observational 
-parameters. This power spectrum result differs from P64 in that it only uses data from one type of baseline ($30$ m East/West 
-baselines) instead of three. Major differences from previously published results stem from revisions regarding signal loss, 
-bootstrapping, and the theoretical error computation. We quote a best $2\sigma$ upper limit of $(158.0$ mK$)^{2}$ at $k=0.34$ 
-$h$Mpc$^{-1}$, a higher limit than P64 by a factor of $\sim7$ in mK \cc{ref kolopanis limit instead later}.}
+power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on 
+observational parameters. This power spectrum result differs from P64 in that it only uses data from one type of baseline ($30$ m 
+East/West baselines) instead of three. Major differences from previously published results stem from revisions regarding signal 
+loss, bootstrapping, and the theoretical error computation. We quote a best $2\sigma$ upper limit of $(158.0$ mK$)^{2}$ at 
+$k=0.34$ $h$Mpc$^{-1}$, a higher limit than P64 by a factor of $\sim7$ in mK \cc{ref kolopanis limit instead later}.}
 	\label{fig:ps1_data}
 \end{figure*}
 
@@ -1409,10 +1409,10 @@ spectrum, and the solid green line denotes our $2\sigma$ theoretical noise predi
 	\includegraphics[width=0.4\textwidth]{plots/ps1_noise_reg.png}
 	\includegraphics[width=0.4\textwidth]{plots/ps2_noise_reg.png}
 	\caption{Power spectrum estimate for a noise simulation that mimics the noise level of PAPER-64 data. The weighted 
-power spectrum points and $2\sigma$ errors are show in black and grey (positive and negative values), where we use $
+power spectrum points and their $2\sigma$ errors are show in black and grey (positive and negative values), where we use $
 \hat{\textbf{C}}_{eff}$ to minimize signal loss. The dashed blue line is the unweighted power spectrum (also $2\sigma$ upper 
-limit). The solid green line is the theoretical noise level prediction as calculated by Equation \eqref{eq:sense}. All three 
-estimates agree.}
+limit). The solid green line is the theoretical $2\sigma$ noise level prediction as calculated by Equation \eqref{eq:sense}. All three 
+estimates agree (the analytic curve should encompass $95\%$ of the points).}
 	\label{fig:ps_noise}
 \end{figure*}
 
@@ -1466,7 +1466,7 @@ sampled. It is evident that sensitivity is maximized when baselines are sampled 
 samples (only the last baseline spot is sampled randomly), as shown by the black curve. In red, bootstrapping occurs over both 
 the baseline and time axes, illustrating how errors can be under-estimated if sampling more values than independent ones 
 (fringe-rate filtering reduces the number of independent samples). We use the method illustrated by the black curve in our 
-updated analysis, which is shown to agree with the analytic prediction for noise (green).}
+updated analysis, which is shown to agree with the $2\sigma$ analytic prediction for noise (green).}
 	\label{fig:data_errors}
 \end{figure}
 
@@ -1562,9 +1562,9 @@ group and $b_{2}$ is the second baseline group.
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{plots/null.png}
-	\caption{Results for $3$ null tests compared to the PAPER-64 revised power spectrum (black) and estimated $2\sigma$ 
-errors (grey shaded region). For each, we took jackknives along different axes of the dataset - by julian days (separating even 
-and odd days; blue), by baselines (green), and by LST (purple). We expect the sky signal to disappear for a `passing' null test. 
+	\caption{Results for $3$ null tests compared to the PAPER-64 revised power spectrum (black) and analytically estimated 
+$2\sigma$ errors (grey shaded region). For each, we took jackknives along different axes of the dataset - by julian days (separating 
+even and odd days; blue), by baselines (green), and by LST (purple). We expect the sky signal to disappear for a `passing' null test. 
 We find that the biases in our power spectrum are likely caused by variation of foregrounds in LST, and are not attributable to 
 particular baselines or days of data.}
 	\label{fig:null}
