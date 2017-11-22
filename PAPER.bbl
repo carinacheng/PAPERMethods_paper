@@ -32,12 +32,6 @@ Datta, A., Bowman, J.~D., \& Carilli, C.~L. 2010, The Astrophysical Journal,
 DeBoer, D.~R., {et~al.} 2017, Publications of the Astronomical Society of the
   Pacific, 129, 045001
 
-\bibitem[{{Ellingson} {et~al.}(2009){Ellingson}, {Clarke}, {Cohen}, {Craig},
-  {Kassim}, {Pihlstrom}, {Rickard}, \& {Taylor}}]{ellingson_et_al2009}
-{Ellingson}, S.~W., {Clarke}, T.~E., {Cohen}, A., {Craig}, J., {Kassim}, N.~E.,
-  {Pihlstrom}, Y., {Rickard}, L.~J., \& {Taylor}, G.~B. 2009, IEEE Proceedings,
-  97, 1421
-
 \bibitem[{{Greenhill} \& {Bernardi}(2012)}]{greenhill_bernardi2012}
 {Greenhill}, L.~J., \& {Bernardi}, G. 2012, ArXiv e-prints
 
@@ -62,6 +56,11 @@ Keating, G.~K., Marrone, D.~P., Bower, G.~C., Leitch, E., Carlstrom, J.~E., \&
 
 \bibitem[{Liu \& Tegmark(2011)}]{liu_tegmark2011}
 Liu, A., \& Tegmark, M. 2011, Phys. Rev. D, 83, 103006
+
+\bibitem[{Moore {et~al.}(2013)Moore, Aguirre, Parsons, Jacobs, \&
+  Pober}]{moore_et_al2013}
+Moore, D.~F., Aguirre, J.~E., Parsons, A.~R., Jacobs, D.~C., \& Pober, J.~C.
+  2013, The Astrophysical Journal, 769, 154
 
 \bibitem[{{Paciga} {et~al.}(2013){Paciga}, {Albert}, {Bandura}, {Chang},
   {Gupta}, {Hirata}, {Odegova}, {Pen}, {Peterson}, {Roy}, {Shaw}, {Sigurdson},

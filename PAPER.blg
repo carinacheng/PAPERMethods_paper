@@ -6,36 +6,36 @@ Database file #1: PAPERNotes.bib
 Database file #2: refs.bib
 You've used 33 entries,
             2988 wiz_defined-function locations,
-            837 strings with 14537 characters,
-and the built_in function-call counts, 16852 in all, are:
-= -- 1206
-> -- 1491
+            836 strings with 14528 characters,
+and the built_in function-call counts, 16713 in all, are:
+= -- 1199
+> -- 1467
 < -- 7
-+ -- 504
-- -- 465
-* -- 1651
-:= -- 3270
++ -- 497
+- -- 456
+* -- 1632
+:= -- 3242
 add.period$ -- 33
 call.type$ -- 33
-change.case$ -- 214
+change.case$ -- 211
 chr.to.int$ -- 31
 cite$ -- 33
 duplicate$ -- 613
-empty$ -- 887
-format.name$ -- 578
-if$ -- 3214
+empty$ -- 886
+format.name$ -- 569
+if$ -- 3190
 int.to.chr$ -- 3
 int.to.str$ -- 1
 missing$ -- 32
 newline$ -- 103
 num.names$ -- 132
-pop$ -- 206
+pop$ -- 202
 preamble$ -- 1
-purify$ -- 214
+purify$ -- 211
 quote$ -- 0
 skip$ -- 520
 stack$ -- 0
-substring$ -- 669
+substring$ -- 668
 swap$ -- 12
 text.length$ -- 1
 text.prefix$ -- 0

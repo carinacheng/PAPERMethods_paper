@@ -458,7 +458,14 @@ In the previous sections we have discussed three overarching $21$ cm power spect
 
 We now present a case study of these same three themes using data from the PAPER experiment. We use the intuition developed through the toy model simulations in order to make a new analysis of the PAPER-64 dataset originally presented in P64 and obtain a revised power spectrum estimate.
 
-As a brief review, PAPER is a dedicated $21$ cm experiment located in the Karoo Desert in South Africa. The PAPER-64 configuration consists of 64 dual-polarization drift-scan elements that are arranged in a grid layout. For our case study, we focus solely on Stokes I data from PAPER's $30$ m East/West baselines. For information about the backend system of PAPER-64, its observations, and data reduction pipeline, we refer the reader to \citet{parsons_et_al2010} and P64.
+As a brief review, PAPER is a dedicated $21$ cm experiment located in the Karoo Desert in South Africa. The PAPER-64 configuration consists of 64 dual-polarization drift-scan elements that are arranged in a grid layout. For our case study, we focus solely on Stokes I estimated data (\citealt{moore_et_al2013}) from PAPER's $30$ m East/West baselines (Figure \ref{fig:ant_layout}). For information about the backend system of PAPER-64, its observations, and data reduction pipeline, we refer the reader to \citet{parsons_et_al2010} and P64.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\columnwidth]{plots/ant_layout.png}
+	\caption{The PAPER-64 antenna layout. We use only the $30$ m East/West baselines for the revised analysis in this paper (such as baseline 49\_41).}
+	\label{fig:ant_layout}
+\end{figure}
 
 The previously best published $21$ cm upper limit result from P64 uses $124$ nights of data to place a $2\sigma$ upper limit on $\Delta^{2}(k)$, defined as
 
@@ -468,7 +475,7 @@ The previously best published $21$ cm upper limit result from P64 uses $124$ nig
 
 \noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$ h Mpc$^{-1}$ at $z = 8.4$. %The revision of this limit stems mostly from previously underestimated signal loss and underestimated error bars \cc{cite retraction paper}, both of which we address in the following sections. 
 
-For our analysis, we use $8$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (P64 uses a slightly different RA range of $0$-$8.6$ hours). All power spectrum results are produced for a center frequency of $151$ MHz using a width of $10$ MHz ($20$ channels), identical to the analysis in P64. We note that the PAPER-64 dataset that we use in this case study differs from that in P64 mainly by the fringe-rate filter. \cc{Danny says the next part is wrong, but that's what's in Zaki's paper... } In P64, the applied filter was degraded by widening it in fringe-rate space. This was chosen in order to increase the number of independent modes and reduce signal loss. With the development of a robust method for assessing signal loss, we feel comfortable using a narrow filter --- the optimal fringe-rate filter --- in order to maximize sensitivity. This filter is computed for a fiducial $30$ m baseline at $150$ MHz, the center frequency in our band. The filter in both the fringe-rate domain and time domain is shown in Figure \ref{fig:frp}.
+For our analysis, we use $8$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (P64 uses a slightly different RA range of $0$-$8.6$ hours). All power spectrum results are produced for a center frequency of $151$ MHz using a width of $10$ MHz ($20$ channels), identical to the analysis in P64. We note that, besides using only $1$ baseline type instead of the $3$ in P64, the PAPER-64 dataset that we use in this case study differs from that in P64 mainly by the fringe-rate filter. In P64, the applied filter was degraded by widening it in fringe-rate space. This was chosen in order to increase the number of independent modes and reduce signal loss, though as we will see this signal loss was still under-estimated. With the development of a new, robust method for assessing signal loss, we choose to use the optimal filter in order to maximize sensitivity. This filter is computed for a fiducial $30$ m baseline at $150$ MHz, the center frequency in our band. The filter in both the fringe-rate domain and time domain is shown in Figure \ref{fig:frp}.
 
 \begin{figure}
 	\centering
