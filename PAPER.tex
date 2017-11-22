@@ -369,7 +369,7 @@ In summary, bootstrapping can be an effective and straightforward way to estimat
 \subsection{Bias}
 \label{sec:BiasOverview}
 
-In a $21$ cm power spectrum, detections could be the EoR signal, but they could also (and unfortunately more likely) be attributed to other sources of bias. Connecting a detection to EoR as opposed to noise or foreground bias is a key challenge of future $21$ cm data analyses. In this section we will discuss possible sources of bias in a measurement, as well as techniques that can help mitigate their effects. We will also present a series of tests which we suggest be used to help evaluate deep limits and/or detections.
+In a $21$ cm power spectrum, detections could be the EoR signal, but they could also (and unfortunately more likely) be attributed to other sources of bias. Connecting a detection to EoR as opposed to noise or foreground bias is a key challenge of future $21$ cm data analyses. In this section we will discuss possible sources of bias in a measurement, as well as techniques that can help mitigate their effects. We will also present a series of tests in a pedagogical fashion which we suggest be used to help evaluate deep limits and/or detections.
 
 \subsubsection{Foreground and Noise Bias}
 \label{sec:BiasTypes}
@@ -391,7 +391,9 @@ Another type of noise bias can stem from the spurious cross-coupling of signals 
 \subsubsection{Jackknife Tests}
 \label{sec:JackknifeOverview}
 
-We now approach the difficult task of tracing excesses to foreground, noise, and EoR biases through a discussion of useful jackknife tests. The jackknife is a resampling technique in which a statistic (i.e. power spectrum) is computed in subsets of the data. These subsets are then compared to reveal systematics. In this section we define two main tests --- the null test and the traditional jackknife --- and explain how a power spectrum detection must pass each. We then highlight how these tests can be used to help distinguish between different sources of bias.
+We now approach the difficult task of tracing excesses to foreground, noise, and EoR biases through a discussion of useful jackknife tests. Again, we first approach this topic pedagogically as an introduction to the related PAPER discussion in Section \ref{sec:Bias}. 
+
+The jackknife is a resampling technique in which a statistic (i.e. power spectrum) is computed in subsets of the data. These subsets are then compared to reveal systematics. In this section we define two main tests --- the null test and the traditional jackknife --- and explain how a power spectrum detection must pass each. We then highlight how these tests can be used to help distinguish between different sources of bias.
  
 \begin{itemize}
 \item \textbf{Null Test}: A null test is a type of jackknife test that removes the astronomical signal from data in order to investigate underlying systematics. Several null tests on data are described in \citet{keating_et_al2016}. For example, one can divide data into two subsets by separating odd and even Julian dates, or the first half of the observing season from the second. Subtracting the two removes signal that is common to both subsets, including foregrounds and EoR. The resulting power spectrum should be consistent with thermal noise estimates; if it is not, it suggests the presence of a systematic that differs from one of the data subsets to the other (i.e. doesn't get subtracted perfectly). 
@@ -679,7 +681,7 @@ In particular, we highlight major changes in both our sensitivity calculation an
 
 Re-analysis of the PAPER-64 data included a detailed study using several independently generated noise simulations. What we found was that these simulations all agreed but were discrepant with the previous analytic sensitivity calculations. The analytic calculation is only an approximation, however the differences were large enough (factors of $10$ in some cases) to warrant a careful investigation. The analytic calculation attempts to combine a large number of pieces of information in an approximate way, and when re-considering some of the approximations, we have found there to be large effects. What follows here is an accounting of the differences which have been discovered.
 
-The sensitivity prediction (\citealt{parsons_et_al2012a}) for a power spectral analysis of interferometric $21$ cm data, in temperature-units, is:
+The sensitivity prediction (\citealt{parsons_et_al2012a}, \citealt{pober_et_al2013}) for a power spectral analysis of interferometric $21$ cm data, in temperature-units, is:
 
 \begin{equation}
 \label{eq:sense}
@@ -714,7 +716,7 @@ where $t_{int}=43$ seconds, $t_{frf}$ is the fringe-rate filtered integration ti
 \begin{equation}
 N_{bls} = \frac{N_{bls}}{N_{gps}}\sqrt{N_{gps}^{2}-N_{gps}},
 \end{equation}
-\noindent where, for the P64 analysis, $N_{gps} = 5$. Each baseline group averages down linearly as the number of baselines entering the group ($N_{bls}/N_{gps}$) and then as the square root of the number of cross-multiplied pairs ($\sqrt{N_{gps}^{2} - N_{gps}}$). For the revised PAPER-64 analysis with only one baseline separation type, this becomes $N_{bls} \sim 46$. 
+\noindent where, for the P64 analysis, $N_{gps} = 5$. Each baseline group averages down linearly as the number of baselines entering the group ($N_{bls}/N_{gps}$) and then as the square root of the number of cross-multiplied pairs ($\sqrt{N_{gps}^{2} - N_{gps}}$). For the revised PAPER-64 analysis with only one baseline separation type, this becomes $N_{bls} \sim 46$ instead of $51$. 
 \item $N_{pols}$: The number of polarizations averaged together. For the case of Stokes I, $N_{pols}=2$.
 \end{itemize}
 
@@ -737,7 +739,7 @@ T_{rms} = \frac{T_{sys}}{\sqrt{\Delta\nu \Delta t N_{days} N_{pols}}},
 
 \noindent where $\Delta\nu$ is channel spacing, $\Delta t$ is integration time, $N_{days}$ is the number of daily counts for a particular time and frequency that went into our LST-binned set, and $N_{pols}$ is the number of polarizations ($2$ for Stokes I). This RMS temperature sets the variance of the Gaussian random noise.
 
-Power spectrum results for the noise simulation are shown in Figure \ref{fig:ps_noise}, where the black and grey points represent positive and negative power spectrum values, respectively (with $2\sigma$ error bars and weighting matrix $\hat{\textbf{C}}_{eff}$), the dashed blue line represents the unweighted power spectrum, and the solid green line denotes our $2\sigma$ theoretical noise prediction as calculated by Equation \eqref{eq:sense}. All three are in agreement, validating our analytical thermal noise calculation. 
+Power spectrum results for the noise simulation, which uses our full power spectrum pipeline, are shown in Figure \ref{fig:ps_noise}, where the black and grey points represent positive and negative power spectrum values, respectively (with $2\sigma$ error bars and weighting matrix $\hat{\textbf{C}}_{eff}$), the dashed blue line represents the unweighted power spectrum, and the solid green line denotes our $2\sigma$ theoretical noise prediction as calculated by Equation \eqref{eq:sense}. All three are in agreement, validating our analytical thermal noise calculation. 
 
 \begin{figure*}
 	\centering
@@ -752,15 +754,15 @@ Power spectrum results for the noise simulation are shown in Figure \ref{fig:ps_
 
 We bootstrap PAPER-64 power spectra in order to determine confidence intervals for our results. In this section, we highlight two major changes in the way we estimate errors since P64, using the lessons we've learned about sampling with replacement and bootstrapping independent samples.
 
-As discussed in Section \ref{sec:ErrorOverview}, bootstrapping is only a valid way of estimating errors if a dataset is comprised of independent samples. The PAPER-64 pipeline outputs $20$ bootstraps (over baselines), each a $2$-dimensional power spectrum that is a function of $k$ and time. In P64, a second round of bootstrapping occurred over the baseline bootstrap and time axes simultaneously. Random values were sampled with replacement along both axes, drawing as many values as there are number of time integrations. Final power spectrum limits were then computed by taking the mean and standard deviation over this second bootstrap axis (which is typically large, on the order of $N_{boot} \sim 400$). We emphasize that in this previous version, the number of elements sampled per bootstrap ($N \sim $ number of times $\sim$ $700$) greatly exceeds the number of independent LST samples ($\sim$$8$), under-estimating errors.
+As discussed in Section \ref{sec:ErrorOverview}, bootstrapping is only a valid way of estimating errors if a dataset is comprised of independent samples. The PAPER-64 pipeline outputs $20$ bootstraps (over baselines), each a $2$-dimensional power spectrum that is a function of $k$ and time. 
 
-Because our dataset is fringe-rate filtered, we have substantially increased our integration time, resulting in fewer independent samples (from $\sim700$ samples to $8$ samples). A random draw of $700$ measurements from this dataset therefore has many repeated values, and the variance between hundreds ($N_{boot}$) of these random samples is smaller than the true underlying variance of the data. 
+In P64, a second round of bootstrapping occurred over the time axis. A total of $400$ bootstraps were created in this step ($N_{boot} = 400$), each comprised of randomly selected values sampled with replacement along the time axis. More specifically, each of these bootstraps contained the same number of values as the number of time integrations (which, at $\sim$$700$, greatly exceeds the approximate number of independent samples after fringe-rate filtering, which is $\sim$$8$). Medians were then taken of the values in each bootstrap (with the appropriate median correction factor applied). Finally, power spectrum limits were computed by taking the mean and standard deviation over all the bootstraps. We emphasize again that in this previous analysis, the number of elements sampled per bootstrap ($N \sim $ number of times $\sim$ $700$) greatly exceeded the number of independent LST samples ($\sim$$8$), under-estimating errors. A random draw of $700$ measurements from this dataset has many repeated values, and the variance between hundreds ($N_{boot}$) of these random samples is smaller than the true underlying variance of the data. 
 
-Given our new understanding of the sensitivity of bootstraps to the number of elements sampled, we have removed the second step entirely and now simply bootstrap over baselines with the ``single replacement" strategy described in Section \ref{sec:ErrorOverview}.
+Given our new understanding of the sensitivity of bootstraps to the number of elements sampled, we have removed the second bootstrapping step along time entirely and now simply bootstrap over baselines with the ``single replacement" strategy described in Section \ref{sec:ErrorOverview}.
 
 The single replacement strategy also provides a higher sensitivity estimate as only at most one baseline is repeated in each group. In P64, baselines were chosen for groups randomly with replacement. In doing so, $\sim$$3$-$4$ baselines per group were repeated (Figure \ref{fig:toy_error2} shows the fraction of independent samples to be $\sim$$55\%$ for $10$ total independent samples) which sacrificed some sensitivity. 
 
-Power spectrum estimates with these bootstrapping changes for PAPER-64 fringe-rate filtered data are shown in Figure \ref{fig:data_errors}. The estimates are unweighted in order to disentangle the effects of bootstrapping from signal loss. As shown in the figure, when the baseline average includes many repeated samples the error is over-estimated, while when only one sample in the same average is allowed the possibility of being a repeat, the error on the noise-dominated higher $k$ modes converges to the theoretical noise level.  However, if more elements are drawn for each bootstrap than the number of independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits below the predicted noise level.
+Power spectrum estimates with these bootstrapping changes for PAPER-64 fringe-rate filtered data are shown in Figure \ref{fig:data_errors}. The estimates are unweighted in order to disentangle the effects of bootstrapping from signal loss. As shown in the figure, when the baseline average includes many repeated samples our sensitivity is not maximized, while when only one sample in the same average is allowed the possibility of being a repeat, the error on the noise-dominated higher $k$ modes converges to the theoretical noise level.  However, if more elements are drawn for each bootstrap than the number of independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits below the predicted noise level.
 
 \begin{figure}
 	\centering
