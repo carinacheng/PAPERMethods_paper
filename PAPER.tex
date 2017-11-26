@@ -41,6 +41,11 @@
 
 \newcommand{\cc}[1]{{\color{purple} \textbf{[CC: #1]}}}
 \newcommand{\acl}[1]{{\color{red} \textbf{[ACL:  #1]}}}
+\newcommand{\dcj}[1]{{\color{orange} \textbf{[DCJ: #1]}}}
+
+% Math shortcuts from Danny
+\newcommand{\Prob}{\mathbf{P}}
+
 
 \begin{document}
 \title{Data Analysis Methods for the Detection of the Epoch of Reionization}
@@ -969,12 +974,9 @@ P_{out,\alpha} &=& \hat{\textbf{p}}_{r,\alpha}-\hat{\textbf{p}}_{x,\alpha} \nonu
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
 
-$P_{in}$ represents the unweighted power spectrum of only $\textbf{e}$, our simulated EoR signal. $P_{out}$ is the weighted 
-power spectrum of $\textbf{e}$ that would result from our pipeline if the signal was mixed with our data. Comparing the two 
-quantities yields insight into how much of $\textbf{e}$ is lost due to our choice of weighting. 
-
-It is noted that the output power spectrum is comprised of two terms: the weighted power spectrum associated with \textbf{r}, 
-and that of data \textbf{x} alone. 
+$P_{in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
+$P_x$ is the power spectrum of the data, $P_r$ is the power spectrum of the
+data plus injection, and $P_out$ is the difference in power caused by the injected signal. 
 
 One may wonder why $P_{out}$ cannot be computed simply as the weighted power spectrum of $\textbf{e}$ alone, namely 
 $P_{out,\alpha} \propto \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}$. In short, this naive 
@@ -1188,12 +1190,40 @@ parameters, whose calculation is detailed in Section \ref{sec:PSSense}.}
 \begin{center}
 METHOD \#2
 \end{center}
+One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure output. 
+  Small differences in approach here were found to cause large differences in the final answer.  One important decision is  in the question asked, above we asked "What is the input power associated with an excess similar in amplitude to the data power spectrum?"  Here we rephrase the question to: "At what point would an injected signal be detectable at significant levels?". 
+  
+  
+  This is phrased visually in  \ref{fig:Pr_vs_Pin}. In the 2D space relating total $P_r$ to injected $P_{in}$ very small injected levels begin at the level of the no injection case, as the $P_{in}$ level rises,  as it approaches the power level of the data it does not dominate the covariance but still contributes enough to suppressing itself.  Above some level the injected signal is clearly detectable.
+  
+  
+  One difference here is that we are exclusively asking about signals detectable \emph{above} the level of the observed data. Thus it is 
+  explicitly limited to placing an upper limit, even if in some $k$-modes one has actual detections above the noise.  This might be 
+  seen as more conservative, however a similar assumption has already been made when choosing to down-weight using the data 
+  itself. In that step one has assumed that significant excess power is associated with a foreground residual. A high SNR detection 
+  will require a different method.
+  
+  Formally we can express our test as: ``What is $P_{in}$ such that
+\begin{equation}
+P_{r} > P_{x} \Lambda
+\end{equation}  
+ where $\Lambda$ represents a choice of threshold.'' Of course both sides of this equation are actually a distribution of values associated with data variance and injected model variance.  One way to interpret this test for the two distributions is to compute the probability that the two distributions are not\footnote{ie the null test} the same.  
+ 
+ \begin{equation}
+\Prob(P_{in})  =  1 -  \int_{r=x} \Prob(P_x) \Prob(P_r,P_{in}) dr
+  \end{equation}
+  where $\Prob(P_x)$ is the probability of obtaining power spectrum $P_x$ found via bootstrapping and $\Prob(P_r,P_{in})$ is the 
+  probability of obtaining the summed power spectrum $P_r$ given a range of input power levels, as sampled in Fig. 
+  \ref{fig:Pr_vs_Pin}.  The probability vs injection level is shown in figure \ref{fig:Prob_vs_Pin}. At low inject levels the variation 
+  between $x$ and $r$ is such that the null test is ruled out to within 20\%. This is the level expected from two distributions with 
+  $\sim$10 effective samples.\dcj{checked with a little python test but needs a cite} As the injected signal approaches the level of the data the probability of null rejection rises steeply.
+  
+Lastly, this method requires that we choose the probability at which we choose to reject the null hypothesis. As can be seen in \ref{fig:Pr_vs_Pin} the difference between 80 and 90\% can mean a difference of almost an order of magnitude in the power spectrum level ruled out. We can also see that it does not perfectly converge at high injected power levels.  Rather than insist on a rejection at the 99th percent level we compromise at 95\% \dcj{Matt, put in actual value here}.
 
-The second method we describe here... \cc{Danny and Matt's section}
+The resulting limits in the PSA64 data are shown in figure \ref{fig:cc_vs_mk} next to the limits from Method \#1. \dcj{Hopefully they are similar!} In the rest of the paper method \#1 is used.
+ 
 
-\cc{refer back to Equations \eqref{eq:Pin} and \eqref{eq:sigloss} and explain why the subtraction term is removed}
-
-\cc{also state at the end that the rest of the analysis uses method \#1 instead of \#2...}
+%\cc{refer back to Equations \eqref{eq:Pin} and \eqref{eq:sigloss} and explain why the subtraction term is removed}
 
 \subsubsection{Minimizing Signal Loss}
 \label{sec:Weight}
