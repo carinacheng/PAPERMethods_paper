@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  22 NOV 2017 15:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  26 NOV 2017 21:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -586,32 +586,32 @@ Package: transparent 2016/05/16 v1.1 Transparency via pdfTeX's color stack (HO)
 \@CTcurftwidth=\dimen178
 )
 Class revtex4-1 Info: Unrecognized array package. Please update this document c
-lass! (Proceeding with fingers crossed.) on input line 45.
+lass! (Proceeding with fingers crossed.) on input line 50.
 Class revtex4-1 Info: Patching unrecognized longtable package. (Proceeding with
- fingers crossed) on input line 45.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 45.
+ fingers crossed) on input line 50.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 50.
 
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 45.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 45.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 45.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 50.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 50.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 50.
 
 (./PAPER.aux)
 \openout1 = `PAPER.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
 
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -644,7 +644,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box60
-Package hyperref Info: Link coloring ON on input line 45.
+Package hyperref Info: Link coloring ON on input line 50.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -654,27 +654,27 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count181
 )
-LaTeX Info: Redefining \ref on input line 45.
-LaTeX Info: Redefining \pageref on input line 45.
-LaTeX Info: Redefining \nameref on input line 45.
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 45.
+LaTeX Info: Redefining \ref on input line 50.
+LaTeX Info: Redefining \pageref on input line 50.
+LaTeX Info: Redefining \nameref on input line 50.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 50.
 Class revtex4-1 Info: Overriding lineo.sty, restoring output routine, on input 
-line 45.
-Class revtex4-1 Info: Line numbering not turned on yet on input line 45.
+line 50.
+Class revtex4-1 Info: Line numbering not turned on yet on input line 50.
 \openout3 = `PAPERNotes.bib'.
 
-Class revtex4-1 Info: Overriding \@LN@LLerror on input line 45.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 108.
+Class revtex4-1 Info: Overriding \@LN@LLerror on input line 50.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 113.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 108.
+LaTeX Font Info:    Try loading font information for U+msa on input line 113.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 108.
+LaTeX Font Info:    Try loading font information for U+msb on input line 113.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -683,63 +683,63 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Class revtex4-1 Warning: Assuming \noaffiliation for authors.
 
 [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 201.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 206.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 201.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 206.
  [2] [3]
 <plots/toy_sigloss1.png, id=113, 722.7pt x 361.35pt>
 File: plots/toy_sigloss1.png Graphic file (type png)
 
 <use plots/toy_sigloss1.png>
-Package pdftex.def Info: plots/toy_sigloss1.png used on input line 323.
+Package pdftex.def Info: plots/toy_sigloss1.png used on input line 328.
 (pdftex.def)             Requested size: 242.26653pt x 144.88521pt.
 
 <plots/toy_sigloss3.png, id=121, 433.62pt x 289.08pt>
 File: plots/toy_sigloss3.png Graphic file (type png)
 
 <use plots/toy_sigloss3.png>
-Package pdftex.def Info: plots/toy_sigloss3.png used on input line 354.
+Package pdftex.def Info: plots/toy_sigloss3.png used on input line 359.
 (pdftex.def)             Requested size: 222.1423pt x 153.93678pt.
 
 <plots/toy_sigloss4.png, id=123, 433.62pt x 289.08pt>
 File: plots/toy_sigloss4.png Graphic file (type png)
 
 <use plots/toy_sigloss4.png>
-Package pdftex.def Info: plots/toy_sigloss4.png used on input line 355.
+Package pdftex.def Info: plots/toy_sigloss4.png used on input line 360.
 (pdftex.def)             Requested size: 226.92303pt x 153.93678pt.
  [4 <./plots/toy_sigloss1.png>]
 <plots/toy_sigloss2.png, id=148, 433.62pt x 289.08pt>
 File: plots/toy_sigloss2.png Graphic file (type png)
 
 <use plots/toy_sigloss2.png>
-Package pdftex.def Info: plots/toy_sigloss2.png used on input line 387.
+Package pdftex.def Info: plots/toy_sigloss2.png used on input line 392.
 (pdftex.def)             Requested size: 242.26653pt x 159.85559pt.
 
 <plots/toy_sigloss12.png, id=152, 722.7pt x 180.675pt>
 File: plots/toy_sigloss12.png Graphic file (type png)
 
 <use plots/toy_sigloss12.png>
-Package pdftex.def Info: plots/toy_sigloss12.png used on input line 413.
+Package pdftex.def Info: plots/toy_sigloss12.png used on input line 418.
 (pdftex.def)             Requested size: 242.26653pt x 73.03625pt.
 
 <plots/toy_sigloss13.png, id=154, 722.7pt x 361.35pt>
 File: plots/toy_sigloss13.png Graphic file (type png)
 
 <use plots/toy_sigloss13.png>
-Package pdftex.def Info: plots/toy_sigloss13.png used on input line 414.
+Package pdftex.def Info: plots/toy_sigloss13.png used on input line 419.
 (pdftex.def)             Requested size: 242.26653pt x 148.44781pt.
  [5 <./plots/toy_sigloss3.png> <./plots/toy_sigloss4.png> <./plots/toy_sigloss2
 .png>]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 435.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 440.
 
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 435.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 440.
 
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
@@ -748,56 +748,56 @@ Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 File: plots/toy_sigloss5.png Graphic file (type png)
 
 <use plots/toy_sigloss5.png>
-Package pdftex.def Info: plots/toy_sigloss5.png used on input line 460.
+Package pdftex.def Info: plots/toy_sigloss5.png used on input line 465.
 (pdftex.def)             Requested size: 273.21527pt x 148.8006pt.
 
 <plots/toy_sigloss15.png, id=180, 433.62pt x 289.08pt>
 File: plots/toy_sigloss15.png Graphic file (type png)
 
 <use plots/toy_sigloss15.png>
-Package pdftex.def Info: plots/toy_sigloss15.png used on input line 461.
+Package pdftex.def Info: plots/toy_sigloss15.png used on input line 466.
 (pdftex.def)             Requested size: 225.51744pt x 148.8006pt.
 
 <plots/toy_sigloss7.png, id=182, 433.62pt x 289.08pt>
 File: plots/toy_sigloss7.png Graphic file (type png)
 
 <use plots/toy_sigloss7.png>
-Package pdftex.def Info: plots/toy_sigloss7.png used on input line 472.
+Package pdftex.def Info: plots/toy_sigloss7.png used on input line 477.
 (pdftex.def)             Requested size: 242.26653pt x 159.85559pt.
  [6 <./plots/toy_sigloss12.png> <./plots/toy_sigloss13.png>] <plots/toy_sigloss
 10.png, id=211, 433.62pt x 289.08pt>
 File: plots/toy_sigloss10.png Graphic file (type png)
 
 <use plots/toy_sigloss10.png>
-Package pdftex.def Info: plots/toy_sigloss10.png used on input line 518.
+Package pdftex.def Info: plots/toy_sigloss10.png used on input line 523.
 (pdftex.def)             Requested size: 205.14581pt x 153.93678pt.
 
 <plots/toy_sigloss8.png, id=213, 433.62pt x 289.08pt>
 File: plots/toy_sigloss8.png Graphic file (type png)
 
 <use plots/toy_sigloss8.png>
-Package pdftex.def Info: plots/toy_sigloss8.png used on input line 519.
+Package pdftex.def Info: plots/toy_sigloss8.png used on input line 524.
 (pdftex.def)             Requested size: 196.05507pt x 153.93678pt.
 
 <plots/toy_sigloss9.png, id=215, 433.62pt x 289.08pt>
 File: plots/toy_sigloss9.png Graphic file (type png)
 
 <use plots/toy_sigloss9.png>
-Package pdftex.def Info: plots/toy_sigloss9.png used on input line 520.
+Package pdftex.def Info: plots/toy_sigloss9.png used on input line 525.
 (pdftex.def)             Requested size: 205.14581pt x 153.93678pt.
 
 <plots/toy_sigloss11.png, id=217, 433.62pt x 289.08pt>
 File: plots/toy_sigloss11.png Graphic file (type png)
 
 <use plots/toy_sigloss11.png>
-Package pdftex.def Info: plots/toy_sigloss11.png used on input line 521.
+Package pdftex.def Info: plots/toy_sigloss11.png used on input line 526.
 (pdftex.def)             Requested size: 196.05507pt x 153.93678pt.
 
 <plots/toy_sigloss14.png, id=219, 433.62pt x 289.08pt>
 File: plots/toy_sigloss14.png Graphic file (type png)
 
 <use plots/toy_sigloss14.png>
-Package pdftex.def Info: plots/toy_sigloss14.png used on input line 532.
+Package pdftex.def Info: plots/toy_sigloss14.png used on input line 537.
 (pdftex.def)             Requested size: 242.26653pt x 158.20067pt.
  [7 <./plots/toy_sigloss5.png> <./plots/toy_sigloss15.png> <./plots/toy_sigloss
 7.png>] [8 <./plots/toy_sigloss10.png> <./plots/toy_sigloss8.png> <./plots/toy_
@@ -806,43 +806,43 @@ oy_error1.png, id=251, 433.62pt x 289.08pt>
 File: plots/toy_error1.png Graphic file (type png)
 
 <use plots/toy_error1.png>
-Package pdftex.def Info: plots/toy_error1.png used on input line 643.
+Package pdftex.def Info: plots/toy_error1.png used on input line 648.
 (pdftex.def)             Requested size: 242.26653pt x 158.20067pt.
  [9 <./plots/toy_error1.png>]
-Underfull \hbox (badness 1629) in paragraph at lines 670--674
+Underfull \hbox (badness 1629) in paragraph at lines 675--679
 \OT1/cmr/m/n/10 strap-ping: sam-pling all el-e-ments ran-domly (black
  []
 
 <plots/toy_error2.png, id=261, 433.62pt x 289.08pt>
 File: plots/toy_error2.png Graphic file (type png)
  <use plots/toy_error2.png>
-Package pdftex.def Info: plots/toy_error2.png used on input line 691.
+Package pdftex.def Info: plots/toy_error2.png used on input line 696.
 (pdftex.def)             Requested size: 242.26653pt x 158.20067pt.
 
 [10 <./plots/toy_error2.png>] [11]
 <plots/toy_bias1.png, id=315, 433.62pt x 289.08pt>
 File: plots/toy_bias1.png Graphic file (type png)
  <use plots/toy_bias1.png>
-Package pdftex.def Info: plots/toy_bias1.png used on input line 838.
+Package pdftex.def Info: plots/toy_bias1.png used on input line 843.
 (pdftex.def)             Requested size: 242.26653pt x 158.20067pt.
 
 <plots/toy_bias2.png, id=316, 433.62pt x 289.08pt>
 File: plots/toy_bias2.png Graphic file (type png)
  <use plots/toy_bias2.png>
-Package pdftex.def Info: plots/toy_bias2.png used on input line 848.
+Package pdftex.def Info: plots/toy_bias2.png used on input line 853.
 (pdftex.def)             Requested size: 242.26653pt x 158.20067pt.
 
 [12 <./plots/toy_bias1.png> <./plots/toy_bias2.png>]
 <plots/ant_layout.png, id=336, 578.16pt x 433.62pt>
 File: plots/ant_layout.png Graphic file (type png)
  <use plots/ant_layout.png>
-Package pdftex.def Info: plots/ant_layout.png used on input line 890.
+Package pdftex.def Info: plots/ant_layout.png used on input line 895.
 (pdftex.def)             Requested size: 242.26653pt x 181.6957pt.
 
 <plots/frp.png, id=338, 578.16pt x 433.62pt>
 File: plots/frp.png Graphic file (type png)
  <use plots/frp.png>
-Package pdftex.def Info: plots/frp.png used on input line 919.
+Package pdftex.def Info: plots/frp.png used on input line 924.
 (pdftex.def)             Requested size: 242.26653pt x 181.6957pt.
  [13 <./plots/ant_layout.png> <./plots/frp.png>] [14]
 <plots/sigloss_transfercurve.png, id=381, 867.24pt x 433.62pt>
@@ -850,112 +850,146 @@ File: plots/sigloss_transfercurve.png Graphic file (type png)
 
 <use plots/sigloss_transfercurve.png>
 Package pdftex.def Info: plots/sigloss_transfercurve.png used on input line 109
-2.
+4.
 (pdftex.def)             Requested size: 513.11743pt x 256.56801pt.
  [15]
-<plots/ps2_data_nosigloss.png, id=400, 361.35pt x 433.62pt>
+<plots/ps2_data_nosigloss.png, id=401, 361.35pt x 433.62pt>
 File: plots/ps2_data_nosigloss.png Graphic file (type png)
 
 <use plots/ps2_data_nosigloss.png>
-Package pdftex.def Info: plots/ps2_data_nosigloss.png used on input line 1179.
+Package pdftex.def Info: plots/ps2_data_nosigloss.png used on input line 1181.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_data.png, id=401, 361.35pt x 433.62pt>
+<plots/ps2_data.png, id=402, 361.35pt x 433.62pt>
 File: plots/ps2_data.png Graphic file (type png)
  <use plots/ps2_data.png>
-Package pdftex.def Info: plots/ps2_data.png used on input line 1180.
+Package pdftex.def Info: plots/ps2_data.png used on input line 1182.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
+
+LaTeX Warning: Reference `fig:Pr_vs_Pin' on page 16 undefined on input line 119
+8.
+
 [16 <./plots/sigloss_transfercurve.png>]
-<plots/sigloss_modeloop.png, id=419, 867.24pt x 578.16pt>
+
+LaTeX Warning: Reference `fig:Pr_vs_Pin' on page 17 undefined on input line 121
+1.
+
+
+LaTeX Warning: Reference `fig:Prob_vs_Pin' on page 17 undefined on input line 1
+213.
+
+
+LaTeX Warning: Reference `fig:Pr_vs_Pin' on page 17 undefined on input line 121
+5.
+
+
+LaTeX Warning: Reference `fig:cc_vs_mk' on page 17 undefined on input line 1217
+.
+
+[17 <./plots/ps2_data_nosigloss.png> <./plots/ps2_data.png>]
+<plots/sigloss_modeloop.png, id=429, 867.24pt x 578.16pt>
 File: plots/sigloss_modeloop.png Graphic file (type png)
 
 <use plots/sigloss_modeloop.png>
-Package pdftex.def Info: plots/sigloss_modeloop.png used on input line 1224.
+Package pdftex.def Info: plots/sigloss_modeloop.png used on input line 1245.
 (pdftex.def)             Requested size: 513.11743pt x 342.09068pt.
 
-<plots/ps1_data_reg.png, id=422, 361.35pt x 433.62pt>
+<plots/ps1_data_reg.png, id=432, 361.35pt x 433.62pt>
 File: plots/ps1_data_reg.png Graphic file (type png)
 
 <use plots/ps1_data_reg.png>
-Package pdftex.def Info: plots/ps1_data_reg.png used on input line 1255.
+Package pdftex.def Info: plots/ps1_data_reg.png used on input line 1276.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_data_reg.png, id=423, 361.35pt x 433.62pt>
+<plots/ps2_data_reg.png, id=433, 361.35pt x 433.62pt>
 File: plots/ps2_data_reg.png Graphic file (type png)
 
 <use plots/ps2_data_reg.png>
-Package pdftex.def Info: plots/ps2_data_reg.png used on input line 1256.
+Package pdftex.def Info: plots/ps2_data_reg.png used on input line 1277.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- [17 <./plots/ps2_data_nosigloss.png> <./plots/ps2_data.png>] [18 <./plots/sigl
-oss_modeloop.png>] [19 <./plots/ps1_data_reg.png> <./plots/ps2_data_reg.png>]
-<plots/sense_check.png, id=475, 286.9119pt x 341.8371pt>
+ [18] [19 <./plots/sigloss_modeloop.png>] [20 <./plots/ps1_data_reg.png> <./plo
+ts/ps2_data_reg.png>]
+<plots/sense_check.png, id=483, 286.9119pt x 341.8371pt>
 File: plots/sense_check.png Graphic file (type png)
 
 <use plots/sense_check.png>
-Package pdftex.def Info: plots/sense_check.png used on input line 1379.
+Package pdftex.def Info: plots/sense_check.png used on input line 1400.
 (pdftex.def)             Requested size: 242.26653pt x 288.6486pt.
- [20 <./plots/sense_check.png>]
-<plots/ps1_noise_reg.png, id=490, 361.35pt x 433.62pt>
+
+<plots/ps1_noise_reg.png, id=488, 361.35pt x 433.62pt>
 File: plots/ps1_noise_reg.png Graphic file (type png)
 
 <use plots/ps1_noise_reg.png>
-Package pdftex.def Info: plots/ps1_noise_reg.png used on input line 1409.
+Package pdftex.def Info: plots/ps1_noise_reg.png used on input line 1430.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_noise_reg.png, id=491, 361.35pt x 433.62pt>
+<plots/ps2_noise_reg.png, id=489, 361.35pt x 433.62pt>
 File: plots/ps2_noise_reg.png Graphic file (type png)
 
 <use plots/ps2_noise_reg.png>
-Package pdftex.def Info: plots/ps2_noise_reg.png used on input line 1410.
+Package pdftex.def Info: plots/ps2_noise_reg.png used on input line 1431.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
-
-<plots/data_errors.png, id=498, 578.16pt x 433.62pt>
+ [21 <./plots/sense_check.png>]
+<plots/data_errors.png, id=505, 578.16pt x 433.62pt>
 File: plots/data_errors.png Graphic file (type png)
 
 <use plots/data_errors.png>
-Package pdftex.def Info: plots/data_errors.png used on input line 1460.
+Package pdftex.def Info: plots/data_errors.png used on input line 1481.
 (pdftex.def)             Requested size: 242.26653pt x 179.8559pt.
- [21] [22 <./plots/ps1_noise_reg.png> <./plots/ps2_noise_reg.png> <./plots/data
-_errors.png>]
-<plots/null.png, id=527, 578.16pt x 433.62pt>
+ [22 <./plots/ps1_noise_reg.png> <./plots/ps2_noise_reg.png> <./plots/data_erro
+rs.png>]
+<plots/null.png, id=523, 578.16pt x 433.62pt>
 File: plots/null.png Graphic file (type png)
  <use plots/null.png>
-Package pdftex.def Info: plots/null.png used on input line 1564.
+Package pdftex.def Info: plots/null.png used on input line 1585.
 (pdftex.def)             Requested size: 242.26653pt x 181.6957pt.
- [23 <./plots/null.png>] [24]
+ [23]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1602.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1602.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+[24 <./plots/null.png>] [25]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 1722.
+(amsmath)                 on input line 1743.
 
-[25] <plots/analytic_sig_loss.pdf, id=572, 578.16pt x 433.62pt>
+<plots/analytic_sig_loss.pdf, id=568, 578.16pt x 433.62pt>
 File: plots/analytic_sig_loss.pdf Graphic file (type pdf)
 
 <use plots/analytic_sig_loss.pdf>
-Package pdftex.def Info: plots/analytic_sig_loss.pdf used on input line 1778.
+Package pdftex.def Info: plots/analytic_sig_loss.pdf used on input line 1799.
 (pdftex.def)             Requested size: 307.87358pt x 230.9026pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1779 ...e $\Chat = (1-\eta) \C + \eta \x \x^t$.}
-                                                   (./PAPER.bbl [26 <./plots/an
-alytic_sig_loss.pdf>])
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1795.
- [27]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1795.
+l.1800 ...e $\Chat = (1-\eta) \C + \eta \x \x^t$.}
+                                                   [26] (./PAPER.bbl)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1816.
+ [27 <./plots/analytic_sig_loss.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1816.
  (./PAPER.aux)
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1795.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1816.
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 10826 strings out of 492995
- 151530 string characters out of 6132704
- 311104 words of memory out of 5000000
- 14042 multiletter control sequences out of 15000+600000
+ 10835 strings out of 492995
+ 151643 string characters out of 6132704
+ 311239 words of memory out of 5000000
+ 14048 multiletter control sequences out of 15000+600000
  14973 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,11n,53p,689b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,11n,53p,689b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></u
@@ -979,10 +1013,10 @@ st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017/texmf-dist
 onts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (27 pages, 2842581 bytes).
+Output written on PAPER.pdf (27 pages, 2847049 bytes).
 PDF statistics:
- 738 PDF objects out of 1000 (max. 8388607)
- 566 compressed objects within 6 object streams
- 153 named destinations out of 1000 (max. 500000)
+ 740 PDF objects out of 1000 (max. 8388607)
+ 568 compressed objects within 6 object streams
+ 156 named destinations out of 1000 (max. 500000)
  245 words of extra memory for PDF output out of 10000 (max. 10000000)
 
