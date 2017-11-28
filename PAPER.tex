@@ -176,7 +176,7 @@ from the lessons learned.
 This paper is organized into two main sections. In Section \ref{sec:Themes} we introduce the three themes of our focus, using a 
 toy model to develop intuition for each one. In Section \ref{sec:CaseStudy} we present a case study into each theme using data 
 from the PAPER-64 array, highlighting key changes from \citet{ali_et_al2015}, henceforth known as P64, which have led to a 
-revised PAPER-64 power spectrum result (\cc{cite retraction or kolopanis paper}). We conclude in Section \ref{sec:Con}.
+revised PAPER-64 power spectrum result (Kolopanis et al., \textit{in prep}). We conclude in Section \ref{sec:Con}.
 
 % SECTION 2 INTRO ---------------------------------------------------------------------------------
 
@@ -452,13 +452,12 @@ the sidereal motion on the sky, while down-weighting modes which are noise-like.
 Because fringe-rate filtering is analogous to averaging in time, it comes at the cost of reducing the total number of independent 
 samples in the data. To mimic this filter, we average every four time integrations of our toy model dataset together, yielding 
 $25$ independent samples in time (Figure \ref{fig:toy_sigloss5}, left). We choose these numbers so that the total number of 
-independent samples is similar to the number of frequency channels --- therefore, our matrices will be full rank.\footnote{If 
-instead we average every $20$ samples together, yielding only $5$ independent samples in time, we are left with a rank 
-deficient covariance matrix. In this case... \cc{fill in}}
+independent samples is similar to the number of frequency channels --- therefore, our matrices will be full rank.
+%\footnote{If instead we average every $20$ samples together, yielding only $5$ independent samples in time, we are left with a rank deficient covariance matrix. In this case... \cc{fill in}}
 
 The resulting eigenspectrum as compared to the green curve (FG + EoR) in Figure \ref{fig:toy_sigloss2} is shown in Figure 
 \ref{fig:toy_sigloss5} (right plot). The spectrum, in the case of fringe-rate filtering (dashed line), falls more steeply, especially for 
-the last few eigenmodes. This is because we have fewer independent modes --- \cc{need help filling out the rest here... and 
+the last few eigenmodes. This is because we have fewer independent modes and therefore less information to characterize the eigenspectrum. Because we do a worse job characterizing, we have more signal loss. \cc{need help filling out the rest here... and 
 also citing galaxy lit}. 
 
 \begin{figure*}
@@ -906,8 +905,7 @@ on $\Delta^{2}(k)$, defined as
 \Delta^{\textbf{2}}\textbf{(k)} = \frac{k^{3}}{2\pi^{2}}\hat{\textbf{p}}\textbf{(k)},
 \end{equation}
 
-\noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$ h Mpc$^{-1}$ at $z = 8.4$. %The revision of this limit stems 
-mostly from previously underestimated signal loss and underestimated error bars \cc{cite retraction paper}, both of which we 
+\noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$ h Mpc$^{-1}$ at $z = 8.4$. The revision of this limit (Kolopanis et al., \textit{in prep}) stems mostly from previously underestimated signal loss and underestimated error bars, both of which we 
 address in the following sections. 
 
 For our analysis, we use $8$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (P64 uses a slightly different RA 
@@ -947,8 +945,7 @@ cm signal visibilities. Here we use the same method used in P64, where mock Gaus
 are filtered in fringe-rate space to retain only ``sky-like" time-modes. This signal is then added to the data.  \footnote{One 
 specific change from P64 is that we add this simulated signal into the analysis pipeline before the final fringe-rate filter is 
 applied to the data. Previously, the addition was done after that final fringe-rate filter step.  This change results in an increased 
-estimate of signal loss, likely due to the use of the fringe-rate filter as a simulator. Whether the loss would be estimated at the 
-same level if different $21$ cm simulations were used remains an open question.}
+estimate of signal loss (by a factor of $\sim$$10$), likely due to the use of the fringe-rate filter as a simulator. Whether the loss would be estimated at the same level if different $21$ cm simulations were used remains an open question.}
 
 Suppose that $\textbf{e}$ is the injected EoR (at some amplitude level), and $\textbf{x}$ is our data vector. We define $\textbf{r}
 $ to be the data plus the EoR signal:
@@ -1167,13 +1164,7 @@ loss correction in Figure \ref{fig:ps2_data}, using inverse covariance weighting
 power spectrum, which is identical in both panels (an important check, as we expect no signal loss for this case). The black and 
 grey points are positive and negative power spectrum values plotted with $2\sigma$ error bars. Prior to signal loss correction, it 
 is clear that the power spectrum is unfeasible because it is well below the theoretical noise level prediction (solid green curve). 
-Post-correction, the power spectrum values blow up to be higher than both the theory and unweighted power spectrum. 
-
-Investigating this further, the reason why the post-corrected power spectrum is so high is due to the small number of 
-independent samples in PAPER-64. PAPER-64 only has $\sim$$8$ independent modes after fringe-rate filtering while our 
-power spectrum bandwidth has $21$ channels. Consequently, the eigenvalues of $\hat{\textbf{C}}$ cannot possibly describe 
-real fluctuations beyond the first eight. Hence, there is a substantial down-weighting of other modes, a large loss that the signal 
-loss transfer function captures and corrects for. We elaborate on this point in the next section, as well as investigate alternate 
+Post-correction, the power spectrum errors blow up to be higher than both the theory and unweighted power spectrum, a consequence of not being able to characterize covariances well using the time-averaged fringe-rate filtered data (there is less independent information to use). We elaborate on this point in the next section, as well as investigate alternate 
 weighting schemes to inverse covariance weighting, with the goal of finding one that balances the aggressiveness of down-
 weighting contaminants with minimizing the loss of EoR. 
 
@@ -1243,12 +1234,10 @@ covariance weighting of our $21$ channels). The power spectrum results for one $
 correction, are shown in Figure \ref{fig:sigloss_modeloop}. We see that the amount of signal loss increases as weighting 
 becomes more aggressive (grey curve). In other words, more `weak' (EoR-dominated) fluctuations are being overfit and 
 subtracted as more modes are down-weighted. We also find that the power spectrum upper limit, post signal loss correction, 
-increases with the number of down-weighted modes (black curve). As discussed previously, we are limited in our power 
-spectrum accuracy by the number of independent samples in our dataset and our errors dramatically increase as we surpass 
-the $\sim8$ independent samples that we have in fringe-rate filtered PAPER-64 data \cc{elaborate?}.
+increases with the number of down-weighted modes (black curve). Because our data is fringe-rate filtered, we have less information to characterize the covariance matrix and therefore do a worse job estimating it. Hence, the more modes we use in down-weighting, the greater the error we have in estimating the power spectrum.
 
 Optimistically, we expect there to be a `sweet spot' as we dial our regularization knob; a level of regularization where weighting 
-is beneficial compared to not weighting (blue dashed line). We see in Figure \ref{fig:sigloss_modeloop} that this occurs when 
+is beneficial compared to not weighting (blue dashed line). In other words, we would like a weighting scheme that down-weights eigenmodes that describe foreground modes, but not EoR modes. We see in Figure \ref{fig:sigloss_modeloop} that this occurs when 
 only the strongest $\sim3$-$4$ eigenmodes are down-weighted, though the improvement from the unweighted case is not 
 significant. 
 
@@ -1281,7 +1270,7 @@ Our revised, best to-date PAPER-64 power spectrum (using only one baseline separ
 $2\sigma$ errors bars. Also plotted are the unweighted power spectrum upper limit (dashed blue) and theoretical prediction of 
 noise (solid green). From this result, we quote a best $2\sigma$ upper limit of $(158.0$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, 
 a higher limit than P64 by a factor of $\sim7$ in mK (though we only use one baseline type in our analysis as opposed to $3$). 
-\cc{ref kolopanis limit instead later}
+\cc{replace with kolopanis limit instead later}
 
 \begin{figure*}
 	\centering
@@ -1293,7 +1282,7 @@ power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical 
 observational parameters. This power spectrum result differs from P64 in that it only uses data from one type of baseline ($30$ m 
 East/West baselines) instead of three. Major differences from previously published results stem from revisions regarding signal 
 loss, bootstrapping, and the theoretical error computation. We quote a best $2\sigma$ upper limit of $(158.0$ mK$)^{2}$ at 
-$k=0.34$ $h$Mpc$^{-1}$, a higher limit than P64 by a factor of $\sim7$ in mK \cc{ref kolopanis limit instead later}.}
+$k=0.34$ $h$Mpc$^{-1}$, a higher limit than P64 by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}.}
 	\label{fig:ps1_data}
 \end{figure*}
 
@@ -1305,7 +1294,7 @@ horizontal E/W ones). Alternately, covariances could be estimated from all other
 when forming a power spectrum estimate. This method was used in \citet{parsons_et_al2014} in order to avoid suppressing the 
 $21$ cm signal, and it's worth noting that the PAPER-32 results are likely safe from the issue of signal loss underestimation 
 because of this very reason (however, they are affected by the error estimation issues described in Section \ref{sec:Error}, so 
-we also regard those results as suspect and superseded by those of \cc{cite kolopanis}).
+we also regard those results as suspect and superseded by those of Kolopanis et al., \textit{in prep}.
 
 Another possible way to regularize $\hat{\textbf{C}}$ is to use information from different ranges of LST. For example, one could 
 calculate $\hat{\textbf{C}}$ with data from LSTs where foregrounds are stronger (earlier or later LSTs than the `foreground-
@@ -1363,13 +1352,13 @@ T_{sys} = 180\Big(\frac{\nu}{0.18}\Big)^{-2.55} + T_{rcvr},
 
 where $\nu$ are frequencies in GHz. We use a receiver temperature of $144$ K, yielding $T_{sys} = 431$ K at $150$ MHz. 
 This is lower than the $T_{sys}$ of $500$ K used in P64 because of several small miscalculation errors that were 
-identified\footnote{such as missing a square root in going from a variance to a standard deviation.}.
+identified\footnote{such as missing a square root in going from a variance to a standard deviation}.
 \item $\sqrt{2}$: This factor in the denominator of the sensitivity equation comes from taking the real part of the power spectrum 
 estimates after squaring visibility measurements. In P64, a factor of $2$ was mistakenly used.
 \item $N_{lsts}$: The number of LST hours that go into a power spectrum estimation. The sensitivity scales as the square root 
 because we integrate incoherently over time. For PAPER-64, $N_{lsts} = 8$ hours.
 \item $N_{seps}$: The number of baseline separation types averaged incoherently in a final power spectrum estimate. For the 
-analysis in this paper, we only use one type of baseline, hence $N_{seps}=1$. The updated limits in \cc{cite kolopanis paper} 
+analysis in this paper, we only use one type of baseline, hence $N_{seps}=1$. The updated limits in Kolopanis et al., \textit{in prep}
 use three separation types.
 \item $t_{int}$: The integration time of the data. It is crucial to adapt this number if filtering is applied along the time axis (i.e. a 
 fringe-rate filter). We compute the effective integration time of our fringe-rate filtered data by scaling the original integration time 
@@ -1463,11 +1452,11 @@ spectrum that is a function of $k$ and time.
 In P64, a second round of bootstrapping occurred over the time axis. A total of $400$ bootstraps were created in this step 
 ($N_{boot} = 400$), each comprised of randomly selected values sampled with replacement along the time axis. More 
 specifically, each of these bootstraps contained the same number of values as the number of time integrations (which, at $\sim$
-$700$, greatly exceeds the approximate number of independent samples after fringe-rate filtering, which is $\sim$$8$). 
+$700$, which we expect to greatly exceed the approximate number of independent samples after fringe-rate filtering.
 Medians were then taken of the values in each bootstrap (with the appropriate median correction factor applied). Finally, power 
 spectrum limits were computed by taking the mean and standard deviation over all the bootstraps. We emphasize again that in 
-this previous analysis, the number of elements sampled per bootstrap ($N \sim $ number of times $\sim$ $700$) greatly 
-exceeded the number of independent LST samples ($\sim$$8$), under-estimating errors. A random draw of $700$ 
+this previous analysis, the number of elements sampled per bootstrap greatly 
+exceeded the number of independent LST samples, under-estimating errors. A random draw of $700$ 
 measurements from this dataset has many repeated values, and the variance between hundreds ($N_{boot}$) of these random 
 samples is smaller than the true underlying variance of the data. 
 
