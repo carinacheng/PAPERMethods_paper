@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 NOV 2017 17:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 NOV 2017 18:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -744,56 +744,56 @@ LaTeX Warning: A float is stuck (cannot be placed) on input line 443.
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
-<plots/toy_sigloss5.png, id=180, 722.7pt x 361.35pt>
+<plots/toy_sigloss5.png, id=181, 722.7pt x 361.35pt>
 File: plots/toy_sigloss5.png Graphic file (type png)
 
 <use plots/toy_sigloss5.png>
 Package pdftex.def Info: plots/toy_sigloss5.png used on input line 467.
 (pdftex.def)             Requested size: 273.21527pt x 148.8006pt.
 
-<plots/toy_sigloss15.png, id=182, 433.62pt x 289.08pt>
+<plots/toy_sigloss15.png, id=183, 433.62pt x 289.08pt>
 File: plots/toy_sigloss15.png Graphic file (type png)
 
 <use plots/toy_sigloss15.png>
 Package pdftex.def Info: plots/toy_sigloss15.png used on input line 468.
 (pdftex.def)             Requested size: 225.51744pt x 148.8006pt.
 
-<plots/toy_sigloss7.png, id=184, 433.62pt x 289.08pt>
+<plots/toy_sigloss7.png, id=185, 433.62pt x 289.08pt>
 File: plots/toy_sigloss7.png Graphic file (type png)
 
 <use plots/toy_sigloss7.png>
 Package pdftex.def Info: plots/toy_sigloss7.png used on input line 479.
 (pdftex.def)             Requested size: 242.26653pt x 159.85559pt.
  [6 <./plots/toy_sigloss12.png> <./plots/toy_sigloss13.png>] <plots/toy_sigloss
-10.png, id=212, 433.62pt x 289.08pt>
+10.png, id=213, 433.62pt x 289.08pt>
 File: plots/toy_sigloss10.png Graphic file (type png)
 
 <use plots/toy_sigloss10.png>
 Package pdftex.def Info: plots/toy_sigloss10.png used on input line 525.
 (pdftex.def)             Requested size: 205.14581pt x 153.93678pt.
 
-<plots/toy_sigloss8.png, id=214, 433.62pt x 289.08pt>
+<plots/toy_sigloss8.png, id=215, 433.62pt x 289.08pt>
 File: plots/toy_sigloss8.png Graphic file (type png)
 
 <use plots/toy_sigloss8.png>
 Package pdftex.def Info: plots/toy_sigloss8.png used on input line 526.
 (pdftex.def)             Requested size: 196.05507pt x 153.93678pt.
 
-<plots/toy_sigloss9.png, id=216, 433.62pt x 289.08pt>
+<plots/toy_sigloss9.png, id=217, 433.62pt x 289.08pt>
 File: plots/toy_sigloss9.png Graphic file (type png)
 
 <use plots/toy_sigloss9.png>
 Package pdftex.def Info: plots/toy_sigloss9.png used on input line 527.
 (pdftex.def)             Requested size: 205.14581pt x 153.93678pt.
 
-<plots/toy_sigloss11.png, id=218, 433.62pt x 289.08pt>
+<plots/toy_sigloss11.png, id=219, 433.62pt x 289.08pt>
 File: plots/toy_sigloss11.png Graphic file (type png)
 
 <use plots/toy_sigloss11.png>
 Package pdftex.def Info: plots/toy_sigloss11.png used on input line 528.
 (pdftex.def)             Requested size: 196.05507pt x 153.93678pt.
 
-<plots/toy_sigloss14.png, id=220, 433.62pt x 289.08pt>
+<plots/toy_sigloss14.png, id=221, 433.62pt x 289.08pt>
 File: plots/toy_sigloss14.png Graphic file (type png)
 
 <use plots/toy_sigloss14.png>
@@ -802,7 +802,7 @@ Package pdftex.def Info: plots/toy_sigloss14.png used on input line 539.
  [7 <./plots/toy_sigloss5.png> <./plots/toy_sigloss15.png> <./plots/toy_sigloss
 7.png>] [8 <./plots/toy_sigloss10.png> <./plots/toy_sigloss8.png> <./plots/toy_
 sigloss9.png> <./plots/toy_sigloss11.png> <./plots/toy_sigloss14.png>] <plots/t
-oy_error1.png, id=252, 433.62pt x 289.08pt>
+oy_error1.png, id=253, 433.62pt x 289.08pt>
 File: plots/toy_error1.png Graphic file (type png)
 
 <use plots/toy_error1.png>
@@ -999,7 +999,7 @@ st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-dist
 onts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (27 pages, 2847340 bytes).
+Output written on PAPER.pdf (27 pages, 2847520 bytes).
 PDF statistics:
  702 PDF objects out of 1000 (max. 8388607)
  560 compressed objects within 6 object streams
