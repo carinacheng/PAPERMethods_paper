@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{34}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Ali} {et~al.}(2015){Ali}, {Parsons}, {Zheng}, {Pober}, {Liu},
@@ -44,6 +44,10 @@ Jacobs, D.~C., {et~al.} 2015, \apj, 801, 51
   DeBoer}]{keating_et_al2016}
 Keating, G.~K., Marrone, D.~P., Bower, G.~C., Leitch, E., Carlstrom, J.~E., \&
   DeBoer, D.~R. 2016, The Astrophysical Journal, 830, 34
+
+\bibitem[{Liu \& Parsons(2016)}]{liu_parsons_2016}
+Liu, A., \& Parsons, A.~R. 2016, Monthly Notices of the Royal Astronomical
+  Society, 457, 1864
 
 \bibitem[{{Liu} {et~al.}(2014{\natexlab{a}}){Liu}, {Parsons}, \&
   {Trott}}]{liu_et_al2014a}
