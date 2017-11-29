@@ -975,10 +975,10 @@ P_{\rm out,\alpha} &=& \hat{\textbf{p}}_{r,\alpha}-\hat{\textbf{p}}_{x,\alpha} \
 \end{eqnarray}
 
 $P_{\rm in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
-$\hat{\textbf{p}}_{x}$ is the power spectrum of the data, $\hat{\textbf{p}}_{r}$ is the power spectrum of the
-data plus injection, and $P_{\rm out}$ is the difference in power between the two.
+$\hat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\hat{\textbf{p}}_{r}$ is the power spectrum of the
+data plus injection, and $P_{\rm out}$ is the difference between $\hat{\textbf{p}}_{r}$ and $\hat{\textbf{p}}_{x}$.
 
-In short, we can summarize our signal loss computation as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\textbf{x}$ (though our actual detailed computation is described in the next section). We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\textbf{x}$ by the following reasoning.
+In short, we can summarize a signal loss correction factor as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\textbf{x}$ (our detailed computation is described in the next section). We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\textbf{x}$ by the following reasoning.
 
 In a limit with no instrumental noise, the data that we measure, $\x$, is comprised of two signals, such that
 \begin{equation}
@@ -991,12 +991,12 @@ where $\mathbf{f}$ represents the foregrounds and $\mathbf{s}$ represents the co
 \end{equation}
 where $c_{\rm eor}$ and $c_{\rm fg}$ are multiplicative factors accounting for the signal loss in the true EoR power spectrum $\p_{\rm eor}$ and true foreground power spectrum $\p_{\rm fg}$, respectively. It is not \emph{a priori} obvious why this parameterization is suitable; we thus provide a toy model in Appendix \ref{sec:sigloss_appendix} to motivate this, although it should be noted that the result is an approximation.
 
-Given this form, a suitable estimate for $\p_{\rm eor}$ would be $\phat / c_{\rm eor}$. Although such an estimate leaves an additive bias from foregrounds that must be mitigated by other methods (as is the case for any attempt to measure the $21\,\textrm{cm}$ power spectrum), it normalizes $\p_{\rm eor}$ back to its correct level such that there is no multiplicative bias. The most conceptually straightforward way to compute $c_{\rm eor}$ is to model the foregrounds and EoR signal via simulations, and then to form the quantity
+Given this form, a suitable estimate for $\p_{\rm eor}$ would be $\phat_{x} / c_{\rm eor}$, or the uncorrected power spectrum of data divided by the signal loss correction factor. Although such an estimate leaves an additive bias from foregrounds that must be mitigated by other methods (as is the case for any attempt to measure the $21\,\textrm{cm}$ power spectrum), it normalizes $\p_{\rm eor}$ back to its correct level such that there is no multiplicative bias. The most conceptually straightforward way to compute $c_{\rm eor}$ is to model the foregrounds and EoR signal via simulations, and then to form the quantity
 \begin{equation}
 \label{eq:Deriv1}
 \hat{c}_{\rm eor} = \frac{g(\f + \s) - g(\f)}{\p_{\rm eor}}.
 \end{equation}
-However, this approach assumes that we have sufficiently good knowledge of our foreground and signal models, which is certainly not the case---if it were, it would be simpler to construct our covariance matrices from our models, avoiding signal loss altogether! Instead, we can use the data itself as our model of the foregrounds, injecting a new EoR signal $\e$ (with power spectrum $\p^*_{\rm eor}$), computing instead
+However, this approach assumes that we have sufficiently good knowledge of our foreground and signal models, which is certainly not the case --- if it were, it would be simpler to construct our covariance matrices from our models, avoiding signal loss altogether! Instead, we can use the data itself as our model of the foregrounds, injecting a new EoR signal $\e$ (with power spectrum $\p^*_{\rm eor}$), computing instead
 \begin{equation}
 \label{eq:Deriv2}
 \hat{c}_{\rm eor} = \frac{g(\x+ \e) - g(\x)}{\p^*_{\rm eor}},
@@ -1006,7 +1006,7 @@ which reduces to the same result because of the linearity of Equation \eqref{eq:
 Using this motivation, the numerator of Equation \eqref{eq:Deriv2} can be mapped to our expression for $P_{\rm out}$, and the denominator to $P_{\rm in}$, where the function $g$ is our OQE power spectrum pipeline. 
 
 One may wonder why $P_{\rm out}$ cannot be computed simply as the weighted power spectrum of $\textbf{e}$ alone, namely 
-$P_{out,\alpha} = \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}$. In short, this naive 
+$P_{\rm out,\alpha} = \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}$. In short, this naive 
 expression fails to include correlations between the injected EoR signal and data, which emerges as statistical noise that is added to the 
 estimate, decreasing the value of $P_{\rm out}$. Mathematically, we can show this by expanding out Equation \eqref{eq:sigloss}:
 

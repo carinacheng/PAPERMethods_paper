@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 NOV 2017 18:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 NOV 2017 18:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -884,7 +884,7 @@ LaTeX Warning: Reference `fig:Prob_vs_Pin' on page 18 undefined on input line 1
 LaTeX Warning: Reference `fig:Pr_vs_Pin' on page 18 undefined on input line 118
 4.
 
-<plots/sigloss_method_comparison.png, id=434, 501.875pt x 602.25pt>
+<plots/sigloss_method_comparison.png, id=433, 501.875pt x 602.25pt>
 File: plots/sigloss_method_comparison.png Graphic file (type png)
 
 <use plots/sigloss_method_comparison.png>
@@ -892,7 +892,7 @@ Package pdftex.def Info: plots/sigloss_method_comparison.png used on input line
  1190.
 (pdftex.def)             Requested size: 205.24384pt x 246.2992pt.
 
-<plots/sigloss_modeloop.png, id=438, 867.24pt x 578.16pt>
+<plots/sigloss_modeloop.png, id=437, 867.24pt x 578.16pt>
 File: plots/sigloss_modeloop.png Graphic file (type png)
 
 <use plots/sigloss_modeloop.png>
@@ -914,7 +914,7 @@ Package pdftex.def Info: plots/ps2_data_reg.png used on input line 1255.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
  [19 <./plots/sigloss_modeloop.png>] [20 <./plots/ps1_data_reg.png> <./plots/ps
 2_data_reg.png>]
-<plots/sense_check.png, id=494, 286.9119pt x 341.8371pt>
+<plots/sense_check.png, id=493, 286.9119pt x 341.8371pt>
 File: plots/sense_check.png Graphic file (type png)
 
 <use plots/sense_check.png>
@@ -930,21 +930,21 @@ LaTeX Warning: A float is stuck (cannot be placed) on input line 1405.
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
-<plots/ps1_noise_reg.png, id=511, 361.35pt x 433.62pt>
+<plots/ps1_noise_reg.png, id=510, 361.35pt x 433.62pt>
 File: plots/ps1_noise_reg.png Graphic file (type png)
 
 <use plots/ps1_noise_reg.png>
 Package pdftex.def Info: plots/ps1_noise_reg.png used on input line 1408.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_noise_reg.png, id=512, 361.35pt x 433.62pt>
+<plots/ps2_noise_reg.png, id=511, 361.35pt x 433.62pt>
 File: plots/ps2_noise_reg.png Graphic file (type png)
 
 <use plots/ps2_noise_reg.png>
 Package pdftex.def Info: plots/ps2_noise_reg.png used on input line 1409.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/data_errors.png, id=519, 578.16pt x 433.62pt>
+<plots/data_errors.png, id=518, 578.16pt x 433.62pt>
 File: plots/data_errors.png Graphic file (type png)
 
 <use plots/data_errors.png>
@@ -969,10 +969,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 10841 strings out of 492995
- 151784 string characters out of 6132704
+ 10842 strings out of 492995
+ 151794 string characters out of 6132704
  311483 words of memory out of 5000000
- 14055 multiletter control sequences out of 15000+600000
+ 14056 multiletter control sequences out of 15000+600000
  14973 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  35i,11n,53p,909b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -999,7 +999,7 @@ st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-dist
 onts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (27 pages, 2847520 bytes).
+Output written on PAPER.pdf (27 pages, 2847479 bytes).
 PDF statistics:
  702 PDF objects out of 1000 (max. 8388607)
  560 compressed objects within 6 object streams
