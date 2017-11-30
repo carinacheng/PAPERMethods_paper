@@ -4,46 +4,50 @@ The top-level auxiliary file: PAPER.aux
 The style file: apj.bst
 Database file #1: PAPERNotes.bib
 Database file #2: refs.bib
+Repeated entry---line 3369 of file refs.bib
+ : @article{bernardi_et_al2009
+ :                            ,
+I'm skipping whatever remains of this entry
 Warning--empty journal in ade_et_al2016
-You've used 60 entries,
+You've used 65 entries,
             2988 wiz_defined-function locations,
-            977 strings with 29579 characters,
-and the built_in function-call counts, 35024 in all, are:
-= -- 2162
-> -- 3729
-< -- 11
-+ -- 1248
-- -- 1178
-* -- 3715
-:= -- 6954
-add.period$ -- 60
-call.type$ -- 60
-change.case$ -- 367
-chr.to.int$ -- 58
-cite$ -- 61
-duplicate$ -- 1106
-empty$ -- 1624
-format.name$ -- 1392
-if$ -- 6532
+            1002 strings with 31603 characters,
+and the built_in function-call counts, 37773 in all, are:
+= -- 2343
+> -- 3996
+< -- 12
++ -- 1336
+- -- 1261
+* -- 4001
+:= -- 7490
+add.period$ -- 65
+call.type$ -- 65
+change.case$ -- 396
+chr.to.int$ -- 63
+cite$ -- 66
+duplicate$ -- 1198
+empty$ -- 1762
+format.name$ -- 1495
+if$ -- 7055
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 59
-newline$ -- 184
-num.names$ -- 240
-pop$ -- 355
+missing$ -- 64
+newline$ -- 199
+num.names$ -- 260
+pop$ -- 383
 preamble$ -- 1
-purify$ -- 367
+purify$ -- 396
 quote$ -- 0
-skip$ -- 956
+skip$ -- 1038
 stack$ -- 0
-substring$ -- 1274
+substring$ -- 1388
 swap$ -- 12
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 540
+type$ -- 585
 warning$ -- 1
-while$ -- 175
+while$ -- 189
 width$ -- 0
-write$ -- 598
-(There was 1 warning)
+write$ -- 648
+(There was 1 error message)

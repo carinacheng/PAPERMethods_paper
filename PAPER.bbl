@@ -1,4 +1,4 @@
-\begin{thebibliography}{60}
+\begin{thebibliography}{65}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Ade {et~al.}(2008)Ade, Bock, Bowden, Brown, Cahill, Carlstrom,
@@ -127,6 +127,11 @@ DeBoer, D.~R., {et~al.} 2017, Publications of the Astronomical Society of the
   {Tegmark}}]{dillon_et_al2013a}
 {Dillon}, J.~S., {Liu}, A., \& {Tegmark}, M. 2013, \prd, 87, 043005
 
+\bibitem[{Dillon {et~al.}(2014)Dillon, Liu, Williams, Hewitt, Tegmark, Morgan,
+  Levine, Morales, Tingay, Bernardi, Bowman, Briggs, Cappallo, Emrich,
+  Mitchell, Oberoi, Prabu, Wayth, \& Webster}]{dillon_et_al2014}
+Dillon, J.~S., {et~al.} 2014, Phys. Rev. D, 89, 023002
+
 \bibitem[{Dillon {et~al.}(2015)Dillon, Neben, Hewitt, Tegmark, Barry,
   Beardsley, Bowman, Briggs, Carroll, de~Oliveira-Costa, Ewall-Wice, Feng,
   Greenhill, Hazelton, Hernquist, Hurley-Walker, Jacobs, Kim, Kittiwisit, Lenc,
@@ -135,7 +140,12 @@ DeBoer, D.~R., {et~al.} 2017, Publications of the Astronomical Society of the
   Tingay, Trott, Wayth, Webster, Wyithe, Bernardi, Cappallo, Deshpande,
   Johnston-Hollitt, Kaplan, Lonsdale, McWhirter, Morgan, Oberoi, Ord, Prabu,
   Srivani, Williams, \& Williams}]{dillon_et_al2015}
-Dillon, J.~S., {et~al.} 2015, Phys. Rev. D, 91, 123011
+---. 2015, Phys. Rev. D, 91, 123011
+
+\bibitem[{{Ewall-Wice} {et~al.}(2017){Ewall-Wice}, {Dillon}, {Liu}, \&
+  {Hewitt}}]{ewall-wice_et_al2017}
+{Ewall-Wice}, A., {Dillon}, J.~S., {Liu}, A., \& {Hewitt}, J. 2017, \mnras,
+  470, 1849
 
 \bibitem[{{Furlanetto} {et~al.}(2006){Furlanetto}, {Oh}, \&
   {Briggs}}]{furlanetto_et_al2006}
@@ -163,6 +173,12 @@ Jacobs, D.~C., {et~al.} 2015, \apj, 801, 51
   DeBoer}]{keating_et_al2016}
 Keating, G.~K., Marrone, D.~P., Bower, G.~C., Leitch, E., Carlstrom, J.~E., \&
   DeBoer, D.~R. 2016, The Astrophysical Journal, 830, 34
+
+\bibitem[{{Kohn} {et~al.}(2016){Kohn}, {Aguirre}, {Nunhokee}, {Bernardi},
+  {Pober}, {Ali}, {Bradley}, {Carilli}, {DeBoer}, {Gugliucci}, {Jacobs},
+  {Klima}, {MacMahon}, {Manley}, {Moore}, {Parsons}, {Stefan}, \&
+  {Walbrugh}}]{kohn_et_al2016}
+{Kohn}, S.~A., {et~al.} 2016, \apj, 823, 88
 
 \bibitem[{Liu \& Parsons(2016)}]{liu_parsons_2016}
 Liu, A., \& Parsons, A.~R. 2016, Monthly Notices of the Royal Astronomical
@@ -217,6 +233,13 @@ Moore, D.~F., Aguirre, J.~E., Parsons, A.~R., Jacobs, D.~C., \& Pober, J.~C.
   {et~al.}}]{parsons_et_al2014}
 ---. 2014, \apj, 788, 106
 
+\bibitem[{{Patil} {et~al.}(2017){Patil}, {Yatawatta}, {Koopmans}, {de Bruyn},
+  {Brentjens}, {Zaroubi}, {Asad}, {Hatef}, {Jeli{\'c}}, {Mevius}, {Offringa},
+  {Pandey}, {Vedantham}, {Abdalla}, {Brouw}, {Chapman}, {Ciardi}, {Gehlot},
+  {Ghosh}, {Harker}, {Iliev}, {Kakiichi}, {Majumdar}, {Mellema}, {Silva},
+  {Schaye}, {Vrbanec}, \& {Wijnholds}}]{patil_et_al2017}
+{Patil}, A.~H., {et~al.} 2017, \apj, 838, 65
+
 \bibitem[{{Patra} {et~al.}(2015){Patra}, {Subrahmanyan}, {Sethi}, {Udaya
   Shankar}, \& {Raghunathan}}]{patra2015}
 {Patra}, N., {Subrahmanyan}, R., {Sethi}, S., {Udaya Shankar}, N., \&
@@ -224,6 +247,9 @@ Moore, D.~F., Aguirre, J.~E., Parsons, A.~R., Jacobs, D.~C., \& Pober, J.~C.
 
 \bibitem[{{Peterson}(2004)}]{peterson_et_al2004}
 {Peterson}, U.-L.~P.~X.-P.~W.~J. 2004, ArXiv Astrophysics e-prints
+
+\bibitem[{{Petrovic} \& {Oh}(2011)}]{petrovic_and_oh2011}
+{Petrovic}, N., \& {Oh}, S.~P. 2011, \mnras, 413, 2103
 
 \bibitem[{Pober {et~al.}(2012)Pober, Parsons, Jacobs, Aguirre, Bradley,
   Carilli, Gugliucci, Moore, \& Parashare}]{pober_et_al2012}
