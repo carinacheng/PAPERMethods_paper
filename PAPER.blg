@@ -4,44 +4,46 @@ The top-level auxiliary file: PAPER.aux
 The style file: apj.bst
 Database file #1: PAPERNotes.bib
 Database file #2: refs.bib
-You've used 34 entries,
+Warning--empty journal in ade_et_al2016
+You've used 60 entries,
             2988 wiz_defined-function locations,
-            842 strings with 14749 characters,
-and the built_in function-call counts, 17136 in all, are:
-= -- 1238
-> -- 1489
-< -- 8
-+ -- 504
-- -- 462
-* -- 1664
-:= -- 3318
-add.period$ -- 34
-call.type$ -- 34
-change.case$ -- 217
-chr.to.int$ -- 32
-cite$ -- 34
-duplicate$ -- 632
-empty$ -- 914
-format.name$ -- 580
-if$ -- 3277
+            977 strings with 29579 characters,
+and the built_in function-call counts, 35024 in all, are:
+= -- 2162
+> -- 3729
+< -- 11
++ -- 1248
+- -- 1178
+* -- 3715
+:= -- 6954
+add.period$ -- 60
+call.type$ -- 60
+change.case$ -- 367
+chr.to.int$ -- 58
+cite$ -- 61
+duplicate$ -- 1106
+empty$ -- 1624
+format.name$ -- 1392
+if$ -- 6532
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 33
-newline$ -- 106
-num.names$ -- 136
-pop$ -- 209
+missing$ -- 59
+newline$ -- 184
+num.names$ -- 240
+pop$ -- 355
 preamble$ -- 1
-purify$ -- 217
+purify$ -- 367
 quote$ -- 0
-skip$ -- 537
+skip$ -- 956
 stack$ -- 0
-substring$ -- 692
+substring$ -- 1274
 swap$ -- 12
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 306
-warning$ -- 0
-while$ -- 105
+type$ -- 540
+warning$ -- 1
+while$ -- 175
 width$ -- 0
-write$ -- 340
+write$ -- 598
+(There was 1 warning)

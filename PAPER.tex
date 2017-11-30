@@ -1,6 +1,6 @@
 \documentclass[preprint2,numberedappendix,tighten]{aastex6}  % USE THIS TO MAKE BIB, THEN FORMAT USING EMULATEAPJ
 %\documentclass[twocolumn,numberedappendix]{emulateapj}
-\shorttitle{Data Analysis Methods for the Detection of the Epoch of Reionization}
+\shorttitle{Characterizing Signal Loss, Error, and Bias in the 21cm Reionization Power Spectrum: A Revised Study of PAPER-64}
 \shortauthors{Cheng et al.}
 
 \usepackage{amsmath}
@@ -54,7 +54,7 @@
 
 
 \begin{document}
-\title{Data Analysis Methods for the Detection of the Epoch of Reionization}
+\title{Characterizing Signal Loss, Error, and Bias in the 21cm Reionization \\Power Spectrum: A Revised Study of PAPER-64}
 
 \author{
 Carina Cheng\altaffilmark{1},
@@ -146,7 +146,7 @@ between the matter distribution exhibited via cosmic microwave background (CMB) 
 web of galaxies we observe today \citep[for a review, see][]{furlanetto_et_al2006}.
 
 One promising technique to probe the EoR is to target the 21 cm wavelength emission that is emitted and absorbed by neutral hydrogen via 
-its spin-flip transition. This technique is powerful because it can be observed both spatially and as a function of redshift --- that is, the wavelength 
+its spin-flip transition (\citealt{furlanetto_et_al2006}; \citealt{morales_and_wyithe2010}; \citealt{pritchard_loeb2012}); . This technique is powerful because it can be observed both spatially and as a function of redshift --- that is, the wavelength 
 of the signal reaching our telescopes can be directly mapped to a distance from where the emission originated before 
 stretching out as it traveled through expanding space. Tracing the 21 cm line as a function of redshift offers a window into the 
 evolution of ionization, temperature, and density fluctuations during this transformative era.
@@ -164,11 +164,11 @@ the Murchison Widefield Array (MWA; \citealt{tingay_et_al2013}), the 21 Centimet
 \citealt{peterson_et_al2004}; \citealt{wu2009}), and PAPER (\citealt{parsons_et_al2010}). The Hydrogen Epoch of 
 Reionization Array (HERA), which is currently being built, is a next-generation instrument that aims to combine lessons 
 learned from previous experiments and is forecasted to be able to make a successful high-significance power spectrum 
-detection with an eventual $350$ elements using current analysis techniques (\citealt{deboer_et_al2017}; 
-\citealt{pober_et_al2014}; \citealt{liu_parsons_2016}).
+detection with an eventual $350$ elements using current analysis techniques (\citealt{pober_et_al2014}; \citealt{liu_parsons_2016}; \citealt{deboer_et_al2017}).
 
 The major challenge that faces all 21 cm experiments is isolating a small signal that is buried underneath foregrounds and 
-instrumental systematics that are, when combined, four to five orders of magnitude brighter \citep[e.g.,][]{bernardi_et_al2009, pober_et_al2013, dillon_et_al2014, kohn_et_al2016}. A clean measurement therefore requires 
+instrumental systematics that are, when combined, four to five orders of magnitude brighter \citep[e.g.,][]{santos_et_al2005, ali_et_al2008, deOliveiraCosta_et_al2008, jelic_et_al2008, bernardi_et_al2009, bernardi_et_al2010, ghosh_et_al2011, pober_et_al2013, dillon_et_al2014, kohn_et_al2016}. A clean measurement therefore requires 
+
 an intimate understanding of the instrument and a rigorous study of data analysis choices. With continual progress being made 
 in the field and HERA on the horizon, it is becoming increasingly important to understand how the methods we choose interact 
 with each other to affect power spectrum results. More specifically, it is imperative to develop techniques and tests that ensure 
@@ -237,16 +237,16 @@ independent samples by an amount dependent on the width of the averaging window.
 of foregrounds and systematics. We explain the trade-offs of filtering in more detail in Section \ref{sec:SiglossOverview}.
 \item \textbf{Weighting:} A dataset can be weighted to emphasize certain features and minimize others. One particular flavor of 
 weighting employed by PAPER is inverse covariance weighting in frequency, which is a generalized version of inverse variance 
-weighting that also takes into account frequency correlations. This weighting has the effect of down-weighting correlated 
+weighting that also takes into account frequency correlations (\citealt{liu_tegmark2011}; \citealt{dillon_et_al2013a}; \citealt{liu_et_al2014a}; \citealt{liu_et_al2014b}). This weighting has the effect of down-weighting correlated 
 information (i.e. foregrounds) and up-weighting noise-like information (i.e. EoR). However, a challenge of inverse covariance 
 weighting is in accurately defining a covariance matrix that best describes the data. 
 \item \textbf{Bootstrapping:} In addition to using theoretical models for covariance matrices and theoretical error estimation 
 methods, bootstrapping is one way to estimate errors. Bootstrapping is a useful method for estimating errors of a dataset from 
-itself. By randomly drawing many samples of the data, we obtain a sense of its inherent variance, though there are subtleties to 
+itself (\citealt{andrae2010}). By randomly drawing many samples of the data, we obtain a sense of its inherent variance, though there are subtleties to 
 consider such as the independence of values in a dataset.
 \item \textbf{Jackknife testing:} A resampling technique useful for estimating bias, jackknives can be taken along different 
 dimensions of a dataset to cross-validate results. In particular, null tests can be used to verify whether results are free of 
-systematics (\citealt{keating_et_al2016}). An EoR detection must pass jack-knife and null tests.
+systematics, as done with CO power spectra (\citealt{keating_et_al2016}) and CMB measurements (see e.g. \citealt{ade_et_al2008}; \citealt{chiang_et_al2010}; \citealt{bischoff_et_al2011}; \citealt{das_et_al2011}; \citealt{araujo_et_al2012}; \citealt{crites_et_al2015}; \citealt{ade_et_al2016}; \citealt{ade_et_al2017}; \citealt{sherwin_et_al2017}). An EoR detection must pass jack-knife and null tests.
 \end{itemize}
 
 In the next three subsections, we study each theme in depth, focusing on how power spectrum technique trade-offs affect each. 
@@ -267,7 +267,7 @@ previously underestimated in the P64 analysis
 
 Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight 
 foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum 
-estimation technique of optimal quadratic estimators (OQE; \citealt{liu_tegmark2011}; \citealt{liu_et_al2014b}). Before showing 
+estimation technique of optimal quadratic estimators (OQE) as done in \citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, and \citet{trott_et_al2012}. Before showing 
 how signal loss can arise when using different weighting matrices, we first summarize OQE as performed in the PAPER 
 analysis.
 
@@ -720,7 +720,7 @@ help evaluate deep limits and/or detections.
 \label{sec:BiasTypes}
 
 Foreground bias is perhaps one of the main factors limiting $21$ cm results. Foreground signals lie $\sim4$-$5$ orders of 
-magnitude above the cosmological signal. Though there are many techniques proposed for removing foregrounds, most 
+magnitude above the cosmological signal. Though there are many techniques proposed for removing foregrounds (see e.g. \citealt{vedantham_et_al2012}; \citealt{parsons_et_al2012a}; \citealt{parsons_et_al2012b}; \citealt{dillon_et_al2013a}; \citealt{wang_et_al2013}; \citealt{parsons_et_al2014}; \citealt{liu_et_al2014a}; \citealt{liu_et_al2014b}; \citealt{dillon_et_al2015}; \citealt{pober_et_al2016a}; \citealt{trott_et_al2016}), most 
 experiments remain ultimately limited by residuals rather than noise.
 
 Because foreground spectra are smooth in frequency, they preferentially show up at low delay, or $k$ modes. For a particular 
