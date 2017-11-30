@@ -143,7 +143,7 @@ into a plasma, is known as the epoch of reionization (EoR). The EoR is a relativ
 history encodes important information regarding the nature of the first galaxies and the processes of structure formation. 
 Direct measurements of the EoR would unlock powerful information about the intergalactic medium, revealing connections 
 between the matter distribution exhibited via cosmic microwave background (CMB) studies and the highly structured 
-web of galaxies we observe today.
+web of galaxies we observe today \citep[for a review, see][]{furlanetto_et_al2006}.
 
 One promising technique to probe the EoR is to target the 21 cm wavelength emission that is emitted and absorbed by neutral hydrogen via 
 its spin-flip transition. This technique is powerful because it can be observed both spatially and as a function of redshift --- that is, the wavelength 
@@ -168,7 +168,7 @@ detection with an eventual $350$ elements using current analysis techniques (\ci
 \citealt{pober_et_al2014}; \citealt{liu_parsons_2016}).
 
 The major challenge that faces all 21 cm experiments is isolating a small signal that is buried underneath foregrounds and 
-instrumental systematics that are, when combined, four to five orders of magnitude brighter. A clean measurement therefore requires 
+instrumental systematics that are, when combined, four to five orders of magnitude brighter \citep[e.g.,][]{bernardi_et_al2009, pober_et_al2013, dillon_et_al2014, kohn_et_al2016}. A clean measurement therefore requires 
 an intimate understanding of the instrument and a rigorous study of data analysis choices. With continual progress being made 
 in the field and HERA on the horizon, it is becoming increasingly important to understand how the methods we choose interact 
 with each other to affect power spectrum results. More specifically, it is imperative to develop techniques and tests that ensure 
@@ -304,7 +304,7 @@ In the next three sections, we investigate the effects of weighting matrices on 
 matrices $\textbf{R}$ and examine their impact on the resulting power spectra estimate $\hat{\textbf{p}}$. Our ultimate goal in 
 experimenting with weighting is to suppress foregrounds and investigate EoR losses associated with it. We note that we 
 purposely take a thorough and pedagogical approach to describing the toy model examples given in the next few sections, for 
-the sake of completeness. The specifics of how signal loss crops up in PAPER's analysis is later described in Section 
+the sake of completeness. The specifics of how signal loss appears in PAPER's analysis is later described in Section 
 \ref{sec:Sigloss}.
 
 \subsubsection{Toy Model: Inverse Covariance Weighting}
@@ -383,7 +383,7 @@ multiplicative bias (per $k$) to estimates of the signal. For a mathematical der
 estimated covariance matrix, see Appendix \ref{sec:sigloss_appendix}. Here we will describe the origin of this signal loss 
 intuitively.
 
-It turns out that because we estimated $\hat{\textbf{C}}$ from our data, its eigenspectrum differs from the eigenspectrum of our 
+Since $\hat{\textbf{C}}$ is estimated from our data, its eigenspectrum differs from the eigenspectrum of our 
 true $\textbf{C}$, and this difference has consequences on our result. An eigenspectrum ranks the eigenvalues of a matrix from 
 highest to lowest and can be thought of as a spectrum of weights that are given to each spectral mode in the data. In other 
 words, the eigenvalues encode the strength of different shapes in the dataset. The eigenspectrum of the identity matrix $
@@ -709,9 +709,10 @@ of as power spectrum sensitivity, where sensitivity increases moving upwards alo
 \subsection{Bias}
 \label{sec:BiasOverview}
 
-In a $21$ cm power spectrum, detections could be the EoR signal, but they could also (and unfortunately more likely) be 
-attributed to other sources of bias. Connecting a detection to EoR as opposed to noise or foreground bias is a key challenge of 
-future $21$ cm data analyses. In this section we will discuss possible sources of bias in a measurement, as well as techniques 
+In a $21$ cm power spectrum, detections could be the EoR signal, but they could also 
+%(and unfortunately more likely) 
+be attributed to other sources of bias. Connecting a detection to EoR as opposed to noise or foreground bias is a key challenge of 
+future $21$ cm data analyses \citep[e.g.][]{petrovic_and_oh2011}. In this section we will discuss possible sources of bias in a measurement, as well as techniques 
 that can help mitigate their effects. We will also present a series of tests in a pedagogical fashion which we suggest be used to 
 help evaluate deep limits and/or detections.
 
@@ -725,17 +726,19 @@ experiments remain ultimately limited by residuals rather than noise.
 Because foreground spectra are smooth in frequency, they preferentially show up at low delay, or $k$ modes. For a particular 
 baseline length, there is a maximum delay imposed on foregrounds, which corresponds to the light-crossing time between two 
 antennas in a baseline. For longer baselines, this value increases, producing what is known as ``the 
-wedge" (\citealt{parsons_et_al2012b}; \citealt{liu_et_al2014a}; \citealt{liu_et_al2014b}; \citealt{vedantham_et_al2012}; 
-\citealt{thyagarajan_et_al2013}; \citealt{pober_et_al2013}; \citealt{datta_et_al2010}). The wedge describes a region in $k$-
-space contaminated by foregrounds, bounded by baseline length (which is proportional to $k_{\perp}$) and delay (which is 
-proportional to $k_{\parallel}$). Properties of the wedge can be used to isolate and remove foregrounds, as done by P64, 
+wedge"
+\citep{datta_et_al2010, parsons_et_al2012b, vedantham_et_al2012, pober_et_al2013, thyagarajan_et_al2013, liu_et_al2014a, liu_et_al2014b, patil_et_al2017}. 
+The wedge describes a region in $k$-space contaminated by foregrounds, bounded by baseline length (which is proportional to $k_{\perp}$) and delay (which is 
+proportional to $k_{\parallel}$). Properties of the wedge can be used to isolate and 
+%remove 
+avoid foregrounds, as done by P64, 
 \citet{parsons_et_al2014}, and \citet{jacobs_et_al2015}.
 
 However, this isolation is not perfect.  In deep measurements, power spectrum measurements at $k_{\parallel}$ values beyond 
 the length of a baseline are often still contaminated at a low level. This leakage, especially at low $k$'s, can be attributed to 
 convolution kernels associated with Fourier-transforming visibilities into delay-space. In other words, smooth-spectrum 
 foregrounds appear as $\delta$-functions in delay-space, convolved by the Fourier transform of the source spectrum and the 
-antenna response, both of which could smear out the foregrounds and cause leakage outside the wedge.
+antenna response, both of which could smear out the foregrounds and cause leakage outside the wedge \citep[e.g.][]{ewall-wice_et_al2017}.
 
 There are analysis techniques to mitigate the effects of foreground leakage and prevent information from low $k's$ from 
 spreading to high $k$ values. For example, narrow window functions can be used to minimize the covariance of a particular 
@@ -888,7 +891,7 @@ P64 and obtain a revised power spectrum estimate.
 
 As a brief review, PAPER is a dedicated $21$ cm experiment located in the Karoo Desert in South Africa. The PAPER-64 
 configuration consists of 64 dual-polarization drift-scan elements that are arranged in a grid layout. For our case study, we 
-focus solely on Stokes I estimated data (\citealt{moore_et_al2013}) from PAPER's $30$ m East/West baselines (Figure 
+focus solely on Stokes I estimated data \citep{moore_et_al2013} from PAPER's $30$ m East/West baselines (Figure 
 \ref{fig:ant_layout}). For information about the backend system of PAPER-64, its observations, and data reduction pipeline, we 
 refer the reader to \citet{parsons_et_al2010} and P64.
 
@@ -1652,7 +1655,7 @@ techniques --- and with all that, an improved understanding of reionization and 
 CC would like to acknowledge the UC Berkeley Chancellor's Fellowship, National Science Foundation Graduate Research 
 Fellowship (Division of Graduate Education award 1106400), and thank Eric Switzer for helpful discussions. PAPER and HERA 
 are supported by grants from the National Science Foundation (awards 1440343, and 1636646). ARP, DCJ, and JEA would 
-also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, respectively). We also graciously thank SKA-
+also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, respectively). SAK is supported by the University of Pennsylvania School of Arts and Sciences Disseeration Completion Fellowship. We graciously thank SKA-
 SA for site infrastructure and observing support.
 \label{sec:Ack}
 
