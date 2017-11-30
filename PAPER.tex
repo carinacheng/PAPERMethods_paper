@@ -236,16 +236,16 @@ independent samples by an amount dependent on the width of the averaging window.
 of foregrounds and systematics. We explain the trade-offs of filtering in more detail in Section \ref{sec:SiglossOverview}.
 \item \textbf{Weighting:} A dataset can be weighted to emphasize certain features and minimize others. One particular flavor of 
 weighting employed by PAPER is inverse covariance weighting in frequency, which is a generalized version of inverse variance 
-weighting that also takes into account frequency correlations. This weighting has the effect of down-weighting correlated 
+weighting that also takes into account frequency correlations (\citealt{liu_tegmark2011}; \citealt{dillon_et_al2013a}; \citealt{liu_et_al2014a}; \citealt{liu_et_al2014b}). This weighting has the effect of down-weighting correlated 
 information (i.e. foregrounds) and up-weighting noise-like information (i.e. EoR). However, a challenge of inverse covariance 
 weighting is in accurately defining a covariance matrix that best describes the data. 
 \item \textbf{Bootstrapping:} In addition to using theoretical models for covariance matrices and theoretical error estimation 
 methods, bootstrapping is one way to estimate errors. Bootstrapping is a useful method for estimating errors of a dataset from 
-itself. By randomly drawing many samples of the data, we obtain a sense of its inherent variance, though there are subtleties to 
+itself (\citealt{andrae2010}). By randomly drawing many samples of the data, we obtain a sense of its inherent variance, though there are subtleties to 
 consider such as the independence of values in a dataset.
 \item \textbf{Jackknife testing:} A resampling technique useful for estimating bias, jackknives can be taken along different 
 dimensions of a dataset to cross-validate results. In particular, null tests can be used to verify whether results are free of 
-systematics (\citealt{keating_et_al2016}). An EoR detection must pass jack-knife and null tests.
+systematics, as done with CO power spectra (\citealt{keating_et_al2016}) and CMB measurements (see e.g. \citealt{ade_et_al2008}; \citealt{chiang_et_al2010}; \citealt{bischoff_et_al2011}; \citealt{das_et_al2011}; \citealt{araujo_et_al2012}; \citealt{crites_et_al2015}; \citealt{ade_et_al2016}; \citealt{ade_et_al2017}; \citealt{sherwin_et_al2017}). An EoR detection must pass jack-knife and null tests.
 \end{itemize}
 
 In the next three subsections, we study each theme in depth, focusing on how power spectrum technique trade-offs affect each. 

@@ -1,5 +1,24 @@
-\begin{thebibliography}{50}
+\begin{thebibliography}{60}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Ade {et~al.}(2008)Ade, Bock, Bowden, Brown, Cahill, Carlstrom,
+  Castro, Church, Culverhouse, Friedman, Ganga, Gear, Hinderks, Kovac, Lange,
+  Leitch, Melhuish, Murphy, Orlando, Schwarz, O'Sullivan, Piccirillo, Pryke,
+  Rajguru, Rusholme, Taylor, Thompson, Wu, \& Zemcov}]{ade_et_al2008}
+Ade, P., {et~al.} 2008, Astrophysical Journal, 674, 22
+
+\bibitem[{{Ade} {et~al.}(2017){Ade}, {Ahmed}, {Aikin}, {Alexander}, {Barkats},
+  {Benton}, {Bischoff}, {Bock}, {Bowens-Rubin}, {Brevik}, {Buder}, {Bullock},
+  {Buza}, {Connors}, {Crill}, {Duband}, {Dvorkin}, {Filippini}, {Fliescher},
+  {Germaine}, {Ghosh}, {Grayson}, {Harrison}, {Hildebrandt}, {Hilton}, {Hui},
+  {Irwin}, {Kang}, {Karkare}, {Karpel}, {Kaufman}, {Keating}, {Kefeli},
+  {Kernasovskiy}, {Kovac}, {Kuo}, {Larson}, {Leitch}, {Megerian}, {Moncelsi},
+  {Namikawa}, {Netterfield}, {Nguyen}, {O'Brient}, {Ogburn}, {Pryke},
+  {Richter}, {Schillaci}, {Schwarz}, {Sheehy}, {Staniszewski}, {Steinbach},
+  {Sudiwala}, {Teply}, {Thompson}, {Tolan}, {Tucker}, {Turner}, {Vieregg},
+  {Weber}, {Wiebe}, {Willmert}, {Wong}, {Wu}, {Yoon}, {Keck Array}, \& {Bicep2
+  Collaborations}}]{ade_et_al2017}
+{Ade}, P.~A.~R., {et~al.} 2017, \prd, 96, 102003
 
 \bibitem[{{Ali} {et~al.}(2008){Ali}, {Bharadwaj}, \&
   {Chengalur}}]{ali_et_al2008}
@@ -10,6 +29,15 @@
   {Grobbelaar}, {Horrell}, {Jacobs}, {Klima}, {MacMahon}, {Maree}, {Moore},
   {Razavi}, {Stefan}, {Walbrugh}, \& {Walker}}]{ali_et_al2015}
 {Ali}, Z.~S., {et~al.} 2015, \apj, 809, 61
+
+\bibitem[{{Andrae}(2010)}]{andrae2010}
+{Andrae}, R. 2010, ArXiv e-prints
+
+\bibitem[{Array {et~al.}(2016)Array, Collaborations: P. A. R.~Ade, Ahmed,
+  W.~Aikin, D.~Alexander, Barkats, J.~Benton, A.~Bischoff, J.~Bock,
+  Bowens-Rubin, Brevik, Buder, Bullock, Buza, Connors, P.~Crill, Duband,
+  Dvorkin, P.~Filippin, \& W.~Yoon}]{ade_et_al2016}
+Array, K., {et~al.} 2016, 833
 
 \bibitem[{{Bernardi} {et~al.}(2009){Bernardi}, {de Bruyn}, {Brentjens},
   {Ciardi}, {Harker}, {Jeli{\'c}}, {Koopmans}, {Labropoulos}, {Offringa},
@@ -30,6 +58,50 @@
 \bibitem[{{Burns} {et~al.}(2012){Burns}, {Lazio}, {Bale}, {Bowman}, {Bradley},
   {Carilli}, {Furlanetto}, {Harker}, {Loeb}, \& {Pritchard}}]{burns2012}
 {Burns}, J.~O., {et~al.} 2012, Advances in Space Research, 49, 433
+
+\bibitem[{Chiang {et~al.}(2010)Chiang, Ade, Barkats, Battle, Bierman, Bock,
+  Dowell, Duband, Hivon, Holzapfel, Hristov, Jones, Keating, Kovac, Kuo, Lange,
+  Leitch, Mason, Matsumura, Nguyen, Ponthieu, Pryke, Richter, Rocha, Sheehy,
+  Takahashi, Tolan, \& Yoon}]{chiang_et_al2010}
+Chiang, H.~C., {et~al.} 2010, The Astrophysical Journal, 711, 1123
+
+\bibitem[{Collaboration {et~al.}(2011)Collaboration, Bischoff, Brizius, Buder,
+  Chinone, Cleary, Dumoulin, Kusaka, Monsalve, Næss, Newburgh, Reeves, Smith,
+  Wehus, Zuntz, Zwart, Bronfman, Bustos, Church, Dickinson, Eriksen, Ferreira,
+  Gaier, Gundersen, Hasegawa, Hazumi, Huffenberger, Jones, Kangaslahti, Kapner,
+  Lawrence, Limon, May, McMahon, Miller, Nguyen, Nixon, Pearson, Piccirillo,
+  Radford, Readhead, Richards, Samtleben, Seiffert, Shepherd, Staggs, Tajima,
+  Thompson, Vanderlinde, Williamson, \& Winstein}]{bischoff_et_al2011}
+Collaboration, Q., {et~al.} 2011, The Astrophysical Journal, 741, 111
+
+\bibitem[{Collaboration {et~al.}(2012)Collaboration, Araujo, Bischoff, Brizius,
+  Buder, Chinone, Cleary, Dumoulin, Kusaka, Monsalve, Næss, Newburgh, Reeves,
+  Wehus, Zwart, Bronfman, Bustos, Church, Dickinson, Eriksen, Gaier, Gundersen,
+  Hasegawa, Hazumi, Huffenberger, Ishidoshiro, Jones, Kangaslahti, Kapner,
+  Kubik, Lawrence, Limon, McMahon, Miller, Nagai, Nguyen, Nixon, Pearson,
+  Piccirillo, Radford, Readhead, Richards, Samtleben, Seiffert, Shepherd,
+  Smith, Staggs, Tajima, Thompson, Vanderlinde, \&
+  Williamson}]{araujo_et_al2012}
+---. 2012, The Astrophysical Journal, 760, 145
+
+\bibitem[{Crites {et~al.}(2015)Crites, Henning, Ade, Aird, Austermann, Beall,
+  Bender, Benson, Bleem, Carlstrom, Chang, Chiang, Cho, Citron, Crawford,
+  de~Haan, Dobbs, Everett, Gallicchio, Gao, George, Gilbert, Halverson, Hanson,
+  Harrington, Hilton, Holder, Holzapfel, Hoover, Hou, Hrubes, Huang, Hubmayr,
+  Irwin, Keisler, Knox, Lee, Leitch, Li, Liang, Luong-Van, McMahon, Mehl,
+  Meyer, Mocanu, Montroy, Natoli, Nibarger, Novosad, Padin, Pryke, Reichardt,
+  Ruhl, Saliwanchik, Sayre, Schaffer, Smecher, Stark, Story, Tucker,
+  Vanderlinde, Vieira, Wang, Whitehorn, Yefremenko, \& Zahn}]{crites_et_al2015}
+Crites, A.~T., {et~al.} 2015, The Astrophysical Journal, 805, 36
+
+\bibitem[{{Das} {et~al.}(2011){Das}, {Sherwin}, {Aguirre}, {Appel}, {Bond},
+  {Carvalho}, {Devlin}, {Dunkley}, {D{\"u}nner}, {Essinger-Hileman}, {Fowler},
+  {Hajian}, {Halpern}, {Hasselfield}, {Hincks}, {Hlozek}, {Huffenberger},
+  {Hughes}, {Irwin}, {Klein}, {Kosowsky}, {Lupton}, {Marriage}, {Marsden},
+  {Menanteau}, {Moodley}, {Niemack}, {Nolta}, {Page}, {Parker}, {Reese},
+  {Schmitt}, {Sehgal}, {Sievers}, {Spergel}, {Staggs}, {Swetz}, {Switzer},
+  {Thornton}, {Visnjic}, \& {Wollack}}]{das_et_al2011}
+{Das}, S., {et~al.} 2011, Physical Review Letters, 107, 021301
 
 \bibitem[{Datta {et~al.}(2010)Datta, Bowman, \& Carilli}]{datta_et_al2010}
 Datta, A., Bowman, J.~D., \& Carilli, C.~L. 2010, The Astrophysical Journal,
@@ -186,6 +258,15 @@ Pober, J.~C., {et~al.} 2016, The Astrophysical Journal, 819, 8
 \bibitem[{{Santos} {et~al.}(2005){Santos}, {Cooray}, \&
   {Knox}}]{santos_et_al2005}
 {Santos}, M.~G., {Cooray}, A., \& {Knox}, L. 2005, \apj, 625, 575
+
+\bibitem[{Sherwin {et~al.}(2017)Sherwin, van Engelen, Sehgal, Madhavacheril,
+  Addison, Aiola, Allison, Battaglia, Becker, Beall, Bond, Calabrese, Datta,
+  Devlin, D\"unner, Dunkley, Fox, Gallardo, Halpern, Hasselfield, Henderson,
+  Hill, Hilton, Hubmayr, Hughes, Hincks, Hlozek, Huffenberger, Koopman,
+  Kosowsky, Louis, Maurin, McMahon, Moodley, Naess, Nati, Newburgh, Niemack,
+  Page, Sievers, Spergel, Staggs, Thornton, Van~Lanen, Vavagiakis, \&
+  Wollack}]{sherwin_et_al2017}
+Sherwin, B.~D., {et~al.} 2017, Phys. Rev. D, 95, 123529
 
 \bibitem[{{Sokolowski} {et~al.}(2015){Sokolowski}, {Tremblay}, {Wayth},
   {Tingay}, {Clarke}, {Roberts}, {Waterson}, {Ekers}, {Hall}, {Lewis},
