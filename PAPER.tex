@@ -1062,8 +1062,7 @@ which, for a sampling of $P_{\rm in}$ and $P_{\rm out}$ provides a mapping from 
 distribution. By viewing data through this signal loss lens, we may then ask the question ``what input power spectrum 
 distribution could this (signal-loss affected) data come from?" In the next section, we describe the shape of our signal loss 
 transfer function and detail the computation used to translate our power spectrum result into one viewed through a 
-signal loss lens. Interpretation of the signal injection results can framed in multiple ways which result in different answers. One 
-such alternative is described in Appendix \ref{sec:Pr_appendix}.
+signal loss lens. Interpretation of the signal injection results can be framed in multiple ways which result in similar but not identical answers. One such alternative is described in Appendix \ref{sec:Pr_appendix}.
 %We showcase two methods... \cc{fill in with some broad statement of why we're showing 2 methods but also state that they yield similar results...}
 
 \subsubsection{Signal Loss in Practice}
@@ -1680,25 +1679,27 @@ where $N$ is the length of $\x$. In the last step we dropped the final term, sin
 \label{sec:Pr_appendix}
 One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in section \ref{sec:Sigloss} relies on several assumptions which required justification including the neglection of cross-terms in the power spectrum and indeed does not behave as expected at small injected values. However it is possible to make a simpler interpretation which requires less motivation.
 
-In the main text we made an estimate of the signal loss effecting only the injected eor by supposing that the lossy injected signal was the difference between the injected and not injected case $ P(s) = P(x+s) - P(x)$.  Suppose that we rephrase the question to: ``At what point would an injected signal be detectable at significant levels?". Instead of detangling the part of the output power spectrum dominated by the injected signal we can simply use $P(x+s)$, the weighted power spectrum of the data plus injected signal.
+In the main text we made an estimate of the signal loss effecting only the injected eor by supposing that the lossy injected signal was the difference between the injected and not injected cases: $ P(e) = P(x+e) - P(x)$. Suppose that we rephrase the question to: ``At what point would an injected signal be detectable at significant levels?". Instead of detangling the part of the output power spectrum dominated by the injected signal we can simply use $P(x+e)$, the weighted power spectrum of the data plus injected signal ($\hat{\textbf{p}}_{r}$ in Section \ref{sec:Sigloss}).
   
 \begin{figure}[tp]
 \centering
 \includegraphics[width=\textwidth]{plots/method2_heatmap_I.png}
 \caption{The distribution of output power spectrum values for a 
-given injection level P$_{in}$.\label{fig:Pr_vs_Pin}}
+given injection level P$_{in}$. The $P_{\rm out}$ values that are plotted on the y-axis represent the weighted power spectrum of data plus the injected signal. It differs from that of Figure \ref{fig:sigloss_transfercurve} by not subtracting off the power spectrum of data alone (not subtracting off the second term in Equation \eqref{eq:sigloss}). We show kernel density estimations of the power spectrum transfer functions as colored heat-maps for the cases of inverse covariance weighted PAPER-64 data (left) and unweighted data (right). The solid black 
+diagonal line marks a perfect unity mapping, and the solid gray horizontal line denotes the peak of $\hat{\textbf{p}}_{x}$, the data distribution. At low injection, $P_{\rm out}$ converges at the data level.}
+\label{fig:Pr_vs_Pin}
 \end{figure}  
   
-This question is phrased visually in Figure \ref{fig:Pr_vs_Pin}. In the 2D space relating total $P_r$ to injected $P_{\rm in}$, very small injected levels begin at the level equivalent of no injection (i.e. data only), very large levels are dominated by the injected signal, and a transition zone, where the injected signal amplitude is similar to the data level (and thus subject to cross correlations in both the covariance and in the power spectrum calculation).  It is in this last region that we search for the point at which an injected signal would be clearly detected.
+This question is phrased visually in Figure \ref{fig:Pr_vs_Pin}. In the 2D space relating total $\hat{\textbf{p}}_r$ to injected $P_{\rm in}$, very small injected levels begin at the level equivalent of no injection (i.e. data only) and very large levels are dominated by the injected signal. It is the transition zone, where the injected signal amplitude is similar to the data level (and thus subject to cross correlations in both the covariance and in the power spectrum calculation) that we search for the point at which an injected signal would be clearly detected.
   
 \begin{figure}[tp]
 \centering
 \includegraphics[width=.5\textwidth]{plots/method2_prob_vs_pinj.png}
-\caption{The probability that an injected signal of level P$_{inj}$
-is observable at a 2$\sigma$ level above the value of P$_{data}$.
+\caption{The probability that an injected signal of level P$_{in}$
+is observable at a 2$\sigma$ level above the value of $\hat{\textbf{p}}_{x}$ (data).
+The different colors represent different $k$ values. We choose a probably of $90\%$ for our signal loss estimated power spectrum.
 \label{fig:Prob_vs_Pin}}
 \end{figure}  
-  
   
 One difference in this method is that we are exclusively asking about signals detectable \emph{above} the level of the observed data. Thus it is explicitly limited to placing an upper limit, even if in some $k$-modes one has actual detections above the noise.  This might be seen as more conservative, however, a similar assumption has already been made when choosing to down-weight the data using itself. In such a down-weighting step, one has assumed that significant excess power is associated with a foreground residual. We note that a high SNR detection will require a different method.
   
@@ -1706,24 +1707,24 @@ Formally we can express our test as: ``What is the $P_{\rm in}$ such that
 \begin{equation}
 P_{r} > P_{x} \Lambda,
 \end{equation}  
-where $\Lambda$ represents a choice of threshold.'' Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not\footnote{i.e. the null test} the same.  
+where $\Lambda$ represents a choice of threshold?'' Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not\footnote{i.e. the null test} the same.  
  
  \begin{equation}
 \Prob(P_{in})  =  1 -  \int_{r=x} \Prob(P_x) \Prob(P_r,P_{in}) dr
  \end{equation}
- where $\Prob(P_x)$ is the probability of obtaining the power spectrum $P_x$ found via bootstrapping and $\Prob(P_r,P_{in})$ is the probability of obtaining the summed power spectrum $P_r$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
+ where $\Prob(P_x)$ is the probability of obtaining the power spectrum $\hat{\textbf{p}}_x$ found via bootstrapping (power spectrum of data only) and $\Prob(P_r,P_{in})$ is the probability of obtaining the summed power spectrum $\hat{\textbf{p}}_{r}$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
  
 Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low injection levels the variation between $x$ and $r$ is such that the null test is ruled out to within $20$\%. This is the level expected from two distributions with $\sim$10 effective samples. \dcj{checked with a little python test but needs a cite} As the injected signal approaches the level of the data, the probability of null rejection rises steeply.
   
-Lastly, this method requires that we choose the probability at which we choose to reject the null hypothesis. As can be seen in Figure \ref{fig:Pr_vs_Pin}, the difference between $80$ and $90$\% can mean a difference of almost an order of magnitude in the power spectrum level that is ruled out. We can also see that, due to the small number of samples, the probability does not perfectly converge at high injected power levels. Rather than insist on a rejection at the $99$th percent level, we compromise at $90$\%.
+Lastly, this method requires that we choose the probability at which we choose to reject the null hypothesis. As can be seen in Figure \ref{fig:Prob_vs_Pin}, the difference between $80$ and $90$\% can mean a difference of almost an order of magnitude in the power spectrum level that is ruled out. We can also see that, due to the small number of samples, the probability does not perfectly converge at high injected power levels. Rather than insist on a rejection at the $99$th percent level, we compromise at $90$\%.
 
-The resulting limits for inverse covariance weighted PAPER-64 data (the same data used in Method \#1), using this second signal loss method, are shown in Figure \ref{fig:sigloss_compare} compared with the method used in the main text. Overall the limits are slightly lower, with k modes differing by factors of 3 to 37.  
+The resulting limits for inverse covariance weighted PAPER-64 data (the same data used in Section \ref{sec:Sigloss}), using this second signal loss method, are shown in Figure \ref{fig:sigloss_compare} compared with the method used in the main text. Overall the limits are slightly lower, with k modes differing by factors of 3 to 37.  
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=.4\textwidth]{plots/sigloss_method_comparison.png}
-\caption{A comparison of the Section \ref{sec:SiglossOverview} method
-against this method at $90$\% confidence (red curve).
+\caption{A comparison of the signal loss Section \ref{sec:Sigloss} method
+against the method in this appendix at $90$\% confidence (red curve).
 Also shown are the upper limits of the unweighted power spectrum
 (blue dashed) and theoretical noise model (green). \label{fig:sigloss_compare} }
 \end{figure}

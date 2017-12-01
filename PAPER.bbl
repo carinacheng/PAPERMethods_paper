@@ -1,4 +1,4 @@
-\begin{thebibliography}{65}
+\begin{thebibliography}{66}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Ade {et~al.}(2008)Ade, Bock, Bowden, Brown, Cahill, Carlstrom,
@@ -38,6 +38,17 @@ Ade, P., {et~al.} 2008, Astrophysical Journal, 674, 22
   Bowens-Rubin, Brevik, Buder, Bullock, Buza, Connors, P.~Crill, Duband,
   Dvorkin, P.~Filippin, \& W.~Yoon}]{ade_et_al2016}
 Array, K., {et~al.} 2016, 833
+
+\bibitem[{Beardsley {et~al.}(2016)Beardsley, Hazelton, Sullivan, Carroll,
+  Barry, Rahimi, Pindor, Trott, Line, Jacobs, Morales, Pober, Bernardi, Bowman,
+  Busch, Briggs, Cappallo, Corey, de~Oliveira-Costa, Dillon, Emrich,
+  Ewall-Wice, Feng, Gaensler, Goeke, Greenhill, Hewitt, Hurley-Walker,
+  Johnston-Hollitt, Kaplan, Kasper, Kim, Kratzenberg, Lenc, Loeb, Lonsdale,
+  Lynch, McKinley, McWhirter, Mitchell, Morgan, Neben, Thyagarajan, Oberoi,
+  Offringa, Ord, Paul, Prabu, Procopio, Riding, Rogers, Roshi, Shankar, Sethi,
+  Srivani, Subrahmanyan, Tegmark, Tingay, Waterson, Wayth, Webster, Whitney,
+  Williams, Williams, Wu, \& Wyithe}]{beardsley_et_al2016}
+Beardsley, A.~P., {et~al.} 2016, The Astrophysical Journal, 833, 102
 
 \bibitem[{{Bernardi} {et~al.}(2009){Bernardi}, {de Bruyn}, {Brentjens},
   {Ciardi}, {Harker}, {Jeli{\'c}}, {Koopmans}, {Labropoulos}, {Offringa},
