@@ -959,11 +959,11 @@ $ to be the data plus the EoR signal:
 
 We are interested in quantifying how much variance in $\textbf{e}$ is lost after weighting $\textbf{r}$ and estimating the power 
 spectrum according to OQE formalism. We investigate this by comparing two quantities we call the input power spectrum and 
-output power spectrum: $P_{\rm in}$ and $P_{\rm out}$, defined as (ignoring normalization factors): 
+output power spectrum: $P_{\rm in}$ and $P_{\rm out}$, defined as: 
 
 \begin{equation}
 \label{eq:Pin}
-P_{\rm in,\alpha} = \textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e}
+P_{\rm in,\alpha} = \textbf{M}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e}
 \end{equation}
 
 \noindent and
@@ -971,11 +971,10 @@ P_{\rm in,\alpha} = \textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\
 \begin{eqnarray}
 \label{eq:sigloss}
 P_{\rm out,\alpha} &=& \hat{\textbf{p}}_{r,\alpha}-\hat{\textbf{p}}_{x,\alpha} \nonumber \\
-&=& \textbf{r}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{r} - \textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
-^{\alpha}\textbf{R}_{x}\textbf{x}.
+&=& \textbf{M}_{rr}\textbf{r}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{r} - \textbf{M}_{xx}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
+^{\alpha}\textbf{R}_{x}\textbf{x},
 \end{eqnarray}
-
-$P_{\rm in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
+where all $\textbf{M}$'s are normalization factors. $P_{\rm in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
 $\hat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\hat{\textbf{p}}_{r}$ is the power spectrum of the
 data plus injection, and $P_{\rm out}$ is the difference between $\hat{\textbf{p}}_{r}$ and $\hat{\textbf{p}}_{x}$.
 
@@ -1007,17 +1006,18 @@ which reduces to the same result because of the linearity of Equation \eqref{eq:
 Using this motivation, the numerator of Equation \eqref{eq:Deriv2} can be mapped to our expression for $P_{\rm out}$, and the denominator to $P_{\rm in}$, where the function $g$ is our OQE power spectrum pipeline. \dcj{Here is the post-hoc justification for this signal loss method.  Except goes back to assumption of equation for g which just \emph{assumes} that there are no cross terms in the estimation of a power spectrum. So we're just kicking the can down the road. }
 
 One may wonder why $P_{\rm out}$ cannot be computed simply as the weighted power spectrum of $\textbf{e}$ alone, namely 
-$P_{\rm out,\alpha} = \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}$. In short, this naive 
+$P_{\rm out,\alpha} = \textbf{M}_{ee}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}$. In short, this naive 
 expression fails to include correlations between the injected EoR signal and data, which emerges as statistical noise that is added to the 
 estimate, decreasing the value of $P_{\rm out}$. Mathematically, we can show this by expanding out Equation \eqref{eq:sigloss}:
 
 \begin{eqnarray}
 \label{eq:crossterm}
-P_{\rm out,\alpha} &=& (\textbf{x}+\textbf{e})^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}(\textbf{x}+\textbf{e}) - 
-\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x} \nonumber \\
-&=& \textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} + \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
-^{\alpha}\textbf{R}_{r}\textbf{e} + \textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
-&+& \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} - \textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
+P_{\rm out,\alpha} &=& \textbf{M}_{rr}(\textbf{x}+\textbf{e})^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}(\textbf{x}+\textbf{e}) - 
+\textbf{M}_{xx}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x} \nonumber \\
+&=& \textbf{M}_{rr}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} + \textbf{M}_{rr}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
+^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
+&+& \textbf{M}_{rr}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} + \textbf{M}_{rr}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} \nonumber \\
+&-& \textbf{M}_{xx}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
 
@@ -1026,9 +1026,9 @@ $\textbf{x}$ are small, yields:
 
 \begin{eqnarray}
 \label{eq:pout_expand}
-P_{\rm out, \alpha,\textbf{e} \gg \textbf{x}} &=& \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} + 
-\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
-&+& \textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x}.
+P_{\rm out, \alpha,\textbf{e} \gg \textbf{x}} &=&  \textbf{M}_{rr}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} +
+ \textbf{M}_{rr}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
+ &+&  \textbf{M}_{rr}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x}.
 \end{eqnarray}
 
 We see that our naive expression for $P_{\rm out}$ is the first term in Equation \eqref{eq:pout_expand}, but there are also two 
@@ -1077,9 +1077,9 @@ outlined below is independent of weighting scheme, here we demonstrate the compu
 expressions for $P_{\rm in}$ and $P_{\rm out}$ become (ignoring normalization factors):
 
 \begin{eqnarray}
-P_{\rm in,\alpha} &=& \textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e} \\
-P_{\rm out,\alpha} &=& \textbf{r}^{\dagger}\textbf{C}_{r}^{-1}\textbf{Q}^{\alpha}\textbf{C}_{r}^{-1}\textbf{r} - \textbf{x}^{\dagger}
-\textbf{C}_{x}^{-1}\textbf{Q}^{\alpha}\textbf{C}_{x}^{-1}\textbf{x} 
+P_{\rm in,\alpha} &=&  \textbf{M}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e} \\
+P_{\rm out,\alpha} &=&  \textbf{M}_{rr}\textbf{r}^{\dagger}\textbf{C}_{r}^{-1}\textbf{Q}^{\alpha}\textbf{C}_{r}^{-1}\textbf{r} \nonumber \\
+&&\phantom{=====} -  \textbf{M}_{xx}\textbf{x}^{\dagger}\textbf{C}_{x}^{-1}\textbf{Q}^{\alpha}\textbf{C}_{x}^{-1}\textbf{x} 
 \end{eqnarray}
 
 The treatment we outlined in the previous section implicitly assumed that signal loss corrections could be treated in expectation. In practice, however, the signal loss itself is a random variable --- some realizations of the cosmological signal may be more correlated with foreground modes than others, leading to more signal loss. This leads to two issues. The first is that Equation \eqref{eq:LinearPspecSum} may not hold. In particular, a third term that is a quadratic combination of $\f$ and $\s$ (e.g., $\f^\dagger \C^{-1} \s$) may appear. However, we can circumvent this issue by decomposing $\f$ into a sum of two vectors, one that is proportional to $\s$ and one that is orthogonal to $\s$. The former can be absorbed into the EoR term (part of the signal loss estimate), while the latter can be absorbed into the foreground term. \dcj{Wait what? I think you are saying essentially that some x can remain in Pout which is what we are seeing. Or is this some extra bit of method which has been added to the analysis...}
@@ -1207,8 +1207,8 @@ simplicity in practice and because its effectiveness is comparable to other weig
 Our revised, best to-date PAPER-64 power spectrum (using only one baseline separation type) is shown in Figure 
 \ref{fig:ps1_data}. Again, black and gray points correspond to positive and negative power spectrum values respectively, with 
 $2\sigma$ errors bars. Also plotted are the unweighted power spectrum upper limit (dashed blue) and theoretical prediction of 
-noise (solid green). From this result, we quote a best $2\sigma$ upper limit of $(158.0$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, 
-a higher limit than P64 by a factor of $\sim7$ in mK (though we only use one baseline type in our analysis as opposed to $3$). 
+noise (solid green). From this result, we quote a best $2\sigma$ upper limit of $(242.5$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, 
+a higher limit than P64 by a factor of $\sim10$ in mK (though we only use one baseline type in our analysis as opposed to $3$). 
 \cc{replace with kolopanis limit instead later}
 
 \begin{figure*}
@@ -1220,8 +1220,8 @@ negative power spectrum values, respectively, with $2\sigma$ error bars also plo
 power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on 
 observational parameters. This power spectrum result differs from P64 in that it only uses data from one type of baseline ($30$ m 
 East/West baselines) instead of three. Major differences from previously published results stem from revisions regarding signal 
-loss, bootstrapping, and the theoretical error computation. We quote a best $2\sigma$ upper limit of $(158.0$ mK$)^{2}$ at 
-$k=0.34$ $h$Mpc$^{-1}$, a higher limit than P64 by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}.}
+loss, bootstrapping, and the theoretical error computation. We quote a best $2\sigma$ upper limit of $(242.5$ mK$)^{2}$ at 
+$k=0.34$ $h$Mpc$^{-1}$, a higher limit than P64 by a factor of $\sim10$ in mK \cc{replace with kolopanis limit later}.}
 	\label{fig:ps1_data}
 \end{figure*}
 
@@ -1578,15 +1578,15 @@ out systematics.
 \end{itemize}
 
 As a consequence of our investigations, we have also revised power spectrum results from PAPER-64. For an analysis of only 
-one baseline type, we quote a new $2\sigma$ upper limit of $(158.0$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, a higher limit than 
-P64 by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}. The reasons for a previously underestimated limit and 
+one baseline type, we quote a new $2\sigma$ upper limit of $(242.5$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, a higher limit than 
+P64 by a factor of $\sim10$ in mK \cc{replace with kolopanis limit later}. The reasons for a previously underestimated limit and 
 ways in which our new analysis differs can be summarized by the following:
 
 \begin{itemize}
 \item Signal loss, previously found to be $<2\%$ in P64, was underestimated by a factor of $\sim$$1000$ for inverse 
 covariance weighting. For our new analysis, we use a regularized covariance weighting method to minimize loss (Section 
 \ref{sec:Weight}). However, because our revised weighting method is not as aggressive as the former, our results are still a 
-factor of $\sim7$ mK higher than previous limits. Underestimated signal loss therefore represents the bulk of our revision. We 
+factor of $\sim10$ mK higher than previous limits. Underestimated signal loss therefore represents the bulk of our revision. We 
 note that PAPER's analysis is not the first to underestimate loss; results from the GMRT (\citealt{paciga_et_al2013}) were also 
 revised from new signal loss calculations associated with their singular value decomposition foreground filter.
 \item Power spectrum errors, originally computed by bootstrapping, were underestimated by a factor of $\sim$$2$ due to 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  1 DEC 2017 13:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  1 DEC 2017 14:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -858,8 +858,12 @@ LaTeX Warning: A float is stuck (cannot be placed) on input line 953.
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
-[14 <./plots/frp.png>] [15]
-<plots/sigloss_transfercurve.png, id=544, 867.24pt x 433.62pt>
+[14 <./plots/frp.png>]
+Overfull \hbox (11.7678pt too wide) in alignment at lines 1013--1022
+ [][][] []
+ []
+
+[15] <plots/sigloss_transfercurve.png, id=544, 867.24pt x 433.62pt>
 File: plots/sigloss_transfercurve.png Graphic file (type png)
 
 <use plots/sigloss_transfercurve.png>
@@ -1015,7 +1019,7 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1736.
 Here is how much of TeX's memory you used:
  11056 strings out of 492995
  156571 string characters out of 6132704
- 313075 words of memory out of 5000000
+ 312075 words of memory out of 5000000
  14229 multiletter control sequences out of 15000+600000
  15332 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1044,7 +1048,7 @@ t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (29 pages, 2979859 bytes).
+Output written on PAPER.pdf (29 pages, 2979499 bytes).
 PDF statistics:
  879 PDF objects out of 1000 (max. 8388607)
  725 compressed objects within 8 object streams
