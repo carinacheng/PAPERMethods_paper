@@ -1,4 +1,4 @@
-\begin{thebibliography}{66}
+\begin{thebibliography}{75}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Ade {et~al.}(2008)Ade, Bock, Bowden, Brown, Cahill, Carlstrom,
@@ -153,6 +153,9 @@ Dillon, J.~S., {et~al.} 2014, Phys. Rev. D, 89, 023002
   Srivani, Williams, \& Williams}]{dillon_et_al2015}
 ---. 2015, Phys. Rev. D, 91, 123011
 
+\bibitem[{{Dodelson} \& {Schneider}(2013)}]{dodelson_schneider2013}
+{Dodelson}, S., \& {Schneider}, M.~D. 2013, \prd, 88, 063537
+
 \bibitem[{{Ewall-Wice} {et~al.}(2017){Ewall-Wice}, {Dillon}, {Liu}, \&
   {Hewitt}}]{ewall-wice_et_al2017}
 {Ewall-Wice}, A., {Dillon}, J.~S., {Liu}, A., \& {Hewitt}, J. 2017, \mnras,
@@ -170,6 +173,10 @@ Dillon, J.~S., {et~al.} 2014, Phys. Rev. D, 89, 023002
 \bibitem[{{Greenhill} \& {Bernardi}(2012)}]{greenhill_bernardi2012}
 {Greenhill}, L.~J., \& {Bernardi}, G. 2012, ArXiv e-prints
 
+\bibitem[{{Hartlap} {et~al.}(2007){Hartlap}, {Simon}, \&
+  {Schneider}}]{hartlap_et_al2007}
+{Hartlap}, J., {Simon}, P., \& {Schneider}, P. 2007, \aap, 464, 399
+
 \bibitem[{Jacobs {et~al.}(2015)Jacobs, Pober, Parsons, Aguirre, Ali, Bowman,
   Bradley, Carilli, DeBoer, Dexter, Gugliucci, Klima, Liu, MacMahon, Manley,
   Moore, Stefan, \& Walbrugh}]{jacobs_et_al2015}
@@ -179,6 +186,9 @@ Jacobs, D.~C., {et~al.} 2015, \apj, 801, 51
   {Thomas}, {Bernardi}, {Brentjens}, {de Bruyn}, {Ciardi}, {Harker},
   {Koopmans}, {Pandey}, {Schaye}, \& {Yatawatta}}]{jelic_et_al2008}
 {Jeli{\'c}}, V., {et~al.} 2008, \mnras, 389, 1319
+
+\bibitem[{{Joachimi}(2017)}]{joachimi_2017}
+{Joachimi}, B. 2017, \mnras, 466, L83
 
 \bibitem[{Keating {et~al.}(2016)Keating, Marrone, Bower, Leitch, Carlstrom, \&
   DeBoer}]{keating_et_al2016}
@@ -220,6 +230,11 @@ Moore, D.~F., Aguirre, J.~E., Parsons, A.~R., Jacobs, D.~C., \& Pober, J.~C.
   \& {Voytek}}]{paciga_et_al2013}
 {Paciga}, G., {et~al.} 2013, \mnras
 
+\bibitem[{{Padmanabhan} {et~al.}(2016){Padmanabhan}, {White}, {Zhou}, \&
+  {O'Connell}}]{padmanabhan_et_al2016}
+{Padmanabhan}, N., {White}, M., {Zhou}, H.~H., \& {O'Connell}, R. 2016, \mnras,
+  460, 1567
+
 \bibitem[{{Parsons} {et~al.}(2012{\natexlab{a}}){Parsons}, {Pober}, {McQuinn},
   {Jacobs}, \& {Aguirre}}]{parsons_et_al2012a}
 {Parsons}, A., {Pober}, J., {McQuinn}, M., {Jacobs}, D., \& {Aguirre}, J.
@@ -256,6 +271,12 @@ Moore, D.~F., Aguirre, J.~E., Parsons, A.~R., Jacobs, D.~C., \& Pober, J.~C.
 {Patra}, N., {Subrahmanyan}, R., {Sethi}, S., {Udaya Shankar}, N., \&
   {Raghunathan}, A. 2015, \apj, 801, 138
 
+\bibitem[{{Paz} \& {S{\'a}nchez}(2015)}]{paz_sanchez2015}
+{Paz}, D.~J., \& {S{\'a}nchez}, A.~G. 2015, \mnras, 454, 4326
+
+\bibitem[{{Pearson} \& {Samushia}(2016)}]{pearson_samushia2016}
+{Pearson}, D.~W., \& {Samushia}, L. 2016, \mnras, 457, 993
+
 \bibitem[{{Peterson}(2004)}]{peterson_et_al2004}
 {Peterson}, U.-L.~P.~X.-P.~W.~J. 2004, ArXiv Astrophysics e-prints
 
@@ -288,6 +309,9 @@ Pober, J.~C., {et~al.} 2012, The Astronomical Journal, 143, 53
   Wyithe}]{pober_et_al2016a}
 Pober, J.~C., {et~al.} 2016, The Astrophysical Journal, 819, 8
 
+\bibitem[{{Pope} \& {Szapudi}(2008)}]{pope_szapudi2008}
+{Pope}, A.~C., \& {Szapudi}, I. 2008, \mnras, 389, 766
+
 \bibitem[{{Pritchard} \& {Loeb}(2012)}]{pritchard_loeb2012}
 {Pritchard}, J.~R., \& {Loeb}, A. 2012, Reports on Progress in Physics, 75,
   086901
@@ -295,6 +319,9 @@ Pober, J.~C., {et~al.} 2016, The Astrophysical Journal, 819, 8
 \bibitem[{{Santos} {et~al.}(2005){Santos}, {Cooray}, \&
   {Knox}}]{santos_et_al2005}
 {Santos}, M.~G., {Cooray}, A., \& {Knox}, L. 2005, \apj, 625, 575
+
+\bibitem[{{Sellentin} \& {Heavens}(2016)}]{sellentin_heavens2016}
+{Sellentin}, E., \& {Heavens}, A.~F. 2016, \mnras, 456, L132
 
 \bibitem[{Sherwin {et~al.}(2017)Sherwin, van Engelen, Sehgal, Madhavacheril,
   Addison, Aiola, Allison, Battaglia, Becker, Beall, Bond, Calabrese, Datta,
@@ -315,6 +342,9 @@ Sherwin, B.~D., {et~al.} 2017, Phys. Rev. D, 95, 123529
   Voytek}]{switzer_et_al2015}
 Switzer, E.~R., Chang, T.-C., Masui, K.~W., Pen, U.-L., \& Voytek, T.~C. 2015,
   The Astrophysical Journal, 815, 51
+
+\bibitem[{{Taylor} \& {Joachimi}(2014)}]{taylor_joachimi_etal2014}
+{Taylor}, A., \& {Joachimi}, B. 2014, \mnras, 442, 2728
 
 \bibitem[{{Tegmark}(1997)}]{tegmark_et_al1997a}
 {Tegmark}, M. 1997, \prd, 55, 5895

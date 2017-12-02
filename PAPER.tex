@@ -460,7 +460,25 @@ independent samples is similar to the number of frequency channels --- therefore
 
 The resulting eigenspectrum as compared to the green curve (FG + EoR) in Figure \ref{fig:toy_sigloss2} is shown in Figure 
 \ref{fig:toy_sigloss5} (right plot). The spectrum, in the case of fringe-rate filtering (dashed line), falls more steeply, especially for 
-the last few eigenmodes. In many applications, this steep fall is not indicative of the true covariance structure of the data. With fringe-rate filtering resulting in fewer independent modes, it becomes more difficult for the empirical covariance to estimate the true covariance matrix. In some cases one might even arrive at a rank-deficient empirical covariance, which is unphysical given that instrumental noise makes it impossible for any mode to truly have zero variance. \acl{Was there noise in this figure? Also, I am slightly uncomfortable with the figure. FRF \emph{should} affect the covariance, since the data is different. What would really tease out the difference between the covariance matrix simply being different vs. us not being able to estimate the covariance matrix would be if we ran a large ensemble of these, and we saw the empirical covariance converging to something. Can we make such a figure?} The situation is analogous to a problem faced in galaxy surveys, where the non-linear covariance of the matter power spectrum is estimated using a large---but finite---number of expensive simulations. There, the limited number of independent simulations results in inaccuracies in estimated covariance matrices \citep{dodelson_schneider2013,taylor_joachimi_etal2014}, which in turn result in biases in the final parameter constraints \citep{hartlap_et_al2007}. In our case, the empirically estimated covariances are used for estimating power spectrum, and as we argue in Section \ref{sec:siglossmethod} and Appendix \ref{sec:sigloss_appendix}, the resulting estimates are biased \emph{low}---which is precisely signal loss. In future work, it will be fruitful to investigate whether advanced techniques from the galaxy survey literature for estimating accurate covariance matrices can be successfully adapted for $21\,\textrm{cm}$ cosmology. These techniques include the imposition of sparsity priors \citep{padmanabhan_et_al2016}, the fitting of theoretically motivated parametric forms \citep{pearson_samushia2016}, covariance tapering \citep{paz_sanchez2015}, marginalization over the true covariance \citep{sellentin_heavens2016}, and shrinkage methods \citep{pope_szapudi2008,joachimi_2017}.
+the last few eigenmodes. In many applications, this steep fall is not indicative of the true covariance structure of the data. With 
+fringe-rate filtering resulting in fewer independent modes, it becomes more difficult for the empirical covariance to estimate the 
+true covariance matrix. In some cases one might even arrive at a rank-deficient empirical covariance, which is unphysical given 
+that instrumental noise makes it impossible for any mode to truly have zero variance. \acl{Was there noise in this figure? Also, I 
+am slightly uncomfortable with the figure. FRF \emph{should} affect the covariance, since the data is different. What would 
+really tease out the difference between the covariance matrix simply being different vs. us not being able to estimate the 
+covariance matrix would be if we ran a large ensemble of these, and we saw the empirical covariance converging to something. 
+Can we make such a figure?} The situation is analogous to a problem faced in galaxy surveys, where the non-linear covariance 
+of the matter power spectrum is estimated using a large---but finite---number of expensive simulations. There, the limited 
+number of independent simulations results in inaccuracies in estimated covariance matrices 
+\citep{dodelson_schneider2013,taylor_joachimi_etal2014}, which in turn result in biases in the final parameter constraints 
+\citep{hartlap_et_al2007}. In our case, the empirically estimated covariances are used for estimating the power spectrum, and 
+as we argue in Section \ref{sec:siglossmethod} and Appendix \ref{sec:sigloss_appendix}, the resulting estimates are biased 
+\emph{low}---which is precisely signal loss. In future work, it will be fruitful to investigate whether advanced techniques from the 
+galaxy survey literature for estimating accurate covariance matrices can be successfully adapted for $21\,\textrm{cm}$ 
+cosmology. These techniques include the imposition of sparsity priors \citep{padmanabhan_et_al2016}, the fitting of 
+theoretically motivated parametric forms \citep{pearson_samushia2016}, covariance tapering \citep{paz_sanchez2015}, 
+marginalization over the true covariance \citep{sellentin_heavens2016}, and shrinkage methods 
+\citep{pope_szapudi2008,joachimi_2017}.
 
 \begin{figure*}
 	\centering
