@@ -1006,7 +1006,7 @@ which reduces to the same result because of the linearity of Equation \eqref{eq:
 Using this motivation, the numerator of Equation \eqref{eq:Deriv2} can be mapped to our expression for $P_{\rm out}$, and the denominator to $P_{\rm in}$, where the function $g$ is our OQE power spectrum pipeline. \dcj{Here is the post-hoc justification for this signal loss method.  Except goes back to assumption of equation for g which just \emph{assumes} that there are no cross terms in the estimation of a power spectrum. So we're just kicking the can down the road. }
 
 One may wonder why $P_{\rm out}$ cannot be computed simply as the weighted power spectrum of $\textbf{e}$ alone, namely 
-$P_{\rm out,\alpha} = \textbf{M}_{ee}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}$. In short, this naive 
+$P_{\rm out,\alpha} = \textbf{M}_{ee}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}$. In short, the reason is because this 
 expression fails to include correlations between the injected EoR signal and data, which emerges as statistical noise that is added to the 
 estimate, decreasing the value of $P_{\rm out}$. Mathematically, we can show this by expanding out Equation \eqref{eq:sigloss}:
 
@@ -1021,8 +1021,9 @@ P_{\rm out,\alpha} &=& \textbf{M}_{rr}(\textbf{x}+\textbf{e})^{\dagger}\textbf{R
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
 
-We see that $P_{\rm out}$ is comprised of multiple terms. Taking the case of very large $\textbf{e}$ so that any terms involving only 
-$\textbf{x}$ are small, yields:
+We see that $P_{\rm out}$ is comprised of multiple terms. To explore cases where signal loss is strongest, we will take the case where
+$\textbf{e}$ dominates, so that any terms involving only 
+$\textbf{x}$ are small, yielding:
 
 \begin{eqnarray}
 \label{eq:pout_expand}
@@ -1033,12 +1034,16 @@ P_{\rm out, \alpha,\textbf{e} \gg \textbf{x}} &=&  \textbf{M}_{rr}\textbf{e}^{\d
 
 We see that our naive expression for $P_{\rm out}$ is the first term in Equation \eqref{eq:pout_expand}, but there are also two 
 additional terms. An initial assumption would be that the cross-terms that involve both $\textbf{e}$ and $\textbf{x}$ should be 
-zero, since foregrounds and the cosmological signal are statistically unrelated. In P64, this assumption is used, and the first 
+zero, since foregrounds and the cosmological signal are statistically uncorrelated. In P64, this assumption is used, and the first 
 term in Equation \eqref{eq:pout_expand} is directly compared to the input (unweighted) power spectrum to compute signal loss.
 
-However, deeper investigations of these terms reveal that they contain non-negligible power. In fact, foreground modes and 
-signal modes are anti-correlated on average, and this negative cross-term power arises from inverting the covariance matrix $
-\textbf{C}_{r}$. Mathematically, the covariance of the data plus EoR is:
+However, a deeper investigation of these cross-terms reveals that they can contain non-negligible power when $\textbf{R}_{r}$
+is taken to be $\textbf{C}_{r}^{-1}$ and
+$\textbf{C}_{r}$ is estimated from the data itself.  As shown in \citet{switzer_et_al2015}, 
+$\textbf{C}_{r}^{-1}\textbf{x}$ and
+$\textbf{C}_{r}^{-1}\textbf{e}$
+become anti-correlated on average. This negative cross-term power arises from inverting the covariance matrix
+$\textbf{C}_{r}$. Mathematically, the covariance of the data plus EoR is:
 
 \begin{eqnarray}
 \textbf{C}_{r} &=& \langle \textbf{rr}^{\dagger} \rangle \\
@@ -1046,11 +1051,13 @@ signal modes are anti-correlated on average, and this negative cross-term power 
 \textbf{ee}^{\dagger} \rangle,
 \end{eqnarray}
 
-\noindent where the data-only term (first term) and EoR-only term (last term) are approximately diagonal matrices. The middle 
-two terms, however, have a larger amount of power in their off-diagonal terms relative to their diagonal elements, since $
-\textbf{e}$ and $\textbf{x}$ are statistically unrelated. Upon inversion, these off-diagonal terms become negative, driving the 
-cross-terms in Equation \ref{eq:pout_expand} to have negative power. \cc{someone help me write this more elegantly...}This 
-effect is explained in more depth in \citet{switzer_et_al2015}. 
+\noindent and we can neglect the first term because $\textbf{x}$ is small.  Without loss of generality, we will assume
+an eigenbasis of $\textbf{e}$, so that $\textbf{ee}^{\dagger}$ is diagonal.
+The middle 
+two terms, however, can have power in their off-diagonal terms.  As shown in Appendix C of \citet{parsons_et_al2014}, the
+inversion of a matrix like $\textbf{C}_{r}$ that is diagonal-dominant (from $\textbf{ee}^{\dagger}$) with smaller
+off-diagonal terms results in a new diagonal-dominant matrix with negated off-diagonal terms.
+\cc{someone help me write this more elegantly... (not done yet)}
 
 The spurious correlation between $\textbf{e}$ and $\textbf{x}$ means that we cannot compute signal loss using a signal-only 
 simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. Therefore, in our revised 
