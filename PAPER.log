@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 DEC 2017 13:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 DEC 2017 13:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -917,7 +917,7 @@ LaTeX Warning: A float is stuck (cannot be placed) on input line 1272.
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
 [20 <./plots/ps1_data_reg.png> <./plots/ps2_data_reg.png>]
-<plots/sense_check.png, id=657, 286.9119pt x 341.8371pt>
+<plots/sense_check.png, id=656, 286.9119pt x 341.8371pt>
 File: plots/sense_check.png Graphic file (type png)
 
 <use plots/sense_check.png>
@@ -1027,7 +1027,7 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1773.
 Here is how much of TeX's memory you used:
  11105 strings out of 492995
  157785 string characters out of 6132704
- 314855 words of memory out of 5000000
+ 315003 words of memory out of 5000000
  14268 multiletter control sequences out of 15000+600000
  15332 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1056,7 +1056,7 @@ t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (30 pages, 2985942 bytes).
+Output written on PAPER.pdf (30 pages, 2986362 bytes).
 PDF statistics:
  917 PDF objects out of 1000 (max. 8388607)
  762 compressed objects within 8 object streams
