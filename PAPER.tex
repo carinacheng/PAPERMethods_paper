@@ -1059,8 +1059,11 @@ is taken to be $\textbf{C}_{r}^{-1}$ and
 $\textbf{C}_{r}$ is estimated from the data itself.  As shown in \citet{switzer_et_al2015}, 
 $\textbf{C}_{r}^{-1}\textbf{x}$ and
 $\textbf{C}_{r}^{-1}\textbf{e}$
-become anti-correlated on average. This negative cross-term power arises from inverting the covariance matrix
-$\textbf{C}_{r}$. Mathematically, the covariance of the data plus EoR is:
+can become anti-correlated on average. 
+This negative cross-term power arises from inverting the covariance matrix
+$\textbf{C}_{r}$. 
+Intuitively, we can see this by expanding the covariance of $\textbf{r}=\textbf{x}+\textbf{e}$ in the
+$|\textbf{x}|\ll|\textbf{e}|$ regime:
 
 \begin{eqnarray}
 \textbf{C}_{r} &=& \langle \textbf{rr}^{\dagger} \rangle \\
@@ -1071,12 +1074,19 @@ $\textbf{C}_{r}$. Mathematically, the covariance of the data plus EoR is:
 \noindent and we can neglect the first term because $\textbf{x}$ is small.  Without loss of generality, we will assume
 an eigenbasis of $\textbf{e}$, so that $\textbf{ee}^{\dagger}$ is diagonal.
 The middle 
-two terms, however, can have power in their off-diagonal terms.  As shown in Appendix C of \citet{parsons_et_al2014}, the
+two terms, however, can have power in their off-diagonal terms due to the fact that, when averaging over a finite
+ensemble, $\langle\textbf{xe}^\dagger\rangle$ is not zero.  As shown in Appendix C of \citet{parsons_et_al2014}, the
 inversion of a matrix like $\textbf{C}_{r}$ that is diagonal-dominant (from $\textbf{ee}^{\dagger}$) with smaller
-off-diagonal terms results in a new diagonal-dominant matrix with negated off-diagonal terms.
-\cc{someone help me write this more elegantly... (not done yet)}
+off-diagonal terms results in a new diagonal-dominant matrix with negated off-diagonal terms. These off-diagonal
+terms depend on both $\textbf{x}$ and $\textbf{e}$. When $\textbf{C}^{-1}$ is multiplied into $\textbf{x}$,
+the result is a vector that is similar to $\textbf{x}$ (because of the diagonal dominance of $\textbf{C}^{-1}$), but
+contains a residual correlation to $\textbf{e}$ from the off-diagonal components of $\textbf{C}^{-1}$. The
+correlation is negative because the product $\textbf{C}_r^{-1}\textbf{x}$ effectively squares the $\textbf{x}$-dependence
+of the off-diagonal terms in $\textbf{C}^{-1}$ while retaining the negative sign that arose from the inversion
+of a diagonal-dominant matrix.
+% XXX [ARP: we may want to write this all out explicitly in an appendix]
 
-The spurious correlation between $\textbf{e}$ and $\textbf{x}$ means that we cannot compute signal loss using a signal-only 
+The spurious correlation between $\textbf{C}_r^{-1}\textbf{e}$ and $\textbf{C}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
 simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. Therefore, in our revised 
 signal loss computation we use the full quantity for $P_{\rm out}$ as defined in Equation \eqref{eq:sigloss}, which subtracts the 
 weighted power spectrum of the data from the weighted power spectrum of data plus EoR. 
