@@ -460,8 +460,25 @@ independent samples is similar to the number of frequency channels --- therefore
 
 The resulting eigenspectrum as compared to the green curve (FG + EoR) in Figure \ref{fig:toy_sigloss2} is shown in Figure 
 \ref{fig:toy_sigloss5} (right plot). The spectrum, in the case of fringe-rate filtering (dashed line), falls more steeply, especially for 
-the last few eigenmodes. This is because we have fewer independent modes and therefore less information to characterize the eigenspectrum. Because we do a worse job characterizing, we have more signal loss. \cc{need help filling out the rest here... and 
-also citing galaxy lit}. 
+the last few eigenmodes. In many applications, this steep fall is not indicative of the true covariance structure of the data. With 
+fringe-rate filtering resulting in fewer independent modes, it becomes more difficult for the empirical covariance to estimate the 
+true covariance matrix. In some cases one might even arrive at a rank-deficient empirical covariance, which is unphysical given 
+that instrumental noise makes it impossible for any mode to truly have zero variance. \acl{Was there noise in this figure? Also, I 
+am slightly uncomfortable with the figure. FRF \emph{should} affect the covariance, since the data is different. What would 
+really tease out the difference between the covariance matrix simply being different vs. us not being able to estimate the 
+covariance matrix would be if we ran a large ensemble of these, and we saw the empirical covariance converging to something. 
+Can we make such a figure?} The situation is analogous to a problem faced in galaxy surveys, where the non-linear covariance 
+of the matter power spectrum is estimated using a large---but finite---number of expensive simulations. There, the limited 
+number of independent simulations results in inaccuracies in estimated covariance matrices 
+\citep{dodelson_schneider2013,taylor_joachimi_etal2014}, which in turn result in biases in the final parameter constraints 
+\citep{hartlap_et_al2007}. In our case, the empirically estimated covariances are used for estimating the power spectrum, and 
+as we argue in Section \ref{sec:siglossmethod} and Appendix \ref{sec:sigloss_appendix}, the resulting estimates are biased 
+\emph{low}---which is precisely signal loss. In future work, it will be fruitful to investigate whether advanced techniques from the 
+galaxy survey literature for estimating accurate covariance matrices can be successfully adapted for $21\,\textrm{cm}$ 
+cosmology. These techniques include the imposition of sparsity priors \citep{padmanabhan_et_al2016}, the fitting of 
+theoretically motivated parametric forms \citep{pearson_samushia2016}, covariance tapering \citep{paz_sanchez2015}, 
+marginalization over the true covariance \citep{sellentin_heavens2016}, and shrinkage methods 
+\citep{pope_szapudi2008,joachimi_2017}.
 
 \begin{figure*}
 	\centering
@@ -779,7 +796,7 @@ help distinguish between different sources of bias.
  
 \begin{itemize}
 \item \textbf{Null Test}: A null test is a type of jackknife test that removes the astronomical signal from data in order to 
-investigate underlying systematics. Several null tests on data are described in \citet{keating_et_al2016}. For example, one can 
+investigate underlying systematics (e.g., see \citet{keating_et_al2016} for examples from intensity mapping that are closely related to our current application). For example, one can 
 divide data into two subsets by separating odd and even Julian dates, or the first half of the observing season from the second. 
 Subtracting the two removes signal that is common to both subsets, including foregrounds and EoR. The resulting power 
 spectrum should be consistent with thermal noise estimates; if it is not, it suggests the presence of a systematic that differs 
@@ -942,7 +959,7 @@ the amount of signal loss accompanying a weighting scheme. In particular, we hig
 computation used in P64, which previously underestimated losses. 
 
 \subsubsection{Signal Loss Methodology} 
-
+\label{sec:siglossmethod}
 To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated $21$ 
 cm signal visibilities. Here we use the same method used in P64, where mock Gaussian noise visibilities (mock EoR signals) 
 are filtered in fringe-rate space to retain only ``sky-like" time-modes. This signal is then added to the data.  \footnote{One 
@@ -963,7 +980,7 @@ output power spectrum: $P_{\rm in}$ and $P_{\rm out}$, defined as:
 
 \begin{equation}
 \label{eq:Pin}
-P_{\rm in,\alpha} = \textbf{M}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e}
+P_{\rm in,\alpha} = \textbf{M}_{ii}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e}
 \end{equation}
 
 \noindent and
@@ -974,7 +991,7 @@ P_{\rm out,\alpha} &=& \hat{\textbf{p}}_{r,\alpha}-\hat{\textbf{p}}_{x,\alpha} \
 &=& \textbf{M}_{rr}\textbf{r}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{r} - \textbf{M}_{xx}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x},
 \end{eqnarray}
-where all $\textbf{M}$'s are normalization factors. $P_{\rm in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
+where, for illustrative purposes, all $\textbf{M}$'s are diagonal normalizations. $P_{\rm in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
 $\hat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\hat{\textbf{p}}_{r}$ is the power spectrum of the
 data plus injection, and $P_{\rm out}$ is the difference between $\hat{\textbf{p}}_{r}$ and $\hat{\textbf{p}}_{x}$.
 
@@ -1084,12 +1101,13 @@ outlined below is independent of weighting scheme, here we demonstrate the compu
 expressions for $P_{\rm in}$ and $P_{\rm out}$ become (ignoring normalization factors):
 
 \begin{eqnarray}
-P_{\rm in,\alpha} &=&  \textbf{M}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e} \\
+P_{\rm in,\alpha} &=&  \textbf{M}_{ii}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e} \\
 P_{\rm out,\alpha} &=&  \textbf{M}_{rr}\textbf{r}^{\dagger}\textbf{C}_{r}^{-1}\textbf{Q}^{\alpha}\textbf{C}_{r}^{-1}\textbf{r} \nonumber \\
 &&\phantom{=====} -  \textbf{M}_{xx}\textbf{x}^{\dagger}\textbf{C}_{x}^{-1}\textbf{Q}^{\alpha}\textbf{C}_{x}^{-1}\textbf{x} 
 \end{eqnarray}
 
-The treatment we outlined in the previous section implicitly assumed that signal loss corrections could be treated in expectation. In practice, however, the signal loss itself is a random variable --- some realizations of the cosmological signal may be more correlated with foreground modes than others, leading to more signal loss. This leads to two issues. The first is that Equation \eqref{eq:LinearPspecSum} may not hold. In particular, a third term that is a quadratic combination of $\f$ and $\s$ (e.g., $\f^\dagger \C^{-1} \s$) may appear. However, we can circumvent this issue by decomposing $\f$ into a sum of two vectors, one that is proportional to $\s$ and one that is orthogonal to $\s$. The former can be absorbed into the EoR term (part of the signal loss estimate), while the latter can be absorbed into the foreground term. \dcj{Wait what? I think you are saying essentially that some x can remain in Pout which is what we are seeing. Or is this some extra bit of method which has been added to the analysis...}
+The treatment we outlined in the previous section implicitly assumed that signal loss corrections could be treated in expectation. In practice, however, the signal loss itself is a random variable --- some realizations of the cosmological signal may be more correlated with foreground modes than others, leading to more signal loss. This leads to two issues. The first is that Equation \eqref{eq:LinearPspecSum} may not hold. In particular, a third term that is a quadratic combination of $\f$ and $\s$ (e.g., $\f^\dagger \C^{-1} \s$) may appear. However, we can circumvent this issue by decomposing $\f$ into a sum of two vectors, one that is proportional to $\s$ and one that is orthogonal to $\s$. The former can be absorbed into the EoR term (part of the signal loss estimate), while the latter can be absorbed into the foreground term. 
+%\dcj{Wait what? I think you are saying essentially that some x can remain in Pout which is what we are seeing. Or is this some extra bit of method which has been added to the analysis...}
 
 The second issue to tackle is how one incorporates the randomness of $\ell_{\rm eor}$ into our signal loss corrections. Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution of $p( \p_{\rm eor} | \phat)$ for $\p_{\rm eor}$ given the uncorrected power spectrum estimate $\phat$, which is given by
 \begin{equation}
@@ -1721,7 +1739,9 @@ where $\Lambda$ represents a choice of threshold?'' Of course, both sides of thi
  \end{equation}
  where $\Prob(P_x)$ is the probability of obtaining the power spectrum $\hat{\textbf{p}}_x$ found via bootstrapping (power spectrum of data only) and $\Prob(P_r,P_{in})$ is the probability of obtaining the summed power spectrum $\hat{\textbf{p}}_{r}$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
  
-Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low injection levels the variation between $x$ and $r$ is such that the null test is ruled out to within $20$\%. This is the level expected from two distributions with $\sim$10 effective samples. \dcj{checked with a little python test but needs a cite} As the injected signal approaches the level of the data, the probability of null rejection rises steeply.
+Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low injection levels the variation between $x$ and $r$ is such that the null test is ruled out to within $20$\%. This is the level expected from two distributions with $\sim$10 effective samples. 
+%\dcj{checked with a little python test but needs a cite} 
+As the injected signal approaches the level of the data, the probability of null rejection rises steeply.
   
 Lastly, this method requires that we choose the probability at which we choose to reject the null hypothesis. As can be seen in Figure \ref{fig:Prob_vs_Pin}, the difference between $80$ and $90$\% can mean a difference of almost an order of magnitude in the power spectrum level that is ruled out. We can also see that, due to the small number of samples, the probability does not perfectly converge at high injected power levels. Rather than insist on a rejection at the $99$th percent level, we compromise at $90$\%.
 
