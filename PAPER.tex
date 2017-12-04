@@ -1499,7 +1499,7 @@ becomes:
 of foreground power from low $k$ to high $k$ modes. Specifically, we order the elements in $\textbf{F}$ in such a way so that 
 power can leak from high $k$ modes to low $k$ modes, but not vice versa. Since most foreground power shows up at low 
 $k$'s, this method ensures a window function that retains clean, noise-dominated measurements while minimizing the 
-contamination of foreground bias.
+contamination of foreground bias. For this paper, we compute $\textbf{M}$ as described above only for the inverse variance weighted PAPER-64 result (our revised result for one baseline type) shown in Figure \ref{fig:ps1_data}. For all other power spectrum estimates in this paper, we use $\textbf{M}=\textbf{I}$ for simplicity.
 
 In addition to mitigating foreground bias at high $k$'s, two other sources of bias that we actively suppress in the PAPER-64 
 analysis are noise bias associated with the squaring of thermal noise and noise bias from crosstalk. In order to avoid the 
@@ -1518,13 +1518,13 @@ removal and these are detections that, depending on the power spectrum level, co
 
 The highest sensitivity power spectrum result for PAPER-64 using the updated analysis presented in this paper, shown in 
 Figure \ref{fig:ps1_data}, has positive biases at low $k$ values. As discussed in Section \ref{sec:BiasTypes}, these detections 
-are most likely attributable to foreground leakage. Here we demonstrate $3$ null tests performed on PAPER-64 data that verify 
+are most likely attributable to foreground leakage. Here we demonstrate three null tests performed on PAPER-64 data that verify 
 that the positive detections are indeed due to foreground variation and not attributable to EoR.
 
-The $3$ null test results are shown in Figure \ref{fig:null}, with each test described as the following:
+The three null test results are shown in Figure \ref{fig:null}, with each test described as the following:
 
 \begin{itemize}
-\item Original (black): This is identical to the power spectrum in Figure \ref{fig:ps1_data} and represents the best revised 
+\item Original Data (black): This is identical to the power spectrum in Figure \ref{fig:ps1_data} and represents the best revised 
 PAPER-64 power spectrum (one baseline type only) with weighting matrix $\hat{\textbf{C}}_{eff}$. There are clear detections at 
 low $k$'s.
 \item Even/Odd (blue): We split our dataset into even (e) and odd (o) days, where $\textbf{x}_{1} = e + o$ and $\textbf{x}_{2} = 
@@ -1536,16 +1536,16 @@ If the same sky signal is in both the even and odd datasets, we expect it to can
 \item Baselines (green): We split our dataset into two halves, where each contains half of the total baselines used in the 
 analysis. Again, we form $\textbf{x}_{1} = b_{1} + b_{2}$ and $\textbf{x}_{2} = b_{1} - b_{2}$, where $b_{1}$ is the first baseline 
 group and $b_{2}$ is the second baseline group.
-\item LST (purple): We split our dataset into two halves based on LST, namely $t_{1}$ (LSTs 0.5-4.6 hours) and $t_{2}$ (LSTs 
+\item LST (magenta): We split our dataset into two halves based on LST, namely $t_{1}$ (LSTs 0.5-4.6 hours) and $t_{2}$ (LSTs 
 4.6-8.6 hours). We form our two datasets as $\textbf{x}_{1} = t_{1} + t_{2}$ and $\textbf{x}_{2} = t_{1} - t_{2}$.
 \end{itemize}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{plots/null.png}
-	\caption{Results for $3$ null tests compared to the PAPER-64 revised power spectrum (black) and analytically estimated 
-$2\sigma$ errors (gray shaded region). For each, we took jackknives along different axes of the dataset - by julian days (separating 
-even and odd days; blue), by baselines (green), and by LST (purple). We expect the sky signal to disappear for a `passing' null test. 
+	\caption{Results for three null tests compared to the PAPER-64 revised power spectrum (black) and analytically estimated 
+$2\sigma$ errors (gray shaded region). For each, we take a jackknife along a different axis of the dataset - along julian days (separating 
+even and odd days; blue), along baselines (green), and along LST (magenta). We expect the sky signal to disappear for a `passing' null test. 
 We find that the biases in our power spectrum are likely caused by variation of foregrounds in LST, and are not attributable to 
 particular baselines or days of data.}
 	\label{fig:null}
@@ -1555,10 +1555,9 @@ Investigating Figure \ref{fig:null}, we find that both the baselines and even/od
 the error bars for the baselines test (green) are especially small --- this is because the signal is effectively cancelled out prior to 
 cross-multiplication (when forming baseline groups). 
 
-The null test in LST (purple) is much more illuminating. The fact that there are many power spectrum points outside the 
+The null test in LST (magenta) is much more illuminating. The fact that there are many power spectrum points outside the 
 estimated error region signifies that the bias we see is likely from foregrounds that vary in LST. In other words, $t_{1}$ and 
-$t_{2}$ differ by an amount greater than thermal noise and they do not effectively cancel out the sky signal during cross-
-multiplication. The errors for this null test are also large, also reflective of residual foregrounds. 
+$t_{2}$ differ by an amount greater than thermal noise and they do not effectively cancel out the sky signal during cross-multiplication. The errors for this null test are also large, also reflective of residual foregrounds. 
 
 We do not investigate the detailed nature of the residual foregrounds in this paper, though one could imagine performing many 
 similar null tests with a sliding window of $t_{1}$'s and $t_{2}$'s. This would illuminate the particular LST range that introduces 
@@ -1583,8 +1582,8 @@ signal loss, error estimation, and bias, which can be summarized as follows:
 
 \begin{itemize}
 \item Substantial signal loss can result when weighting data using empirically estimated covariances (Section 
-\ref{sec:SiglossOverview}). Loss of the $21$ cm signal is especially significant if more eigenmodes are down-weighted than 
-exist in the data (having an under-constrained covariance matrix). Hence, there exists a trade-off between sensitivity driven 
+\ref{sec:SiglossOverview}). Loss of the $21$ cm signal is especially significant if fewer modes
+exist in the data. Hence, there exists a trade-off between sensitivity driven 
 time-averaging techniques such as fringe-rate filtering and signal loss. 
 \item Signal injection and recovery simulations can be used to quantify signal loss (Section \ref{sec:Sigloss}). However, a 
 signal-only simulation (i.e. comparing an unweighted vs. weighted power spectrum of EoR only) can underestimate loss by 
@@ -1603,15 +1602,15 @@ P64 by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}. The re
 ways in which our new analysis differs can be summarized by the following:
 
 \begin{itemize}
-\item Signal loss, previously found to be $<2\%$ in P64, was underestimated by a factor of $\sim$$1000$ for inverse 
+\item Signal loss, previously found to be $<2\%$ in P64, was under-estimated by a factor of $\sim$$1000$ for inverse 
 covariance weighting. For our new analysis, we use a regularized covariance weighting method to minimize loss (Section 
 \ref{sec:Weight}). However, because our revised weighting method is not as aggressive as the former, our results are still a 
-factor of $\sim7$ mK higher than previous limits. Underestimated signal loss therefore represents the bulk of our revision. We 
-note that PAPER's analysis is not the first to underestimate loss; results from the GMRT (\citealt{paciga_et_al2013}) were also 
+factor of $\sim7$ mK higher than previous limits. Under-estimated signal loss therefore represents the bulk of our revision. We 
+note that PAPER's analysis is not the first to under-estimate loss; results from the GMRT (\citealt{paciga_et_al2013}) were also 
 revised from new signal loss calculations associated with their singular value decomposition foreground filter.
-\item Power spectrum errors, originally computed by bootstrapping, were underestimated by a factor of $\sim$$2$ due to 
-oversampling data whose effective number of independent samples was reduced from fringe-rate filtering. They were also 
-overestimated by a factor of $\sim$$2$ from using a suboptimal way of combining baselines into groups when forming power 
+\item Power spectrum errors, originally computed by bootstrapping, were under-estimated by a factor of $\sim$$2$ due to 
+oversampling data whose effective number of independent samples was reduced from fringe-rate filtering. Our limits were also 
+over-estimated by a factor of $\sim$$2$ from using a suboptimal way of combining baselines into groups when forming power 
 spectra (Section \ref{sec:Boot}). Hence, the net change for our error estimation is negligible, though the rationale behind the 
 previous estimation was incorrect.
 \item Several factors used in an analytic expression to predict the noise-level in PAPER-64 data were revised, yielding a 
@@ -1624,9 +1623,7 @@ points.
 The $21$ cm future is exciting, as new experiments have sensitivities that expect to reach and surpass EoR levels, improved 
 foreground mitigation/removal strategies are being developed, and simulations are being designed to better understand 
 instruments. On the power spectrum analysis side, robust signal loss simulations, precise error calculations, and 
-comprehensive jackknife tests will play critical roles in accurate $21$ cm results. Looking ahead, the future promises to bring 
-higher sensitivity measurements, better foreground and instrumental models, more effective and less lossy weighting 
-techniques --- and with all that, an improved understanding of reionization and our early Universe.
+comprehensive jackknife tests will play critical roles in accurate $21$ cm results. With strong foundations being established now, it is safe to say that we can expect to learn much about reionization and our early Universe in the coming years.
 
 % ACKNOWLEDGEMENTS ---------------------------------------------------------------------------------
 
@@ -1634,8 +1631,7 @@ techniques --- and with all that, an improved understanding of reionization and 
 CC would like to acknowledge the UC Berkeley Chancellor's Fellowship, National Science Foundation Graduate Research 
 Fellowship (Division of Graduate Education award 1106400), and thank Eric Switzer for helpful discussions. PAPER and HERA 
 are supported by grants from the National Science Foundation (awards 1440343, and 1636646). ARP, DCJ, and JEA would 
-also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, respectively). SAK is supported by the University of Pennsylvania School of Arts and Sciences Dissertation Completion Fellowship. We graciously thank SKA-
-SA for site infrastructure and observing support.
+also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, respectively). SAK is supported by the University of Pennsylvania School of Arts and Sciences Dissertation Completion Fellowship. We graciously thank SKA-SA for site infrastructure and observing support.
 \label{sec:Ack}
 
 % APPENDIX ---------------------------------------------------------------------------------
@@ -1668,7 +1664,7 @@ with the label ``loss" to foreshadow the fact that this will be an estimator wit
 \label{eq:ChatDef}
 \Chat = (1-\eta) \C + \eta \x \x^t,
 \end{equation}
-where $\eta$ is parameter quantifying our success at estimating the true covariance matrix. If $\eta = 0$, our covariance estimate has perfectly modeled the true covariance and $\Chat = \C$. On the other hand, if $\eta =1$, then our covariance estimate is based purely on the one realization of the covariance that is our actual data, and we would expect a high level of overfitting and signal loss.
+where $\eta$ is a parameter quantifying our success at estimating the true covariance matrix. If $\eta = 0$, our covariance estimate has perfectly modeled the true covariance and $\Chat = \C$. On the other hand, if $\eta =1$, then our covariance estimate is based purely on the one realization of the covariance that is our actual data, and we would expect a high level of overfitting and signal loss.
 
 Our strategy for computing the signal loss will be to insert Equation \eqref{eq:ChatDef} into Equation \eqref{eq:phatloss} and to express the resulting estimator $\hat{p}_\alpha^\textrm{loss}$ in terms of $\hat{p}_\alpha$. We begin by expressing $\Chat^{-1}$ in terms of $\C^{-1}$ using the Woodbury identity so that
 \begin{equation}
@@ -1691,22 +1687,22 @@ Taking the ensemble average of both sides and noting that the true power spectru
 \begin{equation}
 \langle \hat{p}_\alpha^\textrm{loss} \rangle \approx (1- \eta N) p_\alpha + 4 \eta \frac{\rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha )}{\left[ \rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha  ) \right]^2} \approx (1- \eta N) p_\alpha,
 \end{equation}
-where $N$ is the length of $\x$. In the last step we dropped the final term, since it scales as $\eta p_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained. Now, recall that $p_\alpha$ is the \emph{true} power spectrum. This means that it can be decomposed into the sum of foreground and EoR power spectra, since the foregrounds and EoR are uncorrelated in expectation. This toy example, while not definitive, serves to motivate the form of Equation \eqref{eq:LinearPspecSum}.
+where $N$ is the length of $\x$. In the last step we dropped the final term, since it scales as $\eta p_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained. Now, recall that $p_\alpha$ is the \emph{true} power spectrum. This means that it can be decomposed into the sum of the foreground and EoR power spectra, since the foregrounds and EoR are uncorrelated in expectation. This toy example, while not definitive, serves to motivate the form of Equation \eqref{eq:LinearPspecSum}.
 
 
 
 \section{Simplified Loss Correction}
 \label{sec:Pr_appendix}
-One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in section \ref{sec:Sigloss} relies on several assumptions which required justification including the neglection of cross-terms in the power spectrum and indeed does not behave as expected at small injected values. However it is possible to make a simpler interpretation which requires less motivation.
+One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in Section \ref{sec:Sigloss} relies on several assumptions which required justification including the neglection of cross-terms in the power spectrum and indeed does not behave as expected at small injected values. However it is possible to make a simpler interpretation which requires less motivation.
 
-In the main text we made an estimate of the signal loss effecting only the injected eor by supposing that the lossy injected signal was the difference between the injected and not injected cases: $ P(e) = P(x+e) - P(x)$. Suppose that we rephrase the question to: ``At what point would an injected signal be detectable at significant levels?". Instead of detangling the part of the output power spectrum dominated by the injected signal we can simply use $P(x+e)$, the weighted power spectrum of the data plus injected signal ($\hat{\textbf{p}}_{r}$ in Section \ref{sec:Sigloss}).
+In the main text we made an estimate of the signal loss effecting only the injected EoR by supposing that the lossy injected signal was the difference between the injected and not injected cases: $P_{out} = \hat{\textbf{p}}_{r} - \hat{\textbf{p}}_{x}$. Suppose that we rephrase the question we are asking to: ``At what point would an injected signal be detectable at significant levels?". Instead of detangling the part of the output power spectrum dominated by the injected signal we can simply use $\hat{\textbf{p}}_{r}$, the weighted power spectrum of the data plus injected signal.
   
 \begin{figure}[tp]
 \centering
 \includegraphics[width=\textwidth]{plots/method2_heatmap_I.png}
 \caption{The distribution of output power spectrum values for a 
 given injection level P$_{in}$. The $P_{\rm out}$ values that are plotted on the y-axis represent the weighted power spectrum of data plus the injected signal. It differs from that of Figure \ref{fig:sigloss_transfercurve} by not subtracting off the power spectrum of data alone (not subtracting off the second term in Equation \eqref{eq:sigloss}). We show kernel density estimations of the power spectrum transfer functions as colored heat-maps for the cases of inverse covariance weighted PAPER-64 data (left) and unweighted data (right). The solid black 
-diagonal line marks a perfect unity mapping, and the solid gray horizontal line denotes the peak of $\hat{\textbf{p}}_{x}$, the data distribution. At low injection, $P_{\rm out}$ converges at the data level.}
+diagonal line marks a perfect unity mapping, and the solid gray horizontal line denotes the peak of $\hat{\textbf{p}}_{x}$, the data distribution. At low injection, $P_{\rm out}$ converges to the data level.}
 \label{fig:Pr_vs_Pin}
 \end{figure}  
   
@@ -1715,26 +1711,26 @@ This question is phrased visually in Figure \ref{fig:Pr_vs_Pin}. In the 2D space
 \begin{figure}[tp]
 \centering
 \includegraphics[width=.5\textwidth]{plots/method2_prob_vs_pinj.png}
-\caption{The probability that an injected signal of level P$_{in}$
+\caption{The probability that an injected signal of level P$_{inj}$
 is observable at a 2$\sigma$ level above the value of $\hat{\textbf{p}}_{x}$ (data).
 The different colors represent different $k$ values. We choose a probably of $90\%$ for our signal loss estimated power spectrum.
 \label{fig:Prob_vs_Pin}}
 \end{figure}  
   
-One difference in this method is that we are exclusively asking about signals detectable \emph{above} the level of the observed data. Thus it is explicitly limited to placing an upper limit, even if in some $k$-modes one has actual detections above the noise.  This might be seen as more conservative, however, a similar assumption has already been made when choosing to down-weight the data using itself. In such a down-weighting step, one has assumed that significant excess power is associated with a foreground residual. We note that a high SNR detection will require a different method.
+One difference in this method from the one in the main text is that we are exclusively asking about signals detectable \emph{above} the level of the observed data. Thus it is explicitly limited to placing an upper limit, even if in some $k$-modes one has actual detections above the noise.  This might be seen as more conservative, however, a similar assumption has already been made when choosing to down-weight the data using itself. In such a down-weighting step, one has assumed that significant excess power is associated with a foreground residual. We note that a high SNR detection will require a different method.
   
 Formally we can express our test as: ``What is the $P_{\rm in}$ such that
 \begin{equation}
-P_{r} > P_{x} \Lambda,
+\hat{\textbf{p}}_{r} > \hat{\textbf{p}}_{x} \Lambda,
 \end{equation}  
 where $\Lambda$ represents a choice of threshold?'' Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not\footnote{i.e. the null test} the same.  
  
  \begin{equation}
-\Prob(P_{in})  =  1 -  \int_{r=x} \Prob(P_x) \Prob(P_r,P_{in}) dr
+\Prob(P_{in})  =  1 -  \int_{r=x} \Prob(\hat{\textbf{p}}_x) \Prob(\hat{\textbf{p}}_r,P_{in}) dr
  \end{equation}
- where $\Prob(P_x)$ is the probability of obtaining the power spectrum $\hat{\textbf{p}}_x$ found via bootstrapping (power spectrum of data only) and $\Prob(P_r,P_{in})$ is the probability of obtaining the summed power spectrum $\hat{\textbf{p}}_{r}$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
+ where $\Prob(\hat{\textbf{p}}_x)$ is the probability of obtaining the power spectrum $\hat{\textbf{p}}_x$ found via bootstrapping (power spectrum of data only) and $\Prob(\hat{\textbf{p}}_r,P_{in})$ is the probability of obtaining the summed power spectrum $\hat{\textbf{p}}_{r}$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
  
-Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low injection levels the variation between $x$ and $r$ is such that the null test is ruled out to within $20$\%. This is the level expected from two distributions with $\sim$10 effective samples. 
+Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low injection levels the variation between $\textbf{x}$ and $\textbf{r}$ is such that the null test is ruled out to within $20$\%. This is the level expected from two distributions with $\sim$10 effective samples. 
 %\dcj{checked with a little python test but needs a cite} 
 As the injected signal approaches the level of the data, the probability of null rejection rises steeply.
   
@@ -1745,8 +1741,8 @@ The resulting limits for inverse covariance weighted PAPER-64 data (the same dat
 \begin{figure}[t]
 \centering
 \includegraphics[width=.4\textwidth]{plots/sigloss_method_comparison.png}
-\caption{A comparison of the signal loss Section \ref{sec:Sigloss} method
-against the method in this appendix at $90$\% confidence (red curve).
+\caption{A comparison of the signal loss method described in Section \ref{sec:Sigloss}
+with the method in this appendix at $90$\% confidence (red curve).
 Also shown are the upper limits of the unweighted power spectrum
 (blue dashed) and theoretical noise model (green). \label{fig:sigloss_compare} }
 \end{figure}
