@@ -455,12 +455,12 @@ The resulting eigenspectrum as compared to the green curve (FG + EoR) in Figure 
 \ref{fig:toy_sigloss5} (right plot). The spectrum, in the case of fringe-rate filtering (dashed line), falls more steeply, especially for 
 the last few eigenmodes. In many applications, this steep fall is not indicative of the true covariance structure of the data. With 
 fringe-rate filtering resulting in fewer independent modes, it becomes more difficult for the empirical covariance to estimate the 
-true covariance matrix. In some cases one might even arrive at a rank-deficient empirical covariance, which is unphysical given 
-that instrumental noise makes it impossible for any mode to truly have zero variance. \acl{Was there noise in this figure? Also, I 
-am slightly uncomfortable with the figure. FRF \emph{should} affect the covariance, since the data is different. What would 
-really tease out the difference between the covariance matrix simply being different vs. us not being able to estimate the 
-covariance matrix would be if we ran a large ensemble of these, and we saw the empirical covariance converging to something. 
-Can we make such a figure?} The situation is analogous to a problem faced in galaxy surveys, where the non-linear covariance 
+true covariance matrix. This can be quantified by evaluating a convergence metric $\varepsilon$ for the empirical covariance, which we define as
+\begin{equation}
+\label{eq:converge}
+\varepsilon (\Chat) \equiv \sqrt{\frac{\sum_{ij} (\Chat_{ij} - \C_{ij})^2}{\sum_{ij} \C_{ij}^2}},
+\end{equation}
+where $\C$ is true covariance matrix. In Figure \ref{toy_sigloss16} we show this convergence statistic as a function of the number of independent ensemble realizations in one's simulations (horizontal axis) and the number of independent samples in the data following fringe-rate filtering (different curve colors). With more independent time samples in the data, one converges to the true covariance more quickly. The situation here with using a finite number of time samples to estimate our covariance is analogous to a problem faced in galaxy surveys, where the non-linear covariance 
 of the matter power spectrum is estimated using a large --- but finite --- number of expensive simulations. There, the limited 
 number of independent simulations results in inaccuracies in estimated covariance matrices 
 \citep{dodelson_schneider2013,taylor_joachimi_etal2014}, which in turn result in biases in the final parameter constraints 
