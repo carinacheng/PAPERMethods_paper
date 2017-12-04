@@ -1012,10 +1012,18 @@ However, this approach assumes that we have sufficiently good knowledge of our f
 \end{equation}
 which reduces to the same result because of the linearity of Equation \eqref{eq:LinearPspecSum}. Essentially, one is computing the slope of $\langle \phat_{x} \rangle$ with respect to $\p_{\rm eor}$ (note that both Equations \eqref{eq:Deriv1} and \eqref{eq:Deriv2} take the form of finite difference derivatives). Under the approximation that the relation between the two quantities is linear, it does not matter whether this slope is evaluated about $\x$ or $\f$. In reality, one expects some deviations from linearity, but Equation \eqref{eq:Deriv2} remains a good approximation of Equation \eqref{eq:Deriv1} as long as $\x$ is dominated by $\f$. 
 
-Using this motivation, the numerator of Equation \eqref{eq:Deriv2} can be mapped to our expression for $P_{\rm out}$ (Equation \eqref{eq:sigloss}), and the denominator to $P_{\rm in}$ (Equation \eqref{eq:Pin}), where the function $g$ is our OQE power spectrum pipeline. \dcj{Here is the post-hoc justification for this signal loss method.  Except goes back to assumption of equation for g which just \emph{assumes} that there are no cross terms in the estimation of a power spectrum. So we're just kicking the can down the road.} \acl{Ok, in my defense, Equation \eqref{eq:LinearPspecSum} is a little better than an \emph{assumption}. Appendix \eqref{sec:sigloss_appendix} does in fact illustrate this with an example. The crucial question is whether we're allowed to motivate our method based on a relationship that is only true in expectation. Note that this expectation includes allowances for signal loss due to the cross correlation between signal and foregrounds, with an example of this being Appendix \eqref{sec:sigloss_appendix}.} 
+Using this motivation, the numerator of Equation \eqref{eq:Deriv2} is precisely our expression for $P_{\rm out}$ (Equation \eqref{eq:sigloss}), and the denominator is $P_{\rm in}$ (Equation \eqref{eq:Pin}), where the function $g$ is our OQE power spectrum pipeline. \dcj{Here is the post-hoc justification for this signal loss method.  Except goes back to assumption of equation for g which just \emph{assumes} that there are no cross terms in the estimation of a power spectrum. So we're just kicking the can down the road.} \acl{Ok, in my defense, Equation \eqref{eq:LinearPspecSum} is a little better than an \emph{assumption}. Appendix \eqref{sec:sigloss_appendix} does in fact illustrate this with an example. The crucial question is whether we're allowed to motivate our method based on a relationship that is only true in expectation. Note that this expectation includes allowances for signal loss due to the cross correlation between signal and foregrounds, with an example of this being Appendix \ref{sec:sigloss_appendix}.} 
+Effectively, this means that the relationship between the input and output power spectra, $P_{\rm in}$ and $P_{\rm out}$, can be thought of as a transfer function 
+which, for a sampling of $P_{\rm in}$ and $P_{\rm out}$ provides a mapping from an input power spectrum distribution into an output 
+distribution. By viewing data through this signal loss lens, we may then ask the question ``what input power spectrum 
+distribution could this (signal-loss affected) data come from?" 
+
+In Section \ref{sec:Illustration}, we provide some intuition for how the transfer function is able to capture signal loss, and why this signal loss occurs in the first place. Section \ref{sec:Practice} then details the numerical computations used to translate our power spectrum result into one viewed through a 
+signal loss lens. We note that interpretation of the signal injection results can be framed in multiple ways which yield similar but not identical answers. One alternative to the method described in Section \ref{sec:Practice} is described in Appendix \ref{sec:Pr_appendix}.
+%We showcase two methods... \cc{fill in with some broad statement of why we're showing 2 methods but also state that they yield similar results...}
 
 \subsubsection{Signal Loss Illustration}
-
+\label{sec:Illustration}
 To explore how our expression for $P_{out}$ encapsulates signal loss, we expand out Equation \eqref{eq:sigloss}:
 
 \begin{eqnarray}
@@ -1028,28 +1036,20 @@ M_{\alpha}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\te
 &-& M_{\alpha}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
-We see that $P_{\rm out}$ is comprised of multiple terms. To explore cases where signal loss is strongest, we will take the case where
-$\textbf{e}$ dominates, so that any terms involving only 
-$\textbf{x}$ are small, yielding:
+We see that $P_{\rm out}$ is comprised of multiple terms. For illustrative purposes in this subsection only, we build intuition for signal loss in $P_{out}$ by considering a scenario where $\textbf{e}$ dominates compared to $\textbf{x}$. It is in this limit where we expect signal loss to be greatest, and $P_{out}$ becomes:
 
 \begin{eqnarray}
 \label{eq:pout_expand}
-P_{\rm out, \alpha,\textbf{e} \gg \textbf{x}} &=&  M_{\alpha}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} +
- M_{\alpha}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
- &+&  M_{\alpha}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x}.
+P_{\rm out, \alpha} &\approx&  M_{\alpha}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} +
+ 2M_{\alpha}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}.
 \end{eqnarray}
+The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. It is this quantity that was used in P64 to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to P64.
 
-The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. It is this quantity that was used in P64 to calculate signal loss. However, without taking into account the cross-terms (the second and third terms), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to P64.
-
-A deep investigation of the cross-terms reveals that they contain non-negligible power (when $\textbf{R}_{r}$
-is taken to be $\textbf{C}_{r}^{-1}$ and $\textbf{C}_{r}$ is estimated from the data itself). We now describe in words the anti-correlation between data and the injected EoR. For a full...
-
-We now explain why the spurious correlations between $\textbf{e}$ and $\textbf{x}$ contain negative power.  As shown in \citet{switzer_et_al2015}, 
-$\textbf{C}_{r}^{-1}\textbf{x}$ and
-$\textbf{C}_{r}^{-1}\textbf{e}$
-can become anti-correlated on average. 
-This negative cross-term power arises from inverting the covariance matrix
-$\textbf{C}_{r}$. 
+When $\textbf{R}_{r}$
+is taken to be $\textbf{C}_{r}^{-1}$ and $\textbf{C}_{r}$ is estimated from the data itself, the second term of Equation \eqref{eq:pout_expand} is a cross correlation between $\textbf{C}_{r}^{-1}\textbf{x}$ and
+$\textbf{C}_{r}^{-1}\textbf{e}$. As shown in \citet{switzer_et_al2015}, this cross correlation term is non-zero, and in fact negative in expectation. 
+This negative cross-term power arises from a coupling between the inverse of 
+$\textbf{C}_{r}$ and $\mathbf{x}$. 
 Intuitively, we can see this by expanding the empirical covariance of $\textbf{r}=\textbf{x}+\textbf{e}$ in the
 $|\textbf{x}|\ll|\textbf{e}|$ regime:
 
@@ -1060,35 +1060,33 @@ $|\textbf{x}|\ll|\textbf{e}|$ regime:
 \end{eqnarray}
 
 \noindent where we can neglect the first term because $\textbf{x}$ is small.  Without loss of generality, we will assume
-an eigenbasis of $\textbf{e}$, so that $\textbf{ee}^{\dagger}$ is diagonal.
+an eigenbasis of $\textbf{e}$, so that $\langle 
+\textbf{ee}^{\dagger} \rangle_{t}$ is diagonal. 
 The middle 
 two terms, however, can have power in their off-diagonal terms due to the fact that, when averaging over a finite
-ensemble, $\langle\textbf{xe}^\dagger\rangle$ is not zero.  As shown in Appendix C of \citet{parsons_et_al2014}, the
-inversion of a matrix like $\textbf{C}_{r}$ that is diagonal-dominant (from $\textbf{ee}^{\dagger}$) with smaller
+ensemble, $\langle\textbf{xe}^\dagger\rangle_t$ is not zero.  As shown in Appendix C of \citet{parsons_et_al2014}, to leading order the
+inversion of a matrix like $\textbf{C}_{r}$ that is diagonal-dominant (from $\langle 
+\textbf{ee}^{\dagger} \rangle_{t}$) with smaller
 off-diagonal terms results in a new diagonal-dominant matrix with negated off-diagonal terms. These off-diagonal
 terms depend on both $\textbf{x}$ and $\textbf{e}$. When $\textbf{C}^{-1}_{r}$ is multiplied into $\textbf{x}$,
-the result is a vector that is similar to $\textbf{x}$ (because of the diagonal dominance of $\textbf{C}^{-1}_{r}$), but
+the result is a vector that is similar to $\textbf{x}$ (because of the diagonal dominance of $\textbf{C}^{-1}_{r}$), \acl{I'm not sure the previous claim follows. Why does this follow from the diagonal dominance?} but
 contains a residual correlation to $\textbf{e}$ from the off-diagonal components of $\textbf{C}^{-1}$. The
 correlation is negative because the product $\textbf{C}_r^{-1}\textbf{x}$ effectively squares the $\textbf{x}$-dependence
 of the off-diagonal terms in $\textbf{C}^{-1}_{r}$ while retaining the negative sign that arose from the inversion
 of a diagonal-dominant matrix.
 % XXX [ARP: we may want to write this all out explicitly in an appendix]
 
-The spurious correlation between $\textbf{C}_r^{-1}\textbf{e}$ and $\textbf{C}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
+The correlation between $\textbf{C}_r^{-1}\textbf{e}$ and $\textbf{C}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
 simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. Therefore, in our revised 
 signal loss computation we use the full quantity for $P_{\rm out}$ as defined in Equation \eqref{eq:sigloss}, which subtracts the 
 weighted power spectrum of the data from the weighted power spectrum of data plus EoR. 
 
-The relationship between the input and output power spectra, $P_{\rm in}$ and $P_{\rm out}$, can be thought of as a transfer function 
-which, for a sampling of $P_{\rm in}$ and $P_{\rm out}$ provides a mapping from an input power spectrum distribution into an output 
-distribution. By viewing data through this signal loss lens, we may then ask the question ``what input power spectrum 
-distribution could this (signal-loss affected) data come from?" In the next section, we describe the shape of our signal loss 
-transfer function and detail the computation used to translate our power spectrum result into one viewed through a 
-signal loss lens. We note that interpretation of the signal injection results can be framed in multiple ways which yield similar but not identical answers. One alternative to the method described in the next section is described in Appendix \ref{sec:Pr_appendix}.
-%We showcase two methods... \cc{fill in with some broad statement of why we're showing 2 methods but also state that they yield similar results...}
+We thus see from this subsection that signal loss generically arises because of couplings between $\textbf{C}^{-1}_{r}$ and $\mathbf{x}$. In principle, using $\textbf{C}^{-1}_{r}$ in place of the true inverse covariance $\textbf{C}^{-1}$ provides yet another source of multiplicative bias, which results in a modification to the treatment shown here. Such a modification is accounted for in the demonstration of Appendix \ref{sec:sigloss_appendix}, where we additionally discard the assumption that $|\textbf{x}|\ll|\textbf{e}|$. However, despite the loosening of these approximations, one sees that the qualitative message (of anti-correlations resulting in signal loss) remains intact.
+
+
 
 \subsubsection{Signal Loss in Practice}
-
+\label{sec:Practice}
 %\begin{center}
 %METHOD \#1
 %\end{center}
@@ -1106,11 +1104,11 @@ P_{\rm out,\alpha} &=&  M_{\alpha}\textbf{r}^{\dagger}\textbf{C}_{r}^{-1}\textbf
 \end{eqnarray}
 
 The treatment we outlined in the previous section implicitly assumed that signal loss corrections could be treated in expectation. In practice, however, the signal loss itself is a random variable --- some realizations of the cosmological signal may be more correlated with foreground modes than others, leading to more signal loss. This leads to two issues. The first is that Equation \eqref{eq:LinearPspecSum} may not hold. In particular, a third term that is a quadratic combination of $\f$ and $\s$ (e.g., $\f^\dagger \C^{-1} \s$) may appear. However, we can circumvent this issue by decomposing $\f$ into a sum of two vectors, one that is proportional to $\s$ and one that is orthogonal to $\s$. The former can be absorbed into the EoR term (part of the signal loss estimate), while the latter can be absorbed into the foreground term. 
-\dcj{Wait what? I think you are saying essentially that some x can remain in Pout which is what we are seeing. Or is this some extra bit of method which has been added to the analysis...} \acl{I'm not sure that's what I'm saying. (And by ``I'm not sure" I don't mean it in the colloquial sense of ``you're not right and I'm just trying to be polite about it", but rather the literal sense of the phrase ``I'm not sure". What I was trying to say was that if I wrote Equation \eqref{eq:LinearPspecSum} without the ensemble average, I could say
+\dcj{Wait what? I think you are saying essentially that some x can remain in Pout which is what we are seeing. Or is this some extra bit of method which has been added to the analysis...} \acl{I'm not sure that's what I'm saying. (And by ``I'm not sure" I don't mean it in the colloquial sense of ``you're not right and I'm just trying to be polite about it", but rather the literal sense of the phrase ``I'm not sure"). What I was trying to say was that if I wrote Equation \eqref{eq:LinearPspecSum} without the ensemble average, I could say
 \begin{equation}
 \phat_x \approx \ell_{\rm fg} f^2 + \ell_{\rm eor} e^2 + \ell_{\rm fe} fe.
 \end{equation}
-(Note that even this is an approximation. In principle there is an infinite series containing all possible powers of $e$ and $f$). Now, we split $f$ into $ f_\parallel + f_\perp$, which are the components of the foregrounds that couple to the EoR versus those that do not. Further parameterize $f_\parallel \equiv \rho e$, where $\rho$ is some correlation coefficient that quantifies the degree of correlation between the foregrounds and the EoR. Under this parameterization, one can write the $fe$ term in terms of $e^2$ (which gets absorbed into the other EoR term, plus residual foregrounds that we don't care about.}
+(Note that even this is an approximation. In principle there is an infinite series containing all possible powers of $e$ and $f$). Now, we split $f$ into $ f_\parallel + f_\perp$, which are the components of the foregrounds that couple to the EoR versus those that do not. Further parameterize $f_\parallel \equiv \rho e$, where $\rho$ is some correlation coefficient that quantifies the degree of correlation between the foregrounds and the EoR. Under this parameterization, one can write the $fe$ term in terms of $e^2$ (which gets absorbed into the other EoR term, plus residual foregrounds that we don't care about).}
 
 The second issue to tackle is how one incorporates the randomness of $\ell_{\rm eor}$ into our signal loss corrections. Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution of $p( \p_{\rm eor} | \phat_{x})$ for $\p_{\rm eor}$ given the uncorrected power spectrum estimate $\phat_{x}$. Since Equation \eqref{eq:Deriv2} is a good approximation of Equation \eqref{eq:Deriv1}, which we argued for in the previous section, we can write $\p_{\rm eor}$ as $P_{in}$, and hence the probability distribution is given by
 \begin{equation}
