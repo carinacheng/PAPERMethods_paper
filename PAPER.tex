@@ -294,7 +294,7 @@ We normalize our power spectrum estimates using the matrix $\textbf{M}$:
 \end{equation}
 
 \noindent where $\hat{\textbf{p}}$ is the normalized estimate of the true power spectrum. The data analyst has a choice for $
-\textbf{M}$ --- for simplicity in this section we set $\textbf{M} = \textbf{I}$, although we explore other cases for the analysis 
+\textbf{M}$ --- for simplicity in this section we choose $\textbf{M}$ to be diagonal, although we explore other cases for the analysis 
 of PAPER-64 data as explained in Section \ref{sec:Bias}.
 
 In the next three sections, we investigate the effects of weighting matrices on signal loss by experimenting with different 
@@ -377,8 +377,7 @@ If $\textbf{C}$ is computed from the data itself, it carries the risk of over-fi
 multiplicative bias (per $k$) to estimates of the signal. For a mathematical derivation of signal loss arising from a data-estimated covariance matrix, see Appendix \ref{sec:sigloss_appendix}. Here we will describe the origin of this signal loss 
 intuitively.
 
-Since $\hat{\textbf{C}}$ is estimated from our data, its eigenspectrum differs from the eigenspectrum of our 
-true $\textbf{C}$, and this difference has consequences on our result. An eigenspectrum ranks the eigenvalues of a matrix from 
+If the covariance is estimated from our data, its eigenspectrum differs from the eigenspectrum of the true covariance $\textbf{C}$, and this difference has consequences on our result. An eigenspectrum ranks the eigenvalues of a matrix from 
 highest to lowest and can be thought of as a spectrum of weights that are given to each spectral mode in the data. In other 
 words, the eigenvalues encode the strength of different shapes in the dataset. The eigenspectrum of the identity matrix $
 \textbf{I}$ is flat (all $1$'s) because it gives equal weighting to all modes. This is usually not the case for a covariance matrix, 
@@ -987,7 +986,7 @@ where, for illustrative purposes and notational simplicity, we have written thes
 $\hat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\hat{\textbf{p}}_{r}$ is the power spectrum of the
 data plus injection, and $P_{\rm out}$ is the difference between $\hat{\textbf{p}}_{r}$ and $\hat{\textbf{p}}_{x}$.
 
-In short, we can summarize a signal loss estimate as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\hat{\textbf{p}}_{x}$ (our detailed computation is described in the next section). We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\hat{\textbf{p}}_{x}$ by the following reasoning.
+In short, we can summarize a signal loss estimate as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\hat{\textbf{p}}_{x}$. We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\hat{\textbf{p}}_{x}$ by the following reasoning.
 
 In a limit with no instrumental noise, the data that we measure, $\x$, is comprised of two signals, such that
 \begin{equation}
@@ -1046,15 +1045,15 @@ P_{\rm out, \alpha} &\approx&  M_{\alpha}\textbf{e}^{\dagger}\textbf{R}_{r}\text
 The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. It is this quantity that was used in P64 to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to P64.
 
 When $\textbf{R}_{r}$
-is taken to be $\textbf{C}_{r}^{-1}$ and $\textbf{C}_{r}$ is estimated from the data itself, the second term of Equation \eqref{eq:pout_expand} is a cross correlation between $\textbf{C}_{r}^{-1}\textbf{x}$ and
-$\textbf{C}_{r}^{-1}\textbf{e}$. As shown in \citet{switzer_et_al2015}, this cross correlation term is non-zero, and in fact negative in expectation. 
+is taken to be $\hat{\textbf{C}}_{r}^{-1}$, the second term of Equation \eqref{eq:pout_expand} is a cross-correlation between $\hat{\textbf{C}}_{r}^{-1}\textbf{x}$ and
+$\hat{\textbf{C}_{r}}^{-1}\textbf{e}$. As shown in \citet{switzer_et_al2015}, this cross-correlation term is non-zero, and in fact negative in expectation. 
 This negative cross-term power arises from a coupling between the inverse of 
-$\textbf{C}_{r}$ and $\mathbf{x}$. 
+$\hat{\textbf{C}}_{r}$ and $\mathbf{x}$. 
 Intuitively, we can see this by expanding the empirical covariance of $\textbf{r}=\textbf{x}+\textbf{e}$ in the
 $|\textbf{x}|\ll|\textbf{e}|$ regime:
 
 \begin{eqnarray}
-\textbf{C}_{r} &=& \langle \textbf{rr}^{\dagger} \rangle_{t} \\
+\hat{\textbf{C}}_{r} &=& \langle \textbf{rr}^{\dagger} \rangle_{t} \nonumber \\ 
 &=& \langle \textbf{xx}^{\dagger} \rangle_{t} + \langle \textbf{xe}^{\dagger} \rangle_{t} + \langle \textbf{ex}^{\dagger} \rangle_{t} + \langle 
 \textbf{ee}^{\dagger} \rangle_{t},
 \end{eqnarray}
@@ -1065,23 +1064,23 @@ an eigenbasis of $\textbf{e}$, so that $\langle
 The middle 
 two terms, however, can have power in their off-diagonal terms due to the fact that, when averaging over a finite
 ensemble, $\langle\textbf{xe}^\dagger\rangle_t$ is not zero.  As shown in Appendix C of \citet{parsons_et_al2014}, to leading order the
-inversion of a matrix like $\textbf{C}_{r}$ that is diagonal-dominant (from $\langle 
+inversion of a matrix like $\hat{\textbf{C}}_{r}$ that is diagonal-dominant (from $\langle 
 \textbf{ee}^{\dagger} \rangle_{t}$) with smaller
 off-diagonal terms results in a new diagonal-dominant matrix with negated off-diagonal terms. These off-diagonal
-terms depend on both $\textbf{x}$ and $\textbf{e}$. When $\textbf{C}^{-1}_{r}$ is multiplied into $\textbf{x}$,
-the result is a vector that is similar to $\textbf{x}$ (because of the diagonal dominance of $\textbf{C}^{-1}_{r}$), \acl{I'm not sure the previous claim follows. Why does this follow from the diagonal dominance?} but
-contains a residual correlation to $\textbf{e}$ from the off-diagonal components of $\textbf{C}^{-1}$. The
-correlation is negative because the product $\textbf{C}_r^{-1}\textbf{x}$ effectively squares the $\textbf{x}$-dependence
-of the off-diagonal terms in $\textbf{C}^{-1}_{r}$ while retaining the negative sign that arose from the inversion
+terms depend on both $\textbf{x}$ and $\textbf{e}$. When $\hat{\textbf{C}}^{-1}_{r}$ is multiplied into $\textbf{x}$,
+the result is a vector that is similar to $\textbf{x}$ but
+contains a residual correlation to $\textbf{e}$ from the off-diagonal components of $\hat{\textbf{C}}^{-1}_{r}$. The
+correlation is negative because the product $\hat{\textbf{C}}_r^{-1}\textbf{x}$ effectively squares the $\textbf{x}$-dependence
+of the off-diagonal terms in $\hat{\textbf{C}}^{-1}_{r}$ while retaining the negative sign that arose from the inversion
 of a diagonal-dominant matrix.
 % XXX [ARP: we may want to write this all out explicitly in an appendix]
 
-The correlation between $\textbf{C}_r^{-1}\textbf{e}$ and $\textbf{C}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
+The correlation between $\hat{\textbf{C}}_r^{-1}\textbf{e}$ and $\hat{\textbf{C}}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
 simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. Therefore, in our revised 
 signal loss computation we use the full quantity for $P_{\rm out}$ as defined in Equation \eqref{eq:sigloss}, which subtracts the 
 weighted power spectrum of the data from the weighted power spectrum of data plus EoR. 
 
-We thus see from this subsection that signal loss generically arises because of couplings between $\textbf{C}^{-1}_{r}$ and $\mathbf{x}$. In principle, using $\textbf{C}^{-1}_{r}$ in place of the true inverse covariance $\textbf{C}^{-1}$ provides yet another source of multiplicative bias, which results in a modification to the treatment shown here. Such a modification is accounted for in the demonstration of Appendix \ref{sec:sigloss_appendix}, where we additionally discard the assumption that $|\textbf{x}|\ll|\textbf{e}|$. However, despite the loosening of these approximations, one sees that the qualitative message (of anti-correlations resulting in signal loss) remains intact.
+We thus see from this subsection that signal loss generically arises because of couplings between $\hat{\textbf{C}}^{-1}_{r}$ and $\mathbf{x}$. In principle, using $\hat{\textbf{C}}^{-1}_{r}$ in place of the true inverse covariance $\textbf{C}^{-1}$ provides yet another source of multiplicative bias, which results in a modification to the treatment shown here. Such a modification is accounted for in the demonstration of Appendix \ref{sec:sigloss_appendix}, where we additionally discard the assumption that $|\textbf{x}|\ll|\textbf{e}|$. However, despite the loosening of these approximations, one sees that the qualitative message (of anti-correlations resulting in signal loss) remains intact.
 
 
 
@@ -1098,9 +1097,9 @@ expressions for $P_{\rm in}$ and $P_{\rm out}$ become:
 
 \begin{eqnarray}
 P_{\rm in,\alpha} &=&  M_{\alpha}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e} \\
-P_{\rm out,\alpha} &=&  M_{\alpha}\textbf{r}^{\dagger}\textbf{C}_{r}^{-1}\textbf{Q}^{\alpha}\textbf{C}_{r}^{-1}\textbf{r} \nonumber \\
+P_{\rm out,\alpha} &=&  M_{\alpha}\textbf{r}^{\dagger}\hat{\textbf{C}}_{r}^{-1}\textbf{Q}^{\alpha}\hat{\textbf{C}}_{r}^{-1}\textbf{r} \nonumber \\
 &&\phantom{=====} 
--  M_{\alpha}\textbf{x}^{\dagger}\textbf{C}_{x}^{-1}\textbf{Q}^{\alpha}\textbf{C}_{x}^{-1}\textbf{x} 
+-  M_{\alpha}\textbf{x}^{\dagger}\hat{\textbf{C}}_{x}^{-1}\textbf{Q}^{\alpha}\hat{\textbf{C}}_{x}^{-1}\textbf{x} 
 \end{eqnarray}
 
 The treatment we outlined in the previous section implicitly assumed that signal loss corrections could be treated in expectation. In practice, however, the signal loss itself is a random variable --- some realizations of the cosmological signal may be more correlated with foreground modes than others, leading to more signal loss. This leads to two issues. The first is that Equation \eqref{eq:LinearPspecSum} may not hold. In particular, a third term that is a quadratic combination of $\f$ and $\s$ (e.g., $\f^\dagger \C^{-1} \s$) may appear. However, we can circumvent this issue by decomposing $\f$ into a sum of two vectors, one that is proportional to $\s$ and one that is orthogonal to $\s$. The former can be absorbed into the EoR term (part of the signal loss estimate), while the latter can be absorbed into the foreground term. 
@@ -1590,7 +1589,7 @@ exist in the data. Hence, there exists a trade-off between sensitivity driven
 time-averaging techniques such as fringe-rate filtering and signal loss. 
 \item Signal injection and recovery simulations can be used to quantify signal loss (Section \ref{sec:Sigloss}). However, a 
 signal-only simulation (i.e. comparing an unweighted vs. weighted power spectrum of EoR only) can underestimate loss by 
-failing to account for spurious correlations between the data and signal.
+failing to account for correlations between the data and signal (Section \ref{sec:Illustration}).
 \item Errors that are estimated via bootstrapping can be underestimated if samples in the dataset are significantly correlated 
 (Section \ref{sec:ErrorOverview}). If the number of independent samples in a dataset is well-determined, bootstrapping is a 
 simple and accurate way of estimating errors.
