@@ -1014,10 +1014,9 @@ which reduces to the same result because of the linearity of Equation \eqref{eq:
 
 Using this motivation, the numerator of Equation \eqref{eq:Deriv2} can be mapped to our expression for $P_{\rm out}$ (Equation \eqref{eq:sigloss}), and the denominator to $P_{\rm in}$ (Equation \eqref{eq:Pin}), where the function $g$ is our OQE power spectrum pipeline. \dcj{Here is the post-hoc justification for this signal loss method.  Except goes back to assumption of equation for g which just \emph{assumes} that there are no cross terms in the estimation of a power spectrum. So we're just kicking the can down the road. }
 
-One may wonder why $P_{\rm out}$ cannot be computed simply as the weighted power spectrum of $\textbf{e}$ alone, namely 
-$P_{\rm out,\alpha} = M_{\alpha}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}$. In short, the reason is because this 
-expression fails to include correlations between the injected EoR signal and data, which emerges as statistical noise that is added to the 
-estimate, decreasing the value of $P_{\rm out}$. Mathematically, we can show this by expanding out Equation \eqref{eq:sigloss}:
+\subsubsection{Signal Loss Illustration}
+
+To explore how our expression for $P_{out}$ encapsulates signal loss, we expand out Equation \eqref{eq:sigloss}:
 
 \begin{eqnarray}
 \label{eq:crossterm}
@@ -1029,7 +1028,6 @@ M_{\alpha}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\te
 &-& M_{\alpha}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
-
 We see that $P_{\rm out}$ is comprised of multiple terms. To explore cases where signal loss is strongest, we will take the case where
 $\textbf{e}$ dominates, so that any terms involving only 
 $\textbf{x}$ are small, yielding:
@@ -1041,13 +1039,10 @@ P_{\rm out, \alpha,\textbf{e} \gg \textbf{x}} &=&  M_{\alpha}\textbf{e}^{\dagger
  &+&  M_{\alpha}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x}.
 \end{eqnarray}
 
-We see that our naive expression for $P_{\rm out}$ is the first term in Equation \eqref{eq:pout_expand}, but there are also two 
-additional terms. An initial assumption would be that the cross-terms that involve both $\textbf{e}$ and $\textbf{x}$ should be 
-zero, since foregrounds and the cosmological signal are statistically uncorrelated. In P64, this assumption is used, and the first 
-term in Equation \eqref{eq:pout_expand} is directly compared to the input (unweighted) power spectrum to compute signal loss. 
+The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. It is this quantity that was used in P64 to calculate signal loss. However, without taking into account the cross-terms (the second and third terms), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to P64.
 
-However, a deeper investigation of these cross-terms reveals that they contain non-negligible power (when $\textbf{R}_{r}$
-is taken to be $\textbf{C}_{r}^{-1}$ and $\textbf{C}_{r}$ is estimated from the data itself). Therefore, ignoring the cross-terms significantly under-estimates signal loss, and it is this reason that represents the bulk change of our revised analysis compared to P64. 
+A deep investigation of the cross-terms reveals that they contain non-negligible power (when $\textbf{R}_{r}$
+is taken to be $\textbf{C}_{r}^{-1}$ and $\textbf{C}_{r}$ is estimated from the data itself). We now describe in words the anti-correlation between data and the injected EoR. For a full...
 
 We now explain why the spurious correlations between $\textbf{e}$ and $\textbf{x}$ contain negative power.  As shown in \citet{switzer_et_al2015}, 
 $\textbf{C}_{r}^{-1}\textbf{x}$ and
