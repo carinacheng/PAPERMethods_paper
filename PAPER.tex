@@ -345,7 +345,7 @@ Therefore, one attractive way to estimate $\textbf{C}$ is to empirically derive 
 \hat{\textbf{C}} \equiv \langle\textbf{xx}^{\dagger}\rangle_{t},
 \end{equation}
 
-\noindent assuming $\langle\textbf{x}\rangle = 0$ (a reasonable assumption since fringes average to $0$ over a sufficient 
+\noindent assuming $\langle\textbf{x}\rangle_{t} = 0$ (a reasonable assumption since fringes average to $0$ over a sufficient 
 amount of time), where $\langle \rangle$ denotes a finite average over time $t$. The inverse covariance matrix is therefore $
 \textbf{R} = \hat{\textbf{C}}^{-1}$. 
 
@@ -528,7 +528,7 @@ As a first test, we model the covariance matrix of EoR as a proof of concept tha
 avoided. We know that our simulated EoR signal should have a covariance matrix that mimics the identity matrix, with its 
 variance encoded along the diagonal. We model $\textbf{C}_{EoR}$ as such, instead of computing it based on $\textbf{x}
 _{EoR}$ itself. Next, we add $\textbf{C}_{EoR} + \hat{\textbf{C}}_{FG}$ (where $\hat{\textbf{C}}_{FG} = \langle\textbf{x}_{FG}
-\textbf{x}_{FG}^{\dagger}\rangle$) to obtain a final $\hat{\textbf{C}}$ to use in weighting. In Figure \ref{fig:toy_sigloss8} (upper 
+\textbf{x}_{FG}^{\dagger}\rangle_{t}$) to obtain a final $\hat{\textbf{C}}$ to use in weighting. In Figure \ref{fig:toy_sigloss8} (upper 
 left), we see that there is negligible signal loss. This is because by modeling $\textbf{C}_{EoR}$, we avoid over-fitting EoR fluctuations in the data that our model doesn't know about (but an empirically derived $\hat{\textbf{C}}$ would). This is also shown by comparing the (steeper) green and (flatter) red curves in Figure \ref{fig:toy_sigloss14}. We don't see perfect EoR recovery though, as the 
 green and red curves vary slightly in Figure \ref{fig:toy_sigloss8}. This deviation is a consequence of the difference between the 
 true and modeled covariance matrices. In practice such a weighting option is not feasible, as we do not know $\textbf{C}_{EoR}
