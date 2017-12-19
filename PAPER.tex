@@ -147,7 +147,7 @@ between the matter distribution exhibited via cosmic microwave background (CMB) 
 web of galaxies we observe today \citep[for a review, see][]{furlanetto_et_al2006}.
 
 One promising technique to probe the EoR is to target the 21 cm wavelength signal that is emitted and absorbed by neutral hydrogen via 
-its spin-flip transition (\citealt{furlanetto_et_al2006}; \citealt{morales_and_wyithe2010}; \citealt{pritchard_loeb2012}); . This technique is powerful because it can be observed both spatially and as a function of redshift --- that is, the wavelength 
+its spin-flip transition (\citealt{furlanetto_et_al2006}; \citealt{morales_and_wyithe2010}; \citealt{pritchard_loeb2012}). This technique is powerful because it can be observed both spatially and as a function of redshift --- that is, the wavelength 
 of the signal reaching our telescopes can be directly mapped to a distance from where the emission originated before 
 stretching out as it traveled through expanding space. Tracing the 21 cm line as a function of redshift offers a window into the 
 evolution of ionization, temperature, and density fluctuations during this transformative era.
@@ -164,7 +164,7 @@ Radio Telescope (GMRT; \citealt{paciga_et_al2013}), the LOw Frequency ARray (LOF
 the Murchison Widefield Array (MWA; \citealt{tingay_et_al2013}), the 21 Centimeter Array (21CMA; 
 \citealt{peterson_et_al2004}; \citealt{wu2009}), and PAPER (\citealt{parsons_et_al2010}). The Hydrogen Epoch of 
 Reionization Array (HERA), which is currently being built, is a next-generation instrument that aims to combine lessons 
-learned from previous experiments and is forecasted to be able to make a successful high-significance power spectrum 
+learned from previous experiments and is forecasted to be able to make a high-significance power spectrum 
 detection with an eventual $350$ elements using current analysis techniques (\citealt{pober_et_al2014}; \citealt{liu_parsons_2016}; \citealt{deboer_et_al2017}).
 
 The major challenge that faces all 21 cm experiments is isolating a small signal that is buried underneath foregrounds and 
@@ -189,7 +189,7 @@ revised PAPER-64 power spectrum result (Kolopanis et al., \textit{in prep}). We 
 
 There are many choices a $21$ cm data analyst must consider. How can time-ordered measurements be combined? How can the 
 variance of the data be estimated? In what way(s) can the data be weighted to suppress contaminated modes while not 
-destroying an EoR signal? How can the source of a detection be properly identified? Many common techniques, such as 
+destroying an EoR signal? How can a statistically significant detection of a signal be properly identified? Many common techniques, such as 
 averaging data, weighting, bootstrapping, and jackknife testing, address these issues but harbor additional trade-offs. For 
 example, an aggressive filtering method may succeed in eliminating interfering systematics but comes at the cost of losing 
 some EoR signal. A chosen weighting scheme may maximize sensitivity but fail to suppress foregrounds. 
@@ -213,7 +213,7 @@ in a power spectrum estimate. Certain analysis techniques can cause this loss, a
 \item \textbf{Error Estimation} (Section \ref{sec:ErrorOverview}): Confidence intervals on a $21$ cm power spectrum result 
 determine the difference between a detection and a null result, which have two very different implications. Errors can be 
 estimated in a variety of ways, and we will discuss a few of them.
-\item \textbf{Bias} (Section \ref{sec:BiasOverview}): There are several possible sources of positive power offset in a visibility 
+\item \textbf{Bias} (Section \ref{sec:BiasOverview}): There are several possible sources of power offset in a visibility 
 measurement that can show up as a detection in a power spectrum, such as bias from noise and foregrounds. In particular, a 
 successful EoR detection would also imitate a bias. Proving a bias is an EoR detection may be the most difficult challenge for $21$ cm 
 analyses, as it is crucial to be able to distinguish a detection of foreground leakage, for example, from that of EoR. In this paper 
@@ -266,11 +266,11 @@ previously underestimated in the P64 analysis.
 
 Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight 
 foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum 
-estimation technique of optimal quadratic estimators (OQE) as done in \citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, and \citet{trott_et_al2012}. Before showing 
+estimation technique of optimal quadratic estimators (OQE) as done in \citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, and \citet{trott_et_al2016}. Before showing 
 how signal loss can arise when using different weighting matrices, we first summarize OQE as performed in the PAPER 
 analysis.
 
-We begin with our data matrix, $\textbf{x}$, which contains our measured visibilities for a single baseline in Jy. It has length ($N_{t}, N_{f}$), where 
+We begin with our data matrix, $\textbf{x}$, which contains our measured visibilities for a single baseline in Jy. It has dimensions ($N_{t}, N_{f}$), where 
 $N_{t}$ is the number of time integrations and $N_{f}$ is the number of frequency channels. Visibilities are measurements of 
 the Fourier transform of the sky along $2$ spatial dimensions (using the flat-sky approximation), and since we are interested in $3$-dimensional Fourier-modes 
 we only need to take one Fourier transform of our visibilities along the line-of-sight dimension. We do this when forming the un-normalized power spectrum estimate $\hat{q}_{\alpha}$:
@@ -331,10 +331,9 @@ time and frequency. We model a mock EoR signal as a random Gaussian signal. Real
 	\label{fig:toy_sigloss1}
 \end{figure}
 
-One choice for the weighting matrix $\textbf{R}$ is an inverse covariance matrix. This type of weighting is attractive for power 
-spectrum analyses because it is an aggressive way to down-weight foregrounds and yields the smallest possible error bars on 
-a measurement (\citealt{tegmark_et_al1997a}; \citealt{bond_et_al1998}). The covariance matrix $\textbf{C}$, which in our case 
-describes covariances between frequency channels, can be estimated in a variety of ways. Given perfect foreground, 
+One choice for the weighting matrix $\textbf{R}$ is an inverse covariance matrix. This type of weighting is attractive for power spectrum analyses because it yields the smallest possible error bars on a measurement. Said differently, it gives the minimum variance estimate of the power spectrum of a signal (\citealt{tegmark_et_al1997a}; \citealt{bond_et_al1998}). In \citet{liu_tegmark2011}, it was shown that inverse covariance weighting also serves as a way to down-weight foregrounds since foregrounds have large covariances in frequency, motivating our use of the weighting for the PAPER analysis.
+
+The covariance matrix $\textbf{C}$, which describes covariances between frequency channels, can be estimated in a variety of ways. Given perfect foreground, 
 instrumental, and EoR models, we could form $\textbf{C}$ in a way that accurately describes our measured data. However, if 
 our foreground model is flawed, for example, our estimate of $\textbf{C}$ would not be successful at down-weighting them in 
 the data. 
@@ -346,7 +345,7 @@ Therefore, one attractive way to estimate $\textbf{C}$ is to empirically derive 
 \end{equation}
 
 \noindent assuming $\langle\textbf{x}\rangle_{t} = 0$ (a reasonable assumption since fringes average to $0$ over a sufficient 
-amount of time), where $\langle \rangle$ denotes a finite average over time $t$. The inverse covariance matrix is therefore $
+amount of time), where $\langle \rangle$ denotes a finite average over time $t$. The weighting matrix is therefore $
 \textbf{R} = \hat{\textbf{C}}^{-1}$. 
 
 First, we compute the power spectrum of $\textbf{x}$ using OQE formalism and a weighting matrix of $\hat{\textbf{C}}^{-1}$. 
@@ -360,10 +359,10 @@ and will be discussed further below). Also plotted in the figure are the unweigh
 	\includegraphics[trim={1cm 0cm 0cm 0.3cm},clip,height=0.3\textwidth]{plots/toy_sigloss4.png}
 	\caption{Resulting power spectrum estimates for the toy model simulation described in Section \ref{sec:toymodel} --- 
 foregrounds only (blue), EoR only (red), and the weighted FG + EoR dataset (green). The power spectrum of foregrounds peaks at a $k$ mode based on the frequency of the sinusoid used to create the mock FG signal. In the two panels, we compare inverse covariance weighting 
-where $\textbf{C}$ is derived from the data (left),and projecting out the first eigenmode only (right). In the former 
+where $\textbf{C}$ is derived from the data (left), and projecting out the first eigenmode only (right). In the former 
 case, signal loss arises from using information from all eigenmodes of $\hat{\textbf{C}}$. Because $\hat{\textbf{C}}$ is 
-empirically estimated, its eigenvalues pose the risk of describing EoR-dominating modes. Consequently, these modes are over-fitted and down-weighted, leading to signal loss. 
-There is no signal loss when using only the zeroth eigenmode, since we are not using information from the weaker eigenmodes 
+empirically estimated, its eigenvalues differ from those of the true covariance and this error primarily affects the weaker (EoR-dominated) eigenmodes.
+There is no signal loss when using only the first eigenmode, since we are not using information from the weaker eigenmodes 
 which $\hat{\textbf{C}}$ does not describe accurately.}
 	\label{fig:toy_sigloss3}
 \end{figure*}
@@ -381,7 +380,7 @@ If the covariance is estimated from our data, its eigenspectrum differs from the
 highest to lowest and can be thought of as a spectrum of weights that are given to each spectral mode in the data. In other 
 words, the eigenvalues encode the strength of different shapes in the dataset. The eigenspectrum of the identity matrix $
 \textbf{I}$ is flat (all $1$'s) because it gives equal weighting to all modes. This is usually not the case for a covariance matrix, 
-for which a sloped eigenspectrum means that modes are given different weights. The modes with the highest eigenvalues are 
+for which a sloped eigenspectrum means that modes are given different weights in OQE power spectrum estimation. The modes with the highest eigenvalues are 
 down-weighted the most. 
 
 \begin{figure}
@@ -420,13 +419,11 @@ $\hat{\textbf{C}}_{FG}$ but effectively absent from $\hat{\textbf{C}}^{-1}_{FG}\
 \end{figure}
 
 The danger of an empirically estimated covariance matrix comes from not being able to describe the `weak' eigenmodes of $
-\textbf{C}$ accurately, for which the EoR signal is brighter than foregrounds. If these weak eigenmodes of $\hat{\textbf{C}}$ 
-characterize EoR modes, the EoR signal will be down-weighted (not as much as the strong foreground modes, but still down-weighted). This leads to the `overfitting' of noise (or rather `overfitting' of signal), which is signal loss. 
+\textbf{C}$ accurately, for which the EoR signal is brighter than foregrounds. For these modes, the error that results from not computing $\textbf{C}$ accurately (due to a finite data sample), has a larger impact on the `weak' modes than the `strong' modes. In other words, mis-estimating $\textbf{C}$ affects EoR-dominated eigenmodes more than FG-dominated modes, and it is primarily the error associated in down-weighting these `weak' modes that leads to signal loss. 
 
 Using what we've learned about the eigenspectrum, we can tweak it in a simple way to suppress foregrounds and yield minimal 
 signal loss. Recall that our toy model foreground is a sinusoid that can be perfectly described by a single eigenmode. We can 
-project out the zeroth eigenmode (i.e. zero out all eigenmodes except the first one), thereby down-weighting the foreground-dominating mode only. Hence, we are not using information from all the weaker eigenmodes which carry the risk of 
-describing EoR fluctuations. Altering $\hat{\textbf{C}}$ as such is one example of a regularization method, in which we are 
+project out the first eigenmode (i.e. zero out all eigenmodes of the covariance matrix except the first one), thereby down-weighting the foreground-dominating mode only. Hence, we are not using information from all the weaker eigenmodes which have comparatively larger errors. Altering $\hat{\textbf{C}}$ as such is one example of a regularization method, in which we are 
 changing $\hat{\textbf{C}}$ in a way that flattens its eigenspectrum, making it more similar to that of $\textbf{I}$. The resulting 
 power spectrum estimate for this case is shown in the right plot of Figure \ref{fig:toy_sigloss3}. In this case we recover EoR, 
 demonstrating that if we can disentangle the foreground-dominating modes from EoR-dominating modes, we can down-weight 
@@ -486,6 +483,13 @@ in the case of no fringe-rate filtering (solid green) and with fringe-rate filte
 
 \begin{figure}
 	\centering
+	\includegraphics[trim={0cm 0cm 0.3cm 0.2cm},clip,width=\columnwidth]{plots/toy_sigloss16.png}
+	\caption{The convergence level, as defined in Equation \eqref{eq:converge}, of empirically estimated covariances of mock EoR signals with different numbers of independent samples. In red, the mock EoR signal is comprised entirely of independent samples. Subsequent colors show time-averaged signals. As the number of realizations increases, we see that the empirical covariances approach the true covariances. With more independent samples, the quicker an empirical covariance converges.}
+	\label{fig:toy_sigloss16}
+\end{figure}
+
+\begin{figure}
+	\centering
 	\includegraphics[trim={0cm 0cm 0.3cm 0.2cm},clip,width=\columnwidth]{plots/toy_sigloss7.png}
 	\caption{Resulting power spectrum estimate for the `fringe-rate filtered' (time-averaged) toy model simulation --- foregrounds only (blue), 
 EoR only (red), and the weighted FG + EoR dataset (green). We use inverse covariance weighting where $\textbf{C}$ is 
@@ -496,12 +500,6 @@ weakest, EoR-dominated modes).}
 	\label{fig:toy_sigloss7}
 \end{figure}
 
-\begin{figure}
-	\centering
-	\includegraphics[trim={0cm 0cm 0.3cm 0.2cm},clip,width=\columnwidth]{plots/toy_sigloss16.png}
-	\caption{The convergence level, as defined in Equation \eqref{eq:converge}, of empirically estimated covariances of mock EoR signals with different numbers of independent samples. In red, the mock EoR signal is comprised entirely of independent samples. Subsequent colors show time-averaged signals. As the number of realizations increases, we see that the empirical covariances approach the true covariances. With more independent samples, the quicker an empirical covariance converges.}
-	\label{fig:toy_sigloss16}
-\end{figure}
 
 The power spectrum results for the fringe-rate filtered toy model data is shown in Figure \ref{fig:toy_sigloss7}. As 
 expected, there is a much larger amount of signal loss for this time-averaged dataset. We do a worse job estimating the true covariance and, as a result, it is a noisier estimate. This is evident by noticing that the 
