@@ -33,12 +33,6 @@ Ade, P., {et~al.} 2008, Astrophysical Journal, 674, 22
 \bibitem[{{Andrae}(2010)}]{andrae2010}
 {Andrae}, R. 2010, ArXiv e-prints
 
-\bibitem[{Array {et~al.}(2016)Array, Collaborations: P. A. R.~Ade, Ahmed,
-  W.~Aikin, D.~Alexander, Barkats, J.~Benton, A.~Bischoff, J.~Bock,
-  Bowens-Rubin, Brevik, Buder, Bullock, Buza, Connors, P.~Crill, Duband,
-  Dvorkin, P.~Filippin, \& W.~Yoon}]{ade_et_al2016}
-Array, K., {et~al.} 2016, 833
-
 \bibitem[{Beardsley {et~al.}(2016)Beardsley, Hazelton, Sullivan, Carroll,
   Barry, Rahimi, Pindor, Trott, Line, Jacobs, Morales, Pober, Bernardi, Bowman,
   Busch, Briggs, Cappallo, Corey, de~Oliveira-Costa, Dillon, Emrich,
@@ -75,25 +69,6 @@ Beardsley, A.~P., {et~al.} 2016, The Astrophysical Journal, 833, 102
   Leitch, Mason, Matsumura, Nguyen, Ponthieu, Pryke, Richter, Rocha, Sheehy,
   Takahashi, Tolan, \& Yoon}]{chiang_et_al2010}
 Chiang, H.~C., {et~al.} 2010, The Astrophysical Journal, 711, 1123
-
-\bibitem[{Collaboration {et~al.}(2011)Collaboration, Bischoff, Brizius, Buder,
-  Chinone, Cleary, Dumoulin, Kusaka, Monsalve, Næss, Newburgh, Reeves, Smith,
-  Wehus, Zuntz, Zwart, Bronfman, Bustos, Church, Dickinson, Eriksen, Ferreira,
-  Gaier, Gundersen, Hasegawa, Hazumi, Huffenberger, Jones, Kangaslahti, Kapner,
-  Lawrence, Limon, May, McMahon, Miller, Nguyen, Nixon, Pearson, Piccirillo,
-  Radford, Readhead, Richards, Samtleben, Seiffert, Shepherd, Staggs, Tajima,
-  Thompson, Vanderlinde, Williamson, \& Winstein}]{bischoff_et_al2011}
-Collaboration, Q., {et~al.} 2011, The Astrophysical Journal, 741, 111
-
-\bibitem[{Collaboration {et~al.}(2012)Collaboration, Araujo, Bischoff, Brizius,
-  Buder, Chinone, Cleary, Dumoulin, Kusaka, Monsalve, Næss, Newburgh, Reeves,
-  Wehus, Zwart, Bronfman, Bustos, Church, Dickinson, Eriksen, Gaier, Gundersen,
-  Hasegawa, Hazumi, Huffenberger, Ishidoshiro, Jones, Kangaslahti, Kapner,
-  Kubik, Lawrence, Limon, McMahon, Miller, Nagai, Nguyen, Nixon, Pearson,
-  Piccirillo, Radford, Readhead, Richards, Samtleben, Seiffert, Shepherd,
-  Smith, Staggs, Tajima, Thompson, Vanderlinde, \&
-  Williamson}]{araujo_et_al2012}
----. 2012, The Astrophysical Journal, 760, 145
 
 \bibitem[{Crites {et~al.}(2015)Crites, Henning, Ade, Aird, Austermann, Beall,
   Bender, Benson, Bleem, Carlstrom, Chang, Chiang, Cho, Citron, Crawford,
@@ -194,6 +169,12 @@ Jacobs, D.~C., {et~al.} 2015, \apj, 801, 51
   DeBoer}]{keating_et_al2016}
 Keating, G.~K., Marrone, D.~P., Bower, G.~C., Leitch, E., Carlstrom, J.~E., \&
   DeBoer, D.~R. 2016, The Astrophysical Journal, 830, 34
+
+\bibitem[{Keck~Collaboration {et~al.}(2016)Keck~Collaboration, P.~A. R.~Ade,
+  Ahmed, W.~Aikin, D.~Alexander, Barkats, J.~Benton, A.~Bischoff, J.~Bock,
+  Bowens-Rubin, Brevik, Buder, Bullock, Buza, Connors, P.~Crill, Duband,
+  Dvorkin, P.~Filippin, \& W.~Yoon}]{ade_et_al2016}
+Keck~Collaboration, A., {et~al.} 2016, 833
 
 \bibitem[{{Kohn} {et~al.}(2016){Kohn}, {Aguirre}, {Nunhokee}, {Bernardi},
   {Pober}, {Ali}, {Bradley}, {Carilli}, {DeBoer}, {Gugliucci}, {Jacobs},
@@ -315,6 +296,24 @@ Pober, J.~C., {et~al.} 2016, The Astrophysical Journal, 819, 8
 \bibitem[{{Pritchard} \& {Loeb}(2012)}]{pritchard_loeb2012}
 {Pritchard}, J.~R., \& {Loeb}, A. 2012, Reports on Progress in Physics, 75,
   086901
+
+\bibitem[{QUIET {et~al.}(2011)QUIET, Bischoff, Brizius, Buder, Chinone, Cleary,
+  Dumoulin, Kusaka, Monsalve, Næss, Newburgh, Reeves, Smith, Wehus, Zuntz,
+  Zwart, Bronfman, Bustos, Church, Dickinson, Eriksen, Ferreira, Gaier,
+  Gundersen, Hasegawa, Hazumi, Huffenberger, Jones, Kangaslahti, Kapner,
+  Lawrence, Limon, May, McMahon, Miller, Nguyen, Nixon, Pearson, Piccirillo,
+  Radford, Readhead, Richards, Samtleben, Seiffert, Shepherd, Staggs, Tajima,
+  Thompson, Vanderlinde, Williamson, \& Winstein}]{bischoff_et_al2011}
+QUIET, Q., {et~al.} 2011, The Astrophysical Journal, 741, 111
+
+\bibitem[{QUIET {et~al.}(2012)QUIET, Araujo, Bischoff, Brizius, Buder, Chinone,
+  Cleary, Dumoulin, Kusaka, Monsalve, Næss, Newburgh, Reeves, Wehus, Zwart,
+  Bronfman, Bustos, Church, Dickinson, Eriksen, Gaier, Gundersen, Hasegawa,
+  Hazumi, Huffenberger, Ishidoshiro, Jones, Kangaslahti, Kapner, Kubik,
+  Lawrence, Limon, McMahon, Miller, Nagai, Nguyen, Nixon, Pearson, Piccirillo,
+  Radford, Readhead, Richards, Samtleben, Seiffert, Shepherd, Smith, Staggs,
+  Tajima, Thompson, Vanderlinde, \& Williamson}]{araujo_et_al2012}
+---. 2012, The Astrophysical Journal, 760, 145
 
 \bibitem[{{Santos} {et~al.}(2005){Santos}, {Cooray}, \&
   {Knox}}]{santos_et_al2005}
