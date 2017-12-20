@@ -603,8 +603,7 @@ variance. A common technique used to do this is bootstrapping. For pedagogical p
 bootstrapping and then illustrate some of its pitfalls through toy models.
 
 Bootstrapping uses sampling with replacement to estimate a posterior distribution. For example, measurements (like power 
-spectra) can be made from different samples of data. Averaging each sample set gives us a realization of the (power spectrum) 
-answer. Realizations are correlated with each other to a degree set by the fraction of sampled points that are held in common 
+spectra) can be made from different samples of data. Each of these measurements is a different realization drawn from some underlying distribution, and realizations are correlated with each other to a degree set by the fraction of sampled points that are held in common 
 between them. Hence, through the process of resampling and averaging along different axes, we can estimate error bars for 
 our results which represent the underlying distribution of values that are allowed by our measurements.
 
@@ -730,25 +729,25 @@ Foreground bias is perhaps one of the main factors limiting $21$ cm results. For
 magnitude above the cosmological signal. Though there are many techniques proposed for removing foregrounds (see e.g. \citealt{vedantham_et_al2012}; \citealt{parsons_et_al2012a}; \citealt{parsons_et_al2012b}; \citealt{dillon_et_al2013a}; \citealt{wang_et_al2013}; \citealt{parsons_et_al2014}; \citealt{liu_et_al2014a}; \citealt{liu_et_al2014b}; \citealt{dillon_et_al2015}; \citealt{pober_et_al2016a}; \citealt{trott_et_al2016}), most 
 experiments remain ultimately limited by residuals rather than noise.
 
-Because foreground spectra are smooth in frequency, they preferentially show up at low delay, or low $k$ modes. For a particular 
-baseline length, there is a maximum delay imposed on foregrounds, which corresponds to the light-crossing time between two 
+For a particular 
+baseline length, there is a maximum delay imposed on sources attached to the sky, which corresponds to the light-crossing time between two 
 antennas in a baseline. For longer baselines, this value increases, producing what is known as ``the 
 wedge"
 \citep{datta_et_al2010, parsons_et_al2012b, vedantham_et_al2012, pober_et_al2013, thyagarajan_et_al2013, liu_et_al2014a, liu_et_al2014b, patil_et_al2017}. 
-The wedge describes a region in $k$-space contaminated by foregrounds, bounded by baseline length (which is proportional to $k_{\perp}$) and delay (which is 
+The wedge describes a region in $k$-space contaminated by smooth spectrum foregrounds, bounded by baseline length (which is proportional to $k_{\perp}$) and delay (which is 
 proportional to $k_{\parallel}$). Properties of the wedge can be used to isolate and 
 %remove 
 avoid foregrounds, as done by P64, 
 \citet{parsons_et_al2014}, and \citet{jacobs_et_al2015}.
 
-However, this isolation is not perfect.  In deep measurements, power spectrum measurements at $k_{\parallel}$ values beyond 
+Although smooth spectrum foregrounds preferentially show up at low delay, or low $k$ modes, their isolation within the wedge is not perfect.  In deep measurements, power spectrum measurements at $k_{\parallel}$ values beyond 
 the length of a baseline are often still contaminated at a low level. This leakage, particularly at low $k$'s, can be attributed to 
 convolution kernels associated with Fourier-transforming visibilities into delay-space. In other words, smooth-spectrum 
 foregrounds appear as $\delta$-functions in delay-space, convolved by the Fourier transform of the source spectrum and the 
 antenna response, both of which could smear out the foregrounds and cause leakage outside the wedge \citep[e.g.][]{ewall-wice_et_al2017}.
 
 There are analysis techniques to mitigate the effects of foreground leakage and prevent information from low $k's$ from 
-spreading to high $k$ values. For example, narrow window functions can be used to minimize the covariance of a particular 
+spreading to high $k$ values. For example, narrow window functions in delay-space can be used to minimize the covariance of a particular 
 $k$ value with other ones (\citealt{liu_et_al2014b}). In other words, one can construct an estimator using OQE that forces a 
 window function to have a minimum response to low $k$ values. The window function used in P64 is constructed in such a way, 
 specifically to prevent foregrounds that live at low $k's$ from contaminating higher $k$-modes (see Section \ref{sec:Bias}). 
@@ -897,14 +896,14 @@ P64 and obtain a revised power spectrum estimate.
 As a brief review, PAPER is a dedicated $21$ cm experiment located in the Karoo Desert in South Africa. The PAPER-64 
 configuration consists of 64 dual-polarization drift-scan elements that are arranged in a grid layout. For our case study, we 
 focus solely on Stokes I estimated data \citep{moore_et_al2013} from PAPER's $30$ m East/West baselines (Figure 
-\ref{fig:ant_layout}). For information about the backend system of PAPER-64, its observations, and data reduction pipeline, we 
-refer the reader to \citet{parsons_et_al2010} and P64.
+\ref{fig:ant_layout}). All data is compressed, calibrated (using self-calibration and redundant calibration), delay-filtered (to remove foregrounds inside the wedge), LST-binned, and fringe-rate filtered. For detailed information about the backend system of PAPER-64, its observations, and data reduction pipeline, we 
+refer the reader to \citet{parsons_et_al2010} and P64. We note that all data processing steps are identical to those in P64 until after the LST-binning step in Figure 3 of P64.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/ant_layout.png}
+	\includegraphics[trim={0cm 4cm 0cm 5cm},width=\columnwidth]{plots/ant_layout_aspect.png}
 	\caption{The PAPER-64 antenna layout. We use only the $30$ m East/West baselines for the revised analysis in this 
-paper (such as the baseline involving antennas 49 and 41).}
+paper (i.e. the shortest horizontal spacings).}
 	\label{fig:ant_layout}
 \end{figure}
 
@@ -912,13 +911,13 @@ The previously best published $21$ cm upper limit result from P64 uses $124$ nig
 on $\Delta^{2}(k)$, defined as
 
 \begin{equation}
-\Delta^{\textbf{2}}\textbf{(k)} = \frac{k^{3}}{2\pi^{2}}\hat{\textbf{p}}\textbf{(k)},
+\Delta^{\textbf{2}}(k) = \frac{k^{3}}{2\pi^{2}}\hat{\textbf{p}}\textbf{(k)},
 \end{equation}
 
 \noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$ h Mpc$^{-1}$ at $z = 8.4$. The revision of this limit (Kolopanis et al., \textit{in prep}) stems from previously underestimated signal loss and underestimated error bars, both of which we 
 address in the following sections. 
 
-For our analysis, we use $8$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (P64 uses a slightly different RA 
+For our analysis, we use $8.1$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (P64 uses a slightly different RA 
 range of $0$-$8.6$ hours). All power spectrum results are produced for a center frequency of $151$ MHz using a width of $10$ 
 MHz ($20$ channels), identical to the analysis in P64. We note that, besides using only one baseline type instead of the three in 
 P64, the PAPER-64 dataset that we use in this case study differs from that in P64 mainly by the applied fringe-rate filter. In P64, the 
@@ -945,7 +944,7 @@ an integration in time, increasing sensitivity but reducing the number of indepe
 
 In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data 
 itself. Here we describe a methodology that simulates the injection and recovery of a cosmological signal in order to quantify 
-the amount of signal loss accompanying a weighting scheme. In particular, we highlight major differences from the signal loss 
+the amount of signal loss accompanying a weighting scheme used in OQE power spectrum estimation. In particular, we highlight major differences from the signal loss 
 computation used in P64, which previously underestimated losses. 
 
 \subsubsection{Signal Loss Methodology} 
@@ -1065,7 +1064,7 @@ two terms, however, can have power in their off-diagonal terms due to the fact t
 ensemble, $\langle\textbf{xe}^\dagger\rangle_t$ is not zero.  As shown in Appendix C of \citet{parsons_et_al2014}, to leading order the
 inversion of a matrix like $\hat{\textbf{C}}_{r}$ that is diagonal-dominant (from $\langle 
 \textbf{ee}^{\dagger} \rangle_{t}$) with smaller
-off-diagonal terms results in a new diagonal-dominant matrix with negated off-diagonal terms. These off-diagonal
+off-diagonal terms results in a new diagonal-dominant matrix with negative off-diagonal terms. These off-diagonal
 terms depend on both $\textbf{x}$ and $\textbf{e}$. When $\hat{\textbf{C}}^{-1}_{r}$ is multiplied into $\textbf{x}$,
 the result is a vector that is similar to $\textbf{x}$ but
 contains a residual correlation to $\textbf{e}$ from the off-diagonal components of $\hat{\textbf{C}}^{-1}_{r}$. The
@@ -1091,7 +1090,7 @@ We thus see from this subsection that signal loss generically arises because of 
 
 We now shift our attention towards computing signal loss for the fringe-rate filtered PAPER-64 dataset. While our methodology 
 outlined below is independent of weighting scheme, here we demonstrate the computation using inverse covariance weighting 
-($\textbf{R} = \textbf{C}^{-1}$), the weighting scheme used in P64 which leads to substantial loss. With this weighting, our 
+($\textbf{R} = \hat{\textbf{C}}^{-1}$), the weighting scheme used in P64 which, with an empirically estimated covariance, leads to substantial loss. With this weighting, our 
 expressions for $P_{\rm in}$ and $P_{\rm out}$ become:
 
 \begin{eqnarray}
@@ -1321,12 +1320,12 @@ because we integrate incoherently over time. For PAPER-64, $N_{lsts} = 8$ hours.
 analysis in this paper, we only use one type of baseline, hence $N_{seps}=1$. The updated limits in Kolopanis et al., \textit{in prep}
 use three separation types.
 \item $t_{int}$: The integration time of the data. It is crucial to adapt this number if filtering is applied along the time axis (i.e. a 
-fringe-rate filter). We compute the effective integration time of our fringe-rate filtered data by scaling the original integration time 
+fringe-rate filter). We compute the effective integration time of our fringe-rate filtered data by scaling the original integration time $t_{i}$
 using the following:
 \begin{equation}
-t_{frf} = t_{int} \frac{\int1 \, df}{\int w^{2}(f) \,df},
+t_{int} = t_{i} \frac{\int1 \, df}{\int w^{2}(f) \,df},
 \end{equation}
-where $t_{int}=43$ seconds, $t_{frf}$ is the fringe-rate filtered integration time, $w$ is the fringe-rate profile, and the integral is 
+where $t_{i}=43$ seconds, $t_{int}$ is the fringe-rate filtered integration time, $w$ is the fringe-rate profile, and the integral is 
 taken over all fringe-rates. For PAPER-64, this number is $t_{int} = 3857$ s. 
 \item $N_{days}$: The total number of days of data analyzed. In P64, this number was set to $135$. However, because we 
 divide our data in half (to form `even' and `odd' datasets), this number should be reduced by a factor of $2$. Additionally, 
@@ -1583,9 +1582,9 @@ signal loss, error estimation, and bias, which can be summarized as follows:
 
 \begin{itemize}
 \item Substantial signal loss can result when weighting data using empirically estimated covariances (Section 
-\ref{sec:SiglossOverview}). Loss of the $21$ cm signal is especially significant if fewer modes
+\ref{sec:SiglossOverview}). Loss of the $21$ cm signal is especially significant the fewer number of independent modes that
 exist in the data. Hence, there exists a trade-off between sensitivity driven 
-time-averaging techniques such as fringe-rate filtering and signal loss. 
+time-averaging techniques such as fringe-rate filtering and signal loss when using empirically estimated covariances. 
 \item Signal injection and recovery simulations can be used to quantify signal loss (Section \ref{sec:Sigloss}). However, a 
 signal-only simulation (i.e. comparing an unweighted vs. weighted power spectrum of EoR only) can underestimate loss by 
 failing to account for correlations between the data and signal (Section \ref{sec:Illustration}).
@@ -1626,6 +1625,7 @@ foreground mitigation/removal strategies are being developed, and simulations ar
 instruments. On the power spectrum analysis side, robust signal loss simulations, precise error calculations, and 
 comprehensive jackknife tests will play critical roles in accurate $21$ cm results. With strong foundations being established now, it is safe to say that we can expect to learn much about reionization and our early Universe in the coming years.
 
+
 % ACKNOWLEDGEMENTS ---------------------------------------------------------------------------------
 
 \section{Acknowledgements}
@@ -1641,7 +1641,7 @@ also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, resp
 \section{A toy model for signal loss}
 \label{sec:sigloss_appendix}
 
-In this Appendix, we examine a toy model for signal loss. Our goal is to build intuition by deriving an analytic formula for power spectrum signal loss. We will also show that in general, signal loss appears as a multiplicative bias on one's power spectrum estimate.
+In this Appendix, we examine a toy model for signal loss. Our goal is to derive an analytic formula for power spectrum signal loss. We will also show that in general, signal loss appears as a multiplicative bias on one's power spectrum estimate.
 
 The minimum-variance quadratic estimator $\hat{p}_\alpha$ for the $\alpha$th bandpower of the power spectrum is given by 
 \begin{equation}
@@ -1696,7 +1696,7 @@ where $N$ is the length of $\x$. In the last step we dropped the final term, sin
 \label{sec:Pr_appendix}
 One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in Section \ref{sec:Sigloss} relies on several assumptions which required justification including the neglection of cross-terms in the power spectrum and indeed does not behave as expected at small injected values. However it is possible to make a simpler interpretation which requires less motivation.
 
-In the main text we made an estimate of the signal loss effecting only the injected EoR by supposing that the lossy injected signal was the difference between the injected and not injected cases: $P_{out} = \hat{\textbf{p}}_{r} - \hat{\textbf{p}}_{x}$. Suppose that we rephrase the question we are asking to: ``At what point would an injected signal be detectable at significant levels?". Instead of detangling the part of the output power spectrum dominated by the injected signal we can simply use $\hat{\textbf{p}}_{r}$, the weighted power spectrum of the data plus injected signal.
+In the main text we made an estimate of the signal loss effecting only the injected EoR by supposing that the lossy injected signal was the difference between the injected and not injected cases: $P_{out} = \hat{\textbf{p}}_{r} - \hat{\textbf{p}}_{x}$. Suppose that we rephrase the question we are asking to: ``At what point would an injected signal be detectable at significant levels?". Instead of disentangling the part of the output power spectrum dominated by the injected signal we can simply use $\hat{\textbf{p}}_{r}$, the weighted power spectrum of the data plus injected signal.
   
 \begin{figure}[tp]
 \centering
@@ -1714,7 +1714,7 @@ This question is phrased visually in Figure \ref{fig:Pr_vs_Pin}. In the 2D space
 \includegraphics[width=.5\textwidth]{plots/method2_prob_vs_pinj.png}
 \caption{The probability that an injected signal of level P$_{inj}$
 is observable at a 2$\sigma$ level above the value of $\hat{\textbf{p}}_{x}$ (data).
-The different colors represent different $k$ values. We choose a probably of $90\%$ for our signal loss estimated power spectrum.
+The different colors represent different $k$ values. We choose a probability of $95\%$ for our signal loss estimated power spectrum.
 \label{fig:Prob_vs_Pin}}
 \end{figure}  
   
