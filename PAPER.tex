@@ -156,7 +156,7 @@ evolution of ionization, temperature, and density fluctuations during this trans
 Although a detection of the EoR remains elusive, there are several radio telescope experiments that have succeeded in using 
 the 21 cm signal from hydrogen to place constraints on the brightness of the signal. Examples of experiments investigating the 
 mean brightness temperature of the EoR relative to the CMB are the Experiment to Detect the Global EoR Signature (EDGES; 
-\citealt{bowman2010}), the Large Aperture Experiment to Detect the Dark Ages (LEDA; \citealt{greenhill_bernardi2012}), the 
+\citealt{bowman2010}), the Large Aperture Experiment to Detect the Dark Ages (LEDA; \citealt{bernardi_et_al2016}), the 
 Dark Ages Radio Explorer (DARE; \citealt{burns2012}), the Sonda Cosmol\'ogica de las Islas para la Detecci\'on de 
 Hidr\'ogeno NeutroSciHi (SCI-HI; \citealt{voytek2014}), the Broadband Instrument for Global HydrOgen ReioNisation Signal 
 (BIGHORNS; \citealt{sokolowski2015}), and the Shaped Antenna measurement of the background RAdio Spectrum (SARAS; 
@@ -282,8 +282,8 @@ we only need to take one Fourier transform of our visibilities along the line-of
 \end{equation}
 Here, \noindent $\textbf{Q}$ is a family of matrices that takes our frequency-domain visibilities and Fourier-transforms them into 
 power spectrum space, while also taking into account physical constants such as the Boltzmann constant used to convert Jy to 
-Kelvin, as well as cosmological scalings. The index $\alpha$ denotes a waveband in $k_{\parallel}$, where $k_{\parallel}$ is the 
-Fourier-dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}). $\textbf{R}$ is a weighting matrix --- as 
+Kelvin, as well as cosmological scalings. It is evaluated as $\textbf{Q}^{\alpha} \equiv \frac{\delta\textbf{C}}{\delta p_{\alpha}}$, or the derivative of the covariance with respect to the true bandpower in $\alpha$, where $\alpha$ denotes a waveband in $k_{\parallel}$ ($k_{\parallel}$ is the 
+Fourier-dual to frequency under the delay approximation (\citealt{parsons_et_al2012b})). $\textbf{R}$ is a weighting matrix --- as 
 an example, inverse covariance weighting would set $\textbf{R} = \textbf{C}^{-1}$ and an unweighted case would use $
 \textbf{R} = \textbf{I}$, the identity matrix.
 
@@ -524,7 +524,7 @@ spectra and eigenspectra for the different cases in Figures \ref{fig:toy_sigloss
 
 As a first test, we model the covariance matrix of EoR as a proof of concept that if perfect models are known, signal loss can be 
 avoided. We know that our simulated EoR signal should have a covariance matrix that mimics the identity matrix, with its 
-variance encoded along the diagonal. We model $\textbf{C}_{EoR}$ as such, instead of computing it based on $\textbf{x}
+variance encoded along the diagonal. We model $\textbf{C}_{EoR}$ as such (i.e. the identity), instead of computing it based on $\textbf{x}
 _{EoR}$ itself. Next, we add $\textbf{C}_{EoR} + \hat{\textbf{C}}_{FG}$ (where $\hat{\textbf{C}}_{FG} = \langle\textbf{x}_{FG}
 \textbf{x}_{FG}^{\dagger}\rangle_{t}$) to obtain a final $\hat{\textbf{C}}$ to use in weighting. In Figure \ref{fig:toy_sigloss8} (upper 
 left), we see that there is negligible signal loss. This is because by modeling $\textbf{C}_{EoR}$, we avoid over-fitting EoR fluctuations in the data that our model doesn't know about (but an empirically derived $\hat{\textbf{C}}$ would). This is also shown by comparing the (steeper) green and (flatter) red curves in Figure \ref{fig:toy_sigloss14}. We don't see perfect EoR recovery though, as the 
@@ -564,10 +564,10 @@ elements of the covariance matrix more heavily than those off-diagonal, thereby 
 similar weights, we avoid down-weighting EoR modes more than others.  
 
 The third panel (bottom left) in Figure \ref{fig:toy_sigloss8} flattens out the eigenspectrum of $\hat{\textbf{C}}$ a different way - 
-by only using the first three eigenmodes. Recalling that the foregrounds can be described entirely by the first eigenmode, this 
+by only using the first three eigenmodes. Recalling that our toy model foregrounds can be described entirely by the first eigenmode, this 
 method intentionally projects out modes that are EoR-dominated by replacing all but the three highest weights in the 
 eigenspectrum with $1$'s (equal weights). Again, flattening the eigenspectrum results in negligible signal loss. However, we do 
-not perfectly recover the shape of EoR because we lost information when projecting out certain modes. 
+not perfectly recover the shape of EoR because we lost information when projecting out certain modes. While this case is illuminating for the toy model, in practice it is not obvious which eigenmodes are FG vs. EoR dominated, so selecting a subset of modes to down-weight is not trivial. 
 
 The last regularization scheme we are highlighting here is setting $\hat{\textbf{C}} = \hat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (keeping only the diagonal elements of $\hat{\textbf{C}}$). In the bottom right 
 panel of Figure \ref{fig:toy_sigloss8}, we see that this method does a poor job down-weighting foregrounds. For this toy model, 
