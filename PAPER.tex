@@ -326,7 +326,7 @@ $k$'s separately, so a simplistic white noise approximation can be used. Our com
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={1.5cm 0cm 3.5cm 0.3cm},clip,width=\columnwidth]{plots/toy_sigloss1.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss1.png}
 	\caption{Our toy model dataset. We model a mock foreground-only visibility with a sinusoid signal that varies smoothly in 
 time and frequency. We model a mock EoR signal as a random Gaussian signal. Real parts are shown here.}
 	\label{fig:toy_sigloss1}
@@ -356,8 +356,8 @@ and will be discussed further below). Also plotted in the figure are the unweigh
 
 \begin{figure*}
 	\centering
-	\includegraphics[trim={0.3cm 0cm 1cm 0.3cm},clip,height=0.3\textwidth]{plots/toy_sigloss3.png}
-	\includegraphics[trim={1cm 0cm 0cm 0.3cm},clip,height=0.3\textwidth]{plots/toy_sigloss4.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.33\textwidth]{plots/toy_sigloss3.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.33\textwidth]{plots/toy_sigloss4.png}
 	\caption{Resulting power spectrum estimates for the toy model simulation described in Section \ref{sec:toymodel} --- 
 foregrounds only (blue), EoR only (red), and the weighted FG + EoR dataset (green). The power spectrum of foregrounds peaks at a $k$ mode based on the frequency of the sinusoid used to create the mock FG signal. In the two panels, we compare inverse covariance weighting 
 where $\textbf{C}$ is derived from the data (left), and projecting out the first eigenmode only (right). In the former 
@@ -386,7 +386,7 @@ down-weighted the most.
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},clip,width=\columnwidth]{plots/toy_sigloss2.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss2.png}
 	\caption{Eigenspectrum of $\hat{\textbf{C}}_{FG}$ (blue), $\hat{\textbf{C}}_{EoR}$ (red), and $\hat{\textbf{C}}_{FG+EoR}$ 
 (green). The eigenspectrum of $\hat{\textbf{C}}_{FG}$ peaks at the zeroth eigenmode, due to the presence of only one 
 sinusoid. These empirically estimated covariance matrices have eigenspectra that are different from that of a true $\textbf{C}$, 
@@ -412,8 +412,8 @@ $\hat{\textbf{C}}_{FG}$ but effectively absent from $\hat{\textbf{C}}^{-1}_{FG}\
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={1.5cm 0cm 3.5cm 0.1cm},clip,width=\columnwidth]{plots/toy_sigloss12.png}
-	\includegraphics[trim={1.5cm 0cm 3.5cm 0.1cm},clip,width=\columnwidth]{plots/toy_sigloss13.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss12.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss13.png}
 	\caption{The covariance matrices (top row) and inverse covariance-weighted data (bottom row) for FG only (left), EoR only 
 (middle), and FG + EoR (right). Real parts are shown here.}
 	\label{fig:toy_sigloss12}
@@ -474,8 +474,8 @@ marginalization over the true covariance \citep{sellentin_heavens2016}, and shri
 
 \begin{figure*}
 	\centering
-	\includegraphics[trim={1.5cm 0cm 1.5cm 0.3cm},clip,height=0.29\textwidth]{plots/toy_sigloss5.png}
-	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},clip,height=0.29\textwidth]{plots/toy_sigloss15.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.31\textwidth]{plots/toy_sigloss5.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.31\textwidth]{plots/toy_sigloss15.png}
 	\caption{Left: Our `fringe-rate filtered' (time-averaged) toy model dataset. We average every four samples together, 
 yielding $25$ independent samples in time. Real parts are shown here. Right: Eigenspectrum of $\hat{\textbf{C}}_{FG+EoR}$, 
 in the case of no fringe-rate filtering (solid green) and with fringe-rate filtering (dashed green).}
@@ -484,14 +484,14 @@ in the case of no fringe-rate filtering (solid green) and with fringe-rate filte
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0.3cm 0.2cm},clip,width=\columnwidth]{plots/toy_sigloss16.png}
+	\includegraphics[width=\columnwidth]{plots/toy_sigloss16.png}
 	\caption{The convergence level, as defined in Equation \eqref{eq:converge}, of empirically estimated covariances of mock EoR signals with different numbers of independent samples. In red, the mock EoR signal is comprised entirely of independent samples. Subsequent colors show time-averaged signals. As the number of realizations increases, we see that the empirical covariances approach the true covariances. With more independent samples, the quicker an empirical covariance converges.}
 	\label{fig:toy_sigloss16}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0.3cm 0.2cm},clip,width=\columnwidth]{plots/toy_sigloss7.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss7.png}
 	\caption{Resulting power spectrum estimate for the `fringe-rate filtered' (time-averaged) toy model simulation --- foregrounds only (blue), 
 EoR only (red), and the weighted FG + EoR dataset (green). We use inverse covariance weighting where $\textbf{C}$ is 
 computed from the data. There is a larger amount of signal loss than for the non-averaged data, a consequence of a 
@@ -534,10 +534,10 @@ $.
 
 \begin{figure*}
 	\centering
-	\includegraphics[trim={0.4cm 0cm 1.3cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss10.png}
-	\includegraphics[trim={1cm 0cm 1.3cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss8.png}
-	\includegraphics[trim={0.4cm 0cm 1.3cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss9.png}
-	\includegraphics[trim={1cm 0cm 1.3cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss11.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss10.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss8.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss9.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss11.png}
 	\caption{Resulting power spectra estimates for our `fringe-rate filtered' (time-averaged) toy model simulation --- foregrounds only (blue), 
 EoR only (red), and the weighted FG + EoR dataset (green). We show four alternate weighting options that each minimize signal 
 loss, including modeling the covariance matrix of EoR (upper left), regularizing $\hat{\textbf{C}}$ by adding an identity matrix to 
@@ -548,7 +548,7 @@ $\hat{\textbf{C}}$ (lower right).}
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},clip,width=\columnwidth]{plots/toy_sigloss14.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss14.png}
 	\caption{We compare the eigenspectrum of an empirically calculated $\hat{\textbf{C}}$ (green) to that of four alternate 
 weighting options, including modeling the covariance matrix of EoR (red), regularizing $\hat{\textbf{C}}$ by adding an identity 
 matrix to it (blue), using only the first three eigenmodes of $\hat{\textbf{C}}$ (yellow), and multiplying an identity matrix with $
@@ -656,7 +656,7 @@ number of independent samples along the axis that is being re-sampled is well-de
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/toy_error1.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_error1.png}
 	\caption{Error estimation from bootstrapping as a function of the number of elements drawn per bootstrap when 
 sampling with replacement. The star represents the standard deviation of $N_{boot}$ bootstraps, each created by drawing $1000$ 
 elements (with replacement) from a length $1000$ array of a Gaussian random signal. The black points correspond to time-averaged data (correlated data) which has $100$ independent samples. They illustrate how errors can be under-estimated if 
@@ -701,7 +701,7 @@ analysis choices have compromised the method and whether a variation of traditio
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/toy_error2.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_error2.png}
 	\caption{The fraction of independent elements in one bootstrap sample as a function of the total number of elements in a 
 dataset (i.e. if $4$ out of $5$ elements are independent, this would yield a fraction of $0.8$). A fraction of $1.0$ means that all 
 elements in the bootstrap sample are independent, and therefore sensitivity is maximized (alternately, this axis can be thought 
@@ -849,7 +849,7 @@ noise. This signifies a non-EoR bias that is only present in either $\textbf{x}_
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/toy_bias1.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_bias1.png}
 	\caption{Power spectrum estimates for a null jackknife test with the presence of a foreground systematic (blue), without 
 the foreground systematic (red), and noise alone (green). Because the first null test is not consistent with noise, it suggests the 
 presence of a systematic in either $\textbf{x}_{1}$ or $\textbf{x}_{2}$. Null tests of clean measurements should be consistent 
@@ -859,7 +859,7 @@ with thermal noise.}
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/toy_bias2.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_bias2.png}
 	\caption{Power spectrum estimates for $\textbf{x}_{1}$ and $\textbf{x}_{2}$, two jackknives of the toy model. They suggest 
 the presence of a systematic in $\textbf{x}_{1}$ only, illustrating how jackknives can be used to tease out excesses. Clean 
 measurements should remain consistent despite the jackknife taken.}
@@ -901,7 +901,7 @@ refer the reader to \citet{parsons_et_al2010} and A15. We note that all data pro
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 4cm 0cm 5cm},width=\columnwidth]{plots/ant_layout_aspect.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/ant_layout_aspect.png}
 	\caption{The PAPER-64 antenna layout. We use only the $30$ m East/West baselines for the revised analysis in this 
 paper (i.e. the shortest horizontal spacings).}
 	\label{fig:ant_layout}
