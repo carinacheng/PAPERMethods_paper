@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  22 DEC 2017 14:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  22 DEC 2017 15:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -838,14 +838,13 @@ File: plots/ant_layout_aspect.png Graphic file (type png)
 <use plots/ant_layout_aspect.png>
 Package pdftex.def Info: plots/ant_layout_aspect.png used on input line 904.
 (pdftex.def)             Requested size: 242.26653pt x 102.33223pt.
- <plots/frp.png, id=529, 578.16pt x 433.62pt>
-File: plots/frp.png Graphic file (type png)
 
-<use plots/frp.png>
+<plots/frp.png, id=529, 497.9403pt x 353.4003pt>
+File: plots/frp.png Graphic file (type png)
+ <use plots/frp.png>
 Package pdftex.def Info: plots/frp.png used on input line 932.
-(pdftex.def)             Requested size: 242.26653pt x 181.6957pt.
- [14 <./plots/ant_layout_aspect.png> <./plots/frp.png>]
-[15]
+(pdftex.def)             Requested size: 242.26653pt x 171.93817pt.
+ [14 <./plots/ant_layout_aspect.png> <./plots/frp.png>] [15]
 Overfull \hbox (2.80894pt too wide) in alignment at lines 1026--1035
  [][][] []
  []
@@ -894,12 +893,12 @@ Package pdftex.def Info: plots/ps2_data_reg.png used on input line 1240.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
  [19 <./plots/ps2_data_nosigloss.png> <./plots/ps2_data.png>] [20 <./plots/sigl
 oss_modeloop.png>] [21 <./plots/ps1_data_reg.png> <./plots/ps2_data_reg.png>]
-<plots/sense_check.png, id=693, 286.9119pt x 341.8371pt>
+<plots/sense_check.png, id=693, 300.6432pt x 351.2322pt>
 File: plots/sense_check.png Graphic file (type png)
 
 <use plots/sense_check.png>
 Package pdftex.def Info: plots/sense_check.png used on input line 1360.
-(pdftex.def)             Requested size: 242.26653pt x 288.6486pt.
+(pdftex.def)             Requested size: 242.26653pt x 283.03342pt.
 
 <plots/ps1_noise_reg.png, id=698, 361.35pt x 433.62pt>
 File: plots/ps1_noise_reg.png Graphic file (type png)
@@ -1004,7 +1003,7 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1756.
 Here is how much of TeX's memory you used:
  11116 strings out of 492995
  158020 string characters out of 6132704
- 351664 words of memory out of 5000000
+ 351668 words of memory out of 5000000
  14275 multiletter control sequences out of 15000+600000
  15332 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1034,7 +1033,7 @@ fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (30 pages, 3015198 bytes).
+Output written on PAPER.pdf (30 pages, 3004937 bytes).
 PDF statistics:
  946 PDF objects out of 1000 (max. 8388607)
  787 compressed objects within 8 object streams
