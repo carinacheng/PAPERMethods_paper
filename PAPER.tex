@@ -180,7 +180,7 @@ from the lessons learned.
 
 This paper is organized into two main sections. In Section \ref{sec:Themes} we introduce the three themes of our focus, using a 
 toy model to develop intuition for each one. In Section \ref{sec:CaseStudy} we present a case study into each theme using data 
-from the PAPER-64 array, highlighting key changes from the previously published result in \citet{ali_et_al2015}, henceforth known as P64, which have led to a 
+from the PAPER-64 array, highlighting key changes from the previously published result in \citet{ali_et_al2015}, henceforth known as A15, which have led to a 
 revised PAPER-64 power spectrum result (Kolopanis et al., \textit{in prep}). We conclude in Section \ref{sec:Con}.
 
 % SECTION 2 INTRO ---------------------------------------------------------------------------------
@@ -263,7 +263,7 @@ cm results.
 Signal loss can arise in a variety of ways in the analysis pipeline, such as fitting a polynomial during 
 spectral calibration, applying a delay-domain filter, or by weighting data by itself. Here we focus on signal loss associated with 
 applying a weighting matrix to data, a loss that can be significant depending on the choice of weighting and one that was 
-previously underestimated in the P64 analysis.
+previously underestimated in the A15 analysis.
 
 Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight 
 foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum 
@@ -737,7 +737,7 @@ wedge"
 The wedge describes a region in $k$-space contaminated by smooth spectrum foregrounds, bounded by baseline length (which is proportional to $k_{\perp}$) and delay (which is 
 proportional to $k_{\parallel}$). Properties of the wedge can be used to isolate and 
 %remove 
-avoid foregrounds, as done by P64, 
+avoid foregrounds, as done by A15, 
 \citet{parsons_et_al2014}, and \citet{jacobs_et_al2015}.
 
 Although smooth spectrum foregrounds preferentially show up at low delay, or low $k$ modes, their isolation within the wedge is not perfect.  In deep measurements, power spectrum measurements at $k_{\parallel}$ values beyond 
@@ -749,12 +749,12 @@ antenna response, both of which could smear out the foregrounds and cause leakag
 There are analysis techniques to mitigate the effects of foreground leakage and prevent information from low $k's$ from 
 spreading to high $k$ values. For example, narrow window functions in delay-space can be used to minimize the covariance of a particular 
 $k$ value with other ones (\citealt{liu_et_al2014b}). In other words, one can construct an estimator using OQE that forces a 
-window function to have a minimum response to low $k$ values. The window function used in P64 is constructed in such a way, 
+window function to have a minimum response to low $k$ values. The window function used in A15 is constructed in such a way, 
 specifically to prevent foregrounds that live at low $k's$ from contaminating higher $k$-modes (see Section \ref{sec:Bias}). 
 Minimizing foreground leakage in this way however, comes with the trade-off of compromising power spectrum sensitivity, since 
 narrow window functions increases errors for each $k$-mode (\citealt{liu_et_al2014b}). 
 
-Determining the source of detections at higher $k$'s is more difficult. In previous power spectrum results, these detections have been explained as instrumental systematics, particularly time-variable cross talk, RFI, and calibration errors (P64; \citealt{parsons_et_al2014}; \citealt{dillon_et_al2014}; \citealt{beardsley_et_al2016}; \citealt{patil_et_al2017}). In the next section (Section \ref{sec:JackknifeOverview}), we will present some tests that can help distinguish these excesses from that of EoR. 
+Determining the source of detections at higher $k$'s is more difficult. In previous power spectrum results, these detections have been explained as instrumental systematics, particularly time-variable cross talk, RFI, and calibration errors (A15; \citealt{parsons_et_al2014}; \citealt{dillon_et_al2014}; \citealt{beardsley_et_al2016}; \citealt{patil_et_al2017}). In the next section (Section \ref{sec:JackknifeOverview}), we will present some tests that can help distinguish these excesses from that of EoR. 
 
 In addition to foreground bias, noise can also be responsible for positive power spectrum detections if thermal noise is 
 multiplied by itself. Every $21$ cm visibility measurement contains thermal noise that is comprised of receiver and sky noise. 
@@ -891,13 +891,13 @@ a power spectrum result.
 
 We now present a case study of these same three themes using data from the PAPER experiment. We use the intuition 
 developed through the toy model simulations in order to make a new analysis of the PAPER-64 dataset originally presented in 
-P64 and obtain a revised power spectrum estimate.
+A15 and obtain a revised power spectrum estimate.
 
 As a brief review, PAPER is a dedicated $21$ cm experiment located in the Karoo Desert in South Africa. The PAPER-64 
 configuration consists of 64 dual-polarization drift-scan elements that are arranged in a grid layout. For our case study, we 
 focus solely on Stokes I estimated data \citep{moore_et_al2013} from PAPER's $30$ m East/West baselines (Figure 
 \ref{fig:ant_layout}). All data is compressed, calibrated (using self-calibration and redundant calibration), delay-filtered (to remove foregrounds inside the wedge), LST-binned, and fringe-rate filtered. For detailed information about the backend system of PAPER-64, its observations, and data reduction pipeline, we 
-refer the reader to \citet{parsons_et_al2010} and P64. We note that all data processing steps are identical to those in P64 until after the LST-binning step in Figure 3 of P64.
+refer the reader to \citet{parsons_et_al2010} and A15. We note that all data processing steps are identical to those in A15 until after the LST-binning step in Figure 3 of A15.
 
 \begin{figure}
 	\centering
@@ -907,7 +907,7 @@ paper (i.e. the shortest horizontal spacings).}
 	\label{fig:ant_layout}
 \end{figure}
 
-The previously best published $21$ cm upper limit result from P64 uses $124$ nights of data to place a $2\sigma$ upper limit 
+The previously best published $21$ cm upper limit result from A15 uses $124$ nights of data to place a $2\sigma$ upper limit 
 on $\Delta^{2}(k)$, defined as
 
 \begin{equation}
@@ -917,10 +917,10 @@ on $\Delta^{2}(k)$, defined as
 \noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$ h Mpc$^{-1}$ at $z = 8.4$. The revision of this limit (Kolopanis et al., \textit{in prep}) stems from previously underestimated signal loss and underestimated error bars, both of which we 
 address in the following sections. 
 
-For our analysis, we use $8.1$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (P64 uses a slightly different RA 
+For our analysis, we use $8.1$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (A15 uses a slightly different RA 
 range of $0$-$8.6$ hours). All power spectrum results are produced for a center frequency of $151$ MHz using a width of $10$ 
-MHz ($20$ channels), identical to the analysis in P64. We note that, besides using only one baseline type instead of the three in 
-P64, the PAPER-64 dataset that we use in this case study differs from that in P64 mainly by the applied fringe-rate filter. In P64, the 
+MHz ($20$ channels), identical to the analysis in A15. We note that, besides using only one baseline type instead of the three in 
+A15, the PAPER-64 dataset that we use in this case study differs from that in A15 mainly by the applied fringe-rate filter. In A15, the 
 applied filter was degraded by widening it in fringe-rate space. This was chosen in order to increase the number of independent 
 modes and reduce signal loss, though as we will explain in the next section, this signal loss was still under-estimated. With the development of a new, 
 robust method for assessing signal loss, we choose to use the optimal filter in order to maximize sensitivity. This filter is 
@@ -945,16 +945,16 @@ an integration in time, increasing sensitivity but reducing the number of indepe
 In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data 
 itself. Here we describe a methodology that simulates the injection and recovery of a cosmological signal in order to quantify 
 the amount of signal loss accompanying a weighting scheme used in OQE power spectrum estimation. In particular, we highlight major differences from the signal loss 
-computation used in P64, which previously underestimated losses. 
+computation used in A15, which previously underestimated losses. 
 
 \subsubsection{Signal Loss Methodology} 
 \label{sec:siglossmethod}
 To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated $21$ 
-cm signal visibilities. Here we use the same method as in P64, where mock Gaussian noise visibilities (mock EoR signals) 
+cm signal visibilities. Here we use the same method as in A15, where mock Gaussian noise visibilities (mock EoR signals) 
 are filtered in fringe-rate space to retain only ``sky-like" time-modes. This signal is then added to the data.\footnote{One 
-specific change from P64 is that we add this simulated signal into the analysis pipeline before the final fringe-rate filter is 
+specific change from A15 is that we add this simulated signal into the analysis pipeline before the final fringe-rate filter is 
 applied to the data. Previously, the addition was done after that final fringe-rate filter step.  This change results in an increased 
-estimate of signal loss (by a factor of $\sim$$10$), likely due to the use of the fringe-rate filter as a simulator. However, this pipeline difference, while significant, is not the dominant reason why signal loss was under-estimated in P64 (the dominant reason is explained in the main text).}
+estimate of signal loss (by a factor of $\sim$$10$), likely due to the use of the fringe-rate filter as a simulator. However, this pipeline difference, while significant, is not the dominant reason why signal loss was under-estimated in A15 (the dominant reason is explained in the main text).}
 
 Suppose that $\textbf{e}$ is the injected EoR (at some amplitude level), and $\textbf{x}$ is our data. We define $\textbf{r}
 $ to be the data plus the EoR signal:
@@ -1040,7 +1040,7 @@ We see that $P_{\rm out}$ is comprised of multiple terms. For illustrative purpo
 P_{\rm out, \alpha} &\approx&  M_{\alpha}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} +
  2M_{\alpha}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}.
 \end{eqnarray}
-The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. It is this quantity that was used in P64 to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to P64.
+The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. It is this quantity that was used in A15 to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to A15.
 
 When $\textbf{R}_{r}$
 is taken to be $\hat{\textbf{C}}_{r}^{-1}$, the second term of Equation \eqref{eq:pout_expand} is a cross-correlation between $\hat{\textbf{C}}_{r}^{-1}\textbf{x}$ and
@@ -1090,7 +1090,7 @@ We thus see from this subsection that signal loss generically arises because of 
 
 We now shift our attention towards computing signal loss for the fringe-rate filtered PAPER-64 dataset. While our methodology 
 outlined below is independent of weighting scheme, here we demonstrate the computation using inverse covariance weighting 
-($\textbf{R} = \hat{\textbf{C}}^{-1}$), the weighting scheme used in P64 which, with an empirically estimated covariance, leads to substantial loss. With this weighting, our 
+($\textbf{R} = \hat{\textbf{C}}^{-1}$), the weighting scheme used in A15 which, with an empirically estimated covariance, leads to substantial loss. With this weighting, our 
 expressions for $P_{\rm in}$ and $P_{\rm out}$ become:
 
 \begin{eqnarray}
@@ -1231,7 +1231,7 @@ Our revised, best to-date PAPER-64 power spectrum (using only one baseline separ
 \ref{fig:ps1_data}. Again, black and gray points correspond to positive and negative power spectrum values respectively, with 
 $2\sigma$ errors bars. Also plotted are the unweighted power spectrum upper limit (dashed blue) and theoretical prediction of 
 noise (solid green). From this result, we quote a best $2\sigma$ upper limit of $(151.0$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, 
-a higher limit than P64 by a factor of $\sim7$ in mK (though we only use one baseline type in our analysis as opposed to three). 
+a higher limit than A15 by a factor of $\sim7$ in mK (though we only use one baseline type in our analysis as opposed to three). 
 \cc{replace with kolopanis limit instead later}
 
 \begin{figure*}
@@ -1241,10 +1241,10 @@ a higher limit than P64 by a factor of $\sim7$ in mK (though we only use one bas
 	\caption{Power spectrum of PAPER-64 using $\hat{\textbf{C}}_{eff}$ (inverse variance weighting). Black and gray points correspond to positive and 
 negative power spectrum values, respectively, with $2\sigma$ error bars also plotted. The dashed blue line is the unweighted 
 power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on 
-observational parameters. This power spectrum result differs from P64 in that it only uses data from one type of baseline ($30$ m 
+observational parameters. This power spectrum result differs from A15 in that it only uses data from one type of baseline ($30$ m 
 East/West baselines) instead of three. Major differences from previously published results stem from revisions regarding signal 
 loss, bootstrapping, and the theoretical error computation. From this, we quote a best $2\sigma$ upper limit of $(151.0$ mK$)^{2}$ at 
-$k=0.34$ $h$Mpc$^{-1}$, a higher limit than P64 by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}.}
+$k=0.34$ $h$Mpc$^{-1}$, a higher limit than A15 by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}.}
 	\label{fig:ps1_data}
 \end{figure*}
 
@@ -1274,7 +1274,7 @@ differs from true errors as explained in Section \ref{sec:ErrorOverview}, it is 
 that affect its sensitivity. Additionally, we build on the lessons learned about bootstrapping in Section \ref{sec:ErrorOverview} to 
 revise our bootstrapping method as applied to PAPER-64 data in order to compute accurate errors from the data itself.
 
-In particular, we highlight major changes in both our sensitivity calculation and bootstrapping method that differ from the P64 
+In particular, we highlight major changes in both our sensitivity calculation and bootstrapping method that differ from the A15 
 analysis of PAPER-64. While we do not discuss the changes within the context of PAPER-32, it is worth noting that the power 
 spectrum results in \citet{parsons_et_al2014} are affected by the same issues.
 
@@ -1310,10 +1310,10 @@ T_{sys} = 180\Big(\frac{\nu}{0.18}\Big)^{-2.55} + T_{rcvr},
 \end{equation}
 
 where $\nu$ are frequencies in GHz. We use a receiver temperature of $144$ K, yielding $T_{sys} = 431$ K at $150$ MHz. 
-This is lower than the $T_{sys}$ of $500$ K used in P64 because of several small miscalculation errors that were 
+This is lower than the $T_{sys}$ of $500$ K used in A15 because of several small miscalculation errors that were 
 identified\footnote{such as missing a square root in going from a variance to a standard deviation}.
 \item $\sqrt{2}$: This factor in the denominator of the sensitivity equation comes from taking the real part of the power spectrum 
-estimates after squaring visibility measurements. In P64, a factor of $2$ was mistakenly used.
+estimates after squaring visibility measurements. In A15, a factor of $2$ was mistakenly used.
 \item $N_{lsts}$: The number of LST hours that go into a power spectrum estimation. The sensitivity scales as the square root 
 because we integrate incoherently over time. For PAPER-64, $N_{lsts} = 8$ hours.
 \item $N_{seps}$: The number of baseline separation types averaged incoherently in a final power spectrum estimate. For the 
@@ -1327,7 +1327,7 @@ t_{int} = t_{i} \frac{\int1 \, df}{\int w^{2}(f) \,df},
 \end{equation}
 where $t_{i}=43$ seconds, $t_{int}$ is the fringe-rate filtered integration time, $w$ is the fringe-rate profile, and the integral is 
 taken over all fringe-rates. For PAPER-64, this number is $t_{int} = 3857$ s. 
-\item $N_{days}$: The total number of days of data analyzed. In P64, this number was set to $135$. However, because we 
+\item $N_{days}$: The total number of days of data analyzed. In A15, this number was set to $135$. However, because we 
 divide our data in half (to form `even' and `odd' datasets), this number should be reduced by a factor of $2$. Additionally, 
 because our LST coverage is not $100\%$ complete (it doesn't overlap for every single day), we compute a more realistic value of 
 $N_{days}$ as:
@@ -1336,13 +1336,13 @@ $N_{days}$ as:
  \end{equation}
 \noindent where $i$ is over LST (\citealt{jacobs_et_al2015}). For PAPER-64, our revised estimate of $N_{days}$ is $\sim34$ 
 days.
-\item $N_{bls}$: The number of baselines contributing to the sensitivity of a power spectrum estimate. In P64, this number was 
+\item $N_{bls}$: The number of baselines contributing to the sensitivity of a power spectrum estimate. In A15, this number was 
 the total number of $30$ m East/West baselines used in the analysis. However, using the total number of baselines neglects 
 the fact that baselines are averaged into groups (see Section \ref{sec:Boot}) before cross-multiplying data. Our revised estimate for the parameter is:
 \begin{equation}
 N_{bls} = \frac{N_{bls}}{N_{gps}}\sqrt{N_{gps}^{2}-N_{gps}},
 \end{equation}
-\noindent where, for the P64 analysis, $N_{gps} = 5$. Each baseline group averages down linearly as the number of baselines 
+\noindent where, for the A15 analysis, $N_{gps} = 5$. Each baseline group averages down linearly as the number of baselines 
 entering the group ($N_{bls}/N_{gps}$) and then as the square root of the number of cross-multiplied pairs ($\sqrt{N_{gps}^{2} - 
 N_{gps}}$). For the revised PAPER-64 analysis with only one baseline separation type, this becomes $N_{bls} \sim 46$ instead 
 of $51$. 
@@ -1352,7 +1352,7 @@ of $51$.
 An additional factor of $\sqrt{2}$ is gained in sensitivity when folding our power spectra into $\Delta^{2}(k)$, due to averaging 
 together positive and negative $k$'s. 
 
-Our revised sensitivity estimate for PAPER-64 is shown in comparison with that of P64 in Figure \ref{fig:sense_check}. 
+Our revised sensitivity estimate for PAPER-64 is shown in comparison with that of A15 in Figure \ref{fig:sense_check}. 
 Together, the revised parameters yield a decrease in sensitivity (higher noise floor) by a factor of $\sim5$ in mK$^{2}$. 
 
 \begin{figure}
@@ -1360,7 +1360,7 @@ Together, the revised parameters yield a decrease in sensitivity (higher noise f
 	\includegraphics[width=\columnwidth]{plots/sense_check.png}
 	\caption{An updated prediction for the noise-level of PAPER-64 data (black) is shown in comparison to previously 
 published sensitivity limits (gray). Both sensitivity analyses plotted assume only one baseline type (an additional factor of $
-\sqrt{3}$ for three baseline types is needed to match P64 exactly). Major factors that contribute to the discrepancy are $
+\sqrt{3}$ for three baseline types is needed to match A15 exactly). Major factors that contribute to the discrepancy are $
 \Omega_{eff}$, $N_{days}$ and $N_{bls}$, as described in Section \ref{sec:PSSense}, which when combined decreases our 
 sensitivity (higher noise floor) by a factor of $\sim5$ in mK$^{2}$.}
 	\label{fig:sense_check}
@@ -1401,14 +1401,14 @@ estimates agree (the analytic curve should encompass $95\%$ of the points).}
 \label{sec:Boot}
 
 We bootstrap PAPER-64 power spectra in order to determine confidence intervals for our results. In this section, we highlight 
-two major changes in the way we estimate errors since P64, using the lessons we've learned about sampling with replacement 
+two major changes in the way we estimate errors since A15, using the lessons we've learned about sampling with replacement 
 and bootstrapping independent samples.
 
 As discussed in Section \ref{sec:ErrorOverview}, bootstrapping is only a valid way of estimating errors if a dataset is comprised 
 of independent samples, or the number of independent samples is well known. The PAPER-64 pipeline outputs $20$ bootstraps (over baselines), each a $2$-dimensional power 
 spectrum that is a function of $k$ and time. 
 
-In P64, a second round of bootstrapping occurred over the time axis. A total of $400$ bootstraps were created in this step 
+In A15, a second round of bootstrapping occurred over the time axis. A total of $400$ bootstraps were created in this step 
 ($N_{boot} = 400$), each comprised of randomly selected values sampled with replacement along the time axis. More 
 specifically, each of these bootstraps contained the same number of values as the number of time integrations (which, at $\sim$
 $700$, greatly exceeds the approximate number of independent samples after fringe-rate filtering).
@@ -1424,7 +1424,7 @@ bootstrapping step along time entirely and now simply bootstrap over baselines w
 described in Section \ref{sec:ErrorOverview}.
 
 The single replacement strategy also provides a higher sensitivity estimate as only at most one baseline is repeated in each 
-group. In P64, baselines were chosen for groups randomly with replacement. In doing so, $\sim3$$-4$ baselines per group 
+group. In A15, baselines were chosen for groups randomly with replacement. In doing so, $\sim3$$-4$ baselines per group 
 were repeated (Figure \ref{fig:toy_error2} shows the fraction of independent samples to be $\sim$$63\%$ for $10$ total 
 independent samples) which sacrificed some sensitivity. 
 
@@ -1511,7 +1511,7 @@ example, in order to prevent the squaring of the same thermal noise.
 
 To mitigate crosstalk bias, which appears as a static bias in time, we apply a fringe-rate filter that suppresses fringe-rates of 
 zero. Figure \ref{fig:frp} shows that the filter response is zero for such static signals. The effect of filtering out zero fringe-rates 
-on power spectrum results is shown in P64. Most notably, power spectrum detections exist at all $k$'s without crosstalk 
+on power spectrum results is shown in A15. Most notably, power spectrum detections exist at all $k$'s without crosstalk 
 removal and these are detections that, depending on the power spectrum level, could be mistaken for EoR. 
 
 \subsubsection{Jackknife Tests}
@@ -1598,11 +1598,11 @@ out systematics.
 
 As a consequence of our investigations, we have also revised power spectrum results from PAPER-64. For an analysis of only 
 one baseline type, we quote a new $2\sigma$ upper limit of $(151.0$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, a higher limit than 
-P64 by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}. The reasons for a previously underestimated limit and 
+A15 by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}. The reasons for a previously underestimated limit and 
 ways in which our new analysis differs can be summarized by the following:
 
 \begin{itemize}
-\item Signal loss, previously found to be $<2\%$ in P64, was under-estimated by a factor of $\sim$$1000$ for inverse 
+\item Signal loss, previously found to be $<2\%$ in A15, was under-estimated by a factor of $\sim$$1000$ for inverse 
 covariance weighting. For our new analysis, we use a regularized covariance weighting method to minimize loss (Section 
 \ref{sec:Weight}). However, because our revised weighting method is not as aggressive as the former, our results are still a 
 factor of $\sim7$ mK higher than previous limits. Under-estimated signal loss therefore represents the bulk of our revision. We 
@@ -1616,7 +1616,7 @@ previous estimation was incorrect.
 \item Several factors used in an analytic expression to predict the noise-level in PAPER-64 data were revised, yielding a 
 decrease in predicted sensitivity level by a factor of $\sim$$2$ in mK (Section \ref{sec:PSSense}). We have verified our revised 
 prediction extensively using pure noise simulations. We note that our sensitivity prediction is revised by a factor less than our 
-power spectrum result, implying that if taken at face value, the theoretical prediction for noise in P64 was too high for its data 
+power spectrum result, implying that if taken at face value, the theoretical prediction for noise in A15 was too high for its data 
 points.
 \end{itemize}
 
