@@ -243,7 +243,7 @@ weighting is in accurately defining a covariance matrix that best describes the 
 \item \textbf{Bootstrapping:} In addition to using theoretical models for covariance matrices and theoretical error estimation 
 methods, bootstrapping is one way to estimate errors. Bootstrapping is a useful method for estimating errors of a dataset from 
 itself (\citealt{andrae2010}). By randomly drawing many samples of the data, we obtain a sense of its inherent variance, though there are subtleties to 
-consider such as the independence of values in a dataset. We explore potential pitfalls of bootstrapping in Section \ref{sec:ErrorOverview}.
+consider such as the independence of values in a dataset. We explore this potential pitfall of bootstrapping in Section \ref{sec:ErrorOverview}.
 \item \textbf{Jackknife testing:} A resampling technique useful for estimating bias, jackknives can be taken along different 
 dimensions of a dataset to cross-validate results. In particular, null tests can be used to verify whether results are free of 
 systematics, as done with CO power spectra (\citealt{keating_et_al2016}) and CMB measurements (see e.g. \citealt{ade_et_al2008}; \citealt{chiang_et_al2010}; \citealt{bischoff_et_al2011}; \citealt{das_et_al2011}; \citealt{araujo_et_al2012}; \citealt{crites_et_al2015}; \citealt{ade_et_al2016}; \citealt{ade_et_al2017}; \citealt{sherwin_et_al2017}). An EoR detection must pass jackknife and null tests, which we highlight in Section \ref{sec:JackknifeOverview}.
@@ -600,7 +600,7 @@ weightings.
 
 For PAPER's analysis, we choose to compute error bars on our measurements that have been derived from its inherent 
 variance. A common technique used to do this is bootstrapping. For pedagogical purposes, we first define the technique of 
-bootstrapping and then illustrate some of its pitfalls through toy models.
+bootstrapping and then illustrate one of its pitfalls through a toy model.
 
 Bootstrapping uses sampling with replacement to estimate a posterior distribution. For example, measurements (like power 
 spectra) can be made from different samples of data. Each of these measurements is a different realization drawn from some underlying distribution, and realizations are correlated with each other to a degree set by the fraction of sampled points that are held in common 
@@ -665,6 +665,7 @@ prediction only at $N=100$.}
 	\label{fig:toy_error1}
 \end{figure}
 
+\begin{comment} % REMOVED THIS HALF OF BOOTSTRAPPING SECTION
 We will now discuss a second subtle feature of bootstrapping that fails to maximize the sensitivity of a dataset. Suppose we 
 have $5$ independent measurements of the sky (from $5$ different baselines, for example). A bootstrap then consists of $5$ 
 measurements that are drawn randomly with replacement from the original set. If all $5$ spaces are filled randomly, there is a 
@@ -690,25 +691,26 @@ in size, it becomes increasingly rare to draw entirely independent samples, and 
 independent samples out of $1000$ is most noticeable. The more elements in our dataset, the more sensitivity we can gain by 
 mandating that most of our measurements are independent ones. An analog for the y-axis in Figure \ref{fig:toy_error2} is 
 therefore the sensitivity of a final power spectrum measurement.
+\end{comment}
 
 In summary, bootstrapping can be an effective and straightforward way to estimate errors of a dataset. However, we have 
-illustrated two situations in which bootstrapping can lead to under-estimated errors and sensitivities. First, we have shown that 
+illustrated a situation in which bootstrapping can lead to under-estimated errors and therefore under-estimated power spectrum limits. We have shown that 
 bootstrapped error depends strongly on the number of elements drawn in a bootstrap sample. Estimated errors can drop to 
-arbitrarily small values when the number of elements drawn exceeds the effective number of independent elements. We have 
-also shown a situation in which a bootstrapping method does not provide the most sensitive measurement possible. While 
-bootstrapping is convenient because it provides a way to estimate errors from the data itself, one must assess whether certain 
-analysis choices have compromised the method and whether a variation of traditional re-sampling could be preferred instead.
+arbitrarily small values when the number of elements drawn exceeds the effective number of independent elements. 
+%We have also shown a situation in which a bootstrapping method does not provide the most sensitive measurement possible. 
+While bootstrapping is convenient because it provides a way to estimate errors from the data itself, one must assess whether certain 
+analysis choices have compromised the method and whether a variation or an avoidance of traditional re-sampling could be preferred instead.
 
-\begin{figure}
-	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_error2.png}
-	\caption{The fraction of independent elements in one bootstrap sample as a function of the total number of elements in a 
-dataset (i.e. if $4$ out of $5$ elements are independent, this would yield a fraction of $0.8$). A fraction of $1.0$ means that all 
-elements in the bootstrap sample are independent, and therefore sensitivity is maximized (alternately, this axis can be thought 
-of as power spectrum sensitivity, where sensitivity increases moving upwards along the y-axis). Two bootstrapping methods are shown here --- sampling all elements with replacement (gray) and sampling only the last element with replacement (black). The former fails to maximize sensitivity since some elements end up being repeated due to random sampling.} 
+%\begin{figure}
+%	\centering
+%	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_error2.png}
+%	\caption{The fraction of independent elements in one bootstrap sample as a function of the total number of elements in a 
+%dataset (i.e. if $4$ out of $5$ elements are independent, this would yield a fraction of $0.8$). A fraction of $1.0$ means that all 
+%elements in the bootstrap sample are independent, and therefore sensitivity is maximized (alternately, this axis can be thought 
+%of as power spectrum sensitivity, where sensitivity increases moving upwards along the y-axis). Two bootstrapping methods are shown here --- sampling all elements with replacement (gray) and sampling only the last element with replacement (black). The former fails to maximize sensitivity since some elements end up being repeated due to random sampling.} 
 %The `outlier' points lying at a fraction of $1.0$ at the far left of the plot occur in the off-chance that the last spot in the sample happens to be the one missing element instead of a repeated element --- this is more likely to happen with a small total number of elements but also results in a more dramatically different fraction as compared to the case of a repeated element in the last spot, hence why these points appear like outliers.}
-	\label{fig:toy_error2}
-\end{figure}
+%	\label{fig:toy_error2}
+%\end{figure}
 
 % SECTION 2 BIAS ---------------------------------------------------------------------------------
 
@@ -1401,8 +1403,7 @@ estimates agree (the analytic curve should encompass $95\%$ of the points).}
 \label{sec:Boot}
 
 We bootstrap PAPER-64 power spectra in order to determine confidence intervals for our results. In this section, we highlight 
-two major changes in the way we estimate errors since A15, using the lessons we've learned about sampling with replacement 
-and bootstrapping independent samples.
+one major changes in the way we estimate errors since A15, using the lesson we've learned about bootstrapping independent samples.
 
 As discussed in Section \ref{sec:ErrorOverview}, bootstrapping is only a valid way of estimating errors if a dataset is comprised 
 of independent samples, or the number of independent samples is well known. The PAPER-64 pipeline outputs $20$ bootstraps (over baselines), each a $2$-dimensional power 
@@ -1420,21 +1421,10 @@ measurements from this dataset has many repeated values, and the variance betwee
 samples is smaller than the true underlying variance of the data. 
 
 Given our new understanding of the sensitivity of bootstraps to the number of elements sampled, we have removed the second 
-bootstrapping step along time entirely and now simply bootstrap over baselines with the ``single replacement" strategy 
-described in Section \ref{sec:ErrorOverview}.
-
-The single replacement strategy also provides a higher sensitivity estimate as only at most one baseline is repeated in each 
-group. In A15, baselines were chosen for groups randomly with replacement. In doing so, $\sim3$$-4$ baselines per group 
-were repeated (Figure \ref{fig:toy_error2} shows the fraction of independent samples to be $\sim$$63\%$ for $10$ total 
-independent samples) which sacrificed some sensitivity. 
-
-Power spectrum estimates with these bootstrapping changes for PAPER-64 fringe-rate filtered data are shown in Figure 
+bootstrapping step along time entirely and now simply bootstrap over baselines. Power spectrum estimates with this bootstrapping change for PAPER-64 fringe-rate filtered data are shown in Figure 
 \ref{fig:data_errors}. The estimates are unweighted in order to disentangle the effects of bootstrapping from signal loss. As 
-shown in the figure, when the baseline average includes many repeated samples our sensitivity is not maximized (blue), while when 
-only one sample in the same average is allowed the possibility of being a repeat, the error on the noise-dominated higher $k$ 
-modes converges to the theoretical noise level (black).  However, if more elements are drawn for each bootstrap than the number of 
-independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent 
-variation between bootstraps drops, resulting in limits below the predicted noise level (red).
+shown in the figure, when more elements are drawn for each bootstrap than the number of 
+independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits below the predicted noise level (gray).
 
 \begin{figure}
 	\centering
@@ -1608,11 +1598,7 @@ covariance weighting. For our new analysis, we use a regularized covariance weig
 factor of $\sim7$ mK higher than previous limits. Under-estimated signal loss therefore represents the bulk of our revision. We 
 note that PAPER's analysis is not the first to under-estimate loss; results from the GMRT (\citealt{paciga_et_al2013}) were also 
 revised from new signal loss calculations associated with their singular value decomposition foreground filter.
-\item Power spectrum errors, originally computed by bootstrapping, were under-estimated by a factor of $\sim$$2$ due to 
-oversampling data whose effective number of independent samples was reduced from fringe-rate filtering. Our limits were also 
-over-estimated by a factor of $\sim$$2$ from using a suboptimal way of combining baselines into groups when forming power 
-spectra (Section \ref{sec:Boot}). Hence, the net change for our error estimation is negligible, though the rationale behind the 
-previous estimation was incorrect.
+\item Power spectrum errors, originally computed by bootstrapping, were under-estimated by a factor of $\sim$$1.4$ in mK due to oversampling data whose effective number of independent samples was reduced from fringe-rate filtering (Section \ref{sec:Boot}). 
 \item Several factors used in an analytic expression to predict the noise-level in PAPER-64 data were revised, yielding a 
 decrease in predicted sensitivity level by a factor of $\sim$$2$ in mK (Section \ref{sec:PSSense}). We have verified our revised 
 prediction extensively using pure noise simulations. We note that our sensitivity prediction is revised by a factor less than our 

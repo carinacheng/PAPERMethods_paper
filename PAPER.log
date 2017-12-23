@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  22 DEC 2017 15:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  22 DEC 2017 16:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -810,204 +810,215 @@ File: plots/toy_error1.png Graphic file (type png)
 <use plots/toy_error1.png>
 Package pdftex.def Info: plots/toy_error1.png used on input line 659.
 (pdftex.def)             Requested size: 242.26653pt x 171.24173pt.
- [10 <./plots/toy_error1.png>]
-<plots/toy_error2.png, id=408, 411.2163pt x 285.4665pt>
-File: plots/toy_error2.png Graphic file (type png)
-
-<use plots/toy_error2.png>
-Package pdftex.def Info: plots/toy_error2.png used on input line 704.
-(pdftex.def)             Requested size: 242.26653pt x 168.18419pt.
- [11 <./plots/toy_error2.png>] [12]
-<plots/toy_bias1.png, id=506, 407.6028pt x 278.2395pt>
+ Excluding 'comment' comment. [10 <./plots/toy_error1.png>] [11] <plots/toy_bia
+s1.png, id=497, 407.6028pt x 278.2395pt>
 File: plots/toy_bias1.png Graphic file (type png)
 
 <use plots/toy_bias1.png>
-Package pdftex.def Info: plots/toy_bias1.png used on input line 852.
+Package pdftex.def Info: plots/toy_bias1.png used on input line 854.
 (pdftex.def)             Requested size: 242.26653pt x 165.37836pt.
 
-<plots/toy_bias2.png, id=507, 407.6028pt x 278.2395pt>
+<plots/toy_bias2.png, id=498, 407.6028pt x 278.2395pt>
 File: plots/toy_bias2.png Graphic file (type png)
 
 <use plots/toy_bias2.png>
-Package pdftex.def Info: plots/toy_bias2.png used on input line 862.
+Package pdftex.def Info: plots/toy_bias2.png used on input line 864.
 (pdftex.def)             Requested size: 242.26653pt x 165.37836pt.
- [13 <./plots/toy_bias1.png> <./plots/toy_bias2.png>]
-<plots/ant_layout_aspect.png, id=527, 568.0422pt x 239.9364pt>
+ [12 <./plots/toy_bias1.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 880.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 880.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+<plots/ant_layout_aspect.png, id=516, 568.0422pt x 239.9364pt>
 File: plots/ant_layout_aspect.png Graphic file (type png)
 
 <use plots/ant_layout_aspect.png>
-Package pdftex.def Info: plots/ant_layout_aspect.png used on input line 904.
+Package pdftex.def Info: plots/ant_layout_aspect.png used on input line 906.
 (pdftex.def)             Requested size: 242.26653pt x 102.33223pt.
 
-<plots/frp.png, id=529, 497.9403pt x 353.4003pt>
+<plots/frp.png, id=518, 497.9403pt x 353.4003pt>
 File: plots/frp.png Graphic file (type png)
  <use plots/frp.png>
-Package pdftex.def Info: plots/frp.png used on input line 932.
+Package pdftex.def Info: plots/frp.png used on input line 934.
 (pdftex.def)             Requested size: 242.26653pt x 171.93817pt.
- [14 <./plots/ant_layout_aspect.png> <./plots/frp.png>] [15]
-Overfull \hbox (2.80894pt too wide) in alignment at lines 1026--1035
+ [13 <./plots/toy_bias2.png> <./plots/ant_layout_aspect.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 951.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 951.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+[14 <./plots/frp.png>]
+Overfull \hbox (2.80894pt too wide) in alignment at lines 1028--1037
  [][][] []
  []
 
-[16] <plots/sigloss_transfercurve.png, id=607, 867.24pt x 433.62pt>
+[15] [16] <plots/sigloss_transfercurve.png, id=606, 867.24pt x 433.62pt>
 File: plots/sigloss_transfercurve.png Graphic file (type png)
 
 <use plots/sigloss_transfercurve.png>
-Package pdftex.def Info: plots/sigloss_transfercurve.png used on input line 113
-9.
+Package pdftex.def Info: plots/sigloss_transfercurve.png used on input line 114
+1.
 (pdftex.def)             Requested size: 513.11743pt x 256.56801pt.
- [17]
-<plots/ps2_data_nosigloss.png, id=623, 361.35pt x 433.62pt>
+
+<plots/ps2_data_nosigloss.png, id=614, 361.35pt x 433.62pt>
 File: plots/ps2_data_nosigloss.png Graphic file (type png)
 
 <use plots/ps2_data_nosigloss.png>
-Package pdftex.def Info: plots/ps2_data_nosigloss.png used on input line 1174.
+Package pdftex.def Info: plots/ps2_data_nosigloss.png used on input line 1176.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_data.png, id=624, 361.35pt x 433.62pt>
+<plots/ps2_data.png, id=615, 361.35pt x 433.62pt>
 File: plots/ps2_data.png Graphic file (type png)
  <use plots/ps2_data.png>
-Package pdftex.def Info: plots/ps2_data.png used on input line 1175.
+Package pdftex.def Info: plots/ps2_data.png used on input line 1177.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-[18 <./plots/sigloss_transfercurve.png>]
-<plots/sigloss_modeloop.png, id=640, 867.24pt x 578.16pt>
+<plots/sigloss_modeloop.png, id=621, 867.24pt x 578.16pt>
 File: plots/sigloss_modeloop.png Graphic file (type png)
 
 <use plots/sigloss_modeloop.png>
-Package pdftex.def Info: plots/sigloss_modeloop.png used on input line 1208.
+Package pdftex.def Info: plots/sigloss_modeloop.png used on input line 1210.
 (pdftex.def)             Requested size: 513.11743pt x 342.09068pt.
-
-<plots/ps1_data_reg.png, id=643, 361.35pt x 433.62pt>
+ [17] [18 <./plots/sigloss_transfercurve.png> <./plots/ps2_data_nosigloss.png> 
+<./plots/ps2_data.png>]
+<plots/ps1_data_reg.png, id=641, 361.35pt x 433.62pt>
 File: plots/ps1_data_reg.png Graphic file (type png)
 
 <use plots/ps1_data_reg.png>
-Package pdftex.def Info: plots/ps1_data_reg.png used on input line 1239.
+Package pdftex.def Info: plots/ps1_data_reg.png used on input line 1241.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_data_reg.png, id=644, 361.35pt x 433.62pt>
+<plots/ps2_data_reg.png, id=642, 361.35pt x 433.62pt>
 File: plots/ps2_data_reg.png Graphic file (type png)
 
 <use plots/ps2_data_reg.png>
-Package pdftex.def Info: plots/ps2_data_reg.png used on input line 1240.
+Package pdftex.def Info: plots/ps2_data_reg.png used on input line 1242.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- [19 <./plots/ps2_data_nosigloss.png> <./plots/ps2_data.png>] [20 <./plots/sigl
-oss_modeloop.png>] [21 <./plots/ps1_data_reg.png> <./plots/ps2_data_reg.png>]
-<plots/sense_check.png, id=693, 300.6432pt x 351.2322pt>
+ [19] [20 <./plots/sigloss_modeloop.png>]
+<plots/sense_check.png, id=683, 300.6432pt x 351.2322pt>
 File: plots/sense_check.png Graphic file (type png)
 
 <use plots/sense_check.png>
-Package pdftex.def Info: plots/sense_check.png used on input line 1360.
+Package pdftex.def Info: plots/sense_check.png used on input line 1362.
 (pdftex.def)             Requested size: 242.26653pt x 283.03342pt.
+ [21 <./plots/ps1_data_reg.png> <./plots/ps2_data_reg.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1383.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1383.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
 <plots/ps1_noise_reg.png, id=698, 361.35pt x 433.62pt>
 File: plots/ps1_noise_reg.png Graphic file (type png)
 
 <use plots/ps1_noise_reg.png>
-Package pdftex.def Info: plots/ps1_noise_reg.png used on input line 1390.
+Package pdftex.def Info: plots/ps1_noise_reg.png used on input line 1392.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
 <plots/ps2_noise_reg.png, id=699, 361.35pt x 433.62pt>
 File: plots/ps2_noise_reg.png Graphic file (type png)
 
 <use plots/ps2_noise_reg.png>
-Package pdftex.def Info: plots/ps2_noise_reg.png used on input line 1391.
+Package pdftex.def Info: plots/ps2_noise_reg.png used on input line 1393.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- [22 <./plots/sense_check.png>]
-<plots/data_errors.png, id=717, 578.16pt x 433.62pt>
+
+<plots/data_errors.png, id=704, 578.16pt x 433.62pt>
 File: plots/data_errors.png Graphic file (type png)
 
 <use plots/data_errors.png>
-Package pdftex.def Info: plots/data_errors.png used on input line 1441.
+Package pdftex.def Info: plots/data_errors.png used on input line 1431.
 (pdftex.def)             Requested size: 242.26653pt x 183.54149pt.
- [23 <./plots/ps1_noise_reg.png> <./plots/ps2_noise_reg.png>]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 1463.
-
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 1463.
-
-
-Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
-
-[24 <./plots/data_errors.png>] <plots/null.png, id=747, 578.16pt x 433.62pt>
+ [22 <./plots/sense_check.png>] [23 <./plots/ps1_noise_reg.png> <./plots/ps2_no
+ise_reg.png> <./plots/data_errors.png>]
+<plots/null.png, id=735, 578.16pt x 433.62pt>
 File: plots/null.png Graphic file (type png)
-
-<use plots/null.png>
-Package pdftex.def Info: plots/null.png used on input line 1545.
+ <use plots/null.png>
+Package pdftex.def Info: plots/null.png used on input line 1535.
 (pdftex.def)             Requested size: 242.26653pt x 181.6957pt.
- [25 <./plots/null.png>] [26]
-<plots/method2_heatmap_I.png, id=778, 1204.5pt x 602.25pt>
+ [24 <./plots/null.png>] [25] [26]
+<plots/method2_heatmap_I.png, id=779, 1204.5pt x 602.25pt>
 File: plots/method2_heatmap_I.png Graphic file (type png)
 
 <use plots/method2_heatmap_I.png>
-Package pdftex.def Info: plots/method2_heatmap_I.png used on input line 1703.
+Package pdftex.def Info: plots/method2_heatmap_I.png used on input line 1689.
 (pdftex.def)             Requested size: 513.11743pt x 256.56396pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1706 ...{\rm out}$ converges to the data level.}
+l.1692 ...{\rm out}$ converges to the data level.}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{figure.1}) has been already used, duplicat
 e ignored
 <to be read again> 
                    \relax 
-l.1706 ...{\rm out}$ converges to the data level.}
-                                                   [27]
-<plots/method2_prob_vs_pinj.png, id=796, 642.4pt x 481.8pt>
+l.1692 ...{\rm out}$ converges to the data level.}
+                                                  
+<plots/method2_prob_vs_pinj.png, id=785, 642.4pt x 481.8pt>
 File: plots/method2_prob_vs_pinj.png Graphic file (type png)
 
 <use plots/method2_prob_vs_pinj.png>
-Package pdftex.def Info: plots/method2_prob_vs_pinj.png used on input line 1714
+Package pdftex.def Info: plots/method2_prob_vs_pinj.png used on input line 1700
 .
 (pdftex.def)             Requested size: 256.55872pt x 192.42252pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1718 \label{fig:Prob_vs_Pin}}
+l.1704 \label{fig:Prob_vs_Pin}}
                                pdfTeX warning (ext4): destination with the same
  identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1718 \label{fig:Prob_vs_Pin}}
-                                [28 <./plots/method2_heatmap_I.png> <./plots/me
-thod2_prob_vs_pinj.png>]
-<plots/sigloss_method_comparison_95.png, id=809, 501.875pt x 602.25pt>
+l.1704 \label{fig:Prob_vs_Pin}}
+                                [27 <./plots/method2_heatmap_I.png>]
+<plots/sigloss_method_comparison_95.png, id=798, 501.875pt x 602.25pt>
 File: plots/sigloss_method_comparison_95.png Graphic file (type png)
 
 <use plots/sigloss_method_comparison_95.png>
 Package pdftex.def Info: plots/sigloss_method_comparison_95.png used on input l
-ine 1744.
+ine 1730.
 (pdftex.def)             Requested size: 205.24384pt x 246.2992pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1748 ...d) and theoretical noise model (green).}
+l.1734 ...d) and theoretical noise model (green).}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{figure.3}) has been already used, duplicat
 e ignored
 <to be read again> 
                    \relax 
-l.1748 ...d) and theoretical noise model (green).}
-                                                   (./PAPER.bbl [29 <./plots/si
-gloss_method_comparison_95.png>])
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1756.
- [30]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1756.
- (./PAPER.aux)
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1756.
+l.1734 ...d) and theoretical noise model (green).}
+                                                   (./PAPER.bbl [28 <./plots/me
+thod2_prob_vs_pinj.png>])
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1742.
+ [29 <./plots/sigloss_method_comparison_95.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1742.
+
+(./PAPER.aux)
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1742.
  ) 
 Here is how much of TeX's memory you used:
- 11116 strings out of 492995
- 158020 string characters out of 6132704
- 351668 words of memory out of 5000000
- 14275 multiletter control sequences out of 15000+600000
+ 11112 strings out of 492995
+ 157938 string characters out of 6132704
+ 341475 words of memory out of 5000000
+ 14274 multiletter control sequences out of 15000+600000
  15332 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,11n,53p,1130b,512s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,11n,53p,1130b,565s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></u
@@ -1033,10 +1044,10 @@ fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (30 pages, 3004937 bytes).
+Output written on PAPER.pdf (29 pages, 2976759 bytes).
 PDF statistics:
- 946 PDF objects out of 1000 (max. 8388607)
- 787 compressed objects within 8 object streams
- 202 named destinations out of 1000 (max. 500000)
- 260 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 935 PDF objects out of 1000 (max. 8388607)
+ 779 compressed objects within 8 object streams
+ 200 named destinations out of 1000 (max. 500000)
+ 255 words of extra memory for PDF output out of 10000 (max. 10000000)
 
