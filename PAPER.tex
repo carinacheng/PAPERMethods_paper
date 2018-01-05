@@ -1378,6 +1378,7 @@ by LST sampling counts for each time and frequency in the LST-binned data. We co
 using:
 
 \begin{equation}
+\label{eq:noise}
 T_{rms} = \frac{T_{sys}}{\sqrt{\Delta\nu \Delta t N_{days} N_{pols}}},
 \end{equation}
 
@@ -1425,16 +1426,16 @@ measurements from this dataset has many repeated values, and the variance betwee
 samples is smaller than the true underlying variance of the data. 
 
 Given our new understanding of the sensitivity of bootstraps to the number of elements sampled, we have removed the second 
-bootstrapping step along time entirely and now simply bootstrap over baselines. Power spectrum estimates with this bootstrapping change for PAPER-64 fringe-rate filtered data are shown in Figure 
+bootstrapping step along time entirely and now simply bootstrap over baselines. Power spectrum estimates with this bootstrapping change for fringe-rate filtered noise are shown in Figure 
 \ref{fig:data_errors}. The estimates are unweighted in order to disentangle the effects of bootstrapping from signal loss. As 
 shown in the figure, when more elements are drawn for each bootstrap than the number of 
-independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits below the predicted noise level (gray).
+independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits (gray) below the predicted noise level (green). Using the revised bootstrapping method, where bootstrapping only occurs over the baseline axis, the errors (black) are shown to agree with the analytic.
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/data_errors.png}
-	\caption{$2\sigma$ power spectrum errors (not upper limits) using PAPER-64 data and two different bootstrapping 
-methods. The data is fringe-rate filtered and a weighting matrix of $\textbf{I}$ (unweighted) is used in order to disentangle the 
+	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/noise_errors.png}
+	\caption{$2\sigma$ power spectrum errors (not upper limits) for a noise simulation (computed via Equation \eqref{eq:noise} using PAPER-64 observing parameters) using two different bootstrapping 
+methods. The noise is fringe-rate filtered and a weighting matrix of $\textbf{I}$ (unweighted) is used in order to disentangle the 
 effects of bootstrapping from signal loss. The bootstrapping method used in A15 in shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. This is shown to agree with the $2\sigma$ analytic prediction for noise (green).}
 	\label{fig:data_errors}
 \end{figure}
