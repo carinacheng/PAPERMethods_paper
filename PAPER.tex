@@ -65,21 +65,21 @@ Matthew Kolopanis \altaffilmark{3},
 Daniel C. Jacobs\altaffilmark{3}, 
 Saul A. Kohn\altaffilmark{4},
 Adrian Liu\altaffilmark{1,5}, 
+Jonathan C. Pober\altaffilmark{6}, 
 James E.~Aguirre\altaffilmark{4},
 Zaki S. Ali\altaffilmark{1}, 
-Gianni Bernardi\altaffilmark{6,7,8}, 
-Richard F. Bradley\altaffilmark{9,10,11},
-Chris L. Carilli\altaffilmark{12,13},
+Gianni Bernardi\altaffilmark{7,8,9}, 
+Richard F. Bradley\altaffilmark{10,11,12},
+Chris L. Carilli\altaffilmark{13,14},
 David R. DeBoer\altaffilmark{2}, 
 Matthew R. Dexter\altaffilmark{2},
 Joshua S. Dillon\altaffilmark{1},
-Pat Klima\altaffilmark{10},
+Pat Klima\altaffilmark{11},
 David H. E. MacMahon\altaffilmark{2},
 David F. Moore\altaffilmark{4},
-Chuneeta D. Nunhokee\altaffilmark{7},
-Jonathan C. Pober\altaffilmark{14}, 
-William P. Walbrugh\altaffilmark{6},
-Andre Walker\altaffilmark{6}
+Chuneeta D. Nunhokee\altaffilmark{8},
+William P. Walbrugh\altaffilmark{7},
+Andre Walker\altaffilmark{7}
 }
 
 \altaffiltext{1}{Astronomy Dept., U. California, Berkeley, CA}
@@ -87,15 +87,15 @@ Andre Walker\altaffilmark{6}
 \altaffiltext{3}{School of Earth and Space Exploration, Arizona State U., Tempe AZ}
 \altaffiltext{4}{Dept. of Physics and Astronomy, U. Penn., Philadelphia PA} 
 \altaffiltext{5}{Berkeley Center for Cosmological Physics, Berkeley, CA} 
-\altaffiltext{6}{Square Kilometer Array, S. Africa, Cape Town South Africa}
-\altaffiltext{7}{Dept. of Physics and Electronics, Rhodes University, South Africa}
-\altaffiltext{8}{INAF-Instituto di Radioastronomia, Bologna Italy}
-\altaffiltext{9}{Dept. of Electrical and Computer Engineering, U. Virginia, Charlottesville VA}
-\altaffiltext{10}{National Radio Astronomy Obs., Charlottesville VA}
-\altaffiltext{11}{Dept. of Astronomy, U. Virginia, Charlottesville VA}
-\altaffiltext{12}{National Radio Astronomy Obs., Socorro NM}
-\altaffiltext{13}{Cavendish Lab., Cambridge UK}
-\altaffiltext{14}{Dept. of Physics, Brown University, Providence RI}
+\altaffiltext{6}{Dept. of Physics, Brown University, Providence RI}
+\altaffiltext{7}{Square Kilometer Array, S. Africa, Cape Town South Africa}
+\altaffiltext{8}{Dept. of Physics and Electronics, Rhodes University, South Africa}
+\altaffiltext{9}{INAF-Instituto di Radioastronomia, Bologna Italy}
+\altaffiltext{10}{Dept. of Electrical and Computer Engineering, U. Virginia, Charlottesville VA}
+\altaffiltext{11}{National Radio Astronomy Obs., Charlottesville VA}
+\altaffiltext{12}{Dept. of Astronomy, U. Virginia, Charlottesville VA}
+\altaffiltext{13}{National Radio Astronomy Obs., Socorro NM}
+\altaffiltext{14}{Cavendish Lab., Cambridge UK}
 
 %		Notes	
 	
@@ -1720,9 +1720,9 @@ Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low
 %\dcj{checked with a little python test but needs a cite} 
 As the injected signal approaches the level of the data, the probability of null rejection rises steeply.
   
-Lastly, this method requires that we choose the probability at which we choose to reject the null hypothesis. As can be seen in Figure \ref{fig:Prob_vs_Pin}, the difference between $80$ and $90$\% can mean a difference of almost an order of magnitude in the power spectrum level that is ruled out. We can also see that, due to the small number of samples, the probability does not perfectly converge at high injected power levels. Rather than insist on a rejection at the $99$th percent level, we compromise at $95$\%.
+Lastly, this method requires that we choose the probability at which we choose to reject the null hypothesis. As can be seen in Figure \ref{fig:Prob_vs_Pin}, the difference between $80$\% and $90$\% can mean a difference of almost an order of magnitude in the power spectrum level that is ruled out. We can also see that, due to the small number of samples, the probability does not perfectly converge at high injected power levels. Rather than insist on a rejection at the $99$th percent level, we compromise at $95$\%.
 
-The resulting limits for inverse covariance weighted PAPER-64 data (the same data used in Section \ref{sec:Sigloss}), using this second signal loss method, are shown in Figure \ref{fig:sigloss_compare} compared with the method used in the main text. Overall the limits show good agreement, with k modes differing by factors of 2 to 4.  
+The resulting limits for inverse covariance weighted PAPER-64 data (the same data used in Section \ref{sec:Sigloss}, no regularization), using this second signal loss method, are shown in Figure \ref{fig:sigloss_compare} compared with the method used in the main text. Overall the limits show good agreement, with k modes differing by factors of 2 to 4.  
 
 \begin{figure}[t]
 \centering
