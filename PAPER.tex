@@ -59,12 +59,12 @@
 \title{Characterizing Signal Loss, Error, and Bias in the 21cm Reionization \\Power Spectrum: A Revised Study of PAPER-64}
 
 \author{
-Carina Cheng\altaffilmark{1},
+Carina Cheng\altaffilmark{1}$^{,\diamond}$,
 Aaron R. Parsons\altaffilmark{1,2},
 Matthew Kolopanis \altaffilmark{3},
 Daniel C. Jacobs\altaffilmark{3}, 
 Saul A. Kohn\altaffilmark{4},
-Adrian Liu\altaffilmark{1,5}, 
+Adrian Liu\altaffilmark{1,5}$^{,\dagger}$, 
 Jonathan C. Pober\altaffilmark{6}, 
 James E.~Aguirre\altaffilmark{4},
 Zaki S. Ali\altaffilmark{1}, 
@@ -73,7 +73,7 @@ Richard F. Bradley\altaffilmark{10,11,12},
 Chris L. Carilli\altaffilmark{13,14},
 David R. DeBoer\altaffilmark{2}, 
 Matthew R. Dexter\altaffilmark{2},
-Joshua S. Dillon\altaffilmark{1},
+Joshua S. Dillon\altaffilmark{1}$^{,*}$,
 Pat Klima\altaffilmark{11},
 David H. E. MacMahon\altaffilmark{2},
 David F. Moore\altaffilmark{4},
@@ -119,17 +119,17 @@ Andre Walker\altaffilmark{7}
 % ABSTRACT ---------------------------------------------------------------------------------
 
 \begin{abstract}
-The Epoch of Reionization (EoR) is an uncharted era in our Universe's history during which the birth of the first stars and 
+The Epoch of Reionization (EoR) is an uncharted era in our Universe's history during which the first stars and 
 galaxies led to the ionization of neutral hydrogen in the intergalactic medium. There are many experiments investigating the 
 EoR by tracing the $21$ cm line of neutral hydrogen, a signal which is very faint and difficult to isolate. With a new generation 
 of instruments and a statistical power spectrum detection in our foreseeable future, it has become increasingly important to 
-develop techniques that help maximize sensitivity and validate results. Additionally, it is imperative to understand the trade-offs 
-between different methods and their effects on common power spectrum themes. In this paper, we focus on three major 
-themes --- signal loss, power spectrum error bar estimation, and bias in measurements. We describe techniques that affect 
+develop techniques that help maximize sensitivity while validating results. Additionally, it is imperative to understand the trade-offs 
+between different methods and their effects on power spectrum estimates. In this paper, we focus on three major 
+themes --- signal loss, power spectrum error estimation, and bias in measurements. We describe techniques that affect 
 these themes using both toy models and data taken by the 64-element configuration of the Donald C. Backer Precision Array 
 for Probing the Epoch of Reionization (PAPER). In particular, we highlight how detailed investigations of these themes have 
 led to a revised, higher $21$ cm power spectrum upper limit from PAPER-64. This revised result mostly stems from an 
-updated signal loss calculation for loss associated with empirically estimated covariances and supersedes results from 
+improved signal loss calculation for loss associated with empirically estimated covariances and supersedes results from 
 previously published PAPER analyses.
 \end{abstract}
 
@@ -138,23 +138,28 @@ previously published PAPER analyses.
 \section{Introduction}
 \label{sec:Intro}
 
-By about one billion years after the Big Bang ($z \sim 6$), the very first stars and galaxies are thought to have ionized all the 
+{\let\thefootnote\relax\footnote{$^{\diamond}$\href{mailto:ccheng@berkeley.edu}{ccheng@berkeley.edu}}}
+{\let\thefootnote\relax\footnote{$^{\dagger}$Hubble Fellow}}
+{\let\thefootnote\relax\footnote{$^{*}$NSF AAPF Fellow}}
+\setcounter{footnote}{0}
+
+By about one billion years after the Big Bang ($z \sim 6$), the first stars and galaxies are thought to have ionized all the 
 neutral hydrogen that dominated the baryonic matter content in the Universe. This transition period, during which the first 
 luminous structures formed from gravitational collapse and began to emit intense radiation that ionized the cold neutral gas 
-into a plasma, is known as the epoch of reionization (EoR). The EoR is a relatively unexplored era in our cosmic dawn. Its 
+into a plasma, is known as the Epoch of Reionization (EoR). The EoR is a relatively unexplored era in our \textit{cosmic dawn}, which spans from the birth of the first stars to the full reionization of the intergalactic medium (IGM). Its 
 history encodes important information regarding the nature of the first galaxies and the processes of structure formation. 
-Direct measurements of the EoR would unlock powerful information about the intergalactic medium, revealing connections 
+Direct measurements of the EoR would unlock powerful characteristics about the IGM, revealing connections 
 between the matter distribution exhibited via cosmic microwave background (CMB) studies and the highly structured 
 web of galaxies we observe today \citep[for a review, see][]{furlanetto_et_al2006}.
 
-One promising technique to probe the EoR is to target the 21 cm wavelength signal that is emitted and absorbed by neutral hydrogen via 
-its spin-flip transition (\citealt{furlanetto_et_al2006}; \citealt{morales_and_wyithe2010}; \citealt{pritchard_loeb2012}). This technique is powerful because it can be observed both spatially and as a function of redshift --- that is, the wavelength 
+One promising technique to probe the EoR is to target the 21\,cm wavelength signal that is emitted and absorbed by neutral hydrogen via 
+its spin-flip transition (\citealt{furlanetto_et_al2006}; \citealt{morales_and_wyithe2010}; \citealt{pritchard_loeb2012}). This tomography technique is powerful because it can be observed both spatially and as a function of redshift --- that is, the wavelength 
 of the signal reaching our telescopes can be directly mapped to a distance from where the emission originated before 
-stretching out as it traveled through expanding space. Tracing the 21 cm line as a function of redshift offers a window into the 
-evolution of ionization, temperature, and density fluctuations during this transformative era.
+stretching out as it traveled through expanding space. Tracing the 21\,cm line as a function of redshift offers a window into the 
+evolution of ionization, temperature, and density fluctuations.
 
 Although a detection of the EoR remains elusive, there are several radio telescope experiments that have succeeded in using 
-the 21 cm signal from hydrogen to place constraints on the brightness of the signal. Examples of experiments investigating the 
+the 21\,cm signal from hydrogen to place constraints on the brightness of the signal. Examples of experiments investigating the 
 mean brightness temperature of the EoR relative to the CMB are the Experiment to Detect the Global EoR Signature (EDGES; 
 \citealt{bowman2010}), the Large Aperture Experiment to Detect the Dark Ages (LEDA; \citealt{bernardi_et_al2016}), the 
 Dark Ages Radio Explorer (DARE; \citealt{burns2012}), the Sonda Cosmol\'ogica de las Islas para la Detecci\'on de 
@@ -165,14 +170,14 @@ Radio Telescope (GMRT; \citealt{paciga_et_al2013}), the LOw Frequency ARray (LOF
 the Murchison Widefield Array (MWA; \citealt{tingay_et_al2013}), the 21 Centimeter Array (21CMA; 
 \citealt{peterson_et_al2004}; \citealt{wu2009}), and PAPER (\citealt{parsons_et_al2010}). The Hydrogen Epoch of 
 Reionization Array (HERA), which is currently being built, is a next-generation instrument that aims to combine lessons 
-learned from previous experiments and is forecasted to be able to make a high-significance power spectrum 
-detection with an eventual $350$ elements using current analysis techniques (\citealt{pober_et_al2014}; \citealt{liu_parsons_2016}; \citealt{deboer_et_al2017}).
+learned from previous experiments and is forecast to be able to make a high-significance power spectrum 
+detection with an eventual $350$ elements using current analysis techniques (\citealt{pober_et_al2014}; \citealt{liu_parsons_2016}; \citealt{dillon_parsons2016}; \citealt{deboer_et_al2017}).
 
-The major challenge that faces all 21 cm experiments is isolating a small signal that is buried underneath foregrounds and 
+The major challenge that faces all 21\,cm experiments is isolating a small signal that is buried underneath foregrounds and 
 instrumental systematics that are, when combined, four to five orders of magnitude brighter \citep[e.g.,][]{santos_et_al2005, ali_et_al2008, deOliveiraCosta_et_al2008, jelic_et_al2008, bernardi_et_al2009, bernardi_et_al2010, ghosh_et_al2011, pober_et_al2013, dillon_et_al2014, kohn_et_al2016}. A clean measurement therefore requires an intimate understanding of the instrument and a rigorous study of data analysis choices. With continual progress being made 
 in the field and HERA on the horizon, it is becoming increasingly important to understand how the methods we choose interact 
 with each other to affect power spectrum results. More specifically, it is imperative to develop techniques and tests that ensure 
-the accuracy and reliability of a potential EoR detection. In this paper, we discuss three themes that are essential to investigate 
+the accuracy and reliability of a potential EoR detection. In this paper, we discuss three topics that are essential to investigate 
 for a robust $21$ cm power spectrum analysis. We also highlight four power spectrum techniques and their trade-offs, potential 
 pitfalls, and connections to the themes. We first approach the themes from a broad perspective, and then perform a detailed 
 case study using data from the 64-element configuration of PAPER, motivating a revised PAPER-64 power spectrum 
@@ -195,8 +200,8 @@ averaging data, weighting, bootstrapping, and jackknife testing, address these i
 example, an aggressive filtering method may succeed in eliminating interfering systematics but comes at the cost of losing 
 some EoR signal. A chosen weighting scheme may maximize sensitivity but fail to suppress foregrounds. 
 
-Despite there being many data analysis choices, measuring the statistical $21$ cm power spectrum ultimately requires robust 
-methods for determining accurate confidence intervals and rigorous techniques to identify and suppress systematics.  In this 
+Though there are many data analysis choices, measuring the statistical $21$ cm power spectrum ultimately requires robust 
+methods for determining accurate confidence intervals and rigorous techniques to identify and control systematics.  In this 
 paper, we focus on three $21$ cm power spectrum themes that encapsulate this goal and discuss four techniques that interplay 
 with each other and impact the themes. We will give brief definitions now, and build intuition for each theme in the sections to 
 follow.
@@ -206,7 +211,7 @@ Power Spectrum Themes
 \end{center}
 
 A deep understanding of the following three themes is essential for the accuracy and interpretation of a $21$ cm power 
-spectrum result. Stemming from a re-analysis of PAPER-64 data, we believe these themes serve as an important check-list for 
+spectrum result. Stemming from a re-analysis of PAPER-64 data, we believe these themes serve as an important checklist for 
 a rigorous power spectrum analysis.
 \begin{itemize}
 \item \textbf{Signal Loss} (Section \ref{sec:SiglossOverview}): Signal loss refers to attenuation of the target cosmological signal 
@@ -237,12 +242,12 @@ independent samples by an amount dependent on the width of the averaging window.
 of foregrounds and systematics. We explain the trade-offs of filtering in more detail in Section \ref{sec:toymodel_frf}.
 \item \textbf{Weighting:} A dataset can be weighted to emphasize certain features and minimize others. One particular flavor of 
 weighting employed by PAPER is inverse covariance weighting in frequency, which is a generalized version of inverse variance 
-weighting that also takes into account frequency correlations (\citealt{liu_tegmark2011}; \citealt{dillon_et_al2013a}; \citealt{liu_et_al2014a}; \citealt{liu_et_al2014b}). This weighting has the effect of down-weighting correlated 
+weighting that also takes into account frequency correlations (\citealt{liu_tegmark2011}; \citealt{dillon_et_al2013a}; \citealt{liu_et_al2014a}; \citealt{liu_et_al2014b}; \citealt{dillon_et_al2014}; \citealt{dillon_et_al2015}). This weighting has the effect of down-weighting correlated 
 information (i.e. foregrounds) and up-weighting noise-like information (i.e. EoR). However, a challenge of inverse covariance 
 weighting is in accurately defining a covariance matrix that best describes the data. We investigate the impact of different types of weighting on signal loss in Section \ref{sec:SiglossOverview}.
 \item \textbf{Bootstrapping:} In addition to using theoretical models for covariance matrices and theoretical error estimation 
 methods, bootstrapping is one way to estimate errors. Bootstrapping is a useful method for estimating errors of a dataset from 
-itself (\citealt{andrae2010}). By randomly drawing many samples of the data, we obtain a sense of its inherent variance, though there are subtleties to 
+itself (\citealt{andrae2010}). By randomly drawing many subsamples of the data, we obtain a sense of its inherent variance, though there are subtleties to 
 consider such as the independence of values in a dataset. We explore this potential pitfall of bootstrapping in Section \ref{sec:ErrorOverview}.
 \item \textbf{Jackknife testing:} A resampling technique useful for estimating bias, jackknives can be taken along different 
 dimensions of a dataset to cross-validate results. In particular, null tests can be used to verify whether results are free of 
@@ -267,7 +272,7 @@ previously underestimated in the A15 analysis.
 
 Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight 
 foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum 
-estimation technique of optimal quadratic estimators (OQE) as done in \citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, and \citet{trott_et_al2016}. Before showing 
+estimation technique of optimal quadratic estimators (OQE) as done in \citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, \citet{dillon_et_al2014}, \citet{dillon_et_al2015}, and \citet{trott_et_al2016}. Before showing 
 how signal loss can arise when using different weighting matrices, we first summarize OQE as performed in the PAPER 
 analysis.
 
@@ -1145,8 +1150,7 @@ look like the data $\textbf{x}$, a quantity we do not know offhand but one that 
 	\includegraphics[width=1\textwidth]{plots/sigloss_transfercurve.png}
 	\caption{Signal loss transfer functions showing the relationship of $P_{\rm in}$ and $P_{\rm out}$, as defined by Equations \eqref{eq:Pin} and \eqref{eq:sigloss}. Kernel density estimations of the power spectrum transfer functions are shown as colored 
 heat-maps for the cases of inverse covariance weighted PAPER-64 data (left) and unweighted data (right). The solid black 
-diagonal line marks a perfect unity mapping, and the solid gray horizontal line denotes the peak of $\hat{\textbf{p}}_{x}$, the data 
-distribution. From these plots, it is clear that inverse covariance weighting results in $\sim3$ orders of magnitude of signal loss 
+diagonal line marks a perfect unity mapping, and the solid gray horizontal line denotes the power spectrum value of the data $\hat{\textbf{p}}_{x}$. From these plots, it is clear that inverse covariance weighting results in $\sim3$ orders of magnitude of signal loss 
 for power spectrum values above $\sim$$2 \times 10^{4}$ $mK^{2} \, (h^{-1} \, Mpc)^{3}$, whereas the unweighted case does 
 not exhibit loss.}
 	\label{fig:sigloss_transfercurve}
