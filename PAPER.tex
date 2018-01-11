@@ -1202,7 +1202,7 @@ weighting schemes to inverse covariance weighting, with the goal of finding one 
 	\centering
 	\includegraphics[width=0.4\textwidth]{plots/ps2_data_nosigloss.png}
 	\includegraphics[width=0.4\textwidth]{plots/ps2_data.png}
-	\caption{Full inverse covariance weighted power spectrum of PAPER-64 data (positive (black) and negative (gray) points, 
+	\caption{Full inverse covariance weighted power spectrum of PAPER-64 data (positive points in black and negative points in gray, 
 with $2\sigma$ error bars) before signal loss estimation (left) and after (right). The dashed blue line is the unweighted power 
 spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on observational 
 parameters, whose calculation is detailed in Section \ref{sec:PSSense}.}
@@ -1230,7 +1230,7 @@ increases with the number of down-weighted modes (black curve). Because our data
 Optimistically, we expect there to be a `sweet spot' as we dial our regularization knob; a level of regularization where weighting 
 is beneficial compared to not weighting (blue dashed line). In other words, we would like a weighting scheme that down-weights eigenmodes that describe foreground modes, but not EoR modes. We see in Figure \ref{fig:sigloss_modeloop} that this occurs when 
 only the strongest $\sim3$-$4$ eigenmodes are down-weighted, though the improvement from the unweighted case is not 
-significant. 
+large.
 
 \begin{figure*}
 	\centering
@@ -1247,7 +1247,7 @@ as solid green.}
 \end{figure*}
 
 In addition to our thermal noise prediction (green), two additional horizontal lines are shown in Figure \ref{fig:sigloss_modeloop} 
-which denote power spectrum values, post-signal loss estimation, for two other regularization schemes. We multiply an identity 
+which denote power spectrum values, post-signal loss estimation, for two other regularization schemes (these are single-valued and not a function of the number of eigenmodes down-weighted). We multiply an identity 
 matrix element-wise to $\widehat{\textbf{C}}$ (i.e. inverse variance weighting, shown in red), and also add an arbitrarily chosen level 
 of $\textbf{I}$ to $\widehat{\textbf{C}}$ (cyan). We see that all three regularization schemes (black, red, cyan) perform similarly at 
 their best (i.e. when $\sim3$$-4$ eigenmodes are down-weighted in the case of the black curve).
@@ -1282,14 +1282,14 @@ data. There are many other weighting schemes that we leave for consideration in 
 $\widehat{\textbf{C}}$ using information from different subsets of baselines. For redundant arrays this could mean calculating $
 \widehat{\textbf{C}}$ from a different but similar baseline type, such as the $\sim30$ m diagonal PAPER baselines (instead of the 
 horizontal E/W ones). Alternately, covariances could be estimated from all other baselines except the two being cross-multiplied 
-when forming a power spectrum estimate. This method was used in \citet{parsons_et_al2014} in order to avoid suppressing the 
+when forming a power spectrum estimate. This method was used in \citet{parsons_et_al2014} (a similar method was also used in \citet{dillon_et_al2015}) in order to avoid suppressing the 
 $21$ cm signal, and it's worth noting that the PAPER-32 results are likely less impacted from the issue of signal loss underestimation 
 because of this very reason (however, they are affected by the error estimation issues described in Section \ref{sec:Error}, so 
 we also regard those results as suspect and superseded by those of Kolopanis et al., \textit{in prep}).
 
 Another possible way to regularize $\widehat{\textbf{C}}$ is to use information from different ranges of LST. For example, one could 
 calculate $\widehat{\textbf{C}}$ with data from LSTs where foregrounds are stronger (earlier or later LSTs than the `foreground-quiet' range used in forming power spectra) --- doing so may yield a better description of the foregrounds that we desire to 
-down-weight. Fundamentally, each of these examples are similar in that they rely on a computation of $\widehat{\textbf{C}}$ from 
+down-weight, especially if residual foreground chromaticity is instrumental in origin and stable in time. Fundamentally, each of these examples are similar in that they rely on a computation of $\widehat{\textbf{C}}$ from 
 data that is similar but not exactly the same as the data that is being down-weighted. Ideally this would be effective in down-weighting shared contaminants yet avoid signal loss from over-fitting EoR modes in the power spectrum dataset itself. 
 
 % SECTION 3 ERROR ESTIMATION ---------------------------------------------------------------------------------
