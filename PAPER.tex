@@ -447,13 +447,13 @@ the sidereal motion on the sky, while down-weighting modes which are noise-like.
 
 Because fringe-rate filtering is analogous to averaging in time, it comes at the cost of reducing the total number of independent 
 samples in the data. To mimic this filter, we average every four time integrations of our toy model dataset together, yielding 
-$25$ independent samples in time (Figure \ref{fig:toy_sigloss5}, left). We choose these numbers so that the total number of 
+$25$ independent samples in time (Figure \ref{fig:toy_sigloss5}). We choose these numbers so that the total number of 
 independent samples is similar to the number of frequency channels --- our matrices will still be full rank.
 %\footnote{If instead we average every $20$ samples together, yielding only $5$ independent samples in time, we are left with a rank deficient covariance matrix. In this case... \cc{fill in}}
 
 \cc{Note to Adrian - somewhere in the next paragraph would be good to ref Fig17}
 The resulting eigenspectrum as compared to the green curve (FG + EoR) in Figure \ref{fig:toy_sigloss2} is shown in Figure 
-\ref{fig:toy_sigloss5} (right plot). The spectrum, in the case of fringe-rate filtering (dashed line), falls more steeply, especially for 
+\ref{fig:toy_sigloss15}. The spectrum, in the case of fringe-rate filtering (dashed line), falls more steeply, especially for 
 the last few eigenmodes. In many applications, this steep fall is not indicative of the true covariance structure of the data. 
 
 To quantify the convergence of `weak' and `strong' eigenmodes present in a sloped eigenspectrum, we form a mock covariance matrix with diagonal values that span $4$ orders of magnitude. We then draw random data realizations from this covariance and compute a convergence metric $\varepsilon(\widehat{\textbf{v}})$ for the empirical eigenvectors $\widehat{\textbf{v}}$:
@@ -485,15 +485,20 @@ theoretically motivated parametric forms \citep{pearson_samushia2016}, covarianc
 marginalization over the true covariance \citep{sellentin_heavens2016}, and shrinkage methods 
 \citep{pope_szapudi2008,joachimi_2017}.
 
-\begin{figure*}
+\begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.31\textwidth]{plots/toy_sigloss5.png}
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.31\textwidth]{plots/toy_sigloss15.png}
-	\caption{Left: Our `fringe-rate filtered' (time-averaged) toy model dataset. We average every four samples together, 
-yielding $25$ independent samples in time. Real parts are shown here. Right: Eigenspectrum of $\widehat{\textbf{C}}_{FG+EoR}$, 
-in the case of no fringe-rate filtering (solid green) and with fringe-rate filtering (dashed green).}
+	\includegraphics[width=\columnwidth]{plots/toy_sigloss5.png}
+	\caption{Our `fringe-rate filtered' (time-averaged) toy model dataset. We average every four samples together, 
+yielding $25$ independent samples in time. Real parts are shown here.}
 	\label{fig:toy_sigloss5}
-\end{figure*}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.31\textwidth]{plots/toy_sigloss15.png}
+	\caption{Eigenspectrum of $\widehat{\textbf{C}}_{FG+EoR}$, in the case of no fringe-rate filtering (solid green) and with fringe-rate filtering (dashed green).}
+	\label{fig:toy_sigloss15}
+\end{figure}
 
 \begin{figure}
 	\centering
@@ -560,7 +565,7 @@ true and modeled covariance matrices. In practice such a weighting option is not
 EoR only (red), and the weighted FG + EoR dataset (green). We show four alternate weighting options that each minimize signal 
 loss, including modeling the covariance matrix of EoR (upper left), regularizing $\widehat{\textbf{C}}$ by adding an identity matrix to 
 it (upper right), using only the first three eigenmodes of $\widehat{\textbf{C}}$ (lower left), and keeping only the diagonal elements of 
-$\widehat{\textbf{C}}$ (lower right).}
+$\widehat{\textbf{C}}$ (lower right). The first case (upper left) is not feasible in practice since we do not know $\textbf{C}_{FG}$ and $\textbf{C}_{EoR}$ like we do in the toy model.}
 	\label{fig:toy_sigloss8}
 \end{figure*}
 
@@ -571,7 +576,7 @@ $\widehat{\textbf{C}}$ (lower right).}
 weighting options, including modeling the covariance matrix of EoR (red), regularizing $\widehat{\textbf{C}}$ by adding an identity 
 matrix to it (blue), using only the first three eigenmodes of $\widehat{\textbf{C}}$ (yellow), and multiplying an identity matrix with $
 \widehat{\textbf{C}}$ (magenta). All eigenspectra (except the green) are relatively flat and don't exhibit signal loss. All were 
-computed for the `fringe-rate filtered' (time-averaged) toy model case.}
+computed for the `fringe-rate filtered' (time-averaged) toy model case presented in Section \ref{sec:toymodel_frf}.}
 	\label{fig:toy_sigloss14}
 \end{figure}
 
@@ -588,17 +593,16 @@ eigenspectrum with $1$'s (equal weights). Again, flattening the eigenspectrum re
 not perfectly recover the shape of EoR because we lost information when projecting out certain modes. While this case is illuminating for the toy model, in practice it is not obvious which eigenmodes are FG vs. EoR dominated, so selecting a subset of modes to down-weight is not trivial. 
 
 The last regularization scheme we are highlighting here is setting $\widehat{\textbf{C}} = \widehat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (keeping only the diagonal elements of $\widehat{\textbf{C}}$). In the bottom right 
-panel of Figure \ref{fig:toy_sigloss8}, we see that this method does a poor job down-weighting foregrounds. For this toy model, 
+panel of Figure \ref{fig:toy_sigloss8}, we see that this method does not down-weight the foregrounds. For this toy model, 
 our foregrounds are spread out in frequency and therefore have non-negligible frequency-frequency correlations. Multiplying by 
 the identity, element-wise, results in a diagonal matrix, meaning we are only left with correlation information between the same 
 two frequencies. Because we disregard information from all other frequency combinations in this case, we do a poor job 
-suppressing the foreground. But because we flattened the eigenspectrum, we also avoid signal loss. 
-
-Although the fourth method did not successfully recover EoR for this particular simulation, it is important that we show that there 
+suppressing the foreground. But because we flattened the eigenspectrum, we also avoid signal loss. Although this method did not successfully recover EoR for this particular simulation, it is important that we show that there 
 are many options for estimating a covariance matrix, and some may be more effective than others based on the spectral nature 
-of the components in a dataset. One may imagine a situation where a particular systematic is contained to an isolated 
-frequency (such as radio frequency interference or crosstalk). In such a case, preserving only the diagonal elements of $
-\widehat{\textbf{C}}$ would be an effective way of removing this contamination. 
+of the components in a dataset. 
+%One may imagine a situation where a particular systematic is contained to an isolated 
+%frequency (such as radio frequency interference or crosstalk). In such a case, preserving only the diagonal elements of $
+%\widehat{\textbf{C}}$ would be an effective way of removing this contamination. 
 
 In summary, we have a choice of how to weight $21$ cm data. Ideally, we want to down-weight bright foregrounds without 
 removing the underlying cosmological signal. However, there are trade-offs between the weighting method 
@@ -663,7 +667,7 @@ in all bootstraps, leading to less variation between the bootstraps. In fact, th
 function of the number of elements that are drawn per bootstrap (Figure \ref{fig:toy_error1}, black points), and we can both 
 under-estimate the error by drawing too many or over-estimate it by drawing too few. However, since we know that we have $100$ 
 independent samples in this toy model, the error associated with drawing $N$=$100$ samples with replacement does match the theoretical prediction 
-as expected.
+as expected (the black points cross the green line at $N$=$100$ in Figure \ref{fig:toy_error1}).
 
 This example highlights the importance of understanding how analysis techniques (e.g. fringe-rate filtering) can affect a 
 common statistical procedure like bootstrapping. Bootstrapping as a means of estimating power spectrum errors from real 
@@ -676,7 +680,7 @@ number of independent samples along the axis that is being re-sampled is well-de
 	\centering
 	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_error1.png}
 	\caption{Error estimation from bootstrapping as a function of the number of elements drawn per bootstrap when 
-sampling with replacement. The star represents the standard deviation of $N_{boot}$ bootstraps, each created by drawing $1000$ 
+sampling with replacement. The star represents the standard deviation of $N_{boot}=500$ bootstraps, each created by drawing $1000$ 
 elements (with replacement) from a length $1000$ array of a Gaussian random signal. The black points correspond to time-averaged data (correlated data) which has $100$ independent samples. They illustrate how errors can be under-estimated if 
 drawing more elements than there are independent samples in the data. The estimated errors match up with the theoretical 
 prediction only at $N=100$.}
