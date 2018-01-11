@@ -1240,7 +1240,7 @@ are shown before (gray) and after (black) signal loss estimation as a function o
 are down-weighted. This regularization knob is tuned from $0$ modes (i.e. unweighted) to $21$ modes (i.e. full inverse 
 covariance weighting). Over $\sim3$ orders of magnitude of signal loss results when using inverse covariance weighting. Also 
 plotted for comparison are $2\sigma$ power spectrum upper limits for the unweighted case (dashed blue), inverse variance 
-weighted case (red), and added-identity case (cyan). All three regularizations shown (black, red, cyan) perform similarly (when 
+weighted case (red), and added-identity case (cyan); all are after signal loss estimation. All three regularizations shown (black, red, cyan) perform similarly (when 
 $\sim3$$-4$ modes are down-weighted for the black curve). Finally, a theoretical prediction for noise ($2\sigma$ error) is plotted 
 as solid green.}
 	\label{fig:sigloss_modeloop}
@@ -1322,11 +1322,11 @@ interferometric $21$ cm data, in temperature-units, is:
 
 \begin{equation}
 \label{eq:sense}
-p(k) = \frac{X^{2}Y \Omega_{eff} T_{sys}^{2}}{\sqrt{2N_{lsts}N_{seps}}\,t_{int}N_{days}N_{bls}N_{pols}}
+p(k) = \frac{X^{2}Y \Omega_{eff} T_{sys}^{2}}{\sqrt{2N_{lst}N_{seps}}\,t_{int}N_{days}N_{bls}N_{pols}}
 \end{equation}
 
 \begin{itemize}
-\item $X^{2}Y$: Conversion factors from observing coordinates (angles on the sky) to cosmological coordinates (co-moving 
+\item $X^{2}Y$: Conversion factors from observing coordinates (angles on the sky and frequency) to cosmological coordinates (co-moving 
 distances). For $z=8.4$, $X^{2}Y = 5 \times 10^{11} h^{-3} Mpc^{3} str^{-1} GHz^{-1}$.
 \item $\Omega_{eff}$: The effective primary beam area in steradians (\citealt{parsons_et_al2010}; \citealt{pober_et_al2012}). 
 The effective beam area changes with the application of a fringe-rate filter, since different parts of the beam are up-weighted and down-weighted. Using numbers from Table 1 in \citet{parsons_et_al2016}, $\Omega_{eff} = 0.74^{2}/0.24$ for an optimal fringe-rate 
@@ -1340,15 +1340,15 @@ T_{sys} = 180\Big(\frac{\nu}{0.18}\Big)^{-2.55} + T_{rcvr},
 
 where $\nu$ are frequencies in GHz. We use a receiver temperature of $144$ K, yielding $T_{sys} = 431$ K at $150$ MHz. 
 This is lower than the $T_{sys}$ of $500$ K used in A15 because of several small miscalculation errors that were 
-identified\footnote{such as missing a square root in going from a variance to a standard deviation}.
+identified\footnote{For example, there was a missing a square root in going from a variance to a standard deviation.}.
 \item $\sqrt{2}$: This factor in the denominator of the sensitivity equation comes from taking the real part of the power spectrum 
 estimates after squaring visibility measurements. In A15, a factor of $2$ was mistakenly used.
-\item $N_{lsts}$: The number of LST hours that go into a power spectrum estimation. The sensitivity scales as the square root 
-because we integrate incoherently over time. For PAPER-64, $N_{lsts} = 8$ hours.
+\item $N_{lst}$: The number of LST bins that go into a power spectrum estimation. The sensitivity scales as the square root 
+because we integrate incoherently over time. For PAPER-64, $N_{lst} = 8$.
 \item $N_{seps}$: The number of baseline separation types averaged incoherently in a final power spectrum estimate. For the 
 analysis in this paper, we only use one type of baseline, hence $N_{seps}=1$. The updated limits in Kolopanis et al., \textit{in prep}
 use three separation types.
-\item $t_{int}$: The integration time of the data. It is crucial to adapt this number if filtering is applied along the time axis (i.e. a 
+\item $t_{int}$: Length of an independent integration of the data. It is crucial to adapt this number if filtering is applied along the time axis (i.e. a 
 fringe-rate filter). We compute the effective integration time of our fringe-rate filtered data by scaling the original integration time $t_{i}$
 using the following:
 \begin{equation}
@@ -1367,7 +1367,7 @@ $N_{days}$ as:
 days.
 \item $N_{bls}$: The number of baselines contributing to the sensitivity of a power spectrum estimate. In A15, this number was 
 the total number of $30$ m East/West baselines used in the analysis. However, using the total number of baselines neglects 
-the fact that baselines are averaged into groups (see Section \ref{sec:Boot}) before cross-multiplying data. Our revised estimate for the parameter is:
+the fact that baselines are averaged into groups (see Section \ref{sec:Boot}) for computational speed-up when cross-multiplying data. Our revised estimate for the parameter is:
 \begin{equation}
 N_{bls} = \frac{N_{bls}}{N_{gps}}\sqrt{N_{gps}^{2}-N_{gps}},
 \end{equation}
@@ -1390,13 +1390,13 @@ Together, the revised parameters yield a decrease in sensitivity (higher noise f
 	\caption{An updated prediction for the noise-level of PAPER-64 data (black) is shown in comparison to previously 
 published sensitivity limits (gray). Both sensitivity analyses plotted assume only one baseline type (an additional factor of $
 \sqrt{3}$ for three baseline types is needed to match A15 exactly). Major factors that contribute to the discrepancy are $
-\Omega_{eff}$, $N_{days}$ and $N_{bls}$, as described in Section \ref{sec:PSSense}, which when combined decreases our 
+\Omega_{eff}$, $N_{days}$ and $N_{bls}$, as in Equation \eqref{eq:sense} and described in Section \ref{sec:PSSense}, which when combined decreases our 
 sensitivity (higher noise floor) by a factor of $\sim5$ in mK$^{2}$.}
 	\label{fig:sense_check}
 \end{figure}
 
 To verify our thermal noise prediction, we form power spectra estimates using a pure noise simulation. We create Gaussian 
-random noise assuming a constant $T_{sys}$ (neglecting sky variation) but accounting for the true $N_{days}$ as determined 
+random noise assuming a constant $T_{rcvr}$ (translated into $T_{sys}$ via Equation \eqref{eq:sys}) but accounting for the true $N_{days}$ as determined 
 by LST sampling counts for each time and frequency in the LST-binned data. We convert $T_{sys}$ into a variance statistic 
 using:
 
@@ -1475,7 +1475,7 @@ foreground and noise bias and we perform null tests in order to characterize the
 
 \subsubsection{Mitigating Bias}
 
-We briefly discuss one way in which we mitigate foreground leakage in a power spectrum estimate, and two in which we 
+We briefly discuss one way we mitigate foreground leakage in a power spectrum estimate, and two ways we 
 suppress noise biases. These methods are not novel to this analysis but here we frame them in the context of minimizing false 
 (non-EoR) detections.
 
@@ -1488,7 +1488,7 @@ compute $\textbf{M}$ using the Fisher matrix $\textbf{F}$, defined as:
 \end{equation}
 
 \noindent where $\textbf{R}$ is the data-weighting matrix and $\alpha$ and $\beta$ are wavebands in $k_{\parallel}$. We take 
-the Cholesky decomposition of $\textbf{F}$, decomposing it into two lower triangular matrices:
+the Cholesky decomposition of $\textbf{F}$, decomposing it into two lower triangular matrices (which is possible since $\textbf{F}$ is Hermitian):
 
 \begin{equation}
 \textbf{F} = \textbf{LL}^{\dagger}.
@@ -1519,7 +1519,7 @@ former, we filter out certain cross-multiplications when forming $\widehat{q}$ i
 dataset is divided into two halves: even julian dates and odd julian dates. Our data vectors are then $\textbf{x}_{even, 1}$ for 
 the `even' dataset and baseline group $1$, $\textbf{x}_{odd, 1}$ for the `odd' dataset and baseline group $1$, etc. We only form 
 $\widehat{q}$ when the two copies of $\textbf{x}$ come from different groups and baselines, never multiplying `even' with `even', for 
-example, in order to prevent the squaring of the same thermal noise.
+example, in order to prevent the squaring of the same thermal noise. We recognize that this method results in a hit to our sensitivity. Sensitivity can be gained, for example, by only dividing up the dataset once (either along time or baselines), or by creating more groups (more cross-multiplications), but in this paper we only attempt to revise the A15 analysis (which uses the same groupings), not produce the most sensitive limits of PAPER-64.
 
 To mitigate crosstalk bias, which appears as a static bias in time, we apply a fringe-rate filter that suppresses fringe-rates of 
 zero. Figure \ref{fig:frp} shows that the filter response is zero for such static signals. The effect of filtering out zero fringe-rates 
@@ -1552,29 +1552,28 @@ group and $b_{2}$ is the second baseline group.
 4.6-8.6 hours). We form our two datasets as $\textbf{x}_{1} = t_{1} + t_{2}$ and $\textbf{x}_{2} = t_{1} - t_{2}$.
 \end{itemize}
 
-\begin{figure}
+\begin{figure*}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/null.png}
+	\includegraphics[width=1\textwidth]{plots/null.png}
 	\caption{Results for three null tests compared to the PAPER-64 revised power spectrum (black) and analytically estimated 
 $2\sigma$ errors (gray shaded region). For each, we take a jackknife along a different axis of the dataset - along julian days (separating 
-even and odd days; blue), along baselines (green), and along LST (magenta). We expect the sky signal to disappear for a `passing' null test. 
-We find that the biases in our power spectrum are likely caused by variation of foregrounds in LST, and are not attributable to 
-particular baselines or days of data.}
+even and odd days; blue), along baselines (green), and along LST (magenta). We expect the sky signal to disappear for a `passing' null test (for all error bars to be contained to within the gray shaded region).
+We find that none of the null tests performed pass, and that the dominant source of the biases in our power spectrum are likely caused by variation of foregrounds in LST (due to the magenta result being the most inconsistent with noise)}
 	\label{fig:null}
-\end{figure}
+\end{figure*}
 
-Investigating Figure \ref{fig:null}, we find that both the baselines and even/odd null tests are consistent with noise. We note that 
-the error bars for the baselines test (green) are especially small --- this is because the signal is effectively cancelled out prior to 
-cross-multiplication (when forming baseline groups). 
+Investigating Figure \ref{fig:null}, we find that none of the null tests are fully consistent with noise; we would expect the null tests' error bars to be contained within the gray shaded region (theoretical error) for a `passable' test. We note, however, that the error bars for the baselines test (green) and even/odd test (blue) are smaller than those of the LST test (magenta). 
 
-The null test in LST (magenta) is much more illuminating. The fact that there are many power spectrum points outside the 
-estimated error region signifies that the bias we see is likely from foregrounds that vary in LST. In other words, $t_{1}$ and 
-$t_{2}$ differ by an amount greater than thermal noise and they do not effectively cancel out the sky signal during cross-multiplication. The errors for this null test are also large, also reflective of residual foregrounds. 
+%We note that the error bars for the baselines test (green) are especially small --- this is because the signal is effectively cancelled out prior to cross-multiplication (when forming baseline groups). 
+
+This suggests that the primary systematic driving our power spectrum points and errors to be outside the 
+estimated error region is LST-dependent, and therefore likely to be residual foregrounds. In other words, $t_{1}$ and 
+$t_{2}$ differ by an amount greater than thermal noise and they do not effectively cancel out the sky signal during cross-multiplication. While residual foregrounds are the primary cause for power spectrum results above the theoretical noise (as in Figure \ref{fig:ps1_data}), other unexplained variations exist which are present in all the null tests. These variations could be attributable to... \cc{fill in}
 
 We do not investigate the detailed nature of the residual foregrounds in this paper, though one could imagine performing many 
 similar null tests with a sliding window of $t_{1}$'s and $t_{2}$'s. This would illuminate the particular LST range that introduces 
 the foreground bias (or whether the bias is constant in LST), and could potentially be traced to an individual bright radio source. 
-This type of detailed analysis will be critical at EoR sensitivities, however, for our current analysis we are not surprised that the 
+This type of detailed analysis will be critical at EoR sensitivities, however, for our current analysis we are not surprised that the main source of
 bias we see comes from foregrounds in regions where we expect leakage.
 
 % CONCLUSION ---------------------------------------------------------------------------------
@@ -1617,7 +1616,7 @@ ways in which our new analysis differs can be summarized by the following:
 \item Signal loss, previously found to be $<2\%$ in A15, was under-estimated by a factor of $\sim$$1000$ for inverse 
 covariance weighting. For our new analysis, we use a regularized covariance weighting method to minimize loss (Section 
 \ref{sec:Weight}). However, because our revised weighting method is not as aggressive as the former, our results are still a 
-factor of $\sim7$ mK higher than previous limits. Under-estimated signal loss therefore represents the bulk of our revision. We 
+factor of $\sim7$ in mK higher than previous limits. Under-estimated signal loss therefore represents the bulk of our revision. We 
 note that PAPER's analysis is not the first to under-estimate loss; results from the GMRT (\citealt{paciga_et_al2013}) were also 
 revised from new signal loss calculations associated with their singular value decomposition foreground filter.
 \item Power spectrum errors, originally computed by bootstrapping, were under-estimated by a factor of $\sim$$1.4$ in mK due to oversampling data whose effective number of independent samples was reduced from fringe-rate filtering (Section \ref{sec:Boot}). 
@@ -1628,7 +1627,7 @@ power spectrum result, implying that if taken at face value, the theoretical pre
 points.
 \end{itemize}
 
-The $21$ cm future is exciting, as new experiments have sensitivities that expect to reach and surpass EoR levels, improved 
+The future of $21$ cm cosmology is exciting, as new experiments have sensitivities that expect to reach and surpass EoR levels, improved 
 foreground mitigation/removal strategies are being developed, and simulations are being designed to better understand 
 instruments. On the power spectrum analysis side, robust signal loss simulations, precise error calculations, and 
 comprehensive jackknife tests will play critical roles in accurate $21$ cm results. With strong foundations being established now, it is safe to say that we can expect to learn much about reionization and our early Universe in the coming years.
@@ -1640,7 +1639,8 @@ comprehensive jackknife tests will play critical roles in accurate $21$ cm resul
 CC would like to acknowledge the UC Berkeley Chancellor's Fellowship, National Science Foundation Graduate Research 
 Fellowship (Division of Graduate Education award 1106400), and thank Eric Switzer for helpful discussions. PAPER and HERA 
 are supported by grants from the National Science Foundation (awards 1440343, and 1636646). ARP, DCJ, and JEA would 
-also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, respectively). SAK is supported by the University of Pennsylvania School of Arts and Sciences Dissertation Completion Fellowship. We graciously thank SKA-SA for site infrastructure and observing support.
+also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, respectively). SAK is supported by the University of Pennsylvania School of Arts and Sciences Dissertation Completion Fellowship. JSD acknowledges NSF AAPF
+award 1701536. We graciously thank SKA-SA for site infrastructure and observing support.
 \label{sec:Ack}
 
 % APPENDIX ---------------------------------------------------------------------------------
@@ -1732,7 +1732,7 @@ Formally we can express our test as: ``What is the $P_{\rm in}$ such that
 \begin{equation}
 \widehat{\textbf{p}}_{r} > \widehat{\textbf{p}}_{x} \Lambda,
 \end{equation}  
-where $\Lambda$ represents a choice of threshold?'' Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not\footnote{i.e. the null test} the same.  
+where $\Lambda$ represents a choice of threshold?'' Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not (i.e. the null test) the same.  
  
  \begin{equation}
 \Prob(P_{in})  =  1 -  \int_{r=x} \Prob(\widehat{\textbf{p}}_x) \Prob(\widehat{\textbf{p}}_r,P_{in}) dr
