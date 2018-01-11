@@ -30,19 +30,19 @@
 \newcommand{\s}{\mathbf{s}}
 \newcommand{\e}{\mathbf{e}}
 \newcommand{\p}{\mathbf{p}}
-\newcommand{\phat}{\hat{\mathbf{p}}}
+\newcommand{\phat}{\widehat{\mathbf{p}}}
 \newcommand{\C}{\mathbf{C}}
-\newcommand{\Chat}{\mathbf{\hat{C}}}
+\newcommand{\Chat}{\mathbf{\widehat{C}}}
 \newcommand{\F}{\mathbf{F}}
-\newcommand{\Fhat}{\mathbf{\hat{F}}}
+\newcommand{\Fhat}{\mathbf{\widehat{F}}}
 \newcommand{\Q}{\mathbf{Q}}
 \newcommand{\I}{\mathbf{I}}
-%\newcommand{\xhat}{\hat{\mathbf{x}}}
-%\newcommand{\nhat}{\hat{\mathbf{n}}}
+%\newcommand{\xhat}{\widehat{\mathbf{x}}}
+%\newcommand{\nhat}{\widehat{\mathbf{n}}}
 %\newcommand{\A}{\mathbf{A}}
 %\newcommand{\N}{\mathbf{N}}
-%\newcommand{\rhat}{\hat{\mathbf{r}}}
-%\newcommand{\khat}{\hat{\mathbf{k}}}
+%\newcommand{\rhat}{\widehat{\mathbf{r}}}
+%\newcommand{\khat}{\widehat{\mathbf{k}}}
 %\newcommand{\btheta}{\boldsymbol \theta}
 
 \newcommand{\cc}[1]{{\color{purple} \textbf{[CC: #1]}}}
@@ -266,7 +266,7 @@ cm results.
 \label{sec:SiglossOverview}
 
 Signal loss can arise in a variety of ways in the analysis pipeline, such as fitting a polynomial during 
-spectral calibration, applying a delay-domain filter, or by weighting data by itself. Here we focus on signal loss associated with 
+spectral calibration, applying a delay-domain filter, or by deriving weights from data and applying them to itself. Here we focus on signal loss associated with 
 applying a weighting matrix to data, a loss that can be significant depending on the choice of weighting and one that was 
 previously underestimated in the A15 analysis.
 
@@ -276,18 +276,18 @@ estimation technique of optimal quadratic estimators (OQE) as done in \citet{liu
 how signal loss can arise when using different weighting matrices, we first summarize OQE as performed in the PAPER 
 analysis.
 
-We begin with our data matrix, $\textbf{x}$, which contains our measured visibilities for a single baseline in Jy. It has dimensions ($N_{t}, N_{f}$), where 
+We begin with our data vector, $\textbf{x}$, which contains our measured visibilities for a single baseline in Jy. It has length $N_{t} \times N_{f}$, but in practice we manipulate it as an array with dimensions ($N_{t}, N_{f}$), where 
 $N_{t}$ is the number of time integrations and $N_{f}$ is the number of frequency channels. Visibilities are measurements of 
 the Fourier transform of the sky along $2$ spatial dimensions (using the flat-sky approximation), and since we are interested in $3$-dimensional Fourier-modes 
-we only need to take one Fourier transform of our visibilities along the line-of-sight dimension. We do this when forming the un-normalized power spectrum estimate $\hat{q}_{\alpha}$:
+we only need to take one Fourier transform of our visibilities along the line-of-sight dimension. We do this when forming the un-normalized power spectrum estimate $\widehat{q}_{\alpha}$:
 
 \begin{equation}
 \label{eq:qhat}
-\hat{q}_{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{x}.
+\widehat{q}_{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{x}.
 \end{equation}
 Here, \noindent $\textbf{Q}$ is a family of matrices that takes our frequency-domain visibilities and Fourier-transforms them into 
-power spectrum space, while also taking into account physical constants such as the Boltzmann constant used to convert Jy to 
-Kelvin, as well as cosmological scalings. It is evaluated as $\textbf{Q}^{\alpha} \equiv \frac{\delta\textbf{C}}{\delta p_{\alpha}}$, or the derivative of the covariance with respect to the true bandpower in $\alpha$, where $\alpha$ denotes a waveband in $k_{\parallel}$ ($k_{\parallel}$ is the 
+power spectrum space, while also converting from Jy to 
+Kelvin and taking into account cosmological scalings. It is evaluated as $\textbf{Q}^{\alpha} \equiv \frac{\delta\textbf{C}}{\delta p_{\alpha}}$, or the derivative of the covariance with respect to the true bandpower in $\alpha$, where $\alpha$ denotes a waveband in $k_{\parallel}$ ($k_{\parallel}$, a cosmological wavenumber, is the 
 Fourier-dual to frequency under the delay approximation (\citealt{parsons_et_al2012b})). $\textbf{R}$ is a weighting matrix --- as 
 an example, inverse covariance weighting would set $\textbf{R} = \textbf{C}^{-1}$ and an unweighted case would use $
 \textbf{R} = \textbf{I}$, the identity matrix.
@@ -296,15 +296,15 @@ We normalize our power spectrum estimates using the matrix $\textbf{M}$:
 
 \begin{equation}
 \label{eq:phat}
-\hat{\textbf{p}} = \textbf{M}\hat{\textbf{q}},
+\widehat{\textbf{p}} = \textbf{M}\widehat{\textbf{q}},
 \end{equation}
 
-\noindent where $\hat{\textbf{p}}$ is the normalized estimate of the true power spectrum. The data analyst has a choice for $
-\textbf{M}$ --- for simplicity in this section we choose $\textbf{M}$ to be diagonal, although we explore other cases for the analysis 
+\noindent where $\widehat{\textbf{p}}$ is the estimate of the true power spectrum. The data analyst has a choice for $
+\textbf{M}$ (subject to the constraint that window functions are sensible) --- for simplicity in this section we choose $\textbf{M}$ to be diagonal, although we explore other cases for the analysis 
 of PAPER-64 data as explained in Section \ref{sec:Bias}.
 
 In the next three sections, we investigate the effects of weighting matrices on signal loss by experimenting with different 
-matrices $\textbf{R}$ and examine their impact on the resulting power spectra estimate $\hat{\textbf{p}}$. Our goal in 
+matrices $\textbf{R}$ and examine their impact on the resulting power spectra estimate $\widehat{\textbf{p}}$. Our goal in 
 experimenting with weighting is to suppress foregrounds and investigate EoR losses associated with it. We note that we 
 purposely take a thorough and pedagogical approach to describing the toy model examples given in the next few sections. The specifics of how signal loss appears in PAPER's analysis is later described in Section 
 \ref{sec:Sigloss}.
@@ -324,9 +324,9 @@ from zenith) oscillate in time and frequency in our measurements. We therefore f
 \textbf{x}_{FG}$, as a complex sinusoid that varies smoothly in time and frequency, a simplistic but realistic representation of a 
 single bright source. We also create a mock EoR signal, $\textbf{x}_{EoR}$, as a complex, Gaussian random signal. A more 
 realistic EoR signal would have a sloped power spectrum in $\textbf{p}$(k) (instead of flat, as in the case of white noise), 
-which could be simulated by introducing frequency correlations into the mock EoR signal. However, in this paper we treat all 
+which could be simulated by introducing frequency correlations into the mock EoR signal. However, here we treat all 
 $k$'s separately, so a simplistic white noise approximation can be used. Our combined data matrix is then $\textbf{x} = 
-\textbf{x}_{FG} + \textbf{x}_{EoR}$, to which we apply different weighting schemes. The three data matrices are shown in Figure 
+\textbf{x}_{FG} + \textbf{x}_{EoR}$, to which we apply different weighting schemes. The three data components are shown in Figure 
 \ref{fig:toy_sigloss1}. 
 
 \begin{figure}
@@ -344,19 +344,18 @@ instrumental, and EoR models, we could form $\textbf{C}$ in a way that accuratel
 our foreground model is flawed, for example, our estimate of $\textbf{C}$ would not be successful at down-weighting them in 
 the data. 
 
-Therefore, one attractive way to estimate $\textbf{C}$ is to empirically derive it from the data $\textbf{x}$ itself:
+Therefore, one attractive way to estimate $\textbf{C}$ is to empirically derive it from the data $\textbf{x}$ itself. For instance, one could time-average such that:
 
 \begin{equation}
-\hat{\textbf{C}} \equiv \langle\textbf{xx}^{\dagger}\rangle_{t},
+\widehat{\textbf{C}} \equiv \langle\textbf{xx}^{\dagger}\rangle_{t},
 \end{equation}
 
 \noindent assuming $\langle\textbf{x}\rangle_{t} = 0$ (a reasonable assumption since fringes average to $0$ over a sufficient 
-amount of time), where $\langle \rangle$ denotes a finite average over time $t$. The weighting matrix is therefore $
-\textbf{R} = \hat{\textbf{C}}^{-1}$. 
+amount of time), where $\langle \rangle_{t}$ denotes a finite average over time. The weighting matrix is therefore $
+\textbf{R} = \widehat{\textbf{C}}^{-1}$. 
 
-First, we compute the power spectrum of $\textbf{x}$ using OQE formalism and a weighting matrix of $\hat{\textbf{C}}^{-1}$. 
-The result is shown in green in the left plot of Figure \ref{fig:toy_sigloss3} (the right plot shows an alternate weighting approach 
-and will be discussed further below). Also plotted in the figure are the unweighted ($\textbf{R} = \textbf{I}$) power spectrum of $
+First, we compute the power spectrum of $\textbf{x}$ using OQE formalism and a weighting matrix of $\widehat{\textbf{C}}^{-1}$. 
+The result is shown in green in the left plot of Figure \ref{fig:toy_sigloss3}. Also plotted in the figure are the unweighted ($\textbf{R} = \textbf{I}$) power spectrum of $
 \textbf{x}_{FG}$ (blue) and $\textbf{x}_{EoR}$ (red). 
 
 \begin{figure*}
@@ -366,10 +365,10 @@ and will be discussed further below). Also plotted in the figure are the unweigh
 	\caption{Resulting power spectrum estimates for the toy model simulation described in Section \ref{sec:toymodel} --- 
 foregrounds only (blue), EoR only (red), and the weighted FG + EoR dataset (green). The power spectrum of foregrounds peaks at a $k$ mode based on the frequency of the sinusoid used to create the mock FG signal. In the two panels, we compare inverse covariance weighting 
 where $\textbf{C}$ is derived from the data (left), and projecting out the first eigenmode only (right). In the former 
-case, signal loss arises from using information from all eigenmodes of $\hat{\textbf{C}}$. Because $\hat{\textbf{C}}$ is 
+case, signal loss arises from using information from all eigenmodes of $\widehat{\textbf{C}}$. Because $\widehat{\textbf{C}}$ is 
 empirically estimated, its eigenvalues differ from those of the true covariance and this error primarily affects the weaker (EoR-dominated) eigenmodes.
-There is no signal loss when using only the first eigenmode, since we are not using information from the weaker eigenmodes 
-which $\hat{\textbf{C}}$ does not describe accurately.}
+There is negligible signal loss when assigning identical weights to all eigenmodes except the first, since we are not using the relative weights of the weaker eigenmodes 
+which $\widehat{\textbf{C}}$ does not describe accurately.}
 	\label{fig:toy_sigloss3}
 \end{figure*}
 
@@ -392,8 +391,8 @@ down-weighted the most.
 \begin{figure}
 	\centering
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss2.png}
-	\caption{Eigenspectrum of $\hat{\textbf{C}}_{FG}$ (blue), $\hat{\textbf{C}}_{EoR}$ (red), and $\hat{\textbf{C}}_{FG+EoR}$ 
-(green). The eigenspectrum of $\hat{\textbf{C}}_{FG}$ peaks at the zeroth eigenmode, due to the presence of only one 
+	\caption{Eigenspectrum of $\widehat{\textbf{C}}_{FG}$ (blue), $\widehat{\textbf{C}}_{EoR}$ (red), and $\widehat{\textbf{C}}_{FG+EoR}$ 
+(green). The eigenspectrum of $\widehat{\textbf{C}}_{FG}$ peaks at the zeroth eigenmode, due to the presence of only one 
 sinusoid. These empirically estimated covariance matrices have eigenspectra that are different from that of a true $\textbf{C}$, 
 meaning that some eigenmodes (shapes in the data) may be down-weighted more significantly than they should be, producing 
 signal loss. Specifically, down-weighting the weak eigenmodes, where the EoR signal is greater than the FG signal, leads to 
@@ -402,18 +401,17 @@ loss.}
 \end{figure}
 
 If the true covariance matrix $\textbf{C}$ of our data was known, then every single eigenvalue and eigenvector of $\textbf{C}$ would be 
-representative of real fluctuations in the data. However, when using an estimated $\hat{\textbf{C}}$ that is derived from one 
-particular data realization, its eigenvalues and eigenvectors may differ from the truth. Said differently, shapes that may not exist (or have a 
-weaker existence) in a true covariance may appear stronger in the estimated covariance. Hence, they will be down-weighted 
+representative of real fluctuations in the data. However, when using an estimated $\widehat{\textbf{C}}$ that is derived from one 
+particular data realization, its eigenvalues and eigenvectors may differ from the truth. Said differently, shapes that may not exist (or exist rarely) in a true covariance may appear stronger in the estimated covariance. Hence, they will be down-weighted 
 more than they should be.
 
-In general, the strongest modes of $\hat{\textbf{C}}$ (highest eigenvalues) are expected to be dominated by bright foregrounds 
+In general, the strongest modes of $\widehat{\textbf{C}}$ (highest eigenvalues) are expected to be dominated by bright foregrounds 
 --- the most prominent shapes in the data. For these `strong' modes, where foregrounds outshine the EoR signal, $
-\hat{\textbf{C}} \sim \textbf{C}$ and down-weighting these modes is beneficial. This is demonstrated in the toy model by the 
+\widehat{\textbf{C}} \sim \textbf{C}$ and down-weighting these modes is beneficial. This is demonstrated in the toy model by the 
 successful suppression of the foreground mode, where our estimated covariance matrix identifies the sinusoid shape and 
 assigns it the highest eigenvalue (the first peak in Figure \ref{fig:toy_sigloss2}). In Figure \ref{fig:toy_sigloss12} we show the 
 covariances of our toy model datasets along with inverse covariance weighted data. The foreground sinusoid is clearly visible in 
-$\hat{\textbf{C}}_{FG}$ but effectively absent from $\hat{\textbf{C}}^{-1}_{FG}\textbf{x}_{FG}$.
+$\widehat{\textbf{C}}_{FG}$ but effectively absent from $\widehat{\textbf{C}}^{-1}_{FG}\textbf{x}_{FG}$.
 
 \begin{figure}
 	\centering
@@ -425,15 +423,15 @@ $\hat{\textbf{C}}_{FG}$ but effectively absent from $\hat{\textbf{C}}^{-1}_{FG}\
 \end{figure}
 
 The danger of an empirically estimated covariance matrix comes from not being able to describe the `weak' eigenmodes of $
-\textbf{C}$ accurately, for which the EoR signal is brighter than foregrounds. For these modes, the error that results from not computing $\textbf{C}$ accurately (due to a finite data sample), has a larger impact on the `weak' modes than the `strong' modes. In other words, mis-estimating $\textbf{C}$ affects EoR-dominated eigenmodes more than FG-dominated modes, and it is primarily the error associated in down-weighting these `weak' modes that leads to signal loss. 
+\textbf{C}$ accurately, for which the EoR signal is brighter than foregrounds. In such a case, the empirical covariance believes these modes should be down-weighted more than the true covariance would. For these modes, the error that results from not computing $\textbf{C}$ accurately (due to a finite data sample), has a larger impact on the `weak' modes than the `strong' modes. In other words, mis-estimating $\textbf{C}$ affects EoR-dominated eigenmodes more than FG-dominated modes, and it is primarily the error associated in down-weighting these `weak' modes that leads to signal loss. 
 
 Using what we've learned about the eigenspectrum, we can tweak it in a simple way to suppress foregrounds and yield minimal 
-signal loss. Recall that our toy model foreground is a sinusoid that can be perfectly described by a single eigenmode. We can 
-project out the first eigenmode (i.e. zero out all eigenmodes of the covariance matrix except the first one), thereby down-weighting the foreground-dominating mode only. Hence, we are not using information from all the weaker eigenmodes which have comparatively larger errors. Altering $\hat{\textbf{C}}$ as such is one example of a regularization method, in which we are 
-changing $\hat{\textbf{C}}$ in a way that flattens its eigenspectrum, making it more similar to that of $\textbf{I}$. The resulting 
+signal loss. Recall that our toy model foreground is a sinusoid, so it can be perfectly described by a single eigenmode. Using the full dataset's (foreground plus EoR signal) empirical covariance, we can 
+project out the first eigenmode (i.e. use the true eigenvalue of the first eigenmode, but flatten the rest of the spectrum to have eigenvalues of 1), thereby down-weighting the foreground-dominated mode more than the rest of the modes. Hence, we are not using the relative weighting information from all the weaker eigenmodes which have comparatively larger errors. Altering $\widehat{\textbf{C}}$ as such is one example of a regularization method, in which we are 
+changing $\widehat{\textbf{C}}$ in a way that flattens its eigenspectrum, making it more similar to that of $\textbf{I}$. The resulting 
 power spectrum estimate for this case is shown in the right plot of Figure \ref{fig:toy_sigloss3}. In this case we recover EoR, 
 demonstrating that if we can disentangle the foreground-dominating modes from EoR-dominating modes, we can down-weight 
-them without signal loss. There are several other ways to regularize $\hat{\textbf{C}}$, and we will discuss some in Section 
+them without signal loss. There are several other ways to regularize $\widehat{\textbf{C}}$, and we will discuss some in Section 
 \ref{sec:otherweight}.
 
 \subsubsection{Toy Model: Fringe-Rate Filtering}
@@ -444,23 +442,33 @@ data-estimated covariance. We will next show how this effect is exaggerated by r
 samples in a dataset. 
 
 A fringe-rate filter is an analysis technique designed to maximize sensitivity by integrating in time (\citealt{parsons_et_al2016}). 
-Rather than a traditional box-car average, a time domain filter can be designed to up-weight temporal modes corresponding to 
+Rather than a traditional box-car average, a time domain filter can be designed to up-weight temporal modes consistent with 
 the sidereal motion on the sky, while down-weighting modes which are noise-like. 
 
 Because fringe-rate filtering is analogous to averaging in time, it comes at the cost of reducing the total number of independent 
 samples in the data. To mimic this filter, we average every four time integrations of our toy model dataset together, yielding 
 $25$ independent samples in time (Figure \ref{fig:toy_sigloss5}, left). We choose these numbers so that the total number of 
-independent samples is similar to the number of frequency channels --- therefore, our matrices will be full rank.
+independent samples is similar to the number of frequency channels --- our matrices will still be full rank.
 %\footnote{If instead we average every $20$ samples together, yielding only $5$ independent samples in time, we are left with a rank deficient covariance matrix. In this case... \cc{fill in}}
 
+\cc{Note to Adrian - somewhere in the next paragraph would be good to ref Fig17}
 The resulting eigenspectrum as compared to the green curve (FG + EoR) in Figure \ref{fig:toy_sigloss2} is shown in Figure 
 \ref{fig:toy_sigloss5} (right plot). The spectrum, in the case of fringe-rate filtering (dashed line), falls more steeply, especially for 
-the last few eigenmodes. In many applications, this steep fall is not indicative of the true covariance structure of the data. With 
+the last few eigenmodes. In many applications, this steep fall is not indicative of the true covariance structure of the data. 
+
+To quantify the convergence of `weak' and `strong' eigenmodes present in a sloped eigenspectrum, we form a mock covariance matrix with diagonal values that span $4$ orders of magnitude. We then draw random data realizations from this covariance and compute a convergence metric $\varepsilon(\widehat{\textbf{v}})$ for the empirical eigenvectors $\widehat{\textbf{v}}$:
+\begin{equation}
+\label{eq:converge_eig}
+\varepsilon (\widehat{\textbf{v}}) \equiv \frac{1}{N_{f}}\sum_{i}^{N_{f}}|\textbf{v}-\widehat{\textbf{v}}|_{i},
+\end{equation}
+where $N_{f}$ is the number of frequencies ($20$) in the mock data. We plot this statistic against the number of realizations in Figure \ref{fig:toy_sigloss17}, which shows that...
+
+With 
 fringe-rate filtering resulting in fewer independent modes, it becomes more difficult for the empirical covariance to estimate the 
-true covariance matrix. This can be quantified by evaluating a convergence metric $\varepsilon$ for the empirical covariance, which we define as
+true covariance matrix. This can be quantified by evaluating a convergence metric $\varepsilon(\Chat)$ for the empirical covariance, which we define as
 \begin{equation}
 \label{eq:converge}
-\varepsilon (\Chat) \equiv \sqrt{\frac{\sum_{ij} (\Chat_{ij} - \C_{ij})^2}{\sum_{ij} \C_{ij}^2}},
+\varepsilon (\Chat) \equiv \sqrt{\frac{\sum_{ij} (\widehat{C}_{ij} - {C}_{ij})^2}{\sum_{ij} {C}_{ij}^2}},
 \end{equation}
 where $\C$ is true covariance matrix. In Figure \ref{fig:toy_sigloss16} we show this convergence statistic as a function of the number of independent ensemble realizations in one's simulations (horizontal axis) and the number of independent samples in the data following fringe-rate filtering (different curve colors). With more independent time samples in the data, one converges to the true covariance more quickly. 
 
@@ -482,10 +490,17 @@ marginalization over the true covariance \citep{sellentin_heavens2016}, and shri
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.31\textwidth]{plots/toy_sigloss5.png}
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.31\textwidth]{plots/toy_sigloss15.png}
 	\caption{Left: Our `fringe-rate filtered' (time-averaged) toy model dataset. We average every four samples together, 
-yielding $25$ independent samples in time. Real parts are shown here. Right: Eigenspectrum of $\hat{\textbf{C}}_{FG+EoR}$, 
+yielding $25$ independent samples in time. Real parts are shown here. Right: Eigenspectrum of $\widehat{\textbf{C}}_{FG+EoR}$, 
 in the case of no fringe-rate filtering (solid green) and with fringe-rate filtering (dashed green).}
 	\label{fig:toy_sigloss5}
 \end{figure*}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\columnwidth]{plots/toy_sigloss17.png}
+	\caption{The convergence level, as defined in Equation \eqref{eq:converge_eig}, of empirically estimated eigenvectors for different number of mock data realizations. The colors span from the 0th eigenmode (the first one) to the 19th eigenmode (the last one), where they are ordered by eigenvalue in descending order. This figure shows that `strong' eigenmodes (those with the highest eigenvalues) converge more quickly than `weak' eigenmodes.}
+	\label{fig:toy_sigloss17}
+\end{figure}
 
 \begin{figure}
 	\centering
@@ -520,22 +535,20 @@ advantageous to use one despite the trade-offs.
 \subsubsection{Toy Model: Other Weighting Options}
 \label{sec:otherweight}
 
-In Section \ref{sec:toymodel} we showed one example (projecting the zeroth eigenmode) of how altering $\hat{\textbf{C}}$ can 
-make the difference between $\sim$zero and some signal loss, if we can distinguish between real eigenmodes in a true covariance 
-matrix from those in an estimated one. We will now use our toy model to describe several other ways to tailor $\hat{\textbf{C}}$ 
+In Section \ref{sec:toymodel} we showed one example (projecting the zeroth eigenmode) of how altering $\widehat{\textbf{C}}$ can 
+make the difference between nearly zero and some signal loss. We will now use our toy model to describe several other ways to tailor $\widehat{\textbf{C}}$ 
 in order to minimize signal loss. We choose four independent regularization methods to highlight in this section, which have 
 been chosen due to their simplicity in implementation and straightforward interpretations. We illustrate the resulting power 
-spectra and eigenspectra for the different cases in Figures \ref{fig:toy_sigloss8} and \ref{fig:toy_sigloss14}.
+spectra and eigenspectra for the different cases in Figures \ref{fig:toy_sigloss8} and \ref{fig:toy_sigloss14}. These examples are not meant to be taken as suggested analyses methods but rather as illustrative cases. 
 
 As a first test, we model the covariance matrix of EoR as a proof of concept that if perfect models are known, signal loss can be 
 avoided. We know that our simulated EoR signal should have a covariance matrix that mimics the identity matrix, with its 
 variance encoded along the diagonal. We model $\textbf{C}_{EoR}$ as such (i.e. the identity), instead of computing it based on $\textbf{x}
-_{EoR}$ itself. Next, we add $\textbf{C}_{EoR} + \hat{\textbf{C}}_{FG}$ (where $\hat{\textbf{C}}_{FG} = \langle\textbf{x}_{FG}
-\textbf{x}_{FG}^{\dagger}\rangle_{t}$) to obtain a final $\hat{\textbf{C}}$ to use in weighting. In Figure \ref{fig:toy_sigloss8} (upper 
-left), we see that there is negligible signal loss. This is because by modeling $\textbf{C}_{EoR}$, we avoid over-fitting EoR fluctuations in the data that our model doesn't know about (but an empirically derived $\hat{\textbf{C}}$ would). This is also shown by comparing the (steeper) green and (flatter) red curves in Figure \ref{fig:toy_sigloss14}. We don't see perfect EoR recovery though, as the 
+_{EoR}$ itself. Next, we add $\textbf{C}_{EoR} + \widehat{\textbf{C}}_{FG}$ (where $\widehat{\textbf{C}}_{FG} = \langle\textbf{x}_{FG}
+\textbf{x}_{FG}^{\dagger}\rangle_{t}$) to obtain a final $\widehat{\textbf{C}}$ to use in weighting. In Figure \ref{fig:toy_sigloss8} (upper 
+left), we see that there is negligible signal loss. This is because by modeling $\textbf{C}_{EoR}$, we avoid over-fitting EoR fluctuations in the data that our model doesn't know about (but an empirically derived $\widehat{\textbf{C}}$ would). This is also shown by comparing the (steeper) green and (flatter) red curves in Figure \ref{fig:toy_sigloss14}. We don't see perfect EoR recovery though, as the 
 green and red curves vary slightly in Figure \ref{fig:toy_sigloss8}. This deviation is a consequence of the difference between the 
-true and modeled covariance matrices. In practice such a weighting option is not feasible, as we do not know $\textbf{C}_{EoR}
-$.
+true and modeled covariance matrices. In practice such a weighting option is not feasible, as it is difficult to model $\textbf{C}_{EoR}$, and $\textbf{C}_{FG}$ is unknown.
 
 \begin{figure*}
 	\centering
@@ -545,36 +558,36 @@ $.
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss11.png}
 	\caption{Resulting power spectra estimates for our `fringe-rate filtered' (time-averaged) toy model simulation --- foregrounds only (blue), 
 EoR only (red), and the weighted FG + EoR dataset (green). We show four alternate weighting options that each minimize signal 
-loss, including modeling the covariance matrix of EoR (upper left), regularizing $\hat{\textbf{C}}$ by adding an identity matrix to 
-it (upper right), using only the first three eigenmodes of $\hat{\textbf{C}}$ (lower left), and keeping only the diagonal elements of 
-$\hat{\textbf{C}}$ (lower right).}
+loss, including modeling the covariance matrix of EoR (upper left), regularizing $\widehat{\textbf{C}}$ by adding an identity matrix to 
+it (upper right), using only the first three eigenmodes of $\widehat{\textbf{C}}$ (lower left), and keeping only the diagonal elements of 
+$\widehat{\textbf{C}}$ (lower right).}
 	\label{fig:toy_sigloss8}
 \end{figure*}
 
 \begin{figure}
 	\centering
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss14.png}
-	\caption{We compare the eigenspectrum of an empirically calculated $\hat{\textbf{C}}$ (green) to that of four alternate 
-weighting options, including modeling the covariance matrix of EoR (red), regularizing $\hat{\textbf{C}}$ by adding an identity 
-matrix to it (blue), using only the first three eigenmodes of $\hat{\textbf{C}}$ (yellow), and multiplying an identity matrix with $
-\hat{\textbf{C}}$ (magenta). All eigenspectra (except the green) are relatively flat and don't exhibit signal loss. All were 
+	\caption{We compare the eigenspectrum of an empirically calculated $\widehat{\textbf{C}}$ (green) to that of four alternate 
+weighting options, including modeling the covariance matrix of EoR (red), regularizing $\widehat{\textbf{C}}$ by adding an identity 
+matrix to it (blue), using only the first three eigenmodes of $\widehat{\textbf{C}}$ (yellow), and multiplying an identity matrix with $
+\widehat{\textbf{C}}$ (magenta). All eigenspectra (except the green) are relatively flat and don't exhibit signal loss. All were 
 computed for the `fringe-rate filtered' (time-averaged) toy model case.}
 	\label{fig:toy_sigloss14}
 \end{figure}
 
-The second panel (top right) in Figure \ref{fig:toy_sigloss8} uses a regularization method of setting $\hat{\textbf{C}} = 
-\hat{\textbf{C}} + \gamma\textbf{I}$, where $\gamma = 5$ (an arbitrary strength 
+The second panel (top right) in Figure \ref{fig:toy_sigloss8} uses a regularization method of setting $\widehat{\textbf{C}} = 
+\widehat{\textbf{C}} + \gamma\textbf{I}$, where $\gamma = 5$ (an arbitrary strength 
 of $\textbf{I}$ for the purpose of this toy model). By adding the identity matrix, element-wise, we are weighting the diagonal 
 elements of the covariance matrix more heavily than those off-diagonal, thereby flattening out its eigenspectrum. If all modes are given 
-similar weights, we avoid down-weighting EoR modes more than others.  
+similar weights, we avoid down-weighting EoR modes more than others. Although there is negligible signal loss, the small green peak at $k\sim3$ represents residual foregrounds that still exist since the shapes encoded in the off-diagonal frequency correlations of the covariance matrix were deemed not as prominent as the diagonal elements using this weighting scheme. 
 
-The third panel (bottom left) in Figure \ref{fig:toy_sigloss8} flattens out the eigenspectrum of $\hat{\textbf{C}}$ a different way - 
+The third panel (bottom left) in Figure \ref{fig:toy_sigloss8} flattens out the eigenspectrum of $\widehat{\textbf{C}}$ a different way - 
 by only using the first three eigenmodes. Recalling that our toy model foregrounds can be described entirely by the first eigenmode, this 
 method intentionally projects out modes that are EoR-dominated by replacing all but the three highest weights in the 
 eigenspectrum with $1$'s (equal weights). Again, flattening the eigenspectrum results in negligible signal loss. However, we do 
 not perfectly recover the shape of EoR because we lost information when projecting out certain modes. While this case is illuminating for the toy model, in practice it is not obvious which eigenmodes are FG vs. EoR dominated, so selecting a subset of modes to down-weight is not trivial. 
 
-The last regularization scheme we are highlighting here is setting $\hat{\textbf{C}} = \hat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (keeping only the diagonal elements of $\hat{\textbf{C}}$). In the bottom right 
+The last regularization scheme we are highlighting here is setting $\widehat{\textbf{C}} = \widehat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (keeping only the diagonal elements of $\widehat{\textbf{C}}$). In the bottom right 
 panel of Figure \ref{fig:toy_sigloss8}, we see that this method does a poor job down-weighting foregrounds. For this toy model, 
 our foregrounds are spread out in frequency and therefore have non-negligible frequency-frequency correlations. Multiplying by 
 the identity, element-wise, results in a diagonal matrix, meaning we are only left with correlation information between the same 
@@ -585,10 +598,10 @@ Although the fourth method did not successfully recover EoR for this particular 
 are many options for estimating a covariance matrix, and some may be more effective than others based on the spectral nature 
 of the components in a dataset. One may imagine a situation where a particular systematic is contained to an isolated 
 frequency (such as radio frequency interference or crosstalk). In such a case, preserving only the diagonal elements of $
-\hat{\textbf{C}}$ would be an effective way of removing this contamination. 
+\widehat{\textbf{C}}$ would be an effective way of removing this contamination. 
 
 In summary, we have a choice of how to weight $21$ cm data. Ideally, we want to down-weight bright foregrounds without 
-removing the underlying cosmological signal. As we investigated however, there are trade-offs between the weighting method 
+removing the underlying cosmological signal. However, there are trade-offs between the weighting method 
 used, its foreground-removal effectiveness, the number of independent samples in a dataset, and the amount of resulting signal loss. 
 
 % SECTION 2 ERROR ESTIMATION ---------------------------------------------------------------------------------
@@ -918,7 +931,7 @@ The previously best published $21$ cm upper limit result from A15 uses $124$ nig
 on $\Delta^{2}(k)$, defined as
 
 \begin{equation}
-\Delta^{\textbf{2}}(k) = \frac{k^{3}}{2\pi^{2}}\hat{\textbf{p}}\textbf{(k)},
+\Delta^{\textbf{2}}(k) = \frac{k^{3}}{2\pi^{2}}\widehat{\textbf{p}}\textbf{(k)},
 \end{equation}
 
 \noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$ h Mpc$^{-1}$ at $z = 8.4$. The revision of this limit (Kolopanis et al., \textit{in prep}) stems from previously underestimated signal loss and underestimated error bars, both of which we 
@@ -987,15 +1000,15 @@ P_{\rm in,\alpha} \equiv M_{\alpha}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\al
 
 \begin{eqnarray}
 \label{eq:sigloss}
-P_{\rm out,\alpha} &\equiv& \hat{\textbf{p}}_{r,\alpha}-\hat{\textbf{p}}_{x,\alpha} \nonumber \\
+P_{\rm out,\alpha} &\equiv& \widehat{\textbf{p}}_{r,\alpha}-\widehat{\textbf{p}}_{x,\alpha} \nonumber \\
 &=& M_{\alpha}\textbf{r}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{r} - M_{\alpha}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x},
 \end{eqnarray}
 where, for illustrative purposes and notational simplicity, we have written these equations with diagonal normalization matrices $M$, even though for our numerical results we use a full non-diagonal matrix $\mathbf{M}$ as in Equation \eqref{eq:phat}. $P_{\rm in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
-$\hat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\hat{\textbf{p}}_{r}$ is the power spectrum of the
-data plus injection, and $P_{\rm out}$ is the difference between $\hat{\textbf{p}}_{r}$ and $\hat{\textbf{p}}_{x}$.
+$\widehat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\widehat{\textbf{p}}_{r}$ is the power spectrum of the
+data plus injection, and $P_{\rm out}$ is the difference between $\widehat{\textbf{p}}_{r}$ and $\widehat{\textbf{p}}_{x}$.
 
-In short, we can summarize a signal loss estimate as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\hat{\textbf{p}}_{x}$. We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\hat{\textbf{p}}_{x}$ by the following reasoning.
+In short, we can summarize a signal loss estimate as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\widehat{\textbf{p}}_{x}$. We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\widehat{\textbf{p}}_{x}$ by the following reasoning.
 
 In a limit with no instrumental noise, the data that we measure, $\x$, is comprised of two signals, such that
 \begin{equation}
@@ -1011,12 +1024,12 @@ where $\ell_{\rm eor}$ and $\ell_{\rm fg}$ are multiplicative factors accounting
 Given this form, a suitable estimate for $\p_{\rm eor}$ would be $\phat_{x} / \ell_{\rm eor}$, or the uncorrected power spectrum of data divided by the signal loss estimate. Although such an estimate leaves an additive bias from foregrounds that must be mitigated by other methods (as is the case for any attempt to measure the $21\,\textrm{cm}$ power spectrum), it normalizes $\p_{\rm eor}$ back to its correct level such that there is no multiplicative bias. The most conceptually straightforward way to compute $\ell_{\rm eor}$ is to model the foregrounds and EoR signal via simulations, and then to form the quantity
 \begin{equation}
 \label{eq:Deriv1}
-\hat{\ell}_{\rm eor} = \frac{g(\f + \s) - g(\f)}{\p_{\rm eor}}.
+\widehat{\ell}_{\rm eor} = \frac{g(\f + \s) - g(\f)}{\p_{\rm eor}}.
 \end{equation}
 However, this approach assumes that we have sufficiently good knowledge of our foreground and signal models, which is certainly not the case --- if it were, it would be simpler to construct our covariance matrices from our models, avoiding signal loss altogether! Instead, we can use the data itself as our model of the foregrounds, injecting a new EoR signal $\e$ (with power spectrum $P_{in}$), computing instead
 \begin{equation}
 \label{eq:Deriv2}
-\hat{\ell}_{\rm eor} = \frac{g(\x+ \e) - g(\x)}{P_{in}},
+\widehat{\ell}_{\rm eor} = \frac{g(\x+ \e) - g(\x)}{P_{in}},
 \end{equation}
 which reduces to the same result because of the linearity of Equation \eqref{eq:LinearPspecSum}. Essentially, one is computing the slope of $\langle \phat_{x} \rangle$ with respect to $\p_{\rm eor}$ (note that both Equations \eqref{eq:Deriv1} and \eqref{eq:Deriv2} take the form of finite difference derivatives). Under the approximation that the relation between the two quantities is linear, it does not matter whether this slope is evaluated about $\x$ or $\f$. In reality, one expects some deviations from linearity, but Equation \eqref{eq:Deriv2} remains a good approximation of Equation \eqref{eq:Deriv1} as long as $\x$ is dominated by $\f$. 
 
@@ -1054,15 +1067,15 @@ P_{\rm out, \alpha} &\approx&  M_{\alpha}\textbf{e}^{\dagger}\textbf{R}_{r}\text
 The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. It is this quantity that was used in A15 to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to A15.
 
 When $\textbf{R}_{r}$
-is taken to be $\hat{\textbf{C}}_{r}^{-1}$, the second term of Equation \eqref{eq:pout_expand} is a cross-correlation between $\hat{\textbf{C}}_{r}^{-1}\textbf{x}$ and
-$\hat{\textbf{C}_{r}}^{-1}\textbf{e}$. As shown in \citet{switzer_et_al2015}, this cross-correlation term is non-zero, and in fact negative in expectation. 
+is taken to be $\widehat{\textbf{C}}_{r}^{-1}$, the second term of Equation \eqref{eq:pout_expand} is a cross-correlation between $\widehat{\textbf{C}}_{r}^{-1}\textbf{x}$ and
+$\widehat{\textbf{C}_{r}}^{-1}\textbf{e}$. As shown in \citet{switzer_et_al2015}, this cross-correlation term is non-zero, and in fact negative in expectation. 
 This negative cross-term power arises from a coupling between the inverse of 
-$\hat{\textbf{C}}_{r}$ and $\mathbf{x}$. 
+$\widehat{\textbf{C}}_{r}$ and $\mathbf{x}$. 
 Intuitively, we can see this by expanding the empirical covariance of $\textbf{r}=\textbf{x}+\textbf{e}$ in the
 $|\textbf{x}|\ll|\textbf{e}|$ regime:
 
 \begin{eqnarray}
-\hat{\textbf{C}}_{r} &=& \langle \textbf{rr}^{\dagger} \rangle_{t} \nonumber \\ 
+\widehat{\textbf{C}}_{r} &=& \langle \textbf{rr}^{\dagger} \rangle_{t} \nonumber \\ 
 &=& \langle \textbf{xx}^{\dagger} \rangle_{t} + \langle \textbf{xe}^{\dagger} \rangle_{t} + \langle \textbf{ex}^{\dagger} \rangle_{t} + \langle 
 \textbf{ee}^{\dagger} \rangle_{t},
 \end{eqnarray}
@@ -1073,23 +1086,23 @@ an eigenbasis of $\textbf{e}$, so that $\langle
 The middle 
 two terms, however, can have power in their off-diagonal terms due to the fact that, when averaging over a finite
 ensemble, $\langle\textbf{xe}^\dagger\rangle_t$ is not zero.  As shown in Appendix C of \citet{parsons_et_al2014}, to leading order the
-inversion of a matrix like $\hat{\textbf{C}}_{r}$ that is diagonal-dominant (from $\langle 
+inversion of a matrix like $\widehat{\textbf{C}}_{r}$ that is diagonal-dominant (from $\langle 
 \textbf{ee}^{\dagger} \rangle_{t}$) with smaller
 off-diagonal terms results in a new diagonal-dominant matrix with negative off-diagonal terms. These off-diagonal
-terms depend on both $\textbf{x}$ and $\textbf{e}$. When $\hat{\textbf{C}}^{-1}_{r}$ is multiplied into $\textbf{x}$,
+terms depend on both $\textbf{x}$ and $\textbf{e}$. When $\widehat{\textbf{C}}^{-1}_{r}$ is multiplied into $\textbf{x}$,
 the result is a vector that is similar to $\textbf{x}$ but
-contains a residual correlation to $\textbf{e}$ from the off-diagonal components of $\hat{\textbf{C}}^{-1}_{r}$. The
-correlation is negative because the product $\hat{\textbf{C}}_r^{-1}\textbf{x}$ effectively squares the $\textbf{x}$-dependence
-of the off-diagonal terms in $\hat{\textbf{C}}^{-1}_{r}$ while retaining the negative sign that arose from the inversion
+contains a residual correlation to $\textbf{e}$ from the off-diagonal components of $\widehat{\textbf{C}}^{-1}_{r}$. The
+correlation is negative because the product $\widehat{\textbf{C}}_r^{-1}\textbf{x}$ effectively squares the $\textbf{x}$-dependence
+of the off-diagonal terms in $\widehat{\textbf{C}}^{-1}_{r}$ while retaining the negative sign that arose from the inversion
 of a diagonal-dominant matrix.
 % XXX [ARP: we may want to write this all out explicitly in an appendix]
 
-The correlation between $\hat{\textbf{C}}_r^{-1}\textbf{e}$ and $\hat{\textbf{C}}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
+The correlation between $\widehat{\textbf{C}}_r^{-1}\textbf{e}$ and $\widehat{\textbf{C}}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
 simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. Therefore, in our revised 
 signal loss computation we use the full quantity for $P_{\rm out}$ as defined in Equation \eqref{eq:sigloss}, which subtracts the 
 weighted power spectrum of the data from the weighted power spectrum of data plus EoR. 
 
-We thus see from this subsection that signal loss generically arises because of couplings between $\hat{\textbf{C}}^{-1}_{r}$ and $\mathbf{x}$. In principle, using $\hat{\textbf{C}}^{-1}_{r}$ in place of the true inverse covariance $\textbf{C}^{-1}$ provides yet another source of multiplicative bias, which results in a modification to the treatment shown here. Such a modification is accounted for in the demonstration of Appendix \ref{sec:sigloss_appendix}, where we additionally discard the assumption that $|\textbf{x}|\ll|\textbf{e}|$. However, despite the loosening of these approximations, one sees that the qualitative message (of anti-correlations resulting in signal loss) remains intact.
+We thus see from this subsection that signal loss generically arises because of couplings between $\widehat{\textbf{C}}^{-1}_{r}$ and $\mathbf{x}$. In principle, using $\widehat{\textbf{C}}^{-1}_{r}$ in place of the true inverse covariance $\textbf{C}^{-1}$ provides yet another source of multiplicative bias, which results in a modification to the treatment shown here. Such a modification is accounted for in the demonstration of Appendix \ref{sec:sigloss_appendix}, where we additionally discard the assumption that $|\textbf{x}|\ll|\textbf{e}|$. However, despite the loosening of these approximations, one sees that the qualitative message (of anti-correlations resulting in signal loss) remains intact.
 
 
 
@@ -1101,14 +1114,14 @@ We thus see from this subsection that signal loss generically arises because of 
 
 We now shift our attention towards computing signal loss for the fringe-rate filtered PAPER-64 dataset. While our methodology 
 outlined below is independent of weighting scheme, here we demonstrate the computation using inverse covariance weighting 
-($\textbf{R} = \hat{\textbf{C}}^{-1}$), the weighting scheme used in A15 which, with an empirically estimated covariance, leads to substantial loss. With this weighting, our 
+($\textbf{R} = \widehat{\textbf{C}}^{-1}$), the weighting scheme used in A15 which, with an empirically estimated covariance, leads to substantial loss. With this weighting, our 
 expressions for $P_{\rm in}$ and $P_{\rm out}$ become:
 
 \begin{eqnarray}
 P_{\rm in,\alpha} &=&  M_{\alpha}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e} \\
-P_{\rm out,\alpha} &=&  M_{\alpha}\textbf{r}^{\dagger}\hat{\textbf{C}}_{r}^{-1}\textbf{Q}^{\alpha}\hat{\textbf{C}}_{r}^{-1}\textbf{r} \nonumber \\
+P_{\rm out,\alpha} &=&  M_{\alpha}\textbf{r}^{\dagger}\widehat{\textbf{C}}_{r}^{-1}\textbf{Q}^{\alpha}\widehat{\textbf{C}}_{r}^{-1}\textbf{r} \nonumber \\
 &&\phantom{=====} 
--  M_{\alpha}\textbf{x}^{\dagger}\hat{\textbf{C}}_{x}^{-1}\textbf{Q}^{\alpha}\hat{\textbf{C}}_{x}^{-1}\textbf{x} 
+-  M_{\alpha}\textbf{x}^{\dagger}\widehat{\textbf{C}}_{x}^{-1}\textbf{Q}^{\alpha}\widehat{\textbf{C}}_{x}^{-1}\textbf{x} 
 \end{eqnarray}
 
 The treatment we outlined in the previous section implicitly assumed that signal loss corrections could be treated in expectation. In practice, however, the signal loss itself is a random variable --- some realizations of the cosmological signal may be more correlated with foreground modes than others, leading to more signal loss. This leads to two issues. The first is that Equation \eqref{eq:LinearPspecSum} may not hold. In particular, a third term that is a quadratic combination of $\f$ and $\s$ (e.g., $\f^\dagger \C^{-1} \s$) may appear. However, we can circumvent this issue by decomposing $\f$ into a sum of two vectors, one that is proportional to $\s$ and one that is orthogonal to $\s$. The former can be absorbed into the EoR term (part of the signal loss estimate), while the latter can be absorbed into the foreground term. 
@@ -1129,8 +1142,8 @@ In our code, we simulate $20$ realizations of $P_{in}$ by bootstrapping over bas
 %Additionally, we have verified that the transfer function is symmetric for negative and positive $P_{\rm in}$'s, and so we fold all the values into positive ones to increase our signal-to-noise.
 
 We smooth the 2D distribution of $P_{in}$ vs. $P_{out}$ using kernel density estimators. The result, for inverse covariance weighting, is shown in the left plot of Figure \ref{fig:sigloss_transfercurve}. Bayes' rule then simply instructs us to fix $\phat_{x}$ at our measured value, essentially reading Figure \ref{fig:sigloss_transfercurve} horizontally and reinterpreting Equation \eqref{eq:Bayes} as a function of $p(P_{in})$. The final result can then be normalized to give $p(P_{in} | \phat_{x})$. If $\phat_{x}$ itself does not take on a single value but is itself a distribution (for our analysis, this comes from bootstrapping), then one simply repeats the process for every single point on the distribution of $\phat_{x}$, before performing the final summation and normalization. In Figure \ref{fig:sigloss_transfercurve}, the peak of our data distribution $
-\hat{\textbf{p}}_{x}$ is marked by the solid gray horizontal lines. From the left plot (inverse covariance weighting), one can eyeball that a data value of $10^{5} \, mK^{2} (h^{-1} Mpc)^{3}$, for example, would map approximately to a 
-value of $\sim10^{8} \, mK^{2} (h^{-1} Mpc)^{3}$, implying a signal loss factor of $\sim1000$. Performing a summation and normalization for the entire distribution of $\hat{\textbf{p}}_{x}$ yields a final $P_{\rm in}$ distribution --- the distribution of our data as seen through the signal loss lens. We compute power spectrum points from the peak of the histograms, and power spectrum errors from $95\%$ confidence intervals.
+\widehat{\textbf{p}}_{x}$ is marked by the solid gray horizontal lines. From the left plot (inverse covariance weighting), one can eyeball that a data value of $10^{5} \, mK^{2} (h^{-1} Mpc)^{3}$, for example, would map approximately to a 
+value of $\sim10^{8} \, mK^{2} (h^{-1} Mpc)^{3}$, implying a signal loss factor of $\sim1000$. Performing a summation and normalization for the entire distribution of $\widehat{\textbf{p}}_{x}$ yields a final $P_{\rm in}$ distribution --- the distribution of our data as seen through the signal loss lens. We compute power spectrum points from the peak of the histograms, and power spectrum errors from $95\%$ confidence intervals.
 
 As a final complication to our procedure, we note that there will be some intrinsic scatter in our likelihood due to our having only a finite number of simulations. This is shown by the smeared `heat-map' around the solid black diagonal line (representing unity-transfer) in Figure \ref{fig:sigloss_transfercurve}. To separate the intrinsic stochasticity of signal loss from that which arises due to simulation noise, we repeat our analysis for a power spectrum estimator without signal loss ($\textbf{R} = \textbf{I}$), shown as the right plot in Figure \ref{fig:sigloss_transfercurve}. The width of the lossless scenario's signal loss likelihood is then deconvolved from the lossy scenario's signal loss likelihood. Specifically, we deconvolve Gaussian distributions of $P_{out}$ in the unweighted case from those of the weighted case (vertical cuts through the plots in Figure \ref{fig:sigloss_transfercurve}), for every $P_{in}$. By doing this, we are left with only the intrinsic scatter in signal loss, or scatter that stems from how much the random EoR signal $\textbf{e}$ happens to 
 look like the data $\textbf{x}$, a quantity we do not know offhand but one that we would like to correct for. As an extreme example, if we are very unlucky, one realization of $\textbf{e}$ would have the same shapes, or eigenvectors, as $\textbf{x}$. An empirically-derived covariance would then down-weight these shapes, destroying the entire EoR signal. On the other hand, the less that $\textbf{e}$ looks like $\textbf{x}$, the less signal loss that would result. The intrinsic scatter we can get is not a dominant factor in this case but it is important to correct for the fact that a particular $P_{\rm out}$ value could arise from a range of $P_{\rm in}$ values. 
@@ -1150,7 +1163,7 @@ look like the data $\textbf{x}$, a quantity we do not know offhand but one that 
 	\includegraphics[width=1\textwidth]{plots/sigloss_transfercurve.png}
 	\caption{Signal loss transfer functions showing the relationship of $P_{\rm in}$ and $P_{\rm out}$, as defined by Equations \eqref{eq:Pin} and \eqref{eq:sigloss}. Kernel density estimations of the power spectrum transfer functions are shown as colored 
 heat-maps for the cases of inverse covariance weighted PAPER-64 data (left) and unweighted data (right). The solid black 
-diagonal line marks a perfect unity mapping, and the solid gray horizontal line denotes the power spectrum value of the data $\hat{\textbf{p}}_{x}$. From these plots, it is clear that inverse covariance weighting results in $\sim3$ orders of magnitude of signal loss 
+diagonal line marks a perfect unity mapping, and the solid gray horizontal line denotes the power spectrum value of the data $\widehat{\textbf{p}}_{x}$. From these plots, it is clear that inverse covariance weighting results in $\sim3$ orders of magnitude of signal loss 
 for power spectrum values above $\sim$$2 \times 10^{4}$ $mK^{2} \, (h^{-1} \, Mpc)^{3}$, whereas the unweighted case does 
 not exhibit loss.}
 	\label{fig:sigloss_transfercurve}
@@ -1217,7 +1230,7 @@ significant.
 	\centering
 	\includegraphics[width=1\textwidth]{plots/sigloss_modeloop.png}
 	\caption{Power spectra $2\sigma$ upper limits for $k=0.393$ h Mpc$^{-1}$ for fringe-rate filtered PAPER-64 data. Values 
-are shown before (gray) and after (black) signal loss estimation as a function of number of eigenmodes of $\hat{\textbf{C}}$ that 
+are shown before (gray) and after (black) signal loss estimation as a function of number of eigenmodes of $\widehat{\textbf{C}}$ that 
 are down-weighted. This regularization knob is tuned from $0$ modes (i.e. unweighted) to $21$ modes (i.e. full inverse 
 covariance weighting). Over $\sim3$ orders of magnitude of signal loss results when using inverse covariance weighting. Also 
 plotted for comparison are $2\sigma$ power spectrum upper limits for the unweighted case (dashed blue), inverse variance 
@@ -1229,12 +1242,12 @@ as solid green.}
 
 In addition to our thermal noise prediction (green), two additional horizontal lines are shown in Figure \ref{fig:sigloss_modeloop} 
 which denote power spectrum values, post-signal loss estimation, for two other regularization schemes. We multiply an identity 
-matrix element-wise to $\hat{\textbf{C}}$ (i.e. inverse variance weighting, shown in red), and also add an arbitrarily chosen level 
-of $\textbf{I}$ to $\hat{\textbf{C}}$ (cyan). We see that all three regularization schemes (black, red, cyan) perform similarly at 
+matrix element-wise to $\widehat{\textbf{C}}$ (i.e. inverse variance weighting, shown in red), and also add an arbitrarily chosen level 
+of $\textbf{I}$ to $\widehat{\textbf{C}}$ (cyan). We see that all three regularization schemes (black, red, cyan) perform similarly at 
 their best (i.e. when $\sim3$$-4$ eigenmodes are down-weighted in the case of the black curve).
 
-For the remainder of this paper, we choose to use the weighting option of $\hat{\textbf{C}} = \hat{\textbf{C}} \circ \textbf{I}$, or 
-inverse variance weighting, which we will denote as $\hat{\textbf{C}}_{eff}$. We choose this weighting scheme due to its 
+For the remainder of this paper, we choose to use the weighting option of $\widehat{\textbf{C}} = \widehat{\textbf{C}} \circ \textbf{I}$, or 
+inverse variance weighting, which we will denote as $\widehat{\textbf{C}}_{eff}$. We choose this weighting scheme due to its 
 simplicity in practice and because its effectiveness is comparable to other weighting schemes that produce minimal signal loss.
 
 Our revised, best to-date PAPER-64 power spectrum (using only one baseline separation type) is shown in Figure 
@@ -1248,7 +1261,7 @@ a higher limit than A15 by a factor of $\sim7$ in mK (though we only use one bas
 	\centering
 	\includegraphics[width=0.4\textwidth]{plots/ps1_data_reg.png}
 	\includegraphics[width=0.4\textwidth]{plots/ps2_data_reg.png}
-	\caption{Power spectrum of PAPER-64 using $\hat{\textbf{C}}_{eff}$ (inverse variance weighting). Black and gray points correspond to positive and 
+	\caption{Power spectrum of PAPER-64 using $\widehat{\textbf{C}}_{eff}$ (inverse variance weighting). Black and gray points correspond to positive and 
 negative power spectrum values, respectively, with $2\sigma$ error bars also plotted. The dashed blue line is the unweighted 
 power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on 
 observational parameters. This power spectrum result differs from A15 in that it only uses data from one type of baseline ($30$ m 
@@ -1258,19 +1271,19 @@ $k=0.34$ $h$Mpc$^{-1}$, a higher limit than A15 by a factor of $\sim7$ in mK \cc
 	\label{fig:ps1_data}
 \end{figure*}
 
-In this section we have shown three simple ways of regularizing $\hat{\textbf{C}}$ to minimize signal loss using PAPER-64 
+In this section we have shown three simple ways of regularizing $\widehat{\textbf{C}}$ to minimize signal loss using PAPER-64 
 data. There are many other weighting schemes that we leave for consideration in future work. For example, one could estimate 
-$\hat{\textbf{C}}$ using information from different subsets of baselines. For redundant arrays this could mean calculating $
-\hat{\textbf{C}}$ from a different but similar baseline type, such as the $\sim30$ m diagonal PAPER baselines (instead of the 
+$\widehat{\textbf{C}}$ using information from different subsets of baselines. For redundant arrays this could mean calculating $
+\widehat{\textbf{C}}$ from a different but similar baseline type, such as the $\sim30$ m diagonal PAPER baselines (instead of the 
 horizontal E/W ones). Alternately, covariances could be estimated from all other baselines except the two being cross-multiplied 
 when forming a power spectrum estimate. This method was used in \citet{parsons_et_al2014} in order to avoid suppressing the 
 $21$ cm signal, and it's worth noting that the PAPER-32 results are likely less impacted from the issue of signal loss underestimation 
 because of this very reason (however, they are affected by the error estimation issues described in Section \ref{sec:Error}, so 
 we also regard those results as suspect and superseded by those of Kolopanis et al., \textit{in prep}).
 
-Another possible way to regularize $\hat{\textbf{C}}$ is to use information from different ranges of LST. For example, one could 
-calculate $\hat{\textbf{C}}$ with data from LSTs where foregrounds are stronger (earlier or later LSTs than the `foreground-quiet' range used in forming power spectra) --- doing so may yield a better description of the foregrounds that we desire to 
-down-weight. Fundamentally, each of these examples are similar in that they rely on a computation of $\hat{\textbf{C}}$ from 
+Another possible way to regularize $\widehat{\textbf{C}}$ is to use information from different ranges of LST. For example, one could 
+calculate $\widehat{\textbf{C}}$ with data from LSTs where foregrounds are stronger (earlier or later LSTs than the `foreground-quiet' range used in forming power spectra) --- doing so may yield a better description of the foregrounds that we desire to 
+down-weight. Fundamentally, each of these examples are similar in that they rely on a computation of $\widehat{\textbf{C}}$ from 
 data that is similar but not exactly the same as the data that is being down-weighted. Ideally this would be effective in down-weighting shared contaminants yet avoid signal loss from over-fitting EoR modes in the power spectrum dataset itself. 
 
 % SECTION 3 ERROR ESTIMATION ---------------------------------------------------------------------------------
@@ -1392,7 +1405,7 @@ I). This RMS temperature sets the variance of the Gaussian random noise.
 
 Power spectrum results for the noise simulation, which uses our full power spectrum pipeline, are shown in Figure 
 \ref{fig:ps_noise}, where the black and gray points represent positive and negative power spectrum values, respectively (with 
-$2\sigma$ error bars and weighting matrix $\hat{\textbf{C}}_{eff}$), the dashed blue line represents the unweighted power 
+$2\sigma$ error bars and weighting matrix $\widehat{\textbf{C}}_{eff}$), the dashed blue line represents the unweighted power 
 spectrum, and the solid green line denotes our $2\sigma$ theoretical noise prediction as calculated by Equation 
 \eqref{eq:sense}. All three are in agreement, validating our analytical thermal noise calculation. 
 
@@ -1402,7 +1415,7 @@ spectrum, and the solid green line denotes our $2\sigma$ theoretical noise predi
 	\includegraphics[width=0.4\textwidth]{plots/ps2_noise_reg.png}
 	\caption{Power spectrum estimate for a noise simulation that mimics the noise level of PAPER-64 data. The weighted 
 power spectrum points and their $2\sigma$ errors are show in black and gray (positive and negative values), where we use $
-\hat{\textbf{C}}_{eff}$ to minimize signal loss. The dashed blue line is the unweighted power spectrum (also $2\sigma$ upper 
+\widehat{\textbf{C}}_{eff}$ to minimize signal loss. The dashed blue line is the unweighted power spectrum (also $2\sigma$ upper 
 limit). The solid green line is the theoretical $2\sigma$ noise level prediction as calculated by Equation \eqref{eq:sense}. All three 
 estimates agree (the analytic curve should encompass $95\%$ of the points).}
 	\label{fig:ps_noise}
@@ -1496,10 +1509,10 @@ contamination of foreground bias. For this paper, we compute $\textbf{M}$ as des
 
 In addition to mitigating foreground bias at high $k$'s, two other sources of bias that we actively suppress in the PAPER-64 
 analysis are noise bias associated with the squaring of thermal noise and noise bias from crosstalk. In order to avoid the 
-former, we filter out certain cross-multiplications when forming $\hat{q}$ in Equation \eqref{eq:qhat}. Namely, the PAPER-64 
+former, we filter out certain cross-multiplications when forming $\widehat{q}$ in Equation \eqref{eq:qhat}. Namely, the PAPER-64 
 dataset is divided into two halves: even julian dates and odd julian dates. Our data vectors are then $\textbf{x}_{even, 1}$ for 
 the `even' dataset and baseline group $1$, $\textbf{x}_{odd, 1}$ for the `odd' dataset and baseline group $1$, etc. We only form 
-$\hat{q}$ when the two copies of $\textbf{x}$ come from different groups and baselines, never multiplying `even' with `even', for 
+$\widehat{q}$ when the two copies of $\textbf{x}$ come from different groups and baselines, never multiplying `even' with `even', for 
 example, in order to prevent the squaring of the same thermal noise.
 
 To mitigate crosstalk bias, which appears as a static bias in time, we apply a fringe-rate filter that suppresses fringe-rates of 
@@ -1518,7 +1531,7 @@ The three null test results are shown in Figure \ref{fig:null}, with each test d
 
 \begin{itemize}
 \item Original Data (black): This is identical to the power spectrum in Figure \ref{fig:ps1_data} and represents the best revised 
-PAPER-64 power spectrum (one baseline type only) with weighting matrix $\hat{\textbf{C}}_{eff}$. There are clear detections at 
+PAPER-64 power spectrum (one baseline type only) with weighting matrix $\widehat{\textbf{C}}_{eff}$. There are clear detections at 
 low $k$'s.
 \item Even/Odd (blue): We split our dataset into even (e) and odd (o) days, where $\textbf{x}_{1} = e + o$ and $\textbf{x}_{2} = 
 e - o$. We form datasets in this way to ensure that we use the full sensitivity of our data. When cross-multiplied, we obtain:
@@ -1632,9 +1645,9 @@ also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, resp
 
 In this Appendix, we examine a toy model for signal loss. Our goal is to derive an analytic formula for power spectrum signal loss. We will also show that in general, signal loss appears as a multiplicative bias on one's power spectrum estimate.
 
-The minimum-variance quadratic estimator $\hat{p}_\alpha$ for the $\alpha$th bandpower of the power spectrum is given by 
+The minimum-variance quadratic estimator $\widehat{p}_\alpha$ for the $\alpha$th bandpower of the power spectrum is given by 
 \begin{equation}
-\hat{p}_\alpha = \frac{1} {2 \F_{\alpha \alpha} }\x^t \C^{-1} \Q^{\alpha} \C^{-1} \x,
+\widehat{p}_\alpha = \frac{1} {2 \F_{\alpha \alpha} }\x^t \C^{-1} \Q^{\alpha} \C^{-1} \x,
 \end{equation}
 where
 \begin{equation}
@@ -1643,11 +1656,11 @@ F_{\alpha \alpha} \equiv \frac{1}{2} \textrm{tr} \left( \C^{-1} \Q^\alpha \C^{-1
 is the $\alpha$th diagonal element of the Fisher matrix (for this section only, with no loss of generality, we assume that the data $\textbf{x}$ are real). In our case, however, we do not have \emph{a priori} knowledge of the covariance matrix. Thus, we replace $\C$ with $\Chat$, its data-derived approximation. Our estimator then becomes
 \begin{equation}
 \label{eq:phatloss}
-\hat{p}_\alpha^\textrm{loss} = \frac{1} {2 \hat{\F}_{\alpha \alpha} }\x^t \Chat^{-1} \Q^{\alpha} \Chat^{-1} \x,
+\widehat{p}_\alpha^\textrm{loss} = \frac{1} {2 \widehat{\F}_{\alpha \alpha} }\x^t \Chat^{-1} \Q^{\alpha} \Chat^{-1} \x,
 \end{equation}
 where
 \begin{equation}
-\hat{F}_{\alpha \alpha} \equiv \frac{1}{2} \textrm{tr} \left( \Chat^{-1} \Q^\alpha \Chat^{-1} \Q^\alpha \right),
+\widehat{F}_{\alpha \alpha} \equiv \frac{1}{2} \textrm{tr} \left( \Chat^{-1} \Q^\alpha \Chat^{-1} \Q^\alpha \right),
 \end{equation}
 with the label ``loss" to foreshadow the fact that this will be an estimator with signal loss (i.e., a multiplicative bias of less than unity). We will now provide an explicit demonstration of this by modeling the estimated covariance as
 \begin{equation}
@@ -1656,26 +1669,26 @@ with the label ``loss" to foreshadow the fact that this will be an estimator wit
 \end{equation}
 where $\eta$ is a parameter quantifying our success at estimating the true covariance matrix. If $\eta = 0$, our covariance estimate has perfectly modeled the true covariance and $\Chat = \C$. On the other hand, if $\eta =1$, then our covariance estimate is based purely on the one realization of the covariance that is our actual data, and we would expect a high level of overfitting and signal loss.
 
-Our strategy for computing the signal loss will be to insert Equation \eqref{eq:ChatDef} into Equation \eqref{eq:phatloss} and to express the resulting estimator $\hat{p}_\alpha^\textrm{loss}$ in terms of $\hat{p}_\alpha$. We begin by expressing $\Chat^{-1}$ in terms of $\C^{-1}$ using the Woodbury identity so that
+Our strategy for computing the signal loss will be to insert Equation \eqref{eq:ChatDef} into Equation \eqref{eq:phatloss} and to express the resulting estimator $\widehat{p}_\alpha^\textrm{loss}$ in terms of $\widehat{p}_\alpha$. We begin by expressing $\Chat^{-1}$ in terms of $\C^{-1}$ using the Woodbury identity so that
 \begin{equation}
 \Chat^{-1} = \frac{\C^{-1}}{1-\eta} \left[ \I - \frac{\eta \x \x^t \C^{-1}}{1+ \eta (g-1)}\right],
 \end{equation}
 where we have defined $g \equiv \x^t \C^{-1} \x$. Inserting this into our Fisher estimate we have
 \begin{equation}
-\hat{F}_{\alpha \alpha} = \frac{F_{\alpha \alpha}}{(1-\eta)^2} \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right],
+\widehat{F}_{\alpha \alpha} = \frac{F_{\alpha \alpha}}{(1-\eta)^2} \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right],
 \end{equation}
 where $h_\alpha \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \x $ and $h_{\alpha \alpha} \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1}\x $. Note that $g$, $h_\alpha$, and $h_{\alpha \alpha}$ are all random variables, since they depend on $\x$. Inserting these expressions into our estimator gives
 \begin{equation}
 \label{eq:phatlossexpanded}
-\hat{p}_\alpha^\textrm{loss} = \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \frac{\eta g}{1+ \eta (g-1)}\right]^2  \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right]^{-1}.
+\widehat{p}_\alpha^\textrm{loss} = \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \frac{\eta g}{1+ \eta (g-1)}\right]^2  \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right]^{-1}.
 \end{equation}
 Both for the purposes of analytical tractability and to provide intuition, we expand this expression to leading order in $\eta$. The result is
 \begin{equation}
-\hat{p}_\alpha^\textrm{loss} \approx \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \eta \left( g - \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}}\right)\right].
+\widehat{p}_\alpha^\textrm{loss} \approx \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \eta \left( g - \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}}\right)\right].
 \end{equation}
 Taking the ensemble average of both sides and noting that the true power spectrum $p_\alpha$ is equal to $\langle h_\alpha \rangle / 2 F_{\alpha \alpha}$, we obtain
 \begin{equation}
-\langle \hat{p}_\alpha^\textrm{loss} \rangle \approx (1- \eta N) p_\alpha + 4 \eta \frac{\rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha )}{\left[ \rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha  ) \right]^2} \approx (1- \eta N) p_\alpha,
+\langle \widehat{p}_\alpha^\textrm{loss} \rangle \approx (1- \eta N) p_\alpha + 4 \eta \frac{\rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha )}{\left[ \rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha  ) \right]^2} \approx (1- \eta N) p_\alpha,
 \end{equation}
 where $N$ is the length of $\x$. In the last step we dropped the final term, since it scales as $\eta p_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained. Now, recall that $p_\alpha$ is the \emph{true} power spectrum. This means that it can be decomposed into the sum of the foreground and EoR power spectra, since the foregrounds and EoR are uncorrelated in expectation. This toy example, while not definitive, serves to motivate the form of Equation \eqref{eq:LinearPspecSum}.
 
@@ -1685,24 +1698,24 @@ where $N$ is the length of $\x$. In the last step we dropped the final term, sin
 \label{sec:Pr_appendix}
 One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in Section \ref{sec:Sigloss} relies on several assumptions which required justification including the neglection of cross-terms in the power spectrum and indeed does not behave as expected at small injected values. However it is possible to make a simpler interpretation which requires less motivation.
 
-In the main text we made an estimate of the signal loss effecting only the injected EoR by supposing that the lossy injected signal was the difference between the injected and not injected cases: $P_{out} = \hat{\textbf{p}}_{r} - \hat{\textbf{p}}_{x}$. Suppose that we rephrase the question we are asking to: ``At what point would an injected signal be detectable at significant levels?". Instead of disentangling the part of the output power spectrum dominated by the injected signal we can simply use $\hat{\textbf{p}}_{r}$, the weighted power spectrum of the data plus injected signal.
+In the main text we made an estimate of the signal loss effecting only the injected EoR by supposing that the lossy injected signal was the difference between the injected and not injected cases: $P_{out} = \widehat{\textbf{p}}_{r} - \widehat{\textbf{p}}_{x}$. Suppose that we rephrase the question we are asking to: ``At what point would an injected signal be detectable at significant levels?". Instead of disentangling the part of the output power spectrum dominated by the injected signal we can simply use $\widehat{\textbf{p}}_{r}$, the weighted power spectrum of the data plus injected signal.
   
 \begin{figure}[tp]
 \centering
 \includegraphics[width=\textwidth]{plots/method2_heatmap_I.png}
 \caption{The distribution of output power spectrum values for a 
 given injection level P$_{in}$. The $P_{\rm out}$ values that are plotted on the y-axis represent the weighted power spectrum of data plus the injected signal. It differs from that of Figure \ref{fig:sigloss_transfercurve} by not subtracting off the power spectrum of data alone (not subtracting off the second term in Equation \eqref{eq:sigloss}). We show kernel density estimations of the power spectrum transfer functions as colored heat-maps for the cases of inverse covariance weighted PAPER-64 data (left) and unweighted data (right). The solid black 
-diagonal line marks a perfect unity mapping, and the solid gray horizontal line denotes the peak of $\hat{\textbf{p}}_{x}$, the data distribution. At low injection, $P_{\rm out}$ converges to the data level.}
+diagonal line marks a perfect unity mapping, and the solid gray horizontal line denotes the peak of $\widehat{\textbf{p}}_{x}$, the data distribution. At low injection, $P_{\rm out}$ converges to the data level.}
 \label{fig:Pr_vs_Pin}
 \end{figure}  
   
-This question is phrased visually in Figure \ref{fig:Pr_vs_Pin}. In the 2D space relating total $\hat{\textbf{p}}_r$ to injected $P_{\rm in}$, very small injected levels begin at the level equivalent of no injection (i.e. data only) and very large levels are dominated by the injected signal. It is the transition zone, where the injected signal amplitude is similar to the data level (and thus subject to cross correlations in both the covariance and in the power spectrum calculation) that we search for the point at which an injected signal would be clearly detected.
+This question is phrased visually in Figure \ref{fig:Pr_vs_Pin}. In the 2D space relating total $\widehat{\textbf{p}}_r$ to injected $P_{\rm in}$, very small injected levels begin at the level equivalent of no injection (i.e. data only) and very large levels are dominated by the injected signal. It is the transition zone, where the injected signal amplitude is similar to the data level (and thus subject to cross correlations in both the covariance and in the power spectrum calculation) that we search for the point at which an injected signal would be clearly detected.
   
 \begin{figure}[tp]
 \centering
 \includegraphics[width=.5\textwidth]{plots/method2_prob_vs_pinj.png}
 \caption{The probability that an injected signal of level P$_{inj}$
-is observable at a 2$\sigma$ level above the value of $\hat{\textbf{p}}_{x}$ (data).
+is observable at a 2$\sigma$ level above the value of $\widehat{\textbf{p}}_{x}$ (data).
 The different colors represent different $k$ values. We choose a probability of $95\%$ for our signal loss estimated power spectrum.
 \label{fig:Prob_vs_Pin}}
 \end{figure}  
@@ -1711,14 +1724,14 @@ One difference in this method from the one in the main text is that we are exclu
   
 Formally we can express our test as: ``What is the $P_{\rm in}$ such that
 \begin{equation}
-\hat{\textbf{p}}_{r} > \hat{\textbf{p}}_{x} \Lambda,
+\widehat{\textbf{p}}_{r} > \widehat{\textbf{p}}_{x} \Lambda,
 \end{equation}  
 where $\Lambda$ represents a choice of threshold?'' Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not\footnote{i.e. the null test} the same.  
  
  \begin{equation}
-\Prob(P_{in})  =  1 -  \int_{r=x} \Prob(\hat{\textbf{p}}_x) \Prob(\hat{\textbf{p}}_r,P_{in}) dr
+\Prob(P_{in})  =  1 -  \int_{r=x} \Prob(\widehat{\textbf{p}}_x) \Prob(\widehat{\textbf{p}}_r,P_{in}) dr
  \end{equation}
- where $\Prob(\hat{\textbf{p}}_x)$ is the probability of obtaining the power spectrum $\hat{\textbf{p}}_x$ found via bootstrapping (power spectrum of data only) and $\Prob(\hat{\textbf{p}}_r,P_{in})$ is the probability of obtaining the summed power spectrum $\hat{\textbf{p}}_{r}$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
+ where $\Prob(\widehat{\textbf{p}}_x)$ is the probability of obtaining the power spectrum $\widehat{\textbf{p}}_x$ found via bootstrapping (power spectrum of data only) and $\Prob(\widehat{\textbf{p}}_r,P_{in})$ is the probability of obtaining the summed power spectrum $\widehat{\textbf{p}}_{r}$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
  
 Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low injection levels the variation between $\textbf{x}$ and $\textbf{r}$ is such that the null test is ruled out to within $20$\%. This is the level expected from two distributions with $\sim$10 effective samples. 
 %\dcj{checked with a little python test but needs a cite} 
