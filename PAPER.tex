@@ -483,7 +483,7 @@ Just as important as the eigenvalues are the eigenvectors of our empirical covar
 \label{eq:converge_eig}
 \varepsilon (\widehat{\textbf{v}}) \equiv \sqrt{\sum_{i}^{N_{f}}|\textbf{v}-\widehat{\textbf{v}}|_{i}^2},
 \end{equation}
-where $N_{f}$ is the number of frequencies ($20$) in the mock data. The eigenmode convergence curves  in Figure \ref{fig:toy_sigloss17} are ranked ordered by eigenvalue, such that ``Eigenmode \# 1" illustrates the convergence of the eigenvector with the largest eigenvalue, ``Eigenmode \# 2" for the second largest eigenvalue, and so on. One sees that the stronger eigenmodes converge to their true eigenvectors more quickly. With only a small number of realizations, these empirically estimated modes already retain little correlation with the specific realizations of data that were used to form the empirical covariance. As we shall see in Section \acl{insert}, this minimizes signal loss. In contrast, the weaker eigenmodes retain more memory of the data realizations, which leads to correlations that induce signal loss. \acl{Think about whether we need to do the Fourier space version as well.}
+where $N_{f}$ is the number of frequencies ($20$) in the mock data. The eigenmode convergence curves  in Figure \ref{fig:toy_sigloss17} are ranked ordered by eigenvalue, such that ``Eigenmode \#0" illustrates the convergence of the eigenvector with the largest eigenvalue, ``Eigenmode \#1" for the second largest eigenvalue, and so on. One sees that the stronger eigenmodes converge to their true eigenvectors more quickly. With only a small number of realizations, these empirically estimated modes already retain little correlation with the specific realizations of data that were used to form the empirical covariance. As we shall see in Section \acl{insert}, this minimizes signal loss. In contrast, the weaker eigenmodes retain more memory of the data realizations, which leads to correlations that induce signal loss. %\acl{Think about whether we need to do the Fourier space version as well.}
 
 \begin{figure}
 	\centering
@@ -502,16 +502,16 @@ yielding $25$ independent samples in time. Real parts are shown here.}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/toy_sigloss17.png}
-	\caption{The convergence level, as defined in Equation \eqref{eq:converge_eig}, of empirically estimated eigenvectors for different number of mock data realizations. The colors span from the 0th eigenmode (the first one) to the 19th eigenmode (the last one), where they are ordered by eigenvalue in descending order. This figure shows that `strong' eigenmodes (those with the highest eigenvalues) converge more quickly than `weak' eigenmodes.}
-	\label{fig:toy_sigloss17}
+	\includegraphics[width=\columnwidth]{plots/toy_sigloss16.png}
+	\caption{The convergence level, as defined in Equation \eqref{eq:converge}, of empirically estimated covariances of mock EoR signals with different numbers of independent samples. In red, the mock EoR signal is comprised entirely of independent samples. Subsequent colors show time-averaged signals. As the number of realizations increases, we see that the empirical covariances approach the true covariances. With more independent samples, the quicker an empirical covariance converges.}
+	\label{fig:toy_sigloss16}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/toy_sigloss16.png}
-	\caption{The convergence level, as defined in Equation \eqref{eq:converge}, of empirically estimated covariances of mock EoR signals with different numbers of independent samples. In red, the mock EoR signal is comprised entirely of independent samples. Subsequent colors show time-averaged signals. As the number of realizations increases, we see that the empirical covariances approach the true covariances. With more independent samples, the quicker an empirical covariance converges.}
-	\label{fig:toy_sigloss16}
+	\includegraphics[width=\columnwidth]{plots/toy_sigloss17.png}
+	\caption{The convergence level, as defined in Equation \eqref{eq:converge_eig}, of empirically estimated eigenvectors for different number of mock data realizations. The colors span from the 0th eigenmode (the first one) to the 19th eigenmode (the last one), where they are ordered by eigenvalue in descending order. This figure shows that `strong' eigenmodes (those with the highest eigenvalues) converge more quickly than `weak' eigenmodes.}
+	\label{fig:toy_sigloss17}
 \end{figure}
 
 \begin{figure}
