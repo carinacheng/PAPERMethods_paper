@@ -1014,7 +1014,7 @@ where, for illustrative purposes and notational simplicity, we have written thes
 $\widehat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\widehat{\textbf{p}}_{r}$ is the power spectrum of the
 data plus injection, and $P_{\rm out}$ is the difference between $\widehat{\textbf{p}}_{r}$ and $\widehat{\textbf{p}}_{x}$.
 
-In short, we can approximate a signal loss estimate as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\widehat{\textbf{p}}_{x}$. We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\widehat{\textbf{p}}_{x}$ by the following reasoning (and then detail our signal loss estimation in practice in the next section).
+In short, we can approximate a signal loss estimate as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\widehat{\textbf{p}}_{x}$. We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\widehat{\textbf{p}}_{x}$ by the following reasoning (and then detail our signal loss estimation in practice in the sections that follow).
 
 In the limit of no instrumental noise, the data that we measure, $\x$, is comprised of two signals, such that
 \begin{equation}
@@ -1051,7 +1051,7 @@ signal loss lens. We note that interpretation of the signal injection results ca
 
 \subsubsection{Signal Loss Illustration}
 \label{sec:Illustration}
-To explore how our expression for $P_{out}$ encapsulates signal loss, we expand out Equation \eqref{eq:sigloss}:
+To explore how our expression for $P_{\rm out}$ encapsulates signal loss, we expand out Equation \eqref{eq:sigloss}:
 
 \begin{eqnarray}
 \label{eq:crossterm}
@@ -1063,18 +1063,29 @@ M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x
 &-& M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
-We see that $P_{\rm out}$ is comprised of multiple terms. For illustrative purposes in this subsection only, we build intuition for signal loss in $P_{out}$ by considering a scenario where $\textbf{e}$ dominates compared to $\textbf{x}$. It is in this limit where we expect signal loss to be greatest, and $P_{out}$ becomes:
+We see that $P_{\rm out}$ is comprised of multiple terms. To build intuition into each of these terms, they are plotted individually in Figure \ref{fig:sigloss_terms} for two cases: inverse covariance weighting ($\textbf{R}_{r} = \widehat{\textbf{C}}_{r}^{-1}$, left) and unweighted ($\textbf{R}_{r} = \textbf{I}$, right). We leave the details of the simulation to Section \ref{sec:Practice}, but for now highlight that each term in Equation \eqref{eq:crossterm} corresponds to a different color in the plot. Specifically, the first term in Equation \eqref{eq:crossterm} is plotted as blue, the second as green, the third and fourth (which are the same) as red, and the last as gray. The solid black curve denotes $P_{\rm out}$, which is comprised of all the other terms.
+
+A brief description of Figure \ref{fig:sigloss_terms} is as follows. The gray curve represents the data level, which is constant as the level of $P_{\rm in}$, the input EoR signal, is changed. The blue curve is the power spectrum of the data only, weighted by an empirical covariance estimated from the data plus the EoR signal ($\widehat{\textbf{C}}_{r}^{-1}$). It approaches the gray at low injection level, as expected, since in that case $\widehat{\textbf{C}}_{r}^{-1} \rightarrow \widehat{\textbf{C}}_{x}^{-1}$. The green curve is the power spectrum of the EoR signal, weighted by $\widehat{\textbf{C}}_{r}^{-1}$. This is the exact term that was compared to $P_{\rm in}$ in the A15 signal loss analysis, and in doing so this would imply there is negligible loss (where the green crosses the gray). It is primarily due to the cross-terms (red), that the black curve exhibits $\sim$$3$ orders of magnitude of loss at the data level, for the inverse covariance weighted case. We see that the cross-terms can produce a large, negative signal which serves to reduce $P_{\rm out}$ and drive the bulk of our loss. In the unweighted case, however (right plot), the cross-terms primarily drive a tail of `excess' $P_{\rm out}$ at low injects, though at larger injects we see unity transfer as expected (the solid black curve lies on the dotted black line, which represents unity transfer).
+
+We now turn to building intuition behind the negative power that arises from the cross-terms in Equation \eqref{eq:crossterm}. For illustrative purposes in this subsection only, we consider a scenario where $\textbf{e}$ dominates compared to $\textbf{x}$. It is in this limit where we expect signal loss to be greatest, and $P_{\rm out}$ becomes:
 
 \begin{eqnarray}
 \label{eq:pout_expand}
 P_{\rm out, \alpha} &\approx&  M^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} +
  2M^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}.
 \end{eqnarray}
-The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. It is this quantity that was used in A15 to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to A15.
+The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. Again, it is this quantity that was used in A15 to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to A15.
+
+\begin{figure*}
+	\centering
+	\includegraphics[width=1\textwidth]{plots/sigloss_terms.png}
+	\caption{Illustration of the components of the signal loss transfer function, $P_{\rm out}$, as defined by Equation \eqref{eq:crossterm} for PAPER-64 data for the inverse covariance weighted case (left) and unweighted case (right). The details of the simulation used to generate the figure is explained in Section \ref{sec:Practice}; here we fit smooth polynomials to our data points to create the curves. We show the contributions of each signal loss term (blue, red, green, gray), which when combined produce the black $P_{\rm out}$ curve. Most notably, the green curves denotes the signal loss analysis used in A15, and the red curves showcase the importance of the cross-terms in Equation \eqref{eq:crossterm} in computing signal loss. As explained in the main text, the cross-terms can produce large, negative signal which represents the difference between the green curve (which exhibits negligible loss at the data level) and the black curve (which exhibits $\sim$$3$ orders of magnitude of loss at the data level for the inverse variance weighted case). Finally, the dotted diagonal black line represents perfect unity transfer, or no signal loss, which we recover for the unweighted case.}
+	\label{fig:sigloss_terms}
+\end{figure*}
 
 When $\textbf{R}_{r}$
 is taken to be $\widehat{\textbf{C}}_{r}^{-1}$, the second term of Equation \eqref{eq:pout_expand} is a cross-correlation between $\widehat{\textbf{C}}_{r}^{-1}\textbf{x}$ and
-$\widehat{\textbf{C}_{r}}^{-1}\textbf{e}$. As shown in \citet{switzer_et_al2015}, this cross-correlation term is non-zero, and in fact negative in expectation. 
+$\widehat{\textbf{C}}_{r}^{-1}\textbf{e}$. As shown in \citet{switzer_et_al2015}, this cross-correlation term is non-zero, and in fact negative in expectation. 
 This negative cross-term power arises from a coupling between the inverse of 
 $\widehat{\textbf{C}}_{r}$ and $\mathbf{x}$. 
 Intuitively, we can see this by expanding the empirical covariance of $\textbf{r}=\textbf{x}+\textbf{e}$ in the
@@ -1171,11 +1182,11 @@ look like the data $\textbf{x}$, a quantity we do not know offhand but one that 
 heat-maps for the cases of inverse covariance weighted PAPER-64 data (left) and unweighted data (right). The solid black 
 diagonal line marks a perfect unity mapping, and the solid gray horizontal line denotes the power spectrum value of the data $\widehat{\textbf{p}}_{x}$. From these plots, it is clear that inverse covariance weighting results in $\sim3$ orders of magnitude of signal loss 
 for power spectrum values above $\sim$$2 \times 10^{4}$ $mK^{2} \, (h^{-1} \, Mpc)^{3}$, whereas the unweighted case does 
-not exhibit loss.}
+not exhibit loss. The peculiar `signal gain' tail seen at low injection is driven by the cross-terms in Equation \eqref{eq:pout_expand}, also shown by the red curve in the right panel in Figure \ref{fig:sigloss_terms}.}
 	\label{fig:sigloss_transfercurve}
 \end{figure*}
 
-One peculiar aspect of Figure \ref{fig:sigloss_transfercurve} is the fact that at low $P_{\rm in}$ values it appears that we can have signal gain ($P_{\rm out} > P_{in}$). \cc{This is a log-plotting effect and is under-construction!}.
+%One peculiar aspect of Figure \ref{fig:sigloss_transfercurve} is the fact that at low $P_{\rm in}$ values it appears that we can have signal gain ($P_{\rm out} > P_{in}$). \cc{This is a log-plotting effect and is under-construction!}.
 %This is unphysical in nature but caused due to the dominating cross-terms involving $\textbf{e}$ and $\textbf{x}$ in Equation \eqref{eq:pout_expand} once $\textbf{e}$ becomes small. 
 
 The shape of our signal loss transfer function can be described as follows. At low injection levels, for small $\textbf{e}$, we are dominated by the cross-terms involving $\textbf{e}$ and $\textbf{x}$ in Equation \eqref{eq:pout_expand}. As $\textbf{e}$ increases, we move 
@@ -1260,8 +1271,8 @@ a higher limit than A15 by a factor of $\sim7$ in mK (though we only use one bas
 
 \begin{figure*}
 	\centering
-	\includegraphics[width=0.4\textwidth]{plots/ps1_data_reg.png}
-	\includegraphics[width=0.4\textwidth]{plots/ps2_data_reg.png}
+	\includegraphics[width=0.4\textwidth]{plots/ps1_data_add.png}
+	\includegraphics[width=0.4\textwidth]{plots/ps2_data_add.png}
 	\caption{Power spectrum of PAPER-64 using $\widehat{\textbf{C}}_{eff}$. Black and gray points correspond to positive and 
 negative power spectrum values, respectively, with $2\sigma$ error bars also plotted. The dashed blue line is the unweighted 
 power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on 
@@ -1412,8 +1423,8 @@ spectrum, and the solid green line denotes our $2\sigma$ theoretical noise predi
 
 \begin{figure*}
 	\centering
-	\includegraphics[width=0.4\textwidth]{plots/ps1_noise_reg.png}
-	\includegraphics[width=0.4\textwidth]{plots/ps2_noise_reg.png}
+	\includegraphics[width=0.4\textwidth]{plots/ps1_noise_add.png}
+	\includegraphics[width=0.4\textwidth]{plots/ps2_noise_add.png}
 	\caption{Power spectrum estimate for a noise simulation that mimics the noise level of PAPER-64 data. The weighted 
 power spectrum points and their $2\sigma$ errors are show in black and gray (positive and negative values), where we use $
 \widehat{\textbf{C}}_{eff}$ to minimize signal loss. The dashed blue line is the unweighted power spectrum (also $2\sigma$ upper 
@@ -1531,8 +1542,7 @@ that the positive detections are indeed due to foreground variation and not attr
 The three null test results are shown in Figure \ref{fig:null}, with each test described as the following:
 
 \begin{itemize}
-\item Original Data (black): This is identical to the power spectrum in Figure \ref{fig:ps1_data} and represents the best revised 
-PAPER-64 power spectrum (one baseline type only) with weighting matrix $\widehat{\textbf{C}}_{eff}$. There are clear detections at 
+\item Original Data (black): This is identical to the unweighted, revised PAPER-64 power spectrum in Figure \ref{fig:ps1_data} (one baseline type only) with weighting matrix $\textbf{I}$. There are clear detections at 
 low $k$'s.
 \item Even/Odd (blue): We split our dataset into even (e) and odd (o) days, where $\textbf{x}_{1} = e + o$ and $\textbf{x}_{2} = 
 e - o$. We form datasets in this way to ensure that we use the full sensitivity of our data. When cross-multiplied, we obtain:
@@ -1550,7 +1560,7 @@ group and $b_{2}$ is the second baseline group.
 \begin{figure*}
 	\centering
 	\includegraphics[width=1\textwidth]{plots/null.png}
-	\caption{Results for three null tests compared to the PAPER-64 revised power spectrum (black) and analytically estimated 
+	\caption{Results for three null tests compared to the PAPER-64 unweighted revised power spectrum (black) and analytically estimated 
 $2\sigma$ errors (gray shaded region). For each, we take a jackknife along a different axis of the dataset - along julian days (separating 
 even and odd days; blue), along baselines (green), and along LST (magenta). We expect the sky signal to disappear for a `passing' null test (for all error bars to be contained to within the gray shaded region).
 We find that none of the null tests performed pass, and that the dominant source of the biases in our power spectrum are likely caused by variation of foregrounds in LST (due to the magenta result being the most inconsistent with noise)}
