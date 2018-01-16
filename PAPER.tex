@@ -1347,7 +1347,7 @@ where $\nu$ are frequencies in GHz. We use a receiver temperature of $144$ K, yi
 This is lower than the $T_{sys}$ of $500$ K used in A15 because of several small miscalculation errors that were 
 identified\footnote{For example, there was a missing a square root in going from a variance to a standard deviation.}.
 \item $\sqrt{2}$: This factor in the denominator of the sensitivity equation comes from taking the real part of the power spectrum 
-estimates after squaring visibility measurements. In A15, a factor of $2$ was mistakenly used.
+estimates after cross-multiplying independent `even' and `odd' visibility measurements (which is done principally to avoid a noise bias). In A15, a factor of $2$ was mistakenly used.
 \item $N_{lst}$: The number of LST bins that go into a power spectrum estimation. The sensitivity scales as the square root 
 because we integrate incoherently over time. For PAPER-64, $N_{lst} = 8$.
 \item $N_{seps}$: The number of baseline separation types averaged incoherently in a final power spectrum estimate. For the 
