@@ -773,8 +773,6 @@ spreading to high $k$ values. For example, narrow window functions in delay-spac
 $k$ value into other ones (\citealt{liu_et_al2014b}). In other words, one can construct an estimator using OQE that forces a 
 window function to have a minimum response to low $k$ values. The window function used in A15 is constructed in such a way, 
 specifically to prevent foregrounds that live at low $k's$ from contaminating higher $k$-modes (see Section \ref{sec:Bias}). 
-Minimizing foreground leakage in this way however, comes with the trade-off of compromising power spectrum sensitivity, since 
-narrow window functions increases errors for each $k$-mode (\citealt{liu_et_al2014b}). 
 
 Determining the source of positive non-EoR detections at higher $k$'s is more difficult. In previous power spectrum results, these detections have been explained as instrumental systematics, particularly time-variable cross talk, RFI, cable reflections, and calibration errors (A15; \citealt{parsons_et_al2014}; \citealt{dillon_et_al2014}; \citealt{beardsley_et_al2016}; \citealt{patil_et_al2017}). In the next section (Section \ref{sec:JackknifeOverview}), we will present some tests that can help distinguish these excesses from that of EoR. 
 
@@ -1161,14 +1159,14 @@ p(P_{in} | \phat_{x}) \propto \mathcal{L} (  \phat_{x} | P_{in})  p(P_{in}),
 \end{equation}
 where $p(P_{in})$ is the prior on $P_{in}$ and $\mathcal{L} $ is the likelihood function. Since the likelihood is defined as the distribution of the measured result $ \phat_{x}$ given the theoretical power spectrum $P_{in}$, we may construct this function simply by fixing $P_{in}$, and simulating our analysis pipeline for many realizations of the injected EoR signal consistent with this power spectrum. The resulting distribution can be normalized, and the whole process can then be repeated for a different value of $P_{in}$. 
 
-In our code, we simulate $20$ realizations of $P_{in}$ by bootstrapping over baselines, as explained in Section \ref{sec:Boot}, yielding $P_{\rm in}$ values that range from $\sim$$10^{2}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$ to $\sim$10$^{16}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$. We also run $25$ total EoR injection levels, resulting in a total of $500$ data points on our $P_{\rm in}$ vs. $P_{\rm out}$ grid. 
+In our code, we simulate $20$ realizations of $P_{in}$, yielding $P_{\rm in}$ values that range from $\sim$$10^{2}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$ to $\sim$10$^{16}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$. We also run $25$ total EoR injection levels, resulting in a total of $500$ data points on our $P_{\rm in}$ vs. $P_{\rm out}$ grid. 
 %Additionally, we have verified that the transfer function is symmetric for negative and positive $P_{\rm in}$'s, and so we fold all the values into positive ones to increase our signal-to-noise.
 
 We smooth the 2D distribution of $P_{in}$ vs. $P_{out}$ using kernel density estimators. The result, for inverse covariance weighting, is shown in the left plot of Figure \ref{fig:sigloss_transfercurve}. Bayes' rule then simply instructs us to fix $\phat_{x}$ at our measured value, essentially reading Figure \ref{fig:sigloss_transfercurve} horizontally and reinterpreting Equation \eqref{eq:Bayes} as a function of $p(P_{in})$. The final result can then be normalized to give $p(P_{in} | \phat_{x})$. If $\phat_{x}$ itself does not take on a single value but is itself a distribution (for our analysis, this comes from bootstrapping), then one simply repeats the process for every single point on the distribution of $\phat_{x}$, before performing the final summation and normalization. In Figure \ref{fig:sigloss_transfercurve}, the peak of our data distribution $
 \widehat{\textbf{p}}_{x}$ is marked by the solid gray horizontal lines. From the left plot (inverse covariance weighting), one can eyeball that a data value of $10^{5} \, mK^{2} (h^{-1} Mpc)^{3}$, for example, would map approximately to a 
 value of $\sim10^{8} \, mK^{2} (h^{-1} Mpc)^{3}$, implying a signal loss factor of $\sim1000$. Performing a summation and normalization for the entire distribution of $\widehat{\textbf{p}}_{x}$ yields a final $P_{\rm in}$ distribution --- the distribution of our data as seen through the signal loss lens. We compute power spectrum points from the peak of the histograms, and power spectrum errors from $95\%$ confidence intervals.
 
-As a final complication to our procedure, we note that there will be some intrinsic scatter in our likelihood due to our having only a finite number of simulations. To separate the intrinsic stochasticity of signal loss from that which arises due to simulation noise, we repeat our analysis for a power spectrum estimator without signal loss ($\textbf{R} = \textbf{I}$), shown as the right plot in Figure \ref{fig:sigloss_transfercurve}. This intrinsic scatter is shown as the smeared `heat-map' around the solid black diagonal line (representing unity-transfer) in the plot. The width of the lossless scenario's signal loss likelihood is then deconvolved from the lossy scenario's signal loss likelihood. Specifically, we deconvolve Gaussian distributions of $P_{out}$ in the unweighted case from those of the weighted case (vertical cuts through the plots in Figure \ref{fig:sigloss_transfercurve}), for every $P_{in}$. By doing this, we are left with only the intrinsic scatter in signal loss, or scatter that stems from how much the random EoR signal $\textbf{e}$ happens to 
+As a final complication to our procedure, we note that there will be some intrinsic scatter in our likelihood due to our having only a finite number of simulations. Ideally, running many simulations would lead to convergence in our likelihood; however, our desire to be able to quickly and easily estimate signal loss for a variety of weighting schemes and datasets means having a finite sample in practice. To separate the intrinsic stochasticity of signal loss from that which arises due to simulation noise, we repeat our analysis for a power spectrum estimator without signal loss ($\textbf{R} = \textbf{I}$), shown as the right plot in Figure \ref{fig:sigloss_transfercurve}. This intrinsic scatter is shown as the smeared `heat-map' around the solid black diagonal line (representing unity-transfer) in the plot. The width of the lossless scenario's signal loss likelihood is then deconvolved from the lossy scenario's signal loss likelihood. Specifically, we deconvolve Gaussian distributions of $P_{out}$ in the unweighted case from those of the weighted case (vertical cuts through the plots in Figure \ref{fig:sigloss_transfercurve}), for every $P_{in}$. By doing this, we are left with only the intrinsic scatter in signal loss, or scatter that stems from how much the random EoR signal $\textbf{e}$ happens to 
 look like the data $\textbf{x}$, a quantity we do not know offhand but one that we would like to correct for. As an extreme example, if we are very unlucky, one realization of $\textbf{e}$ would have the same shapes, or eigenvectors, as $\textbf{x}$. An empirically-derived covariance would then down-weight these shapes, destroying the entire EoR signal. On the other hand, the less that $\textbf{e}$ looks like $\textbf{x}$, the less signal loss that would result. The intrinsic scatter we can get is not a dominant factor in this case but it is important to correct for the fact that a particular $P_{\rm out}$ value could arise from a range of $P_{\rm in}$ values. 
 
 %The solid black diagonal line in Figure \ref{fig:sigloss_transfercurve} shows unity-transfer, which we expect to occur for the 
@@ -1208,11 +1206,11 @@ the shape of the transfer curve is nearly identical for all $k$'s (though we tre
 %\end{figure*}
 
 To conclude this method, we also show power spectrum results for fringe-rate filtered PAPER-64 data before and after signal 
-loss estimation in Figure \ref{fig:ps2_data}, using inverse covariance weighting. The blue dashed line represents the unweighted 
+loss estimation in Figure \ref{fig:ps2_data}, using empirically estimated inverse covariance weighting. The blue dashed line represents the unweighted 
 power spectrum $2\sigma$ upper limit, which is identical in both panels (an important check, as we expect no signal loss for this case). The black and 
 gray points are positive and negative power spectrum values plotted with $2\sigma$ error bars. Prior to signal loss estimation, it 
 is clear that the power spectrum is unfeasible because it is well below the theoretical noise level prediction (solid green curve). 
-Post-estimation, the power spectrum errors blow up to be higher than both the theory and unweighted power spectrum, a consequence of not being able to characterize covariances well using the time-averaged fringe-rate filtered data (there is less independent information to use). We elaborate on this point in the next section, as well as investigate alternate 
+Post-estimation, the power spectrum errors are higher than both the theory and unweighted power spectrum, a consequence of not being able to characterize covariances well using the time-averaged fringe-rate filtered data (there is less independent information to use). We elaborate on this point in the next section, as well as investigate alternate 
 weighting schemes to inverse covariance weighting, with the goal of finding one that balances the aggressiveness of down-weighting contaminants with minimizing the loss of EoR signal. 
 
 \begin{figure*}
@@ -1233,7 +1231,7 @@ parameters, whose calculation is detailed in Section \ref{sec:PSSense}.}
 With a signal loss formalism established, we now have the capability of experimenting 
 with different weighting options for $\textbf{R}$. Our goal here is to choose a weighting method that successfully down-weights 
 foregrounds and systematics in our data without generating large amounts of signal loss. We have found that the balance 
-between the two is a delicate one and requires a careful understanding and altering of covariance matrices. 
+between the two is a delicate one and requires a careful understanding and altering of empirical covariances. 
 
 We saw in Section \ref{sec:otherweight} how limiting the number of down-weighted eigenmodes (i.e. flattening out part of the 
 eigenspectrum) can help minimize signal loss. We experiment with this idea on PAPER-64 data, dialing the number of modes 
@@ -1304,6 +1302,8 @@ calculate $\widehat{\textbf{C}}$ with data from LSTs where foregrounds are stron
 down-weight, especially if residual foreground chromaticity is instrumental in origin and stable in time. Fundamentally, each of these examples are similar in that they rely on a computation of $\widehat{\textbf{C}}$ from 
 data that is similar but not exactly the same as the data that is being down-weighted. Ideally this would be effective in down-weighting shared contaminants yet avoid signal loss from over-fitting EoR modes in the power spectrum dataset itself. 
 
+In Section \ref{sec:Sigloss}, we have detailed several aspects of signal loss in PAPER-64: how the loss arises, how it can be estimated, and ways it can be minimized. We again emphasize that these lessons learned about signal loss are largely responsible for shaping our revised analysis of PAPER data. In the remainder of this paper, we will transition to other new aspects of our analysis, framed within the context of error estimation and (non-EoR) bias in PAPER-64.
+
 % SECTION 3 ERROR ESTIMATION ---------------------------------------------------------------------------------
 
 \subsection{PAPER-64: Error Estimation}
@@ -1324,7 +1324,7 @@ spectrum results in \citet{parsons_et_al2014} are affected by the same issues.
 
 Re-analysis of the PAPER-64 data included a detailed study using several independently generated noise simulations. What we 
 found was that these simulations all agreed but were discrepant with the previous analytic sensitivity calculations. The analytic 
-calculation is only an approximation, however the differences were large enough (factors of $10$ in some cases) to warrant a 
+calculation is only an approximation; however, the differences were large enough (factors of $10$ in some cases) to warrant a 
 careful investigation. The analytic calculation attempts to combine a large number of pieces of information in an approximate 
 way, and when re-considering some of the approximations, we have found there to be large effects. What follows here is an 
 accounting of the differences which have been discovered.
@@ -1334,12 +1334,13 @@ interferometric $21$ cm data, in temperature-units, is:
 
 \begin{equation}
 \label{eq:sense}
-p(k) = \frac{X^{2}Y \Omega_{eff} T_{sys}^{2}}{\sqrt{2N_{lst}N_{seps}}\,t_{int}N_{days}N_{bls}N_{pols}}
+p(k) = \frac{X^{2}Y \Omega_{eff} T_{sys}^{2}}{\sqrt{2N_{lst}N_{seps}}\,t_{int}N_{days}N_{bls}N_{pols}}.
 \end{equation}
+We will now explain each factor in Equation \eqref{eq:sense} and highlight key differences from the numbers used in A15.
 
 \begin{itemize}
 \item $X^{2}Y$: Conversion factors from observing coordinates (angles on the sky and frequency) to cosmological coordinates (co-moving 
-distances). For $z=8.4$, $X^{2}Y = 5 \times 10^{11} h^{-3} Mpc^{3} str^{-1} GHz^{-1}$.
+distances). For $z=8.4$, $X^{2}Y = 5 \times 10^{11} h^{-3}$ Mpc$^{3}$ str$^{-1}$ GHz$^{-1}$.
 \item $\Omega_{eff}$: The effective primary beam area in steradians (\citealt{parsons_et_al2010}; \citealt{pober_et_al2012}). 
 The effective beam area changes with the application of a fringe-rate filter, since different parts of the beam are up-weighted and down-weighted. Using numbers from Table 1 in \citet{parsons_et_al2016}, $\Omega_{eff} = 0.74^{2}/0.24$ for an optimal fringe-rate 
 filter. 
@@ -1381,10 +1382,10 @@ days.
 the total number of $30$ m East/West baselines used in the analysis. However, using the total number of baselines neglects 
 the fact that baselines are averaged into groups (see Section \ref{sec:Boot}) for computational speed-up when cross-multiplying data. Our revised estimate for the parameter is:
 \begin{equation}
-N_{bls} = \frac{N_{bls}}{N_{gps}}\sqrt{N_{gps}^{2}-N_{gps}},
+N_{bls} = \frac{N_{bls\_total}}{N_{gps}}\sqrt{N_{gps}^{2}-N_{gps}},
 \end{equation}
 \noindent where, for the A15 analysis, $N_{gps} = 5$. Each baseline group averages down linearly as the number of baselines 
-entering the group ($N_{bls}/N_{gps}$) and then as the square root of the number of cross-multiplied pairs ($\sqrt{N_{gps}^{2} - 
+entering the group ($N_{bls\_total}/N_{gps}$) and then as the square root of the number of cross-multiplied pairs ($\sqrt{N_{gps}^{2} - 
 N_{gps}}$). For the revised PAPER-64 analysis with only one baseline separation type, this becomes $N_{bls} \sim 46$ instead 
 of $51$. 
 \item $N_{pols}$: The number of polarizations averaged together. For the case of Stokes I, $N_{pols}=2$.
@@ -1443,7 +1444,7 @@ estimates agree (the analytic curve should encompass $95\%$ of the points).}
 \label{sec:Boot}
 
 We bootstrap PAPER-64 power spectra in order to determine confidence intervals for our results. In this section, we highlight 
-one major changes in the way we estimate errors since A15, using the lesson we've learned about bootstrapping independent samples.
+one major changes in the way we estimate errors since A15, using the lesson we have learned about bootstrapping independent samples.
 
 As discussed in Section \ref{sec:ErrorOverview}, bootstrapping is only a valid way of estimating errors if a dataset is comprised 
 of independent samples, or the number of independent samples is well known. The PAPER-64 pipeline outputs $20$ bootstraps (over baselines), each a $2$-dimensional power 
@@ -1464,7 +1465,7 @@ Given our new understanding of the sensitivity of bootstraps to the number of el
 bootstrapping step along time entirely and now simply bootstrap over baselines. Power spectrum estimates with this bootstrapping change for fringe-rate filtered noise are shown in Figure 
 \ref{fig:data_errors}. The estimates are unweighted in order to disentangle the effects of bootstrapping from signal loss. As 
 shown in the figure, when more elements are drawn for each bootstrap than the number of 
-independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits (gray) below the predicted noise level (green). Using the revised bootstrapping method, where bootstrapping only occurs over the baseline axis, the errors (black) are shown to agree with the analytic.
+independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits (gray) below the predicted noise level (green). Using the revised bootstrapping method, where bootstrapping only occurs over the baseline axis, the errors (black) are shown to agree with the analytic prediction for noise.
 
 \begin{figure}
 	\centering
@@ -1489,9 +1490,9 @@ foreground and noise bias and we perform null tests in order to characterize the
 
 We briefly discuss one way we mitigate foreground leakage in a power spectrum estimate, and two ways we 
 suppress noise biases. These methods are not novel to this analysis but here we frame them in the context of minimizing false 
-(non-EoR) detections.
+(non-EoR) detections. 
 
-Tailoring window functions is one way to suppress foreground biases. As alluded to in Section \ref{sec:SiglossOverview}, we 
+Tailoring window functions is one way to suppress foreground biases (similar discussions to the following one are in \citet{liu_et_al2014b} and A15). As alluded to in Section \ref{sec:SiglossOverview}, we 
 have a choice for the normalization matrix $\textbf{M}$ in Equation \eqref{eq:phat}. For the analysis of PAPER-64 data, we 
 compute $\textbf{M}$ using the Fisher matrix $\textbf{F}$, defined as:
 
@@ -1550,17 +1551,17 @@ The three null test results are shown in Figure \ref{fig:null}, with each test d
 \begin{itemize}
 \item Original Data (black): This is identical to the unweighted, revised PAPER-64 power spectrum in Figure \ref{fig:ps1_data} (one baseline type only) with weighting matrix $\textbf{I}$. There are clear detections at 
 low $k$'s.
-\item Even/Odd (blue): We split our dataset into even (e) and odd (o) days, where $\textbf{x}_{1} = e + o$ and $\textbf{x}_{2} = 
-e - o$. We form datasets in this way to ensure that we use the full sensitivity of our data. When cross-multiplied, we obtain:
+\item Even/Odd (blue): We split our dataset into even (\textbf{e}) and odd (\textbf{o}) days. We then form the following two datasets: $\textbf{x}_{1} = \textbf{e} + \textbf{o}$ and $\textbf{x}_{2} = 
+\textbf{e} - \textbf{o}$. We form datasets in this way to ensure that we use the full sensitivity of our data. When cross-multiplied, we obtain:
 \begin{equation}
-\textbf{x}_{1}\textbf{x}_{2}^{\dagger} = ee^{\dagger} - eo^{\dagger} + oe^{\dagger} - oo^{\dagger}
+\textbf{x}_{1}\textbf{x}_{2}^{\dagger} = \textbf{ee}^{\dagger} - \textbf{eo}^{\dagger} + \textbf{oe}^{\dagger} - \textbf{oo}^{\dagger}
 \end{equation}
 If the same sky signal is in both the even and odd datasets, we expect it to cancel out.
 \item Baselines (green): We split our dataset into two halves, where each contains half of the total baselines used in the 
-analysis. Again, we form $\textbf{x}_{1} = b_{1} + b_{2}$ and $\textbf{x}_{2} = b_{1} - b_{2}$, where $b_{1}$ is the first baseline 
-group and $b_{2}$ is the second baseline group.
-\item LST (magenta): We split our dataset into two halves based on LST, namely $t_{1}$ (LSTs 0.5-4.6 hours) and $t_{2}$ (LSTs 
-4.6-8.6 hours). We form our two datasets as $\textbf{x}_{1} = t_{1} + t_{2}$ and $\textbf{x}_{2} = t_{1} - t_{2}$.
+analysis. Again, we form $\textbf{x}_{1} = \textbf{b}_{1} + \textbf{b}_{2}$ and $\textbf{x}_{2} = \textbf{b}_{1} - \textbf{b}_{2}$, where $\textbf{b}_{1}$ is the first baseline 
+group and $\textbf{b}_{2}$ is the second baseline group.
+\item LST (magenta): We split our dataset into two halves based on LST, namely $\textbf{t}_{1}$ (LSTs 0.5-4.6 hours) and $\textbf{t}_{2}$ (LSTs 
+4.6-8.6 hours). We form our two datasets as $\textbf{x}_{1} = \textbf{t}_{1} + \textbf{t}_{2}$ and $\textbf{x}_{2} = \textbf{t}_{1} -\textbf{t}_{2}$.
 \end{itemize}
 
 \begin{figure*}
@@ -1578,13 +1579,13 @@ Investigating Figure \ref{fig:null}, we find that none of the null tests are ful
 %We note that the error bars for the baselines test (green) are especially small --- this is because the signal is effectively cancelled out prior to cross-multiplication (when forming baseline groups). 
 
 This suggests that the primary systematic driving our power spectrum points and errors to be outside the 
-estimated error region is LST-dependent, and therefore likely to be residual foregrounds. In other words, $t_{1}$ and 
+estimated error region is LST-dependent, and therefore likely to be residual foregrounds. In other words, the fact that many magenta power spectrum points are outside the estimated error region implies that $t_{1}$ and 
 $t_{2}$ differ by an amount greater than thermal noise and they do not effectively cancel out the sky signal during cross-multiplication. While residual foregrounds are the primary cause for power spectrum results above the theoretical noise (as in Figure \ref{fig:ps1_data}), other unexplained variations exist which are present in all the null tests. These variations could be attributable to... \cc{fill in}
 
 We do not investigate the detailed nature of the residual foregrounds in this paper, though one could imagine performing many 
 similar null tests with a sliding window of $t_{1}$'s and $t_{2}$'s. This would illuminate the particular LST range that introduces 
 the foreground bias (or whether the bias is constant in LST), and could potentially be traced to an individual bright radio source. 
-This type of detailed analysis will be critical at EoR sensitivities, however, for our current analysis we are not surprised that the main source of
+This type of detailed analysis will be critical at EoR sensitivities; however, for our current analysis we are not surprised that the main source of
 bias we see comes from foregrounds in regions where we expect leakage.
 
 % CONCLUSION ---------------------------------------------------------------------------------
