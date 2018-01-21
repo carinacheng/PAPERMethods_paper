@@ -1050,6 +1050,12 @@ which reduces to the same result because of the linearity of Equation \eqref{eq:
 
 Using this motivation, the numerator of Equation \eqref{eq:Deriv2} is precisely our expression for $P_{\rm out}$ (Equation \eqref{eq:sigloss}), and the denominator is $P_{\rm in}$ (Equation \eqref{eq:Pin}), where the function $g$ is our OQE power spectrum pipeline. \dcj{Here is the post-hoc justification for this signal loss method.  Except goes back to assumption of equation for g which just \emph{assumes} that there are no cross terms in the estimation of a power spectrum. So we're just kicking the can down the road.} \acl{Ok, in my defense, Equation \eqref{eq:LinearPspecSum} is a little better than an \emph{assumption}. Appendix \eqref{sec:sigloss_appendix} does in fact illustrate this with an example. The crucial question is whether we're allowed to motivate our method based on a relationship that is only true in expectation. Note that this expectation includes allowances for signal loss due to the cross correlation between signal and foregrounds, with an example of this being Appendix \ref{sec:sigloss_appendix}.}
 \jp{I'm fine with leaving the text as is and calling this note closed with the addition of the appendix, but will wait for sign off from DCJ.}
+\dcj{ Assuming that expansion to "leading order in $\eta$" means $\eta<<1$ then the approximation is that the 
+covariance is nearly perfectly calculated from the data with only small effects due to finite samples. Thus 
+correlations don't make it into the expression and foregrounds remain uncorrelated with eor or injected signals.  
+I added words explaining this but it still looks strange for us to be saying that loss is linear in one section and 
+then explaining in the next section exactly how cross terms were what messed us up in the first go round.} 
+
 Effectively, this means that the relationship between the input and output power spectra, $P_{\rm in}$ and $P_{\rm out}$, can be thought of as a transfer function 
 which, for a sampling of $P_{\rm in}$ and $P_{\rm out}$ provides a mapping from an input power spectrum distribution into an output 
 distribution. By viewing data through this signal loss lens, we may then ask the question ``what input power spectrum 
@@ -1165,7 +1171,16 @@ Since $|\mathbf{e}|^2$ would be a lossless estimate of the true EoR power spectr
 \begin{equation}
 \phat_x \approx \ell_{\rm fg} f^2 + \ell_{\rm eor} e^2 + \ell_{\rm fe} fe.
 \end{equation}
-(Note that even this is an approximation. In principle there is an infinite series containing all possible powers of $e$ and $f$). Now, we split $f$ into $ f_\parallel + f_\perp$, which are the components of the foregrounds that couple to the EoR versus those that do not. Further parameterize $f_\parallel \equiv \rho e$, where $\rho$ is some correlation coefficient that quantifies the degree of correlation between the foregrounds and the EoR. Under this parameterization, one can write the $fe$ term in terms of $e^2$ (which gets absorbed into the other EoR term, plus residual foregrounds that we don't care about).}\acl{Just promoted this last part to something in the main text.}
+(Note that even this is an approximation. In principle there is an infinite series containing all possible powers of 
+$e$ and $f$). Now, we split $f$ into $ f_\parallel + f_\perp$, which are the components of the foregrounds that 
+couple to the EoR versus those that do not. Further parameterize $f_\parallel \equiv \rho e$, where $\rho$ is 
+some correlation coefficient that quantifies the degree of correlation between the foregrounds and the EoR. 
+Under this parameterization, one can write the $fe$ term in terms of $e^2$ (which gets absorbed into the other 
+EoR term, plus residual foregrounds that we don't care about).}\acl{Just promoted this last part to something in 
+the main text.}\dcj{I will admit to being a little lost here.  Doesn't changing the basis just convert the unknown f 
+dot s term into other unknown terms. Isn't the whole point of Eq 24 supposed to be that we can subtract off the 
+$g(x)$ to estimate $\hat{\ell}_{\rm eor}$?  How do we subtract off $f\dot f_\perp$? Don't we want to know $
+\ell_{\rm eor}$ not $(\ell_{\rm eor} + \rho\ell_{\rm fe})$? }
 
 The second issue to tackle is how one incorporates the randomness of $\ell_{\rm eor}$ into our signal loss corrections. This is manifest in Equation \eqref{eq:fperpfpara}, where the randomness of $\rho$ means that there is an inherent spread in the signal loss correction. Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution of $p( \p_{\rm eor} | \phat_{x})$ for $\p_{\rm eor}$ given the uncorrected power spectrum estimate $\phat_{x}$. Since Equation \eqref{eq:Deriv2} is a good approximation of Equation \eqref{eq:Deriv1}, which we argued for in the previous section, we can write $\p_{\rm eor}$ as $P_{in}$, and hence the probability distribution is given by
 \begin{equation}
