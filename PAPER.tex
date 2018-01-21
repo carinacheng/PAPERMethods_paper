@@ -1774,19 +1774,20 @@ The different colors represent different $k$ values. We choose a probability of 
   
 One difference in this method from the one in the main text is that we are exclusively asking about signals detectable \emph{above} the level of the observed data. Thus it is explicitly limited to placing an upper limit, even if in some $k$-modes one has actual detections above the noise.  This might be seen as more conservative, however, a similar assumption has already been made when choosing to down-weight the data using itself. In such a down-weighting step, one has assumed that significant excess power is associated with a foreground residual. We note that a high SNR detection will require a different method.
   
-Formally we can express our test as: ``What is the $P_{\rm in}$ such that
+Formally we can express our test as: ``What is the $P_{\rm in}$ such that the power spectrum of "data + 
+injected eor" ($\widehat{p}_{e+x}$) is detectable above the power spectrum of the data itself ($\widehat{p}_x$. 
+In other words, what is $e$ such that,
 \begin{equation}
-\widehat{\textbf{p}}_{r} > \widehat{\textbf{p}}_{x} \Lambda,
+\widehat{\textbf{p}}_{e+x} > \widehat{\textbf{p}}_{x},
 \end{equation}  
-where $\Lambda$ represents a choice of threshold?'' Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not (i.e. the null test) the same.  
+?''  Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not (i.e. the null test) the same.  
  
  \begin{equation}
-\Prob(P_{in})  =  1 -  \int_{r=x} \Prob(\widehat{\textbf{p}}_x) \Prob(\widehat{\textbf{p}}_r,P_{in}) dr
+\Prob(P_{e})  =  1 -  \int \Prob(\widehat{\textbf{p}}_x) \Prob(\widehat{\textbf{p}}_{e+x}|P_{e}) x
  \end{equation}
- where $\Prob(\widehat{\textbf{p}}_x)$ is the probability of obtaining the power spectrum $\widehat{\textbf{p}}_x$ found via bootstrapping (power spectrum of data only) and $\Prob(\widehat{\textbf{p}}_r,P_{in})$ is the probability of obtaining the summed power spectrum $\widehat{\textbf{p}}_{r}$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
+ where $\Prob(\widehat{\textbf{p}}_x)$ is the probability of obtaining the power spectrum $\widehat{\textbf{p}}_x$ found via bootstrapping (power spectrum of data only) and $\Prob(\widehat{\textbf{p}}_{e+x}|P_{e})$ is the probability of obtaining the summed power spectrum $\widehat{\textbf{p}}_{x+e}$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
  
-Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low injection levels the variation between $\textbf{x}$ and $\textbf{r}$ is such that the null test is ruled out to within $20$\%. This is the level expected from two distributions with $\sim$10 effective samples. 
-%\dcj{checked with a little python test but needs a cite} 
+Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low injection levels the variation between $\textbf{x}$ and $\textbf{(e+x)}$ is such that the null test is ruled out to within $20$\%. This is the level expected from two distributions with $\sim$10 effective samples. 
 As the injected signal approaches the level of the data, the probability of null rejection rises steeply.
   
 Lastly, this method requires that we choose the probability at which we choose to reject the null hypothesis. As can be seen in Figure \ref{fig:Prob_vs_Pin}, the difference between $80$\% and $90$\% can mean a difference of almost an order of magnitude in the power spectrum level that is ruled out. We can also see that, due to the small number of samples, the probability does not perfectly converge at high injected power levels. Rather than insist on a rejection at the $99$th percent level, we compromise at $95$\%.
