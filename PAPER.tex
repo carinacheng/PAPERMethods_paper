@@ -197,7 +197,13 @@ revised PAPER-64 power spectrum result (Kolopanis et al., \textit{in prep}). We 
 \section{Power Spectrum Themes and Techniques}
 \label{sec:Themes}
 
-There are many choices a $21$ cm data analyst must consider. How can time-ordered measurements be combined? How can the 
+There are many choices a $21$ cm data analyst must consider, though the space is significantly constrained by 
+the type of instrument being used.  The PAPER instrument in its grid configuration focuses most sensitivity on 
+only a few baselines but imaging performance is poor. In this space, signal processing tricks which filter or 
+down-weight foreground modes without reference to a sky model have the advantage of being agnostic about 
+the sky. However, even within this problem sub-space, questions remain.
+
+ How can time-ordered measurements be combined? How can the 
 variance of the data be estimated? In what way(s) can the data be weighted to suppress contaminated modes while not 
 destroying an EoR signal? How can a statistically significant detection of a signal be properly identified? Many common techniques, such as 
 averaging data, weighting, bootstrapping, and jackknife testing, address these issues but harbor additional trade-offs. For 
