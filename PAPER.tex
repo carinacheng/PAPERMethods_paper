@@ -1046,6 +1046,7 @@ covariance is nearly perfectly calculated from the data with only small effects 
 correlations don't make it into the expression and foregrounds remain uncorrelated with eor or injected signals.  
 I added words explaining this but it still looks strange for us to be saying that loss is linear in one section and 
 then explaining in the next section exactly how cross terms were what messed us up in the first go round.} 
+\acl{Ok, I'm open to suggestions as to how to phrase this, because lots of people seem to be thinking that the appendix was meant to justify everything. It's not. It's meant as a motivational example. I just wanted something where I could follow through analytically to the end to show that it's ok to think about signal loss as a multiplicative factor. At least in expectation. And then how one deals with not correcting for the signal loss in expectation is described in Section \ref{sec:Practice}.}
 
 Effectively, this means that the relationship between the input and output power spectra, $P_{\rm in}$ and $P_{\rm out}$, can be thought of as a transfer function 
 which, for a sampling of $P_{\rm in}$ and $P_{\rm out}$ provides a mapping from an input power spectrum distribution into an output 
@@ -1172,6 +1173,8 @@ the main text.}\dcj{I will admit to being a little lost here.  Doesn't changing 
 dot s term into other unknown terms. Isn't the whole point of Eq 24 supposed to be that we can subtract off the 
 $g(x)$ to estimate $\hat{\ell}_{\rm eor}$?  How do we subtract off $f\dot f_\perp$? Don't we want to know $
 \ell_{\rm eor}$ not $(\ell_{\rm eor} + \rho\ell_{\rm fe})$? }
+\acl{I think what we are trying to say here is that actually the thing we want \emph{is} $(\ell_{\rm eor} + \rho\ell_{\rm fe})$. Essentially, the potential coupling between the injected EoR and the foregrounds means that we lose the nice form of Equation \eqref{eq:LinearPspecSum}, which justified what is basically a multiplicative correction to signal loss. What we are suggesting here is that even when there is a coupling, the estimator can be parameterized as $\alpha  |\mathbf{e}|^2 + \beta$. So essentially we are defining an effective $
+\ell_{\rm eor}$, which is given by $(\ell_{\rm eor} + \rho\ell_{\rm fe})$.}
 
 The second issue to tackle is how one incorporates the randomness of $\ell_{\rm eor}$ into our signal loss corrections. This is manifest in Equation \eqref{eq:fperpfpara}, where the randomness of $\rho$ means that there is an inherent spread in the signal loss correction. Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution of $p( \p_{\rm eor} | \phat_{x})$ for $\p_{\rm eor}$ given the uncorrected power spectrum estimate $\phat_{x}$. Since Equation \eqref{eq:Deriv2} is a good approximation of Equation \eqref{eq:Deriv1}, which we argued for in the previous section, we can write $\p_{\rm eor}$ as $P_{in}$, and hence the probability distribution is given by
 \begin{equation}
@@ -1737,9 +1740,9 @@ where $N$ is the length of $\x$. In the last step we dropped the final term, sin
 
 \section{Simplified Loss Correction}
 \label{sec:Pr_appendix}
-One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in Section \ref{sec:Sigloss} relies on several assumptions which required justification including the assumption that the number of samples is large enough to treat sample variance as a first order purturbation on the ideal covariance matrix instead of the dominant effect we know it is. However it is possible to ask a slightly different question and with less math still get roughly the same answer.
+One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in Section \ref{sec:Sigloss} relies on several assumptions which required justification including the assumption that the number of samples is large enough to treat sample variance as a first order purturbation on the ideal covariance matrix instead of the dominant effect we know it is. \acl{I'm not sure the previous sentence was fair. Again, the appendix is a motivating example. Carina's numerical computations do not rely on the derivation.} However it is possible to ask a slightly different question and with less math still get roughly the same answer.
 
-In the main text we made an estimate of the signal loss effecting only the injected EoR by supposing that the lossy injected signal was the difference between the injected and not injected cases: $P_{out} = \widehat{\textbf{p}}_{r} - \widehat{\textbf{p}}_{x}$. Suppose that we rephrase the question we are asking to: ``At what point would an injected signal be detectable at significant levels?". Instead of disentangling the part of the output power spectrum dominated by the injected signal we can simply use $\widehat{\textbf{p}}_{r}$, the weighted power spectrum of the data plus injected signal.
+In the main text we made an estimate of the signal loss effecting only the injected EoR by supposing that the lossy injected signal was the difference between the injected and not injected cases: $P_{out} = \widehat{\textbf{p}}_{r} - \widehat{\textbf{p}}_{x}$. Suppose that we rephrase the question we are asking to: ``At what point would an injected signal be detectable at significant levels?". \acl{Can we justify better why this is the right question? In particular, why is the detection of an injected signal the right thing to look at? After all, the universe doesn't do any signal injections. I think to justify that signal injections are the right thing to consider in the first place, one requires some sort of correspondence between equations analogous to Equation \eqref{eq:Deriv1} and \eqref{eq:Deriv2}.} Instead of disentangling the part of the output power spectrum dominated by the injected signal we can simply use $\widehat{\textbf{p}}_{r}$, the weighted power spectrum of the data plus injected signal.
   
 \begin{figure}[tp]
 \centering
@@ -1771,7 +1774,16 @@ In other words, what is $e$ such that,
 \widehat{\textbf{p}}_{e+x} > \widehat{\textbf{p}}_{x},
 \end{equation}  
 ?''  Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not (i.e. the null test) the same.  
- 
+ \acl{I'm confused a little by this equation. I would've thought that the right thing to do would be to first compute $x_0$, given implicitly by
+ \begin{equation}
+ \int_{-\infty}^{x_0}\Prob(\widehat{\textbf{p}}_x) dx = \Lambda,
+ \end{equation}
+ where $\Lambda$ is the appropriate number for $2\sigma$. That tells us what $x$ would be needed for us to thing that it was an outlier result without there being an extra $e$ in the data. Then we ask how often we get such an outlier result by computing
+  \begin{equation}
+ \int_{x_0}^\infty \Prob(\widehat{\textbf{p}}_{e+x}|P_{e}) dx.
+\end{equation}
+Is what you've written equivalent to this? Sorry if this is remedial...
+ }
  \begin{equation}
 \Prob(P_{e})  =  1 -  \int \Prob(\widehat{\textbf{p}}_x) \Prob(\widehat{\textbf{p}}_{e+x}|P_{e}) x
  \end{equation}
