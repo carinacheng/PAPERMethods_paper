@@ -1232,7 +1232,7 @@ loss estimation in Figure \ref{fig:ps2_data}, using empirically estimated invers
 power spectrum $2\sigma$ upper limit, which is identical in both panels (an important check, as we expect no signal loss for this case). The black and 
 gray points are positive and negative power spectrum values plotted with $2\sigma$ error bars. Prior to signal loss estimation, it 
 is clear that the power spectrum is unfeasible because it is well below the theoretical noise level prediction (solid green curve). 
-Post-estimation, the power spectrum errors are higher than both the theory and unweighted power spectrum, a consequence of not being able to characterize covariances well using the time-averaged fringe-rate filtered data (there is less independent information to use). We elaborate on this point in the next section, as well as investigate alternate 
+Post-estimation, the power spectrum errors are higher than both the theory and unweighted power spectrum, a consequence of weighting with a steep eigenspectrum where the `weak' modes are strongly coupled to the time-averaged fringe-rate filtered data. We elaborate on this point in the next section, as well as investigate alternate 
 weighting schemes to inverse covariance weighting, with the goal of finding one that balances the aggressiveness of down-weighting contaminants with minimizing the loss of EoR signal. 
 
 \begin{figure*}
@@ -1256,13 +1256,13 @@ foregrounds and systematics in our data without generating large amounts of sign
 between the two is a delicate one and requires a careful understanding and altering of empirical covariances. 
 
 We saw in Section \ref{sec:otherweight} how limiting the number of down-weighted eigenmodes (i.e. flattening out part of the 
-eigenspectrum) can help minimize signal loss. We experiment with this idea on PAPER-64 data, dialing the number of modes 
+eigenspectrum and effectively de-coupling the `weak' eigenmodes from the data) can help minimize signal loss. We experiment with this idea on PAPER-64 data, dialing the number of modes 
 that are down-weighted from zero (which is equivalent to identity-weighting, or the unweighted case) to $21$ (which is full inverse 
 covariance weighting of our $21$ channels). The power spectrum results for one $k$ value, both before and after signal loss 
 estimation, are shown in the top panel in Figure \ref{fig:sigloss_modeloop}. We see that the amount of signal loss increases as weighting 
 becomes more aggressive (gray curve). In other words, more `weak' (EoR-dominated) fluctuations are being overfit and 
 subtracted as more modes are down-weighted. We also find that the power spectrum upper limit, post signal loss estimation, 
-increases with the number of down-weighted modes (black curve). Because our data is fringe-rate filtered, we have less information to characterize the covariance matrix and therefore do a worse job estimating it. Hence, the more modes we use in down-weighting, the greater the error we have in estimating the power spectrum.
+increases with the number of down-weighted modes (black curve). The more modes we use in down-weighting, the stronger the coupling between the weighting and the data, and the greater the error we have in estimating the power spectrum.
 
 Optimistically, we expect there to be a `sweet spot' as we dial our regularization knob; a level of regularization where weighting 
 is beneficial compared to not weighting (blue dashed line). In other words, we would like a weighting scheme that down-weights eigenmodes that predominantly describe foreground modes, but not EoR modes. We see in Figure \ref{fig:sigloss_modeloop} that this occurs when 
