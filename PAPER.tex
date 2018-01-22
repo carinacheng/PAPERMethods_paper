@@ -970,7 +970,7 @@ an integration in time, increasing sensitivity but reducing the number of indepe
 \label{sec:Sigloss}
 
 In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data 
-itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular data set. There is, of course, no way of determining an exact signal loss ``correction factor," i.e., we cannot perfectly undo the effects of a lossy estimator.
+itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular data set. The exact signal loss ``correction factor" for a particular data set will depend on the specific realizations of the signals present in the data and is not something we can directly compute. 
 In this work, we inject simulated cosmological signals into our data and test the recovery of those signals in order to statistically quantify 
 the amount of signal loss accompanying a weighting scheme used in OQE power spectrum estimation.  
 There are, in fact, several different ways of incorporating the result of such a calculation into a revised power spectrum estimate which accounts for signal loss.  In this section, we describe a methodology for determining an approximate correction factor which can be applied to a power spectrum estimate; in Appendix \ref{sec:Pr_appendix}, we present an alternate framework that explicitly interprets all measurements as upper limits in the presence of signal loss.  
