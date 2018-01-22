@@ -321,10 +321,10 @@ purposely take a thorough and pedagogical approach to describing the toy model e
 \subsubsection{Toy Model: Inverse Covariance Weighting}
 \label{sec:toymodel}
 
-One choice for the weighting matrix $\textbf{R}$ used in power spectrum analysis is an inverse covariance matrix. This type of weighting is attractive for power spectrum analyses because it yields the smallest possible error bars on a measurement. Said differently, it gives the minimum variance estimate of the power spectrum of a signal (\citealt{tegmark_et_al1997a}; \citealt{bond_et_al1998}). In \citet{liu_tegmark2011}, it was shown that inverse covariance weighting also serves as a way to down-weight foregrounds since foregrounds have large covariances in frequency, motivating our use of the weighting for previous PAPER analyses.
+One choice for the weighting matrix $\textbf{R}$ used in power spectrum analysis is an inverse covariance matrix. This type of weighting is attractive for power spectrum analyses because it yields the smallest possible error bars on a measurement. Said differently, it gives the minimum variance estimate of the power spectrum of a signal (\citealt{tegmark_et_al1997a}; \citealt{bond_et_al1998}). In \citet{liu_tegmark2011}, it was shown that inverse covariance weighting also serves as a way to down-weight some foregrounds since foregrounds have large covariances in frequency, motivating our use of the weighting for previous PAPER analyses.
 
 One important feature of weighting data by its true inverse covariance is that, while it can suppress some foregrounds, it cannot suppress the EoR signal (nor foreground modes that masquerade as signal-like modes). By definition, inverse covariance weighting does not lead to signal loss. Therefore, in an ideal world with perfect foreground, 
-instrumental, and EoR models, we could form $\textbf{C}$ in a way that accurately describes our measured data and use inverse covariance weighting to produce minimum variance power spectrum estimates without destroying the signal.
+instrumental, and EoR models, we could form $\textbf{C}$ in a way that accurately describes our measured data and use inverse covariance weighting to produce minimum variance power spectrum estimates without destroying the signal. In other words, the optimal quadratic estimator is by construction an unbiased estimator of the power spectrum.
 
 In practice, we do not have perfect models for $\textbf{C}$, and it is the use of an estimated covariance $\widehat{\textbf{C}}$ instead of the true covariance $\textbf{C}$ that can lead to loss. We will now build intuition into how estimated inverse covariance weighting can give rise to signal loss through the use of a toy model.
 
@@ -385,7 +385,7 @@ recover the EoR signal --- it exhibits the correct shape, but the amplitude leve
 multiplicative bias (per $k$) to estimates of the signal. For a toy model mathematical derivation of signal loss arising from a data-estimated covariance matrix, see Appendix \ref{sec:sigloss_appendix}. Here we will describe the origin of this signal loss 
 intuitively.
 
-To begin to understand the lossy behavior of this result, we can closely study our covariance eigenspectrum, shown in Figure \ref{fig:toy_sigloss2}. If the covariance is estimated from our data, its eigenspectrum differs from the eigenspectrum of the true covariance $\textbf{C}$, and this difference has consequences on our result. An eigenspectrum ranks the eigenvalues of a matrix from 
+To begin to understand the lossy behavior of this result, we can closely study our estimated covariance eigenspectrum, shown in Figure \ref{fig:toy_sigloss2}. Since it is estimated from our data, its eigenspectrum differs from the eigenspectrum of the true covariance $\textbf{C}$, and this difference has consequences on our result. An eigenspectrum ranks the eigenvalues of a matrix from 
 highest to lowest and can be thought of as a spectrum of weights that are given to each spectral mode in the data. In other 
 words, the eigenvalues encode the strength of different shapes in the dataset. The eigenspectrum of the identity matrix $
 \textbf{I}$ is flat (all $1$'s) because it gives equal weighting to all modes. This is usually not the case for a covariance matrix, 
@@ -404,9 +404,9 @@ loss.}
 	\label{fig:toy_sigloss2}
 \end{figure}
 
-Because $\widehat{\textbf{C}}$ is estimated from the data, its eigenvectors and eigenvalues are strongly coupled to the particular data realization that was used to compute it. The strongest mode of $\widehat{\textbf{C}}$ (highest eigenvalue) describes the sinusoid foreground mode in the toy model (the first peak in Figure \ref{fig:toy_sigloss2}). In Figure \ref{fig:toy_sigloss12} we show the covariances of our toy model datasets along with inverse covariance weighted data. The foreground sinusoid is clearly visible in $\widehat{\textbf{C}}_{FG}$.
+Because $\widehat{\textbf{C}}$ is estimated from the data, its eigenvectors and eigenvalues are strongly coupled to the particular data realization that was used to compute it. For example, the strongest mode of $\widehat{\textbf{C}}$ (highest eigenvalue) describes the sinusoid foreground mode in the toy model (the first peak in Figure \ref{fig:toy_sigloss2}). In Figure \ref{fig:toy_sigloss12} we show the covariances of our toy model datasets along with inverse covariance weighted data. The foreground sinusoid is clearly visible in $\widehat{\textbf{C}}_{FG}$.
 
-In general, the strongest eigenmodes of $\widehat{\textbf{C}}$ typically describe bright foregrounds --- the most prominent shapes in a dataset. For these `strong' modes, where foregrounds outshine the EoR signal, down-weighting is beneficial. In some sense, we desire signal loss, if by `signal' we mean `foregrounds.' In this case it is okay for the `strong' eigenmodes to be coupled to the data in a way that produces loss. For our toy model, the successful suppression of the foreground mode is demonstrated in Figure \ref{fig:toy_sigloss2} by the missing foreground peak in the weighted power spectrum estimate (green).
+In general, the strongest eigenmodes of $\widehat{\textbf{C}}$ typically describe bright foregrounds --- the most prominent shapes in a dataset. For these `strong' modes, where foregrounds outshine the EoR signal, down-weighting is beneficial. In some sense, we desire signal loss in this regime, if by `signal' we mean `foregrounds.' In this case it is beneficial for the `strong' eigenmodes to be coupled to the data in a way that produces loss. For our toy model, the successful suppression of the foreground mode is demonstrated in Figure \ref{fig:toy_sigloss2} by the missing foreground peak in the weighted power spectrum estimate (green).
 
 %If the true covariance matrix $\textbf{C}$ of our data was known, then every single eigenvalue and eigenvector of $\textbf{C}$ would be 
 %representative of real fluctuations in the data. However, when using an estimated $\widehat{\textbf{C}}$ that is derived from one 
@@ -423,12 +423,14 @@ In general, the strongest eigenmodes of $\widehat{\textbf{C}}$ typically describ
 \end{figure}
 
 The danger of an empirically estimated covariance matrix comes mostly from not being able to describe the `weak' eigenmodes of $
-\textbf{C}$ accurately, for which the EoR signal is brighter than foregrounds. \cc{start editing here later!} In such a case, the empirical covariance believes these modes should be down-weighted more than the true covariance would. For these modes, the error that results from not computing $\textbf{C}$ accurately (due to a finite data sample), has a larger impact on the `weak' modes than the `strong' modes. In other words, mis-estimating $\textbf{C}$ affects EoR-dominated eigenmodes more than FG-dominated modes, and it is primarily the coupling between these mis-estimated modes to the data that leads to signal loss. 
+\textbf{C}$ accurately, for which the EoR signal is brighter than foregrounds. In such a case, the coupling between these modes to the data realization leads to the overfitting and subtraction of the EoR signal. In other words, mis-estimating $\textbf{C}$ for EoR-dominated eigenmodes is more harmful than for FG-dominated modes, and since the `weak' modes of an eigenspectrum are typically EoR-dominated, using this part of the spectrum for weighting is most dangerous.
 
 Using what we've learned about the eigenspectrum, we can tweak it in a simple way to suppress foregrounds and yield minimal 
 signal loss. Recall that our toy model foreground is a sinusoid, so it can be perfectly described by a single eigenmode. Using the full dataset's (foreground plus EoR signal) empirical covariance, we can 
-project out the first eigenmode (i.e. use the true eigenvalue of the first eigenmode, but flatten the rest of the spectrum to have eigenvalues of 1), thereby down-weighting the foreground-dominated mode more than the rest of the modes. Hence, we are not using the relative weighting information from all the weaker eigenmodes which have comparatively larger errors. Altering $\widehat{\textbf{C}}$ as such is one specific example of a regularization method for this toy model, in which we are 
-changing $\widehat{\textbf{C}}$ in a way that flattens its eigenspectrum, making it more similar to that of $\textbf{I}$. The resulting 
+project out the first eigenmode (i.e. use the true eigenvalue of the first eigenmode, but flatten the rest of the spectrum to have eigenvalues of 1), thereby down-weighting the foreground-dominated mode more than the rest of the modes. Hence, we are changing the weaker part of the spectrum to be less coupled to the data, limiting the amount of over-fitting that can happen for those modes (i.e. only allowing over-fitting to occur for the first mode).
+
+Altering $\widehat{\textbf{C}}$ as such is one specific example of a regularization method for this toy model, in which we are 
+changing $\widehat{\textbf{C}}$ in a way that changes its coupling to the data realization. The resulting 
 power spectrum estimate for this case is shown in the right plot of Figure \ref{fig:toy_sigloss3}. In this case we recover EoR, 
 demonstrating that if we can disentangle the foreground-dominating modes from EoR-dominating modes, we can down-weight 
 them with negligible signal loss. There are several other ways to regularize $\widehat{\textbf{C}}$, and we will discuss some in Section 
@@ -452,7 +454,7 @@ independent samples is similar to the number of frequency channels --- our matri
 
 The resulting eigenspectrum as compared to the green curve (FG + EoR) in Figure \ref{fig:toy_sigloss2} is shown in Figure 
 \ref{fig:toy_sigloss15}. The spectrum, in the case of fringe-rate filtering (dashed line), falls more steeply, especially for 
-the last few eigenmodes. In many applications, this steep fall is not indicative of the true covariance structure of the data. 
+the last few eigenmodes. In many applications, this steep fall is not indicative of the true covariance structure of the data.
 
 With 
 fringe-rate filtering resulting in fewer independent modes, it becomes more difficult for the empirical covariance to estimate the 
@@ -461,7 +463,7 @@ true fringe-rate filtered case covariance matrix. This can be quantified by eval
 \label{eq:converge}
 \varepsilon (\Chat) \equiv \sqrt{\frac{\sum_{ij} (\widehat{C}_{ij} - {C}_{ij})^2}{\sum_{ij} {C}_{ij}^2}},
 \end{equation}
-where $\C$ is true covariance matrix. In Figure \ref{fig:toy_sigloss16} we show this convergence statistic as a function of the number of independent ensemble realizations in one's simulations (horizontal axis) and the number of independent samples in the data following fringe-rate filtering (different curve colors). With more independent time samples in the data, one converges to the true fringe-rate filtered covariance more quickly. 
+where $\C$ is true covariance matrix. In Figure \ref{fig:toy_sigloss16} we show this convergence statistic as a function of the number of independent ensemble realizations in one's simulations (horizontal axis) and the number of independent samples in the data following fringe-rate filtering (different curve colors). With more independent time samples (i.e. more realizations) in the data, one converges to the true fringe-rate filtered covariance more quickly. 
 
 The situation here with using a finite number of time samples to estimate our covariance is analogous to a problem faced in galaxy surveys, where the non-linear covariance 
 of the matter power spectrum is estimated using a large --- but finite --- number of expensive simulations. There, the limited 
@@ -481,7 +483,7 @@ Just as important as the eigenvalues are the eigenvectors of our empirical covar
 \label{eq:converge_eig}
 \varepsilon (\widehat{\textbf{v}}) \equiv \sqrt{\sum_{i}^{N_{f}}|\textbf{v}-\widehat{\textbf{v}}|_{i}^2},
 \end{equation}
-where $N_{f}$ is the number of frequencies ($20$) in the mock data. The eigenmode convergence curves  in Figure \ref{fig:toy_sigloss17} are ranked ordered by eigenvalue, such that ``Eigenmode \#0" illustrates the convergence of the eigenvector with the largest eigenvalue, ``Eigenmode \#1" for the second largest eigenvalue, and so on. One sees that the stronger eigenmodes converge to their true eigenvectors more quickly. With only a small number of realizations, these empirically estimated modes already retain little correlation with the specific realizations of data that were used to form the empirical covariance. As we will see in the next section, using only the strongest eigenmodes, which are less coupled to data realizations, minimizes signal loss. In contrast, the weaker eigenmodes retain more memory of the data realizations, which leads to correlations that induce signal loss. %\acl{Think about whether we need to do the Fourier space version as well.}
+where $N_{f}$ is the number of frequencies ($20$) in the mock data. The eigenmode convergence curves  in Figure \ref{fig:toy_sigloss17} are ranked ordered by eigenvalue, such that ``Eigenmode \#0" illustrates the convergence of the eigenvector with the largest eigenvalue, ``Eigenmode \#1" for the second largest eigenvalue, and so on. One sees that the stronger eigenmodes converge to their true eigenvectors more quickly. With only a small number of realizations, these empirically estimated modes already retain little correlation with the specific realizations of data that were used to form the empirical covariance. As we will see in the next section, using only the strongest eigenmodes, which are less coupled to data realizations, minimizes signal loss. In contrast, the weaker eigenmodes retain more memory of the data realizations, which leads to correlations that induce signal loss. Said differently, a steep covariance eigenspectrum can be especially dangerous because it is the `weak' modes that are both EoR-dominated and converge the slowest and are therefore susceptible to the most loss.  %\acl{Think about whether we need to do the Fourier space version as well.}
 
 \begin{figure}
 	\centering
@@ -581,22 +583,21 @@ computed for the `fringe-rate filtered' (time-averaged) toy model case presented
 The second panel (top right) in Figure \ref{fig:toy_sigloss8} uses a regularization method of setting $\widehat{\textbf{C}} = 
 \widehat{\textbf{C}} + \gamma\textbf{I}$, where $\gamma = 5$ (an arbitrary strength 
 of $\textbf{I}$ for the purpose of this toy model). By adding the identity matrix, element-wise, we are weighting the diagonal 
-elements of the covariance matrix more heavily than those off-diagonal, thereby flattening out its eigenspectrum. If all modes are given 
-similar weights, we avoid down-weighting EoR modes more than others. Although there is negligible signal loss, the small green peak at $k\sim3$ represents residual foregrounds that still exist since the shapes encoded in the off-diagonal frequency correlations of the covariance matrix were deemed not as prominent as the diagonal elements using this weighting scheme. 
+elements of the covariance matrix more heavily than those off-diagonal. Since the identity component does not know anything about the data realization, it alters the covariance to be less coupled to the data. Although there is negligible signal loss using this regularization, the small green peak at $k\sim3$ represents residual foregrounds that still exist since the shapes encoded in the off-diagonal frequency correlations of the covariance matrix were deemed not as prominent as the diagonal elements using this weighting scheme. 
 
-The third panel (bottom left) in Figure \ref{fig:toy_sigloss8} flattens out the eigenspectrum of $\widehat{\textbf{C}}$ a different way - 
-by only using the first three eigenmodes. Recalling that our toy model foregrounds can be described entirely by the first eigenmode, this 
+The third panel (bottom left) in Figure \ref{fig:toy_sigloss8} minimizes signal loss a different way - 
+by only using the first three eigenmodes of the estimated covariance. Recalling that our toy model foregrounds can be described entirely by the first eigenmode, this 
 method intentionally projects out modes that are EoR-dominated by replacing all but the three highest weights in the 
-eigenspectrum with $1$'s (equal weights). Again, flattening the eigenspectrum results in negligible signal loss. However, we do 
+eigenspectrum with $1$'s (equal weights). Again, avoiding the over-fitting of `weak' modes which are coupled to the data results in negligible signal loss. However, we do 
 not perfectly recover the shape of EoR because we lost information when projecting out certain modes. While this case is illuminating for the toy model, in practice it is not obvious which eigenmodes are FG vs. EoR dominated, so selecting a subset of modes to down-weight is not trivial. 
 
 The last regularization scheme we are highlighting here is setting $\widehat{\textbf{C}} = \widehat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (keeping only the diagonal elements of $\widehat{\textbf{C}}$). In the bottom right 
-panel of Figure \ref{fig:toy_sigloss8}, we see that this method does not down-weight the foregrounds. For this toy model, 
+panel of Figure \ref{fig:toy_sigloss8}, we see that this method does not down-weight the foregrounds --- this regularization altered $\widehat{\textbf{C}}$ in a way where it's no longer coupled to both the `strong' or `weak' eigenmodes. For this toy model, 
 our foregrounds are spread out in frequency and therefore have non-negligible frequency-frequency correlations. Multiplying by 
 the identity, element-wise, results in a diagonal matrix, meaning we are only left with correlation information between the same 
 two frequencies. Because we disregard information from all other frequency combinations in this case, we do a poor job 
-suppressing the foreground. But because we flattened the eigenspectrum, we also avoid signal loss. Although this method did not successfully recover EoR for this particular simulation, it is important that we show that there 
-are many options for estimating a covariance matrix, and some may be more effective than others based on the spectral nature 
+suppressing the foreground. But because we de-coupled the whole eigenspectrum from the data, we also avoid signal loss. Although this method did not successfully recover EoR for this particular simulation, it is important that we show that there 
+are many options for estimating a covariance matrix, and some may down-weight certain eigenmodes more than others based on the spectral nature 
 of the components in a dataset. 
 %One may imagine a situation where a particular systematic is contained to an isolated 
 %frequency (such as radio frequency interference or crosstalk). In such a case, preserving only the diagonal elements of $
@@ -1234,7 +1235,7 @@ loss estimation in Figure \ref{fig:ps2_data}, using empirically estimated invers
 power spectrum $2\sigma$ upper limit, which is identical in both panels (an important check, as we expect no signal loss for this case). The black and 
 gray points are positive and negative power spectrum values plotted with $2\sigma$ error bars. Prior to signal loss estimation, it 
 is clear that the power spectrum is unfeasible because it is well below the theoretical noise level prediction (solid green curve). 
-Post-estimation, the power spectrum errors are higher than both the theory and unweighted power spectrum, a consequence of not being able to characterize covariances well using the time-averaged fringe-rate filtered data (there is less independent information to use). We elaborate on this point in the next section, as well as investigate alternate 
+Post-estimation, the power spectrum errors are higher than both the theory and unweighted power spectrum, a consequence of weighting with a steep eigenspectrum where the `weak' modes are strongly coupled to the time-averaged fringe-rate filtered data. We elaborate on this point in the next section, as well as investigate alternate 
 weighting schemes to inverse covariance weighting, with the goal of finding one that balances the aggressiveness of down-weighting contaminants with minimizing the loss of EoR signal. 
 
 \begin{figure*}
@@ -1258,13 +1259,13 @@ foregrounds and systematics in our data without generating large amounts of sign
 between the two is a delicate one and requires a careful understanding and altering of empirical covariances. 
 
 We saw in Section \ref{sec:otherweight} how limiting the number of down-weighted eigenmodes (i.e. flattening out part of the 
-eigenspectrum) can help minimize signal loss. We experiment with this idea on PAPER-64 data, dialing the number of modes 
+eigenspectrum and effectively de-coupling the `weak' eigenmodes from the data) can help minimize signal loss. We experiment with this idea on PAPER-64 data, dialing the number of modes 
 that are down-weighted from zero (which is equivalent to identity-weighting, or the unweighted case) to $21$ (which is full inverse 
 covariance weighting of our $21$ channels). The power spectrum results for one $k$ value, both before and after signal loss 
 estimation, are shown in the top panel in Figure \ref{fig:sigloss_modeloop}. We see that the amount of signal loss increases as weighting 
 becomes more aggressive (gray curve). In other words, more `weak' (EoR-dominated) fluctuations are being overfit and 
 subtracted as more modes are down-weighted. We also find that the power spectrum upper limit, post signal loss estimation, 
-increases with the number of down-weighted modes (black curve). Because our data is fringe-rate filtered, we have less information to characterize the covariance matrix and therefore do a worse job estimating it. Hence, the more modes we use in down-weighting, the greater the error we have in estimating the power spectrum.
+increases with the number of down-weighted modes (black curve). The more modes we use in down-weighting, the stronger the coupling between the weighting and the data, and the greater the error we have in estimating the power spectrum.
 
 Optimistically, we expect there to be a `sweet spot' as we dial our regularization knob; a level of regularization where weighting 
 is beneficial compared to not weighting (blue dashed line). In other words, we would like a weighting scheme that down-weights eigenmodes that predominantly describe foreground modes, but not EoR modes. We see in Figure \ref{fig:sigloss_modeloop} that this occurs when 
