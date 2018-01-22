@@ -183,7 +183,9 @@ the accuracy and reliability of a potential EoR detection. In this paper, we dis
 for a robust $21$ cm power spectrum analysis. We also highlight four power spectrum techniques and their trade-offs, potential 
 pitfalls, and connections to the themes. We first approach the themes from a broad perspective, and then perform a detailed 
 case study using data from the 64-element configuration of PAPER, motivating a revised PAPER-64 power spectrum 
-from the lessons learned.
+from the lessons learned. 
+
+This paper adds to the growing foundations of lessons which have been documented in  \cite{Patil2016,Jacobs2016} and \cite{Paciga2013} by the LOFAR, MWA and GMRT projects respectively.
 
 This paper is organized into two main sections. In Section \ref{sec:Themes} we introduce the three themes of our focus, using a 
 toy model to develop intuition for each one. In Section \ref{sec:CaseStudy} we present a case study into each theme using data 
@@ -195,7 +197,13 @@ revised PAPER-64 power spectrum result (Kolopanis et al., \textit{in prep}). We 
 \section{Power Spectrum Themes and Techniques}
 \label{sec:Themes}
 
-There are many choices a $21$ cm data analyst must consider. How can time-ordered measurements be combined? How can the 
+There are many choices a $21$ cm data analyst must consider, though the space is significantly constrained by 
+the type of instrument being used.  The PAPER instrument in its grid configuration focuses most sensitivity on 
+only a few baselines but imaging performance is poor. In this space, signal processing tricks which filter or 
+down-weight foreground modes without reference to a sky model have the advantage of being agnostic about 
+the sky. However, even within this problem sub-space, questions remain.
+
+ How can time-ordered measurements be combined? How can the 
 variance of the data be estimated? In what way(s) can the data be weighted to suppress contaminated modes while not 
 destroying an EoR signal? How can a statistically significant detection of a signal be properly identified? Many common techniques, such as 
 averaging data, weighting, bootstrapping, and jackknife testing, address these issues but harbor additional trade-offs. For 
@@ -239,8 +247,8 @@ these four techniques because they represent major steps in PAPER's power spectr
 being standard steps in general $21$ cm analyses.
 \begin{itemize}
 \item \textbf{Fringe-rate filtering:} Fringe-rate filtering is an averaging scheme for time-ordered data 
-(\citealt{parsons_et_al2016}). Broadly, a fringe-rate filter increases the sensitivity of a dataset and reduces the number of 
-independent samples by an amount dependent on the width of the averaging window. However, it can also affect the presence 
+(\citealt{parsons_et_al2016}). Broadly, a fringe-rate filter averages visibilities in time to produce a smaller number of more sensitive 
+independent samples. However, by adjusting the shape of the filter to match the rate of sidereal motion it can also affect the presence 
 of foregrounds and systematics. We explain the trade-offs of filtering in more detail in Section \ref{sec:toymodel_frf}.
 \item \textbf{Weighting:} A dataset can be weighted to emphasize certain features and minimize others. One particular flavor of 
 weighting employed by PAPER is inverse covariance weighting in frequency, which is a generalized version of inverse variance 
@@ -953,7 +961,7 @@ an integration in time, increasing sensitivity but reducing the number of indepe
 \label{sec:Sigloss}
 
 In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data 
-itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular data set. There is, of course, no way of determining an exact signal loss ``correction factor," i.e., we cannot perfectly undo the effects of a lossy estimator.
+itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular data set. The exact signal loss ``correction factor" for a particular data set will depend on the specific realizations of the signals present in the data and is not something we can directly compute. 
 In this work, we inject simulated cosmological signals into our data and test the recovery of those signals in order to statistically quantify 
 the amount of signal loss accompanying a weighting scheme used in OQE power spectrum estimation.  
 There are, in fact, several different ways of incorporating the result of such a calculation into a revised power spectrum estimate which accounts for signal loss.  In this section, we describe a methodology for determining an approximate correction factor which can be applied to a power spectrum estimate; in Appendix \ref{sec:Pr_appendix}, we present an alternate framework that explicitly interprets all measurements as upper limits in the presence of signal loss.  
@@ -1010,7 +1018,14 @@ where $\mathbf{f}$ represents the foregrounds and $\mathbf{s}$ represents the co
 \label{eq:LinearPspecSum}
 \langle \phat_{x} \rangle  = \langle g(\x) \rangle = \ell_{\rm fg} \p_{\rm fg} + \ell_{\rm eor} \p_{\rm eor},
 \end{equation}
-where $\ell_{\rm eor}$ and $\ell_{\rm fg}$ are multiplicative factors accounting for the signal loss in the true EoR power spectrum $\p_{\rm eor}$ and true foreground power spectrum $\p_{\rm fg}$, respectively. It is not \emph{a priori} obvious why this parameterization is suitable; we thus provide a toy model in Appendix \ref{sec:sigloss_appendix} to motivate this, although it should be noted that the derivation is an approximation.
+where $\ell_{\rm eor}$ and $\ell_{\rm fg}$ are multiplicative factors accounting for the signal loss in the true EoR 
+power spectrum $\p_{\rm eor}$ and true foreground power spectrum $\p_{\rm fg}$, respectively. It is not 
+\emph{a priori} obvious why this parameterization is suitable; we thus provide a toy model in Appendix 
+\ref{sec:sigloss_appendix} to motivate this, although it should be noted that the derivation is an approximation 
+which assumes that the covariance used in the OQE analysis is close to the true covariance with effects due to 
+small sample size limited to first order perturbations and thus neglects cross correlation between $x$ and $e$.  
+In actual fact the sample size is similar to the number of independent modes, a case were one expects cross 
+terms to be remain significant.   
 
 Given this form, a suitable estimate for $\p_{\rm eor}$ would be $\phat_{x} / \ell_{\rm eor}$, or the uncorrected power spectrum of data divided by the signal loss estimate. Although such an estimate leaves an additive bias from foregrounds (see Section \ref{sec:BiasTypes}) that must be mitigated by other methods (as is the case for any attempt to measure the $21\,\textrm{cm}$ power spectrum), it normalizes $\p_{\rm eor}$ back to its correct level such that there is no multiplicative bias. The most conceptually straightforward way to compute $\ell_{\rm eor}$ is to model the foregrounds and EoR signal via simulations, and then to form the quantity
 \begin{equation}
@@ -1026,6 +1041,12 @@ which reduces to the same result because of the linearity of Equation \eqref{eq:
 
 Using this motivation, the numerator of Equation \eqref{eq:Deriv2} is precisely our expression for $P_{\rm out}$ (Equation \eqref{eq:sigloss}), and the denominator is $P_{\rm in}$ (Equation \eqref{eq:Pin}), where the function $g$ is our OQE power spectrum pipeline. \dcj{Here is the post-hoc justification for this signal loss method.  Except goes back to assumption of equation for g which just \emph{assumes} that there are no cross terms in the estimation of a power spectrum. So we're just kicking the can down the road.} \acl{Ok, in my defense, Equation \eqref{eq:LinearPspecSum} is a little better than an \emph{assumption}. Appendix \eqref{sec:sigloss_appendix} does in fact illustrate this with an example. The crucial question is whether we're allowed to motivate our method based on a relationship that is only true in expectation. Note that this expectation includes allowances for signal loss due to the cross correlation between signal and foregrounds, with an example of this being Appendix \ref{sec:sigloss_appendix}.}
 \jp{I'm fine with leaving the text as is and calling this note closed with the addition of the appendix, but will wait for sign off from DCJ.}
+\dcj{ Assuming that expansion to "leading order in $\eta$" means $\eta<<1$ then the approximation is that the 
+covariance is nearly perfectly calculated from the data with only small effects due to finite samples. Thus 
+correlations don't make it into the expression and foregrounds remain uncorrelated with eor or injected signals.  
+I added words explaining this but it still looks strange for us to be saying that loss is linear in one section and 
+then explaining in the next section exactly how cross terms were what messed us up in the first go round.} 
+
 Effectively, this means that the relationship between the input and output power spectra, $P_{\rm in}$ and $P_{\rm out}$, can be thought of as a transfer function 
 which, for a sampling of $P_{\rm in}$ and $P_{\rm out}$ provides a mapping from an input power spectrum distribution into an output 
 distribution. By viewing data through this signal loss lens, we may then ask the question ``what input power spectrum 
@@ -1141,7 +1162,16 @@ Since $|\mathbf{e}|^2$ would be a lossless estimate of the true EoR power spectr
 \begin{equation}
 \phat_x \approx \ell_{\rm fg} f^2 + \ell_{\rm eor} e^2 + \ell_{\rm fe} fe.
 \end{equation}
-(Note that even this is an approximation. In principle there is an infinite series containing all possible powers of $e$ and $f$). Now, we split $f$ into $ f_\parallel + f_\perp$, which are the components of the foregrounds that couple to the EoR versus those that do not. Further parameterize $f_\parallel \equiv \rho e$, where $\rho$ is some correlation coefficient that quantifies the degree of correlation between the foregrounds and the EoR. Under this parameterization, one can write the $fe$ term in terms of $e^2$ (which gets absorbed into the other EoR term, plus residual foregrounds that we don't care about).}\acl{Just promoted this last part to something in the main text.}
+(Note that even this is an approximation. In principle there is an infinite series containing all possible powers of 
+$e$ and $f$). Now, we split $f$ into $ f_\parallel + f_\perp$, which are the components of the foregrounds that 
+couple to the EoR versus those that do not. Further parameterize $f_\parallel \equiv \rho e$, where $\rho$ is 
+some correlation coefficient that quantifies the degree of correlation between the foregrounds and the EoR. 
+Under this parameterization, one can write the $fe$ term in terms of $e^2$ (which gets absorbed into the other 
+EoR term, plus residual foregrounds that we don't care about).}\acl{Just promoted this last part to something in 
+the main text.}\dcj{I will admit to being a little lost here.  Doesn't changing the basis just convert the unknown f 
+dot s term into other unknown terms. Isn't the whole point of Eq 24 supposed to be that we can subtract off the 
+$g(x)$ to estimate $\hat{\ell}_{\rm eor}$?  How do we subtract off $f\dot f_\perp$? Don't we want to know $
+\ell_{\rm eor}$ not $(\ell_{\rm eor} + \rho\ell_{\rm fe})$? }
 
 The second issue to tackle is how one incorporates the randomness of $\ell_{\rm eor}$ into our signal loss corrections. This is manifest in Equation \eqref{eq:fperpfpara}, where the randomness of $\rho$ means that there is an inherent spread in the signal loss correction. Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution of $p( \p_{\rm eor} | \phat_{x})$ for $\p_{\rm eor}$ given the uncorrected power spectrum estimate $\phat_{x}$. Since Equation \eqref{eq:Deriv2} is a good approximation of Equation \eqref{eq:Deriv1}, which we argued for in the previous section, we can write $\p_{\rm eor}$ as $P_{in}$, and hence the probability distribution is given by
 \begin{equation}
@@ -1691,7 +1721,9 @@ where $h_\alpha \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \x $ and $h_{\alpha \alpha
 \label{eq:phatlossexpanded}
 \widehat{p}_\alpha^\textrm{loss} = \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \frac{\eta g}{1+ \eta (g-1)}\right]^2  \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right]^{-1}.
 \end{equation}
-Both for the purposes of analytical tractability and to provide intuition, we expand this expression to leading order in $\eta$. The result is
+Both for the purposes of analytical tractability and to provide intuition, we expand this expression to leading 
+order in $\eta$. This approximates the limiting case where the covariance $\Chat$ is close to the ideal and the 
+lossy covariance is a small perturbation.  The result is
 \begin{equation}
 \widehat{p}_\alpha^\textrm{loss} \approx \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \eta \left( g - \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}}\right)\right].
 \end{equation}
@@ -1699,13 +1731,13 @@ Taking the ensemble average of both sides and noting that the true power spectru
 \begin{equation}
 \langle \widehat{p}_\alpha^\textrm{loss} \rangle \approx (1- \eta N) p_\alpha + 4 \eta \frac{\rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha )}{\left[ \rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha  ) \right]^2} \approx (1- \eta N) p_\alpha,
 \end{equation}
-where $N$ is the length of $\x$. In the last step we dropped the final term, since it scales as $\eta p_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained. Now, recall that $p_\alpha$ is the \emph{true} power spectrum. This means that it can be decomposed into the sum of the foreground and EoR power spectra, since the foregrounds and EoR are uncorrelated in expectation. This toy example, while not definitive, serves to motivate the form of Equation \eqref{eq:LinearPspecSum}.
+where $N$ is the length of $\x$. In the last step we dropped the final term, since it scales as $\eta p_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained. Now, recall that $p_\alpha$ is the \emph{true} power spectrum. This means that it can be decomposed into the sum of the foreground and EoR power spectra, since the foregrounds and EoR are uncorrelated in expectation. This toy example, while not showing the emergence of cross-terms provides a rudimentary motivation for the form of Equation \eqref{eq:LinearPspecSum}. 
 
 
 
 \section{Simplified Loss Correction}
 \label{sec:Pr_appendix}
-One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in Section \ref{sec:Sigloss} relies on several assumptions which required justification including the neglection of cross-terms in the power spectrum and indeed does not behave as expected at small injected values. However it is possible to make a simpler interpretation which requires less motivation.
+One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in Section \ref{sec:Sigloss} relies on several assumptions which required justification including the assumption that the number of samples is large enough to treat sample variance as a first order purturbation on the ideal covariance matrix instead of the dominant effect we know it is. However it is possible to ask a slightly different question and with less math still get roughly the same answer.
 
 In the main text we made an estimate of the signal loss effecting only the injected EoR by supposing that the lossy injected signal was the difference between the injected and not injected cases: $P_{out} = \widehat{\textbf{p}}_{r} - \widehat{\textbf{p}}_{x}$. Suppose that we rephrase the question we are asking to: ``At what point would an injected signal be detectable at significant levels?". Instead of disentangling the part of the output power spectrum dominated by the injected signal we can simply use $\widehat{\textbf{p}}_{r}$, the weighted power spectrum of the data plus injected signal.
   
@@ -1732,19 +1764,20 @@ The different colors represent different $k$ values. We choose a probability of 
   
 One difference in this method from the one in the main text is that we are exclusively asking about signals detectable \emph{above} the level of the observed data. Thus it is explicitly limited to placing an upper limit, even if in some $k$-modes one has actual detections above the noise.  This might be seen as more conservative, however, a similar assumption has already been made when choosing to down-weight the data using itself. In such a down-weighting step, one has assumed that significant excess power is associated with a foreground residual. We note that a high SNR detection will require a different method.
   
-Formally we can express our test as: ``What is the $P_{\rm in}$ such that
+Formally we can express our test as: ``What is the $P_{\rm in}$ such that the power spectrum of "data + 
+injected eor" ($\widehat{p}_{e+x}$) is detectable above the power spectrum of the data itself ($\widehat{p}_x$. 
+In other words, what is $e$ such that,
 \begin{equation}
-\widehat{\textbf{p}}_{r} > \widehat{\textbf{p}}_{x} \Lambda,
+\widehat{\textbf{p}}_{e+x} > \widehat{\textbf{p}}_{x},
 \end{equation}  
-where $\Lambda$ represents a choice of threshold?'' Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not (i.e. the null test) the same.  
+?''  Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not (i.e. the null test) the same.  
  
  \begin{equation}
-\Prob(P_{in})  =  1 -  \int_{r=x} \Prob(\widehat{\textbf{p}}_x) \Prob(\widehat{\textbf{p}}_r,P_{in}) dr
+\Prob(P_{e})  =  1 -  \int \Prob(\widehat{\textbf{p}}_x) \Prob(\widehat{\textbf{p}}_{e+x}|P_{e}) x
  \end{equation}
- where $\Prob(\widehat{\textbf{p}}_x)$ is the probability of obtaining the power spectrum $\widehat{\textbf{p}}_x$ found via bootstrapping (power spectrum of data only) and $\Prob(\widehat{\textbf{p}}_r,P_{in})$ is the probability of obtaining the summed power spectrum $\widehat{\textbf{p}}_{r}$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
+ where $\Prob(\widehat{\textbf{p}}_x)$ is the probability of obtaining the power spectrum $\widehat{\textbf{p}}_x$ found via bootstrapping (power spectrum of data only) and $\Prob(\widehat{\textbf{p}}_{e+x}|P_{e})$ is the probability of obtaining the summed power spectrum $\widehat{\textbf{p}}_{x+e}$ given a range of input power levels, as sampled in Figure \ref{fig:Pr_vs_Pin}.  
  
-Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low injection levels the variation between $\textbf{x}$ and $\textbf{r}$ is such that the null test is ruled out to within $20$\%. This is the level expected from two distributions with $\sim$10 effective samples. 
-%\dcj{checked with a little python test but needs a cite} 
+Probability vs. injection level is shown in Figure \ref{fig:Prob_vs_Pin}. At low injection levels the variation between $\textbf{x}$ and $\textbf{(e+x)}$ is such that the null test is ruled out to within $20$\%. This is the level expected from two distributions with $\sim$10 effective samples. 
 As the injected signal approaches the level of the data, the probability of null rejection rises steeply.
   
 Lastly, this method requires that we choose the probability at which we choose to reject the null hypothesis. As can be seen in Figure \ref{fig:Prob_vs_Pin}, the difference between $80$\% and $90$\% can mean a difference of almost an order of magnitude in the power spectrum level that is ruled out. We can also see that, due to the small number of samples, the probability does not perfectly converge at high injected power levels. Rather than insist on a rejection at the $99$th percent level, we compromise at $95$\%.
