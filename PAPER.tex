@@ -1257,7 +1257,7 @@ increases with the number of down-weighted modes (black curve). The more modes w
 
 Optimistically, we expect there to be a `sweet spot' as we dial our regularization knob; a level of regularization where weighting 
 is beneficial compared to not weighting (blue dashed line). In other words, we would like a weighting scheme that down-weights eigenmodes that predominantly describe foreground modes, but not EoR modes. We see in Figure \ref{fig:sigloss_modeloop} that this occurs when 
-only the strongest $\sim3$-$4$ eigenmodes are down-weighted, though the improvement from the unweighted case is small. 
+only the strongest $\sim3$-$4$ eigenmodes are down-weighted. %, though the improvement from the unweighted case is small. 
 
 We also saw in Section \ref{sec:otherweight} how adding the identity matrix to the empirical covariance can minimize signal loss. We experiment with this idea as well, shown in the bottom panel of Figure \ref{fig:sigloss_modeloop}. The grey and black lines represent power spectrum limits pre and post signal loss estimation, respectively, as a function of the strength of $\textbf{I}$ that is added to $\widehat{\textbf{C}}$, quantified as the percentage of the $Tr(\widehat{\textbf{C}})$ added to $\widehat{\textbf{C}}$. When $0\%$  of the $Tr(\widehat{\textbf{C}})$ is used, it is equivalent to full inverse covariance weighting. From this plot we see that only a small percentage of $Tr(\widehat{\textbf{C}})$ is needed to significantly reduce loss. We expect that as the strength of $\textbf{I}$ is increased (going to the left), both the black and gray curves will approach the unweighted case.
 
@@ -1270,7 +1270,7 @@ are down-weighted. This regularization knob is tuned from $0$ modes on the left 
 covariance weighting). Over $\sim3$ orders of magnitude of signal loss results when using inverse covariance weighting. Bottom: Power spectrum upper limits before (gray) and after (black) signal loss estimation as a function of identity added to the empirical covariance. This regularization knob is tuned from $0\%$  of the $Tr(\widehat{\textbf{C}})$ added to $\widehat{\textbf{C}}$ on the right (i.e. full inverse covariance weighting) to $20\%$ of $Tr(\widehat{\textbf{C}})$ added to $\widehat{\textbf{C}}$ on the left. Also 
 plotted in both panels for comparison are $2\sigma$ power spectrum upper limits for the unweighted case (dashed blue) and inverse variance 
 weighted case (red); both are after signal loss estimation. Finally, a theoretical prediction for noise ($2\sigma$ error) is plotted 
-as solid green. In the revised PAPER-64 analysis in this paper, we choose to use a regularization scheme of $\widehat{\textbf{C}} \equiv 0.04Tr(\widehat{\textbf{C}}) + \widehat{\textbf{C}}$ because it outperforms both the down-weighting individual eigenmodes and inverse variance cases.}
+as solid green. In the revised PAPER-64 analysis in this paper, we choose to use a regularization scheme of $\widehat{\textbf{C}} \equiv 0.04Tr(\widehat{\textbf{C}}) + \widehat{\textbf{C}}$ because it slightly outperforms both the down-weighting individual eigenmodes and inverse variance cases.}
 	\label{fig:sigloss_modeloop}
 \end{figure*}
 
