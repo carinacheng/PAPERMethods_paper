@@ -281,7 +281,7 @@ previously underestimated in the A15 analysis.
 
 Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight 
 foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum 
-estimation technique of optimal quadratic estimators (OQE) as done in \citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, \citet{dillon_et_al2014}, \citet{dillon_et_al2015}, and \citet{trott_et_al2016}. Before showing 
+estimation technique of optimal quadratic estimators (OQE) as done in \citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, \citet{dillon_et_al2014}, \citet{dillon_et_al2015}, \citet{switzer_et_al2015}, and \citet{trott_et_al2016}. Before showing 
 how signal loss can arise when using different weighting matrices, we first summarize OQE as performed in the PAPER 
 analysis.
 
@@ -351,7 +351,7 @@ time and frequency. We model a mock EoR signal as a random Gaussian signal. Real
 	\label{fig:toy_sigloss1}
 \end{figure}
 
-Without a perfect model for the covariance matrix $\textbf{C}$ of our data, one attractive way to estimate it is to empirically derive it from the data $\textbf{x}$ itself (this is what was done in the previous PAPER analyses). For instance, one could time-average such that:
+Without a perfect model for the covariance matrix $\textbf{C}$ of our data, one attractive way to estimate it is to empirically derive it from the data $\textbf{x}$ itself. Similar types of weightings that are based on variance information in data are done in \citet{chang_et_al2010} and \citet{switzer_et_al2015}. In previous PAPER analyses, one time-averages the data such that:
 
 \begin{equation}
 \widehat{\textbf{C}} \equiv \langle\textbf{xx}^{\dagger}\rangle_{t},
@@ -359,7 +359,7 @@ Without a perfect model for the covariance matrix $\textbf{C}$ of our data, one 
 
 \noindent assuming $\langle\textbf{x}\rangle_{t} = 0$ (a reasonable assumption since fringes average to $0$ over a sufficient 
 amount of time), where $\langle \rangle_{t}$ denotes a finite average over time. The weighting matrix for estimated inverse covariance weighting is then $
-\textbf{R} = \widehat{\textbf{C}}^{-1}$. 
+\textbf{R} = \widehat{\textbf{C}}^{-1}$.
 
 First, we compute the power spectrum of our toy model dataset $\textbf{x}$ using OQE formalism and $\textbf{R} = \widehat{\textbf{C}}^{-1}$. 
 The result is shown in green in the left plot of Figure \ref{fig:toy_sigloss3}. Also plotted in the figure are the unweighted ($\textbf{R} = \textbf{I}$) power spectrum of $
@@ -952,7 +952,7 @@ an integration in time, increasing sensitivity but reducing the number of indepe
 In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data 
 itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular data set. The exact signal loss ``correction factor" for a particular data set will depend on the specific realizations of the signals present in the data and is not something we can directly compute. 
 In this work, we inject simulated cosmological signals into our data and test the recovery of those signals in order to statistically quantify 
-the amount of signal loss accompanying a weighting scheme used in OQE power spectrum estimation.  
+the amount of signal loss accompanying a weighting scheme used in OQE power spectrum estimation (an approach also taken by \citet{masui_et_al2013}).  
 There are, in fact, several different ways of incorporating the result of such a calculation into a revised power spectrum estimate which accounts for signal loss.  In this section, we describe a methodology for determining an approximate correction factor which can be applied to a power spectrum estimate; in Appendix \ref{sec:Pr_appendix}, we present an alternate framework that explicitly interprets all measurements as upper limits in the presence of signal loss.  
 These two methods yield very similar results, but fundamentally are answering subtly distinct questions.  
 We also highlight major differences from the signal loss 
@@ -1112,7 +1112,7 @@ of a diagonal-dominant matrix.
 % XXX [ARP: we may want to write this all out explicitly in an appendix]
 
 The correlation between $\widehat{\textbf{C}}_r^{-1}\textbf{e}$ and $\widehat{\textbf{C}}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
-simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. Therefore, in our revised 
+simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. This argument is also made in \citet{switzer_et_al2015} in regards to estimating loss associated with foreground cleaning of GBT data. Therefore, in our revised 
 signal loss computation we use the full quantity for $P_{\rm out}$ as defined in Equation \eqref{eq:sigloss}, which subtracts the 
 weighted power spectrum of the data from the weighted power spectrum of data plus EoR. 
 
@@ -1253,7 +1253,7 @@ covariance weighting of our $21$ channels). The power spectrum results for one $
 estimation, are shown in the top panel in Figure \ref{fig:sigloss_modeloop}. We see that the amount of signal loss increases as weighting 
 becomes more aggressive (gray curve). In other words, more `weak' (EoR-dominated) fluctuations are being overfit and 
 subtracted as more modes are down-weighted. We also find that the power spectrum upper limit, post signal loss estimation, 
-increases with the number of down-weighted modes (black curve). The more modes we use in down-weighting, the stronger the coupling between the weighting and the data, and the greater the error we have in estimating the power spectrum.
+increases with the number of down-weighted modes (black curve). The more modes we use in down-weighting, the stronger the coupling between the weighting and the data, and the greater the error we have in estimating the power spectrum. \citet{switzer_et_al2013} took a similar approach in determining the optimal number of modes to down-weight in GBT data, finding similar trends and noting that removing too few modes is limited by residual foregrounds and removing too many modes is limited by large error bars and signal loss.
 
 Optimistically, we expect there to be a `sweet spot' as we dial our regularization knob; a level of regularization where weighting 
 is beneficial compared to not weighting (blue dashed line). In other words, we would like a weighting scheme that down-weights eigenmodes that predominantly describe foreground modes, but not EoR modes. We see in Figure \ref{fig:sigloss_modeloop} that this occurs when 
