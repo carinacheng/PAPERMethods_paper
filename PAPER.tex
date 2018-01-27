@@ -1589,17 +1589,17 @@ We find that the baselines (green) and even/odd (blue) tests are consistent with
 	\label{fig:null}
 \end{figure*}
 
-Investigating Figure \ref{fig:null}, we find that the baselines test is fully consistent with noise, and that the even/odd test is mostly consistent with noise. For a `passing' null test, we expect $95\%$ of the error bars to be contained within the gray shaded region (theoretical error). We additionally note that the error bars for the baselines test (green) are especially small --- this is because the signal is effectively cancelled out prior to cross-multiplication (when forming baseline groups). 
+Investigating Figure \ref{fig:null}, we find that the baselines test is fully consistent with noise (all error bars pass through zero), and that the even/odd test is consistent with noise given the $2\sigma$ expectations ($95\%$ of the error bars are very close or passing through zero). We additionally note that the error bars for the baselines test (green) are especially small --- this is because the signal is effectively cancelled out prior to cross-multiplication (when forming baseline groups). 
 
 The null test in LST is much more illuminating. Because of the large error bars and variation in its result, this suggests that the primary systematic driving our power spectrum points and errors to be outside the 
-estimated error region is LST-dependent, and therefore likely to be residual foregrounds. In other words, the fact that several magenta power spectrum points are outside the estimated error region implies that $t_{1}$ and 
-$t_{2}$ differ by an amount greater than thermal noise and they do not effectively cancel out the sky signal during cross-multiplication. 
+estimated error region is LST-dependent, and therefore likely to be residual foregrounds. In other words, the fact that several magenta power spectrum points, as well as their error bars, are outside the estimated error region implies that $t_{1}$ and 
+$t_{2}$ differ by an amount greater than thermal noise and they do not effectively cancel out the sky signal during cross-multiplication. We also note that the LST null test is biased high, consistent with the interpretation that our positive power spectrum detections in Figure \ref{fig:ps1_data} are those of foregrounds.
 
 We do not investigate the detailed nature of the residual foregrounds in this paper, though one could imagine performing many 
 similar null tests with a sliding window of $t_{1}$'s and $t_{2}$'s. This would illuminate the particular LST range that introduces 
 the foreground bias (or whether the bias is constant in LST), and could potentially be traced to an individual bright radio source. 
 This type of detailed analysis will be critical at EoR sensitivities; however, for our current analysis we are not surprised that the main source of
-bias we see comes from foregrounds in regions where we expect leakage.
+bias we see comes from foregrounds. % in regions where we expect leakage.
 
 % CONCLUSION ---------------------------------------------------------------------------------
 
