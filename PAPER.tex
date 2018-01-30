@@ -269,7 +269,7 @@ itself (\citealt{andrae2010}). By randomly drawing many subsamples of the data, 
 consider such as the independence of values in a dataset. We explore this potential pitfall of bootstrapping in Section \ref{sec:ErrorOverview}.
 \item \textbf{Jackknife testing:} A resampling technique useful for estimating bias, jackknives can be taken along different 
 dimensions of a dataset to cross-validate results. In particular, null tests can be used to verify whether results are free of 
-systematics, as done with CO power spectra (\citealt{keating_et_al2016}) and CMB measurements (see e.g. \citealt{ade_et_al2008}; \citealt{chiang_et_al2010}; \citealt{bischoff_et_al2011}; \citealt{das_et_al2011}; \citealt{araujo_et_al2012}; \citealt{crites_et_al2015}; \citealt{ade_et_al2016}; \citealt{ade_et_al2017}; \citealt{sherwin_et_al2017}). An EoR detection must pass jackknife and null tests, which we highlight in Section \ref{sec:JackknifeOverview}.
+systematics, as done with CO power spectra (\citealt{keating_et_al2016}) and CMB measurements (see e.g. \citealt{ade_et_al2008}; \citealt{chiang_et_al2010}; \citealt{bischoff_et_al2011}; \citealt{das_et_al2011b}; \citealt{araujo_et_al2012}; \citealt{crites_et_al2015}; \citealt{ade_et_al2016}; \citealt{ade_et_al2017}; \citealt{sherwin_et_al2017}). An EoR detection must pass jackknife and null tests, which we highlight in Section \ref{sec:JackknifeOverview}.
 \end{itemize}
 
 In the next three subsections, we study each theme in depth, focusing on how power spectrum technique trade-offs affect each. 
@@ -616,9 +616,9 @@ system temperature and observational parameters. In a perfect world, both method
 two don't always agree due to a number of factors, including possible non-Gaussianities in the noise properties of our instruments and non-uniform 
 weightings. 
 
-%A third option which acts as a middle ground between the other two is 
+A third option which acts as a middle ground between purely theoretical and purely empirical errors is using Gaussian error. This involves the assumption of Gaussianity, but allows the variance of the power spectrum estimator to be written as a function of the two-point estimator, or covariance. One could empirically calculate the covariance and then propagate it into an analytic expression to compute the errors, making this method fall somewhere between fully empirical and fully modeled (see \citet{das_et_al2011a} for an example of its implementation). 
 
-For PAPER's analysis, we choose to compute error bars that have been derived from the inherent 
+For PAPER's analysis, we choose a data-driven method of error estimation that does not rely on assumptions of Gaussianity. Namely, we compute error bars that have been derived from the inherent 
 variance of our measurements. A common technique used to do this is bootstrapping. For pedagogical purposes, we first define the technique of 
 bootstrapping and then illustrate one of its pitfalls through a toy model.
 
