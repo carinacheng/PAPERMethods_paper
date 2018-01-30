@@ -958,17 +958,17 @@ an integration in time, increasing sensitivity but reducing the number of indepe
 \label{sec:Sigloss}
 
 In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data 
-itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular data set. The exact signal loss ``correction factor" for a particular data set will depend on the specific realizations of the signals present in the data and is not something we can directly compute. 
-In this work, we inject simulated cosmological signals into our data and test the recovery of those signals in order to statistically quantify 
-the amount of signal loss accompanying a weighting scheme used in OQE power spectrum estimation.  
-There are, in fact, several different ways of incorporating the result of such a calculation into a revised power spectrum estimate which accounts for signal loss.  In this section, we describe a methodology for determining an approximate correction factor which can be applied to a power spectrum estimate; in Appendix \ref{sec:Pr_appendix}, we present an alternate framework that explicitly interprets all measurements as upper limits in the presence of signal loss.  
+itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular data set. The exact amount of signal loss for a particular data set will depend on the specific realizations of the signals present in the data and is not something we can directly compute. 
+In this work, as in A15, we inject simulated cosmological signals into our data and test the recovery of those signals. As we will see, correlations between the injected signals and the data are significant complicating factor which was previously not taken into account.
+
+The results of such an injection scheme can be interpreted in multiple ways.  In this paper we describe two. This section describes one and in Appendix \ref{sec:Pr_appendix} we present an alternate interpretation.
 These two methods yield very similar results, but fundamentally are answering subtly distinct questions.  
 We also highlight major differences from the signal loss 
 computation used in A15, which previously underestimated losses. 
 
 \subsubsection{Signal Loss Methodology} 
 \label{sec:siglossmethod}
-To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated $21$ 
+The gist of our method is to inject a eor-like signal into the data and then measure the amount recovered, with the difference being accounted as signal loss.  To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated $21$ 
 cm signal visibilities. Here we use the same method as in A15, where mock Gaussian noise visibilities (mock EoR signals) 
 are filtered in fringe-rate space to retain only ``sky-like" time-modes. This signal is then added to the data.\footnote{One 
 specific change from A15 is that we add this simulated signal into the analysis pipeline before the final fringe-rate filter is 
