@@ -959,25 +959,19 @@ an integration in time, increasing sensitivity but reducing the number of indepe
 \subsection{PAPER-64: Signal Loss}
 \label{sec:Sigloss}
 
-In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data 
+In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular dataset. The exact amount of signal loss will depend on the specific realizations of the signals present in the data and is not something we can directly compute. In this work, as in A15, we inject simulated cosmological signals into our data and test the recovery of those signals (an approach also taken by \citet{masui_et_al2013}). As we will see, correlations between the injected signals and the data are significant complicating factors which were previously not taken into account. 
 
-itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular data set. The exact signal loss ``correction factor" for a particular data set will depend on the specific realizations of the signals present in the data and is not something we can directly compute. 
-In this work, we inject simulated cosmological signals into our data and test the recovery of those signals in order to statistically quantify 
-the amount of signal loss accompanying a weighting scheme used in OQE power spectrum estimation (an approach also taken by \citet{masui_et_al2013}).  
-The results of such an injection scheme can be interpreted in multiple ways.  In this paper we describe two. This section describes one and in Appendix \ref{sec:Pr_appendix} we present an alternate interpretation.
-These two methods yield very similar results, but fundamentally are answering subtly distinct questions.  
-We also highlight major differences from the signal loss 
-computation used in A15, which previously underestimated losses. 
+The results of such an injection scheme can be interpreted in multiple ways. In this paper we describe two --- this section describes one and in Appendix \ref{sec:Pr_appendix} we present an alternate interpretation. These two methods yield very similar results, but fundamentally are answering subtly distinct questions. We also highlight major differences from the signal loss computation used in A15, which previously underestimated losses. 
 
 \subsubsection{Signal Loss Methodology} 
 \label{sec:siglossmethod}
-The gist of our method is to inject a eor-like signal into the data and then measure the amount recovered, with the difference being accounted as signal loss.  To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated $21$ 
+In short, our method consists of injecting an EoR-like signal into the data and then measuring the amount recovered, with the difference being accounted as signal loss.  To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated $21$ 
 cm signal visibilities. Here we use the same method as in A15, where mock Gaussian noise visibilities (mock EoR signals) 
 are filtered in fringe-rate space to retain only ``sky-like" time-modes. This signal is then added to the data.\footnote{One 
 specific change from A15 is that we add this simulated signal into the analysis pipeline before the final fringe-rate filter is 
 applied to the data. Previously, the addition was done after that final fringe-rate filter step.  This change results in an increased 
 estimate of signal loss, %(by a factor of $\sim$$10$), 
-likely due to the use of the fringe-rate filter as a simulator. However, this pipeline difference, while significant, is not the dominant reason why signal loss was under-estimated in A15 (the dominant reason is explained in the main text in Section \ref{sec:Illustration}).}
+likely due to the use of the fringe-rate filter as a simulator. However, this pipeline difference, while significant, is not the dominant reason why signal loss was under-estimated in A15 (the dominant reason is explained in the main text in Section \ref{sec:siglossmethod}).}
 
 Suppose that $\textbf{e}$ is a mock injected EoR signal (at some amplitude level), and $\textbf{x}$ is our data. We define $\textbf{r}
 $ to be the data plus the EoR signal:
@@ -1005,16 +999,13 @@ P_{\rm out,\alpha} &\equiv& \widehat{\textbf{p}}_{r,\alpha}-\widehat{\textbf{p}}
 \end{eqnarray}
 where, for illustrative purposes and notational simplicity, we have written these equations with diagonal normalization matrices $M$, even though for our numerical results we choose a non-diagonal matrix $\mathbf{M}$ as in Equation \eqref{eq:phat}. $P_{\rm in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
 $\widehat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\widehat{\textbf{p}}_{r}$ is the power spectrum of the
-data plus injection, and $P_{\rm out}$ is the difference between $\widehat{\textbf{p}}_{r}$ and $\widehat{\textbf{p}}_{x}$.  In the limit where no significant cross correlations between the data and the injected signals are found, this will recover the amount of injected power spectrum remaining after the covariance weighting operation, ie the amount of background EoR power $P_{\rm eor}$ not removed by the foreground downweighting procedure. In other words, we make the anzatz that 
+data plus injection, and $P_{\rm out}$ is the difference between $\widehat{\textbf{p}}_{r}$ and $\widehat{\textbf{p}}_{x}$.  In the limit where no significant cross correlations between the data and the injected signals are found, this will recover the amount of injected power spectrum remaining after the covariance weighting operation (i.e. the amount of background EoR power, $P_{\rm eor}$, not removed by the foreground down-weighting procedure). In other words, we make the anzatz that 
 
 \begin{equation}
 P_{\rm out} = P_{\rm eor} \label{eqn:anzatz},
 \end{equation}
-folding in our definition from Equation \ref{eq:sigloss}, this definition implies that we are seeking the injected 
-signal amplitude which causes a power doubling ($\phat_r = 2 \phat_x$).
-
-
-
+and folding in our definition from Equation \eqref{eq:sigloss}, this ansatz implies that we are seeking the injected 
+signal amplitude which causes a power doubling ($\phat_r = 2 \phat_x$). Expanding out Equation \eqref{eq:sigloss}, $P_{\rm out}$ becomes:
 
 %
 %In short, we can approximate a signal loss estimate as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\widehat{\textbf{p}}_{x}$. We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\widehat{\textbf{p}}_{x}$ by the following reasoning (and then detail our signal loss estimation in practice in the sections that follow).
@@ -1081,46 +1072,36 @@ M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x
 &-& M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
-
-
-Assuming R$_{r}$ is symmetric the two cross terms can be summed together as 
+Assuming \textbf{R}$_{r}$ is symmetric, the two cross-terms can be summed together as:
 
 \begin{eqnarray}
 \label{eq:crossterm}
-P_{\rm out,\alpha} &= &  M^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} \\
+P_{\rm out,\alpha} &= &  M^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} \nonumber \\
 &+& M^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
 ^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
-&+& 2 M^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} \\
+&+& 2 M^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
 &-& M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
-\end{eqnarray}.
+\end{eqnarray}
+Each of these terms is plotted in Figure \ref{fig:sigloss_terms} for two cases: inverse covariance weighting ($\textbf{R}_{r} = \widehat{\textbf{C}}_{r}^{-1}$) and unweighted ($\textbf{R}_{r} = \textbf{I}$). We will now examine the behavior of this equation in the regimes of very weak and very strong injected signal.
 
-
-Each of these terms is plotted in Figure \ref{fig:sigloss_terms} for two cases: inverse covariance weighting ($\textbf{R}_{r} = \widehat{\textbf{C}}_{r}^{-1}$) and unweighted ($\textbf{R}_{r} = \textbf{I}$).   Let us examine the behavior of this equation in the regimes of very weak and very strong injected signal.
-
-
-{\bf Small injection}
-The first and the fourth term are very similar, differing only in their covariance matrices. When the injected signal 
-is very small compared to the data, their difference can be neglected.  In this limit we might imagine that the 
-cross correlation should also be small enabling us to recover just the EoR term, however examining the cross-
-term plotted in Figure  \ref{fig:sigloss_terms} we see that cross terms are still large enough to have a significant 
-impact. This is trivially demonstrated in the identity case where we even at small injects, large cross terms are 
+{\bf Small injection:}
+In this regime, the first and the fourth terms of Equation \eqref{eq:crossterm} are very similar, differing only in their covariance matrices. When the injected signal is very small compared to the data, their difference can be neglected. In this limit we might imagine that the cross-correlation should also be small, enabling us to recover just the EoR term. However, examining the cross-term plotted in Figure \ref{fig:sigloss_terms} (red), we see that this term is still large enough to have a significant 
+impact. This is trivially demonstrated in the identity case (right plot) where even at small injects, large cross terms are 
 evident.
 
-{\bf Large injection}
+{\bf Large injection:}
 When the injected signal is much larger than the data-only power spectrum, the data-only components can 
-be neglected as many orders of magnitude smaller. As we can see from Figure  \ref{fig:sigloss_terms}, the cross terms are also small in comparison.  Here only do we recover the ``loss'' injected simulated eor 
-signal as planned.
+be neglected as many orders of magnitude smaller. As we can see from Figure \ref{fig:sigloss_terms}, the cross-terms are also small in comparison. Here only do we recover the ``loss'' injected simulated EoR 
+signal as intended (the black and green curves agree).
 
-{\bf In between}
-When the injected signal is of a similar amplitude to the data by itself, the picture becomes murky.  We see that 
-the weighted injected power spectrum component mirrors the input power indicating little loss, eventually 
-departing from unity when the injected amplitude is well above the level of the data power spectrum. However 
-the cross terms have nearly the same amplitude, but a negative sign. The sum of the two is substantially lower and substantially drives down the $P_{\rm out}$ estimator.
-
+{\bf In between:}
+When the injected signal is of a similar amplitude to the data by itself, the situation becomes less straightforward. We see that 
+the weighted injected power spectrum component mirrors the input power indicating little loss (i.e. the green curve follows the dotted black line), eventually 
+departing from unity when the injected amplitude is well above the level of the data power spectrum. However, 
+the cross-terms have nearly the same amplitude, but with a negative sign. The sum of the two is substantially lower and therefore drives down the $P_{\rm out}$ estimator (black). We note that in A15, signal loss was computed by only looking at the second term in Equation \eqref{eq:crossterm} (green), which incorrectly implies no loss at the data level. Ignoring the effect of the negative power from the cross-terms is the main reason for under-estimating power spectrum limits in A15.
 
 %A brief description of Figure \ref{fig:sigloss_terms} is as follows. The gray curve represents the data level, which is constant as the level of $P_{\rm in}$, the input EoR signal, is changed. The blue curve is the power spectrum of the data only, weighted by an empirical covariance estimated from the data plus the EoR signal ($\widehat{\textbf{C}}_{r}^{-1}$). It approaches the gray at low injection level, as expected, since in that case $\widehat{\textbf{C}}_{r}^{-1} \rightarrow \widehat{\textbf{C}}_{x}^{-1}$. The green curve is the power spectrum of the EoR signal, weighted by $\widehat{\textbf{C}}_{r}^{-1}$. This is the exact term that was compared to $P_{\rm in}$ in the A15 signal loss analysis, and in doing so this would imply there is negligible loss (where the green crosses the gray). It is primarily due to the cross-terms (red), that the black curve exhibits $\sim$$3$ orders of magnitude of loss at the data level, for the inverse covariance weighted case. We see that the cross-terms can produce a large, negative signal which serves to reduce $P_{\rm out}$ and drive the bulk of our loss. In the unweighted case, however (right plot), the cross-terms primarily drive a tail of `excess' $P_{\rm out}$ at low injects, though at larger injects we see unity transfer as expected (the solid black curve lies on the dotted black line, which represents unity transfer).
-
 
 %\dcj{This section isn't held up by figure 17. Is that because the "illustriative" figure is off? Or is it that cross terms don't matter when injected signal is very large.}
 %We now turn to building intuition behind the negative power that arises from the cross-terms in Equation \eqref{eq:crossterm}. For illustrative purposes in this subsection only, we consider a scenario where $\textbf{e}$ dominates compared to $\textbf{x}$. It is in this limit where we expect signal loss to be greatest, and $P_{\rm out}$ becomes:
@@ -1139,10 +1120,9 @@ the cross terms have nearly the same amplitude, but a negative sign. The sum of 
 	\label{fig:sigloss_terms}
 \end{figure*}
 
-
-The source of the strong negative cross term is not immediately obvious, however it is an explainable effect. 
+The source of the strong negative cross-term is not immediately obvious, however it is an explainable effect. 
 When $\textbf{R}_{r}$
-is taken to be $\widehat{\textbf{C}}_{r}^{-1}$, the second term of Equation \eqref{eq:pout_expand} is a cross-correlation between $\widehat{\textbf{C}}_{r}^{-1}\textbf{x}$ and
+is taken to be $\widehat{\textbf{C}}_{r}^{-1}$, the third term of Equation \eqref{eq:crossterm} is a cross-correlation between $\widehat{\textbf{C}}_{r}^{-1}\textbf{x}$ and
 $\widehat{\textbf{C}}_{r}^{-1}\textbf{e}$. As shown in \citet{switzer_et_al2015}, this cross-correlation term is non-zero, and in fact negative in expectation. 
 This negative cross-term power arises from a coupling between the inverse of 
 $\widehat{\textbf{C}}_{r}$ and $\mathbf{x}$. 
@@ -1157,14 +1137,12 @@ $|\textbf{x}|\ll|\textbf{e}|$ regime:
 
 \noindent where we can neglect the first term because $\textbf{x}$ is small.  Without loss of generality, we will assume
 an eigenbasis of $\textbf{e}$, so that $\langle 
-\textbf{ee}^{\dagger} \rangle_{t}$ is diagonal. 
-The middle 
+\textbf{ee}^{\dagger} \rangle_{t}$ is diagonal. The middle 
 two terms, however, can have power in their off-diagonal terms due to the fact that, when averaging over a finite
-ensemble, $\langle\textbf{xe}^\dagger\rangle_t$ is not zero.  As shown in Appendix C of \citet{parsons_et_al2014}, to leading order the
-inversion of a matrix like $\widehat{\textbf{C}}_{r}$ that is diagonal-dominant (from $\langle 
+ensemble, $\langle\textbf{xe}^\dagger\rangle_t$ is not zero.  As shown in Appendix C of \citet{parsons_et_al2014}, to leading order the inversion of a matrix like $\widehat{\textbf{C}}_{r}$ that is diagonal-dominant (from $\langle 
 \textbf{ee}^{\dagger} \rangle_{t}$) with smaller
 off-diagonal terms results in a new diagonal-dominant matrix with negative off-diagonal terms. These off-diagonal
-terms depend on both $\textbf{x}$ and $\textbf{e}$. When $\widehat{\textbf{C}}^{-1}_{r}$ is multiplied into $\textbf{x}$,
+terms depend on both $\textbf{x}$ and $\textbf{e}$. Then, when $\widehat{\textbf{C}}^{-1}_{r}$ is multiplied into $\textbf{x}$,
 the result is a vector that is similar to $\textbf{x}$ but
 contains a residual correlation to $\textbf{e}$ from the off-diagonal components of $\widehat{\textbf{C}}^{-1}_{r}$. The
 correlation is negative because the product $\widehat{\textbf{C}}_r^{-1}\textbf{x}$ effectively squares the $\textbf{x}$-dependence
@@ -1173,14 +1151,12 @@ of a diagonal-dominant matrix.
 % XXX [ARP: we may want to write this all out explicitly in an appendix]
 
 The correlation between $\widehat{\textbf{C}}_r^{-1}\textbf{e}$ and $\widehat{\textbf{C}}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
-simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. This argument is also made in \citet{switzer_et_al2015} in regards to estimating loss associated with foreground cleaning of Great Bank Telescope (GBT) data. Therefore, in our revised 
+simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. This argument is also made in \citet{switzer_et_al2015} in regards to estimating loss associated with the foreground cleaning of Green Bank Telescope (GBT) data. Therefore, in our revised 
 signal loss computation we use the full quantity for $P_{\rm out}$ as defined in Equation \eqref{eq:sigloss}, which subtracts the 
 weighted power spectrum of the data from the weighted power spectrum of data plus EoR. 
 
 %\dcj{This paragraph has me confused.}
 %The conclusion is that signal loss generically arises because of couplings between $\widehat{\textbf{C}}^{-1}_{r}$ and $\mathbf{x}$. In principle, using $\widehat{\textbf{C}}^{-1}_{r}$ in place of the true inverse covariance $\textbf{C}^{-1}$ provides yet another source of multiplicative bias, which results in a modification to the treatment shown here. Such a modification is accounted for in the demonstration of Appendix \ref{sec:sigloss_appendix}, where we additionally discard the assumption that $|\textbf{x}|\ll|\textbf{e}|$. However, despite the loosening of these approximations, one sees that the qualitative message (of anti-correlations resulting in signal loss) remains intact.
-
-
 
 \subsubsection{Signal Loss in Practice}
 \label{sec:Practice}
