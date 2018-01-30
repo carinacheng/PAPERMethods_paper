@@ -1002,61 +1002,71 @@ P_{\rm out,\alpha} &\equiv& \widehat{\textbf{p}}_{r,\alpha}-\widehat{\textbf{p}}
 \end{eqnarray}
 where, for illustrative purposes and notational simplicity, we have written these equations with diagonal normalization matrices $M$, even though for our numerical results we choose a non-diagonal matrix $\mathbf{M}$ as in Equation \eqref{eq:phat}. $P_{\rm in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
 $\widehat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\widehat{\textbf{p}}_{r}$ is the power spectrum of the
-data plus injection, and $P_{\rm out}$ is the difference between $\widehat{\textbf{p}}_{r}$ and $\widehat{\textbf{p}}_{x}$.
+data plus injection, and $P_{\rm out}$ is the difference between $\widehat{\textbf{p}}_{r}$ and $\widehat{\textbf{p}}_{x}$.  In the limit where no significant cross correlations between the data and the injected signals are found, this will recover the amount of injected power spectrum remaining after the covariance weighting operation, ie the amount of background EoR power $P_{\rm eor}$ not removed by the foreground downweighting procedure. In other words, we make the anzatz that 
 
-In short, we can approximate a signal loss estimate as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\widehat{\textbf{p}}_{x}$. We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\widehat{\textbf{p}}_{x}$ by the following reasoning (and then detail our signal loss estimation in practice in the sections that follow).
-
-In the limit of no instrumental noise, the data that we measure, $\x$, is comprised of two signals, such that
 \begin{equation}
-\x \equiv \f + \s,
+P_{\rm out} = P_{\rm eor} \label{eqn:anzatz},
 \end{equation}
-where $\mathbf{f}$ represents the foregrounds and $\mathbf{s}$ represents the cosmological signal. In general, suppose that our power spectrum algorithm passes the data through some function $g$, yielding a lossy estimate of the power spectrum $\phat_{x}$. This can be parametrized as
-\begin{equation}
-\label{eq:LinearPspecSum}
-\langle \phat_{x} \rangle  = \langle g(\x) \rangle = \ell_{\rm fg} \p_{\rm fg} + \ell_{\rm eor} \p_{\rm eor},
-\end{equation}
-where $\ell_{\rm eor}$ and $\ell_{\rm fg}$ are multiplicative factors accounting for the signal loss in the true EoR 
-power spectrum $\p_{\rm eor}$ and true foreground power spectrum $\p_{\rm fg}$, respectively. It is not 
-\emph{a priori} obvious why this parameterization is suitable; we thus provide a toy model in Appendix 
-\ref{sec:sigloss_appendix} to motivate this, although it should be noted that the derivation is an approximation 
-which assumes that the covariance used in the OQE analysis is close to the true covariance with effects due to 
-small sample size limited to first order perturbations and thus neglects cross correlation between $x$ and $e$.  
-In actual fact the sample size is similar to the number of independent modes, a case were one expects cross 
-terms to be remain significant.   
+folding in our definition from Equation \ref{eq:sigloss}, this definition implies that we are seeking the injected 
+signal amplitude which causes a power doubling ($\phat_r = 2 \phat_x$).
 
-Given this form, a suitable estimate for $\p_{\rm eor}$ would be $\phat_{x} / \ell_{\rm eor}$, or the uncorrected power spectrum of data divided by the signal loss estimate. Although such an estimate leaves an additive bias from foregrounds (see Section \ref{sec:BiasTypes}) that must be mitigated by other methods (as is the case for any attempt to measure the $21\,\textrm{cm}$ power spectrum), it normalizes $\p_{\rm eor}$ back to its correct level such that there is no multiplicative bias. The most conceptually straightforward way to compute $\ell_{\rm eor}$ is to model the foregrounds and EoR signal via simulations, and then to form the quantity
-\begin{equation}
-\label{eq:Deriv1}
-\widehat{\ell}_{\rm eor} = \frac{g(\f + \s) - g(\f)}{\p_{\rm eor}}.
-\end{equation}
-However, this approach assumes that we have sufficiently good knowledge of our foreground and signal models, which is certainly not the case --- if it were, it would be simpler to construct our covariance matrices from our models, avoiding signal loss altogether! Instead, we can use the data itself as our model of the foregrounds, injecting a new EoR signal $\e$ (with power spectrum $P_{in}$), computing instead
-\begin{equation}
-\label{eq:Deriv2}
-\widehat{\ell}_{\rm eor} = \frac{g(\x+ \e) - g(\x)}{P_{in}},
-\end{equation}
-which reduces to the same result because of the linearity of Equation \eqref{eq:LinearPspecSum}. Essentially, one is computing the slope of $\langle \phat_{x} \rangle$ with respect to $\p_{\rm eor}$ (note that both Equations \eqref{eq:Deriv1} and \eqref{eq:Deriv2} take the form of finite difference derivatives). Under the approximation that the relation between the two quantities is linear, it does not matter whether this slope is evaluated about $\x$ or $\f$. In reality, one expects some deviations from linearity, but Equation \eqref{eq:Deriv2} remains a good approximation of Equation \eqref{eq:Deriv1} as long as $\x$ is dominated by $\f$. 
 
-Using this motivation, the numerator of Equation \eqref{eq:Deriv2} is precisely our expression for $P_{\rm out}$ (Equation \eqref{eq:sigloss}), and the denominator is $P_{\rm in}$ (Equation \eqref{eq:Pin}), where the function $g$ is our OQE power spectrum pipeline. \dcj{Here is the post-hoc justification for this signal loss method.  Except goes back to assumption of equation for g which just \emph{assumes} that there are no cross terms in the estimation of a power spectrum. So we're just kicking the can down the road.} \acl{Ok, in my defense, Equation \eqref{eq:LinearPspecSum} is a little better than an \emph{assumption}. Appendix \eqref{sec:sigloss_appendix} does in fact illustrate this with an example. The crucial question is whether we're allowed to motivate our method based on a relationship that is only true in expectation. Note that this expectation includes allowances for signal loss due to the cross correlation between signal and foregrounds, with an example of this being Appendix \ref{sec:sigloss_appendix}.}
-\jp{I'm fine with leaving the text as is and calling this note closed with the addition of the appendix, but will wait for sign off from DCJ.}
-\dcj{ Assuming that expansion to "leading order in $\eta$" means $\eta<<1$ then the approximation is that the 
-covariance is nearly perfectly calculated from the data with only small effects due to finite samples. Thus 
-correlations don't make it into the expression and foregrounds remain uncorrelated with eor or injected signals.  
-I added words explaining this but it still looks strange for us to be saying that loss is linear in one section and 
-then explaining in the next section exactly how cross terms were what messed us up in the first go round.} 
-\acl{Ok, I'm open to suggestions as to how to phrase this, because lots of people seem to be thinking that the appendix was meant to justify everything. It's not. It's meant as a motivational example. I just wanted something where I could follow through analytically to the end to show that it's ok to think about signal loss as a multiplicative factor. At least in expectation. And then how one deals with not correcting for the signal loss in expectation is described in Section \ref{sec:Practice}.}
 
-Effectively, this means that the relationship between the input and output power spectra, $P_{\rm in}$ and $P_{\rm out}$, can be thought of as a transfer function 
-which, for a sampling of $P_{\rm in}$ and $P_{\rm out}$ provides a mapping from an input power spectrum distribution into an output 
-distribution. By viewing data through this signal loss lens, we may then ask the question ``what input power spectrum 
-distribution could this (signal-loss affected) data come from?" 
 
-In Section \ref{sec:Illustration}, we provide some intuition for how the transfer function is able to capture signal loss. Section \ref{sec:Practice} then details the numerical computations used to translate our power spectrum result into one viewed through a 
-signal loss lens. We note that interpretation of the signal injection results can be framed in multiple ways which yield similar but not identical answers. One alternative to the method described in Section \ref{sec:Practice} is described in Appendix \ref{sec:Pr_appendix}.
-%We showcase two methods... \cc{fill in with some broad statement of why we're showing 2 methods but also state that they yield similar results...}
+%
+%In short, we can approximate a signal loss estimate as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\widehat{\textbf{p}}_{x}$. We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\widehat{\textbf{p}}_{x}$ by the following reasoning (and then detail our signal loss estimation in practice in the sections that follow).
+%
+%In the limit of no instrumental noise, the data that we measure, $\x$, is comprised of two signals, such that
+%\begin{equation}
+%\x \equiv \f + \s,
+%\end{equation}
+%where $\mathbf{f}$ represents the foregrounds and $\mathbf{s}$ represents the cosmological signal. In general, suppose that our power spectrum algorithm passes the data through some function $g$, yielding a lossy estimate of the power spectrum $\phat_{x}$. This can be parametrized as
+%\begin{equation}
+%\label{eq:LinearPspecSum}
+%\langle \phat_{x} \rangle  = \langle g(\x) \rangle = \ell_{\rm fg} \p_{\rm fg} + \ell_{\rm eor} \p_{\rm eor},
+%\end{equation}
+%where $\ell_{\rm eor}$ and $\ell_{\rm fg}$ are multiplicative factors accounting for the signal loss in the true EoR 
+%power spectrum $\p_{\rm eor}$ and true foreground power spectrum $\p_{\rm fg}$, respectively. It is not 
+%\emph{a priori} obvious why this parameterization is suitable; we thus provide a toy model in Appendix 
+%\ref{sec:sigloss_appendix} to motivate this, although it should be noted that the derivation is an approximation 
+%which assumes that the covariance used in the OQE analysis is close to the true covariance with effects due to 
+%small sample size limited to first order perturbations and thus neglects cross correlation between $x$ and $e$.  
+%In actual fact the sample size is similar to the number of independent modes, a case were one expects cross 
+%terms to be remain significant.   
+%
+%Given this form, a suitable estimate for $\p_{\rm eor}$ would be $\phat_{x} / \ell_{\rm eor}$, or the uncorrected power spectrum of data divided by the signal loss estimate. Although such an estimate leaves an additive bias from foregrounds (see Section \ref{sec:BiasTypes}) that must be mitigated by other methods (as is the case for any attempt to measure the $21\,\textrm{cm}$ power spectrum), it normalizes $\p_{\rm eor}$ back to its correct level such that there is no multiplicative bias. The most conceptually straightforward way to compute $\ell_{\rm eor}$ is to model the foregrounds and EoR signal via simulations, and then to form the quantity
+%\begin{equation}
+%\label{eq:Deriv1}
+%\widehat{\ell}_{\rm eor} = \frac{g(\f + \s) - g(\f)}{\p_{\rm eor}}.
+%\end{equation}
+%However, this approach assumes that we have sufficiently good knowledge of our foreground and signal models, which is certainly not the case --- if it were, it would be simpler to construct our covariance matrices from our models, avoiding signal loss altogether! Instead, we can use the data itself as our model of the foregrounds, injecting a new EoR signal $\e$ (with power spectrum $P_{in}$), computing instead
+%\begin{equation}
+%\label{eq:Deriv2}
+%\widehat{\ell}_{\rm eor} = \frac{g(\x+ \e) - g(\x)}{P_{in}},
+%\end{equation}
+%which reduces to the same result because of the linearity of Equation \eqref{eq:LinearPspecSum}. Essentially, one is computing the slope of $\langle \phat_{x} \rangle$ with respect to $\p_{\rm eor}$ (note that both Equations \eqref{eq:Deriv1} and \eqref{eq:Deriv2} take the form of finite difference derivatives). Under the approximation that the relation between the two quantities is linear, it does not matter whether this slope is evaluated about $\x$ or $\f$. In reality, one expects some deviations from linearity, but Equation \eqref{eq:Deriv2} remains a good approximation of Equation \eqref{eq:Deriv1} as long as $\x$ is dominated by $\f$. 
+%
+%Using this motivation, the numerator of Equation \eqref{eq:Deriv2} is precisely our expression for $P_{\rm out}$ (Equation \eqref{eq:sigloss}), and the denominator is $P_{\rm in}$ (Equation \eqref{eq:Pin}), where the function $g$ is our OQE power spectrum pipeline. \dcj{Here is the post-hoc justification for this signal loss method.  Except goes back to assumption of equation for g which just \emph{assumes} that there are no cross terms in the estimation of a power spectrum. So we're just kicking the can down the road.} \acl{Ok, in my defense, Equation \eqref{eq:LinearPspecSum} is a little better than an \emph{assumption}. Appendix \eqref{sec:sigloss_appendix} does in fact illustrate this with an example. The crucial question is whether we're allowed to motivate our method based on a relationship that is only true in expectation. Note that this expectation includes allowances for signal loss due to the cross correlation between signal and foregrounds, with an example of this being Appendix \ref{sec:sigloss_appendix}.}
+%\jp{I'm fine with leaving the text as is and calling this note closed with the addition of the appendix, but will wait for sign off from DCJ.}
+%\dcj{ Assuming that expansion to "leading order in $\eta$" means $\eta<<1$ then the approximation is that the 
+%covariance is nearly perfectly calculated from the data with only small effects due to finite samples. Thus 
+%correlations don't make it into the expression and foregrounds remain uncorrelated with eor or injected signals.  
+%I added words explaining this but it still looks strange for us to be saying that loss is linear in one section and 
+%then explaining in the next section exactly how cross terms were what messed us up in the first go round.} 
+%\acl{Ok, I'm open to suggestions as to how to phrase this, because lots of people seem to be thinking that the appendix was meant to justify everything. It's not. It's meant as a motivational example. I just wanted something where I could follow through analytically to the end to show that it's ok to think about signal loss as a multiplicative factor. At least in expectation. And then how one deals with not correcting for the signal loss in expectation is described in Section \ref{sec:Practice}.}
+%
+%Effectively, this means that the relationship between the input and output power spectra, $P_{\rm in}$ and $P_{\rm out}$, can be thought of as a transfer function 
+%which, for a sampling of $P_{\rm in}$ and $P_{\rm out}$ provides a mapping from an input power spectrum distribution into an output 
+%distribution. By viewing data through this signal loss lens, we may then ask the question ``what input power spectrum 
+%distribution could this (signal-loss affected) data come from?" 
+%
+%In Section \ref{sec:Illustration}, we provide some intuition for how the transfer function is able to capture signal loss. Section \ref{sec:Practice} then details the numerical computations used to translate our power spectrum result into one viewed through a 
+%signal loss lens. We note that interpretation of the signal injection results can be framed in multiple ways which yield similar but not identical answers. One alternative to the method described in Section \ref{sec:Practice} is described in Appendix \ref{sec:Pr_appendix}.
+%%We showcase two methods... \cc{fill in with some broad statement of why we're showing 2 methods but also state that they yield similar results...}
 
-\subsubsection{Signal Loss Illustration}
-\label{sec:Illustration}
-To explore how our expression for $P_{\rm out}$ encapsulates signal loss, we expand out Equation \eqref{eq:sigloss}:
+%\subsubsection{Signal Loss Illustration}
+%\label{sec:Illustration}
+%To explore how our expression for $P_{\rm out}$ encapsulates signal loss, we expand out Equation \eqref{eq:sigloss}:
 
 \begin{eqnarray}
 \label{eq:crossterm}
