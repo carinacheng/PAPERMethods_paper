@@ -9,8 +9,17 @@
 \usepackage{natbib}
 \usepackage{ctable}
 \usepackage{comment}
+%\usepackage{mathtools}
+\usepackage{xparse}
 %\usepackage{titlesec}
 \citestyle{aa}
+
+%Math stuff from Danny
+\NewDocumentCommand{\evalat}{sO{\big}mm}{%
+  \IfBooleanTF{#1}
+   {\mleft. #3 \mright|_{#4}}
+   {#3#2|_{#4}}%
+}
 
 %		Math Shortcuts from Adrian
 %\def\b{\mathbf{b}}
