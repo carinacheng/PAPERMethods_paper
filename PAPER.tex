@@ -1078,18 +1078,56 @@ M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x
 &-& M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
-We see that $P_{\rm out}$ is comprised of multiple terms. To build intuition into each of these terms, they are plotted individually in Figure \ref{fig:sigloss_terms} for two cases: inverse covariance weighting ($\textbf{R}_{r} = \widehat{\textbf{C}}_{r}^{-1}$, left) and unweighted ($\textbf{R}_{r} = \textbf{I}$, right). We leave the details of the simulation to Section \ref{sec:Practice}, but for now highlight that each term in Equation \eqref{eq:crossterm} corresponds to a different color in the plot. Specifically, the first term in Equation \eqref{eq:crossterm} is plotted as blue, the second as green, the third and fourth (which are the same) as red, and the last as gray. The solid black curve denotes $P_{\rm out}$, which is comprised of all the other terms.
 
-A brief description of Figure \ref{fig:sigloss_terms} is as follows. The gray curve represents the data level, which is constant as the level of $P_{\rm in}$, the input EoR signal, is changed. The blue curve is the power spectrum of the data only, weighted by an empirical covariance estimated from the data plus the EoR signal ($\widehat{\textbf{C}}_{r}^{-1}$). It approaches the gray at low injection level, as expected, since in that case $\widehat{\textbf{C}}_{r}^{-1} \rightarrow \widehat{\textbf{C}}_{x}^{-1}$. The green curve is the power spectrum of the EoR signal, weighted by $\widehat{\textbf{C}}_{r}^{-1}$. This is the exact term that was compared to $P_{\rm in}$ in the A15 signal loss analysis, and in doing so this would imply there is negligible loss (where the green crosses the gray). It is primarily due to the cross-terms (red), that the black curve exhibits $\sim$$3$ orders of magnitude of loss at the data level, for the inverse covariance weighted case. We see that the cross-terms can produce a large, negative signal which serves to reduce $P_{\rm out}$ and drive the bulk of our loss. In the unweighted case, however (right plot), the cross-terms primarily drive a tail of `excess' $P_{\rm out}$ at low injects, though at larger injects we see unity transfer as expected (the solid black curve lies on the dotted black line, which represents unity transfer).
 
-We now turn to building intuition behind the negative power that arises from the cross-terms in Equation \eqref{eq:crossterm}. For illustrative purposes in this subsection only, we consider a scenario where $\textbf{e}$ dominates compared to $\textbf{x}$. It is in this limit where we expect signal loss to be greatest, and $P_{\rm out}$ becomes:
+Assuming R$_{r}$ is symmetric the two cross terms can be summed together as 
 
 \begin{eqnarray}
-\label{eq:pout_expand}
-P_{\rm out, \alpha} &\approx&  M^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} +
- 2M^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}.
-\end{eqnarray}
-The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. Again, it is this quantity that was used in A15 to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to A15.
+\label{eq:crossterm}
+P_{\rm out,\alpha} &= &  M^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} \\
+&+& M^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
+^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
+&+& 2 M^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} \\
+&-& M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
+^{\alpha}\textbf{R}_{x}\textbf{x}.
+\end{eqnarray}.
+
+
+Each of these terms is plotted in Figure \ref{fig:sigloss_terms} for two cases: inverse covariance weighting ($\textbf{R}_{r} = \widehat{\textbf{C}}_{r}^{-1}$) and unweighted ($\textbf{R}_{r} = \textbf{I}$).   Let us examine the behavior of this equation in the regimes of very weak and very strong injected signal.
+
+
+{\bf Small injection}
+The first and the fourth term are very similar, differing only in their covariance matrices. When the injected signal 
+is very small compared to the data, their difference can be neglected.  In this limit we might imagine that the 
+cross correlation should also be small enabling us to recover just the EoR term, however examining the cross-
+term plotted in Figure  \ref{fig:sigloss_terms} we see that cross terms are still large enough to have a significant 
+impact. This is trivially demonstrated in the identity case where we even at small injects, large cross terms are 
+evident.
+
+{\bf Large injection}
+When the injected signal is much larger than the data-only power spectrum, the data-only components can 
+be neglected as many orders of magnitude smaller. As we can see from Figure  \ref{fig:sigloss_terms}, the cross terms are also small in comparison.  Here only do we recover the ``loss'' injected simulated eor 
+signal as planned.
+
+{\bf In between}
+When the injected signal is of a similar amplitude to the data by itself, the picture becomes murky.  We see that 
+the weighted injected power spectrum component mirrors the input power indicating little loss, eventually 
+departing from unity when the injected amplitude is well above the level of the data power spectrum. However 
+the cross terms have nearly the same amplitude, but a negative sign. The sum of the two is substantially lower and substantially drives down the $P_{\rm out}$ estimator.
+
+
+%A brief description of Figure \ref{fig:sigloss_terms} is as follows. The gray curve represents the data level, which is constant as the level of $P_{\rm in}$, the input EoR signal, is changed. The blue curve is the power spectrum of the data only, weighted by an empirical covariance estimated from the data plus the EoR signal ($\widehat{\textbf{C}}_{r}^{-1}$). It approaches the gray at low injection level, as expected, since in that case $\widehat{\textbf{C}}_{r}^{-1} \rightarrow \widehat{\textbf{C}}_{x}^{-1}$. The green curve is the power spectrum of the EoR signal, weighted by $\widehat{\textbf{C}}_{r}^{-1}$. This is the exact term that was compared to $P_{\rm in}$ in the A15 signal loss analysis, and in doing so this would imply there is negligible loss (where the green crosses the gray). It is primarily due to the cross-terms (red), that the black curve exhibits $\sim$$3$ orders of magnitude of loss at the data level, for the inverse covariance weighted case. We see that the cross-terms can produce a large, negative signal which serves to reduce $P_{\rm out}$ and drive the bulk of our loss. In the unweighted case, however (right plot), the cross-terms primarily drive a tail of `excess' $P_{\rm out}$ at low injects, though at larger injects we see unity transfer as expected (the solid black curve lies on the dotted black line, which represents unity transfer).
+
+
+%\dcj{This section isn't held up by figure 17. Is that because the "illustriative" figure is off? Or is it that cross terms don't matter when injected signal is very large.}
+%We now turn to building intuition behind the negative power that arises from the cross-terms in Equation \eqref{eq:crossterm}. For illustrative purposes in this subsection only, we consider a scenario where $\textbf{e}$ dominates compared to $\textbf{x}$. It is in this limit where we expect signal loss to be greatest, and $P_{\rm out}$ becomes:
+%
+%\begin{eqnarray}
+%\label{eq:pout_expand}
+%P_{\rm out, \alpha} &\approx&  M^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} +
+% 2M^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}.
+%\end{eqnarray}
+%The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. Again, it is this quantity that was used in A15 to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to A15.
 
 \begin{figure*}
 	\centering
@@ -1098,6 +1136,8 @@ The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textb
 	\label{fig:sigloss_terms}
 \end{figure*}
 
+
+The source of the strong negative cross term is not immediately obvious, however it is an explainable effect. 
 When $\textbf{R}_{r}$
 is taken to be $\widehat{\textbf{C}}_{r}^{-1}$, the second term of Equation \eqref{eq:pout_expand} is a cross-correlation between $\widehat{\textbf{C}}_{r}^{-1}\textbf{x}$ and
 $\widehat{\textbf{C}}_{r}^{-1}\textbf{e}$. As shown in \citet{switzer_et_al2015}, this cross-correlation term is non-zero, and in fact negative in expectation. 
@@ -1131,18 +1171,15 @@ of a diagonal-dominant matrix.
 
 The correlation between $\widehat{\textbf{C}}_r^{-1}\textbf{e}$ and $\widehat{\textbf{C}}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
 simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. Therefore, in our revised 
-signal loss computation we use the full quantity for $P_{\rm out}$ as defined in Equation \eqref{eq:sigloss}, which subtracts the 
-weighted power spectrum of the data from the weighted power spectrum of data plus EoR. 
+signal loss computation we use the full quantity for $P_{\rm out}$ as defined in Equation \eqref{eq:sigloss}, despite the fact that the cross-terms muddy the waters.
 
-We thus see from this subsection that signal loss generically arises because of couplings between $\widehat{\textbf{C}}^{-1}_{r}$ and $\mathbf{x}$. In principle, using $\widehat{\textbf{C}}^{-1}_{r}$ in place of the true inverse covariance $\textbf{C}^{-1}$ provides yet another source of multiplicative bias, which results in a modification to the treatment shown here. Such a modification is accounted for in the demonstration of Appendix \ref{sec:sigloss_appendix}, where we additionally discard the assumption that $|\textbf{x}|\ll|\textbf{e}|$. However, despite the loosening of these approximations, one sees that the qualitative message (of anti-correlations resulting in signal loss) remains intact.
+%\dcj{This paragraph has me confused.}
+%The conclusion is that signal loss generically arises because of couplings between $\widehat{\textbf{C}}^{-1}_{r}$ and $\mathbf{x}$. In principle, using $\widehat{\textbf{C}}^{-1}_{r}$ in place of the true inverse covariance $\textbf{C}^{-1}$ provides yet another source of multiplicative bias, which results in a modification to the treatment shown here. Such a modification is accounted for in the demonstration of Appendix \ref{sec:sigloss_appendix}, where we additionally discard the assumption that $|\textbf{x}|\ll|\textbf{e}|$. However, despite the loosening of these approximations, one sees that the qualitative message (of anti-correlations resulting in signal loss) remains intact.
 
 
 
 \subsubsection{Signal Loss in Practice}
 \label{sec:Practice}
-%\begin{center}
-%METHOD \#1
-%\end{center}
 
 We now shift our attention towards computing signal loss for the fringe-rate filtered PAPER-64 dataset. While our methodology 
 outlined below is independent of weighting scheme, here we demonstrate the computation using inverse covariance weighting 
@@ -1156,48 +1193,61 @@ P_{\rm out,\alpha} &=&  M^{\alpha}_{r}\textbf{r}^{\dagger}\widehat{\textbf{C}}_{
 -  M^{\alpha}_{x}\textbf{x}^{\dagger}\widehat{\textbf{C}}_{x}^{-1}\textbf{Q}^{\alpha}\widehat{\textbf{C}}_{x}^{-1}\textbf{x}. 
 \end{eqnarray}
 
-The treatment we outlined in the previous section implicitly assumed that signal loss corrections could be treated in expectation. In practice, however, the signal loss itself is a random variable --- some realizations of the cosmological signal may be more correlated with foreground modes than others, leading to more signal loss. This leads to two issues. The first is that Equation \eqref{eq:LinearPspecSum} may not hold. In particular, a third term that is a quadratic combination of $\f$ and $\s$ (e.g., $\f^\dagger \C^{-1} \s$) may appear. However, we can circumvent this issue by decomposing $\f$ into a sum of two vectors, one that is proportional to $\s$ and one that is orthogonal to $\s$. The former can be absorbed into the EoR term (part of the signal loss estimate), while the latter can be absorbed into the foreground term. In other words, suppose that we have
-\begin{equation}
-\phat_x \approx \ell_{\rm fg} |\mathbf{f}|^2 + \ell_{\rm eor} |\mathbf{e}|^2 + \ell_{\rm fe} \mathbf{f} \cdot \mathbf{e}.
-\end{equation}
-in place of Equation \eqref{eq:LinearPspecSum}. Now, split $\mathbf{f}$ into $\mathbf{ f}_\parallel +\mathbf{ f}_\perp$, which are the components of the foregrounds that couple to the EoR versus those that do not. Further parameterize $\mathbf{ f}_\parallel \equiv \rho \mathbf{e}$, where $\rho$ is some correlation coefficient that quantifies the degree of correlation between the foregrounds and the EoR. This then gives
-\begin{equation}
-\label{eq:fperpfpara}
-\phat_x \approx \ell_{\rm fg} |\mathbf{f}|^2 +( \ell_{\rm eor} + \rho  \ell_{\rm fe} ) |\mathbf{e}|^2 + \ell_{\rm fe} \mathbf{f}\cdot \mathbf{f}_\perp.
-\end{equation}
-Since $|\mathbf{e}|^2$ would be a lossless estimate of the true EoR power spectrum, this expression recovers the linear relation between the true EoR power spectrum and the lossy estimate.
-\dcj{Wait what? I think you are saying essentially that some x can remain in Pout which is what we are seeing. Or is this some extra bit of method which has been added to the analysis...} \acl{I'm not sure that's what I'm saying. (And by ``I'm not sure" I don't mean it in the colloquial sense of ``you're not right and I'm just trying to be polite about it", but rather the literal sense of the phrase ``I'm not sure"). What I was trying to say was that if I wrote Equation \eqref{eq:LinearPspecSum} without the ensemble average, I could say
-\begin{equation}
-\phat_x \approx \ell_{\rm fg} f^2 + \ell_{\rm eor} e^2 + \ell_{\rm fe} fe.
-\end{equation}
-(Note that even this is an approximation. In principle there is an infinite series containing all possible powers of 
-$e$ and $f$). Now, we split $f$ into $ f_\parallel + f_\perp$, which are the components of the foregrounds that 
-couple to the EoR versus those that do not. Further parameterize $f_\parallel \equiv \rho e$, where $\rho$ is 
-some correlation coefficient that quantifies the degree of correlation between the foregrounds and the EoR. 
-Under this parameterization, one can write the $fe$ term in terms of $e^2$ (which gets absorbed into the other 
-EoR term, plus residual foregrounds that we don't care about).}\acl{Just promoted this last part to something in 
-the main text.}\dcj{I will admit to being a little lost here.  Doesn't changing the basis just convert the unknown f 
-dot s term into other unknown terms. Isn't the whole point of Eq 24 supposed to be that we can subtract off the 
-$g(x)$ to estimate $\hat{\ell}_{\rm eor}$?  How do we subtract off $f\dot f_\perp$? Don't we want to know $
-\ell_{\rm eor}$ not $(\ell_{\rm eor} + \rho\ell_{\rm fe})$? }
-\acl{I think what we are trying to say here is that actually the thing we want \emph{is} $(\ell_{\rm eor} + \rho\ell_{\rm fe})$. Essentially, the potential coupling between the injected EoR and the foregrounds means that we lose the nice form of Equation \eqref{eq:LinearPspecSum}, which justified what is basically a multiplicative correction to signal loss. What we are suggesting here is that even when there is a coupling, the estimator can be parameterized as $\alpha  |\mathbf{e}|^2 + \beta$. So essentially we are defining an effective $
-\ell_{\rm eor}$, which is given by $(\ell_{\rm eor} + \rho\ell_{\rm fe})$.}
+%The treatment we outlined in the previous section implicitly assumed that signal loss corrections could be treated in expectation. In practice, however, the signal loss itself is a random variable --- some realizations of the cosmological signal may be more correlated with foreground modes than others, leading to more signal loss. This leads to two issues. The first is that Equation \eqref{eq:LinearPspecSum} may not hold. In particular, a third term that is a quadratic combination of $\f$ and $\s$ (e.g., $\f^\dagger \C^{-1} \s$) may appear. However, we can circumvent this issue by decomposing $\f$ into a sum of two vectors, one that is proportional to $\s$ and one that is orthogonal to $\s$. The former can be absorbed into the EoR term (part of the signal loss estimate), while the latter can be absorbed into the foreground term. In other words, suppose that we have
+%\begin{equation}
+%\phat_x \approx \ell_{\rm fg} |\mathbf{f}|^2 + \ell_{\rm eor} |\mathbf{e}|^2 + \ell_{\rm fe} \mathbf{f} \cdot \mathbf{e}.
+%\end{equation}
+%in place of Equation \eqref{eq:LinearPspecSum}. Now, split $\mathbf{f}$ into $\mathbf{ f}_\parallel +\mathbf{ f}_\perp$, which are the components of the foregrounds that couple to the EoR versus those that do not. Further parameterize $\mathbf{ f}_\parallel \equiv \rho \mathbf{e}$, where $\rho$ is some correlation coefficient that quantifies the degree of correlation between the foregrounds and the EoR. This then gives
+%\begin{equation}
+%\label{eq:fperpfpara}
+%\phat_x \approx \ell_{\rm fg} |\mathbf{f}|^2 +( \ell_{\rm eor} + \rho  \ell_{\rm fe} ) |\mathbf{e}|^2 + \ell_{\rm fe} \mathbf{f}\cdot \mathbf{f}_\perp.
+%\end{equation}
+%Since $|\mathbf{e}|^2$ would be a lossless estimate of the true EoR power spectrum, this expression recovers the linear relation between the true EoR power spectrum and the lossy estimate.
+%\dcj{Wait what? I think you are saying essentially that some x can remain in Pout which is what we are seeing. Or is this some extra bit of method which has been added to the analysis...} \acl{I'm not sure that's what I'm saying. (And by ``I'm not sure" I don't mean it in the colloquial sense of ``you're not right and I'm just trying to be polite about it", but rather the literal sense of the phrase ``I'm not sure"). What I was trying to say was that if I wrote Equation \eqref{eq:LinearPspecSum} without the ensemble average, I could say
+%\begin{equation}
+%\phat_x \approx \ell_{\rm fg} f^2 + \ell_{\rm eor} e^2 + \ell_{\rm fe} fe.
+%\end{equation}
+%(Note that even this is an approximation. In principle there is an infinite series containing all possible powers of 
+%$e$ and $f$). Now, we split $f$ into $ f_\parallel + f_\perp$, which are the components of the foregrounds that 
+%couple to the EoR versus those that do not. Further parameterize $f_\parallel \equiv \rho e$, where $\rho$ is 
+%some correlation coefficient that quantifies the degree of correlation between the foregrounds and the EoR. 
+%Under this parameterization, one can write the $fe$ term in terms of $e^2$ (which gets absorbed into the other 
+%EoR term, plus residual foregrounds that we don't care about).}\acl{Just promoted this last part to something in 
+%the main text.}\dcj{I will admit to being a little lost here.  Doesn't changing the basis just convert the unknown f 
+%dot s term into other unknown terms. Isn't the whole point of Eq 24 supposed to be that we can subtract off the 
+%$g(x)$ to estimate $\hat{\ell}_{\rm eor}$?  How do we subtract off $f\dot f_\perp$? Don't we want to know $
+%\ell_{\rm eor}$ not $(\ell_{\rm eor} + \rho\ell_{\rm fe})$? }
+%\acl{I think what we are trying to say here is that actually the thing we want \emph{is} $(\ell_{\rm eor} + \rho\ell_{\rm fe})$. Essentially, the potential coupling between the injected EoR and the foregrounds means that we lose the nice form of Equation \eqref{eq:LinearPspecSum}, which justified what is basically a multiplicative correction to signal loss. What we are suggesting here is that even when there is a coupling, the estimator can be parameterized as $\alpha  |\mathbf{e}|^2 + \beta$. So essentially we are defining an effective $
+%\ell_{\rm eor}$, which is given by $(\ell_{\rm eor} + \rho\ell_{\rm fe})$.}
 
-The second issue to tackle is how one incorporates the randomness of $\ell_{\rm eor}$ into our signal loss corrections. This is manifest in Equation \eqref{eq:fperpfpara}, where the randomness of $\rho$ means that there is an inherent spread in the signal loss correction. Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution of $p( \p_{\rm eor} | \phat_{x})$ for $\p_{\rm eor}$ given the uncorrected power spectrum estimate $\phat_{x}$. Since Equation \eqref{eq:Deriv2} is a good approximation of Equation \eqref{eq:Deriv1}, which we argued for in the previous section, we can write $\p_{\rm eor}$ as $P_{in}$, and hence the probability distribution is given by
+One issue to address is how one incorporates the randomness of $P_{\rm out}$ into our signal loss corrections. A different realization of the test signal is injected with each bootstrap run causing the output to vary according to noise as well as whether the injected signal looks more or less ``like'' the data.
+
+Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution of $p( \p_{\rm eor} | 
+\phat_{x})$ for $\p_{\rm eor}$ given the uncorrected power spectrum estimate $\phat_{x}$. Given our guess from section \ref{sec:siglossmethod}, that the change in power caused by the injection injection$P_{\rm out}$ is a good estimate of the injected EoR power $P_{\rm eor}$ we can write
+
 \begin{equation}
 \label{eq:Bayes}
-p(P_{in} | \phat_{x}) \propto \mathcal{L} (  \phat_{x} | P_{in})  p(P_{in}),
+p(P_{\rm eor} | \phat_{x}) \propto \evalat[\Bigg]{\mathcal{L} (  P_{\rm out} | P_{\rm in})}{P_{\rm out}=P_{\rm x}}
+  p(\phat_{x}) ,
 \end{equation}
-where $p(P_{in})$ is the prior on $P_{in}$ and $\mathcal{L} $ is the likelihood function. Since the likelihood is defined as the distribution of the measured result $ \phat_{x}$ given the theoretical power spectrum $P_{in}$, we may construct this function simply by fixing $P_{in}$, and simulating our analysis pipeline for many realizations of the injected EoR signal consistent with this power spectrum. The resulting distribution can be normalized, and the whole process can then be repeated for a different value of $P_{in}$. 
 
-In our code, we simulate $20$ realizations of $P_{in}$, yielding $P_{\rm in}$ values that range from $\sim$$10^{2}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$ to $\sim$10$^{16}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$. We also run $25$ total EoR injection levels, resulting in a total of $500$ data points on our $P_{\rm in}$ vs. $P_{\rm out}$ grid. 
+\noindent where $p(\phat_x)$ is the probability of the measured value (given our error) and $\mathcal{L} $ is the likelihood function defined 
+as the distribution of data + injection ($P_{\rm out}$) given the injection $P_{\rm in}$ evaluated at P.  We construct this distribution  
+by fixing $P_{\rm in}$, and simulating our analysis pipeline for many realizations of the injected EoR signal 
+consistent with this power spectrum. The resulting distribution is normalized such that the sum is unity, and the 
+whole process can then be repeated for a different value of $P_{\rm in}$.  \dcj{am I right about the normalization?}
+
+\subsection{Implementation}
+The implementation details of the injection process require some more detailed explanation.
+In our code, we add a new realization to each independent bootstrap with the goal of simultaneously capturing variance due to noise and signal loss. To limit computing time we perform $20$ realizations of $P_{in}$, yielding $P_{\rm in}$ values that range from $\sim$$10^{2}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$ to $\sim$10$^{16}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$. We also run $25$ total EoR injection levels, resulting in a total of $500$ data points on our $P_{\rm in}$ vs. $P_{\rm out}$ grid. 
 %Additionally, we have verified that the transfer function is symmetric for negative and positive $P_{\rm in}$'s, and so we fold all the values into positive ones to increase our signal-to-noise.
 
-We smooth the 2D distribution of $P_{in}$ vs. $P_{out}$ using kernel density estimators. The result, for inverse covariance weighting, is shown in the left plot of Figure \ref{fig:sigloss_transfercurve}. Bayes' rule then simply instructs us to fix $\phat_{x}$ at our measured value, essentially reading Figure \ref{fig:sigloss_transfercurve} horizontally and reinterpreting Equation \eqref{eq:Bayes} as a function of $p(P_{in})$. The final result can then be normalized to give $p(P_{in} | \phat_{x})$. If $\phat_{x}$ itself does not take on a single value but is itself a distribution (for our analysis, this comes from bootstrapping), then one simply repeats the process for every single point on the distribution of $\phat_{x}$, before performing the final summation and normalization. In Figure \ref{fig:sigloss_transfercurve}, the peak of our data distribution $
+We smooth the 2D distribution of $P_{in}$ vs. $P_{out}$ using kernel density estimators\citep{scott2008kernel}. The result, for inverse covariance weighting, is shown in the left plot of Figure \ref{fig:sigloss_transfercurve}.  Although we only show figures for one $k$ value, we note that 
+the shape of the transfer curve is nearly identical for all $k$'s (though we treat each $k$ separately).Bayes' rule then simply instructs us to fix $\phat_{x}$ at our measured value, essentially reading Figure \ref{fig:sigloss_transfercurve} horizontally and reinterpreting Equation \eqref{eq:Bayes} as a function of $p(P_{in})$. The final result can then be normalized to give $p(P_{\rm eor} | \phat_{x})$. If $\phat_{x}$ itself does not take on a single value but is itself a distribution (for our analysis, this comes from bootstrapping), then one simply repeats the process for every single point on the distribution of $\phat_{x}$, to find the distribution of $P_{\rm eor}$. In Figure \ref{fig:sigloss_transfercurve}, the peak of our data distribution $
 \widehat{\textbf{p}}_{x}$ is marked by the solid gray horizontal lines. From the left plot (inverse covariance weighting), one can eyeball that a data value of $10^{5} \, mK^{2} (h^{-1} Mpc)^{3}$, for example, would map approximately to a 
-value of $\sim10^{8} \, mK^{2} (h^{-1} Mpc)^{3}$, implying a signal loss factor of $\sim1000$. Performing a summation and normalization for the entire distribution of $\widehat{\textbf{p}}_{x}$ yields a final $P_{\rm in}$ distribution --- the distribution of our data as seen through the signal loss lens. We compute power spectrum points from the peak of the histograms, and power spectrum errors from $95\%$ confidence intervals.
+value of $\sim10^{8} \, mK^{2} (h^{-1} Mpc)^{3}$, implying a signal loss factor of $\sim1000$. Performing a summation and normalization for the entire distribution of $\widehat{\textbf{p}}_{x}$ yields a final $P_{\rm in}$ distribution --- the distribution of our data as seen through the signal loss lens. We compute power spectrum points from the peak of the histograms, and power spectrum errors from $95\%$ confidence intervals. \dcj{Normalization needs an equation}
 
-As a final complication to our procedure, we note that there will be some intrinsic scatter in our likelihood due to our having only a finite number of simulations. Ideally, running many simulations would lead to convergence in our likelihood; however, our desire to be able to quickly and easily estimate signal loss for a variety of weighting schemes and datasets means having a finite sample in practice. To separate the intrinsic stochasticity of signal loss from that which arises due to simulation noise, we repeat our analysis for a power spectrum estimator without signal loss ($\textbf{R} = \textbf{I}$), shown as the right plot in Figure \ref{fig:sigloss_transfercurve}. This intrinsic scatter is shown as the smeared `heat-map' around the solid black diagonal line (representing unity-transfer) in the plot. The width of the lossless scenario's signal loss likelihood is then deconvolved from the lossy scenario's signal loss likelihood. Specifically, we deconvolve Gaussian distributions of $P_{out}$ in the unweighted case from those of the weighted case (vertical cuts through the plots in Figure \ref{fig:sigloss_transfercurve}), for every $P_{in}$. By doing this, we are left with only the intrinsic scatter in signal loss, or scatter that stems from how much the random EoR signal $\textbf{e}$ happens to 
+As a final complication to our procedure, we note that there will be some scatter in our likelihood due to our having only a finite number of simulations. Ideally, running many simulations would lead to convergence; however, our desire to be able to quickly and easily estimate signal loss for a variety of weighting schemes and datasets means having a finite sample in practice. \dcj{This dependence on injection count was checked with a run having 10x the usual number of integrations.} To separate the intrinsic stochasticity of signal loss from that which arises due to simulation sample variance, we repeat our analysis for a power spectrum estimator without signal loss ($\textbf{R} = \textbf{I}$), shown as the right plot in Figure \ref{fig:sigloss_transfercurve}. Here the scatter, evident as deviations from unity-transfer, is entirely due to finite sample variance. To remove this effect we measure the width of this lossless case and then deconvolve that extra width from the likelihood for the lossy scenario. Specifically, we deconvolve Gaussian distributions of $P_{out}$ in the unweighted case from those of the weighted case (vertical cuts through the plots in Figure \ref{fig:sigloss_transfercurve}), for every $P_{in}$. By doing this, we are left with only the intrinsic scatter in signal loss, or scatter that stems from how much the random EoR signal $\textbf{e}$ happens to 
 look like the data $\textbf{x}$, a quantity we do not know offhand but one that we would like to correct for. As an extreme example, if we are very unlucky, one realization of $\textbf{e}$ would have the same shapes, or eigenvectors, as $\textbf{x}$. An empirically-derived covariance would then down-weight these shapes, destroying the entire EoR signal. On the other hand, the less that $\textbf{e}$ looks like $\textbf{x}$, the less signal loss that would result. The intrinsic scatter we can get is not a dominant factor in this case but it is important to correct for the fact that a particular $P_{\rm out}$ value could arise from a range of $P_{\rm in}$ values. 
 
 %The solid black diagonal line in Figure \ref{fig:sigloss_transfercurve} shows unity-transfer, which we expect to occur for the 
@@ -1223,11 +1273,11 @@ not exhibit loss. The peculiar `signal gain' tail seen at low injection is drive
 
 %One peculiar aspect of Figure \ref{fig:sigloss_transfercurve} is the fact that at low $P_{\rm in}$ values it appears that we can have signal gain ($P_{\rm out} > P_{in}$). \cc{This is a log-plotting effect and is under-construction!}.
 %This is unphysical in nature but caused due to the dominating cross-terms involving $\textbf{e}$ and $\textbf{x}$ in Equation \eqref{eq:pout_expand} once $\textbf{e}$ becomes small. 
-
-The shape of our signal loss transfer function can be described as follows. At low injection levels, for small $\textbf{e}$, we are dominated by the cross-terms involving $\textbf{e}$ and $\textbf{x}$ in Equation \eqref{eq:pout_expand}. As $\textbf{e}$ increases, we move 
-into a regime where $P_{\rm out} \sim P_{in}$, and then eventually into a regime where $P_{\rm out} < P_{in}$ when $\textbf{e}$ is 
-large enough to be destroyed if weighting the data using itself. Although we only show figures for one $k$ value, we note that 
-the shape of the transfer curve is nearly identical for all $k$'s (though we treat each $k$ separately).
+%
+%The shape of our signal loss transfer function can be described as follows. At low injection levels, for small $\textbf{e}$, we are dominated by the cross-terms involving $\textbf{e}$ and $\textbf{x}$ in Equation \eqref{eq:pout_expand}. As $\textbf{e}$ increases, we move 
+%into a regime where $P_{\rm out} \sim P_{in}$, and then eventually into a regime where $P_{\rm out} < P_{in}$ when $\textbf{e}$ is 
+%large enough to be destroyed if weighting the data using itself. Although we only show figures for one $k$ value, we note that 
+%the shape of the transfer curve is nearly identical for all $k$'s (though we treat each $k$ separately).
 
 %\begin{figure*}
 %	\centering
@@ -1236,12 +1286,10 @@ the shape of the transfer curve is nearly identical for all $k$'s (though we tre
 %	\label{fig:sigloss_datadist_inversecovariance}
 %\end{figure*}
 
-To conclude this method, we also show power spectrum results for fringe-rate filtered PAPER-64 data before and after signal 
-loss estimation in Figure \ref{fig:ps2_data}, using empirically estimated inverse covariance weighting. The blue dashed line represents the unweighted 
-power spectrum $2\sigma$ upper limit, which is identical in both panels (an important check, as we expect no signal loss for this case). The black and 
-gray points are positive and negative power spectrum values plotted with $2\sigma$ error bars. Prior to signal loss estimation, it 
-is clear that the power spectrum is unfeasible because it is well below the theoretical noise level prediction (solid green curve). 
-Post-estimation, the power spectrum errors are higher than both the theory and unweighted power spectrum, a consequence of weighting with a steep eigenspectrum where the `weak' modes are strongly coupled to the time-averaged fringe-rate filtered data. We elaborate on this point in the next section, as well as investigate alternate 
+The result is the loss-corrected power spectrum shown in Figure \ref{fig:ps2_data} which we can compare  to the original lossy result. There are a few important checks to examine.  We see that the unweighted 
+power spectrum $2\sigma$ upper limit is identical in both panels. This is an important check, as we expect no signal loss for this case. Any difference here would indicate an error in the pipeline or discrepancy in the range of data included.  Prior to signal loss estimation, it 
+is clear that the power spectrum is inconsistent with the (now revised) theoretical noise level prediction. 
+Post signal loss estimation, the power spectrum errors are higher than both the theory and unweighted power spectrum, a consequence of weighting with a steep eigenspectrum where the `weak' modes are strongly coupled to the time-averaged fringe-rate filtered data. We elaborate on this point in the next section, as well as investigate alternate 
 weighting schemes to inverse covariance weighting, with the goal of finding one that balances the aggressiveness of down-weighting contaminants with minimizing the loss of EoR signal. 
 
 \begin{figure*}
