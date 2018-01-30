@@ -1246,8 +1246,19 @@ The implementation details of the injection process require some more detailed e
 In our code, we add a new realization to each independent bootstrap with the goal of simultaneously capturing variance due to noise and signal loss. To limit computing time we perform $20$ realizations of $P_{in}$, yielding $P_{\rm in}$ values that range from $\sim$$10^{2}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$ to $\sim$10$^{16}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$. We also run $25$ total EoR injection levels, resulting in a total of $500$ data points on our $P_{\rm in}$ vs. $P_{\rm out}$ grid. 
 %Additionally, we have verified that the transfer function is symmetric for negative and positive $P_{\rm in}$'s, and so we fold all the values into positive ones to increase our signal-to-noise.
 
-We smooth the 2D distribution of $P_{in}$ vs. $P_{out}$ using kernel density estimators\citep{scott2008kernel}. The result, for inverse covariance weighting, is shown in the left plot of Figure \ref{fig:sigloss_transfercurve}.  Although we only show figures for one $k$ value, we note that 
-the shape of the transfer curve is nearly identical for all $k$'s (though we treat each $k$ separately).Bayes' rule then simply instructs us to fix $\phat_{x}$ at our measured value, essentially reading Figure \ref{fig:sigloss_transfercurve} horizontally and reinterpreting Equation \eqref{eq:Bayes} as a function of $p(P_{in})$. The final result can then be normalized to give $p(P_{\rm eor} | \phat_{x})$. If $\phat_{x}$ itself does not take on a single value but is itself a distribution (for our analysis, this comes from bootstrapping), then one simply repeats the process for every single point on the distribution of $\phat_{x}$, to find the distribution of $P_{\rm eor}$. In Figure \ref{fig:sigloss_transfercurve}, the peak of our data distribution $
+We smooth the 2D distribution of $P_{in}$ vs. $P_{out}$ using kernel density estimators\citep{scott2008kernel}. 
+The result, for inverse covariance weighting, is shown in the left plot of Figure \ref{fig:sigloss_transfercurve}.  
+Although we only show figures for one $k$ value, we note that 
+the shape of the transfer curve is nearly identical for all $k$'s (though we treat each $k$ separately).Bayes' rule 
+then simply instructs us compute $p(\phat_{x})$, multiply it horizontally across Figure 
+\ref{fig:sigloss_transfercurve} horizontally as defined in Equation \eqref{eq:Bayes} to get $p(P_{in})$. The final 
+result can then be normalized to give $p(P_{\rm eor} | \phat_{x})$. 
+\dcj{Need to write down the normalization for \eqref{eq:Bayes}}
+The width of the distribution of  $\phat_{x}$ itself is defined as a  gaussian with the mean $\phat_{x}$ and 
+variance determined from the bootstrap process. 
+
+
+Inspection of the transfer function plot in Figure \ref{fig:sigloss_transfercurve} gives a sense of what the result should be.  The peak of our data distribution $
 \widehat{\textbf{p}}_{x}$ is marked by the solid gray horizontal lines. From the left plot (inverse covariance weighting), one can eyeball that a data value of $10^{5} \, mK^{2} (h^{-1} Mpc)^{3}$, for example, would map approximately to a 
 value of $\sim10^{8} \, mK^{2} (h^{-1} Mpc)^{3}$, implying a signal loss factor of $\sim1000$. Performing a summation and normalization for the entire distribution of $\widehat{\textbf{p}}_{x}$ yields a final $P_{\rm in}$ distribution --- the distribution of our data as seen through the signal loss lens. We compute power spectrum points from the peak of the histograms, and power spectrum errors from $95\%$ confidence intervals. \dcj{Normalization needs an equation}
 
