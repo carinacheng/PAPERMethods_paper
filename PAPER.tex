@@ -1783,13 +1783,13 @@ where $N$ is the length of $\x$. In the last step we dropped the final term, sin
 \label{sec:Pr_appendix}
 One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in Section \ref{sec:Sigloss} relies on several assumptions which required justification including the assumption that the number of samples is large enough to treat sample variance as a first order purturbation on the ideal covariance matrix instead of the dominant effect we know it is. \acl{I'm not sure the previous sentence was fair. Again, the appendix is a motivating example. Carina's numerical computations do not rely on the derivation.} However it is possible to ask a slightly different question and with less math still get roughly the same answer.
 
-In the main text we made an estimate of the signal loss effecting only the injected EoR by supposing that the lossy injected signal was the difference between the injected and not injected cases: $P_{out} = \widehat{\textbf{p}}_{r} - \widehat{\textbf{p}}_{x}$. Suppose that we rephrase the question we are asking to: ``At what point would an injected signal be detectable at significant levels?". \acl{Can we justify better why this is the right question? In particular, why is the detection of an injected signal the right thing to look at? After all, the universe doesn't do any signal injections. I think to justify that signal injections are the right thing to consider in the first place, one requires some sort of correspondence between equations analogous to Equation \eqref{eq:Deriv1} and \eqref{eq:Deriv2}.} Instead of disentangling the part of the output power spectrum dominated by the injected signal we can simply use $\widehat{\textbf{p}}_{r}$, the weighted power spectrum of the data plus injected signal.
+In the main text we made an estimate of the signal loss effecting only the injected EoR by supposing that the lossy injected signal was the difference between the injected and not injected cases: $P_{\rm out} = \widehat{\textbf{p}}_{r} - \widehat{\textbf{p}}_{x}$. Suppose that we rephrase the question we are asking to: ``At what point would an injected signal be detectable at significant levels?". \acl{Can we justify better why this is the right question? In particular, why is the detection of an injected signal the right thing to look at? After all, the universe doesn't do any signal injections. I think to justify that signal injections are the right thing to consider in the first place, one requires some sort of correspondence between equations analogous to Equation \eqref{eq:Deriv1} and \eqref{eq:Deriv2}.} Instead of disentangling the part of the output power spectrum dominated by the injected signal we can simply use $\widehat{\textbf{p}}_{r}$, the weighted power spectrum of the data plus injected signal.
   
 \begin{figure}[tp]
 \centering
 \includegraphics[width=\textwidth]{plots/method2_heatmap_posneg.png}
 \caption{The distribution of $\widehat{\textbf{p}}_{r}$ values for a 
-given injection level P$_{in}$. The $\widehat{\textbf{p}}_{r}$ values that are plotted on the y-axis represent the weighted power spectrum of data plus the injected signal. It differs from that of Figure \ref{fig:sigloss_transfercurve} by not subtracting off the power spectrum of data alone (not subtracting off the second term in Equation \eqref{eq:sigloss}). We show kernel density estimations of the power spectrum transfer functions as colored heat-maps for the cases of inverse covariance weighted PAPER-64 data (left) and unweighted data (right). The dotted black 
+given injection level P$_{\rm in}$. The $\widehat{\textbf{p}}_{r}$ values that are plotted on the y-axis represent the weighted power spectrum of data plus the injected signal. It differs from that of Figure \ref{fig:sigloss_transfercurve} by not subtracting off the power spectrum of data alone (not subtracting off the second term in Equation \eqref{eq:sigloss}). We show kernel density estimations of the power spectrum transfer functions as colored heat-maps for the cases of inverse covariance weighted PAPER-64 data (left) and unweighted data (right). The dotted black 
 diagonal lines mark a perfect unity mapping, and the solid gray horizontal line denotes the peak of $\widehat{\textbf{p}}_{x}$, the data distribution. At low injection, $\widehat{\textbf{p}}_{r}$ converges to the data level.
 }
 \label{fig:Pr_vs_Pin}
@@ -1800,7 +1800,7 @@ This question is phrased visually in Figure \ref{fig:Pr_vs_Pin}. In the 2D space
 \begin{figure}[tp]
 \centering
 \includegraphics[width=.5\textwidth]{plots/method2_prob_vs_pinj.png}
-\caption{The probability that an injected signal of level P$_{inj}$
+\caption{The probability that an injected signal of level P$_{\rm inj}$
 is observable at a 2$\sigma$ level above the value of $\widehat{\textbf{p}}_{x}$ (data).
 The different colors represent different $k$ values. We choose a probability of $95\%$ for our signal loss estimated power spectrum.
 \label{fig:Prob_vs_Pin}}
@@ -1808,7 +1808,7 @@ The different colors represent different $k$ values. We choose a probability of 
   
 One difference in this method from the one in the main text is that we are exclusively asking about signals detectable \emph{above} the level of the observed data. Thus it is explicitly limited to placing an upper limit, even if in some $k$-modes one has actual detections above the noise.  This might be seen as more conservative, however, a similar assumption has already been made when choosing to down-weight the data using itself. In such a down-weighting step, one has assumed that significant excess power is associated with a foreground residual. We note that a high SNR detection will require a different method.
   
-Formally we can express our test as: ``What is the $P_{\rm in}$ such that the power spectrum of "data + 
+Formally we can express our test as: ``What is the $P_{\rm in}$ such that the power spectrum of ``data + 
 injected eor" ($\widehat{p}_{e+x}$) is detectable above the power spectrum of the data itself ($\widehat{p}_x$. 
 In other words, what is $e$ such that,
 \begin{equation}
