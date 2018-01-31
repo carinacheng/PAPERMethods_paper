@@ -14,6 +14,8 @@
 %\usepackage{titlesec}
 \citestyle{aa}
 
+\defcitealias{ali_et_al2015}{A15}
+
 %Math stuff from Danny
 \NewDocumentCommand{\evalat}{sO{\big}mm}{%
   \IfBooleanTF{#1}
@@ -198,7 +200,7 @@ Finally, this paper adds to the growing foundations of lessons which have been d
 
 This paper is organized into two main sections. In Section \ref{sec:Themes} we introduce the three themes of our focus, using a 
 toy model to develop intuition for each one. In Section \ref{sec:CaseStudy} we present a case study into each theme using data 
-from the PAPER-64 array, highlighting key changes from the previously published result in \citet{ali_et_al2015}, henceforth known as A15, which have led to a 
+from the PAPER-64 array, highlighting key changes from the previously published result in \citet{ali_et_al2015}, henceforth known as \citetalias{ali_et_al2015}, which have led to a 
 revised PAPER-64 power spectrum result (Kolopanis et al., \textit{in prep}). We conclude in Section \ref{sec:Con}.
 
 % SECTION 2 INTRO ---------------------------------------------------------------------------------
@@ -286,7 +288,7 @@ cm results.
 Signal loss can arise in a variety of ways in the analysis pipeline, such as fitting a polynomial during 
 spectral calibration, applying a delay-domain filter, or by deriving weights from data and applying them to itself. Here we focus on signal loss associated with 
 applying a weighting matrix to data, a loss that can be significant depending on the choice of weighting and one that was 
-previously underestimated in the A15 analysis.
+previously underestimated in the \citetalias{ali_et_al2015} analysis.
 
 Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight 
 foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum 
@@ -425,7 +427,7 @@ In general, the strongest eigenmodes of $\widehat{\textbf{C}}$ typically describ
 \end{figure}
 
 The danger of an empirically estimated covariance matrix comes mostly from not being able to describe the `weak' eigenmodes of $
-\textbf{C}$ accurately, for which the EoR signal is brighter than foregrounds. In such a case, the coupling between these modes to the data realization leads to the overfitting and subtraction of the EoR signal. More specifically, the coupling between the estimated covariance and the data is anti-correlated in nature (which is explained in more detail in Section \ref{sec:Illustration}), which leads to loss. Mis-estimating $\textbf{C}$ for EoR-dominated eigenmodes is therefore more harmful than for FG-dominated modes, and since the `weak' modes of an eigenspectrum are typically EoR-dominated, using this part of the spectrum for weighting is most dangerous.
+\textbf{C}$ accurately, for which the EoR signal is brighter than foregrounds. In such a case, the coupling between these modes to the data realization leads to the overfitting and subtraction of the EoR signal. More specifically, the coupling between the estimated covariance and the data is anti-correlated in nature (which is explained in more detail in Section \ref{sec:siglossmethod}), which leads to loss. Mis-estimating $\textbf{C}$ for EoR-dominated eigenmodes is therefore more harmful than for FG-dominated modes, and since the `weak' modes of an eigenspectrum are typically EoR-dominated, using this part of the spectrum for weighting is most dangerous.
 
 Using what we've learned about the eigenspectrum, we can tweak it in a simple way to suppress foregrounds and yield minimal 
 signal loss. Recall that our toy model foreground is a sinusoid, so it can be perfectly described by a single eigenmode. Using the full dataset's (foreground plus EoR signal) empirical covariance, we can 
@@ -758,7 +760,7 @@ wedge"
 The wedge describes a region in $k$-space contaminated by smooth spectrum foregrounds, bounded by baseline length (which is proportional to $k_{\perp}$) and delay (which is 
 proportional to $k_{\parallel}$). Properties of the wedge can be used to isolate and 
 %remove 
-avoid foregrounds, as done by A15, 
+avoid foregrounds, as done by \citetalias{ali_et_al2015}, 
 \citet{parsons_et_al2014}, \citet{dillon_et_al2014}, \citet{dillon_et_al2015}, \citet{jacobs_et_al2015}, \citet{beardsley_et_al2016}, and \citet{trott_et_al2016}.
 
 Although smooth spectrum foregrounds preferentially show up at low delay, or low $k$ modes, their isolation within the wedge is not perfect. In deep measurements, power spectrum measurements at $k_{\parallel}$ values beyond 
@@ -770,10 +772,10 @@ antenna response, all of which could smear out the foregrounds and cause leakage
 There are analysis techniques to mitigate the effects of foreground leakage and prevent information from low $k's$ from 
 spreading to high $k$ values. For example, narrow window functions in delay-space can be used to minimize the leakage from a particular 
 $k$ value into other ones (\citealt{liu_et_al2014b}). In other words, one can construct an estimator using OQE that forces a 
-window function to have a minimum response to low $k$ values. The window function used in A15 is constructed in such a way, 
+window function to have a minimum response to low $k$ values. The window function used in \citetalias{ali_et_al2015} is constructed in such a way, 
 specifically to prevent foregrounds that live at low $k's$ from contaminating higher $k$-modes (see Section \ref{sec:Bias}). 
 
-Determining the source of positive non-EoR detections at higher $k$'s is more difficult. In previous power spectrum results, these detections have been explained as instrumental systematics, particularly time-variable cross talk, RFI, cable reflections, and calibration errors (A15; \citealt{parsons_et_al2014}; \citealt{dillon_et_al2014}; \citealt{beardsley_et_al2016}; \citealt{patil_et_al2017}). In the next section (Section \ref{sec:JackknifeOverview}), we will present some tests that can help distinguish these excesses from that of EoR. 
+Determining the source of positive non-EoR detections at higher $k$'s is more difficult. In previous power spectrum results, these detections have been explained as instrumental systematics, particularly time-variable cross talk, RFI, cable reflections, and calibration errors (\citetalias{ali_et_al2015}; \citealt{parsons_et_al2014}; \citealt{dillon_et_al2014}; \citealt{beardsley_et_al2016}; \citealt{patil_et_al2017}). In the next section (Section \ref{sec:JackknifeOverview}), we will present some tests that can help distinguish these excesses from that of EoR. 
 
 In addition to foreground bias, noise can also be responsible for positive power spectrum detections if thermal noise is 
 multiplied by itself. Every $21$ cm visibility measurement contains thermal noise that is comprised of receiver and sky noise. 
@@ -908,13 +910,13 @@ and bias. Understanding the subtleties and trade-offs involved in each is necess
 a power spectrum result. 
 
 We now apply these lessons to data from the PAPER experiment to make a new analysis of the PAPER-64 dataset originally presented in 
-A15 and obtain a revised power spectrum estimate.
+\citetalias{ali_et_al2015} and obtain a revised power spectrum estimate.
 
 As a brief review, PAPER is a dedicated $21$ cm experiment located in the Karoo Desert in South Africa. The PAPER-64 
 configuration consists of 64 dual-polarization drift-scan elements that are arranged in a grid layout. For our case study, we 
 focus solely on Stokes I estimated data \citep{moore_et_al2013} from PAPER's $30$ m East/West baselines (Figure 
 \ref{fig:ant_layout}). All data is compressed, calibrated (using self-calibration and redundant calibration), delay-filtered (to remove foregrounds inside the wedge), LST-binned, and fringe-rate filtered. For detailed information about the backend system of PAPER-64, its observations, and data reduction pipeline, we 
-refer the reader to \citet{parsons_et_al2010} and A15. We note that all data processing steps are identical to those in A15 until after the LST-binning step in Figure 3 of A15.
+refer the reader to \citet{parsons_et_al2010} and \citetalias{ali_et_al2015}. We note that all data processing steps are identical to those in \citetalias{ali_et_al2015} until after the LST-binning step in Figure 3 of \citetalias{ali_et_al2015}.
 
 \begin{figure}
 	\centering
@@ -924,7 +926,7 @@ paper (i.e. the shortest horizontal spacings).}
 	\label{fig:ant_layout}
 \end{figure}
 
-The previously best published $21$ cm upper limit result from A15 uses $124$ nights of data to place a $2\sigma$ upper limit 
+The previously best published $21$ cm upper limit result from \citetalias{ali_et_al2015} uses $124$ nights of data to place a $2\sigma$ upper limit 
 on $\Delta^{2}(k)$, defined as
 
 \begin{equation}
@@ -934,10 +936,10 @@ on $\Delta^{2}(k)$, defined as
 \noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$ h Mpc$^{-1}$ at $z = 8.4$. The revision of this limit (Kolopanis et al., \textit{in prep}) stems from previously underestimated signal loss and underestimated error bars, both of which we 
 address in the following sections. 
 
-For our analysis, we use $8.1$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (A15 uses a slightly different RA 
+For our analysis, we use $8.1$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (\citetalias{ali_et_al2015} uses a slightly different RA 
 range of $0$-$8.6$ hours). All power spectrum results are produced for a center frequency of $151$ MHz using a width of $10$ 
-MHz ($20$ channels), identical to the analysis in A15. We note that, besides using only one baseline type instead of the three as in 
-A15, the PAPER-64 dataset that we use in this case study differs from that in A15 only in the analysis. The most significant changes occur in the power spectrum analysis, which is explained in the rest of this paper, but we also note that the applied fringe-rate filter is also slightly different. In A15, the 
+MHz ($20$ channels), identical to the analysis in \citetalias{ali_et_al2015}. We note that, besides using only one baseline type instead of the three as in 
+\citetalias{ali_et_al2015}, the PAPER-64 dataset that we use in this case study differs from that in \citetalias{ali_et_al2015} only in the analysis. The most significant changes occur in the power spectrum analysis, which is explained in the rest of this paper, but we also note that the applied fringe-rate filter is also slightly different. In \citetalias{ali_et_al2015}, the 
 applied filter was degraded by widening it in fringe-rate space. This was chosen in order to increase the number of independent 
 modes and reduce signal loss, though as we will explain in the next section, this signal loss was still under-estimated. With the development of a new, 
 robust method for assessing signal loss, we choose to use the optimal filter in order to maximize sensitivity. This filter is 
@@ -959,19 +961,19 @@ an integration in time, increasing sensitivity but reducing the number of indepe
 \subsection{PAPER-64: Signal Loss}
 \label{sec:Sigloss}
 
-In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular dataset. The exact amount of signal loss will depend on the specific realizations of the signals present in the data and is not something we can directly compute. In this work, as in A15, we inject simulated cosmological signals into our data and test the recovery of those signals (an approach also taken by \citet{masui_et_al2013}). As we will see, correlations between the injected signals and the data are significant complicating factors which were previously not taken into account. 
+In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular dataset. The exact amount of signal loss will depend on the specific realizations of the signals present in the data and is not something we can directly compute. In this work, as in \citetalias{ali_et_al2015}, we inject simulated cosmological signals into our data and test the recovery of those signals (an approach also taken by \citet{masui_et_al2013}). As we will see, correlations between the injected signals and the data are significant complicating factors which were previously not taken into account. 
 
-The results of such an injection scheme can be interpreted in multiple ways. In this paper we describe two --- this section describes one and in Appendix \ref{sec:Pr_appendix} we present an alternate interpretation. These two methods yield very similar results, but fundamentally are answering subtly distinct questions. We also highlight major differences from the signal loss computation used in A15, which previously underestimated losses. 
+The results of such an injection scheme can be interpreted in multiple ways. In this paper we describe two --- this section describes one and in Appendix \ref{sec:Pr_appendix} we present an alternate interpretation. These two methods yield very similar results, but fundamentally are answering subtly distinct questions. We also highlight major differences from the signal loss computation used in \citetalias{ali_et_al2015}, which previously underestimated losses. 
 
 \subsubsection{Signal Loss Methodology} 
 \label{sec:siglossmethod}
 In short, our method consists of injecting an EoR-like signal into the data and then measuring the amount recovered, with the difference being accounted as signal loss.  To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated $21$ 
-cm signal visibilities. Here we use the same method as in A15, where mock Gaussian noise visibilities (mock EoR signals) 
+cm signal visibilities. Here we use the same method as in \citetalias{ali_et_al2015}, where mock Gaussian noise visibilities (mock EoR signals) 
 are filtered in fringe-rate space to retain only ``sky-like" time-modes. This signal is then added to the data.\footnote{One 
-specific change from A15 is that we add this simulated signal into the analysis pipeline before the final fringe-rate filter is 
+specific change from \citetalias{ali_et_al2015} is that we add this simulated signal into the analysis pipeline before the final fringe-rate filter is 
 applied to the data. Previously, the addition was done after that final fringe-rate filter step.  This change results in an increased 
 estimate of signal loss, %(by a factor of $\sim$$10$), 
-likely due to the use of the fringe-rate filter as a simulator. However, this pipeline difference, while significant, is not the dominant reason why signal loss was under-estimated in A15 (the dominant reason is explained in the main text in Section \ref{sec:siglossmethod}).}
+likely due to the use of the fringe-rate filter as a simulator. However, this pipeline difference, while significant, is not the dominant reason why signal loss was under-estimated in \citetalias{ali_et_al2015} (the dominant reason is explained in the main text in Section \ref{sec:siglossmethod}).}
 
 Suppose that $\textbf{e}$ is a mock injected EoR signal (at some amplitude level), and $\textbf{x}$ is our data. We define $\textbf{r}
 $ to be the data plus the EoR signal:
@@ -1063,7 +1065,7 @@ signal amplitude which causes a power doubling ($\phat_r = 2 \phat_x$). Expandin
 %To explore how our expression for $P_{\rm out}$ encapsulates signal loss, we expand out Equation \eqref{eq:sigloss}:
 
 \begin{eqnarray}
-\label{eq:crossterm}
+\label{eq:crossterm_full}
 P_{\rm out,\alpha} &=& \text{M}^{\alpha}_{r}(\textbf{x}+\textbf{e})^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}(\textbf{x}+\textbf{e}) - 
 \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x} \nonumber \\
 &=& \text{M}^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} + \text{M}^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
@@ -1099,9 +1101,9 @@ signal as intended (the black and green curves agree).
 When the injected signal is of a similar amplitude to the data by itself, the situation becomes less straightforward. We see that 
 the weighted injected power spectrum component mirrors the input power indicating little loss (i.e. the green curve follows the dotted black line), eventually 
 departing from unity when the injected amplitude is well above the level of the data power spectrum. However, 
-the cross-terms have nearly the same amplitude, but with a negative sign. The sum of the two is substantially lower and therefore drives down the $P_{\rm out}$ estimator (black). We note that in A15, signal loss was computed by only looking at the second term in Equation \eqref{eq:crossterm} (green), which incorrectly implies no loss at the data level. Ignoring the effect of the negative power from the cross-terms is the main reason for under-estimating power spectrum limits in A15.
+the cross-terms have nearly the same amplitude, but with a negative sign. The sum of the two is substantially lower and therefore drives down the $P_{\rm out}$ estimator (black). We note that in \citetalias{ali_et_al2015}, signal loss was computed by only looking at the second term in Equation \eqref{eq:crossterm} (green), which incorrectly implies no loss at the data level. Ignoring the effect of the negative power from the cross-terms is the main reason for under-estimating power spectrum limits in \citetalias{ali_et_al2015}.
 
-%A brief description of Figure \ref{fig:sigloss_terms} is as follows. The gray curve represents the data level, which is constant as the level of $P_{\rm in}$, the input EoR signal, is changed. The blue curve is the power spectrum of the data only, weighted by an empirical covariance estimated from the data plus the EoR signal ($\widehat{\textbf{C}}_{r}^{-1}$). It approaches the gray at low injection level, as expected, since in that case $\widehat{\textbf{C}}_{r}^{-1} \rightarrow \widehat{\textbf{C}}_{x}^{-1}$. The green curve is the power spectrum of the EoR signal, weighted by $\widehat{\textbf{C}}_{r}^{-1}$. This is the exact term that was compared to $P_{\rm in}$ in the A15 signal loss analysis, and in doing so this would imply there is negligible loss (where the green crosses the gray). It is primarily due to the cross-terms (red), that the black curve exhibits $\sim$$3$ orders of magnitude of loss at the data level, for the inverse covariance weighted case. We see that the cross-terms can produce a large, negative signal which serves to reduce $P_{\rm out}$ and drive the bulk of our loss. In the unweighted case, however (right plot), the cross-terms primarily drive a tail of `excess' $P_{\rm out}$ at low injects, though at larger injects we see unity transfer as expected (the solid black curve lies on the dotted black line, which represents unity transfer).
+%A brief description of Figure \ref{fig:sigloss_terms} is as follows. The gray curve represents the data level, which is constant as the level of $P_{\rm in}$, the input EoR signal, is changed. The blue curve is the power spectrum of the data only, weighted by an empirical covariance estimated from the data plus the EoR signal ($\widehat{\textbf{C}}_{r}^{-1}$). It approaches the gray at low injection level, as expected, since in that case $\widehat{\textbf{C}}_{r}^{-1} \rightarrow \widehat{\textbf{C}}_{x}^{-1}$. The green curve is the power spectrum of the EoR signal, weighted by $\widehat{\textbf{C}}_{r}^{-1}$. This is the exact term that was compared to $P_{\rm in}$ in the \citetalias{ali_et_al2015} signal loss analysis, and in doing so this would imply there is negligible loss (where the green crosses the gray). It is primarily due to the cross-terms (red), that the black curve exhibits $\sim$$3$ orders of magnitude of loss at the data level, for the inverse covariance weighted case. We see that the cross-terms can produce a large, negative signal which serves to reduce $P_{\rm out}$ and drive the bulk of our loss. In the unweighted case, however (right plot), the cross-terms primarily drive a tail of `excess' $P_{\rm out}$ at low injects, though at larger injects we see unity transfer as expected (the solid black curve lies on the dotted black line, which represents unity transfer).
 
 %\dcj{This section isn't held up by figure 17. Is that because the "illustriative" figure is off? Or is it that cross terms don't matter when injected signal is very large.}
 %We now turn to building intuition behind the negative power that arises from the cross-terms in Equation \eqref{eq:crossterm}. For illustrative purposes in this subsection only, we consider a scenario where $\textbf{e}$ dominates compared to $\textbf{x}$. It is in this limit where we expect signal loss to be greatest, and $P_{\rm out}$ becomes:
@@ -1111,12 +1113,12 @@ the cross-terms have nearly the same amplitude, but with a negative sign. The su
 %P_{\rm out, \alpha} &\approx&  M^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} +
 % 2M^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e}.
 %\end{eqnarray}
-%The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. Again, it is this quantity that was used in A15 to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to A15.
+%The first term of $P_{\rm out}$ is simply the weighted power spectrum of $\textbf{e}$ alone. Again, it is this quantity that was used in \citetalias{ali_et_al2015} to calculate signal loss. However, without taking into account the cross-terms (the second term), we can substantially under-estimate loss. In short, this is because correlations between the data and injected EoR signal emerge as statistical noise that is added to the power spectrum estimate, decreasing the value of $P_{\rm out}$. Including these cross-terms in our new analysis represents the bulk change of our revised analysis compared to \citetalias{ali_et_al2015}.
 
 \begin{figure*}
 	\centering
 	\includegraphics[width=1\textwidth]{plots/sigloss_terms.png}
-	\caption{Illustration of the components of the signal loss transfer function, $P_{\rm out}$, as defined by Equation \eqref{eq:crossterm} for PAPER-64 data for the inverse covariance weighted case (left) and unweighted case (right). The details of the simulation used to generate the figure is explained in Section \ref{sec:Practice}; here we fit smooth polynomials to our data points to create the curves. We show the contributions of each signal loss term (blue, red, green, gray), which when combined produce the black $P_{\rm out}$ curve. Most notably, the green curves denotes the signal loss analysis used in A15, and the red curves showcase the importance of the cross-terms in Equation \eqref{eq:crossterm} in computing signal loss. As explained in the main text, the cross-terms can produce large, negative signal which represents the difference between the green curve (which exhibits negligible loss at the data level) and the black curve (which exhibits $\sim$$3$ orders of magnitude of loss at the data level for the inverse covariance weighted case). Finally, the dotted diagonal black line represents perfect unity transfer, or no signal loss, which we recover for the unweighted case.}
+	\caption{Illustration of the components of the signal loss transfer function, $P_{\rm out}$, as defined by Equation \eqref{eq:crossterm} for PAPER-64 data for the inverse covariance weighted case (left) and unweighted case (right). The details of the simulation used to generate the figure is explained in Section \ref{sec:Practice}; here we fit smooth polynomials to our data points to create the curves. We show the contributions of each signal loss term (blue, red, green, gray), which when combined produce the black $P_{\rm out}$ curve. Most notably, the green curves denotes the signal loss analysis used in \citetalias{ali_et_al2015}, and the red curves showcase the importance of the cross-terms in Equation \eqref{eq:crossterm} in computing signal loss. As explained in the main text, the cross-terms can produce large, negative signal which represents the difference between the green curve (which exhibits negligible loss at the data level) and the black curve (which exhibits $\sim$$3$ orders of magnitude of loss at the data level for the inverse covariance weighted case). Finally, the dotted diagonal black line represents perfect unity transfer, or no signal loss, which we recover for the unweighted case.}
 	\label{fig:sigloss_terms}
 \end{figure*}
 
@@ -1163,7 +1165,7 @@ weighted power spectrum of the data from the weighted power spectrum of data plu
 
 We now shift our attention towards computing signal loss for the fringe-rate filtered PAPER-64 dataset. While our methodology 
 outlined below is independent of weighting scheme, here we demonstrate the computation using inverse covariance weighting 
-($\textbf{R} = \widehat{\textbf{C}}^{-1}$), the weighting scheme used in A15 which, with an empirically estimated covariance, leads to substantial loss. With this weighting, our 
+($\textbf{R} = \widehat{\textbf{C}}^{-1}$), the weighting scheme used in \citetalias{ali_et_al2015} which, with an empirically estimated covariance, leads to substantial loss. With this weighting, our 
 expressions for $P_{\rm in}$ and $P_{\rm out}$ become
 
 \begin{eqnarray}
@@ -1256,7 +1258,7 @@ look like the data $\textbf{x}$, a quantity we do not know offhand but one that 
 heat-maps for the cases of inverse covariance weighted PAPER-64 data (left) and unweighted data (right). The dotted black 
 diagonal lines mark a perfect unity mapping, and the solid gray horizontal line denotes the power spectrum value of the data $\widehat{\textbf{p}}_{x}$. From these plots, it is clear that inverse covariance weighting results in $\sim3$ orders of magnitude of signal loss 
 for power spectrum values above $\sim$$2 \times 10^{4}$ $mK^{2} \, (h^{-1} \, Mpc)^{3}$, whereas the unweighted case does 
-not exhibit loss. The peculiar `signal gain' tail seen at low injection is driven by the cross-terms in Equation \eqref{eq:pout_expand}, also shown by the red curve in the right panel in Figure \ref{fig:sigloss_terms}.}
+not exhibit loss. The peculiar `signal gain' tail seen at low injection is driven by the cross-terms in Equation \eqref{eq:crossterm_full}, also shown by the red curve in the right panel in Figure \ref{fig:sigloss_terms}.}
 	\label{fig:sigloss_transfercurve}
 \end{figure*}
 
@@ -1336,7 +1338,7 @@ Our revised, best to-date PAPER-64 power spectrum (using only one baseline separ
 \ref{fig:ps1_data}. Again, black and gray points correspond to positive and negative power spectrum values respectively, with 
 $2\sigma$ errors bars. Also plotted are the unweighted power spectrum upper limit (dashed blue) and theoretical prediction of 
 noise (solid green). From this result, we quote a best $2\sigma$ upper limit of $(151.0$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, 
-a higher limit than A15 by a factor of $\sim7$ in mK (though we only use one baseline type in our analysis as opposed to three). 
+a higher limit than \citetalias{ali_et_al2015} by a factor of $\sim7$ in mK (though we only use one baseline type in our analysis as opposed to three). 
 \cc{replace with kolopanis limit instead later}
 
 \begin{figure*}
@@ -1346,10 +1348,10 @@ a higher limit than A15 by a factor of $\sim7$ in mK (though we only use one bas
 	\caption{Power spectrum of PAPER-64 using $\widehat{\textbf{C}}_{eff}$. Black and gray points correspond to positive and 
 negative power spectrum values, respectively, with $2\sigma$ error bars also plotted. The dashed blue line is the unweighted 
 power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on 
-observational parameters. This power spectrum result differs from A15 in that it only uses data from one type of baseline ($30$ m 
+observational parameters. This power spectrum result differs from \citetalias{ali_et_al2015} in that it only uses data from one type of baseline ($30$ m 
 East/West baselines) instead of three. Major differences from previously published results stem from revisions regarding signal 
 loss, bootstrapping, and the theoretical error computation. From this, we quote a best $2\sigma$ upper limit of $(151.0$ mK$)^{2}$ at 
-$k=0.34$ $h$Mpc$^{-1}$, a higher limit than A15 by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}.}
+$k=0.34$ $h$Mpc$^{-1}$, a higher limit than \citetalias{ali_et_al2015} by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}.}
 	\label{fig:ps1_data}
 \end{figure*}
 
@@ -1381,7 +1383,7 @@ differs from true errors as explained in Section \ref{sec:ErrorOverview}, it is 
 that affect its sensitivity. Additionally, we build on the lessons learned about bootstrapping in Section \ref{sec:ErrorOverview} to 
 revise our bootstrapping method as applied to PAPER-64 data in order to compute accurate errors from the data itself.
 
-In particular, we highlight major changes in both our sensitivity calculation and bootstrapping method that differ from the A15 
+In particular, we highlight major changes in both our sensitivity calculation and bootstrapping method that differ from the \citetalias{ali_et_al2015} 
 analysis of PAPER-64. While we do not discuss the changes within the context of PAPER-32, it is worth noting that the power 
 spectrum results in \citet{parsons_et_al2014} are affected by the same issues.
 
@@ -1402,7 +1404,7 @@ interferometric $21$ cm data, in temperature-units, is:
 \label{eq:sense}
 p(k) = \frac{X^{2}Y \Omega_{eff} T_{sys}^{2}}{\sqrt{2N_{lst}N_{seps}}\,t_{int}N_{days}N_{bls}N_{pols}}.
 \end{equation}
-We will now explain each factor in Equation \eqref{eq:sense} and highlight key differences from the numbers used in A15.
+We will now explain each factor in Equation \eqref{eq:sense} and highlight key differences from the numbers used in \citetalias{ali_et_al2015}.
 
 \begin{itemize}
 \item $X^{2}Y$: Conversion factors from observing coordinates (angles on the sky and frequency) to cosmological coordinates (co-moving 
@@ -1418,10 +1420,10 @@ T_{sys} = 180\Big(\frac{\nu}{0.18}\Big)^{-2.55} + T_{rcvr},
 \end{equation}
 
 where $\nu$ are frequencies in GHz. We use a receiver temperature of $144$ K, yielding $T_{sys} = 431$ K at $150$ MHz. 
-This is lower than the $T_{sys}$ of $500$ K used in A15 because of several small miscalculation errors that were 
+This is lower than the $T_{sys}$ of $500$ K used in \citetalias{ali_et_al2015} because of several small miscalculation errors that were 
 identified\footnote{For example, there was a missing a square root in going from a variance to a standard deviation.}.
 \item $\sqrt{2}$: This factor in the denominator of the sensitivity equation comes from taking the real part of the power spectrum 
-estimates after cross-multiplying independent `even' and `odd' visibility measurements (which is done principally to avoid a noise bias). In A15, a factor of $2$ was mistakenly used.
+estimates after cross-multiplying independent `even' and `odd' visibility measurements (which is done principally to avoid a noise bias). In \citetalias{ali_et_al2015}, a factor of $2$ was mistakenly used.
 \item $N_{lst}$: The number of LST bins that go into a power spectrum estimation. The sensitivity scales as the square root 
 because we integrate incoherently over time. For PAPER-64, $N_{lst} = 8$.
 \item $N_{seps}$: The number of baseline separation types averaged incoherently in a final power spectrum estimate. For the 
@@ -1435,7 +1437,7 @@ t_{int} = t_{i} \frac{\int1 \, df}{\int w^{2}(f) \,df},
 \end{equation}
 where $t_{i}=43$ seconds, $t_{int}$ is the fringe-rate filtered integration time, $w$ is the fringe-rate profile, and the integral is 
 taken over all fringe-rates. For PAPER-64, this number is $t_{int} = 3857$ s. 
-\item $N_{days}$: The total number of days of data analyzed. In A15, this number was set to $135$. However, because we 
+\item $N_{days}$: The total number of days of data analyzed. In \citetalias{ali_et_al2015}, this number was set to $135$. However, because we 
 divide our data in half (to form `even' and `odd' datasets), this number should be reduced by a factor of $2$. Additionally, 
 because our LST coverage is not $100\%$ complete (it doesn't overlap for every single day), we compute a more realistic value of 
 $N_{days}$ as:
@@ -1444,13 +1446,13 @@ $N_{days}$ as:
  \end{equation}
 \noindent where $i$ is over LST (\citealt{jacobs_et_al2015}). For PAPER-64, our revised estimate of $N_{days}$ is $\sim34$ 
 days.
-\item $N_{bls}$: The number of baselines contributing to the sensitivity of a power spectrum estimate. In A15, this number was 
+\item $N_{bls}$: The number of baselines contributing to the sensitivity of a power spectrum estimate. In \citetalias{ali_et_al2015}, this number was 
 the total number of $30$ m East/West baselines used in the analysis. However, using the total number of baselines neglects 
 the fact that baselines are averaged into groups (see Section \ref{sec:Boot}) for computational speed-up when cross-multiplying data. Our revised estimate for the parameter is:
 \begin{equation}
 N_{bls} = \frac{N_{bls\_total}}{N_{gps}}\sqrt{N_{gps}^{2}-N_{gps}},
 \end{equation}
-\noindent where, for the A15 analysis, $N_{gps} = 5$. Each baseline group averages down linearly as the number of baselines 
+\noindent where, for the \citetalias{ali_et_al2015} analysis, $N_{gps} = 5$. Each baseline group averages down linearly as the number of baselines 
 entering the group ($N_{bls\_total}/N_{gps}$) and then as the square root of the number of cross-multiplied pairs ($\sqrt{N_{gps}^{2} - 
 N_{gps}}$). For the revised PAPER-64 analysis with only one baseline separation type, this becomes $N_{bls} \sim 46$ instead 
 of $51$. 
@@ -1460,7 +1462,7 @@ of $51$.
 An additional factor of $\sqrt{2}$ is gained in sensitivity when folding our power spectra into $\Delta^{2}(k)$, due to averaging 
 together positive and negative $k$'s. 
 
-Our revised sensitivity estimate for PAPER-64 is shown in comparison with that of A15 in Figure \ref{fig:sense_check}. 
+Our revised sensitivity estimate for PAPER-64 is shown in comparison with that of \citetalias{ali_et_al2015} in Figure \ref{fig:sense_check}. 
 Together, the revised parameters yield a decrease in sensitivity (higher noise floor) by a factor of $\sim5$ in mK$^{2}$. 
 
 \begin{figure}
@@ -1468,7 +1470,7 @@ Together, the revised parameters yield a decrease in sensitivity (higher noise f
 	\includegraphics[width=\columnwidth]{plots/sense_check.png}
 	\caption{An updated prediction for the noise-level of PAPER-64 data (black) is shown in comparison to previously 
 published sensitivity limits (gray). Both sensitivity analyses plotted assume only one baseline type (an additional factor of $
-\sqrt{3}$ for three baseline types is needed to match A15 exactly). Major factors that contribute to the discrepancy are $
+\sqrt{3}$ for three baseline types is needed to match \citetalias{ali_et_al2015} exactly). Major factors that contribute to the discrepancy are $
 \Omega_{eff}$, $N_{days}$ and $N_{bls}$, as in Equation \eqref{eq:sense} and described in Section \ref{sec:PSSense}, which when combined decreases our 
 sensitivity (higher noise floor) by a factor of $\sim5$ in mK$^{2}$.}
 	\label{fig:sense_check}
@@ -1510,13 +1512,13 @@ estimates agree (the analytic curve should encompass $95\%$ of the points).}
 \label{sec:Boot}
 
 We bootstrap PAPER-64 power spectra in order to determine confidence intervals for our results. In this section, we highlight 
-one major change in the way we estimate errors since A15, using the lesson we have learned about bootstrapping independent samples.
+one major change in the way we estimate errors since \citetalias{ali_et_al2015}, using the lesson we have learned about bootstrapping independent samples.
 
 As discussed in Section \ref{sec:ErrorOverview}, bootstrapping is only a valid way of estimating errors if a dataset is comprised 
 of independent samples, or the number of independent samples is well known. The PAPER-64 pipeline outputs $20$ bootstraps (over baselines), each a $2$-dimensional power 
 spectrum that is a function of $k$ and time. 
 
-In A15, a second round of bootstrapping occurred over the time axis. A total of $400$ bootstraps were created in this step 
+In \citetalias{ali_et_al2015}, a second round of bootstrapping occurred over the time axis. A total of $400$ bootstraps were created in this step 
 ($N_{boot} = 400$), each comprised of randomly selected values sampled with replacement along the time axis. More 
 specifically, each of these bootstraps contained the same number of values as the number of time integrations (which, at $\sim$
 $700$, greatly exceeds the approximate number of independent samples after fringe-rate filtering).
@@ -1540,7 +1542,7 @@ Finally, we note that our power spectrum points (previously computed as the mean
 	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/noise_errors.png}
 	\caption{$2\sigma$ power spectrum errors (not upper limits) for a noise simulation (computed via Equation \eqref{eq:noise} using PAPER-64 observing parameters) using two different bootstrapping 
 methods. The noise is fringe-rate filtered and a weighting matrix of $\textbf{I}$ (unweighted) is used in order to disentangle the 
-effects of bootstrapping from signal loss. The bootstrapping method used in A15 in shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. This is shown to agree with the $2\sigma$ analytic prediction for noise (green).}
+effects of bootstrapping from signal loss. The bootstrapping method used in \citetalias{ali_et_al2015} in shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. This is shown to agree with the $2\sigma$ analytic prediction for noise (green).}
 	\label{fig:data_errors}
 \end{figure}
 
@@ -1560,7 +1562,7 @@ We briefly discuss one way we mitigate foreground leakage in a power spectrum es
 suppress noise biases. These methods are not novel to this analysis but here we frame them in the context of minimizing false 
 (non-EoR) detections. 
 
-Tailoring window functions is one way to suppress foreground biases (similar discussions to the following one are in \citet{liu_et_al2014b} and A15). As alluded to in Section \ref{sec:SiglossOverview}, we 
+Tailoring window functions is one way to suppress foreground biases (similar discussions to the following one are in \citet{liu_et_al2014b} and \citetalias{ali_et_al2015}). As alluded to in Section \ref{sec:SiglossOverview}, we 
 have a choice for the normalization matrix $\textbf{M}$ in Equation \eqref{eq:phat}. For the analysis of PAPER-64 data, we 
 compute $\textbf{M}$ using the Fisher matrix $\textbf{F}$, defined as:
 
@@ -1592,7 +1594,7 @@ becomes:
 of foreground power from low $k$ to high $k$ modes. Specifically, we order the elements in $\textbf{F}$ in such a way so that 
 power can leak from high $k$ modes to low $k$ modes, but not vice versa. Since most foreground power shows up at low 
 $k$'s, this method ensures a window function that retains clean, noise-dominated measurements while minimizing the 
-contamination of foreground bias. This tailored window function was used in the A15 analysis, however for this paper, we use $\textbf{M} \propto \textbf{I}$ for simplicity.
+contamination of foreground bias. This tailored window function was used in the \citetalias{ali_et_al2015} analysis, however for this paper, we use $\textbf{M} \propto \textbf{I}$ for simplicity.
 
 In addition to mitigating foreground bias at high $k$'s, two other sources of bias that we actively suppress in the PAPER-64 
 analysis are noise bias associated with the squaring of thermal noise and noise bias from crosstalk. In order to avoid the 
@@ -1600,11 +1602,11 @@ former, we filter out certain cross-multiplications when forming $\widehat{q}$ i
 dataset is divided into two halves: even julian dates and odd julian dates. Our data vectors are then $\textbf{x}_{even, 1}$ for 
 the `even' dataset and baseline group $1$, $\textbf{x}_{odd, 1}$ for the `odd' dataset and baseline group $1$, etc. We only form 
 $\widehat{q}$ when the two copies of $\textbf{x}$ come from different groups and baselines, never multiplying `even' with `even', for 
-example, in order to prevent the squaring of the same thermal noise. We recognize that this method results in a hit to our sensitivity. Sensitivity can be gained, for example, by only dividing up the dataset once (either along time or baselines), or by creating more groups (more cross-multiplications), but in this paper we only attempt to revise the A15 analysis (which uses the same groupings), not produce the most sensitive limits of PAPER-64.
+example, in order to prevent the squaring of the same thermal noise. We recognize that this method results in a hit to our sensitivity. Sensitivity can be gained, for example, by only dividing up the dataset once (either along time or baselines), or by creating more groups (more cross-multiplications), but in this paper we only attempt to revise the \citetalias{ali_et_al2015} analysis (which uses the same groupings), not produce the most sensitive limits of PAPER-64.
 
 To mitigate crosstalk bias, which appears as a static bias in time, we apply a fringe-rate filter that suppresses fringe-rates of 
 zero. Figure \ref{fig:frp} shows that the filter response is zero for such static signals. The effect of filtering out zero fringe-rates 
-on power spectrum results is shown in A15. Most notably, power spectrum detections exist at all $k$'s without crosstalk 
+on power spectrum results is shown in \citetalias{ali_et_al2015}. Most notably, power spectrum detections exist at all $k$'s without crosstalk 
 removal and these are detections that, depending on the power spectrum level, could be mistaken for EoR. 
 
 \subsubsection{Jackknife Tests}
@@ -1686,11 +1688,11 @@ out systematics.
 
 As a consequence of our investigations, we have also revised power spectrum results from PAPER-64. For an analysis of only 
 one baseline type, we quote a new $2\sigma$ upper limit of $(151.0$ mK$)^{2}$ at $k=0.34$ $h$Mpc$^{-1}$, a higher limit than 
-A15 by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}. The reasons for a previously underestimated limit and 
+\citetalias{ali_et_al2015} by a factor of $\sim7$ in mK \cc{replace with kolopanis limit later}. The reasons for a previously underestimated limit and 
 ways in which our new analysis differs can be summarized by the following:
 
 \begin{itemize}
-\item Signal loss, previously found to be $<2\%$ in A15, was under-estimated by a factor of $\sim$$1000$ for inverse 
+\item Signal loss, previously found to be $<2\%$ in \citetalias{ali_et_al2015}, was under-estimated by a factor of $\sim$$1000$ for inverse 
 covariance weighting. For our new analysis, we use a regularized covariance weighting method to minimize loss (Section 
 \ref{sec:Weight}). However, because our revised weighting method is not as aggressive as the former, our results are still a 
 factor of $\sim7$ in mK higher than previous limits. Under-estimated signal loss therefore represents the bulk of our revision. We 
@@ -1700,7 +1702,7 @@ revised from new signal loss calculations associated with their singular value d
 \item Several factors used in an analytic expression to predict the noise-level in PAPER-64 data were revised, yielding a 
 decrease in predicted sensitivity level by a factor of $\sim$$2$ in mK (Section \ref{sec:PSSense}). We have verified our revised 
 prediction extensively using pure noise simulations. We note that our sensitivity prediction is revised by a factor less than our 
-power spectrum result, implying that if taken at face value, the theoretical prediction for noise in A15 was too high for its data 
+power spectrum result, implying that if taken at face value, the theoretical prediction for noise in \citetalias{ali_et_al2015} was too high for its data 
 points.
 \end{itemize}
 
@@ -1802,8 +1804,8 @@ This question is phrased visually in Figure \ref{fig:Pr_vs_Pin}. In the 2D space
 \includegraphics[width=.5\textwidth]{plots/method2_prob_vs_pinj.png}
 \caption{The probability that an injected signal of level P$_{\rm inj}$
 is observable at a 2$\sigma$ level above the value of $\widehat{\textbf{p}}_{x}$ (data).
-The different colors represent different $k$ values. We choose a probability of $95\%$ for our signal loss estimated power spectrum.
-\label{fig:Prob_vs_Pin}}
+The different colors represent different $k$ values. We choose a probability of $95\%$ for our signal loss estimated power spectrum.}
+\label{fig:Prob_vs_Pin}
 \end{figure}  
   
 One difference in this method from the one in the main text is that we are exclusively asking about signals detectable \emph{above} the level of the observed data. Thus it is explicitly limited to placing an upper limit, even if in some $k$-modes one has actual detections above the noise.  This might be seen as more conservative, however, a similar assumption has already been made when choosing to down-weight the data using itself. In such a down-weighting step, one has assumed that significant excess power is associated with a foreground residual. We note that a high SNR detection will require a different method.
