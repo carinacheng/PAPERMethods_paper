@@ -986,7 +986,7 @@ output power spectrum: $P_{\rm in}$ and $P_{\rm out}$, defined as
 
 \begin{equation}
 \label{eq:Pin}
-P_{\rm in,\alpha} \equiv M^{\alpha}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e}
+P_{\rm in,\alpha} \equiv \text{M}^{\alpha}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e}
 \end{equation}
 
 \noindent and
@@ -994,10 +994,10 @@ P_{\rm in,\alpha} \equiv M^{\alpha}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textb
 \begin{eqnarray}
 \label{eq:sigloss}
 P_{\rm out,\alpha} &\equiv& \widehat{\textbf{p}}_{r,\alpha}-\widehat{\textbf{p}}_{x,\alpha} \nonumber \\
-&=& M^{\alpha}_{r}\textbf{r}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{r} - M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
+&=& \text{M}^{\alpha}_{r}\textbf{r}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{r} - \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x},
 \end{eqnarray}
-where, for illustrative purposes and notational simplicity, we have written these equations with diagonal normalization matrices $M$, even though for our numerical results we choose a non-diagonal matrix $\mathbf{M}$ as in Equation \eqref{eq:phat}. $P_{\rm in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
+where, for illustrative purposes and notational simplicity, we have written these equations with diagonal normalization matrices M, even though for our numerical results we choose a non-diagonal matrix $\mathbf{M}$ as in Equation \eqref{eq:phat}. $P_{\rm in}$ represents the unweighted power spectrum of $\textbf{e}$, our simulated EoR signal, 
 $\widehat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\widehat{\textbf{p}}_{r}$ is the power spectrum of the
 data plus injection, and $P_{\rm out}$ is the difference between $\widehat{\textbf{p}}_{r}$ and $\widehat{\textbf{p}}_{x}$.  In the limit where no significant cross correlations between the data and the injected signals are found, this will recover the amount of injected power spectrum remaining after the covariance weighting operation (i.e. the amount of background EoR power, $P_{\rm eor}$, not removed by the foreground down-weighting procedure). In other words, we make the anzatz that 
 
@@ -1064,23 +1064,23 @@ signal amplitude which causes a power doubling ($\phat_r = 2 \phat_x$). Expandin
 
 \begin{eqnarray}
 \label{eq:crossterm}
-P_{\rm out,\alpha} &=& M^{\alpha}_{r}(\textbf{x}+\textbf{e})^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}(\textbf{x}+\textbf{e}) - 
-M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x} \nonumber \\
-&=& M^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} + M^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
+P_{\rm out,\alpha} &=& \text{M}^{\alpha}_{r}(\textbf{x}+\textbf{e})^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}(\textbf{x}+\textbf{e}) - 
+\text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x} \nonumber \\
+&=& \text{M}^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} + \text{M}^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
 ^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
-&+& M^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} + M^{\alpha}_{d}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} \nonumber \\
-&-& M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
+&+& \text{M}^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} + \text{M}^{\alpha}_{d}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} \nonumber \\
+&-& \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
 Assuming \textbf{R}$_{r}$ is symmetric, the two cross-terms can be summed together as:
 
 \begin{eqnarray}
 \label{eq:crossterm}
-P_{\rm out,\alpha} &= &  M^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} \nonumber \\
-&+& M^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
+P_{\rm out,\alpha} &= &  \text{M}^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} \nonumber \\
+&+& \text{M}^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
 ^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
-&+& 2 M^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
-&-& M^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
+&+& 2 \text{M}^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
+&-& \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}
 ^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
 Each of these terms is plotted in Figure \ref{fig:sigloss_terms} for two cases: inverse covariance weighting ($\textbf{R}_{r} = \widehat{\textbf{C}}_{r}^{-1}$) and unweighted ($\textbf{R}_{r} = \textbf{I}$). We will now examine the behavior of this equation in the regimes of very weak and very strong injected signal.
@@ -1167,10 +1167,10 @@ outlined below is independent of weighting scheme, here we demonstrate the compu
 expressions for $P_{\rm in}$ and $P_{\rm out}$ become
 
 \begin{eqnarray}
-P_{\rm in,\alpha} &=&  M^{\alpha}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e} \\
-P_{\rm out,\alpha} &=&  M^{\alpha}_{r}\textbf{r}^{\dagger}\widehat{\textbf{C}}_{r}^{-1}\textbf{Q}^{\alpha}\widehat{\textbf{C}}_{r}^{-1}\textbf{r} \nonumber \\
+P_{\rm in,\alpha} &=&  \text{M}^{\alpha}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e} \\
+P_{\rm out,\alpha} &=&  \text{M}^{\alpha}_{r}\textbf{r}^{\dagger}\widehat{\textbf{C}}_{r}^{-1}\textbf{Q}^{\alpha}\widehat{\textbf{C}}_{r}^{-1}\textbf{r} \nonumber \\
 &&\phantom{=====} 
--  M^{\alpha}_{x}\textbf{x}^{\dagger}\widehat{\textbf{C}}_{x}^{-1}\textbf{Q}^{\alpha}\widehat{\textbf{C}}_{x}^{-1}\textbf{x}. 
+-  \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\widehat{\textbf{C}}_{x}^{-1}\textbf{Q}^{\alpha}\widehat{\textbf{C}}_{x}^{-1}\textbf{x}. 
 \end{eqnarray}
 
 %The treatment we outlined in the previous section implicitly assumed that signal loss corrections could be treated in expectation. In practice, however, the signal loss itself is a random variable --- some realizations of the cosmological signal may be more correlated with foreground modes than others, leading to more signal loss. This leads to two issues. The first is that Equation \eqref{eq:LinearPspecSum} may not hold. In particular, a third term that is a quadratic combination of $\f$ and $\s$ (e.g., $\f^\dagger \C^{-1} \s$) may appear. However, we can circumvent this issue by decomposing $\f$ into a sum of two vectors, one that is proportional to $\s$ and one that is orthogonal to $\s$. The former can be absorbed into the EoR term (part of the signal loss estimate), while the latter can be absorbed into the foreground term. In other words, suppose that we have
