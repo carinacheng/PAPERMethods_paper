@@ -1004,7 +1004,7 @@ $\widehat{\textbf{p}}_{x}$ is the power spectrum of the data alone, $\widehat{\t
 data plus injection, and $P_{\rm out}$ is the difference between $\widehat{\textbf{p}}_{r}$ and $\widehat{\textbf{p}}_{x}$.  In the limit where no significant cross correlations between the data and the injected signals are found, this will recover the amount of injected power spectrum remaining after the covariance weighting operation (i.e. the amount of background EoR power, $P_{\rm eor}$, not removed by the foreground down-weighting procedure). In other words, we make the anzatz that 
 
 \begin{equation}
-P_{\rm out} = P_{\rm eor} \label{eqn:anzatz},
+P_{\rm out} = \widehat{\textbf{p}}_{x} \label{eqn:anzatz},
 \end{equation}
 and folding in our definition from Equation \eqref{eq:sigloss}, this ansatz implies that we are seeking the injected 
 signal amplitude which causes a power doubling ($\phat_r = 2 \phat_x$). \cc{I am unsure of this power doubling thing} Expanding out Equation \eqref{eq:sigloss}, $P_{\rm out}$ becomes:
@@ -1205,15 +1205,15 @@ P_{\rm out,\alpha} &=&  \text{M}^{\alpha}_{r}\textbf{r}^{\dagger}\widehat{\textb
 One issue to address is how one incorporates the randomness of $P_{\rm out}$ into our signal loss corrections. A different realization of the mock EoR signal is injected with each bootstrap run, causing the output to vary in two ways ---  there is a variation driven by the random seed (i.e. behaves like noise) and a variation caused by whether the injected signal looks more or less ``like'' the data (i.e. how much coupling there is, which affects how much loss results).
 
 Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution of $p( \p_{\rm eor} | 
-\phat_{x})$ for $\p_{\rm eor}$ given the uncorrected power spectrum estimate $\phat_{x}$. Given our ansatz from Section \ref{sec:siglossmethod} that $P_{\rm out}$ is a good estimate of the injected EoR power $P_{\rm eor}$, we can write
+\phat_{x})$ for $\p_{\rm eor}$ given the uncorrected power spectrum estimate $\phat_{x}$. Given our ansatz from Section \ref{sec:siglossmethod} that $P_{\rm out}$ is a good estimate of $\p_{x}$, we can write
 
 \begin{equation}
 \label{eq:Bayes}
-p(P_{\rm eor} | \phat_{x}) \propto \evalat[\Bigg]{\mathcal{L} (  P_{\rm out} | P_{\rm in})}{P_{\rm out}=P_{\rm x}}
-  p(\phat_{x}) ,
+p(P_{\rm in} | P_{\rm out}) \propto \evalat[\Bigg]{\mathcal{L} (  P_{\rm out} | P_{\rm in})}{P_{\rm out}=P_{\rm x}}
+  p(P_{\rm out}) ,
 \end{equation}
 
-\noindent where $p(\phat_x)$ is the probability of the measured value (given our error) and $\mathcal{L} $ is the likelihood function defined 
+\noindent where $p(P_{\rm out})$ is the probability of the measured value (given our error) and $\mathcal{L} $ is the likelihood function defined 
 as the distribution of data plus injection ($P_{\rm out}$) given the injection $P_{\rm in}$, evaluated at the data level $\phat_x$.  We construct this distribution  
 by fixing $P_{\rm in}$, and simulating our analysis pipeline for many realizations of the injected EoR signal 
 consistent with this power spectrum. The resulting distribution is normalized such that the sum is unity, and the 
