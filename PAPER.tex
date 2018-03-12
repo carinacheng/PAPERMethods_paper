@@ -1520,7 +1520,7 @@ measurements from this dataset has many repeated values, and the variance betwee
 samples is smaller than the true underlying variance of the data. 
 
 Given our new understanding of the sensitivity of bootstraps to the number of elements sampled, we have removed the second 
-bootstrapping step along time entirely and now simply bootstrap over baselines. Power spectrum estimates with this bootstrapping change for fringe-rate filtered noise are shown in Figure 
+bootstrapping step along time entirely and now simply bootstrap over baselines. Power spectrum $2\sigma$ errors with this bootstrapping change for fringe-rate filtered noise are shown in Figure 
 \ref{fig:data_errors}. The estimates are uniformly weighted in order to disentangle the effects of bootstrapping from signal loss. As 
 shown in the figure, when more elements are drawn for each bootstrap than the number of 
 independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits (gray) below the predicted noise level (green). Using the revised bootstrapping method, where bootstrapping only occurs over the baseline axis, the errors (black) are shown to agree with the analytic prediction for noise. While Figure \ref{fig:data_errors} implies that errors are under-estimated by a factor of $\sim$$7$ in mK$^{2}$ for the noise simulation, in practice this factor is slightly lower for the case of real data (a factor of $\sim$$5$ in mK$^{2}$ instead), possibly due to the data being less correlated in time than the fringe-rate filtered noise in the simulation.
@@ -1530,7 +1530,7 @@ Finally, we note that our power spectrum points (previously computed as the mean
 \begin{figure}
 	\centering
 	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/noise_errors.png}
-	\caption{$2\sigma$ power spectrum errors (not upper limits) for a noise simulation (computed via Equation \eqref{eq:noise} using PAPER-64 observing parameters) using two different bootstrapping 
+	\caption{$2\sigma$ power spectrum errors for a noise simulation (computed via Equation \eqref{eq:noise} using PAPER-64 observing parameters) using two different bootstrapping 
 methods. The noise is fringe-rate filtered and a weighting matrix of $\textbf{I}$ (uniform-weighted) is used in order to disentangle the 
 effects of bootstrapping from signal loss. The bootstrapping method used in \citetalias{ali_et_al2015} in shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. This is shown to agree with the $2\sigma$ analytic prediction for noise (green).}
 	\label{fig:data_errors}
@@ -1769,7 +1769,7 @@ Taking the ensemble average of both sides and noting that the true power spectru
 where $N$ is the length of $\x$. In the last step we dropped the final term, since it scales as $\eta p_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained. Now, recall that $p_\alpha$ is the \emph{true} power spectrum. This means that it can be decomposed into the sum of the foreground and EoR power spectra, since the foregrounds and EoR are uncorrelated in expectation. This toy example, while not showing the emergence of cross-terms provides a rudimentary motivation for the form of Equation \eqref{eq:LinearPspecSum}. 
 
 
-
+\begin{comment}
 \section{Simplified Loss Correction}
 \label{sec:Pr_appendix}
 One of the main difficulties in defining a signal loss procedure is in the interpretation of the injection procedure `output'. The method described in Section \ref{sec:Sigloss} relies on several assumptions which required justification including the assumption that the number of samples is large enough to treat sample variance as a first order purturbation on the ideal covariance matrix instead of the dominant effect we know it is. \acl{I'm not sure the previous sentence was fair. Again, the appendix is a motivating example. Carina's numerical computations do not rely on the derivation.} However it is possible to ask a slightly different question and with less math still get roughly the same answer.
@@ -1838,9 +1838,10 @@ Also shown are the upper limits of the uniform-weighted power spectrum
 \label{fig:sigloss_compare} 
 \end{figure}
 
+\end{comment}
+
 \bibliographystyle{apj}
 \bibliography{refs}
-
 
 \end{document}
 
