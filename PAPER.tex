@@ -969,7 +969,7 @@ We present our PAPER-64 signal loss investigation in three parts: we first give 
 
 \subsubsection{Signal Loss Methodology} 
 \label{sec:siglossmethod}
-In short, our method consists of injecting an EoR-like signal into the data and then measuring the amount recovered, with the difference being accounted as signal loss.  To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated $21$ 
+In short, our method consists of injecting an EoR-like signal into the data and then measuring how much of this injected signal would be detectable given any attenuation of this signal by the (lossy) data analysis pipeline.  To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated $21$ 
 cm signal visibilities. Here we use the same method as in \citetalias{ali_et_al2015}, where mock Gaussian noise visibilities (mock EoR signals) 
 are filtered in fringe-rate space to retain only ``sky-like" time-modes. This signal is then added to the data.\footnote{One 
 specific change from \citetalias{ali_et_al2015} is that we add this simulated signal into the analysis pipeline before the final fringe-rate filter is 
@@ -981,6 +981,7 @@ Suppose that $\textbf{e}$ is a mock injected EoR signal (at some amplitude level
 $ to be the data plus the EoR signal:
 
 \begin{equation}
+\label{eq:rxe}
 \textbf{r} = \textbf{x} + \textbf{e}.
 \end{equation}
 
@@ -1000,8 +1001,10 @@ P_{\rm in,\alpha} \equiv \text{M}^{\alpha}_{\rm in}\textbf{e}^{\dagger}\textbf{I
 P_{\rm out,\alpha} &\equiv& \widehat{\textbf{p}}_{r,\alpha} \nonumber\\%-\widehat{\textbf{p}}_{x,\alpha} \nonumber \\
 &=& \text{M}^{\alpha}_{r}\textbf{r}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{r},% - \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x},
 \end{eqnarray}
-where, for illustrative purposes and notational simplicity, we have written these equations with diagonal normalization matrices M, even though for our numerical results we choose a non-diagonal matrix $\mathbf{M}$ as in Equation \eqref{eq:phat}. $P_{\rm in}$ represents the uniform-weighted power spectrum of $\textbf{e}$, our simulated EoR signal, and $\widehat{\textbf{p}}_{r}$ is the power spectrum of the
-data plus injection. \cc{explain why we evaluate $P_{out}$ at $p_{r}$}
+where, for illustrative purposes and notational simplicity, we have written these equations with diagonal normalization matrices M, even though for our numerical results we choose a non-diagonal matrix $\mathbf{M}$ as in Equation \eqref{eq:phat}.
+
+The quantity $P_{\rm in}$, defined by Equation \eqref{eq:Pin}, is a uniformly weighted estimator of the power spectrum of $\mathbf{e}$. Since there is no noise contribution to $\mathbf{e}$, it can be considered the power spectrum of this particular realization of the EoR; alternatively, it can be viewed as the true power spectrum of the injected signal up to cosmic variance fluctuations. The role of $P_{\rm in}$ in our analysis is to serve as a reference for the power spectrum that would be measured if there were no signal loss or other systematics. This is then to be compared to $P_{\rm out}$, which approximates the (lossy) power spectrum estimate that is outputted by our analysis pipeline prior to any signal loss adjustments. In principle, one could compute $P_{\rm out}$ using end-to-end simulations of the instrument and data analysis pipeline. In practice, however, such simulations may not accurately reflect real-life systematics and foregrounds. To overcome this obstacle, one can make the assumption that since the EoR signal is expected to be small, the data vector $\mathbf{x}$ itself is our best model of these contaminants. Making this assumption, the injected EoR signal $\mathbf{e}$ takes on the role of the true EoR signal, and the sum of $\mathbf{x}$ and $\mathbf{e}$ (i.e., Equation \eqref{eq:rxe}) replaces $\mathbf{x}$ as our model of the measured data.
+\cc{explain why we evaluate $P_{out}$ at $p_{r}$} \acl{Added! See how you like it}
 %In the limit where no significant cross correlations between the data and the injected signals are found, this will recover the amount of injected power spectrum remaining after the covariance weighting operation (i.e. the amount of background EoR power, $P_{\rm eor}$, not removed by the foreground down-weighting procedure). In other words, we make the anzatz that 
 
 %\begin{equation}
@@ -1010,7 +1013,7 @@ data plus injection. \cc{explain why we evaluate $P_{out}$ at $p_{r}$}
 %and folding in our definition from Equation \eqref{eq:sigloss}, this ansatz implies that we are seeking the injected 
 %signal amplitude which causes a power doubling ($\phat_r = 2 \phat_x$). \cc{I am unsure of this power doubling thing} 
 
-Expanding out Equation \eqref{eq:sigloss}, $P_{\rm out}$ becomes:
+Under this injection framework, we can begin to see explicitly why there can be large signal loss. Expanding out Equation \eqref{eq:sigloss}, $P_{\rm out}$ becomes:
 
 %
 %In short, we can approximate a signal loss estimate as the ratio of $P_{\rm out}/P_{\rm in}$, evaluated at the data level $\widehat{\textbf{p}}_{x}$. We motivate the fact that we can evaluate the output-to-input power spectrum ratio at $\widehat{\textbf{p}}_{x}$ by the following reasoning (and then detail our signal loss estimation in practice in the sections that follow).
@@ -1085,7 +1088,7 @@ P_{\rm out,\alpha} &= &  \text{M}^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}
 &+& 2 \text{M}^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} %\nonumber \\
 %&-& \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
-In order to investigate the effect of each of these terms on signal loss, all three components are plotted in Figure \ref{fig:sigloss_terms} for two cases: inverse covariance weighting ($\textbf{R}_{r} = \widehat{\textbf{C}}_{r}^{-1}$) and uniform-weighted ($\textbf{R}_{r} = \textbf{I}$). We will now examine the behavior of this equation in the regimes of very weak and very strong injected signal.
+In order to investigate the effect of each of these terms on signal loss, all three components are plotted in Figure \ref{fig:sigloss_terms} for two cases: \acl{can we go through and add the word ``empirical"? The phrase ``inverse covariance weight" should be reserved for when one is weighting by the true inverse covariance.} inverse covariance weighting ($\textbf{R}_{r} = \widehat{\textbf{C}}_{r}^{-1}$) and uniform-weighted ($\textbf{R}_{r} = \textbf{I}$). We will now examine the behavior of this equation in the regimes of very weak and very strong injected signal.
 
 {\bf Small injection:}
 In this regime, the first term in Equation \eqref{eq:crossterm} is very similar to the power spectrum of data alone, namely $\text{M}^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} \sim \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x}$. They differ only in their covariance matrices, and when the injected signal is very small compared to the data, their difference can be neglected. This is shown by the black and gray curves converging in both panels of Figure \ref{fig:sigloss_terms}. In this regime, we also note that the cross-terms (red) behave as noise, even in the inverse covariance weighted case (left plot), spanning a range of values set by the injection level. This is because $\widehat{\textbf{C}}_{r}$ is dominated by the data $\textbf{x}$, avoiding correlations with $\textbf{e}$ that can lead to solely negative power (explained further below)%In this limit we might imagine that the cross-correlation should also be small, enabling us to recover just the EoR term. However, examining the cross-term plotted in Figure \ref{fig:sigloss_terms} (red) in the identity case (right plot), we see that this term is still large enough to have a significant impact on $P_{\rm out}$. It is in this regime where we're dominated by biases from the cross-terms, causing the difference between the signal-only term (green) and $P_{\rm out}$ (black). We also note that the cross-terms behave as noise at small injections even in the inverse covariance weighted case (left plot), spanning a range of values set by the injection level. This is because $\widehat{\textbf{C}}_{r}$ is dominated by the data $\textbf{x}$, avoiding correlations with $\textbf{e}$ that can lead to solely negative power (explained further below).
@@ -1150,17 +1153,19 @@ of a diagonal-dominant matrix.
 % XXX [ARP: we may want to write this all out explicitly in an appendix]
 
 The correlation between $\widehat{\textbf{C}}_r^{-1}\textbf{e}$ and $\widehat{\textbf{C}}_r^{-1}\textbf{x}$ means that we cannot compute signal loss using a signal-only 
-simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. This argument is also made in \citet{switzer_et_al2015} in regards to estimating loss associated with the foreground cleaning of Green Bank Telescope (GBT) data. Therefore, in our revised 
+simulation, which would yield greater values for $P_{\rm out}$ and thereby underestimate signal loss. This argument is also made in \citet{switzer_et_al2015} in regards to estimating loss associated with the foreground cleaning of Green Bank Telescope (GBT) data. \acl{The following line is no longer true}Therefore, in our revised 
 signal loss computation we use the full quantity for $P_{\rm out}$ as defined in Equation \eqref{eq:sigloss}, which subtracts the 
 weighted power spectrum of the data from the weighted power spectrum of data plus EoR. 
 
 %\dcj{This paragraph has me confused.}
 %The conclusion is that signal loss generically arises because of couplings between $\widehat{\textbf{C}}^{-1}_{r}$ and $\mathbf{x}$. In principle, using $\widehat{\textbf{C}}^{-1}_{r}$ in place of the true inverse covariance $\textbf{C}^{-1}$ provides yet another source of multiplicative bias, which results in a modification to the treatment shown here. Such a modification is accounted for in the demonstration of Appendix \ref{sec:sigloss_appendix}, where we additionally discard the assumption that $|\textbf{x}|\ll|\textbf{e}|$. However, despite the loosening of these approximations, one sees that the qualitative message (of anti-correlations resulting in signal loss) remains intact.
 
+{\bf In general:} Signal loss due to couplings between the data and its weightings arise because our unnormalized quadratic estimator from Equation \eqref{eq:qhat} ceases to be a quadratic quantity, and instead contains higher order powers of the data. However, the normalization matrix $\mathbf{M}$ is generally derived assuming that the unnormalized estimator is quadratic in the data. Thus, neglecting couplings between data and its weightings causes power spectrum estimates to be incorrectly normalized. As argued in this section, the resulting bias will tend to bias the results \emph{low}, which is simply another way of describing signal loss.
+
 \subsubsection{Signal Loss in Practice}
 \label{sec:Practice}
 
-We now shift our attention towards computing signal loss for the fringe-rate filtered PAPER-64 dataset. While our methodology 
+We now shift our attention towards computing upper limits on the EoR signal for the fringe-rate filtered PAPER-64 dataset in a way that accounts for signal loss. While our methodology 
 outlined below is independent of weighting scheme, here we demonstrate the computation using inverse covariance weighting 
 ($\textbf{R} = \widehat{\textbf{C}}^{-1}$), the weighting scheme used in \citetalias{ali_et_al2015} which, with an empirically estimated covariance, leads to substantial loss. With this weighting, our 
 expressions for $P_{\rm in}$ and $P_{\rm out}$ become:
@@ -1201,28 +1206,28 @@ P_{\rm out,\alpha} &=&  \text{M}^{\alpha}_{r}\textbf{r}^{\dagger}\widehat{\textb
 
 One issue to address is how one incorporates the randomness of $P_{\rm out}$ into our signal loss corrections. A different realization of the mock EoR signal is injected with each bootstrap run, causing the output to vary in two ways ---  there is a variation driven by the random seed (i.e. behaves like noise) and a variation caused by whether the injected signal looks more or less ``like'' the data (i.e. how much coupling there is, which affects how much loss results).
 
-\cc{need edits in this section} Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution $p(P_{\rm in} | 
-\phat_{x})$, which is the probability of $P_{\rm in}$ given the uncorrected power spectrum estimate $\phat_{x}$. Given our ansatz from Section \ref{sec:siglossmethod} that $P_{\rm out} \equiv \widehat{\textbf{p}}_{r}$ is a good estimate of $\p_{x}$, we can write
+\cc{need edits in this section} \acl{Done!} Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution $p(P_{\rm in} | 
+P_{\rm out})$, which is the probability of $P_{\rm in}$ given the uncorrected/measured power spectrum estimate $P_{\rm out}$. Bayes' rule gives
 
 \begin{equation}
 \label{eq:Bayes}
-p(P_{\rm in} | P_{\rm out}) \propto \evalat[\Bigg]{\mathcal{L} (  P_{\rm out} | P_{\rm in})}{P_{\rm out}=\widehat{\textbf{p}}_{x}}
+p(P_{\rm in} | P_{\rm out}) \propto {\mathcal{L} (  P_{\rm out} | P_{\rm in})}
   p(P_{\rm in}) ,
 \end{equation}
 
 \noindent where $\mathcal{L} $ is the likelihood function defined 
-as the distribution of data plus injection ($P_{\rm out}$) given the injection $P_{\rm in}$, evaluated at the data level $\phat_x$.  We construct this distribution  
+as the distribution of data plus injection ($P_{\rm out}$) given the injection $P_{\rm in}$.  We construct this distribution  
 by fixing $P_{\rm in}$, and simulating our analysis pipeline for many realizations of the injected EoR signal 
-consistent with this power spectrum. The resulting distribution is normalized such that the sum is unity, and the 
-whole process can then be repeated for a different value of $P_{\rm in}$. 
+consistent with this power spectrum. The resulting distribution is normalized such that the sum over $P_{\rm out}$ is unity, and the 
+whole process is then repeated for a different value of $P_{\rm in}$. 
 
 %\subsubsection{Signal Loss Implementation Details}
 %\label{sec:Implementation}
 
 The implementation details of the injection process require some more detailed explanation. In our code, we add a new realization of EoR to each independent bootstrap of data with the goal of simultaneously capturing variance due to noise and signal loss. To limit computing time we perform $20$ realizations of each $P_{in}$ level. We also run $50$ total EoR injection levels, yielding $P_{\rm in}$ values that range from $\sim$$10^{5}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$ to $\sim$10$^{11}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$, resulting in a total of $1000$ data points on our $P_{\rm in}$ vs. $P_{\rm out}$ grid. 
 
-Going forward, we treat every $k$-value separately in order to determine an upper limit on EoR per $k$. For every injection level, we smooth the distribution of $P_{\rm out}$ values using kernel density estimators (\citealt{scott2008kernel}), normalizing each one. Stitching all of them together results in a 2-dimensional smoothed transfer function, shown in Figure \ref{fig:sigloss_transfercurve} for inverse covariance weighting (left) and uniform weighting (right). Although we only show figures for one $k$-value, we note that 
-the shape of the transfer curve is nearly identical for all $k$'s. This transfer function is the likelihood function in Bayes' rule, namely $\mathcal{L} (  P_{\rm out} | P_{\rm in})$. We then simply take a horizontal cut across at the data value $\widehat{\textbf{p}}_{x}$ to yield a posterior distribution for the signal. We compute the $95\%$ confidence interval (an upper limit on EoR) from these distributions.
+Going forward, we treat every $k$-value separately in order to determine an upper limit on EoR per $k$. For every injection level, we smooth the distribution of $P_{\rm out}$ values using kernel density estimators (\citealt{scott2008kernel}), normalizing each one. Stitching all of them together results in a 2-dimensional smoothed transfer function, shown in Figure \ref{fig:sigloss_transfercurve} for inverse covariance weighting (left) and uniform weighting (right). \acl{Why not use $P_{\rm out}$ on the vertical axes of these plots?} Although we only show figures for one $k$-value, we note that 
+the shape of the transfer curve is nearly identical for all $k$'s. This transfer function is the likelihood function in Bayes' rule, namely $\mathcal{L} (  P_{\rm out} | P_{\rm in})$. After multiplying by the prior \acl{right?}, we then simply take a horizontal cut across at the data value $P_{\rm out}$ to yield a posterior distribution for the signal. We compute the $95\%$ confidence interval (an upper limit on EoR) from these distributions.
 
 %We note that the distribution of $\phat_{x}$ has a variance determined from the bootstrapping process and is peaked around the power spectrum value computed from the no-bootstrapping case. We smooth its distribution using 1D kernel density estimators (and normalize to unity) before multiplying it with the transfer function. Performing a summation and normalization for the entire distribution of $\phat_{x}$ yields a final $P_{\rm in}$ distribution --- the distribution of our data as seen through the signal loss lens. We compute power spectrum points from the peak of the histograms, and power spectrum errors from $95\%$ confidence intervals. 
 
