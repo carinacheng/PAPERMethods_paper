@@ -1223,11 +1223,11 @@ P_{\rm out,\alpha} &=&  \text{M}^{\alpha}_{r}\textbf{r}^{\dagger}\widehat{\textb
 One issue to address is how one incorporates the randomness of $P_{\rm out}$ into our signal loss corrections. A different realization of the mock EoR signal is injected with each bootstrap run, causing the output to vary in two ways ---  there is a variation driven by the random seed (i.e. cosmic variance) and a variation caused by whether the injected signal looks more or less ``like'' the data (i.e. how much coupling there is, which affects how much loss results).
 
 Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution $p(P_{\rm in} | 
-P_{\rm out})$, which is the probability of $P_{\rm in}$ given the uncorrected/measured power spectrum estimate $P_{\rm out}$. Bayes' rule gives
+P_{\rm out})$, which is the probability of $P_{\rm in}$ given the uncorrected/measured power spectrum estimate $P_{\rm out}$.  Bayes' rule relates the posterior, which we don't know, to the reverse probability, which we do know, in other words,
 
 \begin{equation}
 \label{eq:Bayes}
-p(P_{\rm in} | P_{\rm out}) \propto {\mathcal{L} (  P_{\rm out} | P_{\rm in})}
+p(P_{\rm in} | P_{\rm out}) \propto {\mathcal{L} (  P_{\rm out} | P_{\rm in})},
   p(P_{\rm in}) ,
 \end{equation}
 
