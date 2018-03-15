@@ -1120,7 +1120,21 @@ the cross-term has nearly the same amplitude, but with a negative sign. As expla
 \begin{figure*}
 	\centering
 	\includegraphics[width=1\textwidth]{plots/sigloss_terms.png}
-	\caption{Illustration of the power spectrum components used to estimate signal loss, as defined by Equation \eqref{eq:crossterm} for PAPER-64 data for the empirical inverse covariance weighted case (left) and uniform-weighted case (right). The details of the simulation used to generate the figure is explained in Section \ref{sec:Practice}; here we fit smooth polynomials to our data points to create the curves. We show the contributions of three signal loss terms (blue, red, green), which when combined via Equation \eqref{eq:crossterm} produce the black curve ($\widehat{\textbf{p}}_{r}$). The gray curve is the power spectrum value of data alone. Most notably, the green curves (the signal-only term) denotes the signal loss analysis used in \citetalias{ali_et_al2015}, and the red curves showcase the importance of the cross-terms in computing signal loss. As explained in the main text, the cross-terms behave as noise (with some range of values), for very small and large injection levels. For the empirical inverse covariance weighted case, it is in these extreme regimes when $\widehat{\textbf{C}}_{r}$ is dominated by either $\textbf{x}$ (low injects) or $\textbf{e}$ (large injects). However, at power levels comparable to the data (the middle region), the cross-terms can produce large, negative signal due to the couplings between $\textbf{x}$ and $\textbf{e}$ which affect $\widehat{\textbf{C}}_{r}$. This causes the difference between the green curve (which exhibits negligible loss at the data level) and the black curve (which exhibits $\sim$$3$ orders of magnitude of loss at the data level for the empirical inverse covariance weighted case). Finally, the dotted diagonal black line represents perfect unity transfer, or no signal loss, which we recover for the uniform-weighted case.}
+	\caption{Illustration of the power spectrum amplitude as a function of injected power level summed into the 
+data. The net output ($P_{out}=P_r$) is shown in black, the individual cross terms, as defined by Equation 
+\eqref{eq:crossterm},  are shown in blue, red, green; the dotted line indicates 1:1 input to output mapping.  The 
+empirical inverse covariance weighted case used in \citealt{ali_et_al2015} is on the left and uniform-weighted 
+case on the right. The details of the simulation used to generate the figure is explained in Section 
+\ref{sec:Practice}; here we fit smooth polynomials to our data points to make an illustrative example.   The gray 
+line is the power spectrum value of data alone (doesn't depend on injected power). The green signal-signal 
+component is also the term used in \citetalias{ali_et_al2015} to estimate signal loss. It is significantly higher 
+than the net output because the cross terms (red) are large and negative (black $=$ green $+$ red $+$ blue) . In the 
+regime where cross correlation between injection and data are not dominant, the cross-terms have a noise-like 
+term with width $\sqrt{P_e}$. However, at power levels comparable to the data (the middle region), the cross-
+terms can produce large, negative signal due to the couplings between $\textbf{x}$ and $\textbf{e}$ which affect 
+$\widehat{\textbf{C}}_{r}$. This causes the difference between the green curve (which exhibits negligible loss at 
+the data level) and the black curve (which exhibits $\sim$$3$ orders of magnitude of loss at the data level for 
+the empirical inverse covariance weighted case). }
 	\label{fig:sigloss_terms}
 \end{figure*}
 
