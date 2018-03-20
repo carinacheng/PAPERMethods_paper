@@ -1621,26 +1621,20 @@ removal and these are detections that, depending on the power spectrum level, co
 
 \subsubsection{Jackknife Tests}
 
-The highest sensitivity power spectrum result for PAPER-64 using the updated analysis presented in this paper, shown in 
-Figure \ref{fig:ps1_data}, has positive biases at low $k$ values. As discussed in Section \ref{sec:BiasTypes}, these detections 
-are most likely attributable to foreground leakage. The cause for the detections at higher $k$ values is more difficult to pinpoint. Here we demonstrate three null tests performed on PAPER-64 data that aim to explain these detections and verify 
+The power spectrum result for PAPER-64 using the updated analysis presented in this paper, shown in 
+Figure \ref{fig:ps1_data}, is biased above the predicted noise level, particularly at low $k$ values. As discussed in Section \ref{sec:BiasTypes}, these biases
+are most likely attributable to foreground leakage. The cause for biases at higher $k$ values is more difficult to pinpoint. Here we demonstrate three null tests performed on PAPER-64 data that aim to isolate systematics in the data and verify 
 that they are not attributable to EoR.
 
-The three null test results are shown in Figure \ref{fig:null}, with each test described as the following:
+The three null test results are shown in Figure \ref{fig:null}, with each test displaying the differenced power spectrum between two halves of a jackknife. We take jackknives along three different axes, described as the following:
 
 \begin{itemize}
 %\item Original Data (black): This is identical to the unweighted, revised PAPER-64 power spectrum in Figure \ref{fig:ps1_data} (one baseline type only) with weighting matrix $\textbf{I}$. There are clear detections at low $k$'s.
-\item Even/Odd (blue): We split our dataset into even (\textbf{e}) and odd (\textbf{o}) days. We then form the following two datasets: $\textbf{x}_{1} = \textbf{e} + \textbf{o}$ and $\textbf{x}_{2} = 
-\textbf{e} - \textbf{o}$. We form datasets in this way to ensure that we use the full sensitivity of our data. When cross-multiplied, we obtain:
-\begin{equation}
-\textbf{x}_{1}\textbf{x}_{2}^{\dagger} = \textbf{ee}^{\dagger} - \textbf{eo}^{\dagger} + \textbf{oe}^{\dagger} - \textbf{oo}^{\dagger}
-\end{equation}
-If the same sky signal is in both the even and odd datasets, we expect it to cancel out.
+\item Even/Odd (blue): We split our dataset into even and odd Julian days. We form power spectra for each separately, allowing for the cross-multiplication of `even' with `even', for example. Although we don't allow this in our standard pipeline, we include these same-dataset cross-multiplications to allow a power spectrum to be estimated from solely the `even' data (similarly for `odd'). If the same sky signal is in both the `even' and `odd' datasets, we expect it to cancel out.
 \item Baselines (green): We split our dataset into two halves, where each contains half of the total baselines used in the 
-analysis. Again, we form $\textbf{x}_{1} = \textbf{b}_{1} + \textbf{b}_{2}$ and $\textbf{x}_{2} = \textbf{b}_{1} - \textbf{b}_{2}$, where $\textbf{b}_{1}$ is the first baseline 
-group and $\textbf{b}_{2}$ is the second baseline group.
-\item LST (magenta): We split our dataset into two halves based on LST, namely $\textbf{t}_{1}$ (LSTs 0.5-4.6 hours) and $\textbf{t}_{2}$ (LSTs 
-4.6-8.6 hours). We form our two datasets as $\textbf{x}_{1} = \textbf{t}_{1} + \textbf{t}_{2}$ and $\textbf{x}_{2} = \textbf{t}_{1} -\textbf{t}_{2}$.
+analysis. There are no baselines repeated between the two datasets.
+\item LST (magenta): We split our dataset into two halves based on LST, namely the first half (LSTs 0.5-4.6 hours) and second half (LSTs 
+4.6-8.6 hours).
 \end{itemize}
 
 
@@ -1663,17 +1657,25 @@ group and $\textbf{b}_{2}$ is the second baseline group.
 %	\label{fig:null}
 %\end{figure*}
 
-Investigating Figure \ref{fig:null}, we find that the baselines test is fully consistent with noise (all error bars pass through zero), and that the even/odd test is consistent with noise given the $2\sigma$ expectations (nearly $95\%$ of the error bars are passing through zero). We additionally note that the error bars for the baselines test (green) are especially small --- this is because the signal is effectively cancelled out prior to cross-multiplication (when forming baseline groups). 
+Investigating Figure \ref{fig:null}, we find that the baselines test is fully consistent with noise (all error bars pass through zero). Additionally, the differenced power spectrum values (black points) all lie within the gray-shaded estimated error region for high $k$'s. Therefore, we conclude that particular baselines are not to be blamed for systematics in our dataset.
 
-The null test in LST is much more illuminating. Because of the large variable error bars, many of which do not include zero, this suggests that the primary systematic driving our power spectrum points and errors to be outside the 
-estimated error region is LST-dependent, and therefore likely to be residual foregrounds. In other words, the fact that several magenta power spectrum points, as well as their error bars, are outside the estimated error region implies that $t_{1}$ and 
-$t_{2}$ differ by an amount greater than thermal noise and they do not effectively cancel out the sky signal during cross-multiplication. We also note that the LST null test is biased high, consistent with the interpretation that our positive power spectrum detections in Figure \ref{fig:ps1_data} are those of foregrounds.
+For the LST test, $90\%$ of the error bars pass through zero, which is slightly low given the expected $95\%$. Additionally, not all power spectrum points lie within the gray-shaded region, even at high-$k$. This LST-dependent systematic is likely caused by residual foregrounds that vary in LST. In other words, the two jackknife halves differ by an amount greater than thermal noise and do not effectively cancel out the sky signal when differencing. 
 
-We do not investigate the detailed nature of the residual foregrounds in this paper, though one could imagine performing many 
-similar null tests with a sliding window of $t_{1}$'s and $t_{2}$'s. This would illuminate the particular LST range that introduces 
-the foreground bias (or whether the bias is constant in LST), and could potentially be traced to an individual bright radio source. 
-This type of detailed analysis will be critical at EoR sensitivities; however, for our current analysis we are not surprised that the main source of
-bias we see comes from foregrounds. % in regions where we expect leakage.
+The even/odd test shows $81\%$ of error bars being consistent with zero, with several power spectrum points falling outside the estimated error region. Rather than attribute these biases to systematics that differ \textit{between} the `even' and `odd' datasets, we believe that they are caused by the squaring of thermal noise (which was allowed in the construction of this test). This strengthens our choice to not allow the cross-multiplication between the same LST-binned datasets in our full pipeline.
+
+Finally, we note that all three null tests exhibit error bars that are strongly $k$-dependent. The errors are largest near the horizon, which is expected since foregrounds are brightest in this region post-delay filtering. We also note that all three tests result in power spectrum errors that are larger than the estimated thermal noise, even at high-$k$. There are a couple possible explanations for this. Although we expect each cross-multiplication to have independent noise (except in the even/odd case), there is still the possibility of a noise-foreground coupling term that can introduce power. This cross-term would vary with foreground strength, therefore being consistent with the shape of the results. Alternatively, our estimate of the thermal noise may be too low, as all three tests seem to imply a larger, but consistent, estimate.
+
+%, and that the even/odd test is consistent with noise given the $2\sigma$ expectations (nearly $95\%$ of the error bars are passing through zero). We additionally note that the error bars for the baselines test (green) are especially small --- this is because the signal is effectively cancelled out prior to cross-multiplication (when forming baseline groups). 
+
+%The null test in LST is much more illuminating. Because of the large variable error bars, many of which do not include zero, this suggests that the primary systematic driving our power spectrum points and errors to be outside the 
+%estimated error region is LST-dependent, and therefore likely to be residual foregrounds. In other words, the fact that several magenta power spectrum points, as well as their error bars, are outside the estimated error region implies that $t_{1}$ and 
+%$t_{2}$ differ by an amount greater than thermal noise and they do not effectively cancel out the sky signal during cross-multiplication. We also note that the LST null test is biased high, consistent with the interpretation that our positive power spectrum detections in Figure \ref{fig:ps1_data} are those of foregrounds.
+
+%We do not investigate the detailed nature of the residual foregrounds in this paper, though one could imagine performing many 
+%similar null tests with a sliding window of $t_{1}$'s and $t_{2}$'s. This would illuminate the particular LST range that introduces 
+%the foreground bias (or whether the bias is constant in LST), and could potentially be traced to an individual bright radio source. 
+%This type of detailed analysis will be critical at EoR sensitivities; however, for our current analysis we are not surprised that the main source of
+%bias we see comes from foregrounds. % in regions where we expect leakage.
 
 % CONCLUSION ---------------------------------------------------------------------------------
 
