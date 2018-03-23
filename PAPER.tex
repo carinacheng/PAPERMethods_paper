@@ -865,7 +865,7 @@ which data subsets are contaminated by biases and which are not; in our toy mode
 \textbf{x}_{1}$ (Figure \ref{fig:toy_bias2}). If foreground or noise biases exist in a dataset, jackknives can tease them out and 
 provide insight into possible sources. For example, if jackknives along the time-axis reveal a bias present at a certain LST, a 
 likely explanation would be excess foreground emission from a radio source in the sky at that time. A jackknife test involving 
-data before and after the application of a fringe-rate filter can reveal whether cross-talk noise bias is successfully suppressed 
+data before and after the application of a fringe-rate filter can reveal whether crosstalk noise bias is successfully suppressed 
 with the filter, or if similar-shaped detections in both power spectra suggest otherwise. There are many other jackknife axes of 
 which we will not go into detail here, including baseline, frequency, and polarization. Ultimately, an EoR detection should persist 
 through them all and a clean measurement should exhibit noise-like null spectra.
@@ -1432,7 +1432,7 @@ $N_{days}$ as:
 days.
 \item $N_{bls}$: The number of baselines contributing to the sensitivity of a power spectrum estimate. In \citetalias{ali_et_al2015}, this number was 
 the total number of $30$\,m East/West baselines used in the analysis. However, using the total number of baselines neglects 
-the fact that baselines are averaged into groups (see Section \ref{sec:Boot}) for computational speed-up when cross-multiplying data. Our revised estimate for the parameter is:
+the fact that we average baselines into groups for computational speed-up when cross-multiplying data. Our revised estimate for the parameter is:
 \begin{equation}
 N_{bls} = \frac{N_{bls\_total}}{N_{gps}}\sqrt{N_{gps}^{2}-N_{gps}},
 \end{equation}
@@ -1536,7 +1536,7 @@ effects of bootstrapping from signal loss. The bootstrapping method used in \cit
 \label{sec:Bias}
 
 In Section \ref{sec:BiasOverview} we highlighted some common sources of bias that can show up as power spectrum 
-detections and imitate EoR. We discussed the importance of using jackknife and null tests for instilling confidence in an EoR 
+detections and imitate an EoR signal. We discussed the importance of using jackknife and null tests for instilling confidence in an EoR 
 detection, as well as identifying other sources of biases. Here we demonstrate methods used by PAPER-64 to mitigate 
 foreground and noise bias and we perform null tests in order to characterize the stability and implications of our results.
 
@@ -1575,12 +1575,11 @@ becomes:
 \end{equation}
 
 \noindent Because of the nature of the lower triangular matrix, this window function has the property of preventing the leakage 
-of foreground power from low $k$ to high $k$ modes. Specifically, we order the elements in $\textbf{F}$ in such a way so that 
-power can leak from high $k$ modes to low $k$ modes, but not vice versa. Since most foreground power shows up at low 
-$k$'s, this method ensures a window function that retains clean, noise-dominated measurements while minimizing the 
-contamination of foreground bias. This tailored window function was used in the \citetalias{ali_et_al2015} analysis, however for this paper, we use $\textbf{M} \propto \textbf{I}$ for simplicity.
+of foreground power from low-$k$ to high-$k$ modes. Specifically, we order the elements in $\textbf{F}$ in such a way so that 
+power can leak from high-$k$ modes to low-$k$ modes, but not vice versa. Since most foreground power shows up at low-$k$'s, this method ensures a window function that retains clean, noise-dominated measurements while minimizing the 
+contamination of foreground bias. This tailored window function was used in the \citetalias{ali_et_al2015} analysis, however throughout this paper, we use $\textbf{M} \propto \textbf{I}$ for simplicity.
 
-In addition to mitigating foreground bias at high $k$'s, two other sources of bias that we actively suppress in the PAPER-64 
+In addition to mitigating foreground bias at high-$k$'s, two other sources of bias that we actively suppress in the PAPER-64 
 analysis are noise bias associated with the squaring of thermal noise and noise bias from crosstalk. In order to avoid the 
 former, we filter out certain cross-multiplications when forming $\widehat{q}$ in Equation \eqref{eq:qhat}. Namely, the PAPER-64 
 dataset is divided into two halves: even Julian dates and odd Julian dates. Our data vectors are then $\textbf{x}_{even, 1}$ for 
@@ -1595,8 +1594,8 @@ removal and these are detections that, depending on the power spectrum level, co
 
 \subsubsection{Jackknife Tests}
 
-As shown in Figure \ref{fig:ps1_data}, our re-analysis of the PAPER-64 power spectrum shows biases above the predicted noise level, particularly at low $k$ values. As discussed in Section \ref{sec:BiasTypes}, this bias is
-most likely attributable to foreground leakage. The cause for biases at higher $k$ values is more difficult to pinpoint. Here we discuss three null tests performed on PAPER-64 data that aim to isolate systematics in the data and verify 
+As shown in Figure \ref{fig:ps1_data}, our re-analysis of the PAPER-64 power spectrum shows biases above the predicted noise level, particularly at low-$k$ values. As discussed in Section \ref{sec:BiasTypes}, this bias is
+most likely attributable to foreground leakage. The cause for biases at higher $k$-values is more difficult to pinpoint. Here we discuss three null tests performed on PAPER-64 data that aim to isolate systematics in the data and verify 
 that they are not attributable to EoR. We build off of the framework in Section \ref{sec:JackknifeOverview}, which illuminated how jackknife tests can tease out excess variances along different axes of a dataset.
 
 Three null test results are shown in Figure \ref{fig:null}. Each test displays the differenced power spectrum between two halves of a jackknife. We take jackknives along three different axes:
@@ -1607,7 +1606,7 @@ Three null test results are shown in Figure \ref{fig:null}. Each test displays t
 analysis. No baselines are repeated between the two datasets.
 \item Sidereal Hour: We split our dataset into two halves based on LST, namely the first half (LSTs 0.5-4.6 hours) and second half (LSTs 
 4.6-8.6 hours).
-\item Day: We split our dataset into even and odd Julian days. We form power spectra for each separately, allowing the cross-multiplication of `even' with `even', for example, for this null test only. If the same sky signal is in both the `even' and `odd' datasets, we expect it to cancel out. %However, allowing these cross-multiplications can in practice introduce a low level noise bias... 
+\item Day: We split our dataset into even and odd Julian dates. We form power spectra for each separately, allowing the cross-multiplication of `even' with `even', for example, for this null test only. If the same sky signal is in both the `even' and `odd' datasets, we expect it to cancel out. %However, allowing these cross-multiplications can in practice introduce a low level noise bias... 
 \end{itemize}
 
 
@@ -1616,7 +1615,7 @@ analysis. No baselines are repeated between the two datasets.
 	\includegraphics[width=0.47\textwidth]{plots/null_bls.png}
 	\includegraphics[width=0.47\textwidth]{plots/null_lsts.png}
 	\includegraphics[width=0.47\textwidth]{plots/null_eo.png}
-	\caption{Power spectrum results (with $2\sigma$ errors) for three null tests, where a jackknife is taken along the baseline axis (top left), LST axis (top right), and even/odd Julian date axis (bottom). The results shown are unweighted (no signal loss), where the power spectrum values plotted are computed from the difference between two power spectra produced on either side of the jackknife axis. The gray shaded region in each plot is the estimated $2\sigma$ theoretical noise limit given the parameters of each test. We find that there are no significant systematics that differ between the tests, though there are low level biases at high-$k$ values in both the LST test and even/odd test. All three tests, whether biased or not, have an extra noise bias that is strongly $k$-dependent. Residual foregrounds dominate at $k$-values near the horizon ($k\sim\pm 0.1$ $h$Mpc$^{-1}$), which is not surprising given that foregrounds are brightest in this region post-delay filtering.}
+	\caption{Differenced power spectrum results (with $2\sigma$ errors) for three null tests, where a jackknife is taken along the baseline axis (top left), LST axis (top right), and even/odd Julian date axis (bottom). The results shown are unweighted (no signal loss), where the power spectrum values plotted are computed from the difference between two power spectra produced on either side of the jackknife axis. The gray shaded region in each plot is the estimated $2\sigma$ theoretical noise limit given the parameters of each test. We find that there are no significant systematics that differ between the tests, though there are low level biases at high-$k$ values in both the LST test and even/odd test. All three tests, whether biased or not, have an extra noise bias that is strongly $k$-dependent. Residual foregrounds dominate at $k$-values near the horizon ($k\sim\pm 0.1$ $h$Mpc$^{-1}$), which is not surprising given that foregrounds are brightest in this region post-delay filtering.}
 	\label{fig:null}
 \end{figure*}
 
@@ -1632,11 +1631,11 @@ analysis. No baselines are repeated between the two datasets.
 
 In investigating Figure \ref{fig:null}, we focus on two main aspects of each test - whether the error bars are consistent with zero, and whether they are consistent with thermal noise. The former indicates a `passing' null test where there is no bias along the jackknife axis. The latter reveals whether there is an additional noise bias present that lies above the thermal noise.
 
-We find that the baselines test is fully consistent with noise, as all error bars pass through zero. Therefore, we conclude that particular baselines are not to be blamed for the bias in our dataset. For the LST test, $90\%$ of all the error bars pass through zero, which is slightly lower than the expected $95\%$. This indicates a low level bias that is LST-dependent, and likely caused by residual foregrounds that vary in LST. In other words, the two jackknife halves differ by an amount greater than thermal noise and do not completely cancel out the sky signal when differencing. The even/odd test shows $81\%$ of all error bars being consistent with zero, again indicating the presence of a low level bias. The cause of this particular systematic is not obvious, and requires further investigation that we do not carry out in this paper.
+We find that the baselines test is fully consistent with noise, as all error bars pass through zero. Therefore, we conclude that particular baselines are not to be blamed for the bias in our dataset. For the LST test, $90\%$ of all the error bars pass through zero, which is slightly lower than the expected $95\%$. This indicates a low level bias that is LST-dependent, and likely caused by residual foregrounds that vary in LST. In other words, the two jackknife halves differ by an amount greater than thermal noise and do not completely cancel out the sky signal when differencing. The even/odd test shows $81\%$ of all error bars being consistent with zero, again indicating the presence of a low level bias. The cause of this particular systematic is not obvious, and requires further investigation that we do not carry out in this paper. Most importantly, a clean detection of EoR would have passed all three null tests, which is clearly not what we see.
 
-Finally, we note that all three null tests exhibit error bars that are strongly $k$-dependent. The errors are largest just outside the horizon ($k\sim\pm 0.1$ $h$Mpc$^{-1}$) which is expected since foregrounds are brightest in this region post-delay filtering. We also note that all three tests, whether biased or unbiased, result in power spectrum errors that are slightly larger than the estimated thermal noise at high-$k$. This indicates an additive noise component that is increasing our errors (while not affecting whether they pass through zero or not). 
+Finally, we note that all three null tests exhibit error bars that are strongly $k$-dependent. The errors are largest just outside the horizon ($k\sim\pm 0.1$ $h$Mpc$^{-1}$) which is expected since foregrounds are brightest in this region post-delay filtering. We also note that all three tests, whether biased or unbiased, result in power spectrum errors that are slightly larger than the estimated thermal noise (gray band) at high-$k$. This indicates an additive noise component that is increasing our errors (while not affecting whether they pass through zero or not). 
 
-There are a couple possible explanations for this. Although we expect each cross-multiplication that is used in power spectrum estimation to have independent noise, there is still the possibility of a noise-foreground coupling term that can introduce power. This is because cross-multiplications produce four additive terms - a signal-squared term (where signal includes both foregrounds and EoR), two cross-terms between the signal and noise, and one noise-only term. When differencing two power spectra, we expect the signal-only term to subtract out for a `passing' null test, and we expect the noise-only terms to be consistent with thermal noise. The cross-terms, however, can introduce a noise bias that would vary with foreground strength, therefore being consistent with the shape of our results. That being said, an alternate explanation for the large error bars seen at high $k$'s could be that our estimate of the thermal noise is too low, as all three tests seem to imply a larger, but consistent, estimate.
+There are a couple possible explanations for this. Although we expect each cross-multiplication that is used in power spectrum estimation to have independent noise, there is still the possibility of a noise-foreground coupling term that can introduce power. This is because cross-multiplications produce four additive terms - a signal-squared term (where signal includes both foregrounds and EoR), two cross-terms between the signal and noise, and one noise-only term. When differencing two power spectra, we expect the signal-only term to subtract out for a `passing' null test, and we expect the noise-only terms to be consistent with thermal noise. The cross-terms, however, can introduce a noise bias that would vary with foreground strength, therefore being consistent with the shape of our results. That being said, an alternate explanation for the large error bars seen at high $k$'s could simply be that our estimate of the thermal noise is too low, as all three tests seem to imply a larger, but consistent, estimate.
 
 %, and that the even/odd test is consistent with noise given the $2\sigma$ expectations (nearly $95\%$ of the error bars are passing through zero). We additionally note that the error bars for the baselines test (green) are especially small --- this is because the signal is effectively cancelled out prior to cross-multiplication (when forming baseline groups). 
 
@@ -1671,37 +1670,37 @@ signal loss, error estimation, and bias, which can be summarized as follows:
 exist in the data. Hence, there exists a trade-off between sensitivity driven 
 time-averaging techniques such as fringe-rate filtering and signal loss when using empirically estimated covariances. 
 \item Signal injection and recovery simulations can be used to quantify signal loss (Section \ref{sec:Sigloss}). However, a 
-signal-only simulation (i.e. comparing a uniformly weighted vs. weighted power spectrum of EoR only) can underestimate loss by 
+signal-only simulation (i.e. comparing a uniformly weighted vs. weighted power spectrum of EoR only) can under-estimate loss by 
 failing to account for correlations between the data and signal (Section \ref{sec:siglossmethod}).
-\item Errors that are estimated via bootstrapping can be underestimated if samples in the dataset are significantly correlated 
-(Section \ref{sec:ErrorOverview}). If the number of independent samples in a dataset is well-determined, bootstrapping is a 
+\item Errors that are estimated via bootstrapping can be under-estimated if samples in the dataset are significantly correlated 
+(Section \ref{sec:ErrorOverview}). However, if the number of independent samples in a dataset is well-determined, bootstrapping is a 
 simple and accurate way of estimating errors.
 \item Meaningful null tests are vital to validate an EoR detection (Section \ref{sec:JackknifeOverview}). Similarly, performing 
 jackknife tests along multiple axes of a dataset is necessary for confidence in an EoR detection and can also be used to tease 
 out systematics.
 \end{itemize}
 
-As a consequence of our investigations, we have also revised power spectrum results from PAPER-64. In Kolopanis et al., (\textit{submitted}), we quote a best $2\sigma$ power spectrum upper limit of $(218.7$ mK$)^{2}$ at $k=0.3$ $h$Mpc$^{-1}$ and $z=8.37$, 
-a higher limit than \citetalias{ali_et_al2015} by a factor of $\sim$$10$ in mK. The reasons for a previously underestimated limit and 
+As a consequence of our investigations, we have also revised power spectrum results from PAPER-64. In Kolopanis et al. (\textit{submitted}), we quote a best $2\sigma$ power spectrum upper limit of $(240.0$ mK$)^{2}$ at $k=0.3$ $h$Mpc$^{-1}$ and $z=8.37$, 
+a higher limit than \citetalias{ali_et_al2015} by a factor of $\sim$$10$ in mK. The reasons for a previously under-estimated limit and 
 ways in which our new analysis differs can be summarized by the following:
 
 \begin{itemize}
-\item Signal loss, previously found to be $<2\%$ in \citetalias{ali_et_al2015}, was under-estimated by a factor of $\sim$$1000$ for inverse 
+\item Signal loss, previously found to be $<2\%$ in \citetalias{ali_et_al2015}, was under-estimated by a factor of $>$$1000$ for empirically estimated inverse 
 covariance weighting. For our new analysis, we use a regularized covariance weighting method to minimize loss (Section 
 \ref{sec:Weight}). However, because our revised weighting method is not as aggressive as the former, our results are still a 
-factor of $\sim$$10$ in mK higher than previous limits. Under-estimated signal loss therefore represents the bulk of our revision. We 
+factor of $\sim10$ in mK higher than previous limits. Under-estimated signal loss therefore represents the bulk of our revision. We 
 note that PAPER's analysis is not the first to under-estimate loss; results from the GMRT (\citealt{paciga_et_al2013}) were also 
 revised from new signal loss calculations associated with their singular value decomposition foreground filter.
-\item Power spectrum errors, originally computed by bootstrapping, were under-estimated for the data by a factor of $\sim$$2$ in mK due to oversampling data whose effective number of independent samples was reduced from fringe-rate filtering (Section \ref{sec:Boot}). 
+\item Power spectrum errors, originally computed by bootstrapping, were under-estimated for the data by a factor of $\sim2$ in mK due to oversampling data whose effective number of independent samples was reduced from fringe-rate filtering (Section \ref{sec:Boot}). 
 \item Several factors used in an analytic expression to predict the noise-level in PAPER-64 data were revised, yielding a 
-decrease in predicted sensitivity level by a factor of $\sim$$2$ in mK (Section \ref{sec:PSSense}). We have verified our revised 
+decrease in predicted sensitivity level by a factor of $\sim2$ in mK (Section \ref{sec:PSSense}). We have verified our revised 
 prediction extensively using pure noise simulations. We note that our sensitivity prediction is revised by a factor less than our 
 power spectrum result, implying that if taken at face value, the theoretical prediction for noise in \citetalias{ali_et_al2015} was too high for its data 
 points.
 \end{itemize}
 
 The future of 21\,cm cosmology is exciting, as new experiments have sensitivities that expect to reach and surpass EoR levels, improved 
-foreground mitigation/removal strategies are being developed, and simulations are being designed to better understand 
+foreground mitigation and removal strategies are being developed, and simulations are being designed to better understand 
 instruments. On the power spectrum analysis side, robust signal loss simulations, precise error calculations, and 
 comprehensive jackknife tests will play critical roles in accurate 21\,cm results. With strong foundations being established now, it is safe to say that we can expect to learn much about reionization and our early Universe in the coming years.
 
