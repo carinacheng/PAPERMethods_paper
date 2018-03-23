@@ -1322,7 +1322,7 @@ their best (i.e. when $\sim3$$-4$ eigenmodes are down-weighted in the case of th
 A revised PAPER-64 power spectrum (using only one baseline separation type and $\widehat{\textbf{C}}_{eff}$) is shown in Figure 
 \ref{fig:ps1_data}. Again, the dashed black curve represents our upper limit on EoR, post-signal loss estimation. Black and gray points correspond to positive and negative power spectrum values respectively (pre-signal loss estimation), with 
 $2\sigma$ errors bars. Also plotted are the uniform-weighted power spectrum upper limit (dashed blue) and theoretical prediction of 
-noise (solid green). In Kolopanis et al. (\textit{submitted}), a larger parameter space is explored for regularization and multiple baselines are used in the analysis to produce a best $2\sigma$ power spectrum upper limit of $(218.7$ mK$)^{2}$ at $k=0.3$ $h$Mpc$^{-1}$ and $z=8.37$, 
+noise (solid green). In Kolopanis et al. (\textit{submitted}), a larger parameter space is explored for regularization and multiple baselines are used in the analysis to produce a best $2\sigma$ power spectrum upper limit of $(240.0$ mK$)^{2}$ at $k=0.3$ $h$Mpc$^{-1}$ and $z=8.37$, 
 a higher limit than \citetalias{ali_et_al2015} by a factor of $\sim$$10$ in mK.
 
 \begin{figure*}
@@ -1334,7 +1334,7 @@ negative power spectrum values, respectively, with $2\sigma$ error bars). The da
 power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on 
 observational parameters. This power spectrum result differs from \citetalias{ali_et_al2015} in that it only uses data from one type of baseline ($30$ m 
 East/West baselines) instead of three. Major differences from previously published results stem from revisions regarding signal 
-loss, bootstrapping, and the theoretical error computation. In Kolopanis et al. (\textit{submitted}), a larger parameter space is explored for regularization and multiple baselines are used in the analysis to produce a best $2\sigma$ power spectrum upper limit of $(218.7$ mK$)^{2}$ at $k=0.3$ $h$Mpc$^{-1}$ and $z=8.37$, 
+loss, bootstrapping, and the theoretical error computation. In Kolopanis et al. (\textit{submitted}), a larger parameter space is explored for regularization and multiple baselines are used in the analysis to produce a best $2\sigma$ power spectrum upper limit of $(240.0$ mK$)^{2}$ at $k=0.3$ $h$Mpc$^{-1}$ and $z=8.37$, 
 a higher limit than \citetalias{ali_et_al2015} by a factor of $\sim$$10$ in mK.}
 	\label{fig:ps1_data}
 \end{figure*}
@@ -1379,7 +1379,7 @@ found was that these simulations all agreed but were discrepant with the previou
 calculation is only an approximation; however, the differences were large enough (factors of $10$ in some cases) to warrant a 
 careful investigation. The analytic calculation attempts to combine a large number of pieces of information in an approximate 
 way, and when re-considering some of the approximations, we have found there to be large effects. What follows here is an 
-accounting of the differences which have been discovered.
+accounting of the differences which have been discovered. Our revised theoretical error estimation, which is often plotted as the solid green curve in many of the previous power spectrum plots, is computed with these changes accounted for.
 
 The sensitivity prediction (\citealt{parsons_et_al2012a}; \citealt{pober_et_al2013}) for a power spectral analysis of 
 interferometric 21\,cm data, in temperature-units, is:
@@ -1403,15 +1403,15 @@ filter.
 T_{sys} = 180\Big(\frac{\nu}{0.18}\Big)^{-2.55} + T_{rcvr},
 \end{equation}
 
-where $\nu$ are frequencies in GHz. We use a receiver temperature of $144$ K, yielding $T_{sys} = 431$ K at $150$ MHz. 
-This is lower than the $T_{sys}$ of $500$ K used in \citetalias{ali_et_al2015} because of several small miscalculation errors that were 
+where $\nu$ are frequencies in GHz. We use a receiver temperature of $144$\,K, yielding $T_{sys} = 431$\,K at $150$\,MHz. 
+This is lower than the $T_{sys}$ of $500$\,K used in \citetalias{ali_et_al2015} because of several small mis-calculation errors that were 
 identified\footnote{For example, there was a missing a square root in going from a variance to a standard deviation.}.
 \item $\sqrt{2}$: This factor in the denominator of the sensitivity equation comes from taking the real part of the power spectrum 
 estimates after cross-multiplying independent `even' and `odd' visibility measurements (which is done principally to avoid a noise bias). In \citetalias{ali_et_al2015}, a factor of $2$ was mistakenly used.
-\item $N_{lst}$: The number of LST bins that go into a power spectrum estimation. The sensitivity scales as the square root 
+\item $N_{lst}$: The number of independent LST bins that go into a power spectrum estimation. The sensitivity scales as the square root 
 because we integrate incoherently over time. For PAPER-64, $N_{lst} = 8$.
 \item $N_{seps}$: The number of baseline separation types averaged incoherently in a final power spectrum estimate. For the 
-analysis in this paper, we only use one type of baseline, hence $N_{seps}=1$. The updated limits in Kolopanis et al., \textit{submitted}
+analysis in this paper, we only use one type of baseline, hence $N_{seps}=1$. The updated limits in Kolopanis et al. (\textit{submitted})
 use three separation types.
 \item $t_{int}$: Length of an independent integration of the data. It is crucial to adapt this number if filtering is applied along the time axis (i.e. a 
 fringe-rate filter). We compute the effective integration time of our fringe-rate filtered data by scaling the original integration time $t_{i}$
@@ -1420,7 +1420,7 @@ using the following:
 t_{int} = t_{i} \frac{\int1 \, df}{\int w^{2}(f) \,df},
 \end{equation}
 where $t_{i}=43$ seconds, $t_{int}$ is the fringe-rate filtered integration time, $w$ is the fringe-rate profile, and the integral is 
-taken over all fringe-rates. For PAPER-64, this number is $t_{int} = 3857$ s. 
+taken over all fringe-rates. For PAPER-64, this number is $t_{int} = 3857$\,s. 
 \item $N_{days}$: The total number of days of data analyzed. In \citetalias{ali_et_al2015}, this number was set to $135$. However, because we 
 divide our data in half (to form `even' and `odd' datasets), this number should be reduced by a factor of $2$. Additionally, 
 because our LST coverage is not $100\%$ complete (it doesn't overlap for every single day), we compute a more realistic value of 
@@ -1431,12 +1431,12 @@ $N_{days}$ as:
 \noindent where $i$ is over LST (\citealt{jacobs_et_al2015}). For PAPER-64, our revised estimate of $N_{days}$ is $\sim34$ 
 days.
 \item $N_{bls}$: The number of baselines contributing to the sensitivity of a power spectrum estimate. In \citetalias{ali_et_al2015}, this number was 
-the total number of $30$ m East/West baselines used in the analysis. However, using the total number of baselines neglects 
+the total number of $30$\,m East/West baselines used in the analysis. However, using the total number of baselines neglects 
 the fact that baselines are averaged into groups (see Section \ref{sec:Boot}) for computational speed-up when cross-multiplying data. Our revised estimate for the parameter is:
 \begin{equation}
 N_{bls} = \frac{N_{bls\_total}}{N_{gps}}\sqrt{N_{gps}^{2}-N_{gps}},
 \end{equation}
-\noindent where, for the \citetalias{ali_et_al2015} analysis, $N_{gps} = 5$. Each baseline group averages down linearly as the number of baselines 
+\noindent where, as with the \citetalias{ali_et_al2015} analysis, $N_{gps} = 5$. Each baseline group averages down linearly as the number of baselines 
 entering the group ($N_{bls\_total}/N_{gps}$) and then as the square root of the number of cross-multiplied pairs ($\sqrt{N_{gps}^{2} - 
 N_{gps}}$). For the revised PAPER-64 analysis with only one baseline separation type, this becomes $N_{bls} \sim 46$ instead 
 of $51$. 
@@ -1452,7 +1452,7 @@ Together, the revised parameters yield a decrease in sensitivity (higher noise f
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{plots/sense_check.png}
-	\caption{An updated prediction for the noise-level of PAPER-64 data (black) is shown in comparison to previously 
+	\caption{An updated prediction for the thermal noise level of PAPER-64 data (black) is shown in comparison to previously 
 published sensitivity limits (gray). Both sensitivity analyses plotted assume only one baseline type (an additional factor of $
 \sqrt{3}$ for three baseline types is needed to match \citetalias{ali_et_al2015} exactly). Major factors that contribute to the discrepancy are $
 \Omega_{eff}$, $N_{days}$ and $N_{bls}$, as in Equation \eqref{eq:sense} and described in Section \ref{sec:PSSense}, which when combined decreases our 
@@ -1475,9 +1475,9 @@ particular time and frequency that went into our LST-binned set, and $N_{pols}$ 
 I). This RMS temperature sets the variance of the Gaussian random noise.
 
 Power spectrum results for the noise simulation, which uses our full power spectrum pipeline, are shown in Figure 
-\ref{fig:ps_noise}, where the black and gray points represent positive and negative power spectrum values, respectively (with 
-$2\sigma$ error bars and weighting matrix $\widehat{\textbf{C}}_{eff}$), the dashed blue line represents the uniform-weighted power 
-spectrum, and the solid green line denotes our $2\sigma$ theoretical noise prediction as calculated by Equation 
+\ref{fig:ps_noise}, where the black and gray points represent pre-signal loss estimated positive and negative power spectrum values, respectively (with 
+$2\sigma$ error bars and weighting matrix $\widehat{\textbf{C}}_{eff}$), the dashed black line represents the post-signal loss $2\sigma$ upper limit on the EoR signal, the dashed blue line represents the $2\sigma$ uniform-weighted power 
+spectrum limit, and the solid green line denotes our $2\sigma$ theoretical noise prediction as calculated by Equation 
 \eqref{eq:sense}. All three are in agreement, validating our analytical thermal noise calculation. 
 
 \begin{figure*}
@@ -1486,8 +1486,8 @@ spectrum, and the solid green line denotes our $2\sigma$ theoretical noise predi
 	\includegraphics[width=0.4\textwidth]{plots/ps2_noise_add.png}
 	\caption{Power spectrum estimate for a noise simulation that mimics the noise level of PAPER-64 data. The original weighted 
 power spectrum points and their $2\sigma$ errors are show in black and gray (positive and negative values), where we use $
-\widehat{\textbf{C}}_{eff}$ to minimize signal loss. The dashed black line is the $2\sigma$ upper limit on EoR post-signal loss estimation. The dashed blue line is the uniform-weighted power spectrum (also $2\sigma$ upper 
-limit). The solid green line is the theoretical $2\sigma$ noise level prediction as calculated by Equation \eqref{eq:sense}. All three 
+\widehat{\textbf{C}}_{eff}$ to minimize signal loss. The dashed black line is the $2\sigma$ upper limit on EoR post-signal loss estimation. The dashed blue line is the uniform-weighted power spectrum $2\sigma$ upper 
+limit. The solid green line is the theoretical $2\sigma$ noise level prediction as calculated by Equation \eqref{eq:sense}. All three 
 estimates agree.}
 	\label{fig:ps_noise}
 \end{figure*}
@@ -1506,7 +1506,7 @@ In \citetalias{ali_et_al2015}, a second round of bootstrapping occurred over the
 ($N_{boot} = 400$), each comprised of randomly selected values sampled with replacement along the time axis. More 
 specifically, each of these bootstraps contained the same number of values as the number of time integrations (which, at $\sim$
 $700$, greatly exceeds the approximate number of independent samples after fringe-rate filtering).
-Medians were then taken of the values in each bootstrap (with the appropriate median correction factor applied). Finally, power 
+Means were then taken of the values in each bootstrap. Finally, power 
 spectrum limits were computed by taking the mean and standard deviation over all the bootstraps. We emphasize again that in 
 this previous analysis, the number of elements sampled per bootstrap greatly 
 exceeded the number of independent LST samples, under-estimating errors. A random draw of $700$ 
@@ -1526,7 +1526,7 @@ Finally, we note that our power spectrum points (previously computed as the mean
 	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/noise_errors.png}
 	\caption{$2\sigma$ power spectrum errors for a noise simulation (computed via Equation \eqref{eq:noise} using PAPER-64 observing parameters) using two different bootstrapping 
 methods. The noise is fringe-rate filtered and a weighting matrix of $\textbf{I}$ (uniform-weighted) is used in order to disentangle the 
-effects of bootstrapping from signal loss. The bootstrapping method used in \citetalias{ali_et_al2015} in shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. This is shown to agree with the $2\sigma$ analytic prediction for noise (green).}
+effects of bootstrapping from signal loss. The bootstrapping method used in \citetalias{ali_et_al2015} is shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. This is shown to agree with the $2\sigma$ analytic prediction for noise (green).}
 	\label{fig:data_errors}
 \end{figure}
 
