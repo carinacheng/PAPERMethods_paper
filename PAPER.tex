@@ -339,7 +339,7 @@ In practice, we do not have perfect models for $\textbf{C}$, and it is the use o
 
 We construct a simple dataset that contains 2-dimensional data (representing visibility data with $100$ time 
 integrations and $20$ frequency channels). This model represents realistic dimensions of about an hour of PAPER data which 
-might be used for a power spectrum analysis. For PAPER-64 (both the \citetalias{ali_et_al2015} analysis and our new analysis) we use $\sim$$8$ hours of data (with channel 
+might be used for a power spectrum analysis. For PAPER-64 (both the \citetalias{ali_et_al2015} analysis and our new analysis) we use $\sim8$ hours of data (with channel 
 widths of $0.5$ MHz and integration times of $43$ seconds), but here we scale it down for this toy model with no loss of 
 generality. 
 
@@ -722,7 +722,7 @@ help evaluate deep limits and/or detections.
 \subsubsection{Foreground and Noise Bias}
 \label{sec:BiasTypes}
 
-In Section \ref{sec:SiglossOverview}, we discussed signal loss as a form of multiplicative bias to estimates of the signal. Foregrounds are another type of bias, but an additive one instead of multiplicative. Foreground bias is perhaps one of the main factors limiting 21\,cm results, as foreground signals lie $\sim$$4$-$5$ orders of 
+In Section \ref{sec:SiglossOverview}, we discussed signal loss as a form of multiplicative bias to estimates of the signal. Foregrounds are another type of bias, but an additive one instead of multiplicative. Foreground bias is perhaps one of the main factors limiting 21\,cm results, as foreground signals lie $\sim4$-$5$ orders of 
 magnitude above the cosmological signal. Though there are many techniques proposed for removing foregrounds (see e.g. \citealt{vedantham_et_al2012}; \citealt{parsons_et_al2012a}; \citealt{parsons_et_al2012b}; \citealt{dillon_et_al2013a}; \citealt{wang_et_al2013}; \citealt{parsons_et_al2014}; \citealt{liu_et_al2014a}; \citealt{liu_et_al2014b}; \citealt{dillon_et_al2015}; \citealt{pober_et_al2016a}; \citealt{trott_et_al2016}), most 
 experiments currently remain limited by residuals rather than noise, especially at low $k$.
 
@@ -907,17 +907,18 @@ on $\Delta^{2}(k)$, defined as
 \Delta^{\textbf{2}}(k) = \frac{k^{3}}{2\pi^{2}}\widehat{\textbf{p}}\textbf{(k)},
 \end{equation}
 
-\noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$ h Mpc$^{-1}$ at $z = 8.4$. The revision of this limit (Kolopanis et al., \textit{submitted}) stems from previously underestimated signal loss and underestimated error bars, both of which we 
+\noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$ h Mpc$^{-1}$ at $z = 8.4$. The revision of this limit (Kolopanis et al. (\textit{submitted})) stems from previously under-estimated signal loss and under-estimated error bars, both of which we 
 address in the following sections. 
 
-For our analysis, we use $8.1$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (\citetalias{ali_et_al2015} uses a slightly different RA 
-range of $0$-$8.6$ hours). All power spectrum results are produced for a center frequency of $151$ MHz using a width of $10$ 
-MHz ($20$ channels), identical to the analysis in \citetalias{ali_et_al2015}. We note that, besides using only one baseline type instead of the three as in 
-\citetalias{ali_et_al2015}, the PAPER-64 dataset that we use in this case study differs from that in \citetalias{ali_et_al2015} only in the analysis. The most significant changes occur in the power spectrum analysis, which is explained in the rest of this paper, but we also note that the applied fringe-rate filter is also slightly different. In \citetalias{ali_et_al2015}, the 
+For our revised analysis, we use $8.1$ hours of LST (RA $0.5$-$8.6$ hours) and $51$ total baselines (\citetalias{ali_et_al2015} uses a slightly longer RA 
+range of $0$-$8.6$ hours; we found that some early LSTs were contaminated). All power spectrum results are produced for a center frequency of 151\,MHz using a width of 10\,MHz ($20$ channels), identical to the analysis in \citetalias{ali_et_al2015}. In the case study in this paper, we only use one baseline type instead of the three as in 
+\citetalias{ali_et_al2015}, but Kolopanis et al. (\textit{submitted}) uses all baselines presented in \citetalias{ali_et_al2015}.
+
+The most significant changes from \citetalias{ali_et_al2015} occur in our revised power spectrum analysis, which is explained in the rest of this paper, but we also note that the applied fringe-rate filter is also slightly different. In \citetalias{ali_et_al2015}, the 
 applied filter was degraded by widening it in fringe-rate space. This was chosen in order to increase the number of independent 
 modes and reduce signal loss, though as we will explain in the next section, this signal loss was still under-estimated. With the development of a new, 
 robust method for assessing signal loss, we choose to use the optimal filter in order to maximize sensitivity. This filter is 
-computed for a fiducial $30$ m baseline at $150$ MHz, the center frequency in our band. The filter in both the fringe-rate 
+computed for a fiducial 30\,m baseline at 150\,MHz, the center frequency in our band. The filter in both the fringe-rate 
 domain and time domain is shown in Figure \ref{fig:frp}.
 
 \begin{figure}
@@ -937,21 +938,20 @@ an integration in time, increasing sensitivity but reducing the number of indepe
 
 In Section \ref{sec:SiglossOverview}, we showed how signal loss arises when weighting data using information from the data itself. Here we describe a methodology for estimating the amount of signal loss caused by a particular power spectrum estimator when applied to a particular dataset. The exact amount of signal loss will depend on the specific realizations of the signals present in the data and is not something we can directly compute. In this work, as in \citetalias{ali_et_al2015}, we inject simulated cosmological signals into our data and test the recovery of those signals (an approach also taken by \citet{masui_et_al2013}). As we will see, correlations between the injected signals and the data are significant complicating factors which were previously not taken into account. 
 
-We present our PAPER-64 signal loss investigation in three parts: we first give an overview of our injection framework and illustrate how different power spectrum components affect loss. We next describe our methodology in practice and detail how we map our simulations into a posterior for the EoR signal. Finally, we build off of Section \ref{sec:SiglossOverview} by experimenting with different regularization schemes on PAPER data in order to minimize loss. Throughout each section, we also highlight major differences from the signal loss computation used in \citetalias{ali_et_al2015}, which previously underestimated losses.
+We present our PAPER-64 signal loss investigation in three parts: we first give an overview of our injection framework and illustrate how different power spectrum components affect loss. We next describe our methodology in practice and detail how we map our simulations into a posterior for the EoR signal. Finally, we build off of Section \ref{sec:SiglossOverview} by experimenting with different regularization schemes on PAPER data in order to minimize loss. Throughout each section, we also highlight major differences from the signal loss computation used in \citetalias{ali_et_al2015}, which previously under-estimated losses.
 
 %The results of such an injection scheme can be interpreted in multiple ways. In this paper we describe two --- this section describes one and in Appendix \ref{sec:Pr_appendix} we present an alternate interpretation. These two methods yield very similar results, but fundamentally are answering subtly distinct questions. We also highlight major differences from the signal loss computation used in \citetalias{ali_et_al2015}, which previously underestimated losses. 
 
 \subsubsection{Signal Loss Methodology} 
 \label{sec:siglossmethod}
-In short, our method consists of adding an EoR-like signal into the data and then measuring how much of this injected signal would be detectable given any attenuation of this signal by the (lossy) data analysis pipeline.  To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated $21$ 
-cm signal visibilities. Here we use the same method as in \citetalias{ali_et_al2015}, where mock Gaussian noise visibilities (mock EoR signals) 
+In short, our method consists of adding an EoR-like signal into the data and then measuring how much of this injected signal would be detectable given any attenuation of this signal by the (lossy) data analysis pipeline.  To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated 21\,cm signal visibilities. Here we use the same method as in \citetalias{ali_et_al2015}, where mock Gaussian noise visibilities (mock EoR signals) 
 are filtered in fringe-rate space to retain only ``sky-like" time-modes. This signal is then added to the data.\footnote{One 
 specific change from \citetalias{ali_et_al2015} is that we add this simulated signal into the analysis pipeline before the final fringe-rate filter is 
 applied to the data. Previously, the addition was done after that final fringe-rate filter step.  This change results in an increased 
 estimate of signal loss, %(by a factor of $\sim$$10$), 
 likely due to the use of the fringe-rate filter as a simulator. However, this pipeline difference, while significant, is not the dominant reason why signal loss was under-estimated in \citetalias{ali_et_al2015} (the dominant reason is explained in the main text in Section \ref{sec:siglossmethod}).}
 
-Suppose that $\textbf{e}$ is a mock injected EoR signal (at some amplitude level), and $\textbf{x}$ is our data. We define $\textbf{r}
+Suppose that $\textbf{e}$ is the mock injected EoR signal (at some amplitude level), and $\textbf{x}$ is our data. We define $\textbf{r}
 $ to be the data plus the EoR signal:
 
 \begin{equation}
@@ -1062,22 +1062,22 @@ P_{\rm out,\alpha} &= &  \text{M}^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}
 &+& 2 \text{M}^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} %\nonumber \\
 %&-& \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x}.
 \end{eqnarray}
-In order to investigate the effect of each of these terms on signal loss, all three components are plotted in Figure \ref{fig:sigloss_terms} for two cases: empirical inverse covariance weighting ($\textbf{R}_{r} = \widehat{\textbf{C}}_{r}^{-1}$) and uniform-weighted ($\textbf{R}_{r} = \textbf{I}$). We will now examine the behavior of this equation in the regimes of very weak and very strong injected signal.
+In order to investigate the effect of each of these terms on signal loss, all three components are plotted in Figure \ref{fig:sigloss_terms} for two cases: empirically estimated inverse covariance weighting ($\textbf{R}_{r} \equiv \widehat{\textbf{C}}_{r}^{-1}$) and uniform weighting ($\textbf{R}_{r} \equiv \textbf{I}$). We will now examine the behavior of this equation in three different regimes of the injected signal - very weak (left ends of the $P_{\rm in}$ axes in Figure \ref{fig:sigloss_terms}), very strong (right ends), and in between (middle portions).
 
 {\bf Small injection:}
 %In this regime, the first term in Equation \eqref{eq:crossterm} is very similar to the power spectrum of data alone, namely $\text{M}^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} \sim \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x}$. They differ only in their covariance matrices, and when the injected signal is very small compared to the data, their difference can be neglected. 
 %This is shown by the black and gray curves converging in both panels of Figure \ref{fig:sigloss_terms}. 
-In this regime, the cross-terms (red) behave as noise averaged over a finite number of samples. Output values are gaussian distributed around zero, spanning a range of values set by the injection level. This is because $\widehat{\textbf{R}}_{r}$ is dominated by the data $\textbf{x}$, avoiding correlations with $\textbf{e}$ that can lead to solely negative power (explained further below). In fact, for the uniform weighted case, the cross-term  $\text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e}$ is well modeled as a gaussian with zero mean and width $\sqrt{p_e}\sqrt{p_x}$. We also note that in this regime, $\widehat{\textbf{p}}_{r}$ approaches the data level as expected. %In this limit we might imagine that the cross-correlation should also be small, enabling us to recover just the EoR term. However, examining the cross-term plotted in Figure \ref{fig:sigloss_terms} (red) in the identity case (right plot), we see that this term is still large enough to have a significant impact on $P_{\rm out}$. It is in this regime where we're dominated by biases from the cross-terms, causing the difference between the signal-only term (green) and $P_{\rm out}$ (black). We also note that the cross-terms behave as noise at small injections even in the inverse covariance weighted case (left plot), spanning a range of values set by the injection level. This is because $\widehat{\textbf{C}}_{r}$ is dominated by the data $\textbf{x}$, avoiding correlations with $\textbf{e}$ that can lead to solely negative power (explained further below).
+In this regime, the cross-terms (red) behave as noise averaged over a finite number of samples. Output values are Gaussian distributed around zero, spanning a range of values set by the injection level. This is because $\widehat{\textbf{R}}_{r}$ is dominated by the data $\textbf{x}$, avoiding correlations with $\textbf{e}$ that can lead to solely negative power (explained further below). In fact, for the uniformly weighted case, the cross-term  $\text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e}$ is well modeled as a Gaussian with zero mean and width $\sqrt{p_e}\sqrt{p_x}$. We also note that in this regime, $\widehat{\textbf{p}}_{r}$ (black) approaches the data level (gray) as expected. %In this limit we might imagine that the cross-correlation should also be small, enabling us to recover just the EoR term. However, examining the cross-term plotted in Figure \ref{fig:sigloss_terms} (red) in the identity case (right plot), we see that this term is still large enough to have a significant impact on $P_{\rm out}$. It is in this regime where we're dominated by biases from the cross-terms, causing the difference between the signal-only term (green) and $P_{\rm out}$ (black). We also note that the cross-terms behave as noise at small injections even in the inverse covariance weighted case (left plot), spanning a range of values set by the injection level. This is because $\widehat{\textbf{C}}_{r}$ is dominated by the data $\textbf{x}$, avoiding correlations with $\textbf{e}$ that can lead to solely negative power (explained further below).
 
 {\bf Large injection:}
 When the injected signal is much larger than the measured power spectrum, the data-only components can 
-be neglected as many orders of magnitude smaller. We include a description of this regime for completeness in our discussion, but note that the upper limits that we compute are typically not determined by simulations in this regime (i.e. in using an empirical weighting scheme we've assumed the data to be dominated by foregrounds rather than a cosmological signal).  However it is useful as a check of our system in a relatively simple case. As we can see from Figure \ref{fig:sigloss_terms}, the cross-terms are small in comparison to the signal-only term. Here only does the signal-only term used in  \citetalias{ali_et_al2015} dominate the total power output. We again see that, in the empirical inverse covariance weighted case, the cross-terms behave as noise (positive and negative fluctuations around zero mean). This is for the same reason as at small injections --- here $\widehat{\textbf{C}}_{r}$ is dominated by the signal $\textbf{e}$. The cross-correlation is no longer profoundly negative and can again be modeled as a gaussian distribution of zero mean and width $\sqrt{p_e}\sqrt{p_x}$.
+be neglected as many orders of magnitude smaller. We include a description of this regime for completeness in our discussion, but note that the upper limits that we compute are typically not determined by simulations in this regime (i.e. in using an empirical weighting scheme we've assumed the data to be dominated by foregrounds rather than the cosmological signal).  However, it is useful as a check of our system in a relatively simple case. As we can see from Figure \ref{fig:sigloss_terms}, the cross-terms (red) are small in comparison to the signal-only term (green). Here only does the signal-only term used in  \citetalias{ali_et_al2015} dominate the total power output. We again see that, in the estimated inverse covariance weighted case, the cross-terms behave as noise (positive and negative fluctuations around zero mean). This is for the same reason as at small injections --- here $\widehat{\textbf{C}}_{r}$ is dominated by the signal $\textbf{e}$. The cross-correlation can again be modeled as a Gaussian distribution of zero mean and width $\sqrt{p_e}\sqrt{p_x}$.
 
 {\bf In between:}
 When the injected signal is of a similar amplitude to the data by itself, the situation becomes less straightforward. We see that 
 the weighted injected power spectrum component mirrors the input power indicating little loss (i.e. the green curve follows the dotted black line), eventually 
 departing from unity when the injected amplitude is well above the level of the data power spectrum. However, 
-the cross-term has nearly the same amplitude, but with a negative sign. As explained below, this negativity is the result of cross correlating inverse covariance weighted terms.  This negative component drives down the $P_{\rm out}$ estimator (black). We note that in \citetalias{ali_et_al2015}, signal loss was computed by only looking at the second term in Equation \eqref{eq:crossterm} (green), which incorrectly implies no loss at the data level. Ignoring the effect of the negative power from the cross-terms is the main reason for under-estimating power spectrum limits in \citetalias{ali_et_al2015}.
+in this regime the cross-term has nearly the same amplitude, but with a negative sign. As explained below, this negativity is the result of cross-correlating inverse covariance weighted terms.  This negative component drives down the $P_{\rm out}$ estimator (black). We note that in \citetalias{ali_et_al2015}, signal loss was computed by only looking at the second term in Equation \eqref{eq:crossterm} (green), which incorrectly implies no loss at the data level. Ignoring the effect of the negative power from the cross-terms is the main reason for under-estimating power spectrum limits in \citetalias{ali_et_al2015}.
 
 %A brief description of Figure \ref{fig:sigloss_terms} is as follows. The gray curve represents the data level, which is constant as the level of $P_{\rm in}$, the input EoR signal, is changed. The blue curve is the power spectrum of the data only, weighted by an empirical covariance estimated from the data plus the EoR signal ($\widehat{\textbf{C}}_{r}^{-1}$). It approaches the gray at low injection level, as expected, since in that case $\widehat{\textbf{C}}_{r}^{-1} \rightarrow \widehat{\textbf{C}}_{x}^{-1}$. The green curve is the power spectrum of the EoR signal, weighted by $\widehat{\textbf{C}}_{r}^{-1}$. This is the exact term that was compared to $P_{\rm in}$ in the \citetalias{ali_et_al2015} signal loss analysis, and in doing so this would imply there is negligible loss (where the green crosses the gray). It is primarily due to the cross-terms (red), that the black curve exhibits $\sim$$3$ orders of magnitude of loss at the data level, for the inverse covariance weighted case. We see that the cross-terms can produce a large, negative signal which serves to reduce $P_{\rm out}$ and drive the bulk of our loss. In the unweighted case, however (right plot), the cross-terms primarily drive a tail of `excess' $P_{\rm out}$ at low injects, though at larger injects we see unity transfer as expected (the solid black curve lies on the dotted black line, which represents unity transfer).
 
@@ -1094,20 +1094,20 @@ the cross-term has nearly the same amplitude, but with a negative sign. As expla
 \begin{figure*}
 	\centering
 	\includegraphics[width=1\textwidth]{plots/sigloss_terms.png}
-	\caption{Illustration of the power spectrum amplitude as a function of injected power level summed into the 
-data. The net output ($P_{out}=P_r$) is shown in black, the individual cross-terms, as defined by Equation 
-\eqref{eq:crossterm},  are shown in blue, red, green; the dotted line indicates 1:1 input to output mapping.  The 
-empirical inverse covariance weighted case used in \citealt{ali_et_al2015} is on the left and the uniform-weighted 
+	\caption{Illustration of the power spectrum amplitude of various power spectrum terms as a function of injected EoR power level summed into the 
+data. The net output ($P_{\rm out}=\widehat{\textbf{p}}_r$) is shown in black, the individual terms, as defined by Equation 
+\eqref{eq:crossterm},  are shown in blue, red, green; the dotted black line indicates 1:1 input to output mapping.  The 
+empirically estimated inverse covariance weighted case used in \citetalias{ali_et_al2015} is on the left and the uniform-weighted 
 case is on the right. The details of the simulation used to generate the figure is explained in Section 
 \ref{sec:Practice}; here we fit smooth polynomials to our data points to make an illustrative example.   The gray 
-line is the power spectrum value of data alone (doesn't depend on injected power). The green signal-signal 
-component is also the term used in \citetalias{ali_et_al2015} to estimate signal loss. It is significantly higher 
+horizontal line is the power spectrum value of data alone (doesn't depend on injected power). The green signal-signal 
+component is the term used in \citetalias{ali_et_al2015} to estimate signal loss. It is significantly higher 
 than the net output because the cross-terms (red) are large and negative (black $=$ green $+$ red $+$ blue) . In the 
-regime where cross-correlation between injection and data are not dominant, the cross-terms have a noise-like 
-term with width $\sqrt{p_e}$. However, at power levels comparable to the data (the middle region), the cross-terms can produce large, negative signal due to the couplings between $\textbf{x}$ and $\textbf{e}$ which affect 
+regime where cross-correlations between injection and data are not dominant, the cross-terms have a noise-like 
+term with width $\sqrt{p_e}\sqrt{p_x}$. However, at power levels comparable to the data (the middle region), the cross-terms can produce large, negative signal due to the couplings between $\textbf{x}$ and $\textbf{e}$ which affect 
 $\widehat{\textbf{C}}_{r}$. This causes the difference between the green curve (which exhibits negligible loss at 
 the data level) and the black curve (which exhibits $\sim$$3$ orders of magnitude of loss at the data level for 
-the empirical inverse covariance weighted case). }
+the weighted case). }
 	\label{fig:sigloss_terms}
 \end{figure*}
 
@@ -1130,7 +1130,8 @@ $|\textbf{x}|\ll|\textbf{e}|$ regime:
 an eigenbasis of $\textbf{e}$, so that $\langle 
 \textbf{ee}^{\dagger} \rangle_{t}$ is diagonal. The middle 
 two terms, however, can have power in their off-diagonal terms due to the fact that, when averaging over a finite
-ensemble, $\langle\textbf{xe}^\dagger\rangle_t$ is not zero.  As shown in Appendix C of \citet{parsons_et_al2014}\footnote{This same appendix also gives a now-prescient warning about signal loss and the dangers of noise and sample variance in inverse covariance.}, to leading order the inversion of a diagonal-dominant matrix like $\widehat{\textbf{C}}_{r}$ (from $\langle 
+ensemble, $\langle\textbf{xe}^\dagger\rangle_t$ is not zero.  As shown in Appendix C of \citet{parsons_et_al2014}%\footnote{This same appendix also gives a now-prescient warning about signal loss and the dangers of noise and sample variance in inverse covariance.}
+, to leading order the inversion of a diagonal-dominant matrix like $\widehat{\textbf{C}}_{r}$ (from $\langle 
 \textbf{ee}^{\dagger} \rangle_{t}$) with smaller
 off-diagonal terms results in a new diagonal-dominant matrix with negative off-diagonal terms. These off-diagonal
 terms depend on both $\textbf{x}$ and $\textbf{e}$. Then, when $\widehat{\textbf{C}}^{-1}_{r}$ is multiplied into $\textbf{x}$,
@@ -1149,14 +1150,14 @@ of a diagonal-dominant matrix.
 %\dcj{This paragraph has me confused.}
 %The conclusion is that signal loss generically arises because of couplings between $\widehat{\textbf{C}}^{-1}_{r}$ and $\mathbf{x}$. In principle, using $\widehat{\textbf{C}}^{-1}_{r}$ in place of the true inverse covariance $\textbf{C}^{-1}$ provides yet another source of multiplicative bias, which results in a modification to the treatment shown here. Such a modification is accounted for in the demonstration of Appendix \ref{sec:sigloss_appendix}, where we additionally discard the assumption that $|\textbf{x}|\ll|\textbf{e}|$. However, despite the loosening of these approximations, one sees that the qualitative message (of anti-correlations resulting in signal loss) remains intact.
 
-{\bf In general:} Another way to phrase the shortcoming of the empirical inverse covariance estimator is that it is not properly normalized. Signal loss due to couplings between the data and its weightings arise because our unnormalized quadratic estimator from Equation \eqref{eq:qhat} ceases to be a quadratic quantity, and instead contains higher order powers of the data. However, the normalization matrix $\mathbf{M}$ is derived assuming that the unnormalized estimator is quadratic in the data. The power spectrum estimate will therefore be incorrectly normalized, which manifests as signal loss. We leave a full analytic solution for $\mathbf{M}$ for future work, since our simulations already capture the full phenomenology of signal loss, and have the added benefit of being more easily generalizable in the face of non-Gaussian systematics.
+{\bf In general:} Another way to phrase the shortcoming of the inverse covariance estimator is that it is not properly normalized. Signal loss due to couplings between the data and its weightings arise because our unnormalized quadratic estimator from Equation \eqref{eq:qhat} ceases to be a quadratic quantity, and instead contains higher order powers of the data. However, the normalization matrix $\mathbf{M}$ is derived assuming that the unnormalized estimator is quadratic in the data. The power spectrum estimate will therefore be incorrectly normalized, which manifests as signal loss. We leave a full analytic solution for $\mathbf{M}$ for future work, since our simulations already capture the full phenomenology of signal loss and have the added benefit of being more easily generalizable in the face of non-Gaussian systematics.
 
 \subsubsection{Signal Loss in Practice}
 \label{sec:Practice}
 
 We now shift our attention towards computing upper limits on the EoR signal for the fringe-rate filtered PAPER-64 dataset in a way that accounts for signal loss. While our methodology 
 outlined below is independent of weighting scheme, here we demonstrate the computation using empirically estimated inverse covariance weighting 
-($\textbf{R} = \widehat{\textbf{C}}^{-1}$), the weighting scheme used in \citetalias{ali_et_al2015} which, with an empirically estimated covariance, leads to substantial loss. With this weighting, our 
+($\textbf{R} \equiv \widehat{\textbf{C}}^{-1}$), the weighting scheme used in \citetalias{ali_et_al2015} which leads to substantial loss. With this weighting, our 
 expressions for $P_{\rm in}$ and $P_{\rm out}$ become:
 
 \begin{eqnarray}
@@ -1200,29 +1201,28 @@ P_{\rm out})$, which is the probability of $P_{\rm in}$ given the uncorrected/me
 
 \begin{equation}
 \label{eq:Bayes}
-p(P_{\rm in} | P_{\rm out}) \propto {\mathcal{L} (  P_{\rm out} | P_{\rm in})}
-  p(P_{\rm in}) ,
+p(P_{\rm in} | P_{\rm out}) \propto {\mathcal{L} (  P_{\rm out} | P_{\rm in})}\,p(P_{\rm in}) ,
 \end{equation}
 
 \noindent where $\mathcal{L} $ is the likelihood function defined 
 as the distribution of data plus injection ($P_{\rm out}$) given the injection $P_{\rm in}$.  We construct this distribution  
-by fixing $P_{\rm in}$, and simulating our analysis pipeline for many realizations of the injected EoR signal 
+by fixing $P_{\rm in}$ and simulating our analysis pipeline for many realizations of the injected EoR signal 
 consistent with this power spectrum. The resulting distribution is normalized such that the sum over $P_{\rm out}$ is unity, and the 
 whole process is then repeated for a different value of $P_{\rm in}$. 
 
 %\subsubsection{Signal Loss Implementation Details}
 %\label{sec:Implementation}
 
-The implementation details of the injection process require some more detailed explanation. In our code, we add a new realization of EoR to each independent bootstrap of data with the goal of simultaneously capturing variance due to noise and signal loss. To limit computing time we perform $20$ realizations of each $P_{in}$ level. We also run $50$ total EoR injection levels, yielding $P_{\rm in}$ values that range from $\sim$$10^{5}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$ to $\sim$10$^{11}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$, resulting in a total of $1000$ data points on our $P_{\rm in}$ vs. $P_{\rm out}$ grid. 
+The implementation details of the injection process require some more detailed explanation. In our code, we add a new realization of EoR to each independent bootstrap of data with the goal of simultaneously capturing variance due to noise and signal loss. To limit computing time we perform $20$ realizations of each $P_{\rm in}$ level. We also run $50$ total EoR injection levels, yielding $P_{\rm in}$ values that range from $\sim$$10^{5}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$ to $\sim$10$^{11}$ mK$^{2}$ (h$^{-1}$ Mpc)$^{3}$, resulting in a total of $1000$ data points on our $P_{\rm in}$ vs. $P_{\rm out}$ grid. 
 
-Going forward, we treat every $k$-value separately in order to determine an upper limit on EoR per $k$. For every injection level, we smooth the distribution of $P_{\rm out}$ values using kernel density estimators (\citealt{scott2008kernel}), normalizing each one. Stitching all of them together results in a 2-dimensional smoothed transfer function, shown in Figure \ref{fig:sigloss_transfercurve} for empirical inverse covariance weighting (left) and uniform weighting (right). Although we only show figures for one $k$-value, we note that 
-the shape of the transfer curve is nearly identical for all $k$'s. This transfer function is the likelihood function in Bayes' rule, namely $\mathcal{L} (  P_{\rm out} | P_{\rm in})$.  We invoke the Bayes interpretation and re-interpret it as the posterior $P(P_{\rm in}|P_{\rm out})$ where we recall that $P_{\rm out}$ is a model of our data. We then make a horizontal cut across at the data value $P_{\rm out} = \widehat{\textbf{p}}_{x}$ to yield a posterior distribution for the signal. We compute the $95\%$ confidence interval (an upper limit on EoR) from these distributions.
+Going forward, we treat every $k$-value separately in order to determine an upper limit on the EoR signal per $k$. We bin our simulation outputs along the $P_{\rm in}$ axis, and smooth the distribution of $P_{\rm out}$ values using kernel density estimators (\citealt{scott2008kernel}) for each bin (and normalizing them). Stitching all of them together results in a 2-dimensional smoothed transfer function, shown in Figure \ref{fig:sigloss_transfercurve} for both the weighted (left) and unweighted (right) cases. Although we only show figures for one $k$-value, we note that 
+the shape of the transfer curve is similar for all $k$'s. This transfer function is the likelihood function in Bayes' rule, namely $\mathcal{L} (  P_{\rm out} | P_{\rm in})$.  We then invoke Bayes' interpretation and re-interpret it as the posterior $p(P_{\rm in}|P_{\rm out})$ where we recall that $P_{\rm out}$ is a model of our data. To do this we make a horizontal cut across at the data value $P_{\rm out} = \widehat{\textbf{p}}_{x}$ to yield a posterior distribution for the signal. We compute the $95\%$ confidence interval (an upper limit on EoR) from these distributions.
 
 %We note that the distribution of $\phat_{x}$ has a variance determined from the bootstrapping process and is peaked around the power spectrum value computed from the no-bootstrapping case. We smooth its distribution using 1D kernel density estimators (and normalize to unity) before multiplying it with the transfer function. Performing a summation and normalization for the entire distribution of $\phat_{x}$ yields a final $P_{\rm in}$ distribution --- the distribution of our data as seen through the signal loss lens. We compute power spectrum points from the peak of the histograms, and power spectrum errors from $95\%$ confidence intervals. 
 
-By-eye inspection of the transfer function plot in Figure \ref{fig:sigloss_transfercurve} gives a sense of what the signal loss result should be. The power spectrum value of our data, $
-\widehat{\textbf{p}}_{x}$ is marked by the solid gray horizontal lines. From the left plot (empirical inverse covariance weighting), one can eyeball that a data value of $10^{4} \, mK^{2} (h^{-1} Mpc)^{3}$, for example, would map approximately to a 
-value of $\sim10^{8} \, mK^{2} (h^{-1} Mpc)^{3}$, implying a signal loss factor of $\sim10000$. For the uniform-weighted case (right plot), we see no loss at a data value of $\sim10^{7} \, mK^{2} (h^{-1} Mpc)^{3}$.
+By-eye inspection of the transfer function in Figure \ref{fig:sigloss_transfercurve} gives a sense of what the signal loss result should be. The power spectrum value of our data, $
+\widehat{\textbf{p}}_{x}$ is marked by the solid gray horizontal lines. From the left plot (empirically estimated inverse covariance weighting), one can eyeball that a data value of $10^{4} \, mK^{2} (h^{-1} Mpc)^{3}$, for example, would map approximately to a 
+value of $\sim10^{8} \, mK^{2} (h^{-1} Mpc)^{3}$, implying a signal loss factor of $\sim10^{4}$. For the uniform-weighted case (right plot), we see no loss at a data value of $\sim10^{7} \, mK^{2} (h^{-1} Mpc)^{3}$.
 
 %As a final complication to our procedure, we note that there will be some scatter in our likelihood due to our having only a finite number of simulations. Ideally, running many simulations would lead to convergence; however, our desire to be able to quickly and easily estimate signal loss for a variety of weighting schemes and datasets means having a finite sample in practice. \dcj{This dependence on injection count was checked with a run having 10x the usual number of integrations.} To separate the intrinsic stochasticity of signal loss from that which arises due to simulation sample variance, we repeat our analysis for a power spectrum estimator without signal loss ($\textbf{R} = \textbf{I}$), shown as the right plot in Figure \ref{fig:sigloss_transfercurve}. Here the scatter, evident as deviations from unity-transfer, is entirely due to finite sample variance. To remove this effect we measure the width of this lossless case and then de-convolve that extra width from the likelihood for the lossy scenario. Specifically, we de-convolve Gaussian distributions of $P_{\rm out}$ in the uniform-weighted case from those of the weighted case (vertical cuts through the plots in Figure \ref{fig:sigloss_transfercurve}), for every $P_{\rm in}$. By doing this, we are left with only the intrinsic scatter in signal loss, or scatter that stems from how much the random EoR signal $\textbf{e}$ happens to 
 %look like the data $\textbf{x}$, a quantity we do not know offhand but one that we would like to correct for. As an extreme example, if we are very unlucky, one realization of $\textbf{e}$ would have the same shapes, or eigenvectors, as $\textbf{x}$. An empirically-derived covariance would then down-weight these shapes, destroying the entire EoR signal. On the other hand, the less that $\textbf{e}$ looks like $\textbf{x}$, the less signal loss that would result. The intrinsic scatter we can get is not a dominant factor in this case but it is important to correct for the fact that a particular $P_{\rm out}$ value could arise from a range of $P_{\rm in}$ values. 
@@ -1240,9 +1240,9 @@ value of $\sim10^{8} \, mK^{2} (h^{-1} Mpc)^{3}$, implying a signal loss factor 
 \begin{figure*}
 	\centering
 	\includegraphics[width=1\textwidth]{plots/sigloss_transfercurve_posneg.png}
-	\caption{Signal loss transfer functions showing the relationship of $P_{\rm in}$ and $\widehat{\textbf{p}}_{\rm out}$, as defined by Equations \eqref{eq:Pin} and \eqref{eq:sigloss}. Power spectra values (black points) are generated for $20$ realizations of $\textbf{e}$ per signal injection level. Kernel density estimations of the power spectrum transfer functions are shown as colored 
-heat-maps on top of the points for the cases of empirical inverse covariance weighted PAPER-64 data (left) and uniform-weighted data (right). The dotted black 
-diagonal lines mark a perfect unity mapping, and the solid gray horizontal line denotes the power spectrum value of the data $\widehat{\textbf{p}}_{x}$, from which a posterior distribution for the signal is extracted. From these plots, it is clear that the weighted case results in over $\sim3$ orders of magnitude of signal loss at the data level, whereas the uniform-weighted case does 
+	\caption{Signal loss transfer functions showing the relationship of $P_{\rm in}$ and $P_{\rm out}$, as defined by Equations \eqref{eq:Pin} and \eqref{eq:sigloss}. Power spectra values (black points) are generated for $20$ realizations of $\textbf{e}$ per signal injection level. Kernel density estimations of the power spectrum transfer functions are shown as colored 
+heat-maps on top of the points for the cases of empirically estimated inverse covariance weighted PAPER-64 data (left) and uniform-weighted data (right). The dotted black 
+diagonal lines mark a perfect unity mapping, and the solid gray horizontal line denotes the power spectrum value of the data $\widehat{\textbf{p}}_{x}$, from which a posterior distribution for the signal is extracted. From these plots, it is clear that the weighted case results in $\sim4$ orders of magnitude of signal loss at the data level, whereas the uniform-weighted case does 
 not exhibit loss. The general shape of these transfer functions are also shown by the black curves in Figure \ref{fig:sigloss_terms} for comparison.}
 	\label{fig:sigloss_transfercurve}
 \end{figure*}
@@ -1262,15 +1262,15 @@ not exhibit loss. The general shape of these transfer functions are also shown b
 %	\label{fig:sigloss_datadist_inversecovariance}
 %\end{figure*}
 
-The loss-corrected power spectrum result for empirical inverse covariance weighted PAPER-64 data is shown in Figure \ref{fig:ps2_data} (black dashed), which we can compare to the original lossy result (black and gray points). %There are a few important checks to examine. First, we see that the uniform-weighted power spectrum $2\sigma$ upper limit (dashed blue) is identical in both panels. This is an important check, as we expect no signal loss for this case. Any difference here would indicate an error in the pipeline or discrepancy in the range of data included. Additionally, it is clear that the power spectrum, prior to signal loss estimation, is inconsistent with the (now revised) theoretical noise level prediction. 
+The loss-corrected power spectrum result for empirically estimated inverse covariance weighted PAPER-64 data is shown in Figure \ref{fig:ps2_data} (black dashed), which we can compare to the original lossy result (black and gray points). %There are a few important checks to examine. First, we see that the uniform-weighted power spectrum $2\sigma$ upper limit (dashed blue) is identical in both panels. This is an important check, as we expect no signal loss for this case. Any difference here would indicate an error in the pipeline or discrepancy in the range of data included. Additionally, it is clear that the power spectrum, prior to signal loss estimation, is inconsistent with the (now revised) theoretical noise level prediction. 
 Post-signal loss estimation, the power spectrum limits are higher than both the theory (green) and uniform-weighted power spectrum (blue dashed), a consequence of weighting with a steep eigenspectrum where the `weak' modes are strongly coupled to the time-averaged fringe-rate filtered data. We elaborate on this point in the next section, as well as investigate alternate 
-weighting schemes to empirical inverse covariance weighting, with the goal of finding one that balances the aggressiveness of down-weighting contaminants and minimizing the loss of EoR signal. 
+weighting schemes to inverse covariance weighting, with the goal of finding one that balances the aggressiveness of down-weighting contaminants and minimizing the loss of the EoR signal. 
 
 \begin{figure*}
 	\centering
 	\includegraphics[width=0.4\textwidth]{plots/ps1_data.png}
 	\includegraphics[width=0.4\textwidth]{plots/ps2_data.png}
-	\caption{Empirical inverse covariance weighted power spectrum of PAPER-64 data pre-signal loss estimation (positive points in black and negative points in gray, 
+	\caption{The power spectrum of PAPER-64 data, weighted by an inverse covariance estimator. The power spectra values pre-signal loss estimation are shown as black and gray points (positive and negative values, respectively, 
 with $2\sigma$ error bars). The dashed black curve is the $2\sigma$ upper limit on the EoR signal post-signal loss estimation. The dashed blue line is the uniform-weighted power 
 spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on observational 
 parameters, whose calculation is detailed in Section \ref{sec:PSSense}.}
@@ -1283,46 +1283,46 @@ parameters, whose calculation is detailed in Section \ref{sec:PSSense}.}
 
 With a signal loss formalism established, we now have the capability of experimenting 
 with different weighting options for $\textbf{R}$. Our goal here is to choose a weighting method that successfully down-weights 
-foregrounds and systematics in our data without generating large amounts of signal loss. We have found that the balance 
+foregrounds and systematics in our data without generating large amounts of signal loss as we've seen with the inverse covariance estimator. We have found that the balance 
 between the two is a delicate one and requires a careful understanding and altering of empirical covariances. 
 
 We saw in Section \ref{sec:otherweight} how limiting the number of down-weighted eigenmodes (i.e. flattening out part of the 
 eigenspectrum and effectively de-coupling the `weak' eigenmodes from the data) can help minimize signal loss. We experiment with this idea on PAPER-64 data, dialing the number of modes 
-that are down-weighted from zero (which is equivalent to identity-weighting, or the uniform-weighted case) to $21$ (which is full inverse 
-covariance weighting of our $21$ channels). The power spectrum results for one $k$ value, both before and after signal loss 
+that are down-weighted from zero (which is equivalent to identity-weighting, or the uniform-weighted case) to $21$ (which is the full inverse 
+covariance estimator). The power spectrum results for one $k$-value, both before and after signal loss 
 estimation, are shown in the top panel in Figure \ref{fig:sigloss_modeloop}. We see that the amount of signal loss increases as weighting 
 becomes more aggressive (gray curve). In other words, more `weak' (EoR-dominated) fluctuations are being overfit and 
-subtracted as more modes are down-weighted. We also find that the power spectrum upper limit, post signal loss estimation, 
+subtracted as more modes are down-weighted. We also find that the power spectrum upper limit, post-signal loss estimation, 
 increases with the number of down-weighted modes (black curve). The more modes we use in down-weighting, the stronger the coupling between the weighting and the data, and the greater the error we have in estimating the power spectrum. \citet{switzer_et_al2013} took a similar approach in determining the optimal number of modes to down-weight in GBT data, finding similar trends and noting that removing too few modes is limited by residual foregrounds and removing too many modes is limited by large error bars and signal loss.
 
 Optimistically, we expect there to be a `sweet spot' as we dial our regularization knob; a level of regularization where weighting 
 is beneficial compared to not weighting (blue dashed line). In other words, we would like a weighting scheme that down-weights eigenmodes that predominantly describe foreground modes, but not EoR modes. We see in Figure \ref{fig:sigloss_modeloop} that this occurs when 
 only the strongest $\sim3$-$4$ eigenmodes are down-weighted and the rest are given equal weights. For a similar discussion on projecting out modes (zero-ing out eigenmodes, rather than just ignoring their relative weightings as we do in this study), see \citet{switzer_et_al2013}. 
 
-We also saw in Section \ref{sec:otherweight} how adding the identity matrix to the empirical covariance can minimize signal loss. We experiment with this idea as well, shown in the bottom panel of Figure \ref{fig:sigloss_modeloop}. The grey and black lines represent power spectrum limits pre and post signal loss estimation, respectively, as a function of the strength of $\textbf{I}$ that is added to $\widehat{\textbf{C}}$, quantified as the percentage of the $Tr(\widehat{\textbf{C}})$ added to $\widehat{\textbf{C}}$. When $0\%$  of the $Tr(\widehat{\textbf{C}})$ is used, it is equivalent to the empirical inverse covariance weighted case. From this plot we see that only a small percentage of $Tr(\widehat{\textbf{C}})$ is needed to significantly reduce loss. We expect that as the strength of $\textbf{I}$ is increased (going to the left), both the black and gray curves will approach the uniform-weighted case.
+We also saw in Section \ref{sec:otherweight} how adding the identity matrix to the empirical covariance can minimize signal loss. We experiment with this idea as well, shown in the bottom panel of Figure \ref{fig:sigloss_modeloop}. The gray and black lines represent power spectrum limits pre and post-signal loss estimation, respectively, as a function of the strength of $\textbf{I}$ that is added to $\widehat{\textbf{C}}$, quantified as the percentage of the $Tr(\widehat{\textbf{C}})$ added to $\widehat{\textbf{C}}$. From this plot we see that only a small percentage of $Tr(\widehat{\textbf{C}})$ is needed to significantly reduce loss. We expect that as the strength of $\textbf{I}$ is increased (going to the left), both the black and gray curves will approach the uniform-weighted case. We also notice that the post-signal loss limit hovers around the uniform-weighted limit for a large range of strengths and while an overall trend from high to low signal loss is seen as the strength increases, there does not appear to be a clear `minimum' that produces the least loss.
 
 \begin{figure*}
 	\centering
 	\includegraphics[width=1\textwidth]{plots/sigloss_modeloop_2panel.png}
 	\caption{Power spectra $2\sigma$ upper limits for $k=0.393$ h Mpc$^{-1}$ for fringe-rate filtered PAPER-64 data. Top: Values 
 are shown before (gray) and after (black) signal loss estimation as a function of number of eigenmodes of $\widehat{\textbf{C}}$ that 
-are down-weighted. This regularization knob is tuned from $0$ modes on the left (i.e. unweighted) to $21$ modes on the right (i.e. full inverse 
-covariance weighting). Over $\sim3$ orders of magnitude of signal loss results when using empirical inverse covariance weighting. Bottom: Power spectrum upper limits before (gray) and after (black) signal loss estimation as a function of identity added to the empirical covariance. This regularization knob is tuned from $0\%$  of the $Tr(\widehat{\textbf{C}})$ added to $\widehat{\textbf{C}}$ on the right (i.e. empirical inverse covariance weighting) to $20\%$ of $Tr(\widehat{\textbf{C}})$ added to $\widehat{\textbf{C}}$ on the left. Also 
+are down-weighted. This regularization knob is tuned from $0$ modes on the left (i.e. unweighted) to $21$ modes on the right (i.e. the full inverse 
+covariance estimator). Over $\sim3$ orders of magnitude of signal loss results when using empirically estimated inverse covariance weighting. Bottom: Power spectrum upper limits before (gray) and after (black) signal loss estimation as a function of identity added to the empirical covariance. This regularization knob is tuned from $0.01\%$  of the $Tr(\widehat{\textbf{C}})$ added to $\widehat{\textbf{C}}$ on the right (i.e. very little regularization) to $100\%$ of $Tr(\widehat{\textbf{C}})$ added to $\widehat{\textbf{C}}$ on the left. Also 
 plotted in both panels for comparison are $2\sigma$ power spectrum upper limits for the uniform-weighted case (dashed blue) and inverse variance 
 weighted case (red); both are after signal loss estimation. Finally, a theoretical prediction for noise ($2\sigma$ error) is plotted 
-as solid green. In the revised PAPER-64 analysis in this paper, we choose to use a regularization scheme of $\widehat{\textbf{C}} \equiv 0.035Tr(\widehat{\textbf{C}}) + \widehat{\textbf{C}}$ because it slightly outperforms both the down-weighting individual eigenmodes and inverse variance cases.}
+as solid green. In the revised PAPER-64 analysis in this paper, we choose to use a regularization scheme of $\widehat{\textbf{C}} \equiv 0.035Tr(\widehat{\textbf{C}}) + \widehat{\textbf{C}}$ as a simple example of regularization that minimizes loss.}
 	\label{fig:sigloss_modeloop}
 \end{figure*}
 
 In addition to our thermal noise prediction (green) and uniform-weighted power spectrum limit (blue), one additional horizontal line is shown in Figure \ref{fig:sigloss_modeloop} 
 in both panels and represents a third regularization technique. This line (red) denotes the power spectrum value, post-signal loss estimation, for inverse variance weighting (multiplying an identity 
 matrix element-wise to $\widehat{\textbf{C}}$). This result is single-valued and not a function of the x-axes. We see that all three regularization schemes shown (black solid, black dashed, red) perform similarly at 
-their best (i.e. when $\sim3$$-4$ eigenmodes are down-weighted in the case of the black solid curve). However, for the remainder of this paper, we choose to use the weighting option of $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} + 0.035Tr(\widehat{\textbf{C}})$, which we will denote as $\widehat{\textbf{C}}_{eff}$. We choose this weighting scheme because it slightly out-performs the other weighting schemes, likely due to the fact that it retains information from all eigenmodes (i.e. it doesn't throw away some information as in the other cases) but re-weights them in a way that produces minimal loss. In this paper, we use this weighting scheme as a simple regularization demonstration, though we note that in Kolopanis et al., (\textit{submitted}) we choose the most optimal regularization parameter for our final limits.
+their best (i.e. when $\sim3$$-4$ eigenmodes are down-weighted in the case of the black solid curve). However, for the remainder of this paper, we choose to use the weighting option of $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} + 0.035Tr(\widehat{\textbf{C}})$, which we will denote as $\widehat{\textbf{C}}_{eff}$. We choose this weighting scheme merely as a simple example of regularizing PAPER-64 covariances, though we note that in Kolopanis et al. (\textit{submitted}), we choose the most optimal regularization parameter for our final limits for every redshift bin independently. We also note that all of the regularizations described here perform similarly to the uniformly weighted case; this is likely because we are in a regime where it is very difficult to disentangle foreground modes from those of EoR. We see that the regularization of empirical covariances does outperform the uniform weighted case for redshift bins in which there are stronger foregrounds, as presented in Kolopanis et al. (\textit{submitted}).
 
 A revised PAPER-64 power spectrum (using only one baseline separation type and $\widehat{\textbf{C}}_{eff}$) is shown in Figure 
 \ref{fig:ps1_data}. Again, the dashed black curve represents our upper limit on EoR, post-signal loss estimation. Black and gray points correspond to positive and negative power spectrum values respectively (pre-signal loss estimation), with 
 $2\sigma$ errors bars. Also plotted are the uniform-weighted power spectrum upper limit (dashed blue) and theoretical prediction of 
-noise (solid green). In Kolopanis et al., (\textit{submitted}), a larger parameter space is explored for regularization and multiple baselines are used in the analysis to produce a best $2\sigma$ power spectrum upper limit of $(218.7$ mK$)^{2}$ at $k=0.3$ $h$Mpc$^{-1}$ and $z=8.37$, 
+noise (solid green). In Kolopanis et al. (\textit{submitted}), a larger parameter space is explored for regularization and multiple baselines are used in the analysis to produce a best $2\sigma$ power spectrum upper limit of $(218.7$ mK$)^{2}$ at $k=0.3$ $h$Mpc$^{-1}$ and $z=8.37$, 
 a higher limit than \citetalias{ali_et_al2015} by a factor of $\sim$$10$ in mK.
 
 \begin{figure*}
@@ -1330,11 +1330,11 @@ a higher limit than \citetalias{ali_et_al2015} by a factor of $\sim$$10$ in mK.
 	\includegraphics[width=0.4\textwidth]{plots/ps1_data_add.png}
 	\includegraphics[width=0.4\textwidth]{plots/ps2_data_add.png}
 	\caption{Power spectrum of PAPER-64 using $\widehat{\textbf{C}}_{eff}$. The weighted power spectrum, pre-signal loss estimation, is shown by the black and gray points (corresponding to positive and 
-negative power spectrum values, respectively, with $2\sigma$ error bars). The dashed black curve is the $2\sigma$ upper limit on the EoR signal post-signal loss estimation. There is negligible loss using this regularization. The dashed blue line is the uniform-weighted 
+negative power spectrum values, respectively, with $2\sigma$ error bars). The dashed black curve is the $2\sigma$ upper limit on the EoR signal post-signal loss estimation. There is a small amount of loss using this regularization. The dashed blue line is the uniform-weighted 
 power spectrum ($2\sigma$ upper limit). The solid green line is the theoretical $2\sigma$ noise level prediction based on 
 observational parameters. This power spectrum result differs from \citetalias{ali_et_al2015} in that it only uses data from one type of baseline ($30$ m 
 East/West baselines) instead of three. Major differences from previously published results stem from revisions regarding signal 
-loss, bootstrapping, and the theoretical error computation. In Kolopanis et al., (\textit{submitted}), a larger parameter space is explored for regularization and multiple baselines are used in the analysis to produce a best $2\sigma$ power spectrum upper limit of $(218.7$ mK$)^{2}$ at $k=0.3$ $h$Mpc$^{-1}$ and $z=8.37$, 
+loss, bootstrapping, and the theoretical error computation. In Kolopanis et al. (\textit{submitted}), a larger parameter space is explored for regularization and multiple baselines are used in the analysis to produce a best $2\sigma$ power spectrum upper limit of $(218.7$ mK$)^{2}$ at $k=0.3$ $h$Mpc$^{-1}$ and $z=8.37$, 
 a higher limit than \citetalias{ali_et_al2015} by a factor of $\sim$$10$ in mK.}
 	\label{fig:ps1_data}
 \end{figure*}
@@ -1342,19 +1342,19 @@ a higher limit than \citetalias{ali_et_al2015} by a factor of $\sim$$10$ in mK.}
 In this section we have shown three simple ways of regularizing $\widehat{\textbf{C}}$ to minimize signal loss using PAPER-64 
 data. There are many other weighting schemes that we leave for consideration in future work. For example, one could estimate 
 $\widehat{\textbf{C}}$ using information from different subsets of baselines. For redundant arrays this could mean calculating $
-\widehat{\textbf{C}}$ from a different but similar baseline type, such as the $\sim30$ m diagonal PAPER baselines (instead of the 
+\widehat{\textbf{C}}$ from a different but similar baseline type, such as the $\sim30$\,m diagonal PAPER baselines (instead of the 
 horizontal E/W ones). Alternately, covariances could be estimated from all other baselines except the two being cross-multiplied 
 when forming a power spectrum estimate. This method was used in \citet{parsons_et_al2014} (a similar method was also used in \citet{dillon_et_al2015}) in order to avoid suppressing the 
 21\,cm signal, and it's worth noting that the PAPER-32 results are likely less impacted from the issue of signal loss underestimation 
 because of this very reason (however, they are affected by the error estimation issues described in Section \ref{sec:Error}, so 
-we also regard those results as suspect and superseded by those of Kolopanis et al., \textit{submitted}).
+we also regard those results as suspect and superseded by those of Kolopanis et al. (\textit{submitted})).
 
 Another possible way to regularize $\widehat{\textbf{C}}$ is to use information from different ranges of LST. For example, one could 
-calculate $\widehat{\textbf{C}}$ with data from LSTs where foregrounds are stronger (earlier or later LSTs than the `foreground-quiet' range used in forming power spectra) --- doing so may yield a better description of the foregrounds that we desire to 
+calculate $\widehat{\textbf{C}}$ with data from LSTs where foregrounds are stronger (earlier or later LSTs than the `foreground-quiet' range typically used in forming power spectra) --- doing so may yield a better description of the foregrounds that we desire to 
 down-weight, especially if residual foreground chromaticity is instrumental in origin and stable in time. Fundamentally, each of these examples are similar in that they rely on a computation of $\widehat{\textbf{C}}$ from 
 data that is similar but not exactly the same as the data that is being down-weighted. Ideally this would be effective in down-weighting shared contaminants yet avoid signal loss from over-fitting EoR modes in the power spectrum dataset itself. 
 
-In Section \ref{sec:Sigloss}, we have detailed several aspects of signal loss in PAPER-64: how the loss arises, how it can be estimated, and ways it can be minimized. We again emphasize that these lessons learned about signal loss are largely responsible for shaping our revised analysis of PAPER data. In the remainder of this paper, we will transition to other new aspects of our analysis, framed within the context of error estimation and (non-EoR) bias in PAPER-64.
+In Section \ref{sec:Sigloss}, we have detailed several aspects of signal loss in PAPER-64: how the loss arises, how it can be estimated from an injection framework, and ways it can be minimized. We again emphasize that these lessons learned about signal loss are largely responsible for shaping our revised analysis of PAPER data. In the remainder of this paper, we will transition to other new aspects of our analysis, framed within the context of error estimation and (non-EoR) bias in PAPER-64.
 
 % SECTION 3 ERROR ESTIMATION ---------------------------------------------------------------------------------
 
