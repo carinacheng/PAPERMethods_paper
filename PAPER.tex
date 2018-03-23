@@ -1722,7 +1722,8 @@ award 1701536. We graciously thank SKA-SA for site infrastructure and observing 
 \section{A toy model for signal loss}
 \label{sec:sigloss_appendix}
 
-In this Appendix, we examine a toy model for signal loss. Our goal is to derive an analytic formula for power spectrum signal loss. We will also show that in general, signal loss appears as a multiplicative bias on one's power spectrum estimate.
+In this Appendix, we examine a toy model for signal loss. Our goal is to derive an analytic formula for power spectrum signal loss. While this 
+model does not apply generally to all the scenarios presented in this paper, it provides some analytic intuition for how the coupling between data and an empirical covariance can result in signal loss.
 
 The minimum-variance quadratic estimator $\widehat{p}_\alpha$ for the $\alpha$th bandpower of the power spectrum is given by 
 \begin{equation}
@@ -1771,7 +1772,9 @@ Taking the ensemble average of both sides and noting that the true power spectru
 \begin{equation}
 \langle \widehat{p}_\alpha^\textrm{loss} \rangle \approx (1- \eta N) p_\alpha + 4 \eta \frac{\rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha )}{\left[ \rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha  ) \right]^2} \approx (1- \eta N) p_\alpha,
 \end{equation}
-where $N$ is the length of $\x$. In the last step we dropped the final term, since it scales as $\eta p_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained. Now, recall that $p_\alpha$ is the \emph{true} power spectrum. This means that it can be decomposed into the sum of the foreground and EoR power spectra, since the foregrounds and EoR are uncorrelated in expectation. This toy example, while not showing the emergence of cross-terms provides a rudimentary motivation for the form of Equation \eqref{eq:LinearPspecSum}. 
+where $N$ is the length of $\x$. In the last step we dropped the final term, since it scales as $\eta p_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained.
+
+Recalling that $p_\alpha$ is the \emph{true} power spectrum, one sees that when the covariance in the optimal quadratic estimator is naively replaced by an empirical covariance, the resulting power spectrum estimate is biased low, i.e., there is signal loss. This occurs because of couplings between $\widehat{\C}$ and $\x$, which formally means that what was original a quadratic estimator is no longer quadratic, but contains higher-order correlations. This violates the assumptions implicit in the derivation of $F_{\alpha \alpha}$ as the normalization factor for converting unnormalized bandpowers $\frac{1}{2} \x^t \C^{-1} \Q^{\alpha} \C^{-1} \x$ into properly normalized power spectrum estimates, where the unnormalized bandpowers are assumed to be two-point (i.e., quadratic) statistics \citep{LT11}. The result is an improperly normalized---and thus lossy---power spectrum estimate.
 
 
 \begin{comment}
