@@ -355,7 +355,7 @@ $k$'s separately, so a simplistic white noise approximation can be used. Our com
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss1.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss1.pdf}
 	\caption{Our toy model dataset to which we apply different weighting schemes to in order to investigate signal loss. We model a mock foreground-only visibility with a sinusoid signal that varies smoothly in 
 time and frequency. We model a mock EoR signal as a random Gaussian signal. We add the two together to form $\textbf{x} = 
 \textbf{x}_{FG} + \textbf{x}_{EoR}$. Real parts are shown here.}
@@ -378,8 +378,8 @@ The result is shown in green in the left plot of Figure \ref{fig:toy_sigloss3}. 
 
 \begin{figure*}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.33\textwidth]{plots/toy_sigloss3.png}
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.33\textwidth]{plots/toy_sigloss4.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.33\textwidth]{plots/toy_sigloss3.pdf}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.33\textwidth]{plots/toy_sigloss4.pdf}
 	\caption{Resulting power spectrum estimates for the toy model simulation described in Section \ref{sec:toymodel} --- 
 foregrounds only (blue), EoR only (red), and the weighted FG + EoR dataset (green). The power spectrum of foregrounds peaks at a $k$-mode based on the frequency of the sinusoid used to create the mock FG signal. In the two panels, we compare empirically estimated inverse covariance weighting 
 where $\textbf{C}$ is derived from the data (left), and projecting out the first eigenmode only (right). In the former 
@@ -403,7 +403,7 @@ down-weighted the most.
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss2.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss2.pdf}
 	\caption{Eigenspectrum of $\widehat{\textbf{C}}_{FG}$ (blue), $\widehat{\textbf{C}}_{EoR}$ (red), and $\widehat{\textbf{C}}_{FG+EoR}$ 
 (green). The eigenspectrum of $\widehat{\textbf{C}}_{FG}$ peaks at the zeroth eigenmode, due to the presence of only one 
 sinusoid. These empirically estimated covariance matrices have eigenspectra that are different from that of the true $\textbf{C}$. Specifically, these eigenmodes have the risk of being down-weighted more significantly than they should be because they are coupled to the data in a way that produces loss.}
@@ -421,8 +421,8 @@ In general, the strongest eigenmodes of $\widehat{\textbf{C}}$ typically describ
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss12.png}
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss13.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss12.pdf}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss13.pdf}
 	\caption{The estimated covariance matrices (top row) and inverse covariance-weighted data (bottom row) for FG only (left), EoR only 
 (middle), and FG + EoR (right). Real parts are shown here.}
 	\label{fig:toy_sigloss12}
@@ -493,7 +493,7 @@ where $N_{f}$ is the number of frequencies ($20$) in the mock data. The eigenmod
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/toy_sigloss5.png}
+	\includegraphics[width=\columnwidth]{plots/toy_sigloss5.pdf}
 	\caption{Our `fringe-rate filtered' (time-averaged) toy model dataset. We average every four samples together, 
 yielding $25$ independent samples in time. Real parts are shown here.}
 	\label{fig:toy_sigloss5}
@@ -501,28 +501,28 @@ yielding $25$ independent samples in time. Real parts are shown here.}
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.31\textwidth]{plots/toy_sigloss15.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.31\textwidth]{plots/toy_sigloss15.pdf}
 	\caption{Eigenspectrum of $\widehat{\textbf{C}}_{FG+EoR}$, in the case of no fringe-rate filtering (solid green) and with fringe-rate filtering (dashed green). The dashed, steep eigenspectrum has a greater risk of signal loss because its weak eigenmodes are more strongly coupled to the data than those of the solid eigenspectrum.}
 	\label{fig:toy_sigloss15}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/toy_sigloss16.png}
+	\includegraphics[width=\columnwidth]{plots/toy_sigloss16.pdf}
 	\caption{The convergence level, as defined in Equation \eqref{eq:converge}, of empirically estimated covariances of mock EoR signals with different numbers of independent samples. In red, the mock EoR signal is comprised entirely of independent samples. Subsequent colors show time-averaged signals. As the number of realizations increases, we see that the empirical covariances approach the true covariances. With more independent samples, the quicker an empirical covariance converges, and the less signal loss we would expect to result.}
 	\label{fig:toy_sigloss16}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/toy_sigloss17.png}
+	\includegraphics[width=\columnwidth]{plots/toy_sigloss17.pdf}
 	\caption{The convergence level, as defined in Equation \eqref{eq:converge_eig}, of empirically estimated eigenvectors for different numbers of mock data realizations. The colors span from the 0th eigenmode (has the highest eigenvalue) to the 19th eigenmode (has the lowest eigenvalue), where they are ordered by eigenvalue in descending order. This figure shows that `strong' eigenmodes (those with the highest eigenvalues) converge more quickly than `weak' eigenmodes, implying that weighting by empirically estimated `weak' modes poses the most risk for signal loss.}
 	\label{fig:toy_sigloss17}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss7.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss7.pdf}
 	\caption{Resulting power spectrum estimate for the `fringe-rate filtered' (time-averaged) toy model simulation --- foregrounds only (blue), 
 EoR only (red), and the weighted FG + EoR dataset (green). We use empirically estimated inverse covariance weighting where $\textbf{C}$ is 
 computed from the data. There is a larger amount of signal loss than for the non-averaged data, a consequence of weighting by eigenmodes that are more strongly coupled to the data due to there being fewer independent modes in the data.}
@@ -558,10 +558,10 @@ left), we see that there is negligible signal loss. This is because by modeling 
 
 \begin{figure*}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss10.png}
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss8.png}
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss9.png}
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss11.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss10.pdf}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss8.pdf}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss9.pdf}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss11.pdf}
 	\caption{Resulting power spectra estimates for our `fringe-rate filtered' (time-averaged) toy model simulation --- foregrounds only (blue), 
 EoR only (red), and the weighted FG + EoR dataset (green). We show four alternate weighting options that each minimize signal 
 loss, including modeling the covariance matrix of EoR (upper left), regularizing $\widehat{\textbf{C}}$ by adding an identity matrix to 
@@ -572,7 +572,7 @@ $\widehat{\textbf{C}}$ (lower right). The first case (upper left) is not feasibl
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss14.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss14.pdf}
 	\caption{We compare the eigenspectrum of an empirically calculated $\widehat{\textbf{C}}$ (green) to that of four alternate 
 weighting options, including modeling the covariance matrix of EoR (red), regularizing $\widehat{\textbf{C}}$ by adding an identity 
 matrix to it (blue), using only the first three eigenmodes of $\widehat{\textbf{C}}$ (yellow), and multiplying an identity matrix with $
@@ -679,7 +679,7 @@ number of independent samples along the axis that is being re-sampled is well-de
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_error1.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_error1.pdf}
 	\caption{Error estimation from bootstrapping as a function of the number of elements drawn per bootstrap when 
 sampling with replacement. The star represents the standard deviation of $N_{boot}=500$ bootstraps, each created by drawing $1000$ 
 elements (with replacement) from a length $1000$ array of a Gaussian random signal. The black points correspond to time-averaged data (correlated data) which has $100$ independent samples. They illustrate how errors can be under-estimated if 
@@ -843,7 +843,7 @@ noise. This signifies a non-EoR bias that is only present in either $\textbf{x}_
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_bias1.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_bias1.pdf}
 	\caption{Power spectrum estimates for a null jackknife test with the presence of a foreground systematic (blue), without 
 the foreground systematic (red), and noise alone (green). Because the first null test is not consistent with noise, it suggests the 
 presence of a systematic in either $\textbf{x}_{1}$ or $\textbf{x}_{2}$. Null tests of clean measurements should be consistent 
@@ -853,7 +853,7 @@ with thermal noise.}
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_bias2.png}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_bias2.pdf}
 	\caption{Power spectrum estimates for $\textbf{x}_{1}$ and $\textbf{x}_{2}$, two jackknives of the toy model. They suggest 
 the presence of a systematic in $\textbf{x}_{1}$ only (which is exactly what was put in), illustrating how jackknives can be used to tease out excesses. Clean 
 measurements should remain consistent despite the jackknife taken.}
@@ -923,7 +923,7 @@ domain and time domain is shown in Figure \ref{fig:frp}.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/frp.png}
+	\includegraphics[width=\columnwidth]{plots/frp.pdf}
 	\caption{Top: the normalized optimal power-spectrum sensitivity weighting in fringe-rate space for our fiducial baseline and 
 Stokes I polarization beam. Bottom: the time-domain convolution kernel corresponding to the top panel. Real and imaginary 
 components are illustrated in cyan and magenta, respectively, with the absolute amplitude in black. The fringe-rate filter acts as 
@@ -1451,7 +1451,7 @@ Together, the revised parameters yield a decrease in sensitivity (higher noise f
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{plots/sense_check.png}
+	\includegraphics[width=\columnwidth]{plots/sense_check.pdf}
 	\caption{An updated prediction for the thermal noise level of PAPER-64 data (black) is shown in comparison to previously 
 published sensitivity limits (gray). Both sensitivity analyses plotted assume only one baseline type (an additional factor of $
 \sqrt{3}$ for three baseline types is needed to match \citetalias{ali_et_al2015} exactly). Major factors that contribute to the discrepancy are $
@@ -1523,7 +1523,7 @@ Finally, one last change from the \citetalias{ali_et_al2015} method is that our 
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/noise_errors.png}
+	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/noise_errors.pdf}
 	\caption{$2\sigma$ power spectrum errors for a noise simulation (computed via Equation \eqref{eq:noise} using PAPER-64 observing parameters) using two different bootstrapping 
 methods. The noise is fringe-rate filtered and a weighting matrix of $\textbf{I}$ (uniform-weighted) is used in order to disentangle the 
 effects of bootstrapping from signal loss. The bootstrapping method used in \citetalias{ali_et_al2015} is shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. While this does not match perfectly with the $2\sigma$ analytic prediction for noise (green), we find good agreement between them to within a factor of two (which we believe is reasonable given the approximations we make in computing the analytic).}
