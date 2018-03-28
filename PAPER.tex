@@ -343,12 +343,12 @@ generality.
 
 We create mock visibilities, $\textbf{x}$, and assume a non-tracking, drift-scan observation. Hence, flat spectrum sources (away 
 from zenith) oscillate in time and frequency in our measurements. We therefore form a mock bright foreground signal, $
-\textbf{x}_{FG}$, as a complex sinusoid that varies smoothly in time and frequency, a simplistic but realistic representation of a 
-single bright source. We also create a mock EoR signal, $\textbf{x}_{EoR}$, as a complex, Gaussian random signal. A more 
+\textbf{x}_{\rm FG}$, as a complex sinusoid that varies smoothly in time and frequency, a simplistic but realistic representation of a 
+single bright source. We also create a mock EoR signal, $\textbf{x}_{\rm EoR}$, as a complex, Gaussian random signal. A more 
 realistic EoR signal would have a sloped power spectrum in $p(k)$ (instead of flat, as in the case of white noise), 
 which could be simulated by introducing frequency correlations into the mock EoR signal. However, here we treat all 
 $k$'s separately, so a simplistic white noise approximation can be used. Our combined data matrix is then $\textbf{x} = 
-\textbf{x}_{FG} + \textbf{x}_{EoR}$, to which we apply different weighting schemes throughout Section \ref{sec:SiglossOverview}. The three data components are shown in Figure 
+\textbf{x}_{\rm FG} + \textbf{x}_{\rm EoR}$, to which we apply different weighting schemes throughout Section \ref{sec:SiglossOverview}. The three data components are shown in Figure 
 \ref{fig:toy_sigloss1}. 
 
 \begin{figure}
@@ -356,7 +356,7 @@ $k$'s separately, so a simplistic white noise approximation can be used. Our com
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss1.pdf}
 	\caption{Our toy model dataset to which we apply different weighting schemes to in order to investigate signal loss. We model a mock foreground-only visibility with a sinusoid signal that varies smoothly in 
 time and frequency. We model a mock EoR signal as a random Gaussian signal. We add the two together to form $\textbf{x} = 
-\textbf{x}_{FG} + \textbf{x}_{EoR}$. Real parts are shown here.}
+\textbf{x}_{\rm FG} + \textbf{x}_{\rm EoR}$. Real parts are shown here.}
 	\label{fig:toy_sigloss1}
 \end{figure}
 
@@ -372,7 +372,7 @@ amount of time), where $\langle \rangle_{t}$ denotes a finite average over time.
 
 First, we compute the power spectrum of our toy model dataset $\textbf{x}$ using QE formalism and $\textbf{R} \equiv \widehat{\textbf{C}}^{-1}$. 
 The result is shown in green in the left plot of Figure \ref{fig:toy_sigloss3}. Also plotted in the figure are the uniform-weighted ($\textbf{R} \equiv \textbf{I}$) power spectrum of the individual components $
-\textbf{x}_{FG}$ (blue) and $\textbf{x}_{EoR}$ (red). 
+\textbf{x}_{\rm FG}$ (blue) and $\textbf{x}_{\rm EoR}$ (red). 
 
 \begin{figure*}
 	\centering
@@ -402,13 +402,13 @@ down-weighted the most.
 \begin{figure}
 	\centering
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\columnwidth]{plots/toy_sigloss2.pdf}
-	\caption{Eigenspectrum of $\widehat{\textbf{C}}_{FG}$ (blue), $\widehat{\textbf{C}}_{EoR}$ (red), and $\widehat{\textbf{C}}_{FG+EoR}$ 
-(green). The eigenspectrum of $\widehat{\textbf{C}}_{FG}$ peaks at the zeroth eigenmode, due to the presence of only one 
+	\caption{Eigenspectrum of $\widehat{\textbf{C}}_{\rm FG}$ (blue), $\widehat{\textbf{C}}_{\rm EoR}$ (red), and $\widehat{\textbf{C}}_{\rm FG+EoR}$ 
+(green). The eigenspectrum of $\widehat{\textbf{C}}_{\rm FG}$ peaks at the zeroth eigenmode, due to the presence of only one 
 sinusoid. These empirically estimated covariance matrices have eigenspectra that are different from that of the true $\textbf{C}$. Specifically, these eigenmodes have the risk of being down-weighted more significantly than they should be because they are coupled to the data in a way that produces loss.}
 	\label{fig:toy_sigloss2}
 \end{figure}
 
-Because $\widehat{\textbf{C}}$ is estimated from the data, its eigenvectors and eigenvalues are strongly coupled to the particular data realization that was used to compute it. For example, the strongest mode of $\widehat{\textbf{C}}$ (highest eigenvalue) describes the sinusoid foreground mode in the toy model (the peak in Figure \ref{fig:toy_sigloss3}). In Figure \ref{fig:toy_sigloss12} we show the estimated covariances of our toy model datasets along with $\widehat{\textbf{C}}^{-1}$ weighted data. The foreground sinusoid is clearly visible in $\widehat{\textbf{C}}_{FG}$.
+Because $\widehat{\textbf{C}}$ is estimated from the data, its eigenvectors and eigenvalues are strongly coupled to the particular data realization that was used to compute it. For example, the strongest mode of $\widehat{\textbf{C}}$ (highest eigenvalue) describes the sinusoid foreground mode in the toy model (the peak in Figure \ref{fig:toy_sigloss3}). In Figure \ref{fig:toy_sigloss12} we show the estimated covariances of our toy model datasets along with $\widehat{\textbf{C}}^{-1}$ weighted data. The foreground sinusoid is clearly visible in $\widehat{\textbf{C}}_{\rm FG}$.
 
 In general, the strongest eigenmodes of $\widehat{\textbf{C}}$ typically describe bright foregrounds --- the most prominent shapes in a dataset. For these ``strong" modes, where foregrounds outshine the EoR signal, down-weighting is beneficial. In some sense, we desire signal loss in this regime, if by `signal' we mean `foregrounds.' In this case it is beneficial for the ``strong" eigenmodes to be coupled to the data in a way that produces loss. For our toy model, the successful suppression of the foreground mode is demonstrated in Figure \ref{fig:toy_sigloss3} by the missing foreground peak in the weighted power spectrum estimate (green).
 
@@ -497,7 +497,7 @@ yielding $25$ independent samples in time. Real parts are shown here.}
 \begin{figure}
 	\centering
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.31\textwidth]{plots/toy_sigloss15.pdf}
-	\caption{Eigenspectrum of $\widehat{\textbf{C}}_{FG+EoR}$, in the case of no fringe-rate filtering (solid green) and with fringe-rate filtering (dashed green). The dashed, steep eigenspectrum has a greater risk of signal loss because its weak eigenmodes are more strongly coupled to the data than those of the solid eigenspectrum.}
+	\caption{Eigenspectrum of $\widehat{\textbf{C}}_{\rm FG+EoR}$, in the case of no fringe-rate filtering (solid green) and with fringe-rate filtering (dashed green). The dashed, steep eigenspectrum has a greater risk of signal loss because its weak eigenmodes are more strongly coupled to the data than those of the solid eigenspectrum.}
 	\label{fig:toy_sigloss15}
 \end{figure}
 
@@ -546,10 +546,10 @@ spectra and eigenspectra for the different cases in Figures \ref{fig:toy_sigloss
 
 As a first test, we model the covariance matrix of EoR as a proof of concept that if perfect models are known, signal loss can be 
 avoided. We know that our simulated EoR signal should have a covariance matrix that mimics the identity matrix, with its 
-variance encoded along the diagonal. We model $\textbf{C}_{EoR}$ as such (i.e. the identity), instead of computing it based on $\textbf{x}
-_{EoR}$ itself. Next, we add $\textbf{C}_{EoR} + \widehat{\textbf{C}}_{FG}$ (where $\widehat{\textbf{C}}_{FG} = \langle\textbf{x}_{FG}
-\textbf{x}_{FG}^{\dagger}\rangle_{t}$) to obtain a final $\widehat{\textbf{C}}$ to use in weighting. In Figure \ref{fig:toy_sigloss8} (upper 
-left), we see that there is negligible signal loss. This is because by modeling $\textbf{C}_{EoR}$, we avoid over-fitting EoR fluctuations in the data that our model doesn't know about (but an empirically derived $\widehat{\textbf{C}}_{EoR}$ would). This is also shown by comparing the (steeper) green and (flatter) red curves in Figure \ref{fig:toy_sigloss14}. In practice such a weighting option is not feasible, as it is difficult to model $\textbf{C}_{EoR}$, and $\widehat{\textbf{C}}_{FG}$ is unknown because we don't know how to separate out the foregrounds from the EoR in our data.
+variance encoded along the diagonal. We model $\textbf{C}_{\rm EoR}$ as such (i.e. the identity), instead of computing it based on $\textbf{x}
+_{\rm EoR}$ itself. Next, we add $\textbf{C}_{\rm EoR} + \widehat{\textbf{C}}_{\rm FG}$ (where $\widehat{\textbf{C}}_{\rm FG} = \langle\textbf{x}_{\rm FG}
+\textbf{x}_{\rm FG}^{\dagger}\rangle_{t}$) to obtain a final $\widehat{\textbf{C}}$ to use in weighting. In Figure \ref{fig:toy_sigloss8} (upper 
+left), we see that there is negligible signal loss. This is because by modeling $\textbf{C}_{\rm EoR}$, we avoid over-fitting EoR fluctuations in the data that our model doesn't know about (but an empirically derived $\widehat{\textbf{C}}_{\rm EoR}$ would). This is also shown by comparing the (steeper) green and (flatter) red curves in Figure \ref{fig:toy_sigloss14}. In practice such a weighting option is not feasible, as it is difficult to model $\textbf{C}_{\rm EoR}$, and $\widehat{\textbf{C}}_{\rm FG}$ is unknown because we don't know how to separate out the foregrounds from the EoR in our data.
 
 \begin{figure*}
 	\centering
@@ -561,7 +561,7 @@ left), we see that there is negligible signal loss. This is because by modeling 
 EoR only (red), and the weighted FG + EoR dataset (green). We show four alternate weighting options that each minimize signal 
 loss, including modeling the covariance matrix of EoR (upper left), regularizing $\widehat{\textbf{C}}$ by adding an identity matrix to 
 it (upper right), using only the first three eigenmodes of $\widehat{\textbf{C}}$ (lower left), and keeping only the diagonal elements of 
-$\widehat{\textbf{C}}$ (lower right). The first case (upper left) is not feasible in practice since we do not know $\textbf{C}_{FG}$ and $\textbf{C}_{EoR}$ like we do in the toy model.}
+$\widehat{\textbf{C}}$ (lower right). The first case (upper left) is not feasible in practice since we do not know $\textbf{C}_{\rm FG}$ and $\textbf{C}_{\rm EoR}$ like we do in the toy model.}
 	\label{fig:toy_sigloss8}
 \end{figure*}
 
@@ -751,7 +751,7 @@ longer, using more baselines, etc. However, the squaring of noise can occur when
 the two copies of $\textbf{x}$ in Equation \eqref{eq:qhat}. If both copies of $\textbf{x}$ come from the same baseline and time, it 
 can result in power spectrum measurements that are higher than those predicted by the thermal noise of the instrument. One 
 way to avoid this type of noise bias is to avoid cross-multiplying data from the same baselines or days. This ensures that the 
-two quantities that go into a measurement have separate noises that don't correlate with each other. We also note that if the noise level is known, this type of bias can be subtracted off, though this procedure is argued to be dangerous (\citealt{dillon_et_al2014}).
+two quantities that go into a measurement have separate noises that don't correlate with each other. We also note that if the noise level is known, this type of bias can be subtracted off, though this procedure is argued to be dangerous (\citealt{dillon_et_al2014}; \citealt{parsons_et_al2014}).
 
 Another type of noise bias can stem from the spurious cross-coupling of signals between antennas. This excess is known as 
 instrumental crosstalk and is an inadvertent correlation between two independent measurements via a coupled signal path. 
