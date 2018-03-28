@@ -1584,10 +1584,12 @@ removal and these are detections that, depending on the power spectrum level, co
 \subsubsection{Jackknife/Null Tests}
 
 As shown in Figure \ref{fig:ps1_data}, our re-analysis of the PAPER-64 power spectrum shows biases above the predicted noise level, particularly at low-$k$ values. As discussed in Section \ref{sec:BiasTypes}, this bias is
-most likely attributable to foreground leakage. The cause for biases at higher $k$-values is more difficult to pinpoint. Here we discuss three null tests performed on PAPER-64 data that aim to isolate systematics in the data and verify 
-that they are not attributable to EoR. We build off of the framework in Section \ref{sec:JackknifeOverview}, which illuminated how jackknife tests can tease out excess variances along different axes of a dataset.
+most likely attributable to foreground leakage. The cause for biases at higher $k$-values is more difficult to pinpoint. 
 
-Three null test results are shown in Figure \ref{fig:null}. Each test displays the differenced power spectrum between two halves of a jackknife. We take jackknives along three different axes:
+Here we perform three hybrid jackknife/null tests on PAPER-64 data that aim to isolate systematics in the data and verify 
+that they are not attributable to EoR. Similar to in Section \ref{sec:JackknifeOverview}, we take jackknives along different axes of the dataset to produce multiple power spectra. In addition, we difference them to tease out excess variances, which can be thought of as a type of null test.
+
+The three results are shown in Figure \ref{fig:null}. Each test displays the differenced power spectrum between two halves of a jackknife. We take jackknives along three different axes:
 
 \begin{itemize}
 %\item Original Data (black): This is identical to the unweighted, revised PAPER-64 power spectrum in Figure \ref{fig:ps1_data} (one baseline type only) with weighting matrix $\textbf{I}$. There are clear detections at low $k$'s.
@@ -1620,7 +1622,7 @@ analysis. No baselines are repeated between the two datasets.
 
 In investigating Figure \ref{fig:null}, we focus on two main aspects of each test --- whether the error bars are consistent with zero, and whether they are consistent with thermal noise. The former indicates a `passing' null test where there is no bias along the jackknife axis. The latter reveals whether there is an additional noise bias present that lies above the thermal noise.
 
-We find that the baselines test is fully consistent with noise, as all error bars pass through zero. Therefore, we conclude that particular baselines are not to be blamed for the bias in our dataset. For the LST test, $90\%$ of all the error bars pass through zero, which is slightly lower than the expected $95\%$. This indicates a low level bias that is LST-dependent, and likely caused by residual foregrounds that vary in LST. In other words, the two jackknife halves differ by an amount greater than thermal noise and do not completely cancel out the sky signal when differencing. The even/odd test shows $81\%$ of all error bars being consistent with zero, again indicating the presence of a low level bias. The cause of this particular systematic is not obvious, and requires further investigation that we do not carry out in this paper. Most importantly, a clean detection of EoR would have passed all three null tests, which is clearly not what we see.
+We find that the baselines test is fully consistent with noise, as all error bars pass through zero. Therefore, we conclude that particular baselines are not to be blamed for the bias in our dataset. For the LST test, $90\%$ of all the error bars pass through zero, which is slightly lower than the expected $95\%$. This indicates a low level bias that is LST-dependent, and likely caused by residual foregrounds that vary in LST. In other words, the two jackknife halves differ by an amount greater than thermal noise and do not completely cancel out the sky signal when differencing. The even/odd test shows $81\%$ of all error bars being consistent with zero, again indicating the presence of a low level bias. The cause of this particular systematic is not obvious, and requires further investigation that we do not carry out in this paper. Most importantly, a clean detection of EoR would have passed all three tests, which is clearly not what we see.
 
 Finally, we note that all three null tests exhibit error bars that are strongly $k$-dependent. The errors are largest just outside the horizon ($k\sim\pm 0.1$\,$h$ Mpc$^{-1}$) which is expected since foregrounds are brightest in this region post-delay filtering. We also note that all three tests, whether biased or unbiased, result in power spectrum errors that are slightly larger than the estimated thermal noise (gray band) at high-$k$. This indicates an additive noise component that is increasing our errors (while not affecting whether they pass through zero or not). 
 
