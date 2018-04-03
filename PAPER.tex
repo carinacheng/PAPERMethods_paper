@@ -789,56 +789,41 @@ present only at certain LSTs (such as a foreground source), for example, or misb
 While the null test hunts for deviations from thermal noise and the jackknife tests for deviations in subsamples, they are both 
 closely related. We can highlight the connection between the two using a toy model dataset.
 
-Suppose we have two measurements (for example, from two baselines), $\textbf{x}_{a}$ and $\textbf{x}_{b}$. The 
-measurements have dimensions of $200$ time integrations and $20$ frequency channels. They each have separate thermal 
+Suppose we have four independent measurements made along two different axes. As an example, we construct $\textbf{x}_{1a}$, $\textbf{x}_{1b}$, $\textbf{x}_{2a}$, and $\textbf{x}_{2b}$, where the numbers symbolize two different days of data and the letters represent two different baselines. Each of the 
+measurements have dimensions of $100$ time integrations and $20$ frequency channels. They each have separate thermal 
 noises constructed as a Gaussian random signal for each, and identical EoR signals. 
 
-To mimic the presence of a systematic in part of the measurement, we add a toy sinusoid foreground, similar to the one used in 
-Section \ref{sec:toymodel}, to the first $100$ time integrations of both measurements. This represents a foreground signal 
-present in, for example, the first half of the LST range used for analysis, but not the second half. Mathematically, if  $\textbf{n}$ 
-is noise, $\textbf{e}$ is the EoR signal, and $\textbf{f}$ is the foreground signal, the two measurements (which are cross-multiplied to form power spectra) can be written as:
-
-\begin{equation}
-\label{eq:bias1}
-\textbf{x}_{a} = \textbf{n}_{a} + \textbf{e} + \textbf{f}
-\end{equation} 
-
-\noindent and 
-
-\begin{equation}
-\label{eq:bias2}
-\textbf{x}_{b} = \textbf{n}_{b} + \textbf{e} + \textbf{f}.
-\end{equation}
-
-\noindent The two jackknife samples are $\textbf{x}_{1}$ and $\textbf{x}_{2}$, representing jackknives in time. These can be 
-written (for both measurements $a$ and $b$) as:
+To mimic the presence of a systematic, we add a toy sinusoid foreground, similar to the one used in 
+Section \ref{sec:toymodel}, to only $\textbf{x}_{2a}$ and $\textbf{x}_{2b}$. This represents a foreground signal 
+present in only the second day of data, but not the first. Mathematically, if  $\textbf{n}$ 
+is noise, $\textbf{e}$ is the EoR signal, and $\textbf{f}$ is the foreground signal, the four measurements can be written as:
 
 \begin{eqnarray}
-\textbf{x}_{1} &=& \textbf{n}_{1} + \textbf{e}_{1} + \textbf{f} \\
-\textbf{x}_{2} &=& \textbf{n}_{2} + \textbf{e}_{2}
-\end{eqnarray}
+\label{eq:bias1}
+\textbf{x}_{1a} &=& \textbf{n}_{1a} + \textbf{e}  \\ 
+\textbf{x}_{1b} &=& \textbf{n}_{1b} + \textbf{e}  \\ 
+\textbf{x}_{2a} &=& \textbf{n}_{2a} + \textbf{e} + \textbf{f} \\ 
+\textbf{x}_{2b} &=& \textbf{n}_{2b} + \textbf{e} + \textbf{f}.
+\end{eqnarray} 
 
-\noindent For example, $\textbf{x}_{1a}$ represents a jackknife sample (first half of the data) for the first measurement. 
-Similarly, $\textbf{x}_{2b}$ represents a jackknife sample (second half of the data) for the second measurement. We note that $\textbf{e}$ itself will be different in two jackknives taken along LST, but could be identical in other cases (such as a jackknife along even/odd Julian days).
+\noindent We now take a jackknife along the day-axis, forming separate power spectrum estimates for each day:
+
+\begin{eqnarray}
+\widehat{\textbf{P}}_{1} &\propto& \textbf{x}_{1a}\textbf{x}_{1b}^{\dagger} \\
+\widehat{\textbf{P}}_{2} &\propto& \textbf{x}_{2a}\textbf{x}_{2b}^{\dagger}.
+\end{eqnarray}
 
 We do not perform a time-average or apply a fringe-rate filter to this toy model, since we are interested only in what jackknife 
 tests can tell us about biases. For the same reason, we use a weighting matrix of $\textbf{I}$ for power spectrum estimation to 
 avoid signal loss. 
 
-We form three different power spectrum estimates shown in Figure \ref{fig:toy_bias1}. The first is a null test where we subtract $
-\textbf{x}_{2}$ from $\textbf{x}_{1}$ for both measurements $a$ and $b$. This is equivalent to splitting up a full dataset along 
-an axis (in this case, time) and subtracting the two to remove sky signal that should ideally be present in both. We cross-multiply measurements $a$ and $b$ to form an un-biased (thermal noise-wise) estimate (blue curve). The second estimate, 
-shown in red, is the same null test with the foreground systematic removed (eliminate $\textbf{f}$ in Equations \ref{eq:bias1} 
-and \ref{eq:bias2}). Finally, we also show the noise power spectrum (green).
-
-From this test we see a clear difference between the null test with the presence of the foregrounds, and the power spectrum of 
+To construct a null test, we difference the two power spectra, with the result shown in Figure \ref{fig:toy_bias1} (black) along with the power spectrum of noise only (green). Subtracting the two estimates removes sky signal that should ideally be present in both jackknives. However, we see a clear difference between the null test and the power spectrum of 
 noise. This signifies a non-EoR bias that is only present in either $\textbf{x}_{1}$ or $\textbf{x}_{2}$, but not both.
 
 \begin{figure}
 	\centering
 	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_bias1.pdf}
-	\caption{Power spectrum estimates for a null jackknife test with the presence of a foreground systematic (blue), without 
-the foreground systematic (red), and noise alone (green). Because the first null test is not consistent with noise, it suggests the 
+	\caption{A null jackknife test shown as the power spectrum difference between two measurements (black), compared to the power spectrum of noise alone (green). Because the null test is not consistent with noise, it suggests the 
 presence of a systematic in either $\textbf{x}_{1}$ or $\textbf{x}_{2}$. Null tests of clean measurements should be consistent 
 with thermal noise.}
 	\label{fig:toy_bias1}
@@ -848,14 +833,14 @@ with thermal noise.}
 	\centering
 	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_bias2.pdf}
 	\caption{Power spectrum estimates for $\textbf{x}_{1}$ and $\textbf{x}_{2}$, two jackknives of the toy model. They suggest 
-the presence of a systematic in $\textbf{x}_{1}$ only (which is exactly what was put in), illustrating how jackknives can be used to tease out excesses. Clean 
+the presence of a systematic in $\textbf{x}_{2}$ only (which is exactly what was put in), illustrating how jackknives can be used to tease out excesses. Clean 
 measurements should remain consistent despite the jackknife taken.}
 	\label{fig:toy_bias2}
 \end{figure}
 
 While the null test is useful for testing noise properties and the uniformity of a dataset, jackknives are useful in pinpointing 
 which data subsets are contaminated by biases and which are not; in our toy model we see that the bias exists only in $
-\textbf{x}_{1}$ (Figure \ref{fig:toy_bias2}). If foreground or noise biases exist in a dataset, jackknives can tease them out and 
+\textbf{x}_{2}$ (Figure \ref{fig:toy_bias2}). If foreground or noise biases exist in a dataset, jackknives can tease them out and 
 provide insight into possible sources. For example, if jackknives along the time-axis reveal a bias present at a certain LST, a 
 likely explanation would be excess foreground emission from a radio source in the sky at that time. A jackknife test involving 
 data before and after the application of a fringe-rate filter can reveal whether crosstalk noise bias is successfully suppressed 
@@ -1582,8 +1567,8 @@ on power spectrum results is shown in \citetalias{ali_et_al2015}. Most notably, 
 As shown in Figure \ref{fig:ps1_data}, our re-analysis of the PAPER-64 power spectrum shows biases above the predicted noise level, particularly at low-$k$ values. As discussed in Section \ref{sec:BiasTypes}, this bias is
 most likely attributable to foreground leakage. The cause for biases at higher $k$-values is more difficult to pinpoint. 
 
-Here we perform three hybrid jackknife/null tests on PAPER-64 data that aim to isolate systematics in the data and verify 
-that they are not attributable to EoR. Similar to in Section \ref{sec:JackknifeOverview}, we take jackknives along different axes of the dataset to produce multiple power spectra. In addition, we difference them to tease out excess variances, which can be thought of as a type of null test.
+Here we perform three null tests on PAPER-64 data that aim to isolate systematics in the data and verify 
+that they are not attributable to EoR. Similar to in Section \ref{sec:JackknifeOverview}, we take jackknives along different axes of the dataset to produce multiple power spectra. We then difference them (i.e. the null test) to tease out excess variances.
 
 The three results are shown in Figure \ref{fig:null}. Each test displays the differenced power spectrum between two halves of a jackknife. We take jackknives along three different axes:
 
