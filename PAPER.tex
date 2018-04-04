@@ -1394,23 +1394,23 @@ t_{\rm int} = t_{i} \frac{\int1 \, df}{\int w^{2}(f) \,df},
 where $t_{i}=43$ seconds, $t_{\rm int}$ is the fringe-rate filtered integration time, $w$ is the fringe-rate profile, and the integral is 
 taken over all fringe-rates. For PAPER-64, this number is $t_{\rm int} = 3857$\,s. 
 \item $N_{\rm days}$: The total number of days of data analyzed. In \citetalias{ali_et_al2015}, this number was set to $135$. However, because we 
-divide our data in half (to form ``even" and ``odd" datasets), this number should be reduced by a factor of $2$. Additionally, 
-because our LST coverage is not $100\%$ complete (it doesn't overlap for every single day), we compute a more realistic value of 
-$N_{\rm days}$ as:
+divide our data in half (to form ``even" and ``odd" datasets, or $N_{\rm datasets} = 2$), this number should reflect the number of days in each individual dataset instead of the total. Additionally, this number should be adjusted to reflect the actual number of cross-multiplications that occur between datasets (``even" with ``odd" and ``odd" with ``even", but not ``odd" with ``odd" or ``even" with ``even", for reasons explained in Section \ref{sec:MitBias}). Finally, because our LST coverage is not $100\%$ complete (it doesn't overlap for every single day), we incorporate a root-mean-square statistic in computing a realistic value of 
+$N_{\rm days}$. Our expression therefore becomes:
 \begin{equation}
- \frac{1}{N_{\rm days}} = \sqrt{\Big\langle\frac{1}{N_{i}^{2}} \Big\rangle_{i}},
+N_{\rm days} = \sqrt{\langle N_{i}^{2}\rangle} \sqrt{(N_{\rm datasets}^{2}-N_{\rm datasets})}
+ %\frac{1}{N_{\rm days}} = \sqrt{\Big\langle\frac{1}{N_{i}^{2}} \Big\rangle_{i}},
  \end{equation}
-\noindent where $i$ indexes LST (\citealt{jacobs_et_al2015}). For PAPER-64, our revised estimate of $N_{\rm days}$ is $\sim34$ 
+\noindent where $i$ indexes LST and frequency channel over all datasets (\citealt{jacobs_et_al2015}). For PAPER-64, our revised estimate of $N_{\rm days}$ is $\sim47$ 
 days.
 \item $N_{\rm bls}$: The number of baselines contributing to the sensitivity of a power spectrum estimate. In \citetalias{ali_et_al2015}, this number was 
 the total number of $30$\,m East/West baselines used in the analysis. However, using the total number of baselines ($N_{\rm bls\_total}$) neglects 
 the fact that we average baselines into groups for computational speed-up when cross-multiplying data. Our revised estimate for the parameter is:
 \begin{equation}
-N_{\rm bls} = \frac{N_{\rm bls\_total}}{N_{\rm gps}}\sqrt{N_{\rm gps}^{2}-N_{\rm gps}},
+N_{\rm bls} = \frac{N_{\rm bls\_total}}{N_{\rm gps}}\sqrt{\frac{N_{\rm gps}^{2}-N_{\rm gps}}{2}},
 \end{equation}
 \noindent where, as with the \citetalias{ali_et_al2015} analysis, $N_{\rm gps} = 5$. Each baseline group averages down linearly as the number of baselines 
-entering the group ($N_{\rm bls\_total}/N_{\rm gps}$) and then as the square root of the number of cross-multiplied pairs ($\sqrt{N_{\rm gps}^{2} - 
-N_{\rm gps}}$). For the revised PAPER-64 analysis with only one baseline separation type, this becomes $N_{\rm bls} \sim 46$ instead 
+entering the group ($N_{\rm bls\_total}/N_{\rm gps}$) and then as the square root of the number of cross-multiplied pairs \Big($\sqrt{\frac{N_{\rm gps}^{2} - 
+N_{\rm gps}}{2}}$\Big). For the revised PAPER-64 analysis with only one baseline separation type, this becomes $N_{\rm bls} \sim 32$ instead 
 of $51$. 
 \item $N_{\rm pols}$: The number of polarizations averaged together. For the case of Stokes I, $N_{\rm pols}=2$.
 \end{itemize}
@@ -1512,6 +1512,7 @@ detection, as well as identifying other sources of biases. Here we demonstrate m
 foreground and noise bias and we perform null tests in order to characterize the stability and implications of our results.
 
 \subsubsection{Mitigating Bias}
+\label{sec:MitBias}
 
 We briefly discuss one way we mitigate foreground leakage in a power spectrum estimate, and two ways we 
 suppress noise biases. These methods are not novel to this analysis but here we frame them in the context of minimizing false 
