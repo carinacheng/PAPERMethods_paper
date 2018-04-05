@@ -1,4 +1,5 @@
-\documentclass[preprint2,numberedappendix,tighten]{aastex6}  % USE THIS TO MAKE BIB, THEN FORMAT USING EMULATEAPJ
+\documentclass[preprint2,numberedappendix,tighten]{aastex6}  
+% USE THIS TO MAKE BIB, THEN FORMAT USING EMULATEAPJ
 %\documentclass[twocolumn,numberedappendix]{emulateapj}
 \shorttitle{Characterizing Signal Loss, Error, and Bias in the 21cm Reionization Power Spectrum}
 \shortauthors{Cheng et al.}
@@ -63,6 +64,12 @@
 \newcommand{\mjk}[1]{ {\color{olive} \textbf{[MJK: #1]}} }
 \newcommand{\jea}[1]{{\color{blue} \textbf{[JEA: #1]}} }
 \newcommand{\jp}[1]{ {\color{pink} \textbf{[JCP: #1]}} } %y'all picked all the good colors
+
+\newcommand{\invC}{\ensuremath{C^{-1}}}
+\newcommand{\dC}[1]{\ensuremath{C_{,#1}}}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\PDeriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
 
 % Math shortcuts from Danny
 \newcommand{\Prob}{\mathbf{P}}
@@ -1690,6 +1697,70 @@ award 1701536. AL acknowledges support for this work by NASA through Hubble Fell
 \label{sec:Ack}
 
 % APPENDIX ---------------------------------------------------------------------------------
+
+\color{blue}
+
+\appendix
+\section{A toy model for inverse covariance weighting}
+\label{sec:icw_appendix}
+
+Assume we have $N$ data points where
+\begin{equation}
+\Delta_i = \sigma_i + \gamma_i
+\end{equation}
+and
+\begin{eqnarray}
+\langle \sigma_i \rangle & = & 0 \\
+\langle \sigma^2_i \rangle & = & s \\
+ \langle \sigma \sigma^T \rangle & = & s I_{N \times N} \equiv S
+\end{eqnarray}
+\begin{eqnarray}
+\langle \gamma_i \rangle & = & 0 \\
+\langle \gamma^2_i \rangle & = & g \\
+ \langle \gamma \gamma^T \rangle & = & g I_{N \times N} \equiv G
+\end{eqnarray}
+and in addition
+\begin{equation}
+\langle \sigma_i \gamma_j \rangle = 0
+\end{equation}
+That is, we have the sum of $N$ independent samples of two random variables and we wish to estimate the variance of one of the random variables in the sum; in this case, $s$.
+If we want to estimate $s$ using only the inverse covariance weighting, we find
+\begin{equation}
+\label{eq:CaseOneICW}
+\hat{s} = \half {\cal F}^{-1} \left( \Delta^T \invC \PDeriv{C}{s}  \invC \Delta \right)
+\end{equation}
+and plugging in the relevant quantities gives
+\begin{eqnarray}
+\hat{s} & = & \half \frac{2}{N} (s+g)^2 \left( \Delta^T \frac{1}{s+g} I \frac{1}{s+g} \Delta \right) \\
+& = & \frac{\Delta^T \Delta}{N}
+\end{eqnarray}
+We note that
+\begin{equation}
+\langle \hat{s} \rangle = s + g
+\end{equation}
+so we could derive that the correct additive bias is $g$, but this requires a separate step, and the ICW by itself does not provide an unbiased answer.  This is because the covariance structure of the contaminant and the data are identical.  In this case, it is necessary to use additional information to estimate the additive bias and subtract it.
+
+If instead of the foreground contaminant being given by Eq \ref{eq:ToyOne}, suppose we now have
+\begin{equation}
+\Delta_i = \sigma_i + \gamma m_i
+\end{equation}
+where again
+\begin{eqnarray}
+\langle \sigma_i \rangle & = & 0 \\
+\langle \sigma^2_i \rangle & = & s \\
+ \langle \sigma \sigma^T \rangle & = & s I_{N \times N} \equiv S
+\end{eqnarray}
+but now $\gamma$ is a random variable and $m_i$ is a fixed function of $i$ with
+\begin{eqnarray}
+\langle \gamma \rangle & = & 0 \\
+\langle \gamma^2 \rangle & = & g \\
+ \langle \gamma \gamma^T \rangle & = & g m m^T \equiv G \\
+ m^T m & = & 1
+\end{eqnarray}
+This is the case where each data point is an independent draw from a variable with a fixed variance $s$ we would like to estimate, and $m$ represents a mode which is correlated across many data points with correlation given by $m$, and amplitude in realization of $\gamma$.
+This is the essence of the toy model presented in Section \ref{sec:}
+
+\color{black}
 
 \appendix
 \section{A toy model for signal loss}
