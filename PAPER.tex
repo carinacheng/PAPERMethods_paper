@@ -290,10 +290,18 @@ Ultimately, we show that rigorous investigations into signal loss, error estimat
 \subsection{Signal Loss}
 \label{sec:SiglossOverview}
 
-Signal loss can arise in a variety of ways in the analysis pipeline, such as by fitting a polynomial during 
-spectral calibration, applying a delay-domain filter, or deriving weights from data and applying them to itself. Here we focus on signal loss associated with 
+Signal loss can arise in a variety of ways in the analysis pipeline, such as by fitting a polynomial during spectral calibration, applying a delay-domain filter, or deriving weights from data and applying them to itself. Here we focus on signal loss associated with 
 applying a weighting matrix to data, a loss that can be significant depending on the choice of weighting and one that was 
 previously underestimated in the \citetalias{ali_et_al2015} analysis.
+
+% Put all of the (O)QE / ICW theory here, rather than sprinkled throughout this section.
+
+% Some things we never quite say as explicitly as I'd like:
+% - "foreground suppression" happens because the foregrounds have a different covariance structure (Figure 4), and we 
+% hope we pick this out by picking big eigenvalues
+% - additive bias is a thing
+
+\subsubsection{The Quadratic Estimator Method}
 
 Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight 
 foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum 
@@ -327,22 +335,33 @@ We normalize our power spectrum estimates using the matrix $\textbf{M}$:
 \textbf{M}$. For simplicity in this section we choose $\textbf{M}$ to be diagonal, although we explore other cases for the analysis 
 of PAPER-64 data as explained in Section \ref{sec:Bias}, subject to the constraint that each element of $\widehat{\textbf{P}}$ is a weighted sum of the elements of $\textbf{P}$ with weights that sum to unity.
 
-In the next three sections, we use toy models to investigate the effects of weighting matrices on signal loss by experimenting with different matrices $\textbf{R}$ and examining their impact on the resulting power spectrum estimates $\widehat{\textbf{P}}$. Our goal in 
-experimenting with weighting is to suppress foregrounds and investigate EoR losses associated with it. We note that we 
-purposely take a thorough and pedagogical approach to describing the toy model examples given in the next few sections. The specifics of how signal loss appears in PAPER's analysis is later described in Section 
-\ref{sec:Sigloss}.
-
-\subsubsection{Toy Model: Inverse Covariance Weighting}
-\label{sec:toymodel}
-
 One choice for the weighting matrix $\textbf{R}$ used in power spectrum analysis is an inverse covariance matrix. This type of weighting is attractive for power spectrum analyses because it yields the smallest possible error bars on a measurement. Said differently, it gives the minimum variance estimate of the power spectrum (\citealt{tegmark_et_al1997a}; \citealt{bond_et_al1998}). In \citet{liu_tegmark2011}, it was shown that inverse covariance weighting also serves as a way to down-weight some portion of foregrounds (namely, those which do not share the same covariance structure as the cosmological signal), motivating our use of the weighting for previous PAPER analyses.
 
 One important feature of weighting data by its true inverse covariance is that, while it can suppress some foregrounds, it cannot suppress the EoR signal (nor foreground modes that masquerade as signal-like modes). By construction, inverse covariance weighting in the quadratic estimator does not lead to signal loss. Therefore, in an ideal world with perfect foreground, 
 instrumental, and EoR models, we could form $\textbf{C}$ in a way that accurately describes our measured data and use inverse covariance weighting to produce minimum variance power spectrum estimates without destroying the signal. In other words, the optimal quadratic estimator is by construction an unbiased estimator of the power spectrum.
 
-In practice, we do not have perfect models for $\textbf{C}$, and it is the use of an estimated covariance $\widehat{\textbf{C}}$ instead of the true covariance $\textbf{C}$ that can lead to loss. We will now build intuition into how empirically estimated inverse covariance weighting can give rise to signal loss through the use of a toy model.
+%In practice, we do not have perfect models for $\textbf{C}$, and it is the use of an estimated covariance $\widehat{\textbf{C}}$ instead of the true covariance $\textbf{C}$ that can lead to loss. 
 
-We construct a simple dataset that contains visibility data with $100$ time 
+Without a perfect model for the covariance matrix $\textbf{C}$ of our data, one attractive way to estimate it is to empirically derive it from the data $\textbf{x}$ itself. Similar types of weightings that are based on variance information in data are done in \citet{chang_et_al2010} and \citet{switzer_et_al2015}. In previous PAPER analyses, one time-averages the data such that:
+
+\begin{equation}
+\widehat{\textbf{C}} \equiv \langle\textbf{xx}^{\dagger}\rangle_{t},
+\end{equation}
+
+\noindent assuming $\langle\textbf{x}\rangle_{t} = 0$ (a reasonable assumption since fringes average to $0$ over a sufficient 
+amount of time), where $\langle \rangle_{t}$ denotes a finite average over time. The weighting matrix for our empirically estimated inverse covariance weighting is then $
+\textbf{R} \equiv \widehat{\textbf{C}}^{-1}$.
+
+% ---
+
+In the next three sections, we use toy models to investigate the effects of weighting matrices on signal loss by experimenting with different matrices $\textbf{R}$ and examining their impact on the resulting power spectrum estimates $\widehat{\textbf{P}}$. Our goal in experimenting with weighting is to suppress foregrounds and investigate EoR losses associated with it. We note that we 
+purposely take a thorough and pedagogical approach to describing the toy model examples given in the next few sections. The specifics of how signal loss appears in PAPER's analysis is later described in Section 
+\ref{sec:Sigloss}.
+
+\subsubsection{Toy Model: Empirical Inverse Covariance Weighting}
+\label{sec:toymodel}
+
+We will now build intuition into how empirically estimated inverse covariance weighting can give rise to signal loss through the use of a toy model.  We construct a simple dataset that contains visibility data with $100$ time 
 integrations and $20$ frequency channels. This model represents realistic dimensions of about an hour of PAPER data which 
 might be used for a power spectrum analysis. For PAPER-64 (both the \citetalias{ali_et_al2015} analysis and our new analysis) we use $\sim8$ hours of data (with channel 
 widths of $0.5$ MHz and integration times of $43$ seconds), but here we scale it down with no loss of 
@@ -367,15 +386,7 @@ time and frequency. We model a mock visibility of an EoR signal as a random Gaus
 	\label{fig:toy_sigloss1}
 \end{figure}
 
-Without a perfect model for the covariance matrix $\textbf{C}$ of our data, one attractive way to estimate it is to empirically derive it from the data $\textbf{x}$ itself. Similar types of weightings that are based on variance information in data are done in \citet{chang_et_al2010} and \citet{switzer_et_al2015}. In previous PAPER analyses, one time-averages the data such that:
 
-\begin{equation}
-\widehat{\textbf{C}} \equiv \langle\textbf{xx}^{\dagger}\rangle_{t},
-\end{equation}
-
-\noindent assuming $\langle\textbf{x}\rangle_{t} = 0$ (a reasonable assumption since fringes average to $0$ over a sufficient 
-amount of time), where $\langle \rangle_{t}$ denotes a finite average over time. The weighting matrix for our empirically estimated inverse covariance weighting is then $
-\textbf{R} \equiv \widehat{\textbf{C}}^{-1}$.
 
 First, we compute the power spectrum of our toy model dataset $\textbf{x}$ using QE formalism and $\textbf{R} \equiv \widehat{\textbf{C}}^{-1}$. 
 The result is shown in green in the left plot of Figure \ref{fig:toy_sigloss3}. Also plotted in the figure are the uniform-weighted ($\textbf{R} \equiv \textbf{I}$) power spectrum of the individual components $
@@ -398,13 +409,11 @@ recover the EoR signal --- it exhibits the correct shape, but the amplitude leve
 multiplicative bias (per $k$) to estimates of the signal. For a toy model mathematical derivation of signal loss arising from a data-estimated covariance matrix, see Appendix \ref{sec:sigloss_appendix}. Here we will describe the origin of this signal loss 
 intuitively.
 
-To begin to understand the lossy behavior of this result, we can closely study our estimated covariance eigenspectrum, shown in Figure \ref{fig:toy_sigloss2}. Since it is estimated from our data, its eigenspectrum differs from the eigenspectrum of the true covariance $\textbf{C}$, and this difference has important consequences on our result. 
+% While a later section does show that the large eigenvalue modes converge to the eigenvectors quicker, it is _not_ true that modes with big eigenvalues are downweighted more.  It is the modes which have a structure different from dC/dp_alpha.  Our regularization actually forces both eigenvalues and eigenmodes to be like the "signal" part of the covariance.  Thus, I don't think the next two paragraphs are helping the explanation of what is going on.
 
-An eigenspectrum ranks the eigenvalues of a matrix from 
-highest to lowest and can be thought of as a spectrum of weights that are given to each spectral mode in the data. In other 
-words, the eigenvalues encode the strength of different shapes in the dataset. The eigenspectrum of the identity matrix $
-\textbf{I}$ is flat (all $1$'s) because it gives equal weighting to all modes. In our application, covariance matrices tend to have sloped eigenspectra, meaning that modes are given different weights in QE power spectrum estimation. The modes with the highest eigenvalues are 
-down-weighted the most. 
+%To begin to understand the lossy behavior of this result, we can closely study our estimated covariance eigenspectrum, shown in Figure \ref{fig:toy_sigloss2}. Since it is estimated from our data, its eigenspectrum differs from the eigenspectrum of the true covariance $\textbf{C}$, and this difference has important consequences on our result. 
+
+%An eigenspectrum ranks the eigenvalues of a matrix from highest to lowest and can be thought of as a spectrum of weights that are given to each spectral mode in the data. In other words, the eigenvalues encode the strength of different shapes in the dataset. The eigenspectrum of the identity matrix $ \textbf{I}$ is flat (all $1$'s) because it gives equal weighting to all modes. In our application, covariance matrices tend to have sloped eigenspectra, meaning that modes are given different weights in QE power spectrum estimation. The modes with the highest eigenvalues are down-weighted the most. 
 
 \begin{figure}
 	\centering
@@ -415,9 +424,13 @@ sinusoid. These empirically estimated covariance matrices have eigenspectra that
 	\label{fig:toy_sigloss2}
 \end{figure}
 
-Because $\widehat{\textbf{C}}$ is estimated from the data, its eigenvectors and eigenvalues are strongly coupled to the particular data realization that was used to compute it. For example, the highest-valued eigenmode of $\widehat{\textbf{C}}$ (highest eigenvalue) describes the sinusoid foreground mode in the toy model (the peak in Figure \ref{fig:toy_sigloss3}). In Figure \ref{fig:toy_sigloss12} we show the estimated covariances of our toy model datasets along with $\widehat{\textbf{C}}^{-1}$ weighted data. The foreground sinusoid is clearly visible in $\widehat{\textbf{C}}_{\rm FG}$.
+Because $\widehat{\textbf{C}}$ is estimated from the data, its eigenvectors and eigenvalues are strongly coupled to the particular data realization that was used to compute it.  In this case, the eigenmode of $\widehat{\textbf{C}}$ with the largest eigenvalue describes the sinusoid foreground mode in the toy model (the peak in Figure \ref{fig:toy_sigloss3}).  In Figure \ref{fig:toy_sigloss12} we show the estimated covariances of our toy model datasets along with $\widehat{\textbf{C}}^{-1}$ weighted data. The foreground sinusoid is clearly visible in $\widehat{\textbf{C}}_{\rm FG}$.
 
-In general, the highest-valued eigenmodes of $\widehat{\textbf{C}}$ typically (but not always) describe bright foregrounds --- the most prominent shapes in a dataset. For these FG-dominating modes, where foregrounds outshine the EoR signal, down-weighting is beneficial. In some sense, we desire signal loss in this regime, if by `signal' we mean `foregrounds.' In this case it is beneficial for these eigenmodes to be coupled to the data in a way that produces loss. For our toy model, the successful suppression of the foreground mode is demonstrated in Figure \ref{fig:toy_sigloss3} by the missing foreground peak in the weighted power spectrum estimate (green).
+%In general, 
+We have made the assumption that the highest-valued eigenmodes of $\widehat{\textbf{C}}$ will typically (but not always) describe bright foregrounds, though we have not checked that indeed the eigenvectors do describe correlations between frequencies.
+% --- the most prominent shapes in a dataset. 
+%For these FG-dominating modes, where foregrounds outshine the EoR signal, 
+If such modes do describe foregrounds, then down-weighting is beneficial. In some sense, we desire signal loss in this regime, if by `signal' we mean `foregrounds.'  In this case it is beneficial for these eigenmodes to be coupled to the data in a way that produces loss. For our toy model, the successful suppression of the foreground mode is demonstrated in Figure \ref{fig:toy_sigloss3} by the missing foreground peak in the weighted power spectrum estimate (green).
 
 %If the true covariance matrix $\textbf{C}$ of our data was known, then every single eigenvalue and eigenvector of $\textbf{C}$ would be 
 %representative of real fluctuations in the data. However, when using an estimated $\widehat{\textbf{C}}$ that is derived from one 
