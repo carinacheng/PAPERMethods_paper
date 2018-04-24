@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex PAPER"] 1523029188 "PAPER.aux" "PAPER.bbl" "PAPER" 1523053564
+["bibtex PAPER"] 1524608899 "PAPER.aux" "PAPER.bbl" "PAPER" 1524608900
   "./apj.bst" 1513707241 33547 86a51e6ce91b7e09b519153453ff758a ""
-  "PAPER.aux" 1523029189 36584 a90c8c5850746c02e9c63734110c933f ""
-  "PAPERNotes.bib" 1523029188 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "PAPER.aux" 1524608900 36765 4d552dd54ccfa3b8d6764ba28024c267 ""
+  "PAPERNotes.bib" 1524608899 0 d41d8cd98f00b204e9800998ecf8427e ""
   "refs.bib" 1522804774 173497 9bc7fe6961f7ec7fb8c89285d5f2488f ""
   (generated)
-  "PAPER.blg"
   "PAPER.bbl"
-["pdflatex"] 1523029188 "PAPER.tex" "PAPER.pdf" "PAPER" 1523053564
+  "PAPER.blg"
+["pdflatex"] 1524608899 "PAPER.tex" "PAPER.pdf" "PAPER" 1524608900
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/helvetic/phvr.tfm" 1136768653 2504 ba6584b616b92101c768b6c4ffb32dd0 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -136,9 +136,9 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "PAPER.aux" 1523029189 36584 a90c8c5850746c02e9c63734110c933f ""
-  "PAPER.bbl" 1523029188 28124 49c8168151522b28a05418caa9ab40ae "bibtex PAPER"
-  "PAPER.tex" 1522943722 202535 7c46aeb75b45d9272c3b54e12c45ea0c ""
+  "PAPER.aux" 1524608900 36765 4d552dd54ccfa3b8d6764ba28024c267 ""
+  "PAPER.bbl" 1524608899 28124 49c8168151522b28a05418caa9ab40ae "bibtex PAPER"
+  "PAPER.tex" 1524608897 203907 d56db1d983f8b60f430e7b437de31376 ""
   "aastex6.cls" 1513707241 168968 ea59726477d16cc1c4f8482c69d576fe ""
   "plots/ant_layout_aspect.pdf" 1522469128 12030 496065f0924449cb6054f8b034d3ee94 ""
   "plots/frp.pdf" 1522469128 17301 def01bd7dbc6b2ad3f67417165eb5723 ""
@@ -176,7 +176,7 @@
   "plots/toy_sigloss8.pdf" 1522469128 15215 d7bb9b645d85734632e28b96e602c938 ""
   "plots/toy_sigloss9.pdf" 1522469128 15310 fe04a4d0c57ce844ab3542ed4cf72f12 ""
   (generated)
-  "PAPER.pdf"
-  "PAPER.aux"
   "PAPERNotes.bib"
+  "PAPER.aux"
   "PAPER.log"
+  "PAPER.pdf"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  11 APR 2018 13:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  24 APR 2018 18:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -909,16 +909,16 @@ Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
 [8 <./plots/toy_sigloss15.pdf> <./plots/toy_sigloss5.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/toy_sigloss5.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/toy_sigloss5.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
 > <./plots/toy_sigloss16.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/toy_sigloss16.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/toy_sigloss16.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
 > <./plots/toy_sigloss17.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/toy_sigloss17.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/toy_sigloss17.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
 >]
 
 LaTeX Warning: A float is stuck (cannot be placed) on input line 573.
@@ -1018,12 +1018,12 @@ Package pdftex.def Info: plots/ant_layout_aspect.pdf used on input line 895.
 (pdftex.def)             Requested size: 242.26653pt x 110.16196pt.
  [14 <./plots/toy_bias1.pdf> <./plots/toy_bias2.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/toy_bias2.pdf): PDF 
-inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/toy_bias2.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
 > <./plots/ant_layout_aspect.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ant_layout_aspect.pd
-f): PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/ant_layout_aspect.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
 >] <plots/frp.pdf, id=1655, 498.216pt x 353.21333pt>
 File: plots/frp.pdf Graphic file (type pdf)
  <use plots/frp.pdf>
@@ -1060,12 +1060,12 @@ Package pdftex.def Info: plots/ps2_data.pdf used on input line 1265.
 
 [18] [19 <./plots/sigloss_transfercurve_posneg.pdf> <./plots/ps1_data.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps1_data.pdf): PDF i
-nclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/ps1_data.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
 > <./plots/ps2_data.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps2_data.pdf): PDF i
-nclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/ps2_data.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
 >] <plots/sigloss_modeloop_2panel.pdf, id=2110, 578.16pt x 610.68152pt>
 File: plots/sigloss_modeloop_2panel.pdf Graphic file (type pdf)
 
@@ -1093,8 +1093,8 @@ LaTeX Warning: A float is stuck (cannot be placed) on input line 1344.
 
 [22 <./plots/ps1_data_add.pdf> <./plots/ps2_data_add.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps2_data_add.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/ps2_data_add.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
 >] [23]
 Underfull \hbox (badness 2582) in paragraph at lines 1430--1435
  \OT1/cmr/m/n/10 the num-ber of base-lines en-ter-ing the group
@@ -1129,12 +1129,12 @@ Package pdftex.def Info: plots/noise_errors.pdf used on input line 1517.
 (pdftex.def)             Requested size: 242.26653pt x 183.54149pt.
  [25] [26 <./plots/ps1_noise_add.pdf> <./plots/ps2_noise_add.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps2_noise_add.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/ps2_noise_add.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
 > <./plots/noise_errors.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/noise_errors.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/noise_errors.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
 >] <plots/null_bls.pdf, id=2701, 578.16pt x 433.62pt>
 File: plots/null_bls.pdf Graphic file (type pdf)
  <use plots/null_bls.pdf>
@@ -1155,13 +1155,18 @@ Package pdftex.def Info: plots/null_eo.pdf used on input line 1610.
 
 [27] [28 <./plots/null_bls.pdf> <./plots/null_lsts.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/null_lsts.pdf): PDF 
-inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/null_lsts.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
 > <./plots/null_eo.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/null_eo.pdf): PDF in
-clusion: multiple pdfs with page group included in a single page
->] [29]
+pdfTeX warning: pdflatex (file ./plots/null_eo.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+>]
+
+LaTeX Warning: Reference `eq:QuadraticEstimator' on page 29 undefined on input 
+line 1720.
+
+[29]
 
 LaTeX Warning: Reference `eq:ToyOne' on page 30 undefined on input line 1756.
 
@@ -1173,14 +1178,14 @@ has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1779 \section{A toy model for signal loss}
-                                            pdfTeX warning (ext4): destination 
-with the same identifier (name{equation.A.1}) has been already used, duplicate 
-ignored
+                                             [30]pdfTeX warning (ext4): destina
+tion with the same identifier (name{equation.A.2}) has been already used, dupli
+cate ignored
 <to be read again> 
                    \relax 
-l.1786 \begin{equation}
-                        [30]pdfTeX warning (ext4): destination with the same id
-entifier (name{equation.A.5}) has been already used, duplicate ignored
+l.1790 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.A.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1805 \begin{equation}
@@ -1200,7 +1205,7 @@ ier (name{equation.A.10}) has been already used, duplicate ignored
                    \relax 
 l.1831 \begin{equation}
                         [31pdfTeX warning (ext4): destination with the same ide
-ntifier (name{equation.A.2}) has been already used, duplicate ignored
+ntifier (name{equation.A.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -1216,10 +1221,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 16854 strings out of 493089
- 280627 string characters out of 6134842
+ 16856 strings out of 493089
+ 280659 string characters out of 6134842
  420249 words of memory out of 5000000
- 19907 multiletter control sequences out of 15000+600000
+ 19909 multiletter control sequences out of 15000+600000
  14973 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,11n,53p,10370b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1247,7 +1252,7 @@ ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (33 pages, 2485631 bytes).
+Output written on PAPER.pdf (33 pages, 2486696 bytes).
 PDF statistics:
  3097 PDF objects out of 3580 (max. 8388607)
  1488 compressed objects within 15 object streams

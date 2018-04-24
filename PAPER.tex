@@ -1717,7 +1717,7 @@ award 1701536. AL acknowledges support for this work by NASA through Hubble Fell
 \section{A toy model for inverse covariance weighting}
 \label{sec:icw_appendix}
 
-Assume we have $N$ data points where
+We illustrate the way in which the quadratic estimator, Equation \ref{eq:QuadraticEstimator}, is intended to estimate the power spectrum by considering the simpler, but similar, case of estimating the variance of data.  We have specifically chosen a toy model where the data covariance is diagonal, as we expect the EoR signal to be.  We assume we have $N$ data points $\Delta_i$ which are the sum of a desired signal $\sigma_i$ and some contaminant $\kappa_i$
 \begin{equation}
 \Delta_i = \sigma_i + \gamma_i
 \end{equation}
@@ -1751,7 +1751,7 @@ We note that
 \begin{equation}
 \langle \hat{s} \rangle = s + g
 \end{equation}
-so we could derive that the correct additive bias is $g$, but this requires a separate step, and the ICW by itself does not provide an unbiased answer.  This is because the covariance structure of the contaminant and the data are identical.  In this case, it is necessary to use additional information to estimate the additive bias and subtract it.
+so in this case, {\it where the covariance structure of the contaminant is identical to the signal}, it is only possible to achieve an unbiased estimate by using some additional information to estimate the additive bias and subtract it.
 
 If instead of the foreground contaminant being given by Eq \ref{eq:ToyOne}, suppose we now have
 \begin{equation}
