@@ -1,4 +1,4 @@
-\begin{thebibliography}{93}
+\begin{thebibliography}{100}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Ade {et~al.}(2008)Ade, Bock, Bowden, Brown, Cahill, Carlstrom,
@@ -112,6 +112,11 @@ Bischoff, C., {et~al.} 2011, The Astrophysical Journal, 741, 111
 \bibitem[{{Bowman} \& {Rogers}(2010)}]{bowman2010}
 {Bowman}, J.~D., \& {Rogers}, A.~E.~E. 2010, \nat, 468, 796
 
+\bibitem[{{Bowman} {et~al.}(2018){Bowman}, {Rogers}, {Monsalve}, {Mozdzen}, \&
+  {Mahesh}}]{bowman_et_al2018}
+{Bowman}, J.~D., {Rogers}, A.~E.~E., {Monsalve}, R.~A., {Mozdzen}, T.~J., \&
+  {Mahesh}, N. 2018, \nat, 555, 67
+
 \bibitem[{{Burns} {et~al.}(2012){Burns}, {Lazio}, {Bale}, {Bowman}, {Bradley},
   {Carilli}, {Furlanetto}, {Harker}, {Loeb}, \& {Pritchard}}]{burns2012}
 {Burns}, J.~O., {et~al.} 2012, Advances in Space Research, 49, 433
@@ -120,6 +125,11 @@ Bischoff, C., {et~al.} 2011, The Astrophysical Journal, 741, 111
   {Peterson}}]{chang_et_al2010}
 {Chang}, T.-C., {Pen}, U.-L., {Bandura}, K., \& {Peterson}, J.~B. 2010, \nat,
   466, 463
+
+\bibitem[{Chapman {et~al.}(2012)Chapman, Abdalla, Harker, Jelić, Labropoulos,
+  Zaroubi, Brentjens, de~Bruyn, \& Koopmans}]{chapman_et_al2012}
+Chapman, E., {et~al.} 2012, Monthly Notices of the Royal Astronomical Society,
+  423, 2518
 
 \bibitem[{Chiang {et~al.}(2010)Chiang, Ade, Barkats, Battle, Bierman, Bock,
   Dowell, Duband, Hivon, Holzapfel, Hristov, Jones, Keating, Kovac, Kuo, Lange,
@@ -257,11 +267,28 @@ Jacobs, D.~C., {et~al.} 2015, \apj, 801, 51
 Keating, G.~K., Marrone, D.~P., Bower, G.~C., Leitch, E., Carlstrom, J.~E., \&
   DeBoer, D.~R. 2016, The Astrophysical Journal, 830, 34
 
+\bibitem[{{Kerrigan} {et~al.}(2018){Kerrigan}, {Pober}, {Ali}, {Cheng},
+  {Parsons}, {Aguirre}, {Barry}, {Bradley}, {Bernardi}, {Carilli}, {DeBoer},
+  {Dillon}, {Jacobs}, {Kohn}, {Kolopanis}, {Lanman}, {Li}, {Liu}, \&
+  {Sullivan}}]{kerrigan_et_al2018}
+{Kerrigan}, J., {et~al.} 2018, ArXiv e-prints
+
 \bibitem[{{Kohn} {et~al.}(2016){Kohn}, {Aguirre}, {Nunhokee}, {Bernardi},
   {Pober}, {Ali}, {Bradley}, {Carilli}, {DeBoer}, {Gugliucci}, {Jacobs},
   {Klima}, {MacMahon}, {Manley}, {Moore}, {Parsons}, {Stefan}, \&
   {Walbrugh}}]{kohn_et_al2016}
 {Kohn}, S.~A., {et~al.} 2016, \apj, 823, 88
+
+\bibitem[{{Koopmans} {et~al.}(2015){Koopmans}, {Pritchard}, {Mellema},
+  {Aguirre}, {Ahn}, {Barkana}, {van Bemmel}, {Bernardi}, {Bonaldi}, {Briggs},
+  {de Bruyn}, {Chang}, {Chapman}, {Chen}, {Ciardi}, {Dayal}, {Ferrara},
+  {Fialkov}, {Fiore}, {Ichiki}, {Illiev}, {Inoue}, {Jelic}, {Jones}, {Lazio},
+  {Maio}, {Majumdar}, {Mack}, {Mesinger}, {Morales}, {Parsons}, {Pen},
+  {Santos}, {Schneider}, {Semelin}, {de Souza}, {Subrahmanyan}, {Takeuchi},
+  {Vedantham}, {Wagg}, {Webster}, {Wyithe}, {Datta}, \&
+  {Trott}}]{koopmans_et_al2015}
+{Koopmans}, L., {et~al.} 2015, Advancing Astrophysics with the Square Kilometre
+  Array (AASKA14), 1
 
 \bibitem[{Liu \& Parsons(2016)}]{liu_parsons_2016}
 Liu, A., \& Parsons, A.~R. 2016, Monthly Notices of the Royal Astronomical
@@ -275,9 +302,6 @@ Liu, A., \& Parsons, A.~R. 2016, Monthly Notices of the Royal Astronomical
 \bibitem[{{Liu} {et~al.}(2014{\natexlab{b}}){Liu}, {Parsons}, \&
   {Trott}}]{liu_et_al2014b}
 ---. 2014{\natexlab{b}}, \prd, 90, 023019
-
-\bibitem[{{Liu} \& {Tegmark}(2011)}]{LT11}
-{Liu}, A., \& {Tegmark}, M. 2011, \prd, 83, 103006
 
 \bibitem[{Liu \& Tegmark(2011)}]{liu_tegmark2011}
 Liu, A., \& Tegmark, M. 2011, Phys. Rev. D, 83, 103006
@@ -367,32 +391,43 @@ Moore, D.~F., Aguirre, J.~E., Parsons, A.~R., Jacobs, D.~C., \& Pober, J.~C.
 \bibitem[{{Petrovic} \& {Oh}(2011)}]{petrovic_and_oh2011}
 {Petrovic}, N., \& {Oh}, S.~P. 2011, \mnras, 413, 2103
 
+\bibitem[{{Pober} {et~al.}(2016{\natexlab{a}}){Pober}, {Greig}, \&
+  {Mesinger}}]{pober_et_al2016b}
+{Pober}, J.~C., {Greig}, B., \& {Mesinger}, A. 2016{\natexlab{a}}, \mnras, 463,
+  L56
+
 \bibitem[{{Pober} {et~al.}(2012){Pober}, {Parsons}, {Jacobs}, {Aguirre},
   {Bradley}, {Carilli}, {Gugliucci}, {Moore}, \& {Parashare}}]{pober_et_al2012}
 {Pober}, J.~C., {et~al.} 2012, \aj, 143, 53
 
+\bibitem[{Pober {et~al.}(2013)Pober, Parsons, Aguirre, Ali, Bradley, Carilli,
+  DeBoer, Dexter, Gugliucci, Jacobs, Klima, MacMahon, Manley, Moore, Stefan, \&
+  Walbrugh}]{pober_et_al2013b}
+Pober, J.~C., {et~al.} 2013, The Astrophysical Journal Letters, 768, L36
+
 \bibitem[{{Pober} {et~al.}(2013){Pober}, {Parsons}, {DeBoer}, {McDonald},
   {McQuinn}, {Aguirre}, {Ali}, {Bradley}, {Chang}, \&
   {Morales}}]{pober_et_al2013}
----. 2013, \aj, 145, 65
+{Pober}, J.~C., {et~al.} 2013, \aj, 145, 65
 
 \bibitem[{{Pober} {et~al.}(2014){Pober}, {Liu}, {Dillon}, {Aguirre}, {Bowman},
   {Bradley}, {Carilli}, {DeBoer}, {Hewitt}, {Jacobs},
   {et~al.}}]{pober_et_al2014}
 ---. 2014, \apj, 782, 66
 
-\bibitem[{{Pober} {et~al.}(2016){Pober}, {Hazelton}, {Beardsley}, {Barry},
-  {Martinot}, {Sullivan}, {Morales}, {Bell}, {Bernardi}, {Bhat}, {Bowman},
-  {Briggs}, {Cappallo}, {Carroll}, {Corey}, {de Oliveira-Costa}, {Deshpande},
-  {Dillon}, {Emrich}, {Ewall-Wice}, {Feng}, {Goeke}, {Greenhill}, {Hewitt},
-  {Hindson}, {Hurley-Walker}, {Jacobs}, {Johnston-Hollitt}, {Kaplan}, {Kasper},
-  {Kim}, {Kittiwisit}, {Kratzenberg}, {Kudryavtseva}, {Lenc}, {Line}, {Loeb},
-  {Lonsdale}, {Lynch}, {McKinley}, {McWhirter}, {Mitchell}, {Morgan}, {Neben},
-  {Oberoi}, {Offringa}, {Ord}, {Paul}, {Pindor}, {Prabu}, {Procopio}, {Riding},
-  {Rogers}, {Roshi}, {Sethi}, {Udaya Shankar}, {Srivani}, {Subrahmanyan},
-  {Tegmark}, {Thyagarajan}, {Tingay}, {Trott}, {Waterson}, {Wayth}, {Webster},
-  {Whitney}, {Williams}, {Williams}, \& {Wyithe}}]{pober_et_al2016a}
----. 2016, \apj, 819, 8
+\bibitem[{{Pober} {et~al.}(2016{\natexlab{b}}){Pober}, {Hazelton}, {Beardsley},
+  {Barry}, {Martinot}, {Sullivan}, {Morales}, {Bell}, {Bernardi}, {Bhat},
+  {Bowman}, {Briggs}, {Cappallo}, {Carroll}, {Corey}, {de Oliveira-Costa},
+  {Deshpande}, {Dillon}, {Emrich}, {Ewall-Wice}, {Feng}, {Goeke}, {Greenhill},
+  {Hewitt}, {Hindson}, {Hurley-Walker}, {Jacobs}, {Johnston-Hollitt}, {Kaplan},
+  {Kasper}, {Kim}, {Kittiwisit}, {Kratzenberg}, {Kudryavtseva}, {Lenc}, {Line},
+  {Loeb}, {Lonsdale}, {Lynch}, {McKinley}, {McWhirter}, {Mitchell}, {Morgan},
+  {Neben}, {Oberoi}, {Offringa}, {Ord}, {Paul}, {Pindor}, {Prabu}, {Procopio},
+  {Riding}, {Rogers}, {Roshi}, {Sethi}, {Udaya Shankar}, {Srivani},
+  {Subrahmanyan}, {Tegmark}, {Thyagarajan}, {Tingay}, {Trott}, {Waterson},
+  {Wayth}, {Webster}, {Whitney}, {Williams}, {Williams}, \&
+  {Wyithe}}]{pober_et_al2016a}
+---. 2016{\natexlab{b}}, \apj, 819, 8
 
 \bibitem[{{Pope} \& {Szapudi}(2008)}]{pope_szapudi2008}
 {Pope}, A.~C., \& {Szapudi}, I. 2008, \mnras, 389, 766
@@ -448,6 +483,11 @@ Sherwin, B.~D., {et~al.} 2017, Phys. Rev. D, 95, 123529
 \bibitem[{{Tegmark}(1997)}]{tegmark_et_al1997a}
 {Tegmark}, M. 1997, \prd, 55, 5895
 
+\bibitem[{{Thompson} {et~al.}(2001){Thompson}, {Moran}, \&
+  {Swenson}}]{thompson_et_al2001}
+{Thompson}, A.~R., {Moran}, J.~M., \& {Swenson}, Jr., G.~W. 2001,
+  {Interferometry and Synthesis in Radio Astronomy, 2nd Edition}
+
 \bibitem[{{Thyagarajan} {et~al.}(2013){Thyagarajan}, {Udaya Shankar},
   {Subrahmanyan}, {Arcus}, {Bernardi}, {Bowman}, {Briggs}, {Bunton},
   {Cappallo}, {Corey}, {deSouza}, {Emrich}, {Gaensler}, {Goeke}, {Greenhill},
@@ -498,6 +538,11 @@ Vedantham, H., Shankar, N.~U., \& Subrahmanyan, R. 2012, The Astrophysical
 \bibitem[{Wang {et~al.}(2013)Wang, Xu, An, Gu, Guo, Li, Wang, Liu,
   Martineau-Huynh, \& Wu}]{wang_et_al2013}
 Wang, J., {et~al.} 2013, The Astrophysical Journal, 763, 90
+
+\bibitem[{Wolz {et~al.}(2014)Wolz, Abdalla, Blake, Shaw, Chapman, \&
+  Rawlings}]{wolz_et_al2014}
+Wolz, L., Abdalla, F.~B., Blake, C., Shaw, J.~R., Chapman, E., \& Rawlings, S.
+  2014, Monthly Notices of the Royal Astronomical Society, 441, 3271
 
 \bibitem[{{Wu}(2009)}]{wu2009}
 {Wu}, X. 2009, in Bulletin of the American Astronomical Society, Vol.~41,
