@@ -1717,25 +1717,21 @@ award 1701536. AL acknowledges support for this work by NASA through Hubble Fell
 \section{A toy model for inverse covariance weighting}
 \label{sec:icw_appendix}
 
-We illustrate the way in which the quadratic estimator, Equation \ref{eq:QuadraticEstimator}, is intended to estimate the power spectrum by considering the simpler, but similar, case of estimating the variance of data.  We have specifically chosen a toy model where the data covariance is diagonal, as we expect the EoR signal to be.  We assume we have $N$ data points $\Delta_i$ which are the sum of a desired signal $\sigma_i$ and some contaminant $\kappa_i$
+We illustrate the way in which the quadratic estimator, Equation \ref{eq:QuadraticEstimator}, is intended to estimate the power spectrum of EoR in the presence of contamination by other terms by considering the simpler, but similar, case of estimating the variance of data.  We have specifically chosen a toy model where the data covariance is diagonal, as we expect the EoR signal to be.  We assume we have $N$ data points $\Delta_i$ which are the sum of a desired signal $\sigma_i$ and some contaminant $\phi_i$
 \begin{equation}
-\Delta_i = \sigma_i + \gamma_i
+\Delta_i = \sigma_i + \phi_i
 \end{equation}
-and
-\begin{eqnarray}
-\langle \sigma_i \rangle & = & 0 \\
-\langle \sigma^2_i \rangle & = & s \\
- \langle \sigma \sigma^T \rangle & = & s I_{N \times N} \equiv S
-\end{eqnarray}
-\begin{eqnarray}
-\langle \gamma_i \rangle & = & 0 \\
-\langle \gamma^2_i \rangle & = & g \\
- \langle \gamma \gamma^T \rangle & = & g I_{N \times N} \equiv G
-\end{eqnarray}
-and in addition
+with 
 \begin{equation}
-\langle \sigma_i \gamma_j \rangle = 0
+\langle \sigma_i \rangle = 0; \; \langle \sigma^2_i \rangle = s; \; {\rm and}~\langle \sigma \sigma^T \rangle = s I_{N \times N} \equiv S
 \end{equation}
+and we wish to estimate $s$.  The contaminant has a similar structure for its covariance, and is assumed uncorrelated
+\begin{equation}
+\langle \sigma_i \rangle = 0; \; \langle \sigma^2_i \rangle = s; \; {\rm and}~\langle \sigma \sigma^T \rangle = s I_{N \times N} \equiv S
+\end{equation}
+$\langle \phi_i \rangle = 0$, 
+$\langle \phi^2_i \rangle = g$, $\angle \phi \phi^T \rangle = g I_{N \times N} \equiv F$, 
+$\langle \sigma_i \phi_j \rangle = 0$.
 That is, we have the sum of $N$ independent samples of two random variables and we wish to estimate the variance of one of the random variables in the sum; in this case, $s$.
 If we want to estimate $s$ using only the inverse covariance weighting, we find
 \begin{equation}
@@ -1755,7 +1751,7 @@ so in this case, {\it where the covariance structure of the contaminant is ident
 
 If instead of the foreground contaminant being given by Eq \ref{eq:ToyOne}, suppose we now have
 \begin{equation}
-\Delta_i = \sigma_i + \gamma m_i
+\Delta_i = \sigma_i + \phi m_i
 \end{equation}
 where again
 \begin{eqnarray}
@@ -1763,14 +1759,14 @@ where again
 \langle \sigma^2_i \rangle & = & s \\
  \langle \sigma \sigma^T \rangle & = & s I_{N \times N} \equiv S
 \end{eqnarray}
-but now $\gamma$ is a random variable and $m_i$ is a fixed function of $i$ with
+but now $\phi$ is a random variable and $m_i$ is a fixed function of $i$ with
 \begin{eqnarray}
-\langle \gamma \rangle & = & 0 \\
-\langle \gamma^2 \rangle & = & g \\
- \langle \gamma \gamma^T \rangle & = & g m m^T \equiv G \\
+\langle \phi \rangle & = & 0 \\
+\langle \phi^2 \rangle & = & g \\
+ \langle \phi \phi^T \rangle & = & g m m^T \equiv G \\
  m^T m & = & 1
 \end{eqnarray}
-This is the case where each data point is an independent draw from a variable with a fixed variance $s$ we would like to estimate, and $m$ represents a mode which is correlated across many data points with correlation given by $m$, and amplitude in realization of $\gamma$.
+This is the case where each data point is an independent draw from a variable with a fixed variance $s$ we would like to estimate, and $m$ represents a mode which is correlated across many data points with correlation given by $m$, and amplitude in realization of $\phi$.
 This is the essence of the toy model presented in Section \ref{sec:}
 
 \color{black}
