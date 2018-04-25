@@ -1768,7 +1768,30 @@ but now $\phi$ is a random variable and $m_i$ is a fixed function of $i$ with
  \langle \phi \phi^T \rangle = f m m^T \equiv F; \;
  m^T m = 1
 \end{equation}
-Here $m$ represents a mode which is correlated across many data points, with correlation given by $m m^T$, and, and the amplitude of its realization is $\phi$.
+Here $m$ represents a mode which is correlated across many data points, with amplitude given by  $\phi$.
+
+Here we can again calculate the estimator given by \ref{eq:} explicitly by using the Sherman-Morrison identity to invert the covariance matrix.  Defining
+\begin{equation}
+\xi \equiv \frac{f/s}{1+f/s}
+\end{equation} 
+we have
+\begin{equation}
+\invC %& = & \frac{1}{s} I - \frac{g}{1+g/s} \frac{1}{s^2} m m^T \\
+=   \frac{1}{s} \left(I - \xi m m^T \right)
+\end{equation}
+and the virtue of weighting by $\invC$ becomes clearer: in the limit $f \gg s$, $\xi \to 1$, and this becomes
+\begin{equation}
+\invC  = \frac{1}{s} \left(I - m m^T \right)
+\end{equation}
+where $I - m m^T$ is the projection operator, projecting out $m$ from any any vector it acts on.   Proceeding to calculate the full estimator
+\begin{equation}
+\hat{s} = \half {\cal F}^{-1} \left( \Delta^T \invC \PDeriv{C}{s}  \invC \Delta \right) = \frac{ \Delta^T  (I -  (\eta^2 - 2 \eta)  m m^T)  \Delta}{N + \eta^2 - 2 \eta} 
+\end{equation}
+we note that the expectation is
+\begin{equation}
+\hat{s} = 
+\end{equation}
+
 
 \color{black}
 
