@@ -1725,49 +1725,50 @@ with
 \begin{equation}
 \langle \sigma_i \rangle = 0; \; \langle \sigma^2_i \rangle = s; \; {\rm and}~\langle \sigma \sigma^T \rangle = s I_{N \times N} \equiv S
 \end{equation}
-and we wish to estimate $s$.  The contaminant has a similar structure for its covariance, and is assumed uncorrelated
+and we wish to estimate $s$.  The contaminant in this case has a similar structure for its covariance, and is assumed uncorrelated with the signal
 \begin{equation}
-\langle \sigma_i \rangle = 0; \; \langle \sigma^2_i \rangle = s; \; {\rm and}~\langle \sigma \sigma^T \rangle = s I_{N \times N} \equiv S
+\langle \phi_i \rangle = 0; \; 
+\langle \phi^2_i \rangle = f; \; 
+\langle \phi \phi^T \rangle = f I_{N \times N} \equiv F; {\rm and}~ 
+\langle \sigma_i \phi_j \rangle = 0
 \end{equation}
-$\langle \phi_i \rangle = 0$, 
-$\langle \phi^2_i \rangle = g$, $\angle \phi \phi^T \rangle = g I_{N \times N} \equiv F$, 
-$\langle \sigma_i \phi_j \rangle = 0$.
-That is, we have the sum of $N$ independent samples of two random variables and we wish to estimate the variance of one of the random variables in the sum; in this case, $s$.
-If we want to estimate $s$ using only the inverse covariance weighting, we find
+%That is, we have the sum of $N$ independent samples of two random variables and we wish to estimate the variance of one of the random variables in the sum; in this case, $s$.
+The estimator for $s$ using the inverse covariance weighting prescription is
 \begin{equation}
 \label{eq:CaseOneICW}
-\hat{s} = \half {\cal F}^{-1} \left( \Delta^T \invC \PDeriv{C}{s}  \invC \Delta \right)
+\hat{s} = \half {\cal F}^{-1} \left( \Delta^T \invC \PDeriv{C}{s}  \invC \Delta \right) 
+= \frac{\Delta^T \Delta}{N}
 \end{equation}
-and plugging in the relevant quantities gives
-\begin{eqnarray}
-\hat{s} & = & \half \frac{2}{N} (s+g)^2 \left( \Delta^T \frac{1}{s+g} I \frac{1}{s+g} \Delta \right) \\
-& = & \frac{\Delta^T \Delta}{N}
-\end{eqnarray}
+%and plugging in the relevant quantities gives
+%\begin{eqnarray}
+%\hat{s} & = & \half \frac{2}{N} (s+g)^2 \left( \Delta^T \frac{1}{s+g} I \frac{1}{s+g} \Delta \right) \\
+%& = & \frac{\Delta^T \Delta}{N}
+%\end{eqnarray}
 We note that
 \begin{equation}
 \langle \hat{s} \rangle = s + g
 \end{equation}
-so in this case, {\it where the covariance structure of the contaminant is identical to the signal}, it is only possible to achieve an unbiased estimate by using some additional information to estimate the additive bias and subtract it.
+In this case, the quadratic estimator returns an entirely reasonable result, but, 
+{\it since the covariance structure of the contaminant is identical to the signal}, it is only possible to achieve an unbiased estimate by using some additional information to estimate the additive bias and subtract it.
 
-If instead of the foreground contaminant being given by Eq \ref{eq:ToyOne}, suppose we now have
+Now consider a case, chosen to be very similar to the toy model in \ref{sec:},  in which the data have an additive contaminant given by
 \begin{equation}
 \Delta_i = \sigma_i + \phi m_i
 \end{equation}
-where again
-\begin{eqnarray}
-\langle \sigma_i \rangle & = & 0 \\
-\langle \sigma^2_i \rangle & = & s \\
- \langle \sigma \sigma^T \rangle & = & s I_{N \times N} \equiv S
-\end{eqnarray}
+where the properties of $\sigma_i$ are as before,
+%\begin{eqnarray}
+%\langle \sigma_i \rangle & = & 0 \\
+%\langle \sigma^2_i \rangle & = & s \\
+% \langle \sigma \sigma^T \rangle & = & s I_{N \times N} \equiv S
+%\end{eqnarray}
 but now $\phi$ is a random variable and $m_i$ is a fixed function of $i$ with
-\begin{eqnarray}
-\langle \phi \rangle & = & 0 \\
-\langle \phi^2 \rangle & = & g \\
- \langle \phi \phi^T \rangle & = & g m m^T \equiv G \\
- m^T m & = & 1
-\end{eqnarray}
-This is the case where each data point is an independent draw from a variable with a fixed variance $s$ we would like to estimate, and $m$ represents a mode which is correlated across many data points with correlation given by $m$, and amplitude in realization of $\phi$.
-This is the essence of the toy model presented in Section \ref{sec:}
+\begin{equation}
+\langle \phi \rangle = 0; \;
+\langle \phi^2 \rangle = f; \; 
+ \langle \phi \phi^T \rangle = f m m^T \equiv F; \;
+ m^T m = 1
+\end{equation}
+Here $m$ represents a mode which is correlated across many data points, with correlation given by $m m^T$, and, and the amplitude of its realization is $\phi$.
 
 \color{black}
 
