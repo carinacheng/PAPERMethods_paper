@@ -1383,8 +1383,7 @@ estimates after cross-multiplying independent ``even" and ``odd" visibility meas
 \item $N_{\rm lst}$: The number of independent LST bins that go into a power spectrum estimation. The sensitivity scales as the square root 
 because we integrate incoherently over time. For PAPER-64, $N_{\rm lst} = 8$.
 \item $N_{\rm seps}$: The number of baseline separation types (where baselines of a unique separation type have the same orientation and length) averaged incoherently in a final power spectrum estimate. For the 
-analysis in this paper, we only use one type of baseline (PAPER's 30\,m East/West baselines), hence $N_{\rm seps}=1$. The updated limits in Kolopanis et al. (\textit{submitted})
-use three separation types.
+analysis in this paper, we only use one type of baseline (PAPER's 30\,m East/West baselines). However, both the updated limits in Kolopanis et al. (\textit{submitted}) and the sensitivity prediction in Figure \ref{fig:sense_check} use three separation types ($N_{\rm seps}=3$) to match \citetalias{ali_et_al2015}.
 \item $t_{\rm int}$: Length of an independent integration of the data. It is crucial to adapt this number if filtering is applied along the time axis (i.e. a 
 fringe-rate filter). We compute the effective integration time of our fringe-rate filtered data by scaling the original integration time $t_{i}$
 using the following:
@@ -1403,31 +1402,29 @@ N_{\rm days} = \sqrt{\langle N_{i}^{2}\rangle} \sqrt{(N_{\rm datasets}^{2}-N_{\r
 \noindent where $i$ indexes LST and frequency channel over all datasets (\citealt{jacobs_et_al2015}). For PAPER-64, our revised estimate of $N_{\rm days}$ is $\sim47$ 
 days.
 \item $N_{\rm bls}$: The number of baselines contributing to the sensitivity of a power spectrum estimate. In \citetalias{ali_et_al2015}, this number was 
-the total number of $30$\,m East/West baselines used in the analysis. However, using the total number of baselines ($N_{\rm bls\_total}$) neglects 
-the fact that we average baselines into groups for computational speed-up when cross-multiplying data. Our revised estimate for the parameter is:
+the total number of $30$\,m East/West baselines used in the analysis. However, using the total number of baselines ($N_{\rm bls\_total} = 51$) neglects 
+the fact that the \citetalias{ali_et_al2015} analysis averages baselines into groups for computational speed-up when cross-multiplying data. Our revised estimate for the parameter is:
 \begin{equation}
 N_{\rm bls} = \frac{N_{\rm bls\_total}}{N_{\rm gps}}\sqrt{\frac{N_{\rm gps}^{2}-N_{\rm gps}}{2}},
 \end{equation}
-\noindent where, as with the \citetalias{ali_et_al2015} analysis, $N_{\rm gps} = 5$. Each baseline group averages down linearly as the number of baselines 
+\noindent where, in the \citetalias{ali_et_al2015} analysis, $N_{\rm gps} = 5$. Each baseline group averages down linearly as the number of baselines 
 entering the group ($N_{\rm bls\_total}/N_{\rm gps}$) and then as the square root of the number of cross-multiplied pairs \Big($\sqrt{\frac{N_{\rm gps}^{2} - 
-N_{\rm gps}}{2}}$\Big). For the revised PAPER-64 analysis with only one baseline separation type, this becomes $N_{\rm bls} \sim 32$ instead 
-of $51$. 
+N_{\rm gps}}{2}}$\Big). A revised \citetalias{ali_et_al2015} analysis should therefore use $N_{\rm bls} \sim 32$ instead of $51$, and this change is taken into account in Figure \ref{fig:sense_check}. However, the analysis in this paper and in Kolopanis et al. (\textit{submitted}) does not average baselines into groups ($N_{\rm gps} = 1$), and hence $N_{\rm bls} = 51$ for the revised PAPER-64 analysis.
 \item $N_{\rm pols}$: The number of polarizations averaged together. For the case of Stokes I, $N_{\rm pols}=2$.
 \end{itemize}
 
 An additional factor of $\sqrt{2}$ is gained in sensitivity when folding together positive and negative $k$'s. 
 
-Our revised sensitivity estimate for PAPER-64 is shown in comparison with that of \citetalias{ali_et_al2015} in Figure \ref{fig:sense_check}. 
-Together, the revised parameters yield a decrease in sensitivity (higher noise floor) by a factor of $\sim5$ in mK$^{2}$. 
+Our revised sensitivity estimate for the \citetalias{ali_et_al2015} analysis of PAPER-64 is shown in Figure \ref{fig:sense_check}. 
+Together, the revised parameters yield a decrease in sensitivity (higher noise floor) by a factor of $\sim7$ in mK$^{2}$. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{plots/sense_check.pdf}
 	\caption{An updated prediction for the thermal noise level of PAPER-64 data (black) is shown in comparison to previously 
-published sensitivity limits (gray). Both sensitivity analyses plotted assume only one baseline type (an additional factor of $
-\sqrt{3}$ for three baseline types is needed to match \citetalias{ali_et_al2015} exactly). Major factors that contribute to the discrepancy are $
+published sensitivity limits (gray), both computed for the analysis methods used in \citetalias{ali_et_al2015}. Major factors that contribute to the discrepancy are $
 \Omega_{\rm eff}$, $N_{\rm days}$ and $N_{\rm bls}$, as in Equation \eqref{eq:sense} and described in Section \ref{sec:PSSense}, which when combined decreases our 
-sensitivity (higher noise floor) by a factor of $\sim5$ in mK$^{2}$.}
+sensitivity (higher noise floor) by a factor of $\sim7$ in mK$^{2}$.}
 	\label{fig:sense_check}
 \end{figure}
 
@@ -1449,7 +1446,7 @@ Power spectrum results for the noise simulation, which uses our full power spect
 \ref{fig:ps_noise}, where the black and gray points represent pre-signal loss estimated positive and negative power spectrum values, respectively (with 
 $2\sigma$ error bars and weighting matrix $\widehat{\textbf{C}}_{\rm eff}$), the dashed black line represents the post-signal loss $2\sigma$ upper limit on the EoR signal, the dashed blue line represents the $2\sigma$ uniform-weighted power 
 spectrum limit, and the solid green line denotes our $2\sigma$ theoretical noise prediction as calculated by Equation 
-\eqref{eq:sense}. All three show good agreement to within a factor of two, which we believe is reasonable given the approximations we make in computing the analytic expression for thermal noise.
+\eqref{eq:sense}. All three show good agreement.
 
 \begin{figure*}
 	\centering
@@ -1497,7 +1494,7 @@ Finally, one last change from the \citetalias{ali_et_al2015} method is that our 
 	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/noise_errors.pdf}
 	\caption{$2\sigma$ power spectrum upper limits for a noise simulation (computed via Equation \eqref{eq:noise} using PAPER-64 observing parameters) using two different bootstrapping 
 methods. The noise is fringe-rate filtered and a weighting matrix of $\textbf{I}$ (uniform-weighted) is used in order to disentangle the 
-effects of bootstrapping from signal loss. The bootstrapping method used in \citetalias{ali_et_al2015} is shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. We find that these revised limits agree with the $2\sigma$ analytic prediction for noise (green) and are a factor of $\sim$$2$-$3$ (in mK$^{2}$) higher than those using the original method.}
+effects of bootstrapping from signal loss. The bootstrapping method used in \citetalias{ali_et_al2015} is shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. We find that these revised limits agree with the $2\sigma$ analytic prediction for noise (green).}
 	\label{fig:data_errors}
 \end{figure}
 
