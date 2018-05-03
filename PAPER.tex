@@ -1432,20 +1432,14 @@ particular time and frequency that went into our LST-binned set, and $N_{\rm pol
 I). This temperature sets the variance of the Gaussian random noise.
 
 Power spectrum results for the noise simulation, which uses our full power spectrum pipeline, are shown in Figure 
-\ref{fig:ps_noise}, where the black and gray points represent pre-signal loss estimated positive and negative power spectrum values, respectively (with 
-$2\sigma$ error bars and weighting matrix $\widehat{\textbf{C}}_{\rm eff}$), the dashed black line represents the post-signal loss $2\sigma$ upper limit on the EoR signal, the dashed blue line represents the $2\sigma$ uniform-weighted power 
-spectrum limit, and the solid green line denotes our $2\sigma$ theoretical noise prediction as calculated by Equation 
-\eqref{eq:sense}. All three show good agreement.
+\ref{fig:ps_noise}, where again the solid red curve is the $2\sigma$ upper limit on the EoR signal after the signal injection framework. The solid green line denotes our $2\sigma$ theoretical noise prediction as calculated by Equation 
+\eqref{eq:sense}. Both show good agreement with each other, as well as with the various uniform weighted limits (data points and error bars, solid blue line, gray shaded region).
 
 \begin{figure*}
 	\centering
 	\includegraphics[width=0.4\textwidth]{plots/ps1_noise_add.pdf}
 	\includegraphics[width=0.4\textwidth]{plots/ps2_noise_add.pdf}
-	\caption{Power spectrum estimate for a noise simulation that mimics the noise level of PAPER-64 data. The original weighted 
-power spectrum points and their $2\sigma$ errors are show in black and gray (positive and negative values), where we use $
-\widehat{\textbf{C}}_{\rm eff}$ to minimize signal loss. The dashed black line is the $2\sigma$ upper limit on EoR post-signal loss estimation. The dashed blue line is the uniform-weighted power spectrum $2\sigma$ upper 
-limit. The solid green line is the theoretical $2\sigma$ noise level prediction as calculated by Equation \eqref{eq:sense}. All three 
-estimates show agreement to within a factor of two, which we believe is reasonable given the approximations we make in computing the analytic expression for thermal noise.}
+	\caption{The power spectrum for a noise simulation that mimics the noise level of PAPER-64 data, where the solid red curve is the $2\sigma$ upper limit on the EoR signal estimated from our signal injection framework using $\widehat{\textbf{C}}_{\rm eff}$. The theoretical $2\sigma$ thermal noise level prediction based on observational parameters (calculated by Equation \eqref{eq:sense}) is in green. Additionally, the power spectrum results for the uniform weighted case is shown in three different ways: power spectrum values (black and gray points as positive and negative values, respectively, with $2\sigma$ error bars), the $2\sigma$ upper limit on the EoR signal using our full signal injection framework (solid blue), and the measured power spectrum values with $2\sigma$ thermal noise errors (gray shaded regions). The vertical dashed black lines signify the horizon limit for this analysis using $30$\,m baselines. All estimates show good agreement.}
 	\label{fig:ps_noise}
 \end{figure*}
 
@@ -1474,7 +1468,7 @@ Given our new understanding of the sensitivity of bootstraps to the number of el
 bootstrapping step along time entirely and now simply bootstrap over the baseline axis. Power spectrum $2\sigma$ errors with this bootstrapping change for fringe-rate filtered noise are shown in Figure 
 \ref{fig:data_errors}. The estimates are uniformly weighted in order to disentangle the effects of bootstrapping from signal loss. As 
 shown in the figure, when more elements are drawn for each bootstrap than the number of 
-independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits (gray) below the predicted noise level (green). Using the revised bootstrapping method, where bootstrapping only occurs over the baseline axis, the limits (black) are shown to agree with the analytic prediction for noise. While Figure \ref{fig:data_errors} implies that errors are under-estimated by a factor of $\sim$ $5$ in mK$^{2}$ for the noise simulation, in practice this factor is lower for the case of real data (a factor of $\sim$ $2$ in mK$^{2}$ instead), possibly due to the data being less correlated in time than the fringe-rate filtered noise in the simulation. %Figure \ref{fig:data_errors} implies that power spectrum upper limits were originally under-estimated by a factor of $\sim$ $5$ in mK$^{2}$. 
+independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits (gray) below the predicted noise level (green). Using the revised bootstrapping method, where bootstrapping only occurs over the baseline axis, the limits (black) are shown to better agree with the analytic prediction for noise. While Figure \ref{fig:data_errors} implies that errors are under-estimated by a factor of $\sim$ $5$ in mK$^{2}$ for the noise simulation, in practice this factor is lower for the case of real data (a factor of $\sim$ $2$ in mK$^{2}$ instead), possibly due to the data being less correlated in time than the fringe-rate filtered noise in the simulation. %Figure \ref{fig:data_errors} implies that power spectrum upper limits were originally under-estimated by a factor of $\sim$ $5$ in mK$^{2}$. 
 
 In addition to no longer bootstrapping along the time axis, we have made two other changes from the \citetalias{ali_et_al2015} analysis regarding bootstrapping. The first is that we now bootstrap over baseline cross-products, instead of baselines themselves. In the previous analysis, baselines were bootstrapped prior to forming cross power spectra, and using this particular ordering of operations (bootstrapping, then cross-multiplication) yields variances that have been found to disagree with predicted errors from bootstrapping using simulations. On the contrary, bootstrapping over cross power spectra ensures that we are estimating the variance of our quantity of interest (i.e. the power spectrum). This change, while fundamental in retaining the integrity of the bootstrapping method in general, alters the resulting power spectrum errors by factors of $<2$ in practice.
 
@@ -1485,7 +1479,7 @@ Finally, the last change from the \citetalias{ali_et_al2015} method is that our 
 	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/noise_errors.pdf}
 	\caption{$2\sigma$ power spectrum errors for a noise simulation (computed via Equation \eqref{eq:noise} using PAPER-64 observing parameters) using two different bootstrapping 
 methods. The noise is fringe-rate filtered and a weighting matrix of $\textbf{I}$ (uniform-weighted) is used in order to disentangle the 
-effects of bootstrapping from signal loss. The bootstrapping method used in \citetalias{ali_et_al2015} is shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. We find that these revised limits agree with the $2\sigma$ analytic prediction for noise (green).}
+effects of bootstrapping from signal loss. The bootstrapping method used in \citetalias{ali_et_al2015} is shown in gray, where bootstrapping occurs along both the baseline and time axes. This under-estimates errors by sampling more values than independent ones in the dataset (fringe-rate filtering reduces the number of independent samples along time). We use the method illustrated by the black curve in our updated analysis, where bootstrapping only occurs along the baseline axis. We find that these revised limits better agree with the $2\sigma$ analytic prediction for noise (green).}
 	\label{fig:data_errors}
 \end{figure}
 
