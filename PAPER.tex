@@ -233,13 +233,13 @@ paper, we focus on three 21\,cm power spectrum themes that encapsulate this goal
 with each other and impact the themes. We will give brief definitions now, and build intuition for each theme in the sections to 
 follow.
 
-\begin{center}
-Power Spectrum Themes
-\end{center}
-
-A deep understanding of the following three themes is essential for the accuracy and interpretation of a 21\,cm power 
-spectrum result. Stemming from a re-analysis of PAPER-64 data, we believe these themes serve as an important checklist for 
-a rigorous power spectrum analysis.
+%\begin{center}
+%Power Spectrum Themes
+%\end{center}
+%
+%A deep understanding of the following three themes is essential for the accuracy and interpretation of a 21\,cm power 
+%spectrum result. Stemming from a re-analysis of PAPER-64 data, we believe these themes serve as an important checklist for 
+%a rigorous power spectrum analysis.
 \begin{itemize}
 \item \textbf{Signal Loss} (Section \ref{sec:SiglossOverview}): Signal loss refers to attenuation of the target \textit{cosmological} signal 
 in a power spectrum estimate. Certain analysis techniques can cause this loss, and if the amount of loss is not quantified accurately, it could lead to false non-detections and overly aggressive upper limits. Determining whether an analysis pipeline is lossy, and estimating the amount of loss if so, has subtle challenges but is necessary to ensure the accuracy of any result. 
@@ -318,8 +318,11 @@ we only need to take one Fourier transform of our visibilities along the line-of
 \label{eq:qhat}
 \widehat{q}_{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{x}.
 \end{equation}
-Here, \noindent $\textbf{Q}$ is a family of matrices that takes our frequency-domain visibilities and Fourier transforms them, while also converting from Jy to 
-Kelvin and taking into account cosmological scalings. It is formally evaluated as $\textbf{Q}^{\alpha} \equiv \frac{\partial\textbf{C}}{\partial p_{\alpha}}$ (which has dimensions ($N_{f}$,$N_{f}$)), or the derivative of the covariance $\textbf{C} \equiv \langle\textbf{x}\textbf{x}^{\dagger}\rangle$ with respect to the true bandpower $p_\alpha$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the 
+
+The fundamental dependence of the covariance on the power spectrum band powers $p_\alpha$ is encoded in $\textbf{Q}^{\alpha} \equiv \frac{\partial\textbf{C}}{\partial p_{\alpha}}$.  In practice, it also implements a transform of the frequency-domain visibilities to 
+$\mathbf{k}$ space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
+
+their Fourier conjugates, and converts from Jy to Kelvin and . It is formally evaluated as  (which has dimensions ($N_{f}$,$N_{f}$)), or the derivative of the covariance $\textbf{C} \equiv \langle\textbf{x}\textbf{x}^{\dagger}\rangle$ with respect to the true bandpower $p_\alpha$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the 
 Fourier dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}), which is a good approximation for the short baselines that PAPER analyzes). $\textbf{R}$ is a weighting matrix with dimensions ($N_{f}$,$N_{f}$) --- as 
 an example, inverse covariance weighting (the optimal form of QE) would set $\textbf{R} \equiv \textbf{C}^{-1}$ and a uniform-weighted case would use $
 \textbf{R} \equiv \textbf{I}$, the identity matrix.
