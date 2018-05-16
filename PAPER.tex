@@ -10,6 +10,7 @@
 \usepackage{natbib}
 \usepackage{ctable}
 \usepackage{comment}
+\usepackage{bm}
 %\usepackage{mathtools}
 \usepackage{xparse}
 %\usepackage{titlesec}
@@ -65,8 +66,8 @@
 \newcommand{\jea}[1]{{\color{blue} \textbf{[JEA: #1]}} }
 \newcommand{\jp}[1]{ {\color{pink} \textbf{[JCP: #1]}} } %y'all picked all the good colors
 
-\newcommand{\invC}{\ensuremath{C^{-1}}}
-\newcommand{\dC}[1]{\ensuremath{C_{,#1}}}
+\newcommand{\invC}{\ensuremath{\C^{-1}}}
+\newcommand{\dC}[1]{\ensuremath{\C_{,#1}}}
 \DeclareMathOperator{\Tr}{Tr}
 \newcommand{\half}{\ensuremath{\frac{1}{2}}}
 \newcommand{\PDeriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
@@ -1720,79 +1721,73 @@ award 1701536. AL acknowledges support for this work by NASA through Hubble Fell
 \section{A toy model for inverse covariance weighting}
 \label{sec:icw_appendix}
 
-We illustrate the way in which the quadratic estimator, Equation \ref{eq:QuadraticEstimator}, is intended to estimate the power spectrum of EoR in the presence of contamination by other terms by considering the simpler, but similar, case of estimating the variance of data.  We have specifically chosen a toy model where the data covariance is diagonal, as we expect the EoR signal to be.  We assume we have $N$ data points $\Delta_i$ which are the sum of a desired signal $\sigma_i$ and some contaminant $\phi_i$
+We illustrate the way in which the quadratic estimator, Equation \ref{eq:QuadraticEstimator}, is intended to estimate the power spectrum of EoR in the presence of contamination by other terms by considering the simpler, but similar, case of estimating the variance of data.  We have specifically chosen a toy model where the data covariance is diagonal, as indeed we expect the EoR signal to be.  We assume we have $N$ data points $\Delta_i$ which are the sum of a desired signal $\sigma_i$ and an undesired contaminant $\upsilon_i$
 \begin{equation}
-\Delta_i = \sigma_i + \phi_i
+\Delta_i = \sigma_i + \upsilon_i
 \end{equation}
 with 
 \begin{equation}
-\langle \sigma_i \rangle = 0; \; \langle \sigma^2_i \rangle = s; \; {\rm and}~\langle \sigma \sigma^T \rangle = s I_{N \times N} \equiv S
+\langle \sigma_i \rangle = 0; \; \langle \sigma^2_i \rangle = s; \; {\rm and}~\langle \bm{\sigma \sigma}^T \rangle = s \mathbf{I}_{N \times N} \equiv \mathbf{S}
 \end{equation}
 and we wish to estimate $s$.  The contaminant in this case has a similar structure for its covariance, and is assumed uncorrelated with the signal
 \begin{equation}
-\langle \phi_i \rangle = 0; \; 
-\langle \phi^2_i \rangle = f; \; 
-\langle \phi \phi^T \rangle = f I_{N \times N} \equiv F; {\rm and}~ 
-\langle \sigma_i \phi_j \rangle = 0
+\langle \upsilon_i \rangle = 0; \; 
+\langle \upsilon^2_i \rangle = u; \; 
+\langle \bm{\upsilon \upsilon}^T \rangle = u \mathbf{I}_{N \times N} \equiv \mathbf{U}; {\rm and}~ 
+\langle \sigma_i \upsilon_j \rangle = 0
 \end{equation}
-%That is, we have the sum of $N$ independent samples of two random variables and we wish to estimate the variance of one of the random variables in the sum; in this case, $s$.
-The estimator for $s$ using the inverse covariance weighting prescription is
+With the covariance matrix given by $\C = \mathbf{S} + \mathbf{U}$, the estimator for $s$ using the optimal quadratic estimator prescription is
 \begin{equation}
 \label{eq:CaseOneICW}
-\hat{s} = \half {\cal F}^{-1} \left( \Delta^T \invC \PDeriv{C}{s}  \invC \Delta \right) 
-= \frac{\Delta^T \Delta}{N}
+\hat{s} = \half {\F}^{-1} \left( \bm{\Delta}^T \invC \PDeriv{\C}{s}  \invC \bm{\Delta} \right) 
+= \frac{\bm{\Delta^T \Delta}}{N}
 \end{equation}
-%and plugging in the relevant quantities gives
-%\begin{eqnarray}
-%\hat{s} & = & \half \frac{2}{N} (s+g)^2 \left( \Delta^T \frac{1}{s+g} I \frac{1}{s+g} \Delta \right) \\
-%& = & \frac{\Delta^T \Delta}{N}
-%\end{eqnarray}
 We note that
 \begin{equation}
-\langle \hat{s} \rangle = s + g
+\langle \hat{s} \rangle = s + u
 \end{equation}
-In this case, the quadratic estimator returns an entirely reasonable result, but, 
-{\it since the covariance structure of the contaminant is identical to the signal}, it is only possible to achieve an unbiased estimate by using some additional information to estimate the additive bias and subtract it.
+In this case, the quadratic estimator returns an entirely reasonable result, but, since 
+$\PDeriv{\mathbf{S}}{s} = \PDeriv{\mathbf{U}}{u} =  \PDeriv{\C}{s}$, that is, {\it the covariance structure of the contaminant is identical to the signal}, the information available to the quadratic estimator to distinguish the two is degenerate, and  is only possible to achieve an unbiased estimate of $s$ by using some additional information to estimate the additive bias due to $u$ and subtract it.
 
-Now consider a case, chosen to be very similar to the toy model in \ref{sec:},  in which the data have an additive contaminant given by
+Now consider a case, chosen to be very similar to the toy model in \ref{sec:},  in which the data again have an additive contaminant, now given by
 \begin{equation}
-\Delta_i = \sigma_i + \phi m_i
+\Delta_i = \sigma_i + \upsilon m_i
 \end{equation}
-where the properties of $\sigma_i$ are as before,
-%\begin{eqnarray}
-%\langle \sigma_i \rangle & = & 0 \\
-%\langle \sigma^2_i \rangle & = & s \\
-% \langle \sigma \sigma^T \rangle & = & s I_{N \times N} \equiv S
-%\end{eqnarray}
-but now $\phi$ is a random variable and $m_i$ is a fixed function of $i$ with
+where the properties of $\sigma_i$ are as before, but now $\upsilon$ is a random variable and $m_i$ is a fixed function of $i$ with
 \begin{equation}
-\langle \phi \rangle = 0; \;
-\langle \phi^2 \rangle = f; \; 
- \langle \phi \phi^T \rangle = f m m^T \equiv F; \;
- m^T m = 1
+\langle \upsilon \rangle = 0; \;
+\langle \upsilon^2 \rangle = u; \; 
+ \langle \bm{\upsilon \upsilon}^T \rangle = u \mathbf{m m}^T \equiv \mathbf{U}; \;
+ \mathbf{m}^T \mathbf{m} = N; \; {\rm and}~ 
+\langle \sigma_i \upsilon \rangle = 0
 \end{equation}
-Here $m$ represents a mode which is correlated across many data points, with amplitude given by  $\phi$.
+Here $\mathbf{m}$ represents a mode which is correlated across many data points, with amplitude given by  $\upsilon$.
 
-Here we can again calculate the estimator given by \ref{eq:} explicitly by using the Sherman-Morrison identity to invert the covariance matrix.  Defining
+We can again calculate the estimator given by \ref{eq:} explicitly by using the Sherman-Morrison identity to invert the covariance matrix.  Defining
 \begin{equation}
-\xi \equiv \frac{f/s}{1+f/s}
+\xi \equiv \frac{u/s}{1+u/s}
 \end{equation} 
 we have
 \begin{equation}
-\invC %& = & \frac{1}{s} I - \frac{g}{1+g/s} \frac{1}{s^2} m m^T \\
-=   \frac{1}{s} \left(I - \xi m m^T \right)
+\invC  =   \frac{1}{s} \left(\I - \xi \mathbf{m m}^T \right)
 \end{equation}
-and the virtue of weighting by $\invC$ becomes clearer: in the limit $f \gg s$, $\xi \to 1$, and this becomes
+and the virtue of weighting by $\invC$ becomes clearer: in the limit $u \gg s$, $\xi \to 1$, and this becomes
 \begin{equation}
-\invC  = \frac{1}{s} \left(I - m m^T \right)
+\invC  = \frac{1}{s} \left(\I - \mathbf{m m}^T \right)
 \end{equation}
-where $I - m m^T$ is the projection operator, projecting out $m$ from any any vector it acts on.   Proceeding to calculate the full estimator
+where $\I - \mathbf{m m}^T$ is the projection operator, projecting out $\mathbf{m}$ from any any vector it acts on.   Proceeding to calculate the full estimator
 \begin{equation}
-\hat{s} = \half {\cal F}^{-1} \left( \Delta^T \invC \PDeriv{C}{s}  \invC \Delta \right) = \frac{ \Delta^T  (I -  (\eta^2 - 2 \eta)  m m^T)  \Delta}{N + \eta^2 - 2 \eta} 
+\hat{s} = \half {\F}^{-1} \left(\bm \Delta^T \invC \PDeriv{\C}{s}  \invC \bm \Delta \right) = \frac{ \bm \Delta^T  (\I +  (\xi^2 - 2 \xi)  \mathbf{m m}^T)  \bm \Delta}{N + \xi^2 - 2 \xi} 
 \end{equation}
 we note that the expectation is
 \begin{equation}
-\langle \hat{s} = 
+\langle \hat{s} \rangle = \frac{ N(s + u + (\xi^2 - 2 \xi) 
+[u + \langle(\bm{\sigma} \cdot \mathbf{m})^2 \rangle])} 
+{N + \xi^2 - 2 \xi} 
+\end{equation}
+This again has a simple interpretation in the limit $\xi \to 1$, where
+\begin{equation}
+\langle \hat{s} \rangle = \frac{ s - \langle(\bm{\sigma} \cdot \mathbf{m})^2\rangle} {N -1} 
 \end{equation}
 
 
