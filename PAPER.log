@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 MAY 2018 10:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 MAY 2018 10:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -712,32 +712,32 @@ Package: xparse 2014/11/25 v5471 L3 Experimental document command parser
 . Defining command \evalat with sig. 'sO{\big }mm' on line 25.
 .................................................
 Class revtex4-1 Info: Unrecognized array package. Please update this document c
-lass! (Proceeding with fingers crossed.) on input line 72.
+lass! (Proceeding with fingers crossed.) on input line 79.
 Class revtex4-1 Info: Patching unrecognized longtable package. (Proceeding with
- fingers crossed) on input line 72.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 72.
+ fingers crossed) on input line 79.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 79.
 
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 72.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 72.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 72.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 79.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 79.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 79.
 
 (./PAPER.aux)
 \openout1 = `PAPER.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -768,7 +768,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box75
-Package hyperref Info: Link coloring ON on input line 72.
+Package hyperref Info: Link coloring ON on input line 79.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -778,641 +778,491 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count208
 )
-LaTeX Info: Redefining \ref on input line 72.
-LaTeX Info: Redefining \pageref on input line 72.
-LaTeX Info: Redefining \nameref on input line 72.
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 72.
+LaTeX Info: Redefining \ref on input line 79.
+LaTeX Info: Redefining \pageref on input line 79.
+LaTeX Info: Redefining \nameref on input line 79.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 79.
 Class revtex4-1 Info: Overriding lineo.sty, restoring output routine, on input 
-line 72.
-Class revtex4-1 Info: Line numbering not turned on yet on input line 72.
+line 79.
+Class revtex4-1 Info: Line numbering not turned on yet on input line 79.
 \openout3 = `PAPERNotes.bib'.
 
-Class revtex4-1 Info: Overriding \@LN@LLerror on input line 72.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 135.
+Class revtex4-1 Info: Overriding \@LN@LLerror on input line 79.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 142.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 135.
+LaTeX Font Info:    Try loading font information for U+msa on input line 142.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 135.
+LaTeX Font Info:    Try loading font information for U+msb on input line 142.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 135.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 142.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 135.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 142.
 
 
 Class revtex4-1 Warning: Assuming \noaffiliation for authors.
 
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 152.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 159.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 152.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 159.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 155.
-
-Package natbib Warning: Citation `barkana_and_loeb2001' on page 1 undefined on 
-input line 167.
-
-
-Package natbib Warning: Citation `loeb_furlanetto_2013' on page 1 undefined on 
-input line 167.
-
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 162.
 [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}pdfTeX 
 warning (ext4): destination with the same identifier (name{section.1-footnote.\
 \thefootnote\040}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.169 O
-       ne promising technique to probe the EoR is to target the 21\,cm wavel...
-pdfTeX warning (ext4): destination with the same identifier (name{section.1-foo
-tnote.\\thefootnote\040}) has been already used, duplicate ignored
+l.175 
+      pdfTeX warning (ext4): destination with the same identifier (name{section
+.1-footnote.\\thefootnote\040}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.169 O
-       ne promising technique to probe the EoR is to target the 21\,cm wavel...
-]
-
-Package natbib Warning: Citation `barkana_and_loeb2008' on page 2 undefined on 
-input line 170.
-
-
-Package natbib Warning: Citation `pritchard_and_loeb2010' on page 2 undefined o
-n input line 170.
-
-
-Package natbib Warning: Citation `bowman_et_al2018' on page 2 undefined on inpu
-t line 175.
-
-
-Package natbib Warning: Citation `koopmans_et_al2015' on page 2 undefined on in
-put line 184.
-
-
-Package natbib Warning: Citation `dillon_parsons2016' on page 2 undefined on in
-put line 187.
-
-
-Package natbib Warning: Citation `pober_et_al2013b' on page 2 undefined on inpu
-t line 190.
-
-
-Package natbib Warning: Citation `bernardi_et_al2013' on page 2 undefined on in
-put line 190.
-
-
-Package natbib Warning: Citation `Paciga2013' on page 2 undefined on input line
- 198.
-
-
-Package natbib Warning: Citation `Patil2016' on page 2 undefined on input line 
-198.
-
-
-Package natbib Warning: Citation `Jacobs2016' on page 2 undefined on input line
- 198.
-
-[2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 237.
+l.175 
+      ] [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 244.
 
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 237.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 244.
 
-
-Package natbib Warning: Citation `das_et_al2011b' on page 3 undefined on input 
-line 273.
-
-[3] [4] <plots/toy_sigloss1.pdf, id=248, 608.28194pt x 346.42862pt>
+[3] [4] <plots/toy_sigloss1.pdf, id=292, 608.28194pt x 346.42862pt>
 File: plots/toy_sigloss1.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss1.pdf>
-Package pdftex.def Info: plots/toy_sigloss1.pdf used on input line 356.
+Package pdftex.def Info: plots/toy_sigloss1.pdf used on input line 363.
 (pdftex.def)             Requested size: 242.26653pt x 137.97694pt.
 
-
-Package natbib Warning: Citation `chang_et_al2010' on page 5 undefined on input
- line 363.
-
-<plots/toy_sigloss3.pdf, id=253, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss3.pdf, id=299, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss3.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss3.pdf>
-Package pdftex.def Info: plots/toy_sigloss3.pdf used on input line 379.
+Package pdftex.def Info: plots/toy_sigloss3.pdf used on input line 386.
 (pdftex.def)             Requested size: 240.33635pt x 169.32968pt.
 
-<plots/toy_sigloss4.pdf, id=255, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss4.pdf, id=301, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss4.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss4.pdf>
-Package pdftex.def Info: plots/toy_sigloss4.pdf used on input line 380.
+Package pdftex.def Info: plots/toy_sigloss4.pdf used on input line 387.
 (pdftex.def)             Requested size: 240.33635pt x 169.32968pt.
 
-<plots/toy_sigloss2.pdf, id=261, 418.21559pt x 290.41939pt>
+<plots/toy_sigloss2.pdf, id=307, 418.21559pt x 290.41939pt>
 File: plots/toy_sigloss2.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss2.pdf>
-Package pdftex.def Info: plots/toy_sigloss2.pdf used on input line 404.
+Package pdftex.def Info: plots/toy_sigloss2.pdf used on input line 411.
 (pdftex.def)             Requested size: 242.26653pt x 168.2395pt.
 
-<plots/toy_sigloss12.pdf, id=266, 591.69806pt x 215.79997pt>
+<plots/toy_sigloss12.pdf, id=312, 591.69806pt x 215.79997pt>
 File: plots/toy_sigloss12.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss12.pdf>
-Package pdftex.def Info: plots/toy_sigloss12.pdf used on input line 422.
+Package pdftex.def Info: plots/toy_sigloss12.pdf used on input line 429.
 (pdftex.def)             Requested size: 242.26653pt x 88.35672pt.
 
-<plots/toy_sigloss13.pdf, id=268, 608.28194pt x 355.82309pt>
+<plots/toy_sigloss13.pdf, id=314, 608.28194pt x 355.82309pt>
 File: plots/toy_sigloss13.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss13.pdf>
-Package pdftex.def Info: plots/toy_sigloss13.pdf used on input line 423.
+Package pdftex.def Info: plots/toy_sigloss13.pdf used on input line 430.
 (pdftex.def)             Requested size: 242.26653pt x 141.71861pt.
  [5 <./plots/toy_sigloss1.pdf>] [6 <./plots/toy_sigloss3.pdf> <./plots/toy_sigl
 oss4.pdf> <./plots/toy_sigloss2.pdf> <./plots/toy_sigloss12.pdf> <./plots/toy_s
-igloss13.pdf>]
-
-LaTeX Warning: Reference `fig:toy_sigloss15' on page 7 undefined on input line 
-460.
-
-
-LaTeX Warning: Reference `fig:toy_sigloss17' on page 7 undefined on input line 
-482.
-
-
-LaTeX Warning: Reference `fig:toy_sigloss17' on page 7 undefined on input line 
-487.
-
-<plots/toy_sigloss5.pdf, id=643, 608.28194pt x 346.42862pt>
+igloss13.pdf>] [7]
+<plots/toy_sigloss5.pdf, id=718, 608.28194pt x 346.42862pt>
 File: plots/toy_sigloss5.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss5.pdf>
-Package pdftex.def Info: plots/toy_sigloss5.pdf used on input line 491.
+Package pdftex.def Info: plots/toy_sigloss5.pdf used on input line 498.
 (pdftex.def)             Requested size: 242.26653pt x 137.97694pt.
- [7]
-<plots/toy_sigloss15.pdf, id=667, 412.19308pt x 290.41939pt>
+
+<plots/toy_sigloss15.pdf, id=719, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss15.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss15.pdf>
-Package pdftex.def Info: plots/toy_sigloss15.pdf used on input line 499.
+Package pdftex.def Info: plots/toy_sigloss15.pdf used on input line 506.
 (pdftex.def)             Requested size: 225.76974pt x 159.06514pt.
 
-<plots/toy_sigloss16.pdf, id=669, 407.72327pt x 283.7068pt>
+<plots/toy_sigloss16.pdf, id=721, 407.72327pt x 283.7068pt>
 File: plots/toy_sigloss16.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss16.pdf>
-Package pdftex.def Info: plots/toy_sigloss16.pdf used on input line 506.
+Package pdftex.def Info: plots/toy_sigloss16.pdf used on input line 513.
 (pdftex.def)             Requested size: 242.26653pt x 168.57603pt.
 
-<plots/toy_sigloss17.pdf, id=672, 404.712pt x 276.17868pt>
+<plots/toy_sigloss17.pdf, id=724, 404.712pt x 276.17868pt>
 File: plots/toy_sigloss17.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss17.pdf>
-Package pdftex.def Info: plots/toy_sigloss17.pdf used on input line 513.
+Package pdftex.def Info: plots/toy_sigloss17.pdf used on input line 520.
 (pdftex.def)             Requested size: 242.26653pt x 165.32498pt.
 
-
-LaTeX Warning: Reference `eq:converge_eig' on page 8 undefined on input line 51
-4.
-
-
-LaTeX Warning: Reference `eq:converge_eig' on page 8 undefined on input line 51
-4.
-
-<plots/toy_sigloss7.pdf, id=673, 412.19308pt x 278.29753pt>
+<plots/toy_sigloss7.pdf, id=727, 412.19308pt x 278.29753pt>
 File: plots/toy_sigloss7.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss7.pdf>
-Package pdftex.def Info: plots/toy_sigloss7.pdf used on input line 520.
+Package pdftex.def Info: plots/toy_sigloss7.pdf used on input line 527.
 (pdftex.def)             Requested size: 242.26653pt x 163.56989pt.
  [8 <./plots/toy_sigloss15.pdf> <./plots/toy_sigloss5.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/toy_sigloss5.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/toy_sigloss5.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
 > <./plots/toy_sigloss16.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/toy_sigloss16.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/toy_sigloss16.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
 > <./plots/toy_sigloss17.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/toy_sigloss17.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/toy_sigloss17.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
 >]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 546.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 553.
 
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 546.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 553.
 
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
-<plots/toy_sigloss10.pdf, id=890, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss10.pdf, id=944, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss10.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss10.pdf>
-Package pdftex.def Info: plots/toy_sigloss10.pdf used on input line 556.
+Package pdftex.def Info: plots/toy_sigloss10.pdf used on input line 563.
 (pdftex.def)             Requested size: 218.48643pt x 153.93678pt.
 
-<plots/toy_sigloss8.pdf, id=892, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss8.pdf, id=946, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss8.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss8.pdf>
-Package pdftex.def Info: plots/toy_sigloss8.pdf used on input line 557.
+Package pdftex.def Info: plots/toy_sigloss8.pdf used on input line 564.
 (pdftex.def)             Requested size: 218.48643pt x 153.93678pt.
 
-<plots/toy_sigloss9.pdf, id=894, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss9.pdf, id=948, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss9.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss9.pdf>
-Package pdftex.def Info: plots/toy_sigloss9.pdf used on input line 558.
+Package pdftex.def Info: plots/toy_sigloss9.pdf used on input line 565.
 (pdftex.def)             Requested size: 218.48643pt x 153.93678pt.
 
-<plots/toy_sigloss11.pdf, id=896, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss11.pdf, id=950, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss11.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss11.pdf>
-Package pdftex.def Info: plots/toy_sigloss11.pdf used on input line 559.
+Package pdftex.def Info: plots/toy_sigloss11.pdf used on input line 566.
 (pdftex.def)             Requested size: 218.48643pt x 153.93678pt.
 
-<plots/toy_sigloss14.pdf, id=898, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss14.pdf, id=952, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss14.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss14.pdf>
-Package pdftex.def Info: plots/toy_sigloss14.pdf used on input line 570.
+Package pdftex.def Info: plots/toy_sigloss14.pdf used on input line 577.
 (pdftex.def)             Requested size: 242.26653pt x 170.69452pt.
  [9 <./plots/toy_sigloss7.pdf>]
-
-Package natbib Warning: Citation `das_et_al2011a' on page 10 undefined on input
- line 616.
-
-
-Underfull \hbox (badness 1478) in paragraph at lines 618--621
+Underfull \hbox (badness 1478) in paragraph at lines 625--628
 []\OT1/cmr/m/n/10 For PA-PER's anal-y-sis, we choose a data-driven
  []
 
-
-Package natbib Warning: Citation `efron_tibshirani1994' on page 10 undefined on
- input line 625.
-
 [10 <./plots/toy_sigloss10.pdf> <./plots/toy_sigloss8.pdf> <./plots/toy_sigloss
 9.pdf> <./plots/toy_sigloss11.pdf> <./plots/toy_sigloss14.pdf>]
-<plots/toy_error1.pdf, id=1216, 403.72235pt x 281.84203pt>
+<plots/toy_error1.pdf, id=1273, 403.72235pt x 281.84203pt>
 File: plots/toy_error1.pdf Graphic file (type pdf)
 
 <use plots/toy_error1.pdf>
-Package pdftex.def Info: plots/toy_error1.pdf used on input line 675.
+Package pdftex.def Info: plots/toy_error1.pdf used on input line 682.
 (pdftex.def)             Requested size: 242.26653pt x 169.128pt.
  [11]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 691.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 698.
 
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 691.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 698.
 
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
-
-Package natbib Warning: Citation `chapman_et_al2012' on page 12 undefined on in
-put line 719.
-
-
-Package natbib Warning: Citation `wolz_et_al2014' on page 12 undefined on input
- line 719.
-
-
-Package natbib Warning: Citation `kerrigan_et_al2018' on page 12 undefined on i
-nput line 737.
-
-[12 <./plots/toy_error1.pdf>]
-
-Package natbib Warning: Citation `quenouille1949' on page 13 undefined on input
- line 770.
-
-
-Package natbib Warning: Citation `tukey1958' on page 13 undefined on input line
- 770.
-
-<plots/toy_bias1.pdf, id=1379, 408.17809pt x 278.29753pt>
+[12 <./plots/toy_error1.pdf>] [13]
+<plots/toy_bias1.pdf, id=1461, 408.17809pt x 278.29753pt>
 File: plots/toy_bias1.pdf Graphic file (type pdf)
 
 <use plots/toy_bias1.pdf>
-Package pdftex.def Info: plots/toy_bias1.pdf used on input line 825.
+Package pdftex.def Info: plots/toy_bias1.pdf used on input line 832.
 (pdftex.def)             Requested size: 242.26653pt x 165.17929pt.
 
-<plots/toy_bias2.pdf, id=1380, 408.17809pt x 278.29753pt>
+<plots/toy_bias2.pdf, id=1462, 408.17809pt x 278.29753pt>
 File: plots/toy_bias2.pdf Graphic file (type pdf)
 
 <use plots/toy_bias2.pdf>
-Package pdftex.def Info: plots/toy_bias2.pdf used on input line 834.
+Package pdftex.def Info: plots/toy_bias2.pdf used on input line 841.
 (pdftex.def)             Requested size: 242.26653pt x 165.17929pt.
- [13]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 850.
-
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 850.
-
-
-Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
-
-<plots/ant_layout_aspect.pdf, id=1399, 578.16pt x 433.62pt>
+<plots/ant_layout_aspect.pdf, id=1474, 578.16pt x 433.62pt>
 File: plots/ant_layout_aspect.pdf Graphic file (type pdf)
 
 <use plots/ant_layout_aspect.pdf>
-Package pdftex.def Info: plots/ant_layout_aspect.pdf used on input line 875.
+Package pdftex.def Info: plots/ant_layout_aspect.pdf used on input line 882.
 (pdftex.def)             Requested size: 242.26653pt x 110.16196pt.
  [14 <./plots/toy_bias1.pdf> <./plots/toy_bias2.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/toy_bias2.pdf): PDF 
-inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/toy_bias2.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
 > <./plots/ant_layout_aspect.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ant_layout_aspect.pd
-f): PDF inclusion: multiple pdfs with page group included in a single page
->] <plots/frp.pdf, id=1583, 498.216pt x 353.21333pt>
+pdfTeX warning: pdflatex (file ./plots/ant_layout_aspect.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>] <plots/frp.pdf, id=1655, 498.216pt x 353.21333pt>
 File: plots/frp.pdf Graphic file (type pdf)
  <use plots/frp.pdf>
-Package pdftex.def Info: plots/frp.pdf used on input line 904.
+Package pdftex.def Info: plots/frp.pdf used on input line 911.
 (pdftex.def)             Requested size: 242.26653pt x 171.75558pt.
 
-
-Package natbib Warning: Citation `masui_et_al2013' on page 15 undefined on inpu
-t line 917.
-
-[15 <./plots/frp.pdf>]
-
-LaTeX Warning: Reference `eq:rxe' on page 16 undefined on input line 958.
-
-
-LaTeX Warning: Reference `fig:sigloss_terms' on page 16 undefined on input line
- 1043.
-
-
-LaTeX Warning: Reference `fig:sigloss_terms' on page 16 undefined on input line
- 1043.
-
-
-LaTeX Warning: Reference `fig:sigloss_terms' on page 16 undefined on input line
- 1052.
-
-<plots/sigloss_terms.pdf, id=1644, 1011.78pt x 578.16pt>
+[15 <./plots/frp.pdf>] [16]
+<plots/sigloss_terms.pdf, id=1733, 1011.78pt x 578.16pt>
 File: plots/sigloss_terms.pdf Graphic file (type pdf)
 
 <use plots/sigloss_terms.pdf>
-Package pdftex.def Info: plots/sigloss_terms.pdf used on input line 1074.
+Package pdftex.def Info: plots/sigloss_terms.pdf used on input line 1081.
 (pdftex.def)             Requested size: 513.11743pt x 293.2168pt.
- [16]
-
-LaTeX Warning: Reference `fig:sigloss_terms' on page 17 undefined on input line
- 1103.
-
-[17 <./plots/sigloss_terms.pdf>]
-
-Package natbib Warning: Citation `scott2008kernel' on page 18 undefined on inpu
-t line 1192.
-
-<plots/sigloss_transfercurve_posneg.pdf, id=1764, 867.24pt x 433.62pt>
+ [17]
+<plots/sigloss_transfercurve_posneg.pdf, id=1765, 867.24pt x 433.62pt>
 File: plots/sigloss_transfercurve_posneg.pdf Graphic file (type pdf)
 
 <use plots/sigloss_transfercurve_posneg.pdf>
 Package pdftex.def Info: plots/sigloss_transfercurve_posneg.pdf used on input l
-ine 1215.
+ine 1222.
 (pdftex.def)             Requested size: 513.11743pt x 256.56801pt.
-
-
-LaTeX Warning: Reference `fig:sigloss_terms' on page 18 undefined on input line
- 1219.
-
-
-LaTeX Warning: Reference `fig:sigloss_terms' on page 18 undefined on input line
- 1219.
-
-<plots/ps1_data.pdf, id=1770, 361.35pt x 433.62pt>
+ [18 <./plots/sigloss_terms.pdf>]
+<plots/ps1_data.pdf, id=1863, 361.35pt x 433.62pt>
 File: plots/ps1_data.pdf Graphic file (type pdf)
  <use plots/ps1_data.pdf>
-Package pdftex.def Info: plots/ps1_data.pdf used on input line 1244.
+Package pdftex.def Info: plots/ps1_data.pdf used on input line 1251.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_data.pdf, id=1771, 361.35pt x 433.62pt>
+<plots/ps2_data.pdf, id=1864, 361.35pt x 433.62pt>
 File: plots/ps2_data.pdf Graphic file (type pdf)
  <use plots/ps2_data.pdf>
-Package pdftex.def Info: plots/ps2_data.pdf used on input line 1245.
+Package pdftex.def Info: plots/ps2_data.pdf used on input line 1252.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-[18]
-
-Package natbib Warning: Citation `switzer_et_al2013' on page 19 undefined on in
-put line 1266.
-
-
-Package natbib Warning: Citation `switzer_et_al2013' on page 19 undefined on in
-put line 1270.
-
 [19 <./plots/sigloss_transfercurve_posneg.pdf>]
-<plots/sigloss_modeloop_2panel.pdf, id=1907, 578.16pt x 610.68152pt>
+<plots/sigloss_modeloop_2panel.pdf, id=2000, 578.16pt x 610.68152pt>
 File: plots/sigloss_modeloop_2panel.pdf Graphic file (type pdf)
 
 <use plots/sigloss_modeloop_2panel.pdf>
 Package pdftex.def Info: plots/sigloss_modeloop_2panel.pdf used on input line 1
-276.
+283.
 (pdftex.def)             Requested size: 513.11743pt x 542.00462pt.
+ [20 <./plots/ps1_data.pdf> <./plots/ps2_data.pdf
 
-<plots/ps1_data_add.pdf, id=1910, 361.35pt x 433.62pt>
+pdfTeX warning: pdflatex (file ./plots/ps2_data.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+>] [21 <./plots/sigloss_modeloop_2panel.pdf>]
+<plots/ps1_data_add.pdf, id=2221, 361.35pt x 433.62pt>
 File: plots/ps1_data_add.pdf Graphic file (type pdf)
 
 <use plots/ps1_data_add.pdf>
-Package pdftex.def Info: plots/ps1_data_add.pdf used on input line 1298.
+Package pdftex.def Info: plots/ps1_data_add.pdf used on input line 1305.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_data_add.pdf, id=1911, 361.35pt x 433.62pt>
+<plots/ps2_data_add.pdf, id=2222, 361.35pt x 433.62pt>
 File: plots/ps2_data_add.pdf Graphic file (type pdf)
 
 <use plots/ps2_data_add.pdf>
-Package pdftex.def Info: plots/ps2_data_add.pdf used on input line 1299.
+Package pdftex.def Info: plots/ps2_data_add.pdf used on input line 1306.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- [20 <./plots/ps1_data.pdf> <./plots/ps2_data.pdf
+ [22] [23 <./plots/ps1_data_add.pdf> <./plots/ps2_data_add.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps2_data.pdf): PDF i
-nclusion: multiple pdfs with page group included in a single page
->] [21 <./plots/sigloss_modeloop_2panel.pdf>]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 1314.
-
-[22 <./plots/ps1_data_add.pdf> <./plots/ps2_data_add.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps2_data_add.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
->]
-
-Package natbib Warning: Citation `thompson_et_al2001' on page 23 undefined on i
-nput line 1368.
-
-[23]
-
-LaTeX Warning: Reference `sec:MitBias' on page 24 undefined on input line 1386.
-
-
-<plots/sense_check.pdf, id=2301, 299.71976pt x 347.88719pt>
+pdfTeX warning: pdflatex (file ./plots/ps2_data_add.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
+>] <plots/sense_check.pdf, id=2396, 299.71976pt x 347.88719pt>
 File: plots/sense_check.pdf Graphic file (type pdf)
 
 <use plots/sense_check.pdf>
-Package pdftex.def Info: plots/sense_check.pdf used on input line 1413.
+Package pdftex.def Info: plots/sense_check.pdf used on input line 1420.
 (pdftex.def)             Requested size: 242.26653pt x 281.19785pt.
 
-<plots/ps1_noise_add.pdf, id=2311, 361.35pt x 433.62pt>
+<plots/ps1_noise_add.pdf, id=2406, 361.35pt x 433.62pt>
 File: plots/ps1_noise_add.pdf Graphic file (type pdf)
 
 <use plots/ps1_noise_add.pdf>
-Package pdftex.def Info: plots/ps1_noise_add.pdf used on input line 1441.
+Package pdftex.def Info: plots/ps1_noise_add.pdf used on input line 1448.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_noise_add.pdf, id=2312, 361.35pt x 433.62pt>
+<plots/ps2_noise_add.pdf, id=2407, 361.35pt x 433.62pt>
 File: plots/ps2_noise_add.pdf Graphic file (type pdf)
 
 <use plots/ps2_noise_add.pdf>
-Package pdftex.def Info: plots/ps2_noise_add.pdf used on input line 1442.
+Package pdftex.def Info: plots/ps2_noise_add.pdf used on input line 1449.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
- [24]
+ [24 <./plots/sense_check.pdf>] [25 <./plots/ps1_noise_add.pdf> <./plots/ps2_no
+ise_add.pdf
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 1446.
-
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 1446.
-
-
-Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
-
-[25 <./plots/sense_check.pdf>]
-<plots/noise_errors.pdf, id=2399, 578.16pt x 433.62pt>
+pdfTeX warning: pdflatex (file ./plots/ps2_noise_add.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+>] <plots/noise_errors.pdf, id=2610, 578.16pt x 433.62pt>
 File: plots/noise_errors.pdf Graphic file (type pdf)
 
 <use plots/noise_errors.pdf>
-Package pdftex.def Info: plots/noise_errors.pdf used on input line 1486.
+Package pdftex.def Info: plots/noise_errors.pdf used on input line 1493.
 (pdftex.def)             Requested size: 242.26653pt x 183.54149pt.
-
-
-LaTeX Warning: Reference `eq:noise' on page 26 undefined on input line 1489.
-
-
-LaTeX Warning: Reference `eq:noise' on page 26 undefined on input line 1489.
-
-[26 <./plots/ps1_noise_add.pdf> <./plots/ps2_noise_add.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps2_noise_add.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
-> <./plots/noise_errors.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/noise_errors.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
->] <plots/null_bls.pdf, id=2599, 578.16pt x 433.62pt>
+ [26 <./plots/noise_errors.pdf>]
+<plots/null_bls.pdf, id=2700, 578.16pt x 433.62pt>
 File: plots/null_bls.pdf Graphic file (type pdf)
  <use plots/null_bls.pdf>
-Package pdftex.def Info: plots/null_bls.pdf used on input line 1579.
+Package pdftex.def Info: plots/null_bls.pdf used on input line 1586.
 (pdftex.def)             Requested size: 241.16582pt x 180.86864pt.
 
-<plots/null_lsts.pdf, id=2600, 578.16pt x 433.62pt>
+<plots/null_lsts.pdf, id=2701, 578.16pt x 433.62pt>
 File: plots/null_lsts.pdf Graphic file (type pdf)
  <use plots/null_lsts.pdf>
-Package pdftex.def Info: plots/null_lsts.pdf used on input line 1580.
+Package pdftex.def Info: plots/null_lsts.pdf used on input line 1587.
 (pdftex.def)             Requested size: 241.16582pt x 180.86864pt.
 
-<plots/null_eo.pdf, id=2601, 578.16pt x 433.62pt>
+<plots/null_eo.pdf, id=2702, 578.16pt x 433.62pt>
 File: plots/null_eo.pdf Graphic file (type pdf)
  <use plots/null_eo.pdf>
-Package pdftex.def Info: plots/null_eo.pdf used on input line 1581.
+Package pdftex.def Info: plots/null_eo.pdf used on input line 1588.
 (pdftex.def)             Requested size: 241.16582pt x 180.86864pt.
 
-[27]
+[27] [28 <./plots/null_bls.pdf> <./plots/null_lsts.pdf
 
-Package natbib Warning: Citation `pober_et_al2016b' on page 28 undefined on inp
-ut line 1610.
-
-[28] [29 <./plots/null_bls.pdf> <./plots/null_lsts.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/null_lsts.pdf): PDF 
-inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./plots/null_lsts.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
 > <./plots/null_eo.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/null_eo.pdf): PDF in
-clusion: multiple pdfs with page group included in a single page
->] [30] Excluding 'comment' comment. (./PAPER.bbl [31])
+pdfTeX warning: pdflatex (file ./plots/null_eo.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+>] [29]
 
-Package natbib Warning: There were undefined citations.
+LaTeX Warning: Reference `eq:QuadraticEstimator' on page 30 undefined on input 
+line 1703.
 
-[32]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1825.
- (./PAPER.aux
 
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
+LaTeX Warning: Reference `sec:' on page 30 undefined on input line 1731.
 
-)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1825.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1825.
+
+LaTeX Warning: Reference `eq:' on page 30 undefined on input line 1745.
+
+[30]pdfTeX warning (ext4): destination with the same identifier (name{appendix.
+A}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1776 \section{A toy model for signal loss}
+                                            pdfTeX warning (ext4): destination 
+with the same identifier (name{equation.A.1}) has been already used, duplicate 
+ignored
+<to be read again> 
+                   \relax 
+l.1783 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.A.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1787 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.A.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1793 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.A.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1798 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.A.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1802 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.A.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1809 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.A.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1813 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.A.8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1817 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.A.9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1824 \begin{equation}
+                        [31]pdfTeX warning (ext4): destination with the same id
+entifier (name{equation.A.10}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1828 \begin{equation}
+                        Excluding 'comment' comment. (./PAPER.bbl [32])
+[33]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1910.
+ (./PAPER.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1910.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1910.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
-
-
  ) 
 Here is how much of TeX's memory you used:
- 16918 strings out of 493089
- 280960 string characters out of 6134842
- 434936 words of memory out of 5000000
- 19967 multiletter control sequences out of 15000+600000
+ 16949 strings out of 493089
+ 281661 string characters out of 6134842
+ 421782 words of memory out of 5000000
+ 19989 multiletter control sequences out of 15000+600000
  18750 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,11n,53p,10370b,601s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsubsection.3.1.4} has been referenced but does
- not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.3.11} has been referenced but does not exi
-st, replaced by a fixed one
-
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (32 pages, 2489417 bytes).
+ 38i,11n,53p,10370b,661s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on PAPER.pdf (33 pages, 2516254 bytes).
 PDF statistics:
- 2998 PDF objects out of 3580 (max. 8388607)
- 1404 compressed objects within 15 object streams
- 216 named destinations out of 1000 (max. 500000)
+ 3098 PDF objects out of 3580 (max. 8388607)
+ 1498 compressed objects within 15 object streams
+ 225 named destinations out of 1000 (max. 500000)
  254 words of extra memory for PDF output out of 10000 (max. 10000000)
 

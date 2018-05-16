@@ -65,6 +65,13 @@
 \newcommand{\jea}[1]{{\color{blue} \textbf{[JEA: #1]}} }
 \newcommand{\jp}[1]{ {\color{pink} \textbf{[JCP: #1]}} } %y'all picked all the good colors
 
+% Math shortcuts from James
+\newcommand{\invC}{\ensuremath{\C^{-1}}}
+\newcommand{\dC}[1]{\ensuremath{\C_{,#1}}}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\PDeriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+
 % Math shortcuts from Danny
 \newcommand{\Prob}{\mathbf{P}}
 
@@ -1686,6 +1693,84 @@ award 1701536. AL acknowledges support for this work by NASA through Hubble Fell
 \label{sec:Ack}
 
 % APPENDIX ---------------------------------------------------------------------------------
+
+\color{blue}
+
+\appendix
+\section{A toy model for inverse covariance weighting}
+\label{sec:icw_appendix}
+
+We illustrate the way in which the quadratic estimator, Equation \ref{eq:QuadraticEstimator}, is intended to estimate the power spectrum of EoR in the presence of contamination by other terms by considering the simpler, but similar, case of estimating the variance of data.  We have specifically chosen a toy model where the data covariance is diagonal, as indeed we expect the EoR signal to be.  We assume we have $N$ data points $\Delta_i$ which are the sum of a desired signal $\sigma_i$ and an undesired contaminant $\upsilon_i$
+\begin{equation}
+\Delta_i = \sigma_i + \upsilon_i
+\end{equation}
+with 
+\begin{equation}
+\langle \sigma_i \rangle = 0; \; \langle \sigma^2_i \rangle = s; \; {\rm and}~\langle \bm{\sigma \sigma}^T \rangle = s \mathbf{I}_{N \times N} \equiv \mathbf{S}
+\end{equation}
+and we wish to estimate $s$.  The contaminant in this case has a similar structure for its covariance, and is assumed uncorrelated with the signal
+\begin{equation}
+\langle \upsilon_i \rangle = 0; \; 
+\langle \upsilon^2_i \rangle = u; \; 
+\langle \bm{\upsilon \upsilon}^T \rangle = u \mathbf{I}_{N \times N} \equiv \mathbf{U}; {\rm and}~ 
+\langle \sigma_i \upsilon_j \rangle = 0
+\end{equation}
+With the covariance matrix given by $\C = \mathbf{S} + \mathbf{U}$, the estimator for $s$ using the optimal quadratic estimator prescription is
+\begin{equation}
+\label{eq:CaseOneICW}
+\hat{s} = \half {\F}^{-1} \left( \bm{\Delta}^T \invC \PDeriv{\C}{s}  \invC \bm{\Delta} \right) 
+= \frac{\bm{\Delta^T \Delta}}{N}
+\end{equation}
+We note that
+\begin{equation}
+\langle \hat{s} \rangle = s + u
+\end{equation}
+In this case, the quadratic estimator returns an entirely reasonable result, but, since 
+$\PDeriv{\mathbf{S}}{s} = \PDeriv{\mathbf{U}}{u} =  \PDeriv{\C}{s}$, that is, {\it the covariance structure of the contaminant is identical to the signal}, the information available to the quadratic estimator to distinguish the two is degenerate, and  is only possible to achieve an unbiased estimate of $s$ by using some additional information to estimate the additive bias due to $u$ and subtract it.
+
+Now consider a case, chosen to be very similar to the toy model in \ref{sec:},  in which the data again have an additive contaminant, now given by
+\begin{equation}
+\Delta_i = \sigma_i + \upsilon m_i
+\end{equation}
+where the properties of $\sigma_i$ are as before, but now $\upsilon$ is a random variable and $m_i$ is a fixed function of $i$ with
+\begin{equation}
+\langle \upsilon \rangle = 0; \;
+\langle \upsilon^2 \rangle = u; \; 
+ \langle \bm{\upsilon \upsilon}^T \rangle = u \mathbf{m m}^T \equiv \mathbf{U}; \;
+ \mathbf{m}^T \mathbf{m} = N; \; {\rm and}~ 
+\langle \sigma_i \upsilon \rangle = 0
+\end{equation}
+Here $\mathbf{m}$ represents a mode which is correlated across many data points, with amplitude given by  $\upsilon$.
+
+We can again calculate the estimator given by \ref{eq:} explicitly by using the Sherman-Morrison identity to invert the covariance matrix.  Defining
+\begin{equation}
+\xi \equiv \frac{u/s}{1+u/s}
+\end{equation} 
+we have
+\begin{equation}
+\invC  =   \frac{1}{s} \left(\I - \xi \mathbf{m m}^T \right)
+\end{equation}
+and the virtue of weighting by $\invC$ becomes clearer: in the limit $u \gg s$, $\xi \to 1$, and this becomes
+\begin{equation}
+\invC  = \frac{1}{s} \left(\I - \mathbf{m m}^T \right)
+\end{equation}
+where $\I - \mathbf{m m}^T$ is the projection operator, projecting out $\mathbf{m}$ from any any vector it acts on.   Proceeding to calculate the full estimator
+\begin{equation}
+\hat{s} = \half {\F}^{-1} \left(\bm \Delta^T \invC \PDeriv{\C}{s}  \invC \bm \Delta \right) = \frac{ \bm \Delta^T  (\I +  (\xi^2 - 2 \xi)  \mathbf{m m}^T)  \bm \Delta}{N + \xi^2 - 2 \xi} 
+\end{equation}
+The expectation is
+\begin{equation}
+\langle \hat{s} \rangle = \frac{ N(s + u + (\xi^2 - 2 \xi) 
+[u + \langle(\bm{\sigma} \cdot \mathbf{m})^2 \rangle])} 
+{N + \xi^2 - 2 \xi} 
+\end{equation}
+This again has a simple interpretation in the limit $\xi \to 1$, where
+\begin{equation}
+\langle \hat{s} \rangle = \frac{N}{N -1}  (s - \langle(\bm{\sigma} \cdot \mathbf{m})^2\rangle )
+\end{equation}
+Thus, in the limit the contaminant is large compared to $s$, and to the extent that $\bm \sigma \cdot \mathbf{m} \approx 0$, this yields a nearly unbiased estimator for $s$ and the inverse covariance weighting has completely removed the effect of the contaminant.
+
+\color{black}
 
 \appendix
 \section{A toy model for signal loss}
