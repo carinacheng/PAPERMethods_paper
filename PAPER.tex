@@ -1883,7 +1883,7 @@ Taking the expectation value then removes all terms with odd powers of $(y - \ba
 p(x) \propto \sqrt{ \frac{1}{\sigma^{2}}\Big(2\Big(\frac{\partial \sigma}{\partial x}\Big)^{2} + \Big(\frac{\partial \bar y}{\partial x}\Big)^{2}\Big) }.
 \end{equation}
 
-When we simulate our full injection framework as in Section \ref{sec:Practice}, we sample $P_{\rm in}$ values that range from $\sim$$10^{5}$\,mK$^{2}$ ($h^{-1}$ Mpc)$^{3}$ to $\sim$10$^{11}$\,mK$^{2}$ ($h^{-1}$ Mpc)$^{3}$, so we note that the prior is set to zero outside those regions. For the injections that we do sample, we can easily fit analytic functions to the mean and standard deviations of $\widehat{P}_{\rm out}$ ($\bar y$ and $\sigma$) as functions of $P_{\rm in}$. An example of the typical shape of these functions for the PAPER-64 analysis is shown in Figure \ref{fig:jeffreys1}, though we note in practice we fit solutions for every $k$-value and simulation independently.
+When we simulate our full injection framework as in Section \ref{sec:Practice}, we sample 50 $P_{\rm in}$ values that range from $\sim$$10^{5}$\,mK$^{2}$ ($h^{-1}$ Mpc)$^{3}$ to $\sim$10$^{11}$\,mK$^{2}$ ($h^{-1}$ Mpc)$^{3}$, and we note that the prior is set to zero outside those regions. For the injections that we do sample, we can easily fit analytic functions to the mean and standard deviations of $\widehat{P}_{\rm out}$ ($\bar y$ and $\sigma$) as functions of $P_{\rm in}$. An example of the typical shape of these functions for the PAPER-64 analysis is shown in Figure \ref{fig:jeffreys1}, though we note in practice we fit solutions for every $k$-value and simulation independently.
 
 \begin{figure}
 	\centering
@@ -1897,7 +1897,7 @@ We also show the typical shape of the Jeffreys prior used in our analysis in Fig
 \begin{figure}
 	\centering
 	\includegraphics[width=10cm]{plots/jeffrey_prior.pdf}
-	\caption{An example of the typical Jeffreys prior shape for the PAPER-64 analysis as computed by Equation \eqref{eq:jeffreys_final}. Most noticeably, it is not constant with $P_{\rm in}$, meaning a uniform prior would be an informative prior.}
+	\caption{An example of the typical Jeffreys prior shape for the PAPER-64 analysis as computed by Equation \eqref{eq:jeffreys_final} (black). We smooth the prior using a sliding boxcar average for every $5$ injections (red). Most noticeably, the Jeffreys prior is not constant with $P_{\rm in}$, meaning a uniform prior would be an informative prior.}
 	\label{fig:jeffreys2}
 \end{figure}
 
