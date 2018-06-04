@@ -480,7 +480,7 @@ sinusoid. These empirically estimated covariance matrices have eigenspectra that
 
 Because $\widehat{\textbf{C}}$ is estimated from the data, its eigenvectors and eigenvalues are strongly coupled to the particular data realization that was used to compute it. For example, the highest-valued eigenmode of $\widehat{\textbf{C}}$ (highest eigenvalue) describes the sinusoid foreground mode in the toy model (the peak in Figure \ref{fig:toy_sigloss3}). In Figure \ref{fig:toy_sigloss12} we show the estimated covariances of our toy model datasets along with $\widehat{\textbf{C}}^{-1}$ weighted data. The foreground sinusoid is clearly visible in $\widehat{\textbf{C}}_{\rm FG}$.
 
-In general, the highest-valued eigenmodes of $\widehat{\textbf{C}}$ typically (but not always) describe bright foregrounds --- the most prominent shapes in a dataset. For these FG-dominating modes, where foregrounds outshine the EoR signal, down-weighting is beneficial. In some sense, we desire signal loss in this regime, if by `signal' we mean `foregrounds.' In this case it is beneficial for these eigenmodes to be coupled to the data in a way that produces loss. For our toy model, the successful suppression of the foreground mode is demonstrated in Figure \ref{fig:toy_sigloss3} by the missing foreground peak in the weighted power spectrum estimate (green).
+In general, the highest-valued eigenmodes of $\widehat{\textbf{C}}$ typically (but not always) describe bright foregrounds --- the most prominent shapes in a dataset. For these FG-dominated modes, where foregrounds outshine the EoR signal, down-weighting is beneficial. In some sense, we desire signal loss in this regime, if by `signal' we mean `foregrounds.' In this case it is beneficial for these eigenmodes to be coupled to the data in a way that produces loss. For our toy model, the successful suppression of the foreground mode is demonstrated in Figure \ref{fig:toy_sigloss3} by the missing foreground peak in the weighted power spectrum estimate (green).
 
 %If the true covariance matrix $\textbf{C}$ of our data was known, then every single eigenvalue and eigenvector of $\textbf{C}$ would be 
 %representative of real fluctuations in the data. However, when using an estimated $\widehat{\textbf{C}}$ that is derived from one 
@@ -506,7 +506,7 @@ project out the first eigenmode and then flatten the rest of the spectrum to hav
 Altering $\widehat{\textbf{C}}$ as such is one specific example of a regularization method for this toy model, in which we are 
 changing $\widehat{\textbf{C}}$ in a way that changes its coupling to the data realization. The resulting 
 power spectrum estimate for this case is shown in the right plot of Figure \ref{fig:toy_sigloss3}. In this case we recover the EoR signal, 
-demonstrating that if we can disentangle the foreground-dominating modes and EoR-dominating modes, we can down-weight 
+demonstrating that if we can disentangle the foreground-dominated modes and EoR-dominated modes, we can down-weight 
 them with negligible signal loss. There are several other ways to regularize $\widehat{\textbf{C}}$, and we will discuss some in Section 
 \ref{sec:otherweight}.
 
@@ -654,7 +654,7 @@ elements of the estimated covariance matrix more heavily than those off-diagonal
 The third panel (bottom left) in Figure \ref{fig:toy_sigloss8} minimizes signal loss a different way --- 
 by only using the first three eigenmodes of the estimated covariance. Recalling that our toy model foregrounds can be described entirely by the first eigenmode, this 
 method intentionally projects out the highest-valued modes only by replacing all but the three highest weights in the 
-eigenspectrum with $1$'s (equal weights). Again, avoiding the over-fitting of EoR-dominating modes which are coupled to the data results in negligible signal loss. However, we do 
+eigenspectrum with $1$'s (equal weights). Again, avoiding the over-fitting of EoR-dominated modes which are coupled to the data results in negligible signal loss. However, we do 
 not perfectly recover the shape of the EoR power spectrum because we lost information when ignoring the relative weights of most modes. While this case is illuminating for the toy model, in practice it is not obvious which eigenmodes are FG or EoR dominated (and they could be mixed as well), so determining which subset of modes to down-weight is not trivial. 
 
 The last regularization scheme we are highlighting here is setting $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (keeping only the diagonal elements of $\widehat{\textbf{C}}$). In the bottom right 
