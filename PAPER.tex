@@ -284,7 +284,7 @@ they are limited. We highlight problems that can arise regarding each theme and 
 Ultimately, we show that rigorous investigations into signal loss, error estimation, and bias must be performed for robust 21\,cm results.
 
 % SECTION 2 SIGLOSS ---------------------------------------------------------------------------------
-\color{blue}
+%\color{blue}
 
 \subsection{Signal Loss}
 \label{sec:SiglossOverview}
@@ -295,7 +295,7 @@ Signal loss can arise in a variety of ways in the analysis pipeline, such as by 
 the use of an empirically estimated covariance matrix with the ``optimal quadratic estimator'' formalism.
 This loss was significantly 
 %applying a weighting matrix to data, a loss that can be significant depending on the choice of weighting and one that was previously 
-underestimated in the \citetalias{ali_et_al2015} analysis.
+under-estimated in the \citetalias{ali_et_al2015} analysis.
 
 % JEA - Put all of the (O)QE / ICW theory here, rather than sprinkled throughout this section.
 
@@ -303,7 +303,7 @@ underestimated in the \citetalias{ali_et_al2015} analysis.
 
 %AAAICW
 
-The goal of the power spectrum analysis is to produce an unbiased estimator of the EoR power spectrum in the presence of both noise and foreground emission.  Prior to power spectrum estimation, the data will often have been prepared to have as little foreground as possible by some method of subtraction, so this foreground emission may appear either directly (because it was not subtracted) or as a residual to some subtraction process not in the power spectrum domain.  If we possess a good estimate of the total covariance of the data, including both the desired signal and any contaminants, then the ``optimal quadratic estimator'' formalism provides a method of producing a minimum variance, unbiased estimator of the desired signal
+The goal of power spectrum analysis is to produce an unbiased estimator of the EoR power spectrum in the presence of both noise and foreground emission. Prior to power spectrum estimation, the data will often have been prepared to have minimal foregrounds by some method of subtraction, so this foreground emission may appear either directly (because it was not subtracted) or as a residual of some subtraction process not in the power spectrum domain. If an accurate estimate of the total covariance of the data is known, including both the desired signal and any contaminants, then the ``optimal quadratic estimator'' formalism provides a method of producing a minimum variance, unbiased estimator of the desired signal, as shown in 
 % JEA - I cut this b/c I wanted to step back and explain a bit more clearly what we were actually hoping for 
 %Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum estimation technique of quadratic estimators (QE) as done in 
 \citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, \citet{dillon_et_al2014}, \citet{dillon_et_al2015}, \citet{switzer_et_al2015}, and \citet{trott_et_al2016}. 
@@ -329,7 +329,7 @@ Visibilities are measurements of the Fourier transform of the sky along two spat
 \frac{\partial\textbf{C}}{\partial p_{\alpha}} \equiv \textbf{Q}^{\alpha}
 \end{equation}
 which has dimensions ($N_{f}$,$N_{f}$).
-In practice, this matrix also implements a transform of the frequency-domain visibilities to $\mathbf{k}$ space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
+In practice, this matrix also implements a transform of the frequency-domain visibilities to $\mathbf{k}$-space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
 
 The optimal quadratic estimator prescription is then to compute
 \begin{equation}
@@ -344,16 +344,16 @@ where $\F$ is the Fisher matrix and
 and
 \begin{equation}
 \label{eq:OQELinear}
-\widehat{b}_{\beta} = \Tr\left[ (\C - \mathbf{S}) \invC \PDeriv{\C}{p_\beta} \invC \right] 
+\widehat{b}_{\beta} = \Tr\left[ (\C - \mathbf{S}) \invC \PDeriv{\C}{p_\beta} \invC \right].
 \end{equation}
-This estimator is the minimum variance (smallest error bar) estimate of the power spectrum \citep{tegmark_et_al1997a,bond_et_al1998}, and is unbiased according to the usual definition that the ensemble average of the estimator is equal to the true value
+This estimator is the minimum variance (smallest error bar) estimate of the power spectrum \citep{tegmark_et_al1997a,bond_et_al1998} and is unbiased if the ensemble average of the estimator is equal to its true value
 \begin{equation}
-\langle \widehat{p}_{\alpha} \rangle = p_\alpha
+\langle \widehat{p}_{\alpha} \rangle = p_\alpha.
 \end{equation}
 
-It is clear that in order to obtain an unbiased estimate in the presence of contaminants, the estimator defined by Equation \eqref{eq:OQE} must be capable of ``suppressing'' or ``removing'' their effects.  The way in which this comes about is illustrated with a toy model in Appendix \ref{sec:icw_appendix}.  There we show that the effect of the weighting in Equation \ref{eq:OQEQuadratic} is to project out the modes of $\textbf{U}$ with a different covariance structure than $\mathbf{S}$ in the power spectrum estimate, and the effect of Equation \ref{eq:OQELinear} is to subtract out the remaining bias.  These effects for a more realistic model of the EoR and foregrounds were shown in \citet{liu_tegmark2011}.
+It is clear that in order to obtain an unbiased estimate in the presence of contaminants, the estimator defined by Equation \eqref{eq:OQE} must be capable of ``suppressing'' or ``removing'' their effects. The way in which the optimal estimator can suppress contaminates is illustrated with a toy model in Appendix \ref{sec:icw_appendix}. In this appendix, we show that the effect of the weighting in Equation \ref{eq:OQEQuadratic} is to project out the modes of $\textbf{U}$ with a different covariance structure than $\mathbf{S}$ in the power spectrum estimate, and the effect of Equation \ref{eq:OQELinear} is to subtract out the remaining bias. Similar effects for a more realistic model of the EoR and foregrounds are shown in \citet{liu_tegmark2011}.
 
-The toy model also illustrates that if the covariance structure of the contaminants is sufficiently different from the desired power spectrum, then the linear bias term may be expected to be quite small, and it is only necessary to know $\C$ and $\partial \C/\partial p_\alpha$, but not $\mathbf{U}$.  We do have a reasonable expectation of different covariance structure since the foregrounds, before any processing, {\it are} strongly correlated between frequencies, whereas the EoR is not.  Moreover, because the linear bias is always positive and there is no multiplicative bias, the quadratic-only term will always produce an estimate which is {\it high} relative to the true value, and which can conservatively be interpreted as an upper limit.  These considerations, and the difficulty of obtaining an estimate for $\mathbf{U}$, motivate the neglect of the linear bias in the rest of this analysis.
+The toy model in Appendix \ref{sec:icw_appendix} also illustrates that if the covariance structure of the contaminants is sufficiently different from the desired power spectrum, then the linear bias term may be expected to be quite small, and it is only necessary to know $\C$ and $\partial \C/\partial p_\alpha$, but not $\mathbf{U}$. Since the foregrounds are expected to be strongly correlated between frequencies whereas the EoR is not, we expect different covariance structures and therefore a small linear bias. Moreover, because the linear bias is always positive and there is no multiplicative bias, the quadratic-only term will always produce an estimate which is {\it high} relative to the true value, and which can conservatively be interpreted as an upper limit. These considerations, and the difficulty of obtaining an estimate for $\mathbf{U}$, motivate the neglect of the linear bias in the rest of this analysis.
 
 %We do this when forming the un-normalized power spectrum estimate $\widehat{q}_{\alpha}$:
 It is also possible to define a more generalized version of the optimal quadratic estimator which may still produce an unbiased estimate, where Equation \eqref{eq:OQEQuadratic} is replaced by
@@ -378,7 +378,7 @@ of PAPER-64 data as explained in Section \ref{sec:Bias}, subject to the constrai
 
 % JEA - I don't think it's attractive at all
 %Without a perfect model for the covariance matrix $\textbf{C}$ of our data, one attractive way to estimate it is to empirically derive it from the data $\textbf{x}$ itself. 
-Given the advantages of inverse covariance weighting, a question arises how one goes about estimating $\C$.  One method is to empirically derive it from the data $\textbf{x}$ itself.
+Given the advantages of inverse covariance weighting, a question arises of how one goes about estimating $\C$.  One method is to empirically derive it from the data $\textbf{x}$ itself.
 Similar types of weightings that are based on variance information in data are done in \citet{chang_et_al2010} and \citet{switzer_et_al2015}. In previous PAPER analyses, one time-averages the data to obtain:
 \begin{equation}
 \widehat{\textbf{C}} \equiv \langle\textbf{xx}^{\dagger}\rangle_{t} \approx \langle  \textbf{xx}^{\dagger}\rangle,
@@ -391,15 +391,17 @@ In the next three sections, we use toy models to investigate the effects of weig
 
 %\item While the correct covariance will remove this contamination, there is no particular harm in having these modes be strongly correlated with the data, since we desire their projection in any case.  
 
-In the following sections, we find
+As a brief summary, in the following sections, we find:
 
 \begin{itemize}
 
-\item If the covariance matrix is estimated from the data, the strong correlation between the estimated modes and the data will in general produce an estimate of the signal power spectrum which in general is strongly biased {\it low} relative to the true value.  In this context, this is what we call ``signal loss.''  (Section \ref{sec:toymodel})
+\item If the covariance matrix is estimated from the data, the strong correlation between the estimated modes and the data will in general produce an estimate of the signal power spectrum which is strongly biased {\it low} relative to the true value.  In this context, this is what we call ``signal loss''  (Section \ref{sec:toymodel}).
 
-\item The effect of the bias is worsened when the number of independent samples used to estimate the covariance matrix is reduced. (Section \ref{sec:toymodel_frf})
+\item The effect of the bias is worsened when the number of independent samples used to estimate the covariance matrix is reduced (Section \ref{sec:toymodel_frf}).
 
-\item The convergence of the modes of the empirical covariance matrix to the true matrix depends on the size of the eigenvalues, with the modes with the largest eigenvalues converging more quickly (in norm) to the true eigenvector than those with smaller eigenvalues.  Thus, in estimating the covariance matrix empirically, larger eigenvalue modes are likely to be more reliable. (Section \ref{sec:otherweight})
+\item The convergence of the modes of the empirical covariance matrix to the true matrix depends on the size of the eigenvalues, with the modes with the largest eigenvalues converging more quickly (in norm) to the true eigenvector than those with smaller eigenvalues. Thus, in estimating the covariance matrix empirically, larger eigenvalue modes are likely to be more reliable (Section \ref{sec:toymodel_frf}).
+
+\item Knowing these things, there are some simple ways of altering the empirical covariance matrix to produce unbiased power spectrum estimates (Section \ref{sec:otherweight}).
 
 % JEA - I really struggle with whether this is intuitively obvious ... it's hard to get a sense of what "noise" is averaging down slower.  All modes have the same number of samples going into the estimate.  Should I think of the size of he eigenvalue is an estimate of its "signal/noise" in the given data realization? 
 % Also, have we shown this sufficiently rigorously?  Is the toy model sufficiently general?  (Probably.)  But, for any dataset you kind of have to make a decision about where you think "reliable" is, i.e., where in eigenvalue would you make a cut?  Is Figure 20 basically trying to argue for the real data that this is ~a few modes?
@@ -417,7 +419,7 @@ In the following sections, we find
 %instrumental, and EoR models, we could form $\textbf{C}$ in a way that accurately describes our measured data and use inverse covariance weighting to produce minimum variance power spectrum estimates without destroying the signal. In other words, the optimal quadratic estimator is by construction an unbiased estimator of the power spectrum.
 
 %In practice, we do not have perfect models for $\textbf{C}$, and it is the use of an estimated covariance $\widehat{\textbf{C}}$ instead of the true covariance $\textbf{C}$ that can lead to loss. 
-We will now build intuition using a toy model into how weighting using the inverse of the empirically estimated covariance $\widehat{\textbf{C}}^{-1}$ can give rise to signal loss.  We construct a simple dataset that contains visibility data with $100$ time integrations and $20$ frequency channels. This model represents realistic dimensions of about an hour of PAPER data which might be used for a power spectrum analysis. For PAPER-64 (both the \citetalias{ali_et_al2015} analysis and our new analysis) we use $\sim8$ hours of data (with channel widths of $0.5$ MHz and integration times of $43$ seconds), but here we scale it down with no loss of generality. 
+Using a toy model, we will now build intuition into how weighting by the inverse of the empirically estimated covariance, $\widehat{\textbf{C}}^{-1}$, can give rise to signal loss.  We construct a simple dataset that contains visibility data with $100$ time integrations and $20$ frequency channels. This model represents realistic dimensions of about an hour of PAPER data which might be used for a power spectrum analysis. For PAPER-64 (both the \citetalias{ali_et_al2015} analysis and our new analysis) we use $\sim8$ hours of data (with channel widths of $0.5$ MHz and integration times of $43$ seconds), but here we scale it down with no loss of generality. 
 
 We create mock visibilities, $\textbf{x}$, and assume a non-tracking, drift-scan observation. Hence, flat spectrum sources (away from zenith) lead to measured visibilities which oscillate in time and frequency. We therefore form a mock visibility measurement of a bright foreground signal, $\textbf{x}_{\rm FG}$, as a complex sinusoid that varies smoothly in time and frequency, a simplistic but realistic representation of a single bright source. We also create a mock visibility measurement of an EoR signal $\textbf{x}_{\rm EoR}$ as a complex, Gaussian random signal. A more realistic EoR signal would have a sloped power spectrum in $p(k)$ (instead of flat, as in the case of white noise), which could be simulated by introducing frequency correlations into the mock EoR signal. However, here we treat all $k$'s separately, so a simplistic white noise approximation can be used. Our combined data matrix is then $\textbf{x} = 
 \textbf{x}_{\rm FG} + \textbf{x}_{\rm EoR}$, to which we apply different weighting schemes throughout Section \ref{sec:SiglossOverview}. The three data components are shown in Figure 
@@ -1758,28 +1760,28 @@ award 1701536. AL acknowledges support for this work by NASA through Hubble Fell
 
 % APPENDIX ---------------------------------------------------------------------------------
 
-\color{blue}
+%\color{blue}
 
 \appendix
-\section{A toy model of inverse covariance weighting}
+\section{A toy model for inverse covariance weighting}
 \label{sec:icw_appendix}
 
 %AAAXXX
 
-We illustrate the way in which the quadratic estimator, Equations \eqref{eq:OQE}, \eqref{eq:OQEQuadratic}, and \eqref{eq:OQELinear} estimate the power spectrum of EoR in the presence of contamination by other terms by considering two simpler, but similar, cases of estimating the variance of data.  We have specifically chosen toy models where the data covariance is diagonal, as indeed we expect the EoR signal to be.  We assume we have $N$ data points $\Delta_i$ which are the sum of a desired signal $\sigma_i$ and an undesired contaminant $\upsilon_i$
+We illustrate the way in which the quadratic estimator, Equations \eqref{eq:OQE}, \eqref{eq:OQEQuadratic}, and \eqref{eq:OQELinear}, estimate the power spectrum of EoR in the presence of contamination by other terms by considering two simpler, but similar, cases of estimating the variance of data.  We have specifically chosen toy models where the data covariance is diagonal, as indeed we expect the EoR signal to be.  We assume we have $N$ data points $\Delta_i$ which are the sum of a desired signal $\sigma_i$ and an undesired contaminant $\upsilon_i$
 \begin{equation}
 \Delta_i = \sigma_i + \upsilon_i
 \end{equation}
 with 
 \begin{equation}
-\langle \sigma_i \rangle = 0; \; \langle \sigma^2_i \rangle = s; \; {\rm and}~\langle \bm{\sigma \sigma}^T \rangle = s \mathbf{I}_{N \times N} \equiv \mathbf{S}
+\langle \sigma_i \rangle = 0; \; \langle \sigma^2_i \rangle = s; \; {\rm and}~\langle \bm{\sigma \sigma}^T \rangle = s \mathbf{I}_{N \times N} \equiv \mathbf{S},
 \end{equation}
-and we wish to estimate $s$.  The contaminant in this case has a similar structure for its covariance, and is assumed uncorrelated with the signal
+where we wish to estimate $s$.  The contaminant in this case has a similar structure (as the EoR) for its covariance, and is assumed uncorrelated with the signal
 \begin{equation}
 \langle \upsilon_i \rangle = 0; \; 
 \langle \upsilon^2_i \rangle = u; \; 
 \langle \bm{\upsilon \upsilon}^T \rangle = u \mathbf{I}_{N \times N} \equiv \mathbf{U}; {\rm and}~ 
-\langle \sigma_i \upsilon_j \rangle = 0
+\langle \sigma_i \upsilon_j \rangle = 0.
 \end{equation}
 With the covariance matrix given by $\C = \mathbf{S} + \mathbf{U}$, the estimator for $s$ using only the quadratic part of Equation \ref{eq:OQE} is
 \begin{equation}
@@ -1787,9 +1789,9 @@ With the covariance matrix given by $\C = \mathbf{S} + \mathbf{U}$, the estimato
 \end{equation}
 and its expectation is
 \begin{equation}
-\langle \hat{s} \rangle = s + u
+\langle \hat{s} \rangle = s + u.
 \end{equation}
-Thus, {\it when the covariance structure of the contaminant is identical to the signal} ($\PDeriv{\mathbf{S}}{s} = \PDeriv{\mathbf{U}}{u} =  \PDeriv{\C}{s}$), the information available to the quadratic portion of the estimator to distinguish the two is degenerate, and knowledge only of $\C$ and $\PDeriv{\C}{s}$ is inadequate.  In order to obtain an unbiased estimate of $s$, one must also use knowledge of $\mathbf{U}$.  Indeed, computing the linear bias from Equation \eqref{eq:OQELinear}, one finds $b = u$.   
+Thus, {\it when the covariance structure of the contaminant is identical to the signal} ($\PDeriv{\mathbf{S}}{s} = \PDeriv{\mathbf{U}}{u} =  \PDeriv{\C}{s}$), the information available to the quadratic portion of the estimator to distinguish between the two is degenerate, and knowledge only of $\C$ and $\PDeriv{\C}{s}$ is inadequate.  In order to obtain an unbiased estimate of $s$, one must also use knowledge of $\mathbf{U}$.  Indeed, computing the linear bias from Equation \eqref{eq:OQELinear}, one finds $b = u$.   
 
 Now consider a case, chosen to be very similar to the toy model in \ref{sec:toymodel},  in which the data again have an additive contaminant, now given by
 \begin{equation}
@@ -1801,13 +1803,13 @@ where the properties of $\sigma_i$ are as before, but now $\upsilon$ is a random
 \langle \upsilon^2 \rangle = u; \; 
  \langle \bm{\upsilon \upsilon}^T \rangle = u \mathbf{m m}^T \equiv \mathbf{U}; \;
  \mathbf{m}^T \mathbf{m} = 1; \; {\rm and}~ 
-\langle \sigma_i \upsilon \rangle = 0
+\langle \sigma_i \upsilon \rangle = 0.
 \end{equation}
 Here $\mathbf{m}$ represents a mode which is correlated across many data points (i.e., we are assuming $\mathbf{U}$ need {\it not} be diagonal), with amplitude given by  $\upsilon$.  The normalization of $\mathbf{m}$ is a matter of convention, and can be absorbed in the variance $u$; the choice above will be convenient for understanding the limiting case $u \gg s$.
 
 We can calculate the quadratic portion of the estimator explicitly by using the Sherman-Morrison identity to invert the covariance matrix.  Defining
 \begin{equation}
-\xi \equiv \frac{u/s}{1+u/s}
+\xi \equiv \frac{u/s}{1+u/s},
 \end{equation} 
 we have
 \begin{equation}
@@ -1822,17 +1824,17 @@ and
 with expectation
 \begin{equation}
 \langle \hat{s} \rangle = 
-s + \frac{1 - 2 \xi + \xi^2}{N + - 2 \xi + \xi^2} u 
+s + \frac{1 - 2 \xi + \xi^2}{N + - 2 \xi + \xi^2} u. 
 \end{equation}
 It is worth observing immediately that there is no multiplicative bias on $s$, and that the additive bias is strictly $< u/N$.
 
-An instructive limit is $u \gg s$, $\xi \to 1$, in which case the the virtue of weighting by $\invC$ becomes clearer: it becomes
+An instructive limit is $u \gg s$, $\xi \to 1$, in which case the virtue of weighting by $\invC$ becomes clearer, as it becomes
 \begin{equation}
 \invC  = \frac{1}{s} \left(\I - \mathbf{m m}^T \right)
 \end{equation}
-where $\I - \mathbf{m m}^T$ is the projection operator, projecting out $\mathbf{m}$ from any any vector it acts on, and further, the linear bias tends to 0 as $\xi \to 1$, i.e., the projection is ``perfect'' and not ``undone'' by the Fisher matrix normalization.
+where $\I - \mathbf{m m}^T$ is the projection operator, projecting out $\mathbf{m}$ from any vector it acts on, and further, the linear bias tends to 0 as $\xi \to 1$ (i.e., the projection is ``perfect'' and not ``undone'' by the Fisher matrix normalization).
 
-This is the ideal case for the inverse covariance weighting performed in the PAPER analysis, where removal of contamination with a known covariance can be suppressed by a kind of projection of the offending modes.  But even in this case, it is worth pointing out that estimator still has a linear bias for finite $u$.  We have also assumed that the contaminating mode $\mathbf{m}$ is known perfectly; the next appendix takes up the case where the modes are estimated from the data.
+This is the ideal case for the inverse covariance weighting performed in the PAPER analysis, where removal of contamination with a known covariance can be suppressed by a kind of projection of the offending modes.  But even in this case, it is worth pointing out that the estimator still has a linear bias for finite $u$.  We have also assumed that the contaminating mode $\mathbf{m}$ is known perfectly; the next appendix takes up the case where the modes are estimated from the data.
 
 \color{black}
 
