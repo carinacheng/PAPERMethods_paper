@@ -1723,11 +1723,12 @@ With the covariance matrix given by $\C = \mathbf{S} + \mathbf{U}$, the estimato
 \label{eq:ICWFormula}
 \hat{s} = \half {\F}^{-1} \left( \bm{\Delta}^T \invC \PDeriv{\C}{s}  \invC \bm{\Delta} \right) 
 \end{equation}
-In this case, the estimator becomes
+where $\F$ is the Fisher matrix.  
+The expectation of the estimator is then
 \begin{equation}
 \langle \hat{s} \rangle = \frac{\langle \bm{\Delta^T \Delta} \rangle}{N} = s + u
 \end{equation}
-In this case, the quadratic estimator returns an entirely reasonable result, but, since 
+In this case, the quadratic estimator returns an entirely reasonable result, but, since the 
 $\PDeriv{\mathbf{S}}{s} = \PDeriv{\mathbf{U}}{u} =  \PDeriv{\C}{s}$, that is, {\it the covariance structure of the contaminant is identical to the signal}, the information available to the quadratic estimator to distinguish the two is degenerate, and  is only possible to achieve an unbiased estimate of $s$ by using some additional information to estimate the additive bias due to $u$ and subtract it.
 
 Now consider a case, chosen to be very similar to the toy model in \ref{sec:toymodel},  in which the data again have an additive contaminant, now given by
