@@ -1776,6 +1776,25 @@ where $\I - \mathbf{m m}^T$ is the projection operator, projecting out $\mathbf{
 
 This is indeed the desired behavior of the inverse covariance weighting, where removal of contamination with a known covariance can be suppressed by a kind of projection of the offending modes.  But even in this case, it is worth pointing out that estimator still has a linear bias for finite $u$.  We also assume that the contaminating mode $\mathbf{m}$ is known perfectly; the next appendix takes up the case where the modes are estimated from the data.
 
+We find the following things:
+\begin{itemize}
+
+\item If the covariance of residual foreground contamination were known perfectly, and its covariance structure is sufficiently different from the EoR signal, then we can expect a quadratic estimator of the form Equation \ref{} % Need to put the full equation in the main body, I think
+to produce an estimate of the EoR power spectrum with a small linear bias, which is always positive, and no multiplicative bias.  If the foregrounds have a very similar covariance structure to the EoR, then this linear bias could be large.  We do have a reasonable expectation of different covariance structure since the foregrounds, before any processing, {\it are} strongly correlated between frequencies.  That is, the OQE with the correct covariance matrix but without linear bias subtraction will always produce an estimate which is {\it high} relative to the true value.
+
+\item While the correct covariance will remove this contamination, there is no particular harm in having these modes be strongly correlated with the data, since we desire their projection in any case.  
+
+\item If the covariance matrix is estimated from the data, the strong correlation between the estimated modes and the data will in general produce an estimate of the signal power spectrum which in general is strongly biased {\it low} relative to the true value.  In this context, this is what we call ``signal loss.'' 
+
+\item The effect of the bias is worsened when the number of independent samples used to estimate the covariance matrix is reduced.
+
+\item The convergence of the modes of the empirical covariance matrix to the true matrix depends on the size of the eigenvalues, with the modes with the largest eigenvalues converging more quickly (in norm) to the true eigenvector than those with smaller eigenvalues.  Thus, in estimating the covariance matrix empirically, larger eigenvalue modes are likely to be more reliable.  
+
+% JEA - I really struggle with whether this is intuitively reasonable ... it's hard to get a sense of what "noise" is averaging down slower.  All modes have the same number of samples going into the estimate.  But the size of he eigenvalue is an estimate of its "signal/noise" in the given data realization? 
+% Also, have we shown this sufficiently rigorously?  Is the toy model sufficiently general?  (Probably.)  But, for any dataset you kind of have to make a decision about where you think "reliable" is, i.e., where in eigenvalue would you make a cut?  Is Figure 20 basically trying to argue for the real data that this is ~a few modes?
+
+\end{itemize}
+
 \color{black}
 
 %\appendix
