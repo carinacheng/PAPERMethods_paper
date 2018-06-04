@@ -1733,7 +1733,7 @@ $\PDeriv{\mathbf{S}}{s} = \PDeriv{\mathbf{U}}{u} =  \PDeriv{\C}{s}$, we find tha
 \begin{equation}
 b = \half \F^{-1} \Tr\left[ (\C - \mathbf{S}) \invC \PDeriv{\C}{s} \invC \right]
 \end{equation}
-one indeed finds $b = g$.
+one indeed finds $b = u$.
 
 Now consider a case, chosen to be very similar to the toy model in \ref{sec:toymodel},  in which the data again have an additive contaminant, now given by
 \begin{equation}
@@ -1744,10 +1744,10 @@ where the properties of $\sigma_i$ are as before, but now $\upsilon$ is a random
 \langle \upsilon \rangle = 0; \;
 \langle \upsilon^2 \rangle = u; \; 
  \langle \bm{\upsilon \upsilon}^T \rangle = u \mathbf{m m}^T \equiv \mathbf{U}; \;
- \mathbf{m}^T \mathbf{m} = N; \; {\rm and}~ 
+ \mathbf{m}^T \mathbf{m} = 1; \; {\rm and}~ 
 \langle \sigma_i \upsilon \rangle = 0
 \end{equation}
-Here $\mathbf{m}$ represents a mode which is correlated across many data points, with amplitude given by  $\upsilon$.
+Here $\mathbf{m}$ represents a mode which is correlated across many data points (i.e., we are assuming $\mathbf{U}$ need {\it not} be diagonal), with amplitude given by  $\upsilon$.  The normalization of $\mathbf{m}$ is a matter of convention, and can be absorbed in the variance $u$; the choice above will be convenient for understanding the limiting case $u \gg s$.
 
 We can again calculate the estimator given by \eqref{eq:ICWFormula} explicitly by using the Sherman-Morrison identity to invert the covariance matrix.  Defining
 \begin{equation}
@@ -1757,25 +1757,24 @@ we have
 \begin{equation}
 \invC  =   \frac{1}{s} \left(\I - \xi \mathbf{m m}^T \right)
 \end{equation}
-and the virtue of weighting by $\invC$ becomes clearer: in the limit $u \gg s$, $\xi \to 1$, and this becomes
-\begin{equation}
-\invC  = \frac{1}{s} \left(\I - \mathbf{m m}^T \right)
-\end{equation}
-where $\I - \mathbf{m m}^T$ is the projection operator, projecting out $\mathbf{m}$ from any any vector it acts on.   Proceeding to calculate the full estimator
+Proceeding to calculate the full estimator
 \begin{equation}
 \hat{s} = \half {\F}^{-1} \left(\bm \Delta^T \invC \PDeriv{\C}{s}  \invC \bm \Delta \right) = \frac{ \bm \Delta^T  (\I +  (\xi^2 - 2 \xi)  \mathbf{m m}^T)  \bm \Delta}{N + \xi^2 - 2 \xi} 
 \end{equation}
 The expectation is
 \begin{equation}
-\langle \hat{s} \rangle = \frac{ N(s + u + (\xi^2 - 2 \xi) 
-[u + \langle(\bm{\sigma} \cdot \mathbf{m})^2 \rangle])} 
-{N + \xi^2 - 2 \xi} 
+\langle \hat{s} \rangle = 
+s + \frac{1 - 2 \xi + \xi^2}{N + - 2 \xi + \xi^2} u 
 \end{equation}
-This again has a simple interpretation in the limit $\xi \to 1$, where
+It is worth observing immediately that there is no multiplicative bias on $s$, and that the additive bias is strictly $< u/N$.
+
+An instructive limit is $u \gg s$, $\xi \to 1$, in which case the the virtue of weighting by $\invC$ becomes clearer: it becomes
 \begin{equation}
-\langle \hat{s} \rangle = \frac{N}{N -1}  (s - \langle(\bm{\sigma} \cdot \mathbf{m})^2\rangle )
+\invC  = \frac{1}{s} \left(\I - \mathbf{m m}^T \right)
 \end{equation}
-Thus, in the limit the contaminant is large compared to $s$, and to the extent that $\bm \sigma \cdot \mathbf{m} \approx 0$, this yields a nearly unbiased estimator for $s$ and the inverse covariance weighting has completely removed the effect of the contaminant. This is indeed the desired behavior of the inverse covariance weighting, where removal of contamination with a known covariance can be suppressed by projection of the offending modes.  But even in this case, it is worth pointing out that estimator is still not unbiased in general, having both the effect of leaving in some contaminated mode for finite $\xi$ and also in the limit of some correlation between the signal and contaminant, or of mis-estimation of the contaminating mode $\mathbf{m}$.
+where $\I - \mathbf{m m}^T$ is the projection operator, projecting out $\mathbf{m}$ from any any vector it acts on, and further, the linear bias tends to 0 as $\xi \to 1$, i.e., the projection is ``perfect'' and not ``undone'' by the Fisher matrix normalization.
+
+This is indeed the desired behavior of the inverse covariance weighting, where removal of contamination with a known covariance can be suppressed by a kind of projection of the offending modes.  But even in this case, it is worth pointing out that estimator still has a linear bias for finite $u$.  We also assume that the contaminating mode $\mathbf{m}$ is known perfectly; the next appendix takes up the case where the modes are estimated from the data.
 
 \color{black}
 
