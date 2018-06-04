@@ -306,29 +306,43 @@ underestimated in the \citetalias{ali_et_al2015} analysis.
 The goal of the power spectrum analysis is to produce an unbiased estimator of the EoR power spectrum in the presence of both noise and foreground emission.  Prior to power spectrum estimation, the data will often have been prepared to have as little foreground as possible by some method of subtraction, so this foreground emission may appear either directly (because it was not subtracted) or as a residual to some subtraction process not in the power spectrum domain.  If we possess a good estimate of the total covariance of the data, including both the desired signal and any contaminants, then the ``optimal quadratic estimator'' formalism provides a method of producing a minimum variance, unbiased estimator of the desired signal
 % JEA - I cut this b/c I wanted to step back and explain a bit more clearly what we were actually hoping for 
 %Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum estimation technique of quadratic estimators (QE) as done in 
-\citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, \citet{dillon_et_al2014}, \citet{dillon_et_al2015}, \citet{switzer_et_al2015}, and \citet{trott_et_al2016}. Before showing 
-how signal loss can arise when using different weighting matrices, we first summarize QE as performed in the PAPER 
-analysis.
+\citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, \citet{dillon_et_al2014}, \citet{dillon_et_al2015}, \citet{switzer_et_al2015}, and \citet{trott_et_al2016}. 
+%Before showing how signal loss can arise when using different weighting matrices, we first summarize QE as performed in the PAPER analysis.
 
-The optimal quadratic estimator prescription is
+We begin with our data vector, $\textbf{x}$, which contains our measured visibilities for a single baseline in Jy. It has length $N_{t}N_{f}$, but in practice we manipulate it as an array with dimensions ($N_{f}, N_{t}$), where $N_{t}$ is the number of time integrations and $N_{f}$ is the number of frequency channels. Visibilities are measurements of the Fourier transform of the sky along two spatial dimensions (using the flat-sky approximation), and since we are interested in three-dimensional Fourier modes we only need to take one Fourier transform of our visibilities along the line-of-sight dimension. 
+
+The covariance of the data is given by 
+\begin{equation}
+\textbf{C} \equiv \langle\textbf{xx}^{\dagger}\rangle,
+\end{equation}
+where we assume the covariance can be written as a sum $\textbf{C} = \textbf{S} + \textbf{U}$
+of the desired signal $\textbf{S}$ and other terms $\textbf{U}$.  In general, we are interested in estimating band powers of the power spectrum of $\textbf{x}$ over some range in cosmological $\mathbf{k}$, and the fundamental dependence of the covariance on the power spectrum band powers $p_\alpha$ is encoded in $\frac{\partial\textbf{C}}{\partial p_{\alpha}} \equiv \textbf{Q}^{\alpha}$.  In practice, this matrix also implements a transform of the frequency-domain visibilities to $\mathbf{k}$ space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
+
+The optimal quadratic estimator prescription is then to compute
 \begin{equation}
 \label{eq:OQE}
-\hat{p}_\alpha = \half ({\F}^{\alpha \beta})^{-1} \left( \bm{\Delta}^T \invC \PDeriv{\C}{p_\beta}  \invC \bm{\Delta} + \Tr\left[ (\C - \mathbf{S}) \invC \PDeriv{\C}{s} \invC \right] \right)
+\widehat{p}_{\alpha}  =  \half ({\F}^{\alpha \beta})^{-1} (\widehat{q}_{\beta} + \widehat{b}_{\beta} )
 \end{equation}
-where $\F$ is the Fisher matrix. 
+where $\F$ is the Fisher matrix and
+\begin{equation}
+\label{eq:OQEQuadratic}
+\hat{q}_\beta =  \textbf{x}^\dagger \invC \PDeriv{\C}{p_\beta}  \invC \textbf{x} 
+\end{equation}
+and
+\begin{equation}
+\label{eq:OQELinear}
+\widehat{b}_{\beta} = \Tr\left[ (\C - \mathbf{S}) \invC \PDeriv{\C}{p_\beta} \invC \right] 
+\end{equation}
 
-We begin with our data vector, $\textbf{x}$, which contains our measured visibilities for a single baseline in Jy. It has length $N_{t}N_{f}$, but in practice we manipulate it as an array with dimensions ($N_{f}, N_{t}$), where 
-$N_{t}$ is the number of time integrations and $N_{f}$ is the number of frequency channels. Visibilities are measurements of 
-the Fourier transform of the sky along two spatial dimensions (using the flat-sky approximation), and since we are interested in three-dimensional Fourier modes 
-we only need to take one Fourier transform of our visibilities along the line-of-sight dimension. We do this when forming the un-normalized power spectrum estimate $\widehat{q}_{\alpha}$:
-
+%We do this when forming the un-normalized power spectrum estimate $\widehat{q}_{\alpha}$:
+It is also possible to define a more generalized version of this minimum-variance, unbiased estimator by
 \begin{equation}
 \label{eq:qhat}
 \widehat{q}_{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{x}.
 \end{equation}
-Here, \noindent $\textbf{Q}$ is a family of matrices that takes our frequency-domain visibilities and Fourier transforms them, while also converting from Jy to 
-Kelvin and taking into account cosmological scalings. It is formally evaluated as $\textbf{Q}^{\alpha} \equiv \frac{\partial\textbf{C}}{\partial p_{\alpha}}$ (which has dimensions ($N_{f}$,$N_{f}$)), or the derivative of the covariance $\textbf{C} \equiv \langle\textbf{x}\textbf{x}^{\dagger}\rangle$ with respect to the true bandpower $p_\alpha$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the 
-Fourier dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}), which is a good approximation for the short baselines that PAPER analyzes). $\textbf{R}$ is a weighting matrix with dimensions ($N_{f}$,$N_{f}$) --- as 
+%Here, \noindent $\textbf{Q}$ is a family of matrices that takes our frequency-domain visibilities and Fourier transforms them, while also converting from Jy to Kelvin and taking into account cosmological scalings. It is formally evaluated as $\textbf{Q}^{\alpha} \equiv \frac{\partial\textbf{C}}{\partial p_{\alpha}}$ 
+
+(which has dimensions ($N_{f}$,$N_{f}$)), or the derivative of the covariance $\textbf{C} \equiv \langle\textbf{x}\textbf{x}^{\dagger}\rangle$ with respect to the true bandpower $p_\alpha$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the Fourier dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}), which is a good approximation for the short baselines that PAPER analyzes). $\textbf{R}$ is a weighting matrix with dimensions ($N_{f}$,$N_{f}$) --- as 
 an example, inverse covariance weighting (the optimal form of QE) would set $\textbf{R} \equiv \textbf{C}^{-1}$ and a uniform-weighted case would use $
 \textbf{R} \equiv \textbf{I}$, the identity matrix.
 
