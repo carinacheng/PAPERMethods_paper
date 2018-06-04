@@ -233,13 +233,11 @@ paper, we focus on three 21\,cm power spectrum themes that encapsulate this goal
 with each other and impact the themes. We will give brief definitions now, and build intuition for each theme in the sections to 
 follow.
 
-\begin{center}
-Power Spectrum Themes
-\end{center}
+%\begin{center}
+%Power Spectrum Themes
+%\end{center}
 
-A deep understanding of the following three themes is essential for the accuracy and interpretation of a 21\,cm power 
-spectrum result. Stemming from a re-analysis of PAPER-64 data, we believe these themes serve as an important checklist for 
-a rigorous power spectrum analysis.
+%A deep understanding of the following three themes is essential for the accuracy and interpretation of a 21\,cm power spectrum result. Stemming from a re-analysis of PAPER-64 data, we believe these themes serve as an important checklist for a rigorous power spectrum analysis.
 \begin{itemize}
 \item \textbf{Signal Loss} (Section \ref{sec:SiglossOverview}): Signal loss refers to attenuation of the target \textit{cosmological} signal 
 in a power spectrum estimate. Certain analysis techniques can cause this loss, and if the amount of loss is not quantified accurately, it could lead to false non-detections and overly aggressive upper limits. Determining whether an analysis pipeline is lossy, and estimating the amount of loss if so, has subtle challenges but is necessary to ensure the accuracy of any result. 
@@ -254,9 +252,9 @@ we will highlight some sources of bias, discuss ways to mitigate their effects, 
 pass.
 \end{itemize}
 
-\begin{center}
-Power Spectrum Techniques
-\end{center}
+%\begin{center}
+%Power Spectrum Techniques
+%\end{center}
 
 The following techniques each have advantages when it comes to maximizing sensitivity and understanding systematics in 
 data. However, some have limitations, and we will discuss circumstances in which there are trade-offs. We choose to focus on 
@@ -286,18 +284,26 @@ they are limited. We highlight problems that can arise regarding each theme and 
 Ultimately, we show that rigorous investigations into signal loss, error estimation, and bias must be performed for robust 21\,cm results.
 
 % SECTION 2 SIGLOSS ---------------------------------------------------------------------------------
+\color{blue}
 
 \subsection{Signal Loss}
 \label{sec:SiglossOverview}
 
-Signal loss can arise in a variety of ways in the analysis pipeline, such as by fitting a polynomial during 
-spectral calibration, applying a delay-domain filter, or deriving weights from data and applying them to itself. Here we focus on signal loss associated with 
-applying a weighting matrix to data, a loss that can be significant depending on the choice of weighting and one that was 
-previously underestimated in the \citetalias{ali_et_al2015} analysis.
+Signal loss can arise in a variety of ways in the analysis pipeline, such as by fitting a polynomial during spectral calibration, applying a delay-domain filter, or deriving weights from data and applying them to itself. Here we focus on signal loss associated with 
+% we're not considering a general problem, but are really just focused on the empirical QE and its discontents, so let's say that
+the use of an empirically estimated covariance matrix with the ``optimal quadratic estimator'' formalism.
+This loss was significantly 
+%applying a weighting matrix to data, a loss that can be significant depending on the choice of weighting and one that was previously 
+underestimated in the \citetalias{ali_et_al2015} analysis.
 
-Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight 
-foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum 
-estimation technique of quadratic estimators (QE) as done in \citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, \citet{dillon_et_al2014}, \citet{dillon_et_al2015}, \citet{switzer_et_al2015}, and \citet{trott_et_al2016}. Before showing 
+% Put all of the (O)QE / ICW theory here, rather than sprinkled throughout this section.
+
+\subsubsection{The Quadratic Estimator Method}
+
+The goal of the power spectrum analysis is to produce an unbiased estimator of the EoR power spectrum in the presence of both noise and foreground emission.  Prior to power spectrum estimation, the data will often have been prepared to have as little foreground as possible by some method of subtraction, so this foreground emission may appear either directly (because it was not subtracted) or as a residual to some subtraction process not in the power spectrum domain.  If we possess a good estimate of the total covariance of the data, including both the desired signal nd any contaminants, then the ``optimal quadratic estimator'' formalism provides a method of producing a minimum variance, unbiased estimator of the 
+
+%Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum estimation technique of quadratic estimators (QE) as done in 
+\citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, \citet{dillon_et_al2014}, \citet{dillon_et_al2015}, \citet{switzer_et_al2015}, and \citet{trott_et_al2016}. Before showing 
 how signal loss can arise when using different weighting matrices, we first summarize QE as performed in the PAPER 
 analysis.
 
@@ -608,6 +614,8 @@ of the components in a dataset.
 In summary, we have a choice of how to weight 21\,cm data. Ideally, we want to down-weight bright foregrounds without 
 removing the underlying cosmological signal. However, there are trade-offs between the weighting method 
 used, its foreground-removal effectiveness, the number of independent samples in a dataset, and the amount of resulting signal loss. 
+
+\color{black}
 
 % SECTION 2 ERROR ESTIMATION ---------------------------------------------------------------------------------
 
@@ -1698,7 +1706,7 @@ award 1701536. AL acknowledges support for this work by NASA through Hubble Fell
 \color{blue}
 
 \appendix
-\section{A toy model for inverse covariance weighting}
+\section{A toy model of inverse covariance weighting}
 \label{sec:icw_appendix}
 
 %AAAXXX
