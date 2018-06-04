@@ -322,8 +322,9 @@ where $N_{t}$ is the number of time integrations and $N_{f}$ is the number of fr
 where we assume the covariance can be written as a sum of the desired signal $\textbf{S}$ and other terms $\textbf{U}$.  
 
 We are interested in estimating the three-dimensional power spectrum of the EoR.  
-Visibilities are measurements of the Fourier transform of the sky along two spatial dimensions (using the flat-sky approximation), and since we are interested in three-dimensional Fourier modes we only need to take one Fourier transform of our visibilities along the line-of-sight dimension.  We consider band powers $p_\alpha$ of the power spectrum of $\textbf{x}$ over some range in cosmological $\mathbf{k}$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the Fourier dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}), which is a good approximation for the short baselines that PAPER analyzes).  The fundamental dependence of the covariance on the power spectrum band powers $p_\alpha$ is encoded in 
+Visibilities are measurements of the Fourier transform of the sky along two spatial dimensions (using the flat-sky approximation), and since we are interested in three-dimensional Fourier modes we only need to take one Fourier transform of our visibilities along the line-of-sight dimension.  We consider band powers $p_\alpha$ of the power spectrum of $\textbf{x}$ over some range in cosmological $\mathbf{k}$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the Fourier dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}), which is a good approximation for the short baselines that PAPER analyzes).  The fundamental dependence of the covariance on the power spectrum band powers $p_\alpha$ is encoded as 
 \begin{equation}
+%\textbf{S} = p_{\alpha} 
 \frac{\partial\textbf{C}}{\partial p_{\alpha}} \equiv \textbf{Q}^{\alpha}
 \end{equation}
 which has dimensions ($N_{f}$,$N_{f}$).
@@ -349,16 +350,10 @@ This estimator is the minimum variance (smallest error bar) estimate of the powe
 \langle \widehat{p}_{\alpha} \rangle = p_\alpha
 \end{equation}
 
-It is clear that in order to obtain an unbiased estimate in the presence of contaminants, the estimator Equation \ref{eq:OQE} must be capable of ``suppressing'' or ``removing'' their effects.   The way in which this comes about is illustrated with a toy model in Appendix \ref{sec:icw_appendix}.  There we show that the effect of the weighting in Equation \ref{eq:OQEQuadratic} is to project out the modes of $\textbf{U}$ with a different covariance structure than $\textbf{Q}^\alpha$ in the power spectrum estimate, and the effect of Equation \ref{eq:OQELinear} is to subtract out the remaining bias.  
+It is clear that in order to obtain an unbiased estimate in the presence of contaminants, the estimator defined by Equation \eqref{eq:OQE} must be capable of ``suppressing'' or ``removing'' their effects.  The way in which this comes about is illustrated with a toy model in Appendix \ref{sec:icw_appendix}.  There we show that the effect of the weighting in Equation \ref{eq:OQEQuadratic} is to project out the modes of $\textbf{U}$ with a different covariance structure than $\textbf{Q}^\alpha$ in the power spectrum estimate, and the effect of Equation \ref{eq:OQELinear} is to subtract out the remaining bias.  These effects for a more realistic model of the EoR and foregrounds were shown in \citet{liu_tegmark2011}.
 
-
-if the covariance of the contaminant is known perfectly, and its covariance structure is sufficiently different from the EoR signal, then 
-
-we can expect a quadratic estimator of the form Equation \ref{} % Need to put the full equation in the main body, I think
-to produce an estimate of the EoR power spectrum with a small linear bias, which is always positive, and no multiplicative bias.  If the foregrounds have a very similar covariance structure to the EoR, then this linear bias could be large.  We do have a reasonable expectation of different covariance structure since the foregrounds, before any processing, {\it are} strongly correlated between frequencies.  That is, the OQE with the correct covariance matrix but without linear bias subtraction will always produce an estimate which is {\it high} relative to the true value.
-
-
-In \citet{liu_tegmark2011}, it was shown that inverse covariance weighting also serves as a way to down-weight some portion of foregrounds (namely, those which do not share the same covariance structure as the cosmological signal), motivating our use of the weighting for previous PAPER analyses.
+The toy model also illustrates that if the covariance structure of the contaminants is sufficiently different from the desired power spectrum, then the linear bias term may be expected to be quite small, and it is only necessary to know $\C$ and $\PDeriv{\C}{p_\beta}$, but not $\mathbf{U}$.  We do have a reasonable expectation of different covariance structure since the foregrounds, before any processing, {\it are} strongly correlated between frequencies, whereas the EoR is not.
+Moreover, because the linear bias is always positive and there is no multiplicative bias, the quadratic-only term will always produce an estimate which is {\it high} relative to the true value, leading to a conservative estimate.  These considerations, and the difficulty of obtaining an estimate for $\mathbf{U}$, motivate the neglect of the linear bias in the rest of this analysis.
 
 %We do this when forming the un-normalized power spectrum estimate $\widehat{q}_{\alpha}$:
 It is also possible to define a more generalized version of this minimum-variance, unbiased estimator by
