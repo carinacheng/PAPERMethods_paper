@@ -1728,8 +1728,12 @@ The expectation of the estimator is then
 \begin{equation}
 \langle \hat{s} \rangle = \frac{\langle \bm{\Delta^T \Delta} \rangle}{N} = s + u
 \end{equation}
-In this case, the quadratic estimator returns an entirely reasonable result, but, since the 
-$\PDeriv{\mathbf{S}}{s} = \PDeriv{\mathbf{U}}{u} =  \PDeriv{\C}{s}$, that is, {\it the covariance structure of the contaminant is identical to the signal}, the information available to the quadratic estimator to distinguish the two is degenerate, and  is only possible to achieve an unbiased estimate of $s$ by using some additional information to estimate the additive bias due to $u$ and subtract it.
+In this case, the quadratic estimator returns an entirely reasonable result, but, since the covariance of the undesired signal has the same form as the desired signal, that is,
+$\PDeriv{\mathbf{S}}{s} = \PDeriv{\mathbf{U}}{u} =  \PDeriv{\C}{s}$, we find that when {\it the covariance structure of the contaminant is identical to the signal}, the information available to the quadratic estimator to distinguish the two is degenerate, and  is only possible to achieve an unbiased estimate of $s$ by using some additional information to estimate the additive bias due to $u$ and subtract it.  In fact, if one uses the standard formula \citep[e.g.][, Equation 6]{dillon14} for the additive bias
+\begin{equation}
+b = \half \F^{-1} \Tr\left[ (\C - \mathbf{S}) \invC \PDeriv{\C}{s} \invC \right]
+\end{equation}
+one indeed finds $b = g$.
 
 Now consider a case, chosen to be very similar to the toy model in \ref{sec:toymodel},  in which the data again have an additive contaminant, now given by
 \begin{equation}
