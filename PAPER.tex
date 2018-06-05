@@ -308,7 +308,7 @@ The goal of power spectrum analysis is to produce an unbiased estimator of the E
 %Driven by the need to mitigate foreground bias, PAPER's previous analyses use a weighting method that aims to down-weight foregrounds. This weighting is applied to data, which is then propagated into a final estimator using the power spectrum estimation technique of quadratic estimators (QE) as done in 
 \citet{liu_tegmark2011}, \citet{dillon_et_al2013a}, \citet{liu_et_al2014a}, \citet{liu_et_al2014b}, \citet{trott_et_al2012}, \citet{dillon_et_al2014}, \citet{dillon_et_al2015}, \citet{switzer_et_al2015}, and \citet{trott_et_al2016}. 
 %Before showing how signal loss can arise when using different weighting matrices, we first summarize QE as performed in the PAPER analysis.
-We provide a brief summary of the quadratic estimator below.
+We provide a brief summary of the optimal quadratic estimator below.
 
 % JEA - The discussion of dimensions here is confusing ... "a baseline" is mentioned, but it's not clear if the redundant baseline averaging has already happened or what.  I believe we are only considering covariance between frequencies, but this isn't explicitly said, and the matrix equations don't make sense unless all the dimensions are N_f N_t.  
 %We begin with our 
@@ -319,7 +319,7 @@ where $N_{t}$ is the number of time integrations and $N_{f}$ is the number of fr
 \begin{equation}
 \textbf{C} \equiv \langle\textbf{xx}^{\dagger}\rangle = \textbf{S} + \textbf{U}
 \end{equation}
-where we assume the covariance can be written as a sum of the desired signal $\textbf{S}$ and other terms $\textbf{U}$.  
+where we assume the covariance can be written as a sum of the desired cosmological signal $\textbf{S}$ and other terms $\textbf{U}$.  
 
 We are interested in estimating the three-dimensional power spectrum of the EoR.  
 Visibilities are measurements of the Fourier transform of the sky along two spatial dimensions (using the flat-sky approximation), and since we are interested in three-dimensional Fourier modes we only need to take one Fourier transform of our visibilities along the line-of-sight dimension.  We consider band powers $p_\alpha$ of the power spectrum of $\textbf{x}$ over some range in cosmological $\mathbf{k}$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the Fourier dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}), which is a good approximation for the short baselines that PAPER analyzes).  The fundamental dependence of the covariance on the power spectrum band powers $p_\alpha$ is encoded as 
