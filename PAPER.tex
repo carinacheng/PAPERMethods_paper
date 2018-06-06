@@ -68,7 +68,7 @@
 % Math shortcuts from James
 \newcommand{\invC}{\ensuremath{\C^{-1}}}
 \newcommand{\dC}[1]{\ensuremath{\C_{,#1}}}
-\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Tr}{tr}
 \newcommand{\half}{\ensuremath{\frac{1}{2}}}
 \newcommand{\PDeriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
 
@@ -319,52 +319,62 @@ where $N_{t}$ is the number of time integrations and $N_{f}$ is the number of fr
 \begin{equation}
 \textbf{C} \equiv \langle\textbf{xx}^{\dagger}\rangle = \textbf{S} + \textbf{U}
 \end{equation}
-where we assume the covariance can be written as a sum of the desired cosmological signal $\textbf{S}$ and other terms $\textbf{U}$.  
+where the average over an ensemble of data realizations produces the true covariance, and we further assume it may be written as a sum of the desired cosmological signal $\textbf{S}$ and other terms $\textbf{U}$.  
 
 We are interested in estimating the three-dimensional power spectrum of the EoR.  
 Visibilities are measurements of the Fourier transform of the sky along two spatial dimensions (using the flat-sky approximation), and since we are interested in three-dimensional Fourier modes we only need to take one Fourier transform of our visibilities along the line-of-sight dimension.  We consider band powers $p_\alpha$ of the power spectrum of $\textbf{x}$ over some range in cosmological $\mathbf{k}$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the Fourier dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}), which is a good approximation for the short baselines that PAPER analyzes).  The fundamental dependence of the covariance on the power spectrum band powers $p_\alpha$ is encoded as 
-% Should distinguish slightly more clearly between Q and dC/dp_alpha
+% JEA - Should distinguish slightly more clearly between Q and dC/dp_alpha
 \begin{equation}
-%\textbf{S} = p_{\alpha} 
-\frac{\partial\textbf{C}}{\partial p_{\alpha}} \equiv \textbf{Q}^{\alpha}
+\textbf{S} = p_{\alpha} \frac{\partial\textbf{C}}{\partial p_{\alpha}}
+%\frac{\partial\textbf{C}}{\partial p_{\alpha}} \equiv \textbf{Q}^{\alpha}
 \end{equation}
-which has dimensions ($N_{f}$,$N_{f}$).
-In practice, this matrix also implements a transform of the frequency-domain visibilities to $\mathbf{k}$-space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
+where we use the Einstein summation convention.
+% JEA - ah, the dimensions again
+% which has dimensions ($N_{f}$,$N_{f}$).
 
 The optimal quadratic estimator prescription is then to compute
 \begin{equation}
 \label{eq:OQE}
-\widehat{p}_{\alpha}  =  \half ({\F}^{\alpha \beta})^{-1} (\widehat{q}_{\beta} + \widehat{b}_{\beta} )
+\widehat{p}_{\alpha}  =  ({\F^{-1}})_\alpha^{\beta} (\widehat{q}_{\beta} - \widehat{b}_{\beta} )
 \end{equation}
-where $\F$ is the Fisher matrix and
+where $\F$ is the Fisher matrix 
+\begin{equation}
+F^{\alpha \beta} \equiv \frac{1}{2} \textrm{tr} \left( \C^{-1} \frac{\partial\textbf{C}}{\partial p_{\alpha}} \C^{-1} \frac{\partial\textbf{C}}{\partial p_{\beta}} \right)
+\end{equation}
+and
 \begin{equation}
 \label{eq:OQEQuadratic}
-\hat{q}_\beta =  \textbf{x}^\dagger \invC \PDeriv{\C}{p_\beta}  \invC \textbf{x} 
+\hat{q}_\alpha =  \half \textbf{x}^\dagger \invC \PDeriv{\C}{p^\alpha}  \invC \textbf{x} 
 \end{equation}
 and
 \begin{equation}
 \label{eq:OQELinear}
-\widehat{b}_{\beta} = \Tr\left[ (\C - \mathbf{S}) \invC \PDeriv{\C}{p_\beta} \invC \right].
+\widehat{b}_{\alpha} = \half \Tr\left[ (\C - \mathbf{S}) \invC \PDeriv{\C}{p^\alpha} \invC \right].
 \end{equation}
-This estimator is the minimum variance (smallest error bar) estimate of the power spectrum \citep{tegmark_et_al1997a,bond_et_al1998} and is unbiased if the ensemble average of the estimator is equal to its true value
+This estimator is the minimum variance (smallest error bar) estimate of the power spectrum  subject to the constraint that it is also unbiased; that is, the ensemble average of the estimator is equal to its true value
 \begin{equation}
 \langle \widehat{p}_{\alpha} \rangle = p_\alpha.
 \end{equation}
+\citep{tegmark_et_al1997a,bond_et_al1998}
 
 It is clear that in order to obtain an unbiased estimate in the presence of contaminants, the estimator defined by Equation \eqref{eq:OQE} must be capable of ``suppressing'' or ``removing'' their effects. The way in which the optimal estimator can suppress contaminates is illustrated with a toy model in Appendix \ref{sec:icw_appendix}. In this appendix, we show that the effect of the weighting in Equation \ref{eq:OQEQuadratic} is to project out the modes of $\textbf{U}$ with a different covariance structure than $\mathbf{S}$ in the power spectrum estimate, and the effect of Equation \ref{eq:OQELinear} is to subtract out the remaining bias. Similar effects for a more realistic model of the EoR and foregrounds are shown in \citet{liu_tegmark2011}.
 
 The toy model in Appendix \ref{sec:icw_appendix} also illustrates that if the covariance structure of the contaminants is sufficiently different from the desired power spectrum, then the linear bias term may be expected to be quite small, and it is only necessary to know $\C$ and $\partial \C/\partial p_\alpha$, but not $\mathbf{U}$. Since the foregrounds are expected to be strongly correlated between frequencies whereas the EoR is not, we expect different covariance structures and therefore a small linear bias. Moreover, because the linear bias is always positive and there is no multiplicative bias, the quadratic-only term will always produce an estimate which is {\it high} relative to the true value, and which can conservatively be interpreted as an upper limit. These considerations, and the difficulty of obtaining an estimate for $\mathbf{U}$, motivate the neglect of the linear bias in the rest of this analysis.
 
 %We do this when forming the un-normalized power spectrum estimate $\widehat{q}_{\alpha}$:
-It is also possible to define a more generalized version of the optimal quadratic estimator which may still produce an unbiased estimate, where Equation \eqref{eq:OQEQuadratic} is replaced by
+Motivated by the desire to retain the desirable behavior of suppressing contributions of $\mathbf{U}$ to estimates of the EoR power spectrum, we note that is possible to define a more generalized version of the quadratic estimator 
+%which may still produce an unbiased estimate, 
+where Equation \eqref{eq:OQEQuadratic} is replaced by
 \begin{equation}
 \label{eq:qhat}
 \widehat{q}_{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{x}.
 \end{equation}
-where $\textbf{R}$ is a weighting matrix chosen by the data analyst.
+where $\textbf{R}$ is a weighting matrix chosen by the data analyst.  For example, inverse covariance weighting (the optimal form of QE) would set $\textbf{R} \equiv \textbf{C}^{-1}$ and a uniform-weighted case would use $\textbf{R} \equiv \textbf{I}$, the identity matrix.
+The matrix $\textbf{Q}^{\alpha}$ encodes the dependence of the covariance on the power spectrum parameters $\partial \C/\partial p_\alpha$ but in practice also does other things, including implementing a transform of the frequency-domain visibilities to $\mathbf{k}$-space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
 %with dimensions ($N_{f}$,$N_{f}$) --- as 
-%an example, inverse covariance weighting (the optimal form of QE) would set $\textbf{R} \equiv \textbf{C}^{-1}$ and a uniform-weighted case would use $
-%\textbf{R} \equiv \textbf{I}$, the identity matrix.
+
+%%% COME BACK HERE
+% Need to still explain the motivation for this
 With an appropriate normalization 
 %We normalize our power spectrum estimates using the matrix $\textbf{M}$:
 \begin{equation}
