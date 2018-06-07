@@ -643,7 +643,7 @@ In Section \ref{sec:toymodel} we showed one example of how altering $\widehat{\t
 make the difference between nearly zero and some signal loss. We will now use our toy model to describe several other ways to tailor $\widehat{\textbf{C}}$ 
 in order to minimize signal loss. We choose four independent regularization methods to highlight in this section, which have 
 been chosen due to their simplicity in implementation and straightforward interpretations. We illustrate the resulting power 
-spectra and eigenspectra for the different cases in Figures \ref{fig:toy_sigloss8}.
+spectra for the different cases in Figure \ref{fig:toy_sigloss8}.
 % and \ref{fig:toy_sigloss14}. 
 These examples are not meant to be taken as suggested analysis methods but rather as illustrative cases. 
 
@@ -690,14 +690,14 @@ The third panel (bottom left) in Figure \ref{fig:toy_sigloss8} minimizes signal 
 by only using the first three eigenmodes of the estimated covariance. Recalling that our toy model foregrounds can be described entirely by the first eigenmode, this 
 method intentionally projects out the highest-valued modes only by replacing all but the three highest weights in the 
 eigenspectrum with $1$'s (equal weights). Again, avoiding the over-fitting of EoR-dominated modes which are coupled to the data results in negligible signal loss. However, we do 
-not perfectly recover the shape of the EoR power spectrum because we lost information when ignoring the relative weights of most modes. While this case is illuminating for the toy model, in practice it is not obvious which eigenmodes are FG or EoR dominated (and they could be mixed as well), so determining which subset of modes to down-weight is not trivial. 
+not perfectly recover the shape of the EoR power spectrum because we lost information when ignoring the relative weights of most modes. While this case is illuminating for the toy model, in practice it is not obvious which eigenmodes are FG or EoR dominated (and they could be mixed as well), so determining which subset of modes to down-weight is not trivial. We experiment with this idea using PAPER data in Section \ref{sec:Weight}.
 
-The last regularization scheme we are highlighting here is setting $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (keeping only the diagonal elements of $\widehat{\textbf{C}}$). In the bottom right 
-panel of Figure \ref{fig:toy_sigloss8}, we see that this method does not down-weight the foregrounds --- this regularization altered $\widehat{\textbf{C}}$ in a way where it is no longer coupled to any of the empirically estimated eigenmodes. For this toy model, 
+The last regularization scheme we are highlighting here is setting $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (i.e. keeping only the diagonal elements of $\widehat{\textbf{C}}$). In the bottom right 
+panel of Figure \ref{fig:toy_sigloss8}, we see that this method does not down-weight the foregrounds at all --- this regularization altered $\widehat{\textbf{C}}$ in a way where it is no longer coupled to \textit{any} of the empirically estimated eigenmodes, including the FG-dominated one. For this toy model, 
 our foregrounds are spread out in frequency and therefore have non-negligible frequency-frequency correlations. Multiplying by 
 the identity, element-wise, results in a diagonal matrix, meaning we do not have any correlation information. Because of this, we do a poor job 
 suppressing the foreground. But because we de-coupled the whole eigenspectrum from the data, we also avoid signal loss. Although this method did not successfully recover the EoR signal for this particular simulation, it is important that we show that there 
-are many options for estimating a covariance matrix, and some may down-weight certain eigenmodes more than others based on the spectral nature 
+are many options for estimating a covariance matrix, and some may down-weight certain eigenmodes more effectively than others based on the spectral nature 
 of the components in a dataset. 
 %One may imagine a situation where a particular systematic is contained to an isolated 
 %frequency (such as radio frequency interference or crosstalk). In such a case, preserving only the diagonal elements of $
