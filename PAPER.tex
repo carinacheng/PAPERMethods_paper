@@ -350,20 +350,21 @@ and
 and
 \begin{equation}
 \label{eq:OQELinear}
-\widehat{b}_{\alpha} = \half \Tr\left[ (\C - \mathbf{S}) \invC \PDeriv{\C}{p^\alpha} \invC \right].
+\widehat{b}_{\alpha} = \half \Tr\left( \mathbf{U} \invC \PDeriv{\C}{p^\alpha} \invC \right).
 \end{equation}
 This estimator is the minimum variance (smallest error bar) estimate of the power spectrum  subject to the constraint that it is also unbiased; that is, the ensemble average of the estimator is equal to its true value
 \begin{equation}
+\label{eq:super_unbiased}
 \langle \widehat{p}_{\alpha} \rangle = p_\alpha.
 \end{equation}
 \citep{tegmark_et_al1997a,bond_et_al1998}
 
-It is clear that in order to obtain an unbiased estimate in the presence of contaminants, the estimator defined by Equation \eqref{eq:OQE} must be capable of ``suppressing'' or ``removing'' their effects. The way in which the optimal estimator can suppress contaminates is illustrated with a toy model in Appendix \ref{sec:icw_appendix}. In this appendix, we show that the effect of the weighting in Equation \ref{eq:OQEQuadratic} is to project out the modes of $\textbf{U}$ with a different covariance structure than $\mathbf{S}$ in the power spectrum estimate, and the effect of Equation \ref{eq:OQELinear} is to subtract out the remaining bias. Similar effects for a more realistic model of the EoR and foregrounds are shown in \citet{liu_tegmark2011}.
+It is clear that in order to obtain an unbiased estimate in the presence of contaminants, the estimator defined by Equation \eqref{eq:OQE} must be capable of ``suppressing'' or ``removing'' their effects. By construction, the subtraction of the residual foreground and noise bias accomplishes this, removing any additive bias. However, the $\mathbf{C}^{-1}$ piece of Equation \eqref{eq:OQEQuadratic} also has the effect of suppressing residual foregrounds and noise, in both the additive bias and any contributions the residuals may have to the variance. The way in which the optimal estimator accomplishes this is illustrated with a toy model in Appendix \ref{sec:icw_appendix}. In this appendix, we show that the effect of the weighting in Equation \ref{eq:OQEQuadratic} is to project out the modes of $\textbf{U}$ with a different covariance structure than $\mathbf{S}$ in the power spectrum estimate, and the effect of Equation \ref{eq:OQELinear} is to subtract out the remaining bias. Similar effects for a more realistic model of the EoR and foregrounds are shown in \citet{liu_tegmark2011}.
 
 The toy model in Appendix \ref{sec:icw_appendix} also illustrates that if the covariance structure of the contaminants is sufficiently different from the desired power spectrum, then the linear bias term may be expected to be quite small, and it is only necessary to know $\C$ and $\partial \C/\partial p_\alpha$, but not $\mathbf{U}$. Since the foregrounds are expected to be strongly correlated between frequencies whereas the EoR is not, we expect different covariance structures and therefore a small linear bias. Moreover, because the linear bias is always positive and there is no multiplicative bias, the quadratic-only term will always produce an estimate which is {\it high} relative to the true value, and which can conservatively be interpreted as an upper limit. These considerations, and the difficulty of obtaining an estimate for $\mathbf{U}$, motivate the neglect of the linear bias in the rest of this analysis.
 
 %We do this when forming the un-normalized power spectrum estimate $\widehat{q}_{\alpha}$:
-Motivated by the desire to retain the desirable behavior of suppressing contributions of $\mathbf{U}$ to estimates of the EoR power spectrum, we note that is possible to define a more generalized version of the quadratic estimator 
+Motivated by the desire to retain the desirable behavior of suppressing contributions of $\mathbf{U}$ to estimates of the EoR power spectrum, we note that is possible to define a modified version of the quadratic estimator 
 %which may still produce an unbiased estimate, 
 where Equation \eqref{eq:OQEQuadratic} is replaced by
 \begin{equation}
@@ -376,15 +377,20 @@ The matrix $\textbf{Q}^{\alpha}$ encodes the dependence of the covariance on the
 
 %%% COME BACK HERE
 % Need to still explain the motivation for this
-With an appropriate normalization 
+With an appropriate normalization matrix $\textbf{M}$, the quantity
 %We normalize our power spectrum estimates using the matrix $\textbf{M}$:
 \begin{equation}
 \label{eq:phat}
-\widehat{\textbf{P}} = \textbf{M}\widehat{\textbf{q}},
+\widehat{\textbf{P}} = \textbf{M}\widehat{\textbf{q}}
 \end{equation}
-$\widehat{\textbf{P}}$ is the estimate of the true power spectrum $\textbf{P}$. The data analyst has a choice for $
+is a sensible estimate of the true power spectrum $\textbf{P}$. To ensure that $\textbf{M}$ correctly normalizes our power spectrum, one may take the expectation value of Equation \eqref{eq:phat} to obtain
+\begin{eqnarray}
+\langle \widehat{P}_\alpha \rangle &=& \frac{1}{2} \sum_{\beta \gamma} M_{\alpha \gamma}  \textrm{tr} \left( \textbf{R}\textbf{Q}^{\gamma}\textbf{R} \textbf{Q}^{\beta}\right) p_\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right) \nonumber \\
+&\equiv & \sum_{\beta} W_{\alpha \beta} p_\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right), \label{eq:Wpplusbias}
+\end{eqnarray}
+where $W_{\alpha \beta}$ are elements of a window function matrix. Consider the first term of this expression. (Again, we are assuming that the linear bias term is significantly suppressed; and if this is not the case, we are simply assuming that we are setting a conservative upper limit). If $\mathbf{W}$ ends up being the identity matrix for our choices of $\mathbf{R}$ and $\mathbf{M}$, then we recover Equation \eqref{eq:super_unbiased} for the first term, and we have an estimator that has no multiplicative matrix bias. However, Equation \eqref{eq:super_unbiased} is a rather restrictive condition, and it is possible to violate it and still have a sensible (and correctly normalized) power spectrum estimates. In particular, as long as the rows of $\mathbf{W}$ sum to unity, our power spectrum will be correctly normalized. Beyond this, the data analyst has a choice for $
 \textbf{M}$. For simplicity in this section we choose $\textbf{M}$ to be diagonal, although we explore other cases for the analysis 
-of PAPER-64 data as explained in Section \ref{sec:Bias}, subject to the constraint that each element of $\widehat{\textbf{P}}$ is a weighted sum of the elements of $\textbf{P}$ with weights that sum to unity.
+of PAPER-64 data as explained in Section \ref{sec:Bias}. In a preview of what is to come, we also stress that the derivation that leads to Equation \eqref{eq:Wpplusbias} assumes that $\mathbf{R}$ and $\mathbf{x}$ are not correlated. If this assumption is violated, a simple application of the (now incorrect) formulae in this section can result in an improperly normalized power spectrum estimator that does not conserve power, i.e., one that has signal loss.
 % JEA - is one really free to choose M and R independently?
 
 % JEA - I don't think it's attractive at all
@@ -478,7 +484,7 @@ There is negligible signal loss when the other eigenmodes besides the foreground
 
 As discussed in Section \ref{sec:QE}, this behavior is {\it not} expected in the case that we were to use $\textbf{C}^{-1}$ weighting.  Rather, we would obtain the behavior shown in the toy model in Appendix \ref{sec:icw_appendix}\footnote{Note that there the true covariance matrix is also the sum of a diagonal portion describing the signal, and a single mode describing the contaminant (c.f. Figure \ref{fig:toy_sigloss12}).}, with suppression of the foreground mode resulting in a nearly unbiased estimate of the power spectrum.   The key difference is that since $\widehat{\textbf{C}}$ is estimated from the data, its eigenvectors and eigenvalues are strongly coupled to the particular data realization that was used to compute it. 
 
-For the case of a mode which can be safely assumed to be predominantly a foreground, its presence in the covariance matrix will result in the desired suppression via a kind of projection (c.f. Equations \ref{eq:IdealToyModelCovariance} and \ref{eq:IdealToyModelEstimator});  whether or not it is strongly correlated with the the actual data vector is irrelevant.  However, in the case the covariance matrix is empirically estimated, the eigenmodes of $\textbf{C}_{\rm EoR}$ will both be incorrect and correlated with the data.  Incorrect eigenmodes of $\textbf{C}_{\rm EoR}$ will lead to non-minimum variance estimates, but will not produce the suppression of the power spectrum amplitude seen.  As indicated in Appendix \ref{sec:sigloss_appendix}, however, having $\widehat{\mathbf{C}}$ correlated with the data vector $\mathbf{x}$ also produces a kind of projection of power in the {\it non}-foreground modes from the resulting power spectrum estimate, thus producing an estimate that is biased low.  In short, {\it if the covariance is computed from the data itself, it carries the risk of over-fitting information in the data and introducing a multiplicative bias (per $k$) to estimates of the signal.} 
+For the case of a mode which can be safely assumed to be predominantly a foreground, its presence in the covariance matrix will result in the desired suppression via a kind of projection (c.f. Equations \ref{eq:IdealToyModelCovariance} and \ref{eq:IdealToyModelEstimator});  whether or not it is strongly correlated with the the actual data vector is irrelevant.  However, in the case the covariance matrix is empirically estimated, the eigenmodes of $\textbf{C}_{\rm EoR}$ will both be incorrect and correlated with the data.  Incorrect eigenmodes of $\textbf{C}_{\rm EoR}$ that are not correlated with the data will lead to non-minimum variance estimates, but will not produce the suppression of the power spectrum amplitude seen.  As indicated in Appendix \ref{sec:sigloss_appendix}, however, having $\widehat{\mathbf{C}}$ correlated with the data vector $\mathbf{x}$ also produces a kind of projection of power in the {\it non}-foreground modes from the resulting power spectrum estimate, thus producing an estimate that is biased low.  In short, {\it if the covariance is computed from the data itself, it carries the risk of over-fitting information in the data and introducing a multiplicative bias (per $k$) to estimates of the signal.} 
 
 %For a toy model mathematical derivation of signal loss arising from a data-estimated covariance matrix, see Appendix \ref{sec:sigloss_appendix}. Here we will describe the origin of this signal loss intuitively.
 
