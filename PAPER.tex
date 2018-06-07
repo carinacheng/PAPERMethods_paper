@@ -326,7 +326,7 @@ We are interested in estimating the three-dimensional power spectrum of the EoR.
 Visibilities are measurements of the Fourier transform of the sky along two spatial dimensions (using the flat-sky approximation), and since we are interested in three-dimensional Fourier modes we only need to take one Fourier transform of our visibilities along the line-of-sight dimension.  We consider band powers $p_\alpha$ of the power spectrum of $\textbf{x}$ over some range in cosmological $\mathbf{k}$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the Fourier dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}), which is a good approximation for the short baselines that PAPER analyzes).  The fundamental dependence of the covariance on the power spectrum band powers $p_\alpha$ is encoded as 
 % JEA - Should distinguish slightly more clearly between Q and dC/dp_alpha
 \begin{equation}
-\textbf{S} = \sum_\alpha p_\alpha \frac{\partial\textbf{C}}{\partial p_\alpha} \equiv \sum_\alpha p_\alpha \textbf{Q}_\alpha
+\textbf{S} = \sum_\alpha p^\alpha \frac{\partial\textbf{C}}{\partial p^\alpha} \equiv \sum_\alpha p^\alpha \textbf{Q}^\alpha
 %\textbf{S} = p_{\alpha} \frac{\partial\textbf{C}}{\partial p_{\alpha}}
 %\frac{\partial\textbf{C}}{\partial p_{\alpha}} \equiv \textbf{Q}^{\alpha}
 \end{equation}
@@ -337,7 +337,7 @@ where we define $\frac{\partial\textbf{C}}{\partial p_\alpha} \equiv \textbf{Q}_
 The optimal quadratic estimator prescription is then to compute
 \begin{equation}
 \label{eq:OQE}
-\widehat{p}_{\alpha}  =  ({\F^{-1}})_\alpha^{\beta} (\widehat{q}_{\beta} - \widehat{b}_{\beta} )
+\widehat{p}^{\alpha}  = \sum_\beta ({\F^{-1}})^{\alpha\beta} (\widehat{q}^{\beta} - \widehat{b}^{\beta} )
 \end{equation}
 where $\F$ is the Fisher matrix 
 \begin{equation}
@@ -346,17 +346,17 @@ F^{\alpha \beta} \equiv \frac{1}{2} \textrm{tr} \left( \C^{-1} \textbf{Q}^{\alph
 and
 \begin{equation}
 \label{eq:OQEQuadratic}
-\widehat{q}_\alpha =  \half \textbf{x}^\dagger \invC \textbf{Q}^{\alpha}  \invC \textbf{x} 
+\widehat{q}^\alpha =  \half \textbf{x}^\dagger \invC \textbf{Q}^{\alpha}  \invC \textbf{x} 
 \end{equation}
 and
 \begin{equation}
 \label{eq:OQELinear}
-\widehat{b}_{\alpha} = \half \Tr\left( \mathbf{U} \invC \textbf{Q}^{\alpha} \invC \right).
+\widehat{b}^{\alpha} = \half \Tr\left( \mathbf{U} \invC \textbf{Q}^{\alpha} \invC \right).
 \end{equation}
 This estimator is the minimum variance (smallest error bar) estimate of the power spectrum  subject to the constraint that it is also unbiased; that is, the ensemble average of the estimator is equal to its true value
 \begin{equation}
 \label{eq:super_unbiased}
-\langle \widehat{p}_{\alpha} \rangle = p_\alpha.
+\langle \widehat{p}^{\alpha} \rangle = p^\alpha.
 \end{equation}
 \citep{tegmark_et_al1997a,bond_et_al1998}
 
@@ -370,10 +370,10 @@ Motivated by the desire to retain the advantageous behavior of suppressing contr
 where Equation \eqref{eq:OQEQuadratic} is replaced by
 \begin{equation}
 \label{eq:qhat}
-\widehat{q}_{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{x}
+\widehat{q}^{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{x}
 \end{equation}
 where $\textbf{R}$ is a weighting matrix chosen by the data analyst.  For example, inverse covariance weighting (the optimal form of QE) would set $\textbf{R} \equiv \textbf{C}^{-1}$ and a uniform-weighted case would use $\textbf{R} \equiv \textbf{I}$, the identity matrix.
-The matrix $\textbf{Q}^{\alpha}$ encodes the dependence of the covariance on the power spectrum parameters $\partial \C/\partial p_\alpha$ but in practice also does other things, including implementing a transform of the frequency-domain visibilities to $\mathbf{k}$-space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
+The matrix $\textbf{Q}^{\alpha}$ encodes the dependence of the covariance on the power spectrum parameters $\partial \C/\partial p^\alpha$ but in practice also does other things, including implementing a transform of the frequency-domain visibilities to $\mathbf{k}$-space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
 %with dimensions ($N_{f}$,$N_{f}$) --- as 
 
 %%% COME BACK HERE
@@ -386,10 +386,10 @@ With an appropriate normalization matrix $\textbf{M}$, the quantity
 \end{equation}
 is a sensible estimate of the true power spectrum $\textbf{P}$. To ensure that $\textbf{M}$ correctly normalizes our power spectrum, one may take the expectation value of Equation \eqref{eq:phat} to obtain
 \begin{eqnarray}
-\langle \widehat{P}_\alpha \rangle &=& \frac{1}{2} \sum_{\beta \gamma} M_{\alpha \gamma}  \textrm{tr} \left( \textbf{R}\textbf{Q}^{\gamma}\textbf{R} \textbf{Q}^{\beta}\right) p_\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right) \nonumber \\
-&\equiv & \sum_{\beta} W_{\alpha \beta} p_\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right), \label{eq:Wpplusbias}
+\langle \widehat{P}^\alpha \rangle &=& \frac{1}{2} \sum_{\beta \gamma} M^{\alpha \gamma}  \textrm{tr} \left( \textbf{R}\textbf{Q}^{\gamma}\textbf{R} \textbf{Q}^{\beta}\right) p^\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right) \nonumber \\
+&\equiv & \sum_{\beta} W^{\alpha \beta} p^\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right), \label{eq:Wpplusbias}
 \end{eqnarray}
-where $W_{\alpha \beta}$ are elements of a window function matrix. Let's consider the first term of this expression (again, we are assuming that the linear bias term is significantly suppressed; and if this is not the case, we are simply assuming that we are setting a conservative upper limit). If $\mathbf{W}$ ends up being the identity matrix for our choices of $\mathbf{R}$ and $\mathbf{M}$, then we recover Equation \eqref{eq:super_unbiased} for the first term, and we have an estimator that has no multiplicative matrix bias. However, Equation \eqref{eq:super_unbiased} is a rather restrictive condition, and it is possible to violate it and still have a sensible (and correctly normalized) power spectrum estimate. In particular, as long as the rows of $\mathbf{W}$ sum to unity, our power spectrum will be correctly normalized. Beyond this, the data analyst has a choice for $
+where $W^{\alpha \beta}$ are elements of a window function matrix. Let's consider the first term of this expression (again, we are assuming that the linear bias term is significantly suppressed; and if this is not the case, we are simply assuming that we are setting a conservative upper limit). If $\mathbf{W}$ ends up being the identity matrix for our choices of $\mathbf{R}$ and $\mathbf{M}$, then we recover Equation \eqref{eq:super_unbiased} for the first term, and we have an estimator that has no multiplicative matrix bias. However, Equation \eqref{eq:super_unbiased} is a rather restrictive condition, and it is possible to violate it and still have a sensible (and correctly normalized) power spectrum estimate. In particular, as long as the rows of $\mathbf{W}$ sum to unity, our power spectrum will be correctly normalized. Beyond this, the data analyst has a choice for $
 \textbf{M}$. For simplicity in this section we choose $\textbf{M}$ to be diagonal, although we discuss other cases for the analysis 
 of PAPER-64 data as explained in Section \ref{sec:Bias}. In a preview of what is to come, we also stress that the derivation that leads to Equation \eqref{eq:Wpplusbias} assumes that $\mathbf{R}$ and $\mathbf{x}$ are not correlated. If this assumption is violated, a simple application of the (now incorrect) formulae in this section can result in an improperly normalized power spectrum estimator that does not conserve power, i.e., one that has signal loss.
 % JEA - is one really free to choose M and R independently?
@@ -1050,14 +1050,14 @@ output power spectrum: $\widehat{P}_{\rm in}$ and $\widehat{P}_{\rm out}$, estim
 
 \begin{equation}
 \label{eq:Pin}
-\widehat{P}_{\rm in,\alpha} \equiv \text{M}^{\alpha}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e}
+\widehat{P}_{\rm in}^{\alpha} \equiv \text{M}^{\alpha}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e}
 \end{equation}
 
 \noindent and
 
 \begin{eqnarray}
 \label{eq:sigloss}
-\widehat{P}_{\rm out,\alpha} &\equiv& \widehat{\textbf{P}}_{r,\alpha} \nonumber\\%-\widehat{\textbf{P}}_{x,\alpha} \nonumber \\
+\widehat{P}_{\rm out}^{\alpha} &\equiv& \widehat{\textbf{P}}_{r}^{\alpha} \nonumber\\%-\widehat{\textbf{P}}_{x,\alpha} \nonumber \\
 &=& \text{M}^{\alpha}_{r}\textbf{r}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{r},% - \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x},
 \end{eqnarray}
 where, for illustrative purposes and notational simplicity, we have written these equations with scalar normalizations M, even though for our numerical results we choose a diagonal matrix normalization using $\mathbf{M}$ as in Equation \eqref{eq:phat}.
@@ -1131,7 +1131,7 @@ Under this injection framework, we can begin to see explicitly why there can be 
 
 \begin{eqnarray}
 \label{eq:crossterm_full}
-\widehat{P}_{\rm out,\alpha} &=& \text{M}^{\alpha}_{r}(\textbf{x}+\textbf{e})^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}(\textbf{x}+\textbf{e}) \nonumber \\%- 
+\widehat{P}_{\rm out}^{\alpha} &=& \text{M}^{\alpha}_{r}(\textbf{x}+\textbf{e})^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}(\textbf{x}+\textbf{e}) \nonumber \\%- 
 %\text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x} \nonumber \\
 &=& \text{M}^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} + \text{M}^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
 ^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
@@ -1142,7 +1142,7 @@ Assuming \textbf{R}$_{r}$ is symmetric, the two cross-terms (terms with one copy
 
 \begin{eqnarray}
 \label{eq:crossterm}
-\widehat{P}_{\rm out,\alpha} &= &  \text{M}^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} + \text{M}^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
+\widehat{P}_{\rm out}^{\alpha} &= &  \text{M}^{\alpha}_{a}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{x} + \text{M}^{\alpha}_{b}\textbf{e}^{\dagger}\textbf{R}_{r}\textbf{Q}
 ^{\alpha}\textbf{R}_{r}\textbf{e} \nonumber \\
 &+& 2 \text{M}^{\alpha}_{c}\textbf{x}^{\dagger}\textbf{R}_{r}\textbf{Q}^{\alpha}\textbf{R}_{r}\textbf{e} %\nonumber \\
 %&-& \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\textbf{R}_{x}\textbf{Q}^{\alpha}\textbf{R}_{x}\textbf{x}.
@@ -1242,8 +1242,8 @@ outlined below is independent of weighting scheme, here we demonstrate the compu
 expressions for $\widehat{P}_{\rm in}$ and $\widehat{P}_{\rm out}$ become:
 
 \begin{eqnarray}
-\widehat{P}_{\rm in,\alpha} &=&  \text{M}^{\alpha}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e} \\
-\widehat{P}_{\rm out,\alpha} &=&  \text{M}^{\alpha}_{r}\textbf{r}^{\dagger}\widehat{\textbf{C}}_{r}^{-1}\textbf{Q}^{\alpha}\widehat{\textbf{C}}_{r}^{-1}\textbf{r}.% \nonumber \\
+\widehat{P}_{\rm in}^{\alpha} &=&  \text{M}^{\alpha}_{\rm in}\textbf{e}^{\dagger}\textbf{I}\textbf{Q}^{\alpha}\textbf{I}\textbf{e} \\
+\widehat{P}_{\rm out}^{\alpha} &=&  \text{M}^{\alpha}_{r}\textbf{r}^{\dagger}\widehat{\textbf{C}}_{r}^{-1}\textbf{Q}^{\alpha}\widehat{\textbf{C}}_{r}^{-1}\textbf{r}.% \nonumber \\
 %&&\phantom{=====} 
 %-  \text{M}^{\alpha}_{x}\textbf{x}^{\dagger}\widehat{\textbf{C}}_{x}^{-1}\textbf{Q}^{\alpha}\widehat{\textbf{C}}_{x}^{-1}\textbf{x}. 
 \end{eqnarray}
@@ -1617,17 +1617,17 @@ suppress noise biases. These methods are not novel to this analysis but here we 
 
 Tailoring window functions is one way to suppress foreground biases (similar discussions to the following one are in \citet{liu_et_al2014b} and \citetalias{ali_et_al2015}). As alluded to in Section \ref{sec:SiglossOverview}, we 
 have a choice for the normalization matrix $\textbf{M}$ in Equation \eqref{eq:phat}. For the analysis of PAPER-64 data, we 
-compute $\textbf{M}$ using the matrix $\textbf{F}$ (chosen because this would be the Fisher matrix if $\textbf{R} \equiv \textbf{C}^{-1}$), defined as:
+compute $\textbf{M}$ using the matrix $\textbf{G}$ (which would be the Fisher matrix if $\textbf{R} \equiv \textbf{C}^{-1}$), defined as:
 
 \begin{equation}
-\textbf{F}_{\alpha\beta} = \frac{1}{2} \text{tr} [\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{Q}^{\beta} ]
+\textbf{G}^{\alpha\beta} = \frac{1}{2} \text{tr} [\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{Q}^{\beta} ]
 \end{equation}
 
 \noindent where $\textbf{R}$ is the data-weighting matrix and $\alpha$ and $\beta$ are wavebands in $k_{\parallel}$. We take 
-the Cholesky decomposition of $\textbf{F}$, decomposing it into two lower triangular matrices (which is possible since $\textbf{F}$ is Hermitian):
+the Cholesky decomposition of $\textbf{G}$, decomposing it into two lower triangular matrices (which is possible since $\textbf{G}$ is Hermitian):
 
 \begin{equation}
-\textbf{F} = \textbf{LL}^{\dagger}.
+\textbf{G} = \textbf{LL}^{\dagger}.
 \end{equation}
 
 \noindent Next, we construct $\textbf{M}$:
@@ -1636,15 +1636,15 @@ the Cholesky decomposition of $\textbf{F}$, decomposing it into two lower triang
 \textbf{M} = \textbf{DL}^{-1}
 \end{equation}
 
-\noindent where $\textbf{D}$ is a diagonal matrix. In doing so, our window function, defined as $\textbf{W} = \textbf{MF}$, 
-becomes:
+\noindent where $\textbf{D}$ is a diagonal matrix. In doing so, our window function, defined as $\textbf{W} = \textbf{MG}$ (see Equation \eqref{eq:Wpplusbias}), 
+becomes
 
 \begin{equation}
 \textbf{W} = \textbf{DL}^{\dagger}.
 \end{equation}
 
 \noindent Because of the nature of the lower triangular matrix, this window function has the property of preventing the leakage 
-of foreground power from low-$k$ to high-$k$ modes. Specifically, we order the elements in $\textbf{F}$ in such a way so that 
+of foreground power from low-$k$ to high-$k$ modes. Specifically, we order the elements in $\textbf{G}$ in such a way so that 
 power can leak from high-$k$ modes to low-$k$ modes, but not vice versa. Since most foreground power shows up at low-$k$'s, this method ensures a window function that retains clean, noise-dominated measurements while minimizing the 
 contamination of foreground bias. This tailored window function was used in the \citetalias{ali_et_al2015} analysis, however throughout this paper, we use a diagonal $\textbf{M}$ for simplicity.
 
