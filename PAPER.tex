@@ -149,8 +149,7 @@ between different methods and their effects on power spectrum estimates. In this
 themes --- signal loss, power spectrum error estimation, and bias in measurements. We describe techniques that affect 
 these themes using both toy models and data taken by the 64-element configuration of the Donald C. Backer Precision Array 
 for Probing the Epoch of Reionization (PAPER). In particular, we highlight how detailed investigations of these themes have 
-led to a revised, higher 21\,cm power spectrum upper limit from PAPER-64. This revised result, presented in a companion paper by Kolopanis et al. (\textit{submitted}), mostly stems from an 
-improved signal loss calculation for loss associated with empirically estimated covariances and supersedes results from 
+led to a revised, higher 21\,cm power spectrum upper limit from PAPER-64. While we only focus on a subset of PAPER-64 data in this paper, revised power spectrum limits from the PAPER experiment are presented in a companion paper by Kolopanis et al. (\textit{in prep.}) and supersede results from 
 previously published PAPER analyses.
 \end{abstract}
 
@@ -200,14 +199,14 @@ with each other to affect power spectrum results. More specifically, it is imper
 the accuracy and reliability of a potential EoR detection. In this paper, we discuss three topics (signal loss, error estimation, and bias) that are essential to investigate 
 for a robust 21\,cm power spectrum analysis. We also highlight four power spectrum techniques (fringe-rate filtering, weighting, bootstrapping, jackknife testing) and their trade-offs, potential 
 pitfalls, and connections to the themes. We first approach the themes from a broad perspective, and then perform a detailed 
-case study using data from the 64-element configuration of PAPER. In this study we use a subset of the PAPER-64 data to illustrate our revised analysis methods, while a companion paper, Kolopanis et al. (\textit{submitted}), builds off of the methods in this paper to present revised PAPER-64 results for multiple redshifts and baseline types.
+case study using data from the 64-element configuration of PAPER. In this study we use a subset of the PAPER-64 data to illustrate our revised analysis methods, while a companion paper, Kolopanis et al. (\textit{in prep.}), builds off of the methods in this paper to present revised PAPER-64 results for multiple redshifts and baseline types.
 
 Finally, this paper adds to the growing foundations of lessons which have been documented, for example, in \citet{Paciga2013}, \citet{Patil2016}, and \citet{Jacobs2016}, by the GMRT, LOFAR, and MWA projects respectively. These lessons are imperative as the community as a whole moves towards higher sensitivities and potential EoR detections.
 
 This paper is organized into two main halves. In Section \ref{sec:Themes} we introduce the three themes of our focus, using a 
 toy model to develop intuition for each one. In Section \ref{sec:CaseStudy} we present a case study into each theme using data 
 from the PAPER-64 array, highlighting key changes from the previously published result in \citet{ali_et_al2015}, henceforth known as \citetalias{ali_et_al2015}, which have led to a 
-revised PAPER-64 power spectrum result (Kolopanis et al. (\textit{submitted})). We conclude in Section \ref{sec:Con}.
+revised PAPER-64 power spectrum result (Kolopanis et al. (\textit{in prep.})). We conclude in Section \ref{sec:Con}.
 
 % SECTION 2 INTRO ---------------------------------------------------------------------------------
 
@@ -1000,12 +999,12 @@ on $\Delta^{2}(k)$, defined as
 \Delta^{\textbf{2}}(k) = \frac{k^{3}}{2\pi^{2}}\,\hat{P}(k),
 \end{equation}
 
-\noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$\,$h$ Mpc$^{-1}$ at $z = 8.4$. The revision of this limit (Kolopanis et al. (\textit{submitted})) stems from previously under-estimated signal loss and under-estimated error bars, both of which we 
+\noindent of $(22.4$ mK$)^{2}$ in the range $0.15 < k < 0.5$\,$h$ Mpc$^{-1}$ at $z = 8.4$. The need to revise this limit stems from previously under-estimated signal loss and under-estimated error bars, both of which we 
 address in the following sections. 
 
 For the analysis in this paper, we use $8.1$ hours of LST, namely an RA range of $0.5$-$8.6$ hours (\citetalias{ali_et_al2015} uses a slightly longer RA 
 range of $0$-$8.6$ hours; we found that some early LSTs were more severely foreground contaminated). We also use only $10$ baselines, a subset of the $51$ total East/West baselines used in \citetalias{ali_et_al2015}. All power spectrum results are produced for a center frequency of 151\,MHz using a width of 10\,MHz ($20$ channels), identical to the analysis in \citetalias{ali_et_al2015}. In the case study in this paper, we only use one baseline type instead of the three as in 
-\citetalias{ali_et_al2015}, but Kolopanis et al. (\textit{submitted}) uses all baselines presented in \citetalias{ali_et_al2015}.
+\citetalias{ali_et_al2015}, but Kolopanis et al. (\textit{in prep.}) uses all baselines presented in \citetalias{ali_et_al2015}.
 
 The most significant changes from \citetalias{ali_et_al2015} occur in our revised power spectrum analysis, which is explained in the rest of this paper, but we also note that the applied fringe-rate filter is also slightly different. In \citetalias{ali_et_al2015}, the 
 applied filter was not equivalent to the optimal fringe-rate filter (which is designed to maximize power spectrum sensitivity). Instead, the optimal filter was degraded by widening it in fringe-rate space. This was chosen in order to increase the number of independent 
@@ -1404,17 +1403,17 @@ as green. In the PAPER-64 analysis in this paper, we choose to use a regularizat
 In addition to our thermal noise prediction (green) and uniform-weighted power spectrum limit (blue), one additional horizontal line is shown in Figure \ref{fig:sigloss_modeloop} 
 in both panels and represents a third regularization technique. This line (black) denotes the power spectrum value, post-signal loss estimation, for inverse variance weighting (multiplying an identity 
 matrix element-wise to $\widehat{\textbf{C}}$). This result is single-valued and not a function of the horizontal axis. We see that all three regularization schemes shown (solid red top panel, solid red bottom panel, black) perform similarly at 
-their best (i.e. when $\sim2$-$3$ eigenmodes are down-weighted in the case of the top panel's solid red curve). However, for the remainder of this paper, we choose to use the weighting option of $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} + 0.09 \,$Tr($\widehat{\textbf{C}})\textbf{I}$, or $\gamma = 0.09$, which we will denote as $\widehat{\textbf{C}}_{\rm eff}$. We choose this weighting scheme merely as a simple example of regularizing PAPER-64 covariances, noting that the power spectrum upper limit remains roughly constant for a broad range of values of $\gamma$. We also note that all of the regularizations described here perform similarly to the uniformly weighted case. However, we find that the regularization of empirical covariances does outperform the uniform weighted case for redshifts (and $k$-values) for which there are stronger foregrounds, as presented in Kolopanis et al. (\textit{submitted}).
+their best (i.e. when $\sim2$-$3$ eigenmodes are down-weighted in the case of the top panel's solid red curve). However, for the remainder of this paper, we choose to use the weighting option of $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} + 0.09 \,$Tr($\widehat{\textbf{C}})\textbf{I}$, or $\gamma = 0.09$, which we will denote as $\widehat{\textbf{C}}_{\rm eff}$. We choose this weighting scheme merely as a simple example of regularizing PAPER-64 covariances, noting that the power spectrum upper limit remains roughly constant for a broad range of values of $\gamma$. We also note that all of the regularizations described here perform similarly to the uniformly weighted case. Thus, in Kolopanis et al. (\textit{in prep.}), uniform weightings are used to produce straightforward power spectrum limits that do not suffer from loss. 
 
 The power spectrum result for our subset of PAPER-64 data (using only one baseline separation type and $\widehat{\textbf{C}}_{\rm eff}$) is shown in Figure 
 \ref{fig:ps1_data}. Again, the solid red curve represents our upper limit on the EoR signal using the full signal injection framework. The uniform weighted case is shown as the black and gray points, which correspond to positive and negative power spectrum values respectively (with 
-$2\sigma$ errors bars). It is also shown as an upper limit using the signal injection framework (solid blue), which is interestingly larger than the errors computed from bootstrapping, likely because the full injection framework takes into account additional sample variance whereas the bootstrapped errors do not. Finally, the gray shaded regions combine the measured uniform weighted power spectrum values and the thermal noise. We show this power spectrum result as one example of how a simple regularization can minimize signal loss, though we also note that this weighting does not produce more stringent limits than the uniform weighted case. In Kolopanis et al. (\textit{submitted}), multiple redshifts are explored and found to benefit from weighting differently.
+$2\sigma$ errors bars). It is also shown as an upper limit using the signal injection framework (solid blue), which is interestingly larger than the errors computed from bootstrapping, likely because the full injection framework takes into account additional sample variance whereas the bootstrapped errors do not. Finally, the gray shaded regions combine the measured uniform weighted power spectrum values and the thermal noise. We show this power spectrum result as one example of how a simple regularization can minimize signal loss, though we also note that this weighting does not produce more stringent limits than the uniform weighted case. 
 
 \begin{figure*}
 	\centering
 	\includegraphics[width=0.4\textwidth]{plots/ps1_data_add.pdf}
 	\includegraphics[width=0.4\textwidth]{plots/ps2_data_add.pdf}
-	\caption{A power spectrum of a subset of PAPER-64 data illustrating the use of $\widehat{\textbf{C}}_{\rm eff}$ to minimize signal loss. The solid red curve is the $2\sigma$ upper limit on the EoR signal estimated from our signal injection framework. The theoretical $2\sigma$ thermal noise level prediction based on observational parameters is in green. Additionally, the power spectrum results for the uniform weighted case is shown in three different ways: power spectrum values (black and gray points as positive and negative values, respectively, with $2\sigma$ error bars), the $2\sigma$ upper limit on the EoR signal using our full signal injection framework (solid blue), and the measured power spectrum values with $2\sigma$ thermal noise errors (gray shaded regions). The vertical dashed black lines signify the horizon limit for this analysis using $30$\,m baselines. This power spectrum result does not use the full dataset's sensitivity as in \citetalias{ali_et_al2015} and Kolopanis et al. (\textit{submitted}), though we include all analysis changes which have mostly stemmed from revisions regarding signal 
+	\caption{A power spectrum of a subset of PAPER-64 data illustrating the use of $\widehat{\textbf{C}}_{\rm eff}$ to minimize signal loss. The solid red curve is the $2\sigma$ upper limit on the EoR signal estimated from our signal injection framework. The theoretical $2\sigma$ thermal noise level prediction based on observational parameters is in green. Additionally, the power spectrum results for the uniform weighted case is shown in three different ways: power spectrum values (black and gray points as positive and negative values, respectively, with $2\sigma$ error bars), the $2\sigma$ upper limit on the EoR signal using our full signal injection framework (solid blue), and the measured power spectrum values with $2\sigma$ thermal noise errors (gray shaded regions). The vertical dashed black lines signify the horizon limit for this analysis using $30$\,m baselines. This power spectrum result does not use the full dataset's sensitivity as in \citetalias{ali_et_al2015} and Kolopanis et al. (\textit{in prep.}), though we include all analysis changes which have mostly stemmed from revisions regarding signal 
 loss, bootstrapping, and the theoretical error computation.}
 	\label{fig:ps1_data}
 \end{figure*}
@@ -1427,7 +1426,7 @@ horizontal E/W ones). Alternately, covariances could be estimated from all other
 when forming a power spectrum estimate. This method was used in \citet{parsons_et_al2014} (a similar method was also used in \citet{dillon_et_al2015}) in order to avoid suppressing the 
 21\,cm signal, and it is worth noting that the PAPER-32 results are likely less impacted from the issue of signal loss underestimation 
 because of this very reason (however, they are affected by the error estimation issues described in Section \ref{sec:Error}, so 
-we also regard those results as suspect and superseded by those of Kolopanis et al. (\textit{submitted})).
+we also regard those results as suspect and superseded by those of Kolopanis et al. (\textit{in prep.})).
 
 Another possible way to regularize $\widehat{\textbf{C}}$ is to use information from different ranges of LST. For example, one could 
 calculate $\widehat{\textbf{C}}$ with data from LSTs where foregrounds are stronger (earlier or later LSTs than the `foreground-quiet' range typically used in forming power spectra) --- doing so may yield a better description of the foregrounds that we desire to 
@@ -1490,7 +1489,7 @@ estimates after cross-multiplying independent ``even" and ``odd" visibility meas
 \item $N_{\rm lst}$: The number of independent LST bins that go into a power spectrum estimation. The sensitivity scales as the square root 
 because we integrate incoherently over time. For PAPER-64, $N_{\rm lst} = 8$.
 \item $N_{\rm seps}$: The number of baseline separation types (where baselines of a unique separation type have the same orientation and length) averaged incoherently in a final power spectrum estimate. For the 
-analysis in this paper, we only use one type of baseline (PAPER's 30\,m East/West baselines). However, both the updated limits in Kolopanis et al. (\textit{submitted}) and the sensitivity prediction in Figure \ref{fig:sense_check} use three separation types ($N_{\rm seps}=3$) to match \citetalias{ali_et_al2015}.
+analysis in this paper, we only use one type of baseline (PAPER's 30\,m East/West baselines). However, both the updated limits in Kolopanis et al. (\textit{in prep.}) and the sensitivity prediction in Figure \ref{fig:sense_check} use three separation types ($N_{\rm seps}=3$) to match \citetalias{ali_et_al2015}.
 \item $t_{\rm int}$: Length of an independent integration of the data. It is crucial to adapt this number if filtering is applied along the time axis (i.e. a 
 fringe-rate filter). We compute the effective integration time of our fringe-rate filtered data by scaling the original integration time $t_{i}$
 using the following:
@@ -1516,7 +1515,7 @@ N_{\rm bls} = \frac{N_{\rm bls\_total}}{N_{\rm gps}}\sqrt{\frac{N_{\rm gps}^{2}-
 \end{equation}
 \noindent where, in the \citetalias{ali_et_al2015} analysis, $N_{\rm gps} = 5$. Each baseline group averages down linearly as the number of baselines 
 entering the group ($N_{\rm bls\_total}/N_{\rm gps}$) and then as the square root of the number of cross-multiplied pairs \Big($\sqrt{\frac{N_{\rm gps}^{2} - 
-N_{\rm gps}}{2}}$\Big). A revised \citetalias{ali_et_al2015} analysis should therefore use $N_{\rm bls} \sim 32$ instead of $51$, and this change is taken into account in Figure \ref{fig:sense_check}. However, the analysis in this paper and in Kolopanis et al. (\textit{submitted}) does not average baselines into groups ($N_{\rm gps} = 1$). For the subset of data presented in this paper, $N_{\rm bls} = 10$.
+N_{\rm gps}}{2}}$\Big). A revised \citetalias{ali_et_al2015} analysis should therefore use $N_{\rm bls} \sim 32$ instead of $51$, and this change is taken into account in Figure \ref{fig:sense_check}. However, the analysis in this paper and in Kolopanis et al. (\textit{in prep.}) does not average baselines into groups ($N_{\rm gps} = 1$). For the subset of data presented in this paper, $N_{\rm bls} = 10$.
 \item $N_{\rm pols}$: The number of polarizations averaged together. For the case of Stokes I, $N_{\rm pols}=2$.
 \end{itemize}
 
@@ -1768,7 +1767,7 @@ jackknife tests along multiple axes of a dataset is necessary for confidence in 
 out systematics.
 \end{itemize}
 
-As a consequence of our investigations, we have also used a subset of PAPER-64 data to make a new power spectrum analysis. This serves as an illustrative example of using a signal injection framework, correctly computing errors via bootstrapping, accurately estimating thermal noise, and implementing jackknife tests. Our revised PAPER-64 limits are presented in Kolopanis et al. (\textit{submitted}), which supersede all previously published PAPER limits. The main reasons for a previously under-estimated limit and 
+As a consequence of our investigations, we have also used a subset of PAPER-64 data to make a new power spectrum analysis. This serves as an illustrative example of using a signal injection framework, correctly computing errors via bootstrapping, accurately estimating thermal noise, and implementing jackknife tests. Our revised PAPER-64 limits are presented in Kolopanis et al. (\textit{in prep.}), which supersede all previously published PAPER limits. The main reasons for a previously under-estimated limit and 
 ways in which our new analysis differs can be summarized by the following:
 
 \begin{itemize}
