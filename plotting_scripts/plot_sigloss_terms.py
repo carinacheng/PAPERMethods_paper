@@ -21,6 +21,15 @@ pCrs = n.array(file['pCrs_fold']).flatten()[ind][ind2]
 pCv = file['pCv'] # final PS points per k
 pIv = file['pIv'] 
 
+# XXX hack to get rid of occasional positive cross-term point when it should really be all negative
+ind_region = n.where(n.logical_and(Pins<1e9,Pins>1e7))[0]
+ind_mask = n.where(pCves[ind_region] > 0)[0]
+if len(ind_mask) > 0:
+    print "Found",len(ind_mask),"cross-term data points in positive regime when they should really be negative... masking them out!!!"
+    mask = n.zeros_like(pCves)
+    mask[ind_region[0] + ind_mask] = 1
+    pCves = n.ma.masked_array(pCves,mask)
+
 # Smooth curves
 poly_dim = 4
 #"""
@@ -28,7 +37,8 @@ poly_dim = 4
 poly_data_Cr = n.polyfit(n.log10(n.abs(Pins)),n.log10(n.abs(pCvs_Cr)),poly_dim)
 blue = 10**n.polyval(poly_data_Cr,n.log10(Pins))
 
-red_ind_pos = n.where(pCves>=0)[0] # where positive pCves
+try: red_ind_pos = n.ma.where(pCves>=0)[0] # where positive pCves
+except: red_ind_pos = n.where(pCves>=0)[0]
 red_ind_neg = n.where(pCves<0)[0] # where negative pCves
 Pins_red_pos = Pins[red_ind_pos] # adjust Pins
 Pins_red_neg = Pins[red_ind_neg]
@@ -64,12 +74,12 @@ black_neg = -10**n.polyval(poly_Pouts_neg,n.log10(Pins_black_neg))
 black_pos = 10**n.polyval(poly_Pouts_pos,n.log10(Pins_black_pos))
 
 black_ind_pos_I = n.where(Pouts_I>=0)[0] # where positive Pouts_I
-black_ind_neg_I = n.where(Pouts_I<0)[0] # where negative Pouts_I
+black_ind_neg_I = n.where(Pouts_I<0)[0][:-1] # where negative Pouts_I # XXX remove last entry (outlier in some cases that cause the curve to look weird)
 Pins_black_pos_I = Pins[black_ind_pos_I] # adjust Pins
 Pins_black_neg_I = Pins[black_ind_neg_I]
 poly_Pouts_pos_I = n.polyfit(n.log10(Pins_black_pos_I),n.log10(Pouts_I[black_ind_pos_I]),poly_dim)
-#poly_Pouts_neg_I = n.polyfit(n.log10(Pins_black_neg_I),n.log10(-Pouts_I[black_ind_neg_I]),poly_dim)
-#black_neg_I = -10**n.polyval(poly_Pouts_neg_I,n.log10(Pins_black_neg_I))
+poly_Pouts_neg_I = n.polyfit(n.log10(Pins_black_neg_I),n.log10(-Pouts_I[black_ind_neg_I]),2) # less terms in polynomial to make it smoother
+black_neg_I = -10**n.polyval(poly_Pouts_neg_I,n.log10(Pins_black_neg_I))
 black_pos_I = 10**n.polyval(poly_Pouts_pos_I,n.log10(Pins_black_pos_I))
 
 poly_pCr = n.polyfit(n.log10(n.abs(Pins)),n.log10(n.abs(pCrs)),poly_dim)
@@ -157,8 +167,8 @@ p.grid()
 
 p.subplot(122)
 p.plot(Pins_black_pos_I,black_pos_I,'k-',label='$\propto \mathrm{rIQIr}$',linewidth=3)
-#p.plot(Pins_black_neg_I,black_neg_I,'k-',linewidth=3)
-#p.fill_between(Pins_black_neg_I, black_neg_I, n.interp(Pins_black_neg_I,Pins_black_pos_I,black_pos_I), facecolor=(0,0,0,0.5), edgecolor='k', linewidth=3)
+p.plot(Pins_black_neg_I,black_neg_I,'k-',linewidth=3)
+p.fill_between(Pins_black_neg_I, black_neg_I, n.interp(Pins_black_neg_I,Pins_black_pos_I,black_pos_I), facecolor=(0,0,0,0.3), edgecolor='k', linewidth=3)
 p.plot(Pins_red_pos_I,red_I_pos,'r-',linewidth=3,label='$\propto \mathrm{xIQIe}$')
 p.plot(Pins_red_neg_I,red_I_neg,'r-',linewidth=3)
 p.fill_between(Pins_red_neg_I, red_I_neg, n.interp(Pins_red_neg_I,Pins_red_pos_I,red_I_pos), facecolor=(1,0,0,0.3), edgecolor='r', linewidth=3)

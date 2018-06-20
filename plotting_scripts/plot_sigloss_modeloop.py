@@ -28,26 +28,33 @@ if True: # added identity parameters in LOG space
     loop_add = n.logspace(startmode_add,endmode_add,nmodes_add)
 
 # Read files
-sense=4436767.36822*2 # XXX from plotting one of the "project_#_modes" directories
+sense=14419782.9029*2 / n.sqrt(2) # XXX from plotting one of the "project_#_modes" directories (divide by sqrt(2) for folded case)
+#sense=14419782.9029*2  # unfolded version
 PS_i_up = []
 PS_f_up = []
 PS_i = []
 PS_f = []
 k_ind = -3
 
+# Read in range of projected eigenmodes
 for mode_num in loop:
     filename = path + f1 + str(mode_num) + f2
     print 'Reading', filename
     print mode_num
     f = n.load(filename+'/pspec_final_sep0,1_full.npz')
-    kpl = f['kpl']
+    kpl = f['kpl_fold'] # folded version
+    #kpl = f['kpl'] # unfolded version
     k = kpl[k_ind] 
-    PS_i_up.append(2*n.array(f['pCv_err_old'])[k_ind])
-    PS_f_up.append(2*n.array(f['pCv_err'])[k_ind])
-    PS_i.append(n.abs(f['pCv_old'])[k_ind])
-    PS_f.append(n.abs(f['pCv'])[k_ind])
+    PS_i_up.append(2*n.array(f['pCv_fold_err_old'])[k_ind]) # folded version
+    PS_f_up.append(2*n.array(f['pCv_fold_err'])[k_ind])
+    PS_i.append(n.abs(f['pCv_fold_old'])[k_ind])
+    PS_f.append(n.abs(f['pCv_fold'])[k_ind])
+    #PS_i_up.append(2*n.array(f['pCv_err_old'])[k_ind]) # unfolded version
+    #PS_f_up.append(2*n.array(f['pCv_err'])[k_ind])
+    #PS_i.append(n.abs(f['pCv_old'])[k_ind])
+    #PS_f.append(n.abs(f['pCv'])[k_ind])
 
-#""" # Read in added identity case as a second curve being plotted
+# Read in added identity case as a second curve being plotted
 PS_i_up_add = []
 PS_f_up_add = []
 PS_i_add = []
@@ -57,13 +64,18 @@ for mode_num in loop_add:
     print 'Reading', filename
     print mode_num
     f = n.load(filename + '/pspec_final_sep0,1_full.npz')
-    kpl = f['kpl']
+    kpl = f['kpl_fold'] # folded version
+    #kpl = f['kpl']
     k = kpl[k_ind] 
-    PS_i_up_add.append(2*n.array(f['pCv_err_old'])[k_ind])
-    PS_f_up_add.append(2*n.array(f['pCv_err'])[k_ind])
-    PS_i_add.append(n.abs(f['pCv_old'])[k_ind])
-    PS_f_add.append(n.abs(f['pCv'])[k_ind])
-#"""
+    PS_i_up_add.append(2*n.array(f['pCv_fold_err_old'])[k_ind]) # folded version
+    PS_f_up_add.append(2*n.array(f['pCv_fold_err'])[k_ind])
+    PS_i_add.append(n.abs(f['pCv_fold_old'])[k_ind])
+    PS_f_add.append(n.abs(f['pCv_fold'])[k_ind])
+    #PS_i_up_add.append(2*n.array(f['pCv_err_old'])[k_ind]) # unfolded version
+    #PS_f_up_add.append(2*n.array(f['pCv_err'])[k_ind])
+    #PS_i_add.append(n.abs(f['pCv_old'])[k_ind])
+    #PS_f_add.append(n.abs(f['pCv'])[k_ind])
+
 
 """
 # Theory from Switzer et al. - first term only
@@ -95,24 +107,27 @@ if True:
 # Best PS (Identity Mult)
 f = n.load('plot_sigloss_modeloop_identitymult.npz')
 #ps_mult = n.abs(f['pCv'][k_ind]) + 2*f['pCv_err'][k_ind] # point + 2err
-ps_mult = 2*f['pCv_err'][k_ind] # 2sigma upper limit
+ps_mult = 2*f['pCv_fold_err'][k_ind] # 2sigma upper limit
+#ps_mult = 2*f['pCv_err'][k_ind] # unfolded case
 
 # Plot
 p.figure(figsize=(8,10))    
 p.subplot(211)
-    # plot before/after for # eigenmodes down-weighted
-p.plot(loop, n.array(PS_i) + n.array(PS_i_up), color='0.5', linewidth=2, label='Pre-signal loss estimation')
-p.plot(loop, n.array(PS_f_up), 'k-', linewidth=2, label='Post-signal loss estimation')
+# plot before/after for # eigenmodes down-weighted
+p.plot(loop, n.array(PS_i) + n.array(PS_i_up), color='red', linestyle='--', linewidth=2, label='Pre-signal loss estimation')
+p.plot(loop, n.array(PS_f_up), 'r-', linewidth=2, label='Post-signal loss estimation')
 p.xlim(loop[0], loop[-1])
      # plot unweighted
-p.axhline(f['pIv_old'][k_ind]+2*f['pIv_err_old'][k_ind],color='b',linestyle='--',linewidth=2)
+#p.axhline(f['pIv_old'][k_ind]+2*f['pIv_err_old'][k_ind],color='b',linestyle='-',linewidth=2)
+p.axhline(2*f['pIv_fold_err'][k_ind],color='b',linestyle='-',linewidth=2)
+#p.axhline(2*f['pIv_err'][k_ind],color='b',linestyle='-',linewidth=2)
     # plot inverse variance
-p.axhline(ps_mult,color='r',linestyle='-',linewidth=2)
+p.axhline(ps_mult,color='k',linestyle='-',linewidth=2)
     # plot analytic
 p.axhline(sense,color='g',linestyle='-',linewidth=2)
 p.xlabel(xlabel,fontsize=14)
 p.ylabel('$P(k)$ [mK$^{2}$($h^{-1}$ Mpc)$^{3}$]',fontsize=16)
-p.ylim(1e5,1e10)
+p.ylim(1e5,1e11)
 p.legend(prop={'size':12}, loc=2, numpoints=1)
 p.tick_params(axis='both', which='major', labelsize=12)
 p.yscale('log')
@@ -121,14 +136,16 @@ p.title('k = ' +str(round(k,3)) + ' $h$ Mpc$^{-1}$')
    
 p.subplot(212)
     # plot before/after for added identity
-p.plot(loop_add, n.array(PS_i_add) + n.array(PS_i_up_add), color='0.5', linewidth=2, linestyle='-.', label='Pre-signal loss estimation')
-p.plot(loop_add, n.array(PS_f_up_add), color='k', linewidth=2, linestyle='-.', label='Post-signal loss estimation')
+p.plot(loop_add, n.array(PS_i_add) + n.array(PS_i_up_add), color='red', linewidth=2, linestyle='--', label='Pre-signal loss estimation')
+p.plot(loop_add, n.array(PS_f_up_add), color='r', linewidth=2, linestyle='-', label='Post-signal loss estimation')
 p.xlim(loop_add[0], loop_add[-1])
 p.gca().invert_xaxis()
     # plot unweighted
-p.axhline(f['pIv_old'][k_ind]+2*f['pIv_err_old'][k_ind],color='b',linestyle='--',linewidth=2,label='Uniform weighting')
+#p.axhline(f['pIv_old'][k_ind]+2*f['pIv_err_old'][k_ind],color='b',linestyle='-',linewidth=2,label='Uniform weighting')
+p.axhline(2*f['pIv_fold_err'][k_ind],color='b',linestyle='-',linewidth=2,label='Uniform weighting')
+#p.axhline(2*f['pIv_err'][k_ind],color='b',linestyle='-',linewidth=2,label='Uniform weighting')
     # plot inverse variance
-p.axhline(ps_mult,color='r',linestyle='-',linewidth=2,label='$\hat{C} = \hat{C} \circ I$')
+p.axhline(ps_mult,color='k',linestyle='-',linewidth=2,label='$\hat{C} = \hat{C} \circ I$')
     # plot analytic
 p.axhline(sense,color='g',linestyle='-',linewidth=2,label='Analytical $2\sigma$ Error')
     # plot theory
@@ -140,7 +157,7 @@ p.legend(prop={'size':12}, loc=2, numpoints=1, ncol=2)
 p.tick_params(axis='both', which='major', labelsize=12)
 p.yscale('log')
 p.xscale('log')
-p.ylim(1e5,1e10)
+p.ylim(1e5,1e11)
 p.grid()
 p.subplots_adjust(hspace=0.3)
 #p.tight_layout()

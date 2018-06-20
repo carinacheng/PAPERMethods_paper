@@ -8,9 +8,9 @@ from scipy import stats
 # Read file and get data
 file = n.load('plot_sigloss.npz')
 k = file['k']
-xs = 10**file['xs']
-ys = 10**n.abs(file['ys'])*n.sign(file['ys'])
-ysI = 10**n.abs(file['ysI'])*n.sign(file['ysI'])
+xs = file['xs']
+ys = file['ys']
+ysI = file['ysI']
 M = file['kdeC']
 M_I = file['kdeI']
 pC = file['pC']
@@ -101,7 +101,7 @@ pkhi=1e11#1e13
 plt.figure(figsize=(12,6))
 plt.subplot(121)
 plt.plot(xs,ys,'k.')
-plt.pcolormesh(10**binsx,binsy_full,n.log10(M),cmap='hot_r',vmin=0,vmax=15)
+plt.pcolormesh(10**binsx,binsy_full,M,cmap='hot_r',vmin=0,vmax=0.04)
 plt.plot([pklo, pkhi], [pklo, pkhi], 'k:')  # diagonal line
 plt.plot([pklo, pkhi], [-pklo,-pkhi], 'k:')  # diagonal line
 #plt.hlines(y=n.abs(file_pts[k_pts_ind]),xmin=pklo,xmax=pkhi,color='0.5',linewidth=3) # peak of original distribution
@@ -123,7 +123,7 @@ plt.subplot(122)
 #plt.hlines(y=file_pts_I[k_pts_ind],xmin=pklo,xmax=pkhi,color='0.5',linewidth=3)
 plt.hlines(y=pI,xmin=pklo,xmax=pkhi,color='0.5',linewidth=3)
 plt.plot(xs,ysI,'k.')
-plt.pcolormesh(10**binsx,binsy_full,n.log10(M_I),cmap='hot_r',vmin=0,vmax=15)
+plt.pcolormesh(10**binsx,binsy_full,M_I,cmap='hot_r',vmin=0,vmax=0.04)
 plt.plot([pklo, pkhi], [pklo, pkhi], 'k:')  # diagonal line
 plt.plot([pklo, pkhi], [-pklo,-pkhi], 'k:')  # diagonal line
 plt.yscale('symlog',linthreshy=1e2)
