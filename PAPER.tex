@@ -416,7 +416,7 @@ As a brief preview, we summarize our findings in the following sections here:
 
 \item The effect of the bias is worsened when the number of independent samples used to estimate the covariance matrix is reduced (Section \ref{sec:toymodel_frf}).
 
-\item The rate at which empirical eigenvectors converge to their true forms depends on sample variance in the empirical estimate, the number of realizations in the estimate, and the steepness of the empirical eigenspectrum (Section \ref{sec:toymodel_frf}). In general, larger sample variances, fewer realizations, and flatter eigenspectra lead to more loss.
+\item The rate at which empirical eigenvectors converge to their true forms depends on sample variance in the empirical estimate and the steepness of the empirical eigenspectrum (Section \ref{sec:toymodel_frf}). In general, larger sample variances and flatter eigenspectra lead to more loss.
 
 %\item The convergence of the modes of the empirical covariance matrix to the true matrix depends on the size of the eigenvalues, with the modes with the largest eigenvalues converging more quickly (in norm) to the true eigenvector than those with smaller eigenvalues. Thus, in estimating the covariance matrix empirically, larger eigenvalue modes are likely to be more reliable (Section \ref{sec:toymodel_frf}).
 
@@ -671,7 +671,7 @@ In practice such a weighting option is not feasible, as it is difficult to model
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss8.pdf}
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss9.pdf}
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss11.pdf}
-	\caption{Resulting power spectra estimates for our `fringe-rate filtered' (time-averaged) toy model simulation --- foregrounds only (blue), 
+	\caption{Resulting power spectra estimates for our ``fringe-rate filtered" (time-averaged) toy model simulation --- foregrounds only (blue), 
 EoR only (red), and the weighted FG + EoR dataset (green). We show four alternate weighting options that each minimize signal 
 loss, including modeling the covariance matrix of EoR (upper left), regularizing $\widehat{\textbf{C}}$ by adding an identity matrix to 
 it (upper right), using only the first three eigenmodes of $\widehat{\textbf{C}}$ (lower left), and keeping only the diagonal elements of 
@@ -771,15 +771,15 @@ this effect using our toy model.
 
 Going back to our toy model, we apply a sliding boxcar average to $10$ samples at a time, thus reducing the number of 
 independent data samples to $N/10 = 100$. Bootstrapping this time-averaged noise, using the same method as described 
-earlier (drawing $N$=$1000$ elements per bootstrap sample), under-estimates the error by a factor of $\sim3$ (black points in Figure \ref{fig:toy_error1}, at $N$=$1000$). This occurs 
+earlier (drawing $N=1000$ elements per bootstrap sample), under-estimates the error by a factor of $\sim3$ (black points in Figure \ref{fig:toy_error1}, at $N=1000$). This occurs 
 because we are drawing more samples than independent ones available, and thus some samples are repeated multiple times 
 in all bootstraps, leading to less variation between the bootstraps. In fact, the error derived from bootstrapping is a strong 
 function of the number of elements that are drawn per bootstrap (Figure \ref{fig:toy_error1}, black points), and we can both 
 under-estimate the error by drawing too many or over-estimate it by drawing too few. However, since we know that we have $100$ 
-independent samples in this toy model, the error associated with drawing $N$=$100$ samples with replacement does match the theoretical prediction 
-as expected (the black points cross the green line at $N$=$100$ in Figure \ref{fig:toy_error1}).
+independent samples in this toy model, the error associated with drawing $N=100$ samples with replacement does match the theoretical prediction 
+as expected (the black points cross the green line at $N=100$ in Figure \ref{fig:toy_error1}).
 
-This example highlights the importance of understanding how analysis techniques (e.g. fringe-rate filtering) can affect a 
+This example highlights the importance of understanding how analysis techniques (such as fringe-rate filtering) can affect a 
 common statistical procedure like bootstrapping. Bootstrapping as a means of estimating power spectrum errors from real 
 fringe-rate filtered data requires knowledge of the number of independent samples, which is not always a trivial task. For 
 example, computing the effective number of independent samples of fringe-rate filtered data is not as simple as counting the 
@@ -1799,7 +1799,7 @@ CC would like to acknowledge the UC Berkeley Chancellor's Fellowship and Nationa
 Fellowship (Division of Graduate Education award 1106400). She would also like to thank Phil Bull, Bryna Hazelton, Miguel Morales, and Eric Switzer for helpful discussions. PAPER and HERA 
 are supported by grants from the National Science Foundation (awards 1440343, and 1636646). ARP, DCJ, and JEA would 
 also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, respectively). SAK is supported by the University of Pennsylvania School of Arts and Sciences Dissertation Completion Fellowship. JSD acknowledges NSF AAPF
-award 1701536. AL acknowledges support for this work by NASA through Hubble Fellowship grant \#HST-HF2-51363.001-A awarded by the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., for NASA, under contract NAS5-26555. We graciously thank SKA-SA for site infrastructure and observing support.
+award 1701536. AL acknowledges support for this work by NASA through Hubble Fellowship grant \#HST-HF2-51363.001-A awarded by the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., for NASA, under contract NAS5-26555. GB acknowledges support from the Royal Society and the Newton Fund under grant NA150184. This work is based on research supported in part by the National Research Foundation of South Africa (award 103424). We graciously thank SKA-SA for site infrastructure and observing support.
 \label{sec:Ack}
 
 % APPENDIX ---------------------------------------------------------------------------------
