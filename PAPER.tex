@@ -1756,13 +1756,13 @@ In particular, in this paper we have investigated the subtleties and tradeoffs o
 signal loss, error estimation, and bias, which can be summarized as follows:
 
 \begin{itemize}
-\item Substantial signal loss can result when weighting data using empirically estimated covariances (Section 
+\item Substantial signal loss can result when weighting data using empirically estimated covariances due to couplings with the data realizations (Section 
 \ref{sec:SiglossOverview}). Loss of the 21\,cm signal is especially significant the fewer number of independent modes that
 exist in the data. Hence, there exists a trade-off between sensitivity driven 
 time-averaging techniques such as fringe-rate filtering and signal loss when using empirically estimated covariances. 
 \item Signal injection and recovery simulations can be used to quantify signal loss (Section \ref{sec:Sigloss}). However, a 
 signal-only simulation (i.e. comparing a uniformly weighted vs. weighted power spectrum of EoR only) can under-estimate loss by 
-failing to account for correlations between the data and signal (Section \ref{sec:siglossmethod}).
+failing to account for correlations between the data and signal which can be large and negative (Section \ref{sec:siglossmethod}).
 \item Errors that are estimated via bootstrapping can be under-estimated if samples in the dataset are significantly correlated 
 (Section \ref{sec:ErrorOverview}). However, if the number of independent samples in a dataset is well-determined, bootstrapping is a 
 simple and accurate way of estimating errors.
@@ -1775,10 +1775,9 @@ As a consequence of our investigations, we have also used a subset of PAPER-64 d
 ways in which our new analysis differs can be summarized by the following:
 
 \begin{itemize}
-\item Signal loss, previously found to be $<2\%$ in \citetalias{ali_et_al2015}, was under-estimated by a factor of $>$$1000$ for empirically estimated inverse 
+\item Signal loss, previously found to be $<2\%$ in \citetalias{ali_et_al2015}, was under-estimated by a factor of $>$$1000$ for the case of empirically estimated inverse 
 covariance weighting. Using a regularized covariance weighting method can minimize loss (Section 
-\ref{sec:Weight}), however, because a regularized weighting method is not as aggressive as the former, our results are still a 
-factor of $\sim10$ in mK higher than the lossy empirical inverse covariance limits. Under-estimated signal loss therefore represents the bulk of our revision. 
+\ref{sec:Weight}), however, because a regularized weighting method is not as aggressive as the former, it produces limits that are still higher than the lossy empirical inverse covariance limits. Under-estimated signal loss therefore represents the bulk of our revision. 
 This revision is similar in nature to the re-analysis of results from the GMRT (\citealt{paciga_et_al2013}) which were also 
 revised from new signal loss calculations associated with their singular value decomposition foreground filter.
 \item Power spectrum errors, originally computed by bootstrapping, were under-estimated for the data by a factor of $\sim2$ in mK due to oversampling data whose effective number of independent samples was reduced from fringe-rate filtering (Section \ref{sec:Boot}). Several other errors were also found regarding error estimation, though with smaller effects.
@@ -1800,8 +1799,8 @@ comprehensive jackknife tests will play critical roles in accurate 21\,cm result
 CC would like to acknowledge the UC Berkeley Chancellor's Fellowship and National Science Foundation Graduate Research 
 Fellowship (Division of Graduate Education award 1106400). She would also like to thank Phil Bull, Bryna Hazelton, Miguel Morales, and Eric Switzer for helpful discussions. PAPER and HERA 
 are supported by grants from the National Science Foundation (awards 1440343, and 1636646). ARP, DCJ, and JEA would 
-also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, respectively). SAK is supported by the University of Pennsylvania School of Arts and Sciences Dissertation Completion Fellowship. JSD acknowledges NSF AAPF
-award 1701536. AL acknowledges support for this work by NASA through Hubble Fellowship grant \#HST-HF2-51363.001-A awarded by the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., for NASA, under contract NAS5-26555. GB acknowledges support from the Royal Society and the Newton Fund under grant NA150184. This work is based on research supported in part by the National Research Foundation of South Africa (award 103424). We graciously thank SKA-SA for site infrastructure and observing support.
+also like to acknowledge NSF support (awards 1352519, 1401708, and 1455151, respectively). AL acknowledges support for this work by NASA through Hubble Fellowship grant \#HST-HF2-51363.001-A awarded by the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., for NASA, under contract NAS5-26555. SAK is supported by the University of Pennsylvania School of Arts and Sciences Dissertation Completion Fellowship. JSD acknowledges NSF AAPF
+award 1701536. GB acknowledges support from the Royal Society and the Newton Fund under grant NA150184. This work is based on research supported in part by the National Research Foundation of South Africa (award 103424). We graciously thank SKA-SA for site infrastructure and observing support.
 \label{sec:Ack}
 
 % APPENDIX ---------------------------------------------------------------------------------
