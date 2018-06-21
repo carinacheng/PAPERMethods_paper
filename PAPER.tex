@@ -890,7 +890,7 @@ help distinguish between different sources of bias.
  
 \begin{itemize}
 \item \textbf{Null Test}: A null test is a type of jackknife test that removes the astronomical signal from data in order to 
-investigate underlying systematics (e.g., see \citet{keating_et_al2016} for examples from intensity mapping that are closely related to our current application). For example, one can 
+investigate underlying systematics (see \citet{keating_et_al2016} for examples from intensity mapping that are closely related to our current application). For example, one can 
 divide data into two subsets by separating odd and even Julian dates, or the first half of the observing season from the second. 
 Subtracting the two removes signal that is common to both subsets, including foregrounds and the EoR signal. The resulting power 
 spectrum should be consistent with thermal noise estimates; if it is not, it suggests the presence of a systematic that differs 
@@ -949,7 +949,7 @@ with thermal noise.}
 	\centering
 	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_bias2.pdf}
 	\caption{Power spectrum estimates for $\textbf{x}_{1}$ and $\textbf{x}_{2}$, two jackknives of the toy model. They suggest 
-the presence of a systematic in $\textbf{x}_{2}$ only (which is exactly what was put in), illustrating how jackknives can be used to tease out excesses. Clean 
+the presence of a systematic in $\textbf{x}_{2}$ only, illustrating how jackknives can be used to tease out excesses. Clean 
 measurements should remain consistent despite the jackknife taken.}
 	\label{fig:toy_bias2}
 \end{figure}
@@ -965,7 +965,7 @@ which we will not go into detail here, including baseline, frequency, and polari
 through them all and a clean measurement should exhibit noise-like null spectra.
 
 In this section we have highlighted how null tests and jackknife tests are key for determining the nature of a power spectrum 
-detection. In Section \ref{sec:Bias} we perform some examples of these tests on PAPER-64 data in order to prove that our 
+detection. In Section \ref{sec:Bias} we perform some examples of these tests on PAPER-64 data in order to show that our 
 excesses are not EoR and to identify their likely cause. 
 
 % SECTION 3  ---------------------------------------------------------------------------------
