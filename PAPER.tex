@@ -994,7 +994,7 @@ paper (i.e. a subset of the shortest horizontal spacings).}
 	\label{fig:ant_layout}
 \end{figure}
 
-The previously best published 21\,cm upper limit result from \citetalias{ali_et_al2015} uses $124$ nights of data to place a $2\sigma$ upper limit 
+The previously best published 21\,cm upper limit result from \citetalias{ali_et_al2015} placed a $2\sigma$ upper limit 
 on $\Delta^{2}(k)$, defined as
 
 \begin{equation}
@@ -1361,7 +1361,7 @@ weighting schemes to inverse covariance weighting, with the goal of finding one 
 	\centering
 	\includegraphics[width=0.4\textwidth]{plots/ps1_data.pdf}
 	\includegraphics[width=0.4\textwidth]{plots/ps2_data.pdf}
-	\caption{A power spectrum of a subset of PAPER-64 data illustrating the use of empirical inverse covariance weighting. The solid red curve is the $2\sigma$ upper limit on the EoR signal estimated from our signal injection framework using empirical inverse covariance weighting. Shown for comparison is the lossy limit prior to signal loss estimation (dashed red). The theoretical $2\sigma$ thermal noise level prediction based on observational parameters is in green, whose calculation is detailed in Section \ref{sec:PSSense}. Additionally, the power spectrum results for the uniform weighted case is shown in three different ways: power spectrum values (black and gray points as positive and negative values, respectively, with $2\sigma$ error bars from bootstrapping), the $2\sigma$ upper limit on the EoR signal using our full signal injection framework (solid blue), and the measured power spectrum values with $2\sigma$ thermal noise errors (gray shaded regions). The vertical dashed black lines signify the horizon limit for this analysis using $30$\,m baselines. In this example, we see that the lossy power spectrum limit is $\sim 4$ orders of magnitude too low when using empirical inverse covariance weighting.}
+	\caption{A power spectrum of a subset of PAPER-64 data illustrating the use of empirical inverse covariance weighting. The solid red curve is the $2\sigma$ upper limit on the EoR signal estimated from our signal injection framework using empirical inverse covariance weighting. Shown for comparison is the lossy limit prior to signal loss estimation (dashed red). The theoretical $2\sigma$ thermal noise level prediction based on observational parameters is in green, whose calculation is detailed in Section \ref{sec:PSSense}. Additionally, the power spectrum result for the uniform weighted case is shown in three different ways: power spectrum values (black and gray points as positive and negative values, respectively, with $2\sigma$ error bars from bootstrapping), the $2\sigma$ upper limit on the EoR signal using our full signal injection framework (solid blue), and the measured power spectrum values with $2\sigma$ thermal noise errors (gray shaded regions). The vertical dashed black lines signify the horizon limit for this analysis using $30$\,m baselines. In this example, we see that the lossy power spectrum limit is $\sim 4$ orders of magnitude too low when using empirical inverse covariance weighting.}
 \label{fig:ps2_data}
 \end{figure*}
 
@@ -1415,7 +1415,7 @@ $2\sigma$ errors bars from bootstrapping). It is also shown as an upper limit us
 	\centering
 	\includegraphics[width=0.4\textwidth]{plots/ps1_data_add.pdf}
 	\includegraphics[width=0.4\textwidth]{plots/ps2_data_add.pdf}
-	\caption{A power spectrum of a subset of PAPER-64 data illustrating the use of $\widehat{\textbf{C}}_{\rm eff}$ to minimize signal loss. The solid red curve is the $2\sigma$ upper limit on the EoR signal estimated from our signal injection framework. The theoretical $2\sigma$ thermal noise level prediction based on observational parameters is in green. Additionally, the power spectrum results for the uniform weighted case is shown in three different ways: power spectrum values (black and gray points as positive and negative values, respectively, with $2\sigma$ error bars from bootstrapping), the $2\sigma$ upper limit on the EoR signal using our full signal injection framework (solid blue), and the measured power spectrum values with $2\sigma$ thermal noise errors (gray shaded regions). The vertical dashed black lines signify the horizon limit for this analysis using $30$\,m baselines. This power spectrum result does not use the full dataset's sensitivity as in \citetalias{ali_et_al2015} and Kolopanis et al. (\textit{in prep.}), though we include all analysis changes which have mostly stemmed from revisions regarding signal 
+	\caption{A power spectrum of a subset of PAPER-64 data illustrating the use of $\widehat{\textbf{C}}_{\rm eff}$ to minimize signal loss. The solid red curve is the $2\sigma$ upper limit on the EoR signal estimated from our signal injection framework. The theoretical $2\sigma$ thermal noise level prediction based on observational parameters is in green. Additionally, the power spectrum result for the uniform weighted case is shown in three different ways: power spectrum values (black and gray points as positive and negative values, respectively, with $2\sigma$ error bars from bootstrapping), the $2\sigma$ upper limit on the EoR signal using our full signal injection framework (solid blue), and the measured power spectrum values with $2\sigma$ thermal noise errors (gray shaded regions). The vertical dashed black lines signify the horizon limit for this analysis using $30$\,m baselines. This power spectrum result does not use the full dataset's sensitivity as in \citetalias{ali_et_al2015} and Kolopanis et al. (\textit{in prep.}), though we include all analysis changes which have mostly stemmed from revisions regarding signal 
 loss, bootstrapping, and the theoretical error computation. We see that the regularization scheme used here produces limits similar to the unweighted limits.}
 	\label{fig:ps1_data}
 \end{figure*}
@@ -1443,7 +1443,7 @@ In Section \ref{sec:Sigloss}, we have detailed several aspects of signal loss in
 \label{sec:Error}
 
 In this section we discuss the ways in which we estimate errors for PAPER-64 power spectra. We first walk through an expression for a theoretical error estimation (of thermal noise) based on observational parameters. Although a theoretical model often 
-differs from true errors as explained in Section \ref{sec:ErrorOverview}, it is helpful to understand the ideal case and the factors 
+differs from true errors, it is helpful to understand the ideal case and the factors 
 that affect its sensitivity. Additionally, we build on the lessons learned about bootstrapping in Section \ref{sec:ErrorOverview} to 
 revise our bootstrapping method as applied to PAPER-64 data in order to compute accurate errors from the data itself.
 
@@ -1484,7 +1484,7 @@ T_{\rm sys} = 180\Big(\frac{\nu}{0.18}\Big)^{-2.55} + T_{\rm rcvr},
 \end{equation}
 
 where $\nu$ are frequencies in GHz (\citealt{thompson_et_al2001}). We use a receiver temperature of $144$\,K, yielding $T_{\rm sys} = 431$\,K at $150$\,MHz. 
-This is lower than the $T_{\rm sys}$ of $500$\,K used in \citetalias{ali_et_al2015} because of several small mis-calculation errors that were 
+This is lower than the $T_{\rm sys}$ of $500$\,K used in \citetalias{ali_et_al2015} because of several small miscalculation errors that were 
 identified\footnote{For example, there was a missing a square root in going from a variance to a standard deviation.}.
 \item $\sqrt{2}$: This factor in the denominator of the sensitivity equation comes from taking the real part of the power spectrum 
 estimates after cross-multiplying independent ``even" and ``odd" visibility measurements (this cross-multiplication is done principally to avoid a noise bias). In \citetalias{ali_et_al2015}, a factor of $2$ was mistakenly used.
@@ -1517,11 +1517,11 @@ N_{\rm bls} = \frac{N_{\rm bls\_total}}{N_{\rm gps}}\sqrt{\frac{N_{\rm gps}^{2}-
 \end{equation}
 \noindent where, in the \citetalias{ali_et_al2015} analysis, $N_{\rm gps} = 5$. Each baseline group averages down linearly as the number of baselines 
 entering the group ($N_{\rm bls\_total}/N_{\rm gps}$) and then as the square root of the number of cross-multiplied pairs \Big($\sqrt{\frac{N_{\rm gps}^{2} - 
-N_{\rm gps}}{2}}$\Big). A revised \citetalias{ali_et_al2015} analysis should therefore use $N_{\rm bls} \sim 32$ instead of $51$, and this change is taken into account in Figure \ref{fig:sense_check}. However, the analysis in this paper and in Kolopanis et al. (\textit{in prep.}) does not average baselines into groups ($N_{\rm gps} = 1$). For the subset of data presented in this paper, $N_{\rm bls} = 10$.
+N_{\rm gps}}{2}}$\Big). A revised \citetalias{ali_et_al2015} analysis should therefore use $N_{\rm bls} \sim 32$ instead of $51$, and this change is taken into account in Figure \ref{fig:sense_check}. However, the analysis in this paper and in Kolopanis et al. (\textit{in prep.}) no longer averages baselines into groups ($N_{\rm gps} = 1$). For the subset of data presented in this paper, $N_{\rm bls} = 10$.
 \item $N_{\rm pols}$: The number of polarizations averaged together. For the case of Stokes I, $N_{\rm pols}=2$.
 \end{itemize}
 
-An additional factor of $\sqrt{2}$ is gained in sensitivity when folding together positive and negative $k$'s. 
+An additional factor of $\sqrt{2}$ is gained in sensitivity when folding together positive and negative $k$'s to form $\Delta^{2}(k)$.
 
 Our revised sensitivity estimate for the \citetalias{ali_et_al2015} analysis of PAPER-64 is shown in Figure \ref{fig:sense_check}. 
 Together, the revised parameters yield a decrease in sensitivity (higher noise floor) by a factor of $\sim7$ in mK$^{2}$. 
@@ -1530,7 +1530,7 @@ Together, the revised parameters yield a decrease in sensitivity (higher noise f
 	\centering
 	\includegraphics[width=\columnwidth]{plots/sense_check.pdf}
 	\caption{An updated prediction for the thermal noise level of PAPER-64 data (black) is shown in comparison to previously 
-published sensitivity limits (gray), both computed for the analysis methods used in \citetalias{ali_et_al2015}. Major factors that contribute to the discrepancy are $
+published sensitivity limits (gray), both computed for the parameters and methods used in \citetalias{ali_et_al2015}. Major factors that contribute to the discrepancy are $
 \Omega_{\rm eff}$, $N_{\rm days}$ and $N_{\rm bls}$, as in Equation \eqref{eq:sense} and described in Section \ref{sec:PSSense}, which when combined decreases our 
 sensitivity (higher noise floor) by a factor of $\sim7$ in mK$^{2}$.}
 	\label{fig:sense_check}
@@ -1546,7 +1546,7 @@ using:
 T_{\rm rms} = \frac{T_{\rm sys}}{\sqrt{\Delta\nu \Delta t N_{\rm days} N_{\rm pols}}},
 \end{equation}
 
-\noindent where $\Delta\nu$ is channel spacing, $\Delta t$ is integration time, $N_{\rm days}$ is the number of daily counts for a 
+\noindent where $\Delta\nu$ is the channel spacing, $\Delta t$ is the integration time, $N_{\rm days}$ is the number of daily counts for a 
 particular time and frequency that went into our LST-binned set, and $N_{\rm pols}$ is the number of polarizations ($2$ for Stokes 
 I). This temperature sets the variance of the Gaussian random noise.
 
@@ -1557,7 +1557,7 @@ Power spectrum results for the noise simulation, which uses our full power spect
 	\centering
 	\includegraphics[width=0.4\textwidth]{plots/ps1_noise_add.pdf}
 	\includegraphics[width=0.4\textwidth]{plots/ps2_noise_add.pdf}
-	\caption{The power spectrum for a noise simulation that mimics the noise level of a subset of PAPER-64 data, where the solid red curve is the $2\sigma$ upper limit on the EoR signal estimated from our signal injection framework using $\widehat{\textbf{C}}_{\rm eff}$. The theoretical $2\sigma$ thermal noise level prediction based on observational parameters (calculated by Equation \eqref{eq:sense}) is in green. Additionally, the power spectrum results for the uniform weighted case is shown in three different ways: power spectrum values (black and gray points as positive and negative values, respectively, with $2\sigma$ error bars), the $2\sigma$ upper limit on the EoR signal using our full signal injection framework (solid blue), and the measured power spectrum values with $2\sigma$ thermal noise errors (gray shaded regions). The vertical dashed black lines signify the horizon limit for this analysis using $30$\,m baselines. We highlight that the bootstrapped data points and thermal noise prediction show good agreement, while the limits from the full injection framework (red and blue) are inflated due to the additional inclusion of sample variance that comes from the injection simulations.}
+	\caption{The power spectrum for a noise simulation that mimics the noise level of a subset of PAPER-64 data, where the solid red curve is the $2\sigma$ upper limit on the EoR signal estimated from our signal injection framework using $\widehat{\textbf{C}}_{\rm eff}$. The theoretical $2\sigma$ thermal noise level prediction based on observational parameters (calculated by Equation \eqref{eq:sense}) is in green. Additionally, the power spectrum result for the uniform weighted case is shown in three different ways: power spectrum values (black and gray points as positive and negative values, respectively, with $2\sigma$ error bars from bootstrapping), the $2\sigma$ upper limit on the EoR signal using our full signal injection framework (solid blue), and the measured power spectrum values with $2\sigma$ thermal noise errors (gray shaded regions). The vertical dashed black lines signify the horizon limit for this analysis using $30$\,m baselines. We highlight that the bootstrapped data points and thermal noise prediction show good agreement, while the limits from the full injection framework (red and blue) are inflated due to the additional inclusion of sample variance that comes from the injection simulations.}
 	\label{fig:ps_noise}
 \end{figure*}
 
@@ -1598,6 +1598,8 @@ independent samples (by over-sampling elements along the time axis), repeated va
 
 \end{itemize}
 
+In summary, we have learned several lessons regarding bootstrapping and have revised our analysis procedure in order to determine error bars that correctly reflect the variance in our power spectrum estimates. Additionally, we have carried out substantial testing with these changes in place to verify that the computed errors for our noise simulations are accurate and agree with thermal noise predictions.
+
 \begin{figure}
 	\centering
 	\includegraphics[trim={0.3cm 0cm 0.3cm 0.3cm},width=\columnwidth]{plots/noise_errors.pdf}
@@ -1614,7 +1616,7 @@ effects of bootstrapping from signal loss. The bootstrapping method used in \cit
 
 In Section \ref{sec:BiasOverview} we highlighted some common sources of bias that can show up as power spectrum 
 detections and imitate an EoR signal. We discussed the importance of using jackknife and null tests for instilling confidence in an EoR 
-detection, as well as identifying other sources of biases. Here we demonstrate methods used by PAPER-64 to mitigate 
+detection, as well as for identifying other sources of biases. Here we demonstrate methods used by PAPER-64 to mitigate 
 foreground and noise bias and we perform null tests in order to characterize the stability and implications of our results.
 
 \subsubsection{Mitigating Bias}
