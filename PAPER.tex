@@ -531,7 +531,7 @@ we can tweak the covariance in a simple way to suppress foregrounds and yield mi
 %is a sinusoid, so it 
 can be perfectly described by a single eigenmode. Using the full dataset's (foreground plus EoR signal) empirical covariance, we can 
 project out the zeroth eigenmode and 
-%then flatten the rest of the spectrum to have eigenvalues of 1, thereby down-weighting the foreground-dominated mode more than the rest of the modes. Hence, we are changing the EoR-dominating part of the spectrum to be less coupled to the data, limiting the amount of over-fitting that can happen for those modes (i.e. only allowing over-fitting to occur for the first mode).
+%then flatten the rest of the spectrum to have eigenvalues of 1, thereby down-weighting the foreground-dominated mode more than the rest of the modes. Hence, we are changing the EoR-dominating part of the spectrum to be less coupled to the data, limiting the amount of over-fitting that can happen for those modes (i.e., only allowing over-fitting to occur for the first mode).
 then take the remaining covariance to be the identity matrix.  
 This decouples the covariance from the data for the EoR modes.  The resulting power spectrum estimate for this case is shown in the right plot of Figure \ref{fig:toy_sigloss3}. 
 In this case we recover the EoR signal, demonstrating that if we can disentangle the foreground-dominated modes and EoR-dominated modes, we can suppress
@@ -558,7 +558,7 @@ With fringe-rate filtering resulting in fewer independent modes, it becomes more
 \label{eq:converge}
 \varepsilon (\Chat) \equiv \sqrt{\frac{\sum_{ij} (\widehat{C}_{ij} - {C}_{ij})^2}{\sum_{ij} {C}_{ij}^2}},
 \end{equation}
-where $\C$ is the true covariance matrix. To compute this metric, we draw different numbers of realizations (different draws of Gaussian noise) of our toy model EoR measurement, $\textbf{x}_{\rm EoR}$, and take their ensemble average. We then compare this to the ``true" covariance, which in our simulation is set to be the empirical covariance after a large number ($500$) of realizations. As shown in Figure \ref{fig:toy_sigloss16}, we perform this computation for a range of total independent ensemble realizations (horizontal axis) and number of independent samples in the data following fringe-rate filtering (different colors). With more independent time samples (i.e. more realizations) in the data, one converges to the true fringe-rate filtered covariance more quickly. 
+where $\C$ is the true covariance matrix. To compute this metric, we draw different numbers of realizations (different draws of Gaussian noise) of our toy model EoR measurement, $\textbf{x}_{\rm EoR}$, and take their ensemble average. We then compare this to the ``true" covariance, which in our simulation is set to be the empirical covariance after a large number ($500$) of realizations. As shown in Figure \ref{fig:toy_sigloss16}, we perform this computation for a range of total independent ensemble realizations (horizontal axis) and number of independent samples in the data following fringe-rate filtering (different colors). With more independent time samples (i.e., more realizations) in the data, one converges to the true fringe-rate filtered covariance more quickly. 
 
 The situation here with using a finite number of time samples to estimate our covariance is analogous to a problem faced in galaxy surveys, where the non-linear covariance 
 of the matter power spectrum is estimated using a large --- but finite --- number of expensive simulations. There, the limited 
@@ -610,7 +610,7 @@ yielding $25$ independent samples in time. Real parts are shown here.}
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{plots/toy_sigloss16.pdf}
-	\caption{The convergence level, as defined by Equation \eqref{eq:converge}, of empirically estimated covariances of mock EoR signals with different numbers of independent samples. In red, the mock EoR signal is comprised entirely of independent samples. Subsequent colors show time-averaged signals. As the number of realizations increases, we see that the empirical covariances approach the true covariances. With more independent samples, the quicker an empirical covariance converges (i.e. the quicker it decouples from the data), and the less signal loss we would expect to result.}
+	\caption{The convergence level, as defined by Equation \eqref{eq:converge}, of empirically estimated covariances of mock EoR signals with different numbers of independent samples. In red, the mock EoR signal is comprised entirely of independent samples. Subsequent colors show time-averaged signals. As the number of realizations increases, we see that the empirical covariances approach the true covariances. With more independent samples, the quicker an empirical covariance converges (i.e., the quicker it decouples from the data), and the less signal loss we would expect to result.}
 	\label{fig:toy_sigloss16}
 \end{figure}
 
@@ -658,7 +658,7 @@ These examples are not meant to be taken as suggested analysis methods but rathe
 
 As a first test, we model the covariance matrix of EoR as a proof of concept that if perfect models are known, signal loss can be 
 avoided. We know that our simulated EoR signal should have a covariance matrix that mimics the identity matrix, with its 
-variance encoded along the diagonal. We model $\textbf{C}_{\rm EoR}$ as such (i.e. the identity), instead of computing it based on $\textbf{x}
+variance encoded along the diagonal. We model $\textbf{C}_{\rm EoR}$ as such (i.e., the identity), instead of computing it based on $\textbf{x}
 _{\rm EoR}$ itself. Next, we add $\textbf{C}_{\rm EoR} + \widehat{\textbf{C}}_{\rm FG}$ (where $\widehat{\textbf{C}}_{\rm FG} = \langle\textbf{x}_{\rm FG}
 \textbf{x}_{\rm FG}^{\dagger}\rangle_{t}$) to obtain a final $\widehat{\textbf{C}}$ to use in weighting. In Figure \ref{fig:toy_sigloss8} (upper 
 left), we see that there is negligible signal loss. This is because by modeling $\textbf{C}_{\rm EoR}$, we avoid over-fitting EoR fluctuations in the data that our model doesn't know about (but an empirically derived $\widehat{\textbf{C}}_{\rm EoR}$ would). 
@@ -701,7 +701,7 @@ method intentionally projects out the highest-valued modes only by replacing all
 eigenspectrum with $1$'s (equal weights). Again, avoiding the over-fitting of EoR-dominated modes which are coupled to the data results in negligible signal loss. However, we do 
 not perfectly recover the shape of the EoR power spectrum because we lost information when ignoring the relative weights of most of the modes. While this case is illuminating for the toy model, in practice it is not obvious which eigenmodes are FG or EoR dominated (and they could be mixed as well), so determining which subset of modes to down-weight is not trivial. We experiment with this idea using PAPER data in Section \ref{sec:Weight}.
 
-The last regularization scheme we are highlighting here is setting $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (i.e. keeping only the diagonal elements of $\widehat{\textbf{C}}$). In the bottom right 
+The last regularization scheme we are highlighting here is setting $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (i.e., keeping only the diagonal elements of $\widehat{\textbf{C}}$). In the bottom right 
 panel of Figure \ref{fig:toy_sigloss8}, we see that this method does not down-weight the foregrounds at all --- this regularization altered $\widehat{\textbf{C}}$ in a way where it is no longer coupled to \textit{any} of the empirically estimated eigenmodes, including the FG-dominated one. For this toy model, 
 our foregrounds are spread out in frequency and therefore have non-negligible frequency-frequency correlations. Multiplying by 
 the identity, element-wise, results in a diagonal matrix, meaning we do not have any correlation information. Because of this, we do a poor job 
@@ -743,7 +743,7 @@ our results which represent the underlying distribution of values that are allow
 Suppose we have $N$ different measurements targeting the same quantity (for example, $N$ power spectrum measurements). 
 Bootstrapping means that we form $N_{\rm boot}$ (often a large number) bootstraps, where each bootstrap is a random selection 
 of the $N$ measurements. Bootstraps each have dimensions of $N$, and the values populated into each bootstrap are drawn 
-from the original set of measurements with replacement (i.e. every $n^{th}$ slot in $N$ is filled randomly for each bootstrap). Next we take 
+from the original set of measurements with replacement (i.e., every $n^{th}$ slot in $N$ is filled randomly for each bootstrap). Next we take 
 the mean of each bootstrap to collapse it from an array of length $N$ to a single number (we are interested in the mean statistic 
 here, but any function of interest can be applied to each bootstrap as long as it's the same function for each one). The error (on 
 the mean) is then computed as the standard deviation across all bootstraps. 
@@ -809,7 +809,7 @@ analysis choices have compromised the method and whether a variation or an avoid
 %	\centering
 %	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_error2.png}
 %	\caption{The fraction of independent elements in one bootstrap sample as a function of the total number of elements in a 
-%dataset (i.e. if $4$ out of $5$ elements are independent, this would yield a fraction of $0.8$). A fraction of $1.0$ means that all 
+%dataset (i.e., if $4$ out of $5$ elements are independent, this would yield a fraction of $0.8$). A fraction of $1.0$ means that all 
 %elements in the bootstrap sample are independent, and therefore sensitivity is maximized (alternately, this axis can be thought 
 %of as power spectrum sensitivity, where sensitivity increases moving upwards along the y-axis). Two bootstrapping methods are shown here --- sampling all elements with replacement (gray) and sampling only the last element with replacement (black). The former fails to maximize sensitivity since some elements end up being repeated due to random sampling.} 
 %The `outlier' points lying at a fraction of $1.0$ at the far left of the plot occur in the off-chance that the last spot in the sample happens to be the one missing element instead of a repeated element --- this is more likely to happen with a small total number of elements but also results in a more dramatically different fraction as compared to the case of a repeated element in the last spot, hence why these points appear like outliers.}
@@ -883,7 +883,7 @@ We now approach the difficult task of tracing excesses to foreground, noise, and
 jackknife tests. Again, we first approach this topic pedagogically as an introduction to the related PAPER discussion in Section 
 \ref{sec:Bias}. 
 
-The jackknife is a resampling technique in which a statistic (i.e. power spectrum) is computed in subsets of the data (\citealt{quenouille1949}; \citealt{tukey1958}). These 
+The jackknife is a resampling technique in which a statistic (i.e., power spectrum) is computed in subsets of the data (\citealt{quenouille1949}; \citealt{tukey1958}). These 
 subsets are then compared to reveal systematics. In this section we define two main tests --- the null test and the traditional 
 jackknife --- and explain how a power spectrum detection must pass each. We then highlight how these tests can be used to 
 help distinguish between different sources of bias.
@@ -894,7 +894,7 @@ investigate underlying systematics (see \citet{keating_et_al2016} for examples f
 divide data into two subsets by separating odd and even Julian dates, or the first half of the observing season from the second. 
 Subtracting the two removes signal that is common to both subsets, including foregrounds and the EoR signal. The resulting power 
 spectrum should be consistent with thermal noise estimates; if it is not, it suggests the presence of a systematic that differs 
-from one of the data subsets to the other (i.e. doesn't get subtracted perfectly). 
+from one of the data subsets to the other (i.e., doesn't get subtracted perfectly). 
 \item \textbf{Traditional Jackknife}: In a broader sense, it is important to perform many jackknife tests in order to instill 
 confidence in a final result. A stable result must be steadfast throughout all jackknives no matter how the data is sliced. 
 Jackknives can be taken along several different axes --- for example, one could start with a full dataset, and compute a new 
@@ -990,7 +990,7 @@ refer the reader to \citet{parsons_et_al2010} and \citetalias{ali_et_al2015}. We
 	\centering
 	\includegraphics[trim={0cm 3cm 0cm 3cm},width=\columnwidth]{plots/ant_layout_aspect.pdf}
 	\caption{The PAPER-64 antenna layout. We use only $10$ of the $30$ m East/West baselines for the analysis in this 
-paper (i.e. a subset of the shortest horizontal spacings).}
+paper (i.e., a subset of the shortest horizontal spacings).}
 	\label{fig:ant_layout}
 \end{figure}
 
@@ -1073,7 +1073,7 @@ where, for illustrative purposes and notational simplicity, we have written thes
 
 The quantity $\widehat{P}_{\rm in}$, defined by Equation \eqref{eq:Pin}, is a uniformly weighted estimator of the power spectrum of $\mathbf{e}$. Since there is no noise contribution to $\mathbf{e}$, it can be considered the power spectrum of this particular realization of the EoR; alternatively, it can be viewed as the true power spectrum of the injected signal up to cosmic variance fluctuations. The role of $\widehat{P}_{\rm in}$ in our analysis is to serve as a reference for the power spectrum that would be measured if there were no signal loss or other systematics. This is then to be compared to $\widehat{P}_{\rm out}$, which approximates the (lossy) power spectrum estimate that is output by our analysis pipeline prior to any signal loss adjustments. In principle, one could compute the true $\widehat{P}_{\rm out}$ using end-to-end simulations of the instrument and data analysis pipeline. In practice, however, such simulations may not accurately reflect real-life systematics and foregrounds. To overcome this obstacle, one can make the assumption that since the EoR signal is expected to be small, the data vector $\mathbf{x}$ itself is our best model of these contaminants. Making this assumption, the injected EoR signal $\mathbf{e}$ takes on the role of the true EoR signal, and the sum of $\mathbf{x}$ and $\mathbf{e}$ (Equation \eqref{eq:rxe}) replaces $\mathbf{x}$ as our model of the measured data. Therefore, $\widehat{P}_{\rm out}$ can be directly compared to the measurement that we make.
 
-%In the limit where no significant cross-correlations between the data and the injected signals are found, this will recover the amount of injected power spectrum remaining after the covariance weighting operation (i.e. the amount of background EoR power, $P_{\rm eor}$, not removed by the foreground down-weighting procedure). In other words, we make the anzatz that 
+%In the limit where no significant cross-correlations between the data and the injected signals are found, this will recover the amount of injected power spectrum remaining after the covariance weighting operation (i.e., the amount of background EoR power, $P_{\rm eor}$, not removed by the foreground down-weighting procedure). In other words, we make the anzatz that 
 
 %\begin{equation}
 %\widehat{P}_{\rm out} = \widehat{\textbf{P}}_{x} \label{eqn:anzatz},
@@ -1165,11 +1165,11 @@ In this regime, the cross-terms (red) behave as noise averaged over a finite num
 
 {\bf Large injection:}
 When the injected signal is much larger than the measured power spectrum, the data-only components can 
-be neglected as many orders of magnitude smaller. We include a description of this regime for completeness in our discussion, but note that the upper limits that we compute are typically not determined by simulations in this regime (i.e. in using an empirical weighting scheme we've assumed the data to be dominated by foregrounds rather than the cosmological signal).  However, it is useful as a check of our system in a relatively simple case. As we can see from Figure \ref{fig:sigloss_terms}, the cross-terms (red) are small in comparison to the signal-only term (green). Here only does the signal-only term used in  \citetalias{ali_et_al2015} dominate the total power output. We again see that, in the empirical inverse covariance weighted case, the cross-terms behave as noise (positive and negative fluctuations around zero mean). This is for the same reason as at small injections --- here $\widehat{\textbf{C}}_{r}$ is dominated by the signal $\textbf{e}$. The cross-correlation can again be modeled as a symmetric distribution of zero mean and width $\sqrt{\widehat{\textbf{P}}_e}\sqrt{\widehat{\textbf{P}}_x}$.
+be neglected as many orders of magnitude smaller. We include a description of this regime for completeness in our discussion, but note that the upper limits that we compute are typically not determined by simulations in this regime (i.e., in using an empirical weighting scheme we've assumed the data to be dominated by foregrounds rather than the cosmological signal).  However, it is useful as a check of our system in a relatively simple case. As we can see from Figure \ref{fig:sigloss_terms}, the cross-terms (red) are small in comparison to the signal-only term (green). Here only does the signal-only term used in  \citetalias{ali_et_al2015} dominate the total power output. We again see that, in the empirical inverse covariance weighted case, the cross-terms behave as noise (positive and negative fluctuations around zero mean). This is for the same reason as at small injections --- here $\widehat{\textbf{C}}_{r}$ is dominated by the signal $\textbf{e}$. The cross-correlation can again be modeled as a symmetric distribution of zero mean and width $\sqrt{\widehat{\textbf{P}}_e}\sqrt{\widehat{\textbf{P}}_x}$.
 
 {\bf In between:}
 When the injected signal is of a similar amplitude to the data by itself, the situation becomes less straightforward. We see that 
-the weighted injected power spectrum component mirrors the input power indicating little loss (i.e. the green curve follows the dotted black line), eventually 
+the weighted injected power spectrum component mirrors the input power indicating little loss (i.e., the green curve follows the dotted black line), eventually 
 departing from unity when the injected amplitude is well above the level of the data power spectrum. However, 
 in this regime the cross-term (red) has nearly the same amplitude, but with a negative sign. As explained below, this negativity is the result of cross-correlating inverse covariance weighted terms.  This negative component drives down the $\widehat{P}_{\rm out}$ estimator (black). We note that in \citetalias{ali_et_al2015}, signal loss was computed by only looking at the second term in Equation \eqref{eq:crossterm} (green), which incorrectly implies no loss at the data-only power spectrum level. Ignoring the effect of the negative power from the cross-terms is the main reason for under-estimating power spectrum limits in \citetalias{ali_et_al2015}.
 
@@ -1216,7 +1216,7 @@ Intuitively, we can see this by expanding the empirical covariance of $\textbf{r
 \textbf{ee}^{\dagger} \rangle_{t},
 \end{eqnarray}
 
-\noindent where we can neglect the first term because $\textbf{x}$ is small (i.e. the large negative cross-term power in the left panel of Figure \ref{fig:sigloss_terms} occurs when the injected amplitude surpasses the level of the data-only power spectrum).  Without loss of generality, we will assume
+\noindent where we can neglect the first term because $\textbf{x}$ is small (i.e., the large negative cross-term power in the left panel of Figure \ref{fig:sigloss_terms} occurs when the injected amplitude surpasses the level of the data-only power spectrum).  Without loss of generality, we will assume
 an eigenbasis of $\textbf{e}$, so that $\langle 
 \textbf{ee}^{\dagger} \rangle_{t}$ is diagonal. The middle 
 two terms, however, can have power in their off-diagonal terms due to the fact that, when averaging over a finite
@@ -1284,7 +1284,7 @@ expressions for $\widehat{P}_{\rm in}$ and $\widehat{P}_{\rm out}$ become:
 %\acl{I think what we are trying to say here is that actually the thing we want \emph{is} $(\ell_{\rm eor} + \rho\ell_{\rm fe})$. Essentially, the potential coupling between the injected EoR and the foregrounds means that we lose the nice form of Equation \eqref{eq:LinearPspecSum}, which justified what is basically a multiplicative correction to signal loss. What we are suggesting here is that even when there is a coupling, the estimator can be parameterized as $\alpha  |\mathbf{e}|^2 + \beta$. So essentially we are defining an effective $
 %\ell_{\rm eor}$, which is given by $(\ell_{\rm eor} + \rho\ell_{\rm fe})$.}
 
-One issue to address is how one incorporates the randomness of $\widehat{P}_{\rm out}$ into our signal loss corrections. A different realization of the mock EoR signal is injected with each bootstrap run, causing the output to vary in three ways ---  there is noise variation from the bootstraps, there is cosmic variation from generating multiple realizations of the mock EoR signal, and there is a variation caused by whether the injected signal looks more or less ``like'' the data (i.e. how much coupling there is, which affects how much loss results). 
+One issue to address is how one incorporates the randomness of $\widehat{P}_{\rm out}$ into our signal loss corrections. A different realization of the mock EoR signal is injected with each bootstrap run, causing the output to vary in three ways ---  there is noise variation from the bootstraps, there is cosmic variation from generating multiple realizations of the mock EoR signal, and there is a variation caused by whether the injected signal looks more or less ``like'' the data (i.e., how much coupling there is, which affects how much loss results). 
 
 For each injection level, the true $P_{\rm in}$ is simply the average of our bootstrapped estimates $\widehat{P}_{\rm in}$, since $\widehat{P}_{\rm in, \alpha}$ is by construction an unbiased estimator. Phrased in the context of Bayes' rule, we wish to find the posterior probability distribution $p(P_{\rm in} | 
 \widehat{P}_{\rm out})$, which is the probability of $P_{\rm in}$ given the uncorrected/measured power spectrum estimate $\widehat{P}_{\rm out}$.  Bayes' rule relates the posterior, which we don't know, to the likelihood, which we can forward model. In other words,
@@ -1374,7 +1374,7 @@ with different weighting options for $\textbf{R}$. Our goal here is to choose a 
 foregrounds and systematics in our data without generating large amounts of signal loss as we have seen with the inverse covariance estimator. We have found that the balance 
 between the two is a delicate one and requires a careful understanding and altering of empirical covariances. 
 
-We saw in Section \ref{sec:otherweight} how limiting the number of down-weighted eigenmodes (i.e. flattening out part of the 
+We saw in Section \ref{sec:otherweight} how limiting the number of down-weighted eigenmodes (i.e., flattening out part of the 
 eigenspectrum and effectively decoupling the lowest-valued eigenmodes, which are typically EoR-dominated, from the data) can help minimize signal loss. We experiment with this idea on PAPER-64 data, dialing the number of modes 
 that are down-weighted from zero (which is equivalent to identity-weighting, or the uniform-weighted case) to $21$ (which is the full inverse 
 covariance estimator). The power spectrum results for one $k$-value, both before and after signal loss 
@@ -1394,8 +1394,8 @@ We also saw in Section \ref{sec:otherweight} how adding the identity matrix to t
 	\includegraphics[width=1\textwidth]{plots/sigloss_modeloop_2panel.pdf}
 	\caption{Power spectra $2\sigma$ upper limits for $k=0.393$\,$h$ Mpc$^{-1}$ for fringe-rate filtered PAPER-64 data. Top: Values 
 are shown before (dashed red) and after (solid red) signal loss estimation via our signal injection framework as a function of number of eigenmodes of $\widehat{\textbf{C}}$ that 
-are down-weighted. This regularization knob is tuned from $0$ modes on the left (i.e. unweighted) to $21$ modes on the right (i.e. the full inverse 
-covariance estimator). $\sim4$ orders of magnitude of signal loss results when using empirically estimated inverse covariance weighting. Bottom: Power spectrum upper limits before (dashed red) and after (solid red) signal loss estimation as a function of identity added to the empirical covariance. This regularization knob is tuned from $\gamma = 10^{-4}$ on the right (i.e. very little regularization) to $\gamma = 1$ on the left (see main text for the definition of $\gamma$). Also 
+are down-weighted. This regularization knob is tuned from $0$ modes on the left (i.e., unweighted) to $21$ modes on the right (i.e., the full inverse 
+covariance estimator). $\sim4$ orders of magnitude of signal loss results when using empirically estimated inverse covariance weighting. Bottom: Power spectrum upper limits before (dashed red) and after (solid red) signal loss estimation as a function of identity added to the empirical covariance. This regularization knob is tuned from $\gamma = 10^{-4}$ on the right (i.e., very little regularization) to $\gamma = 1$ on the left (see main text for the definition of $\gamma$). Also 
 plotted in both panels for comparison are $2\sigma$ power spectrum upper limits for the uniform-weighted case (blue) and inverse variance 
 weighted case (black); both are after signal loss estimation. Finally, a theoretical prediction for noise ($2\sigma$ error) is plotted 
 as green. In the PAPER-64 analysis in this paper, we choose to use a regularization scheme of $\widehat{\textbf{C}}_{\rm eff} \equiv 0.09 \, $Tr($\widehat{\textbf{C}})\textbf{I} + \widehat{\textbf{C}}$ ($\gamma = 0.09$) as a simple example of regularization that minimizes loss, and note that the power spectrum limits using this type of regularization are roughly constant across a large range of values of $\gamma$.}
@@ -1405,7 +1405,7 @@ as green. In the PAPER-64 analysis in this paper, we choose to use a regularizat
 In addition to our thermal noise prediction (green) and uniform-weighted power spectrum limit (blue), one additional horizontal line is shown in Figure \ref{fig:sigloss_modeloop} 
 in both panels and represents a third regularization technique. This line (black) denotes the power spectrum value, post-signal loss estimation, for inverse variance weighting (multiplying an identity 
 matrix element-wise to $\widehat{\textbf{C}}$). This result is single-valued and not a function of the horizontal axis. We see that all three regularization schemes shown (solid red top panel, solid red bottom panel, black) perform similarly at 
-their best (i.e. when $\sim2$-$3$ eigenmodes are down-weighted in the case of the top panel's solid red curve). However, for the remainder of this paper, we choose to use the weighting option of $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} + 0.09 \,$Tr($\widehat{\textbf{C}})\textbf{I}$, or $\gamma = 0.09$, which we will denote as $\widehat{\textbf{C}}_{\rm eff}$. We choose this weighting scheme merely as a simple example of regularizing PAPER-64 covariances, noting that the power spectrum upper limit remains roughly constant for a broad range of values of $\gamma$. We also note that all of the regularizations described here perform similarly to the uniformly weighted case. Thus, in Kolopanis et al. (\textit{in prep.}), uniform weightings are used to produce straightforward power spectrum limits that do not suffer from loss. 
+their best (i.e., when $\sim2$-$3$ eigenmodes are down-weighted in the case of the top panel's solid red curve). However, for the remainder of this paper, we choose to use the weighting option of $\widehat{\textbf{C}} \equiv \widehat{\textbf{C}} + 0.09 \,$Tr($\widehat{\textbf{C}})\textbf{I}$, or $\gamma = 0.09$, which we will denote as $\widehat{\textbf{C}}_{\rm eff}$. We choose this weighting scheme merely as a simple example of regularizing PAPER-64 covariances, noting that the power spectrum upper limit remains roughly constant for a broad range of values of $\gamma$. We also note that all of the regularizations described here perform similarly to the uniformly weighted case. Thus, in Kolopanis et al. (\textit{in prep.}), uniform weightings are used to produce straightforward power spectrum limits that do not suffer from loss. 
 
 The power spectrum result for our subset of PAPER-64 data (using only one baseline separation type, $10$ baselines, and $\widehat{\textbf{C}}_{\rm eff}$) is shown in Figure 
 \ref{fig:ps1_data}. Again, the solid red curve represents our upper limit on the EoR signal using the full signal injection framework. The uniform weighted case is shown as the black and gray points, which correspond to positive and negative power spectrum values respectively (with 
@@ -1492,7 +1492,7 @@ estimates after cross-multiplying independent ``even" and ``odd" visibility meas
 because we integrate incoherently over time. For PAPER-64, $N_{\rm lst} = 8$.
 \item $N_{\rm seps}$: The number of baseline separation types (where baselines of a unique separation type have the same orientation and length) averaged incoherently in a final power spectrum estimate. For the 
 analysis in this paper, we only use one type of baseline (PAPER's 30\,m East/West baselines). However, both the updated limits in Kolopanis et al. (\textit{in prep.}) and the sensitivity prediction in Figure \ref{fig:sense_check} use three separation types ($N_{\rm seps}=3$) to match \citetalias{ali_et_al2015}.
-\item $t_{\rm int}$: Length of an independent integration of the data. It is crucial to adapt this number if filtering is applied along the time axis (i.e. a 
+\item $t_{\rm int}$: Length of an independent integration of the data. It is crucial to adapt this number if filtering is applied along the time axis (i.e., a 
 fringe-rate filter). We compute the effective integration time of our fringe-rate filtered data by scaling the original integration time $t_{i}$
 using the following:
 \begin{equation}
@@ -1590,7 +1590,7 @@ bootstrapping step along time entirely and now simply bootstrap over the baselin
 shown in the figure, when more elements are drawn for each bootstrap than the number of 
 independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits (gray) below the predicted noise level (green). Using the revised bootstrapping method, where bootstrapping only occurs over the baseline axis, the limits (black) are shown to better agree with the analytic prediction for noise. While Figure \ref{fig:data_errors} implies that errors are under-estimated by a factor of $\sim$ $5$ in mK$^{2}$ for the noise simulation, in practice this factor is lower for the case of real data (a factor of $\sim$ $3$ in mK$^{2}$ instead), possibly due to the data being less correlated in time than the fringe-rate filtered noise in the simulation. }%Figure \ref{fig:data_errors} implies that power spectrum upper limits were originally under-estimated by a factor of $\sim$ $5$ in mK$^{2}$. 
 
-\item{A second change to our bootstrapping procedure is that we now bootstrap over baseline cross-products, instead of the baselines themselves. In the previous analysis, baselines were bootstrapped prior to forming cross power spectra, and using this particular ordering of operations (bootstrapping, then cross-multiplication) yields variances that have been found to disagree with predicted errors from bootstrapping using simulations. On the contrary, bootstrapping over cross power spectra ensures that we are estimating the variance of our quantity of interest (i.e. the power spectrum). This change, while fundamental in retaining the integrity of the bootstrapping method in general, alters the resulting power spectrum errors by factors of $<2$ in practice.}
+\item{A second change to our bootstrapping procedure is that we now bootstrap over baseline cross-products, instead of the baselines themselves. In the previous analysis, baselines were bootstrapped prior to forming cross power spectra, and using this particular ordering of operations (bootstrapping, then cross-multiplication) yields variances that have been found to disagree with predicted errors from bootstrapping using simulations. On the contrary, bootstrapping over cross power spectra ensures that we are estimating the variance of our quantity of interest (i.e., the power spectrum). This change, while fundamental in retaining the integrity of the bootstrapping method in general, alters the resulting power spectrum errors by factors of $<2$ in practice.}
 
 \item{In \citetalias{ali_et_al2015}, individual baselines were divided into $5$ independent groups, where no baselines were repeated in each group. Then, baselines within each group were averaged together, and the groups were cross-multiplied to form power spectra. This grouping method was used to reduce computational time, however upon closer examination it has been found that the initial grouping introduces an element of randomness into the final measurements --- more specifically, the power spectrum value fluctuates depending on how baselines are assigned into their initial groups. Our new approach removes this element of randomness at the cost of computational expense, as we now perform all baseline cross-products.}
 
@@ -1677,7 +1677,7 @@ As shown in Figure \ref{fig:ps1_data}, our illustrative PAPER-64 power spectrum 
 most likely attributable to foreground leakage. %The cause for biases at higher $k$-values is more difficult to pinpoint. 
 
 Here we perform three null tests on PAPER-64 data that aim to isolate systematics in the data and verify 
-that our biases are not attributable to EoR. Similar to in Section \ref{sec:JackknifeOverview}, we take jackknives along different axes of the dataset to produce multiple power spectra. We then difference them (i.e. the null test) to tease out excess variances.
+that our biases are not attributable to EoR. Similar to in Section \ref{sec:JackknifeOverview}, we take jackknives along different axes of the dataset to produce multiple power spectra. We then difference them (i.e., the null test) to tease out excess variances.
 
 The three results are shown in Figure \ref{fig:null}. Each test displays the differenced power spectrum between two halves of a jackknife, where the plotted points are the differenced power spectrum values, and the plotted errors are the bootstrapped errors of the two dataset halves added in quadrature. The expected thermal noise level (gray shaded regions) is the thermal noise of each dataset added in quadrature as well. Constructing the tests as such ensures that we are probing whether the variances of each dataset differ by an amount consistent with the thermal noise. We use uniform weightings for all tests. 
 
@@ -1714,11 +1714,11 @@ analysis. No baselines are repeated between the two datasets.
 
 In investigating Figure \ref{fig:null}, we focus on three main possibilities --- whether the data points and error bars are consistent with thermal noise (``passing"), whether the error bars are consistent with zero but not consistent with thermal noise (``passing but has an additional variance"), or whether the error bars are not consistent with zero at all (``failing"). We examine each case in the context of our results below.
 
-Firstly, all three null tests display data points that lie within the thermal noise gray band for $k > \pm 0.2$\,$h$ Mpc$^{-1}$. In addition, all three null tests show error bars consistent with the thermal noise level for those same $k$'s. This implies that the two jackknife halves do not differ by an amount greater than the thermal noise (i.e. the baselines making up the two jackknives either do not contain bias, or contain similar amounts of bias; we suspect it is the former though more thorough jackknives along this axis are needed to make this conclusion). We deem these as ``passing" null tests for the specific jackknives taken (again, dividing up the data in a different way along the same axes may not yield the same results, so more thorough testing is needed to be sure).
+Firstly, all three null tests display data points that lie within the thermal noise gray band for $k > \pm 0.2$\,$h$ Mpc$^{-1}$. In addition, all three null tests show error bars consistent with the thermal noise level for those same $k$'s. This implies that the two jackknife halves do not differ by an amount greater than the thermal noise (i.e., the baselines making up the two jackknives either do not contain bias, or contain similar amounts of bias; we suspect it is the former though more thorough jackknives along this axis are needed to make this conclusion). We deem these as ``passing" null tests for the specific jackknives taken (again, dividing up the data in a different way along the same axes may not yield the same results, so more thorough testing is needed to be sure).
 
 The second null test possibility (error bars consistent with zero but not with thermal noise) is displayed by the $k$-values just outside the horizon ($k\sim\pm 0.1$\,$h$ Mpc$^{-1}$) for all three tests. This indicates an additive noise component that is increasing our errors. More specifically, although we expect each cross-multiplication that is used in power spectrum estimation to have independent noise, there is still the possibility of a noise-foreground coupling term that can introduce power. This is because cross-multiplications produce four additive terms --- a signal-squared term (where ``signal" includes both foregrounds and EoR), two cross-terms between the signal and noise, and one noise-only term. When differencing two power spectra (each with their own four terms), we expect the signal-only term to subtract out for a ``passing" null test, and we expect the noise-only terms to be consistent with thermal noise. While the cross-terms have a mathematical expectation value of zero, in practice we are limited by our number of samples ($90$ cross-products for this analysis times $\sim$ $8$ independent LST samples). Combined with the fact that the foregrounds are so bright, the finite ensemble of the couplings can introduce extra variance that varies with foreground strength. It is therefore not surprising that this effect is largest at $k$-values just outside the horizon, where we expect foregrounds to be brightest post-delay filtering.
 
-Lastly, a third null test result is an error bar not consistent with zero. This is the case for the LST null test at $k\sim-0.15$\,$h$ Mpc$^{-1}$ and $k\sim-0.2$\,$h$ Mpc$^{-1}$. In such a case, the two jackknife halves differ by an amount greater than the thermal noise (i.e. the data point is not in the thermal noise band), yet they are each constrained tightly by individual error bars that when combined, are not consistent with zero. This result implies that there exists a low level bias that is LST-dependent, and likely caused by residual foregrounds that vary in LST. Again, it is not surprising that this type of bias occurs near the horizon limit.
+Lastly, a third null test result is an error bar not consistent with zero. This is the case for the LST null test at $k\sim-0.15$\,$h$ Mpc$^{-1}$ and $k\sim-0.2$\,$h$ Mpc$^{-1}$. In such a case, the two jackknife halves differ by an amount greater than the thermal noise (i.e., the data point is not in the thermal noise band), yet they are each constrained tightly by individual error bars that when combined, are not consistent with zero. This result implies that there exists a low level bias that is LST-dependent, and likely caused by residual foregrounds that vary in LST. Again, it is not surprising that this type of bias occurs near the horizon limit.
 
 %Most importantly, a clean detection of EoR would have passed all three tests, which is clearly not what we see. 
 
@@ -1761,7 +1761,7 @@ signal loss, error estimation, and bias, which can be summarized as follows:
 exist in the data. Hence, there exists a trade-off between sensitivity driven 
 time-averaging techniques such as fringe-rate filtering and signal loss when using empirically estimated covariances. 
 \item Signal injection and recovery simulations can be used to quantify signal loss (Section \ref{sec:Sigloss}). However, a 
-signal-only simulation (i.e. comparing a uniformly weighted vs. weighted power spectrum of EoR only) can under-estimate loss by 
+signal-only simulation (i.e., comparing a uniformly weighted vs. weighted power spectrum of EoR only) can under-estimate loss by 
 failing to account for correlations between the data and signal which can be large and negative (Section \ref{sec:siglossmethod}).
 \item Errors that are estimated via bootstrapping can be under-estimated if samples in the dataset are significantly correlated 
 (Section \ref{sec:ErrorOverview}). However, if the number of independent samples in a dataset is well-determined, bootstrapping is a 
@@ -1942,7 +1942,7 @@ Taking the ensemble average of both sides and noting that the true power spectru
 \end{equation}
 where recall that $N_f$ is the length of $\x$, or the number of frequency channels. In the last step we dropped the final term, since it scales as $\eta p_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained.
 
-Recalling that $p_\alpha$ is the \emph{true} power spectrum, one sees that when the covariance in the optimal quadratic estimator is naively replaced by an empirical covariance, the resulting power spectrum estimate is biased low, i.e., there is signal loss. This occurs because of couplings between $\widehat{\C}$ and $\x$, which formally means that what was originally a quadratic estimator is no longer quadratic, but contains higher-order correlations. This violates the assumptions implicit in the derivation of $F_{\alpha \alpha}$ as the normalization factor for converting unnormalized bandpowers $\frac{1}{2} \x^t \C^{-1} \Q^{\alpha} \C^{-1} \x$ into properly normalized power spectrum estimates, where the unnormalized bandpowers are assumed to be two-point (i.e. quadratic) statistics \citep{liu_tegmark2011}. The result is an improperly normalized---and thus lossy---power spectrum estimate.
+Recalling that $p_\alpha$ is the \emph{true} power spectrum, one sees that when the covariance in the optimal quadratic estimator is naively replaced by an empirical covariance, the resulting power spectrum estimate is biased low, i.e., there is signal loss. This occurs because of couplings between $\widehat{\C}$ and $\x$, which formally means that what was originally a quadratic estimator is no longer quadratic, but contains higher-order correlations. This violates the assumptions implicit in the derivation of $F_{\alpha \alpha}$ as the normalization factor for converting unnormalized bandpowers $\frac{1}{2} \x^t \C^{-1} \Q^{\alpha} \C^{-1} \x$ into properly normalized power spectrum estimates, where the unnormalized bandpowers are assumed to be two-point (i.e., quadratic) statistics \citep{liu_tegmark2011}. The result is an improperly normalized---and thus lossy---power spectrum estimate.
 
 \section{Derivation of the Jeffreys Prior}
 \label{sec:jeffreys}
@@ -1986,14 +1986,14 @@ p(y | x) = \frac{1}{\sigma(x) \sqrt{2\pi}} e^{-\frac{1}{2}\big(\frac{y-\bar y(x)
 &+& \Big(\frac{(y-\bar y)^{2}}{\sigma^{4}}\Big)\Big(\frac{\partial \bar y}{\partial x}\Big)^{2} + \Big(\frac{2(y-\bar y)^{3}}{\sigma^{5}}\Big)\frac{\partial \sigma}{\partial x}\frac{\partial \bar y}{\partial x} + \Big(\frac{(y-\bar y)^{4}}{\sigma^{6}}\Big)\Big(\frac{\partial \sigma}{\partial x}\Big)^{2}.
 \end{eqnarray}
 
-Taking the expectation value then removes all terms with odd powers of $(y - \bar y)$ because those Gaussian moments evaluate to 0. Additionally, the second moment can be simplified since $\langle (y - \bar y)^{2} \rangle = \sigma^{2}$ and the fourth moment can be simplified since $\langle (y - \bar y)^{4} \rangle = 3\sigma^{4}$. Finally, after some additional simplification the Jeffreys prior becomes:
+Taking the expectation value then removes all terms with odd powers of $(y - \bar y)$ because those Gaussian moments evaluate to zero. Additionally, the second moment can be simplified since $\langle (y - \bar y)^{2} \rangle = \sigma^{2}$ and the fourth moment can be simplified since $\langle (y - \bar y)^{4} \rangle = 3\sigma^{4}$. Finally, after some additional simplification the Jeffreys prior becomes:
 
 \begin{equation}
 \label{eq:jeffreys_final}
 p(x) \propto \sqrt{ \frac{1}{\sigma^{2}}\Big(2\Big(\frac{\partial \sigma}{\partial x}\Big)^{2} + \Big(\frac{\partial \bar y}{\partial x}\Big)^{2}\Big) }.
 \end{equation}
 
-When we simulate our full injection framework as in Section \ref{sec:Practice}, we sample 50 $P_{\rm in}$ values that range from $\sim$ $10^{5}$\,mK$^{2}$ ($h^{-1}$ Mpc)$^{3}$ to $\sim$ 10$^{11}$\,mK$^{2}$ ($h^{-1}$ Mpc)$^{3}$, and we note that the prior is set to zero outside those regions. For the injections that we do sample, we can easily fit analytic functions to the mean and standard deviations of $\widehat{P}_{\rm out}$ ($\bar y$ and $\sigma$) as functions of $P_{\rm in}$. An example of the typical shape of these functions for the PAPER-64 analysis is shown in Figure \ref{fig:jeffreys1}, though in practice we fit solutions for every $k$-value and simulation independently.
+When we simulate our full injection framework as in Section \ref{sec:Practice}, we sample 50 $P_{\rm in}$ values that range from $\sim$ $10^{5}$\,mK$^{2}$ ($h^{-1}$ Mpc)$^{3}$ to $\sim$ 10$^{11}$\,mK$^{2}$ ($h^{-1}$ Mpc)$^{3}$, and we note that the prior is set to zero outside those regions. For the injections that we do sample, we can simply fit analytic functions to the mean and standard deviations of $\widehat{P}_{\rm out}$ ($\bar y$ and $\sigma$) as functions of $P_{\rm in}$. An example of the typical shape of these functions for the PAPER-64 analysis is shown in Figure \ref{fig:jeffreys1}, though in practice we fit solutions for every $k$-value and simulation independently.
 
 \begin{figure}
 	\centering
@@ -2007,7 +2007,7 @@ We also show the typical shape of the Jeffreys prior used in our analysis in Fig
 \begin{figure}
 	\centering
 	\includegraphics[width=10cm]{plots/jeffrey_prior.pdf}
-	\caption{An example of the typical Jeffreys prior shape for the PAPER-64 analysis as computed by Equation \eqref{eq:jeffreys_final} (black). We smooth the prior using a sliding boxcar average over every $5$ injections (red). Most noticeably, the Jeffreys prior is not constant with $P_{\rm in}$, meaning a uniform prior would be an informative prior.}
+	\caption{An example of the typical Jeffreys prior shape for the PAPER-64 analysis as computed by Equation \eqref{eq:jeffreys_final} (black). We smooth the prior using a sliding boxcar average over every $5$ injection levels (red). Most noticeably, the Jeffreys prior is not constant with $P_{\rm in}$, meaning a uniform prior would be an informative prior.}
 	\label{fig:jeffreys2}
 \end{figure}
 
@@ -2029,7 +2029,7 @@ diagonal lines mark a perfect unity mapping, and the solid gray horizontal line 
 \label{fig:Pr_vs_Pin}
 \end{figure}  
   
-This question is phrased visually in Figure \ref{fig:Pr_vs_Pin}. In the 2D space relating total $\widehat{\textbf{P}}_r$ to injected $P_{\rm in}$, very small injected levels begin at the level equivalent of no injection (i.e. data only) and very large levels are dominated by the injected signal. It is the transition zone, where the injected signal amplitude is similar to the data level (and thus subject to cross-correlations in both the covariance and in the power spectrum calculation) that we search for the point at which an injected signal would be clearly detected.
+This question is phrased visually in Figure \ref{fig:Pr_vs_Pin}. In the 2D space relating total $\widehat{\textbf{P}}_r$ to injected $P_{\rm in}$, very small injected levels begin at the level equivalent of no injection (i.e., data only) and very large levels are dominated by the injected signal. It is the transition zone, where the injected signal amplitude is similar to the data level (and thus subject to cross-correlations in both the covariance and in the power spectrum calculation) that we search for the point at which an injected signal would be clearly detected.
   
 \begin{figure}[tp]
 \centering
@@ -2048,7 +2048,7 @@ In other words, what is $e$ such that,
 \begin{equation}
 \widehat{\textbf{P}}_{e+x} > \widehat{\textbf{P}}_{x},
 \end{equation}  
-?''  Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not (i.e. the null test) the same.  
+?''  Of course, both sides of this equation are actually a distribution of values associated with data variance and injected model variance. One way to interpret this test for the two distributions is to compute the probability that the two distributions are not (i.e., the null test) the same.  
  \acl{I'm confused a little by this equation. I would've thought that the right thing to do would be to first compute $x_0$, given implicitly by
  \begin{equation}
  \int_{-\infty}^{x_0}\Prob(\widehat{\textbf{P}}_x) dx = \Lambda,
