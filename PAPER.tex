@@ -1891,24 +1891,24 @@ This is the ideal case for the inverse covariance weighting performed in the PAP
 
 In this Appendix, we examine a toy model for signal loss. Our goal is to derive an analytic formula for power spectrum signal loss. While this model does not apply generally to all the scenarios presented in this paper, it provides some analytic intuition for how the coupling between data and an empirical covariance can result in signal loss.
 
-The minimum-variance quadratic estimator $\widehat{P}_\alpha$ for the $\alpha$th bandpower of the power spectrum is given by 
+The minimum-variance quadratic estimator $\widehat{P}^\alpha$ for the $\alpha$th bandpower of the power spectrum is given by 
 \begin{equation}
-\widehat{P}_\alpha = \frac{1} {2 \F_{\alpha \alpha} }\x^t \C^{-1} \Q^{\alpha} \C^{-1} \x,
+\widehat{P}^\alpha = \frac{1} {2 \F^{\alpha \alpha} }\x^t \C^{-1} \Q^{\alpha} \C^{-1} \x,
 \end{equation}
 where
 \begin{equation}
-F_{\alpha \alpha} \equiv \frac{1}{2} \textrm{tr} \left( \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \right)
+F^{\alpha \alpha} \equiv \frac{1}{2} \textrm{tr} \left( \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \right)
 \end{equation}
 is the $\alpha$th diagonal element of the Fisher matrix. For this section only, with no loss of generality, we assume that the data $\textbf{x}$ are real. We also assume for simplicity that $\mathbf{x}$ is the data from a single instant in time, so that it is of length $N_f$, where $N_f$ is the number of frequency channels.
 
 In our case, we do not have \emph{a priori} knowledge of the covariance matrix. Thus, we deviate from the true minimum-variance quadratic estimator and replace $\C$ with $\Chat$, its data-derived approximation. Our estimator then becomes
 \begin{equation}
 \label{eq:phatloss}
-\widehat{P}_\alpha^\textrm{loss} = \frac{1} {2 \widehat{\F}_{\alpha \alpha} }\x^t \Chat^{-1} \Q^{\alpha} \Chat^{-1} \x,
+\widehat{P}^\alpha_\textrm{loss} = \frac{1} {2 \widehat{\F}^{\alpha \alpha} }\x^t \Chat^{-1} \Q^{\alpha} \Chat^{-1} \x,
 \end{equation}
 where
 \begin{equation}
-\widehat{F}_{\alpha \alpha} \equiv \frac{1}{2} \textrm{tr} \left( \Chat^{-1} \Q^\alpha \Chat^{-1} \Q^\alpha \right),
+\widehat{F}^{\alpha \alpha} \equiv \frac{1}{2} \textrm{tr} \left( \Chat^{-1} \Q^\alpha \Chat^{-1} \Q^\alpha \right),
 \end{equation}
 with the label ``loss" to foreshadow the fact that this will be an estimator with signal loss (i.e., a multiplicative bias of less than unity). We will now provide an explicit demonstration of this by modeling the estimated covariance as
 \begin{equation}
@@ -1917,32 +1917,32 @@ with the label ``loss" to foreshadow the fact that this will be an estimator wit
 \end{equation}
 where $\eta$ is a parameter quantifying our success at estimating the true covariance matrix. If $\eta = 0$, our covariance estimate has perfectly modeled the true covariance and $\Chat = \C$. On the other hand, if $\eta =1$, then our covariance estimate is based purely on the one realization of the covariance that is our actual data, and we would expect a high level of overfitting and signal loss.
 
-Our strategy for computing the signal loss will be to insert Equation \eqref{eq:ChatDef} into Equation \eqref{eq:phatloss} and to express the resulting estimator $\widehat{P}_\alpha^\textrm{loss}$ in terms of $\widehat{P}_\alpha$. We begin by expressing $\Chat^{-1}$ in terms of $\C^{-1}$ using the Woodbury identity so that
+Our strategy for computing the signal loss will be to insert Equation \eqref{eq:ChatDef} into Equation \eqref{eq:phatloss} and to express the resulting estimator $\widehat{P}^\alpha_\textrm{loss}$ in terms of $\widehat{P}^\alpha$. We begin by expressing $\Chat^{-1}$ in terms of $\C^{-1}$ using the Woodbury identity so that
 \begin{equation}
 \Chat^{-1} = \frac{\C^{-1}}{1-\eta} \left[ \I - \frac{\eta \x \x^t \C^{-1}}{1+ \eta (g-1)}\right],
 \end{equation}
 where we have defined $g \equiv \x^t \C^{-1} \x$. Inserting this into our Fisher estimate we have
 \begin{equation}
-\widehat{F}_{\alpha \alpha} = \frac{F_{\alpha \alpha}}{(1-\eta)^2} \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right],
+\widehat{F}^{\alpha \alpha} = \frac{F^{\alpha \alpha}}{(1-\eta)^2} \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h^{\alpha \alpha}}{F^{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{(h^{\alpha})^2}{F^{\alpha \alpha}}\right],
 \end{equation}
-where $h_\alpha \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \x $ and $h_{\alpha \alpha} \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1}\x $. Note that $g$, $h_\alpha$, and $h_{\alpha \alpha}$ are all random variables, since they depend on $\x$. Inserting these expressions into our estimator gives
+where $h^\alpha \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \x $ and $h^{\alpha \alpha} \equiv \x^t \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1}\x $. Note that $g$, $h^\alpha$, and $h^{\alpha \alpha}$ are all random variables, since they depend on $\x$. Inserting these expressions into our estimator gives
 \begin{equation}
 \label{eq:phatlossexpanded}
-\widehat{P}_\alpha^\textrm{loss} = \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \frac{\eta g}{1+ \eta (g-1)}\right]^2  \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{h_\alpha^2}{F_{\alpha \alpha}}\right]^{-1}.
+\widehat{P}^\alpha_\textrm{loss} = \frac{1}{2} \frac{h^\alpha}{F^{\alpha \alpha}} \left[ 1 - \frac{\eta g}{1+ \eta (g-1)}\right]^2  \left[ 1 -\frac{\eta }{1+ \eta (g-1)} \frac{h^{\alpha \alpha}}{F^{\alpha \alpha}} + \frac{1}{2} \left( \frac{\eta }{1+ \eta (g-1)} \right)^2 \frac{(h^\alpha)^2}{F^{\alpha \alpha}}\right]^{-1}.
 \end{equation}
 Both for the purposes of analytical tractability and to provide intuition, we expand this expression to leading 
 order in $\eta$. This approximates the limiting case where the covariance $\Chat$ is close to the ideal and the 
 lossy covariance is a small perturbation.  The result is
 \begin{equation}
-\widehat{P}_\alpha^\textrm{loss} \approx \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \eta \left( g - \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}}\right)\right].
+\widehat{P}^\alpha_\textrm{loss} \approx \frac{1}{2} \frac{h^\alpha}{F^{\alpha \alpha}} \left[ 1 - \eta \left( g - \frac{h^{\alpha \alpha}}{F^{\alpha \alpha}}\right)\right].
 \end{equation}
-Taking the ensemble average of both sides and noting that the true power spectrum $P_\alpha$ is equal to $\langle h_\alpha \rangle / 2 F_{\alpha \alpha}$, we obtain
+Taking the ensemble average of both sides and noting that the true power spectrum $P^\alpha$ is equal to $\langle h^\alpha \rangle / 2 F^{\alpha \alpha}$, we obtain
 \begin{equation}
-\langle \widehat{P}_\alpha^\textrm{loss} \rangle \approx (1- \eta N_f) P_\alpha + 4 \eta \frac{\rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha )}{\left[ \rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha  ) \right]^2} \approx (1- \eta N_f) P_\alpha,
+\langle \widehat{P}^\alpha_\textrm{loss} \rangle \approx (1- \eta N_f) P^\alpha + 4 \eta \frac{\rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha )}{\left[ \rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha  ) \right]^2} \approx (1- \eta N_f) P^\alpha,
 \end{equation}
-where recall that $N_f$ is the length of $\x$, or the number of frequency channels. In the last step we dropped the final term, since it scales as $\eta P_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained.
+where recall that $N_f$ is the length of $\x$, or the number of frequency channels. In the last step we dropped the final term, since it scales as $\eta P^\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained.
 
-Recalling that $P_\alpha$ is the \emph{true} power spectrum, one sees that when the covariance in the optimal quadratic estimator is naively replaced by an empirical covariance, the resulting power spectrum estimate is biased low, i.e., there is signal loss. This occurs because of couplings between $\widehat{\C}$ and $\x$, which formally means that what was originally a quadratic estimator is no longer quadratic, but contains higher-order correlations. This violates the assumptions implicit in the derivation of $F_{\alpha \alpha}$ as the normalization factor for converting unnormalized bandpowers $\frac{1}{2} \x^t \C^{-1} \Q^{\alpha} \C^{-1} \x$ into properly normalized power spectrum estimates, where the unnormalized bandpowers are assumed to be two-point (i.e., quadratic) statistics \citep{liu_tegmark2011}. The result is an improperly normalized---and thus lossy---power spectrum estimate.
+Recalling that $P^\alpha$ is the \emph{true} power spectrum, one sees that when the covariance in the optimal quadratic estimator is naively replaced by an empirical covariance, the resulting power spectrum estimate is biased low, i.e., there is signal loss. This occurs because of couplings between $\widehat{\C}$ and $\x$, which formally means that what was originally a quadratic estimator is no longer quadratic, but contains higher-order correlations. This violates the assumptions implicit in the derivation of $F^{\alpha \alpha}$ as the normalization factor for converting unnormalized bandpowers $\frac{1}{2} \x^t \C^{-1} \Q^{\alpha} \C^{-1} \x$ into properly normalized power spectrum estimates, where the unnormalized bandpowers are assumed to be two-point (i.e., quadratic) statistics \citep{liu_tegmark2011}. The result is an improperly normalized---and thus lossy---power spectrum estimate.
 
 \section{Derivation of the Jeffreys Prior}
 \label{sec:jeffreys}
