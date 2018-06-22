@@ -322,21 +322,21 @@ where $N_{t}$ is the number of time integrations and $N_{f}$ is the number of fr
 where the average over an ensemble of data realizations produces the true covariance, and we further assume it may be written as the sum of the desired cosmological signal $\textbf{S}$ and other terms $\textbf{U}$.  
 
 We are interested in estimating the three-dimensional power spectrum of the EoR.  
-Visibilities are measurements of the Fourier transform of the sky along two spatial dimensions (using the flat-sky approximation), and since we are interested in three-dimensional Fourier modes we only need to take one Fourier transform of our visibilities along the line-of-sight dimension.  We consider band powers $p_\alpha$ of the power spectrum of $\textbf{x}$ over some range in cosmological $\mathbf{k}$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the Fourier dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}), which is a good approximation for the short baselines that PAPER analyzes).  The fundamental dependence of the covariance on the power spectrum band powers $p_\alpha$ is encoded as 
+Visibilities are measurements of the Fourier transform of the sky along two spatial dimensions (using the flat-sky approximation), and since we are interested in three-dimensional Fourier modes we only need to take one Fourier transform of our visibilities along the line-of-sight dimension.  We consider band powers $P^\alpha$ of the power spectrum of $\textbf{x}$ over some range in cosmological $\mathbf{k}$, where $\alpha$ indexes a waveband in $k_{\parallel}$ (a cosmological wavenumber $k_{\parallel}$ is the Fourier dual to frequency under the delay approximation (\citealt{parsons_et_al2012b}), which is a good approximation for the short baselines that PAPER analyzes).  The fundamental dependence of the covariance on the power spectrum band powers $P^\alpha$ is encoded as 
 % JEA - Should distinguish slightly more clearly between Q and dC/dp_alpha
 \begin{equation}
-\textbf{S} = \sum_\alpha p^\alpha \frac{\partial\textbf{C}}{\partial p^\alpha} \equiv \sum_\alpha p^\alpha \textbf{Q}^\alpha
+\textbf{S} = \sum_\alpha P^\alpha \frac{\partial\textbf{C}}{\partial P^\alpha} \equiv \sum_\alpha P^\alpha \textbf{Q}^\alpha
 %\textbf{S} = p_{\alpha} \frac{\partial\textbf{C}}{\partial p_{\alpha}}
 %\frac{\partial\textbf{C}}{\partial p_{\alpha}} \equiv \textbf{Q}^{\alpha}
 \end{equation}
-where we define $\frac{\partial\textbf{C}}{\partial p^\alpha} \equiv \textbf{Q}^{\alpha}$.
+where we define $\frac{\partial\textbf{C}}{\partial P^\alpha} \equiv \textbf{Q}^{\alpha}$.
 % JEA - ah, the dimensions again
 % which has dimensions ($N_{f}$,$N_{f}$).
 
 The optimal quadratic estimator prescription is then to compute
 \begin{equation}
 \label{eq:OQE}
-\widehat{p}^{\alpha}  = \sum_\beta ({\F^{-1}})^{\alpha\beta} (\widehat{q}^{\beta} - \widehat{b}^{\beta} )
+\widehat{P}^{\alpha}  = \sum_\beta ({\F^{-1}})^{\alpha\beta} (\widehat{q}^{\beta} - \widehat{b}^{\beta} )
 \end{equation}
 where $\F$ is the Fisher matrix 
 \begin{equation}
@@ -355,7 +355,7 @@ and
 This estimator is the minimum variance (smallest error bar) estimate of the power spectrum  subject to the constraint that it is also unbiased; that is, the ensemble average of the estimator is equal to its true value
 \begin{equation}
 \label{eq:super_unbiased}
-\langle \widehat{p}^{\alpha} \rangle = p^\alpha
+\langle \widehat{P}^{\alpha} \rangle = P^\alpha
 \end{equation}
 \citep{tegmark_et_al1997a,bond_et_al1998}.
 
@@ -372,7 +372,7 @@ where Equation \eqref{eq:OQEQuadratic} is replaced by
 \widehat{q}^{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{x}
 \end{equation}
 where $\textbf{R}$ is a weighting matrix chosen by the data analyst.  For example, inverse covariance weighting (the optimal form of QE) would set $\textbf{R} \equiv \textbf{C}^{-1}$ and a uniform-weighted case would use $\textbf{R} \equiv \textbf{I}$, the identity matrix.
-The matrix $\textbf{Q}^{\alpha}$ encodes the dependence of the covariance on the power spectrum parameters $\partial \C/\partial p^\alpha$ but in practice also does other things, including implementing a transform of the frequency domain visibilities to $\mathbf{k}$-space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
+The matrix $\textbf{Q}^{\alpha}$ encodes the dependence of the covariance on the power spectrum parameters $\partial \C/\partial P^\alpha$ but in practice also does other things, including implementing a transform of the frequency domain visibilities to $\mathbf{k}$-space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
 %with dimensions ($N_{f}$,$N_{f}$) --- as 
 
 %%% COME BACK HERE
@@ -385,8 +385,8 @@ With an appropriate normalization matrix $\textbf{M}$, the quantity
 \end{equation}
 is a sensible estimate of the true power spectrum $\textbf{P}$. To ensure that $\textbf{M}$ correctly normalizes our power spectrum, one may take the expectation value of Equation \eqref{eq:phat} to obtain
 \begin{eqnarray}
-\langle \widehat{P}^\alpha \rangle &=& \frac{1}{2} \sum_{\beta \gamma} M^{\alpha \gamma}  \textrm{tr} \left( \textbf{R}\textbf{Q}^{\gamma}\textbf{R} \textbf{Q}^{\beta}\right) p^\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right) \nonumber \\
-&\equiv & \sum_{\beta} W^{\alpha \beta} p^\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right), \label{eq:Wpplusbias}
+\langle \widehat{P}^\alpha \rangle &=& \frac{1}{2} \sum_{\beta \gamma} M^{\alpha \gamma}  \textrm{tr} \left( \textbf{R}\textbf{Q}^{\gamma}\textbf{R} \textbf{Q}^{\beta}\right) P^\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right) \nonumber \\
+&\equiv & \sum_{\beta} W^{\alpha \beta} P^\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right), \label{eq:Wpplusbias}
 \end{eqnarray}
 where $W^{\alpha \beta}$ are elements of a window function matrix. Let's consider the first term of this expression (again, we are assuming that the linear bias term is significantly suppressed; and if this is not the case, we are simply assuming that we are setting a conservative upper limit). If $\mathbf{W}$ ends up being the identity matrix for our choices of $\mathbf{R}$ and $\mathbf{M}$, then we recover Equation \eqref{eq:super_unbiased} for the first term, and we have an estimator that has no multiplicative matrix bias. However, Equation \eqref{eq:super_unbiased} is a rather restrictive condition, and it is possible to violate it and still have a sensible (and correctly normalized) power spectrum estimate. In particular, as long as the rows of $\mathbf{W}$ sum to unity, our power spectrum will be correctly normalized. Beyond this, the data analyst has a choice for $
 \textbf{M}$. For simplicity in this section we choose $\textbf{M}$ to be diagonal, although we discuss other cases for the analysis 
@@ -1936,13 +1936,13 @@ lossy covariance is a small perturbation.  The result is
 \begin{equation}
 \widehat{P}_\alpha^\textrm{loss} \approx \frac{1}{2} \frac{h_\alpha}{F_{\alpha \alpha}} \left[ 1 - \eta \left( g - \frac{h_{\alpha \alpha}}{F_{\alpha \alpha}}\right)\right].
 \end{equation}
-Taking the ensemble average of both sides and noting that the true power spectrum $p_\alpha$ is equal to $\langle h_\alpha \rangle / 2 F_{\alpha \alpha}$, we obtain
+Taking the ensemble average of both sides and noting that the true power spectrum $P_\alpha$ is equal to $\langle h_\alpha \rangle / 2 F_{\alpha \alpha}$, we obtain
 \begin{equation}
-\langle \widehat{P}_\alpha^\textrm{loss} \rangle \approx (1- \eta N_f) p_\alpha + 4 \eta \frac{\rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha )}{\left[ \rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha  ) \right]^2} \approx (1- \eta N_f) p_\alpha,
+\langle \widehat{P}_\alpha^\textrm{loss} \rangle \approx (1- \eta N_f) P_\alpha + 4 \eta \frac{\rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha \C^{-1} \Q^\alpha )}{\left[ \rm{tr} (\C^{-1} \Q^\alpha \C^{-1} \Q^\alpha  ) \right]^2} \approx (1- \eta N_f) P_\alpha,
 \end{equation}
-where recall that $N_f$ is the length of $\x$, or the number of frequency channels. In the last step we dropped the final term, since it scales as $\eta p_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained.
+where recall that $N_f$ is the length of $\x$, or the number of frequency channels. In the last step we dropped the final term, since it scales as $\eta P_\alpha$ (without the factor of $N$) and is therefore typically small compared to the terms that have been retained.
 
-Recalling that $p_\alpha$ is the \emph{true} power spectrum, one sees that when the covariance in the optimal quadratic estimator is naively replaced by an empirical covariance, the resulting power spectrum estimate is biased low, i.e., there is signal loss. This occurs because of couplings between $\widehat{\C}$ and $\x$, which formally means that what was originally a quadratic estimator is no longer quadratic, but contains higher-order correlations. This violates the assumptions implicit in the derivation of $F_{\alpha \alpha}$ as the normalization factor for converting unnormalized bandpowers $\frac{1}{2} \x^t \C^{-1} \Q^{\alpha} \C^{-1} \x$ into properly normalized power spectrum estimates, where the unnormalized bandpowers are assumed to be two-point (i.e., quadratic) statistics \citep{liu_tegmark2011}. The result is an improperly normalized---and thus lossy---power spectrum estimate.
+Recalling that $P_\alpha$ is the \emph{true} power spectrum, one sees that when the covariance in the optimal quadratic estimator is naively replaced by an empirical covariance, the resulting power spectrum estimate is biased low, i.e., there is signal loss. This occurs because of couplings between $\widehat{\C}$ and $\x$, which formally means that what was originally a quadratic estimator is no longer quadratic, but contains higher-order correlations. This violates the assumptions implicit in the derivation of $F_{\alpha \alpha}$ as the normalization factor for converting unnormalized bandpowers $\frac{1}{2} \x^t \C^{-1} \Q^{\alpha} \C^{-1} \x$ into properly normalized power spectrum estimates, where the unnormalized bandpowers are assumed to be two-point (i.e., quadratic) statistics \citep{liu_tegmark2011}. The result is an improperly normalized---and thus lossy---power spectrum estimate.
 
 \section{Derivation of the Jeffreys Prior}
 \label{sec:jeffreys}
