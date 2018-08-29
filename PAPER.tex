@@ -586,11 +586,7 @@ In practice such a weighting option is not feasible, as it is difficult to model
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss8.pdf}
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss9.pdf}
 	\includegraphics[trim={0cm 0cm 0cm 0cm},clip,height=0.3\textwidth]{plots/toy_sigloss11.pdf}
-	\caption{Resulting power spectra estimates for our ``fringe-rate filtered" (time-averaged) toy model simulation --- foregrounds only (blue), 
-EoR only (red), and the weighted FG + EoR dataset (green). We show four alternate weighting options that each minimize signal 
-loss, including modeling the covariance matrix of EoR (upper left), regularizing $\widehat{\textbf{C}}$ by adding an identity matrix to 
-it (upper right), using only the first three eigenmodes of $\widehat{\textbf{C}}$ (lower left), and keeping only the diagonal elements of 
-$\widehat{\textbf{C}}$ (lower right). The first case (upper left) is not feasible in practice since we do not know $\textbf{C}_{\rm FG}$ and $\textbf{C}_{\rm EoR}$ like we do in the toy model.}
+	\caption{Resulting power spectra estimates for our ``fringe-rate filtered" (time-averaged) toy model simulation --- foregrounds only (blue), EoR only (red), and the weighted FG + EoR dataset (green). We show four alternate weighting options that each minimize signal loss, including modeling the covariance matrix of EoR (upper left), regularizing $\widehat{\textbf{C}}$ by adding an identity matrix to it (upper right), using only the first three eigenmodes of $\widehat{\textbf{C}}$ (lower left), and keeping only the diagonal elements of $\widehat{\textbf{C}}$ (lower right). The first case (upper left) is not feasible in practice since we do not know $\textbf{C}_{\rm FG}$ and $\textbf{C}_{\rm EoR}$ like we do in the toy model.}
 	\label{fig:toy_sigloss8}
 \end{figure*}
 
@@ -624,18 +620,15 @@ of the components in a dataset.
 %frequency (such as radio frequency interference or crosstalk). In such a case, preserving only the diagonal elements of $
 %\widehat{\textbf{C}}$ would be an effective way of removing this contamination. 
 
-In summary, we have shown how signal loss is caused by weighting a dataset by itself, and in particular how estimated covariances can overfit EoR modes when they are not converged to their true forms. We have also seen that there are trade-offs between a chosen weighting method, its foreground-removal effectiveness, the number of independent samples in a dataset, and the amount of resulting signal loss. 
+In summary, we have shown how signal loss is caused by weighting a dataset by itself, and in particular how estimated covariances can overfit EoR modes when they are coupled to data and not converged to their true forms. We have also seen that there are trade-offs between a chosen weighting method, its foreground-removal effectiveness, the number of independent samples in a dataset, and the amount of resulting signal loss. 
 
 
 % SECTION 3 CASE STUDY ---------------------------------------------------------------------------------
 
-\section{Signal Loss Case Study}
+\section{Signal Loss in PAPER-64}
 \label{sec:CaseStudy}
 
-In the previous section we used toy models to show how signal loss arises when weighting data with empirically estimated covariances. We also demonstrated how an analysis technique like fringe-rate filtering can increase loss, and how simple regularization methods can minimize loss.
-
-We now apply these lessons to data from the PAPER experiment, using a subset of the PAPER-64 dataset from
-\citetalias{ali_et_al2015} in order to illustrate our revised analysis pipeline.
+We now turn to a detailed signal loss investigation using a subset of the PAPER-64 dataset from \citetalias{ali_et_al2015}. In the previous section we showed how signal loss arises when weighting data with empirically estimated covariances; in this section we highlight how the amount of this loss was underestimated in the previous analysis. Additionally, we illustrate how we have revised our analysis pipeline in light of our growing understandings.
 
 As a brief review, PAPER is a dedicated 21\,cm experiment located in the Karoo Desert in South Africa. The PAPER-64 
 configuration consists of 64 dual-polarization drift-scan elements that are arranged in a grid layout. For our case study, we 
@@ -645,7 +638,7 @@ refer the reader to \citet{parsons_et_al2010} and \citetalias{ali_et_al2015}. We
 
 \begin{figure}
 	\centering
-	\includegraphics[trim={0cm 3cm 0cm 3cm},width=\columnwidth]{plots/ant_layout_aspect.pdf}
+	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/ant_layout_aspect.pdf}
 	\caption{The PAPER-64 antenna layout. We use only $10$ of the $30$ m East/West baselines for the analysis in this 
 paper (i.e., a subset of the shortest horizontal spacings).}
 	\label{fig:ant_layout}
@@ -663,7 +656,7 @@ address in this section.
 
 For the analysis in this paper, we use $8.1$ hours of LST, namely an RA range of $0.5$-$8.6$ hours (\citetalias{ali_et_al2015} uses a slightly longer RA 
 range of $0$-$8.6$ hours; we found that some early LSTs were more severely foreground contaminated). We also use only $10$ baselines, a subset of the $51$ total East/West baselines used in \citetalias{ali_et_al2015}, in order to illustrate our revised methods. All power spectrum results are produced for a center frequency of 151\,MHz using a width of 10\,MHz ($20$ channels), identical to the analysis in \citetalias{ali_et_al2015}. In the case study in this paper, we only use one baseline type instead of the three as in 
-\citetalias{ali_et_al2015}, but Kolopanis et al. (\textit{in prep.}) uses the full dataset presented in \citetalias{ali_et_al2015} to revise the result and place limits on the EoR at multiple redshifts (using a straightforward and not lossy approach to avoid many of the issues presented in this paper).
+\citetalias{ali_et_al2015}, but Kolopanis et al. (\textit{in prep.}) uses the full dataset presented in \citetalias{ali_et_al2015} to revise the result and place limits on the EoR at multiple redshifts (using a straightforward and not lossy approach to avoid many of the issues that will be made clear later on).
 
 The most significant changes from \citetalias{ali_et_al2015} occur in our revised power spectrum analysis, which is explained in the rest of this paper, but we also note that the applied fringe-rate filter is also slightly different. In \citetalias{ali_et_al2015}, the 
 applied filter was not equivalent to the optimal fringe-rate filter (which is designed to maximize power spectrum sensitivity). Instead, the optimal filter was degraded slightly by widening it in fringe-rate space. This was chosen in order to increase the number of independent 
@@ -684,14 +677,14 @@ an integration in time, increasing sensitivity but reducing the number of indepe
 	\label{fig:frp}
 \end{figure}
 
-We present our PAPER-64 signal loss investigation in three parts. We first give an overview of our signal injection framework which is used to estimate loss. In this framework (and as in \citetalias{ali_et_al2015}), we inject simulated cosmological signals into our data and test the recovery of those signals (an approach also taken by \citet{masui_et_al2013}). As we will see, correlations between the injected signals and the data are significant complicating factors which were previously not taken into account. Next, we describe our methodology in practice and detail how we map our simulations into a posterior for the EoR signal. Finally, we build off of the previous section by experimenting with different regularization schemes on PAPER data in order to minimize loss. Throughout each section, we also highlight major differences from the signal loss computation used in \citetalias{ali_et_al2015}, which previously underestimated losses.
+We present our PAPER-64 signal loss investigation in three parts. We first give an overview of our signal injection framework which is used to estimate loss. In this framework (and as in \citetalias{ali_et_al2015}), we inject simulated cosmological signals into our data and test the recovery of those signals (an approach also taken by \citet{masui_et_al2013}). As we will see, correlations between the injected signals and the data are significant complicating factors which were previously not taken into account. Next, we describe our methodology in practice and detail how we map our simulations into a posterior for the EoR signal. Finally, we build off of the previous section by experimenting with different regularization schemes on PAPER data in order to minimize loss. Throughout each section, we also highlight major differences from the signal loss computation used in \citetalias{ali_et_al2015}.
 
 
 % SECTION 3 SIGNAL LOSS ---------------------------------------------------------------------------------
 
 \subsection{Signal Loss Methodology} 
 \label{sec:siglossmethod}
-In short, our method consists of adding an EoR-like signal into the visibility data and then measuring how much of this injected signal would be detectable given any attenuation of this signal by the (lossy) data analysis pipeline.  To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated 21\,cm signal visibilities. Here we use the same method as in \citetalias{ali_et_al2015}, where mock Gaussian noise visibilities (mock EoR signals) 
+In short, our method for estimating signal loss consists of adding an EoR-like signal into visibility data and then measuring how much of this injected signal would be detectable given any attenuation of this signal by the (lossy) data analysis pipeline.  To capture the full statistical likelihood of signal loss, one requires a quick way to generate many realizations of simulated 21\,cm signal visibilities. Here we use the same method as in \citetalias{ali_et_al2015}, where mock Gaussian noise visibilities (mock EoR signals) 
 are filtered in time using an optimal fringe-rate filter to retain only ``sky-like" modes. Since the optimal filter has a shape that matches the rate of the sidereal motion of the sky, this transforms the Gaussian noise into a measurement that PAPER could make. This signal is then added to the visibility data.\footnote{One 
 specific change from \citetalias{ali_et_al2015} is that we add this simulated signal - which has been fringe-rate filtered once already in order to transform it into a ``sky-like" signal - into the analysis pipeline before a fringe-rate filter is 
 applied to the data (i.e., prior to the analysis step of fringe-rate filtering). Previously, the addition was done after the fringe-rate filter analysis step.  This change results in an increased 
@@ -1078,16 +1071,16 @@ calculate $\widehat{\textbf{C}}$ with data from LSTs where foregrounds are stron
 down-weight, especially if residual foreground chromaticity is instrumental in origin and stable in time. Fundamentally, each of these examples are similar in that they rely on a computation of $\widehat{\textbf{C}}$ from 
 data that is similar but not exactly the same as the data that is being down-weighted. Ideally this would be effective in down-weighting shared contaminants yet avoid signal loss from overfitting EoR modes in the power spectrum dataset itself. 
 
-In Section \ref{sec:CaseStudy}, we have detailed several aspects of signal loss in PAPER-64: how the loss arises, how it can be estimated from an injection framework, and ways it can be minimized. We again emphasize that these lessons learned about signal loss are largely responsible for shaping our revised analysis of PAPER data. In the remainder of this paper, we will transition to other new aspects of our analysis, framed within the context of error estimation and (non-EoR) bias in PAPER-64.
+In Section \ref{sec:CaseStudy}, we have detailed several aspects of signal loss in PAPER-64: how the loss arises, how it can be estimated from an injection framework, and ways it can be minimized. We again emphasize that these lessons learned about signal loss are largely responsible for shaping our revised analysis of PAPER data. In the remainder of this paper, we will transition to other aspects of our analysis that have been revised since \citetalias{ali_et_al2015}.
 
 % SECTION 4 OTHER ERRORS ---------------------------------------------------------------------------------
 
-\section{Summary of Additional Errors}
+\section{Additional PAPER-64 Revisions}
 \label{sec:OtherErrors}
 
 Underestimated signal loss is the main reason for the revision of the power spectrum limits from \citetalias{ali_et_al2015}. It is interesting to note that --- had all the other aspects of the original analysis been correct --- the underestimated limits may have been more easily caught. Unfortunately, two related power spectrum components, namely the error bars on the power spectrum data points and the theoretical noise prediction, were also calculated incorrectly.
 
-In this section, we summarize multiple inconsistencies and errors that have been found since the previous analysis in terms of error estimation. We first describe updated methods regarding bootstrapping, which determines the error bars on our limits. We then highlight an updated calculation for the theoretical noise sensitivity of PAPER-64 and illustrate how our revised calculation has been verified. 
+In this section, we summarize multiple inconsistencies and errors that have been found since the previous analysis in terms of error estimation. We first describe updated methods regarding bootstrapping, which determines the error bars on our limits. We then highlight an updated calculation for the theoretical noise sensitivity of PAPER-64 and illustrate how our revised calculation has been verified through simulations. 
 
 \subsection{Bootstrapping}
 \label{sec:Boot}
@@ -1096,31 +1089,15 @@ Broadly speaking, we desire robust methods for determining accurate
 confidence intervals for our measurements. For PAPER's analysis, we choose a data-driven method of error estimation, computing error bars that have been derived from the inherent 
 variance of our measurements. A common technique used to do this is bootstrapping, which we first define below and then discuss its application to PAPER.
 
-Bootstrapping uses sampling with replacement to estimate a posterior distribution. For example, measurements (like power 
-spectra) can be made from different samples of data. Each of these measurements is a different realization drawn from some underlying distribution, and realizations are correlated with each other to a degree set by the fraction of sampled points that are held in common 
-between them. Through the process of re-sampling and averaging along different axes of a dataset, such as along baselines or times, we can estimate error bars for 
-our results which represent the underlying distribution of values that are allowed by our measurements (\citealt{efron_tibshirani1994}; \citealt{andrae2010}).
+Bootstrapping uses sampling with replacement to estimate a posterior distribution. For example, bootstrap measurements (of power spectra, for example) can be made from different random samples of data. Each of these bootstraps is a different realization drawn from some underlying distribution, and realizations are correlated with each other to a degree set by the fraction of sampled points that are held in common between them. Through the process of re-sampling and averaging along different axes of a dataset, such as along baselines or times, we can estimate error bars for our results which represent the underlying distribution of values that are allowed by our measurements (\citealt{efron_tibshirani1994}; \citealt{andrae2010}).
 
-Suppose we have $N$ different measurements targeting the same quantity (for example, $N$ power spectrum measurements). 
-Bootstrapping means that we form $N_{\rm boot}$ (often a large number) bootstraps, where each bootstrap is a random selection 
-of the $N$ measurements. Bootstraps each have dimensions of $N$, and the values populated into each bootstrap are drawn 
-from the original set of measurements with replacement (i.e., every $n^{th}$ slot in $N$ is filled randomly for each bootstrap). Next we take 
-the mean of each bootstrap to collapse it from an array of length $N$ to a single number (we are interested in the mean statistic 
-here, but any function of interest can be applied to each bootstrap as long as it's the same function for each one). The error (on 
-the mean) is then computed as the standard deviation across all bootstraps. 
+%Suppose we have $N$ different measurements targeting the same quantity (for example, $N$ power spectrum measurements). Bootstrapping means that we form $N_{\rm boot}$ (often a large number) bootstraps, where each bootstrap is a random selection of the $N$ measurements. Bootstraps each have dimensions of $N$, and the values populated into each bootstrap are drawn from the original set of measurements with replacement (i.e., every $n^{th}$ slot in $N$ is filled randomly for each bootstrap). Next we take the mean of each bootstrap to collapse it from an array of length $N$ to a single number (we are interested in the mean statistic here, but any function of interest can be applied to each bootstrap as long as it's the same function for each one). The error (on the mean) is then computed as the standard deviation across all bootstraps. 
 
-We must be careful in distinguishing $N_{\rm boot}$, the number of bootstraps, from $N$, the number of samples, or elements, or 
-values, that comprise a bootstrap. $N_{\rm boot}$ is typically large, and the standard 
-deviation across bootstraps (the error we are computing) converges for large $N_{\rm boot}$. Typically $N$ is a straightforward value to set that just depends on the experiment (i.e., it is simply the number of samples along the axis that is being re-sampled). However, we will see that $N$ depends on sample independence, and it is this dependence that led to the underestimation of errors in \citetalias{ali_et_al2015}.
+%We must be careful in distinguishing $N_{\rm boot}$, the number of bootstraps, from $N$, the number of samples, or elements, or values, that comprise a bootstrap. $N_{\rm boot}$ is typically large, and the standard deviation across bootstraps (the error we are computing) converges for large $N_{\rm boot}$. Typically $N$ is a straightforward value to set that just depends on the experiment (i.e., it is simply the number of samples along the axis that is being re-sampled). However, we will see that $N$ depends on sample independence, and it is this dependence that led to the underestimation of errors in \citetalias{ali_et_al2015}.
 
-Let us first suppose we have a Gaussian random signal dataset of length $N=1000$ and unity variance (zero mean). 
-This could represent $1000$ power spectrum measurements, for which we are interested in its error. We predict that the error 
-on the mean should obey $1/\sqrt{N}$, where $N$ is the number of samples.
+%Let us first suppose we have a Gaussian random signal dataset of length $N=1000$ and unity variance (zero mean). This could represent $1000$ power spectrum measurements, for which we are interested in its error. We predict that the error on the mean should obey $1/\sqrt{N}$, where $N$ is the number of samples.
 
-We next form $500$ bootstraps ($N_{\rm boot} = 500$). To create each bootstrap, we draw $N$ samples, with replacement, of the 
-original data, and take the mean over the $N$ samples. The standard deviation over the $500$ bootstraps gives an error 
-estimate for our dataset. This error is indicated by the gray star in Figure \ref{fig:toy_error1} and matches our theoretical 
-prediction (green).
+%We next form $500$ bootstraps ($N_{\rm boot} = 500$). To create each bootstrap, we draw $N$ samples, with replacement, of the original data, and take the mean over the $N$ samples. The standard deviation over the $500$ bootstraps gives an error estimate for our dataset. This error is indicated by the gray star in Figure \ref{fig:toy_error1} and matches our theoretical prediction (green).
 
 One major caveat of bootstrapping arises when working with correlated data. If, for example, a dataset has many repeated 
 values inside it, this would be reflected in each bootstrap. The same value would be present multiple times within a bootstrap 
@@ -1128,45 +1105,33 @@ and also be present between bootstraps, purely because it has a more likely chan
 itself. Therefore, bootstrapping correlated data results in a smaller variation between bootstraps, and hence, underestimates 
 errors. 
 
-As a demonstration, we apply a sliding boxcar average to $10$ samples of our toy model at a time, thus reducing the number of 
-independent data samples to $N/10 = 100$. Bootstrapping this time-averaged noise, using the same method as described 
-earlier (drawing $N=1000$ elements per bootstrap sample), underestimates the error by a factor of $\sim3$ (black points in Figure \ref{fig:toy_error1}, at $N=1000$). This occurs 
-because we are drawing more samples than independent ones available, and thus some samples are repeated multiple times 
-in all bootstraps, leading to less variation between the bootstraps. In fact, the error derived from bootstrapping is a strong 
-function of the number of elements that are drawn per bootstrap (Figure \ref{fig:toy_error1}, black points), and we can both 
-underestimate the error by drawing too many or overestimate it by drawing too few. However, since we know that we have $100$ 
-independent samples in this toy model, the error associated with drawing $N=100$ samples with replacement does match the theoretical prediction 
-as expected (the black points cross the green line at $N=100$ in Figure \ref{fig:toy_error1}).
+%As a demonstration, we apply a sliding boxcar average to $10$ samples of our toy model at a time, thus reducing the number of independent data samples to $N/10 = 100$. Bootstrapping this time-averaged noise, using the same method as described earlier (drawing $N=1000$ elements per bootstrap sample), underestimates the error by a factor of $\sim3$ (black points in Figure \ref{fig:toy_error1}, at $N=1000$). This occurs because we are drawing more samples than independent ones available, and thus some samples are repeated multiple times in all bootstraps, leading to less variation between the bootstraps. In fact, the error derived from bootstrapping is a strong function of the number of elements that are drawn per bootstrap (Figure \ref{fig:toy_error1}, black points), and we can both underestimate the error by drawing too many or overestimate it by drawing too few. However, since we know that we have $100$ independent samples in this toy model, the error associated with drawing $N=100$ samples with replacement does match the theoretical prediction as expected (the black points cross the green line at $N=100$ in Figure \ref{fig:toy_error1}).
 
-\begin{figure}
-	\centering
-	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_error1.pdf}
-	\caption{Error estimation from bootstrapping as a function of the number of elements drawn per bootstrap when 
-sampling with replacement. The star represents the standard deviation of $N_{\rm boot}=500$ bootstraps, each created by drawing $1000$ 
-elements (with replacement) from a length $1000$ array of a Gaussian random signal. The black points correspond to time-averaged data (correlated data) which has $100$ independent samples. They illustrate how errors can be underestimated if 
-drawing more elements than there are independent samples in the data. The estimated errors match up with the theoretical 
-prediction only at $N=100$.}
-	\label{fig:toy_error1}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[trim={0cm 0cm 0cm 0cm},width=\columnwidth]{plots/toy_error1.pdf}
+%	\caption{Error estimation from bootstrapping as a function of the number of elements drawn per bootstrap when 
+%sampling with replacement. The star represents the standard deviation of $N_{\rm boot}=500$ bootstraps, each created by drawing $1000$ elements (with replacement) from a length $1000$ array of a Gaussian random signal. The black points correspond to time-averaged data (correlated data) which has $100$ independent samples. They illustrate how errors can be underestimated if drawing more elements than there are independent samples in the data. The estimated errors match up with the theoretical prediction only at $N=100$.}
+%	\label{fig:toy_error1}
+%\end{figure}
 
-Analogous to the toy model just presented, errors on the power spectrum of PAPER-64 were originally underestimated because the use of a fringe-rate filter, which averages data in time to increase sensitivity, reduces the number of independent samples along the bootstrapping axis, thus decreasing the variance of the bootstraps.
+This is the precisely how errors were underestimated in PAPER-64. Because of fringe-rate filtering, which averages data in time to increase sensitivity, PAPER-64 data is correlated along the time axis. Hence, there are fewer independent samples after filtering, thus decreasing the variance of the bootstraps.
 
 More specifically, the PAPER-64 pipeline outputs $20$ bootstraps (over baselines), each a $2$-dimensional power 
-spectrum that is a function of $k$ and time. In \citetalias{ali_et_al2015}, a second round of bootstrapping occurred over the time axis. A total of $400$ bootstraps were created in this step 
-($N_{\rm boot} = 400$), each comprised of randomly selected values sampled with replacement along the time axis (i.e., each of these bootstraps contained the same number of values as the number of time integrations, which, at $\sim$
+spectrum that is a function of $k$ and time. In \citetalias{ali_et_al2015}, a second round of bootstrapping occurred over the time axis, and a total of $400$ bootstraps were created in this step, each comprised of randomly selected values sampled with replacement (i.e., each of these bootstraps contained the same number of values as the number of time integrations, which, at $\sim$
 $700$, greatly exceeds the approximate number of independent samples after fringe-rate filtering).
 Means were then taken of the values in each bootstrap. Finally, power 
 spectrum limits were computed by taking the mean and standard deviation over all the bootstraps. We emphasize again that in 
 this previous analysis, the number of elements sampled per bootstrap greatly 
 exceeded the number of independent LST samples, underestimating errors. A random draw of $700$ 
-measurements from this dataset has many repeated values, and the variance between hundreds ($N_{\rm boot}$) of these random 
+measurements from this dataset has many repeated values, and the variance between hundreds of these random 
 samples is smaller than the true underlying variance of the data. 
 
 Given our new understanding of the sensitivity of bootstraps to the number of elements sampled, we have removed the second 
 bootstrapping step along time entirely and now simply bootstrap over the baseline axis. Power spectrum $2\sigma$ errors (computed from bootstrap variances) with this bootstrapping change for a fringe-rate filtered noise simulation are shown in Figure 
 \ref{fig:data_errors}. The estimates are uniformly weighted in order to disentangle the effects of bootstrapping from signal loss. As 
 shown in the figure, when more elements are drawn for each bootstrap than the number of 
-independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits (gray) below the predicted noise level (green). Using the revised bootstrapping method, where bootstrapping only occurs over the baseline axis, the limits (black) are shown to agree with the analytic prediction for noise. While Figure \ref{fig:data_errors} implies that errors are underestimated by a factor of $\sim$ $5$ in mK$^{2}$ for the noise simulation, in practice this factor is lower for the case of real data (a factor of $\sim$ $3$ in mK$^{2}$ instead), possibly due to the data being less correlated in time than the fringe-rate filtered noise in the simulation. %Figure \ref{fig:data_errors} implies that power spectrum upper limits were originally underestimated by a factor of $\sim$ $5$ in mK$^{2}$. 
+independent samples (by over-sampling elements along the time axis), repeated values begin to crop up and the apparent variation between bootstraps drops, resulting in limits (gray) below the predicted noise level (green). Using the revised bootstrapping method, where bootstrapping only occurs over the baseline axis, the limits (black) are shown to agree with the analytic prediction for noise. While Figure \ref{fig:data_errors} implies that errors are underestimated by a factor of $\sim$ $5$ in mK$^{2}$ for the noise simulation (whose creation details are outlined in the next section), in practice this factor is lower for the case of real data (a factor of $\sim$ $3$ in mK$^{2}$ instead), possibly due to the data being less correlated in time than the fringe-rate filtered noise in the simulation. 
 
 In addition to learning how sample independence affects bootstrapped errors, we have made three additional changes to our bootstrapping procedure since \citetalias{ali_et_al2015}, summarized here:
 
@@ -1174,7 +1139,7 @@ In addition to learning how sample independence affects bootstrapped errors, we 
 
 \item{A second change to our bootstrapping procedure is that we now bootstrap over baseline cross-products, instead of the baselines themselves. In the previous analysis, baselines were bootstrapped prior to forming cross power spectra, and using this particular ordering of operations (bootstrapping, then cross-multiplication) yields variances that have been found to disagree with predicted errors from bootstrapping using simulations. On the contrary, bootstrapping over cross power spectra ensures that we are estimating the variance of our quantity of interest (i.e., the power spectrum). This change, while fundamental in retaining the integrity of the bootstrapping method in general, alters the resulting power spectrum errors by factors of $<2$ in practice.}
 
-\item{In \citetalias{ali_et_al2015}, individual baselines were divided into $5$ independent groups, where no baselines were repeated in each group. Then, baselines within each group were averaged together, and the groups were cross-multiplied to form power spectra. This grouping method was used to reduce computational time, however upon closer examination it has been found that the initial grouping introduces an element of randomness into the final measurements --- more specifically, the power spectrum value fluctuates depending on how baselines are assigned into their initial groups. Our new approach removes this element of randomness at the cost of computational expense, as we now perform all baseline cross-products.}
+\item{In \citetalias{ali_et_al2015}, individual baselines were divided into five independent groups, where no baselines were repeated in each group. Then, baselines within each group were averaged together, and the groups were cross-multiplied to form power spectra. This grouping method was used to reduce computational time, however upon closer examination it has been found that the initial grouping introduces an element of randomness into the final measurements --- more specifically, the power spectrum value fluctuates depending on how baselines are assigned into their initial groups. Our new approach removes this element of randomness at the cost of computational expense, as we now perform all baseline cross-products.}
 
 \item{Finally, the last change from the \citetalias{ali_et_al2015} method is that our power spectrum points (previously computed as the mean of all bootstraps), are now computed as the power spectrum estimate resulting from not bootstrapping at all. More specifically, we compute one estimate without sampling, and this estimate is propagated through our signal loss computation (this estimate is $\widehat{\textbf{P}}_{x}$). The difference between taking the mean of the bootstrapped values and using the estimate from the no-bootstrapping case is small, but doing the latter ensures that we are forming results that reflect the estimate preferred by all our data.}
 
