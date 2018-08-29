@@ -142,7 +142,7 @@ Andre Walker\altaffilmark{7}
 \begin{abstract}
 The Epoch of Reionization (EoR) is an uncharted era in our Universe's history during which the first stars and 
 galaxies led to the ionization of neutral hydrogen in the intergalactic medium. There are many experiments investigating the 
-EoR by tracing the 21\,cm line of neutral hydrogen. Because this signal is very faint and difficult to isolate, it is crucial to develop analysis techniques that maximize sensitivity and suppress contaminants in data. It is also imperative to understand the trade-offs between different analysis methods and their effects on power spectrum estimates. Specifically, with a new generation of instruments and a statistical power spectrum detection in our foreseeable future, it has become increasingly important to understand how certain analysis choices can lead to the loss of the EoR signal. In this paper, we focus on signal loss specifically associated with quadratic estimators and power spectrum estimation. We describe the origin of this loss using both toy models and data taken by the 64-element configuration of the Donald C. Backer Precision Array for Probing the Epoch of Reionization (PAPER). In particular, we highlight how detailed investigations of signal loss have led to a revised, higher 21\,cm power spectrum upper limit from PAPER-64. Additionally, we summarize errors associated with power spectrum error estimation that were previously unaccounted for. While we only focus on a subset of PAPER-64 data in this paper, revised power spectrum limits from the PAPER experiment are presented in a forthcoming paper by Kolopanis et al. (\textit{in prep.}) and supersede results from previously published PAPER analyses.
+EoR by tracing the 21\,cm line of neutral hydrogen. Because this signal is very faint and difficult to isolate, it is crucial to develop analysis techniques that maximize sensitivity and suppress contaminants in data. It is also imperative to understand the trade-offs between different analysis methods and their effects on power spectrum estimates. Specifically, with a new generation of instruments and a statistical power spectrum detection in our foreseeable future, it has become increasingly important to understand how certain analysis choices can lead to the loss of the EoR signal. In this paper, we focus on signal loss associated with power spectrum estimation. We describe the origin of this loss using both toy models and data taken by the 64-element configuration of the Donald C. Backer Precision Array for Probing the Epoch of Reionization (PAPER). In particular, we highlight how detailed investigations of signal loss have led to a revised, higher 21\,cm power spectrum upper limit from PAPER-64. Additionally, we summarize errors associated with power spectrum error estimation that were previously unaccounted for. While we only focus on a subset of PAPER-64 data in this paper, revised power spectrum limits from the PAPER experiment are presented in a forthcoming paper by Kolopanis et al. (\textit{in prep.}) and supersede results from previously published PAPER analyses.
 \end{abstract}
 
 % INTRO ---------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ of the signal reaching our telescopes can be directly mapped to a distance from 
 stretching out as it traveled through expanding space. Hence, 21\,cm tomography offers a unique window into both the spatial and temporal
 evolution of ionization, temperature, and density fluctuations.
 
-In addition to the first tentative detection of our \textit{Cosmic Dawn} (pre-reionization) made by the Experiment to Detect the Global EoR Signature (EDGES; \citealt{bowman_et_al2018}; \citealt{bowman2010}), there are several radio telescope experiments that have succeeded in using 
+In addition to the first tentative detection of our \textit{Cosmic Dawn} (pre-reionization era) made by the Experiment to Detect the Global EoR Signature (EDGES; \citealt{bowman_et_al2018}; \citealt{bowman2010}), there are several radio telescope experiments that have succeeded in using 
 the 21\,cm signal from hydrogen to place constraints on the brightness of the signal. Examples of experiments investigating the 
 mean brightness temperature of the 21\,cm signal relative to the CMB are the Large Aperture Experiment to Detect the Dark Ages (LEDA; \citealt{bernardi_et_al2016}), the 
 Dark Ages Radio Explorer (DARE; \citealt{burns2012}), the Sonda Cosmol\'ogica de las Islas para la Detecci\'on de 
@@ -184,8 +184,8 @@ learned from previous experiments and has a forecasted sensitivity capable of a 
 detection with an eventual $350$ elements using current analysis techniques (\citealt{pober_et_al2014}; \citealt{liu_parsons_2016}; \citealt{dillon_parsons2016}; \citealt{deboer_et_al2017}).
 
 The major challenge that faces all 21\,cm experiments is isolating a small signal that is buried underneath foregrounds and 
-instrumental systematics that are, when combined, four to five orders of magnitude brighter \citep[e.g.,][]{santos_et_al2005, ali_et_al2008, deOliveiraCosta_et_al2008, jelic_et_al2008, bernardi_et_al2009, bernardi_et_al2010, ghosh_et_al2011, pober_et_al2013b, bernardi_et_al2013, dillon_et_al2014, kohn_et_al2016}. A clean measurement therefore requires an intimate understanding of how data analysis choices, which are often chosen to maximize sensitivity and minimize contaminants, affect power spectrum results. More specifically, it is imperative to develop techniques that ensure 
-the accurate extraction and recovery of the EoR signal, despite the analysis method chosen and how much loss may have resulted. In this paper, we discuss signal loss associated with specifically with power spectrum estimation --- a topic that is essential to investigate for a robust 21\,cm power spectrum analysis and one that has been underestimated in previous PAPER analyses. We first approach this topic from a broad perspective, and then perform a detailed 
+instrumental systematics that are, when combined, four to five orders of magnitude brighter \citep[e.g.,][]{santos_et_al2005, ali_et_al2008, deOliveiraCosta_et_al2008, jelic_et_al2008, bernardi_et_al2009, bernardi_et_al2010, ghosh_et_al2011, pober_et_al2013b, bernardi_et_al2013, dillon_et_al2014, kohn_et_al2016}. A clean measurement therefore requires an intimate understanding of how data analysis choices, which are often tailored to maximize sensitivity and minimize contaminants, affect power spectrum results. More specifically, it is imperative to develop techniques that ensure 
+the accurate extraction and recovery of the EoR signal, despite the analysis method chosen and how much loss (of both contaminants and the EoR signal) accompanies the method. In this paper, we specifically discuss signal loss --- the loss of the \textit{cosmological} signal --- associated with power spectrum estimation. This is an issue that is essential to investigate for a robust 21\,cm power spectrum analysis and one that has motivated a revised PAPER analysis. We first approach this topic from a broad perspective, and then perform a detailed 
 case study using data from the 64-element configuration of PAPER. In this study we use a subset of PAPER-64 data to illustrate our revised analysis methods, while a related paper, Kolopanis et al. (\textit{in prep.}), builds off of the methods in this paper to present revised PAPER-64 results for multiple redshifts and baseline types.
 
 Finally, we also highlight several additional errors made in previous PAPER analyses, including those related to bootstrapping and error estimation. This paper adds to the growing foundations of lessons which have been documented, for example, in \citet{Paciga2013}, \citet{Patil2016}, and \citet{Jacobs2016}, by the GMRT, LOFAR, and MWA projects respectively. These lessons are imperative as the community as a whole moves towards higher sensitivities and potential EoR detections.
@@ -200,18 +200,14 @@ This paper is organized into three main sections. In Section \ref{sec:SiglossOve
 \label{sec:SiglossOverview}
 % JEA - We never totally nail down what ``signal loss'' is ...
 
-Signal loss refers to attenuation of the target \textit{cosmological} signal 
+Signal loss refers to attenuation of the target cosmological signal 
 in a power spectrum estimate. Certain analysis techniques can cause this loss, and if the amount of loss is not quantified accurately, it could lead to false non-detections and overly aggressive upper limits. Determining whether an analysis pipeline is lossy, and estimating the amount of loss if so, has subtle challenges but is necessary to ensure the accuracy of any result. 
 
-Signal loss can arise in a variety of ways in an analysis pipeline, such as by fitting a polynomial during spectral calibration, applying a delay domain filter, or deriving weights from data and applying them to itself. Here we focus on signal loss associated with 
-% JEA - we're not considering a general problem, but are really just focused on the empirical QE and its discontents, so let's say that
-the latter. 
-
-A dataset can be weighted to emphasize certain features and minimize others, and one particular flavor of weighting employed by previous PAPER analyses is inverse covariance weighting in frequency, which is a generalized version of inverse variance weighting that also takes into account frequency correlations (\citealt{liu_tegmark2011}; \citealt{dillon_et_al2013a}; \citealt{liu_et_al2014a}; \citealt{liu_et_al2014b}; \citealt{dillon_et_al2014}; \citealt{dillon_et_al2015}). Using such a technique enables the down-weighting of contaminant modes that obey a different covariance structure from that of cosmological modes. However, a challenge of inverse covariance 
-weighting is in estimating a covariance matrix that is closest to the true covariance of the data; the discrepancy between the two, as we will see, can have large impacts on signal loss. Here we focus specifically on loss associated with the use of an empirically estimated covariance matrix with the ``optimal quadratic estimator'' formalism.
+One type of signal loss can occur when weighting data by itself. Broadly speaking, a dataset can be weighted to emphasize certain features and minimize others. For example, one flavor of weighting employed by previous PAPER analyses is inverse covariance weighting in frequency, which is a generalized version of inverse variance weighting that also takes into account frequency correlations (\citealt{liu_tegmark2011}; \citealt{dillon_et_al2013a}; \citealt{liu_et_al2014a}; \citealt{liu_et_al2014b}; \citealt{dillon_et_al2014}; \citealt{dillon_et_al2015}). Using such a technique enables the down-weighting of contaminant modes that obey a different covariance structure from that of cosmological modes. However, a challenge of inverse covariance 
+weighting is in estimating a covariance matrix that is closest to the true covariance of the data; the discrepancy between the two, as we will see, can have large impacts on signal loss. In this paper we focus specifically on loss associated with the use of an empirically estimated covariance matrix with the ``optimal quadratic estimator'' formalism.
 This loss was significantly 
 %applying a weighting matrix to data, a loss that can be significant depending on the choice of weighting and one that was previously 
-underestimated in the \citetalias{ali_et_al2015} analysis.
+underestimated in the \citetalias{ali_et_al2015} analysis and is the main reason motivating a revised power spectrum result.
 
 % JEA - Put all of the (O)QE / ICW theory here, rather than sprinkled throughout this section.
 
@@ -288,7 +284,7 @@ where Equation \eqref{eq:OQEQuadratic} is replaced by
 \widehat{q}^{\alpha} = \frac{1}{2}\textbf{x}^{\dagger}\textbf{R}\textbf{Q}^{\alpha}\textbf{R}\textbf{x}
 \end{equation}
 where $\textbf{R}$ is a weighting matrix chosen by the data analyst.  For example, inverse covariance weighting (the optimal form of QE) would set $\textbf{R} \equiv \textbf{C}^{-1}$ and a uniform-weighted case would use $\textbf{R} \equiv \textbf{I}$, the identity matrix.
-The matrix $\textbf{Q}^{\alpha}$ encodes the dependence of the covariance on the power spectrum parameters $\partial \C/\partial P^\alpha$ but in practice also does other things, including implementing a transform of the frequency domain visibilities to $\mathbf{k}$-space, taking into account cosmological scalings, and converting the visibilities from Jy to Kelvin.
+Again, the matrix $\textbf{Q}^{\alpha}$ encodes the dependence of the covariance on the power spectrum but in practice also also does other things, including implementing a transform of the frequency domain visibilities to $\mathbf{k}$-space, taking into account cosmological scalings, and converting the visibilities from Jansky to Kelvin.
 %with dimensions ($N_{f}$,$N_{f}$) --- as 
 
 %%% COME BACK HERE
@@ -299,12 +295,14 @@ With an appropriate normalization matrix $\textbf{M}$, the quantity
 \label{eq:phat}
 \widehat{\textbf{P}} = \textbf{M}\widehat{\textbf{q}}
 \end{equation}
-is a sensible estimate of the true power spectrum $\textbf{P}$. To ensure that $\textbf{M}$ correctly normalizes our power spectrum, one may take the expectation value of Equation \eqref{eq:phat} to obtain
+is a sensible \textit{estimate} of the \textit{true} power spectrum $\textbf{P}$. 
+
+To ensure that $\textbf{M}$ correctly normalizes our power spectrum, one may take the expectation value of Equation \eqref{eq:phat} to obtain
 \begin{eqnarray}
 \langle \widehat{P}^\alpha \rangle &=& \frac{1}{2} \sum_{\beta \gamma} M^{\alpha \gamma}  \textrm{tr} \left( \textbf{R}\textbf{Q}^{\gamma}\textbf{R} \textbf{Q}^{\beta}\right) P^\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right) \nonumber \\
 &\equiv & \sum_{\beta} W^{\alpha \beta} P^\beta +\frac{1}{2} \sum_{ \gamma}  \Tr\left( \mathbf{U} \textbf{R} \textbf{Q}^{\gamma} \mathbf{R} \right), \label{eq:Wpplusbias}
 \end{eqnarray}
-where $W^{\alpha \beta}$ are elements of a window function matrix. Let's consider the first term of this expression (again, we are assuming that the linear bias term is significantly suppressed; and if this is not the case, we are simply assuming that we are setting a conservative upper limit). If $\mathbf{W}$ ends up being the identity matrix for our choices of $\mathbf{R}$ and $\mathbf{M}$, then we recover Equation \eqref{eq:super_unbiased} for the first term, and we have an estimator that has no multiplicative matrix bias. However, Equation \eqref{eq:super_unbiased} is a rather restrictive condition, and it is possible to violate it and still have a sensible (and correctly normalized) power spectrum estimate. In particular, as long as the rows of $\mathbf{W}$ sum to unity, our power spectrum will be correctly normalized. Beyond this, the data analyst has a choice for $
+where $W^{\alpha \beta}$ are elements of a window function matrix. Considering the first term of this expression (again, we are assuming that the linear bias term is significantly suppressed; and if this is not the case, we are simply assuming that we are setting a conservative upper limit), if $\mathbf{W}$ ends up being the identity matrix for our choices of $\mathbf{R}$ and $\mathbf{M}$, then we recover Equation \eqref{eq:super_unbiased} for the first term, and we have an estimator that has no multiplicative matrix bias. However, Equation \eqref{eq:super_unbiased} is a rather restrictive condition, and it is possible to violate it and still have a sensible (and correctly normalized) power spectrum estimate. In particular, as long as the rows of $\mathbf{W}$ sum to unity, our power spectrum will be correctly normalized. Beyond this, the data analyst has a choice for $
 \textbf{M}$, and for simplicity throughout this paper we choose $\textbf{M}$ to be diagonal. In a preview of what is to come, we also stress that the derivation that leads to Equation \eqref{eq:Wpplusbias} assumes that $\mathbf{R}$ and $\mathbf{x}$ are not correlated. If this assumption is violated, a simple application of the (now incorrect) formulae in this section can result in an improperly normalized power spectrum estimator that does not conserve power, i.e., one that has signal loss.
 % JEA - is one really free to choose M and R independently?
 
@@ -315,7 +313,7 @@ Similar types of weightings that are based on variance information in data are d
 \begin{equation}
 \widehat{\textbf{C}} \equiv \langle\textbf{xx}^{\dagger}\rangle_{t} \approx \langle  \textbf{xx}^{\dagger}\rangle,
 \end{equation}
-assuming $\langle\textbf{x}\rangle_{t} = 0$ (a reasonable assumption since fringes average to $0$ over a sufficient 
+assuming $\langle\textbf{x}\rangle_{t} = 0$ (a reasonable assumption since fringes average to zero over a sufficient 
 amount of time), where $\langle \rangle_{t}$ denotes a finite average over time. The weighting matrix for our empirically estimated inverse covariance weighting is then $
 \textbf{R} \equiv \widehat{\textbf{C}}^{-1}$, where we use a hat symbol to distinguish the empirical covariance from the true covariance $\textbf{C}$.
 
@@ -331,7 +329,7 @@ As a brief preview, we summarize our findings in the following sections here:
 
 \item The effect of the bias is worsened when the number of independent samples used to estimate the covariance matrix is reduced (Section \ref{sec:toymodel_frf}).
 
-\item The rate at which empirical eigenvectors converge to their true forms depends on sample variance in the empirical estimate and the steepness (the degeneracy) of the empirical eigenspectrum. In general, larger sample variances and flatter eigenspectra (more degeneracies) lead to more loss (Section \ref{sec:toymodel_frf}).
+\item The rate at which empirical eigenvectors converge to their true forms depends on the sample variance in the empirical estimate and the shape of the empirical eigenspectrum. In general, larger sample variances lead to more loss (Section \ref{sec:toymodel_frf}).
 
 %\item The convergence of the modes of the empirical covariance matrix to the true matrix depends on the size of the eigenvalues, with the modes with the largest eigenvalues converging more quickly (in norm) to the true eigenvector than those with smaller eigenvalues. Thus, in estimating the covariance matrix empirically, larger eigenvalue modes are likely to be more reliable (Section \ref{sec:toymodel_frf}).
 
@@ -343,7 +341,7 @@ As a brief preview, we summarize our findings in the following sections here:
 \end{itemize}
 
 
-\subsection{Inverse Covariance Weighting}
+\subsection{Empirical Inverse Covariance Weighting}
 \label{sec:toymodel}
 
 % JEA  - This material was moved up
@@ -401,7 +399,7 @@ There is negligible signal loss when all eigenmodes besides the foreground one a
 
 As discussed in Section \ref{sec:QE}, this behavior is {\it not} expected in the case that we were to use a true $\textbf{C}^{-1}$ weighting.  Rather, we would obtain the behavior shown in the toy model in Appendix \ref{sec:icw_appendix}\footnote{Note that there the true covariance matrix is also the sum of a diagonal portion describing the signal, and a single mode describing the contaminant (similar to Figure \ref{fig:toy_sigloss12}).}, with suppression of the foreground mode resulting in a nearly unbiased estimate of the power spectrum.   The key difference is that since $\widehat{\textbf{C}}$ is estimated from the data, its eigenvectors and eigenvalues are strongly coupled to the particular data realization that was used to compute it, and this coupling leads to loss.
 
-For the case of a mode which can be safely assumed to be predominantly a foreground, its presence in the true covariance matrix will result in the desired suppression via a kind of projection (Equations \ref{eq:IdealToyModelCovariance} and \ref{eq:IdealToyModelEstimator}); whether or not it is strongly correlated with the the actual data vector is irrelevant.  However, in the case of an empirically estimated covariance matrix, the eigenmodes of $\widehat{\textbf{C}}_{\rm EoR}$ will both be incorrect and can be correlated with the data. If these incorrect eigenmodes are not correlated with the data, it will lead to non-minimum variance estimates but will not produce the suppression of the power spectrum amplitude as seen in the left plot of Figure \ref{fig:toy_sigloss3}. As shown mathematically in Appendix \ref{sec:sigloss_appendix}, however, if $\widehat{\mathbf{C}}_{\rm EoR}$ $\textit{is}$ correlated with the data vector $\mathbf{x}$, there is a kind of projection of power in the {\it non}-foreground modes from the resulting power spectrum estimate, thus producing an estimate that is biased low.  In short, {\it if the covariance is computed from the data itself, it carries the risk of over-fitting information in the data and introducing a multiplicative bias (per $k$) to estimates of the signal.} 
+For the case of an eigenmode which can be safely assumed to be predominantly a foreground, its presence in the true covariance matrix will result in the desired suppression via a kind of projection (Equations \ref{eq:IdealToyModelCovariance} and \ref{eq:IdealToyModelEstimator}); whether or not it is strongly correlated with the the actual data vector is irrelevant.  However, in the case of an empirically estimated covariance matrix, the eigenmodes of $\widehat{\textbf{C}}_{\rm EoR}$ will both be incorrect and can be correlated with the data. If these incorrect eigenmodes are not correlated with the data, it will lead to non-minimum variance estimates but will not produce the suppression of the power spectrum amplitude as seen in the left plot of Figure \ref{fig:toy_sigloss3}. As described in Section \ref{sec:siglossmethod} and shown mathematically in Appendix \ref{sec:sigloss_appendix}, however, if $\widehat{\mathbf{C}}_{\rm EoR}$ $\textit{is}$ correlated with the data vector $\mathbf{x}$, there is a kind of projection of power in the {\it non}-foreground modes from the resulting power spectrum estimate, thus producing an estimate that is biased low.  In short, {\it if the covariance is computed from the data itself, it carries the risk of overfitting information in the data and introducing a multiplicative bias (per $k$) to estimates of the signal.} 
 
 %For a toy model mathematical derivation of signal loss arising from a data-estimated covariance matrix, see Appendix \ref{sec:sigloss_appendix}. Here we will describe the origin of this signal loss intuitively.
 
@@ -446,14 +444,14 @@ we can tweak the covariance in a simple way to suppress foregrounds and yield mi
 %is a sinusoid, so it 
 can be perfectly described by a single eigenmode. Using the full dataset's (foreground plus EoR signal) empirical covariance, we can 
 project out the zeroth eigenmode and 
-%then flatten the rest of the spectrum to have eigenvalues of 1, thereby down-weighting the foreground-dominated mode more than the rest of the modes. Hence, we are changing the EoR-dominating part of the spectrum to be less coupled to the data, limiting the amount of over-fitting that can happen for those modes (i.e., only allowing over-fitting to occur for the first mode).
+%then flatten the rest of the spectrum to have eigenvalues of 1, thereby down-weighting the foreground-dominated mode more than the rest of the modes. Hence, we are changing the EoR-dominating part of the spectrum to be less coupled to the data, limiting the amount of overfitting that can happen for those modes (i.e., only allowing overfitting to occur for the first mode).
 then take the remaining covariance to be the identity matrix.  
 This decouples the covariance from the data for the EoR modes.  The resulting power spectrum estimate for this case is shown in the right plot of Figure \ref{fig:toy_sigloss3}. 
 In this case we recover the EoR signal, demonstrating that if we can disentangle the foreground-dominated modes and EoR-dominated modes, we can suppress
 % down-weight them 
 foregrounds with negligible signal loss. 
 
-Altering $\widehat{\textbf{C}}$ as such is one specific example of a regularization method for this toy model, in which we are changing $\widehat{\textbf{C}}$ in a way that changes its coupling to the data realization. There are several other simple ways to regularize $\widehat{\textbf{C}}$, and we will discuss some in Section 
+Altering $\widehat{\textbf{C}}$ as such is one specific example of a regularization method for this toy model, in which we are changing $\widehat{\textbf{C}}$ in a way that reduces its coupling to the data realization. There are several other simple ways to regularize $\widehat{\textbf{C}}$, and we will discuss some in Section 
 \ref{sec:otherweight}.
 
 \subsection{Fringe-Rate Filtering}
@@ -461,7 +459,7 @@ Altering $\widehat{\textbf{C}}$ as such is one specific example of a regularizat
 
 We have shown how signal loss can arise due to the coupling of EoR-dominated eigenmodes to the data. We will next show how this effect is exacerbated by reducing the total number of independent samples in a dataset. 
 
-A fringe-rate filter is an analysis technique designed to maximize sensitivity by integrating in time (\citealt{parsons_et_al2016}). Rather than a traditional box-car average in time, a time domain filter can be designed to up-weight temporal modes consistent with the sidereal motion on the sky, while down-weighting modes which are noise-like. 
+A fringe-rate filter is an analysis technique designed to maximize sensitivity by integrating in time (\citealt{parsons_et_al2016}). Rather than a traditional box-car average in time, a time domain filter can be designed to up-weight temporal modes consistent with the sidereal motion on the sky, while down-weighting modes that are noise-like. 
 
 Because fringe-rate filtering is analogous to averaging in time, it comes at the cost of reducing the total number of independent samples in the data. With fewer independent modes, it becomes more difficult for the empirical covariance to estimate the true covariance matrix of the fringe-rate filtered data. We can quantify this effect by evaluating a convergence metric $\varepsilon(\Chat)$ for the empirical covariance, which we define as
 
@@ -497,7 +495,7 @@ where $N_{f}$ is the number of frequencies ($20$) in the mock data. The eigenmod
 
 Our numerical test reveals that the convergence rates of empirical eigenvectors is related to the sample variance in our empirical estimate. In general, computing an empirical covariance from a finite ensemble average means that the empirical eigenmodes have sample variances. Consider first a limiting case where all eigenvalues are equal. In such a scenario, any linear combination of eigenvectors is also an eigenvector, and thus there is no sensible way to define the convergence of eigenvectors. In our current test, aside from the zeroth mode, the eigenvalues have similar values but are not precisely equal. Hence, there is a well-defined set of eigenvectors to converge to. However, due to the sample variance of our empirical covariance estimate, there may be accidental degeneracies between modes, where some modes are mixing and swapping with others. Therefore, the steeper an eigenspectrum, the easier it is for the eigenmodes to decouple from each other and approach their true forms. A particularly drastic example of this can be seen in the behavior of mode $0$ (the foreground mode), whose eigenvalue differs enough from the others that it is able to converge reasonably quickly despite substantial sample variance in our empirical covariance estimate. To break degeneracies in the remaining modes, however, requires many more realizations.
 
-While the connection between the rate of convergence of an empirical eigenvector with the steepness of an eigenspectrum is interesting, it is also important to note that regardless of convergence rate, any mode that is coupled to the data is susceptible to signal loss. The true eigenvectors are not correlated with the data realizations; thus, if our empirical eigenvectors are converged, there will not be any signal loss. However, an unconverged eigenvector estimate will retain some memory of the data realizations used in its generation, leading to signal loss.
+While the connection between the rate of convergence of an empirical eigenvector with the sample variance of an eigenspectrum is interesting, it is also important to note that regardless of convergence rate, any mode that is coupled to the data is susceptible to signal loss. The true eigenvectors are not correlated with the data realizations; thus, if our empirical eigenvectors are converged fully, there will not be any signal loss. However, an unconverged eigenvector estimate will retain some memory of the data realizations used in its generation, leading to signal loss.
 
 In the toy models throughout Section \ref{sec:SiglossOverview}, we exploit the fact that the strongest eigenmode (highest eigenvalue mode) is dominated by foregrounds in order to purposely incur signal loss for that mode. Even for the case of real PAPER data (Section \ref{sec:CaseStudy}), we make the assumption that the strongest eigenmodes are likely the most contaminated by foregrounds. However, in general, foregrounds need not be restricted to the strongest eigenmodes, and as we have seen, it is really the degeneracies between modes that determines how quickly they converge, and hence how much signal loss can result.
 
@@ -545,7 +543,7 @@ computed from the data. There is a larger amount of signal loss than for the non
 \end{figure}
 
 
-With Figures \ref{fig:toy_sigloss16} and \ref{fig:toy_sigloss17} establishing the connection between convergence rates (of empirical covariances and eigenvectors) and number of realizations, we now turn back to our original toy model used in Section \ref{sec:toymodel}, which is comprised of a mock foreground and mock EoR signal. We mimic a fringe-rate filter by averaging every four time integrations of our toy model dataset together, yielding $25$ independent samples in time (Figure \ref{fig:toy_sigloss5}). We choose these numbers so that the total number of independent samples is similar to the number of frequency channels --- hence our matrices will still be full rank. We use this ``fringe-rate filtered" mock data for the remainder of Section \ref{sec:SiglossOverview}.
+With Figures \ref{fig:toy_sigloss16} and \ref{fig:toy_sigloss17} establishing the connection between convergence rates (of empirical covariances and eigenvectors) and number of realizations, we now turn back to our original toy model used in Section \ref{sec:toymodel}, which is comprised of a mock foreground and mock EoR signal. We mimic a fringe-rate filter by averaging every four time integrations of our toy model dataset together, yielding $25$ independent samples in time (Figure \ref{fig:toy_sigloss5}). We choose these numbers so that the total number of independent samples is similar to the number of frequency channels --- hence our matrices will be full rank. We use this ``fringe-rate filtered" mock data for the remainder of Section \ref{sec:SiglossOverview}.
 %\footnote{If instead we average every $20$ samples together, yielding only $5$ independent samples in time, we are left with a rank deficient covariance matrix. In this case... \cc{fill in}}
 
 The power spectrum results for this model are shown in Figure \ref{fig:toy_sigloss7}, and as 
@@ -578,7 +576,7 @@ avoided. We know that our simulated EoR signal should have a covariance matrix t
 variance encoded along the diagonal. We model $\textbf{C}_{\rm EoR}$ as such (i.e., the identity), instead of computing it based on $\textbf{x}
 _{\rm EoR}$ itself. Next, we add $\textbf{C}_{\rm EoR} + \widehat{\textbf{C}}_{\rm FG}$ (where $\widehat{\textbf{C}}_{\rm FG} = \langle\textbf{x}_{\rm FG}
 \textbf{x}_{\rm FG}^{\dagger}\rangle_{t}$) to obtain a final $\widehat{\textbf{C}}_{\rm reg}$ (regularized empirical covariance matrix) to use in weighting. In Figure \ref{fig:toy_sigloss8} (upper 
-left), we see that there is negligible signal loss. This is because by modeling $\textbf{C}_{\rm EoR}$, we avoid over-fitting EoR fluctuations in the data that our model doesn't know about (but, an empirically derived $\widehat{\textbf{C}}_{\rm EoR}$ would know about the fluctuations). 
+left), we see that there is negligible signal loss. This is because by modeling $\textbf{C}_{\rm EoR}$, we avoid overfitting EoR fluctuations in the data that our model doesn't know about (but, an empirically derived $\widehat{\textbf{C}}_{\rm EoR}$ would know about the fluctuations). 
 %This is also shown by comparing the (steeper) green and (flatter) red curves in Figure \ref{fig:toy_sigloss14}. 
 In practice such a weighting option is not feasible, as it is difficult to model $\textbf{C}_{\rm EoR}$, and $\widehat{\textbf{C}}_{\rm FG}$ is unknown because we do not know how to separate out the foregrounds from the EoR in our data.
 
@@ -610,18 +608,15 @@ $\widehat{\textbf{C}}$ (lower right). The first case (upper left) is not feasibl
 The second panel (top right) in Figure \ref{fig:toy_sigloss8} uses a regularization method of setting $\widehat{\textbf{C}}_{\rm reg} \equiv 
 \widehat{\textbf{C}} + \gamma\textbf{I}$, where $\gamma = 5$ (an arbitrary strength 
 of $\textbf{I}$ for the purpose of this toy model). By adding the identity matrix, element-wise, we are weighting the diagonal 
-elements of the estimated covariance matrix more heavily than those off-diagonal. Since the identity component does not know anything about the data realization, it alters the covariance to be less coupled to the data. %Although there is negligible signal loss using this regularization, the small green peak at the fourth $k$-mode represents residual foregrounds that still exist since the shapes encoded in the off-diagonal frequency correlations of the covariance matrix were deemed not as prominent as the diagonal elements using this weighting scheme. 
+elements of the estimated covariance matrix more heavily than those off-diagonal. Since the identity component does not know anything about the data realization, it alters the covariance to be less coupled to the data and there is no loss. %Although there is negligible signal loss using this regularization, the small green peak at the fourth $k$-mode represents residual foregrounds that still exist since the shapes encoded in the off-diagonal frequency correlations of the covariance matrix were deemed not as prominent as the diagonal elements using this weighting scheme. 
 
-The third panel (bottom left) in Figure \ref{fig:toy_sigloss8} minimizes signal loss a different way --- 
-by only using the first three eigenmodes of the estimated covariance. Recalling that our toy model foregrounds can be described entirely by the zeroth eigenmode, this 
+The third panel (bottom left) in Figure \ref{fig:toy_sigloss8} minimizes signal loss by only using the first three eigenmodes of the estimated covariance. Recalling that our toy model foregrounds can be described entirely by the zeroth eigenmode, this 
 method intentionally projects out the highest-valued modes only by replacing all but the three highest weights in the 
-eigenspectrum with $1$'s (equal weights). Again, avoiding the over-fitting of EoR-dominated modes which are coupled to the data results in negligible signal loss. However, we do 
-not perfectly recover the shape of the EoR power spectrum because we lost information when ignoring the relative weights of most of the modes. While this case is illuminating for the toy model, in practice it is not obvious which eigenmodes are FG or EoR dominated (and they could be mixed as well), so determining which subset of modes to down-weight is not trivial. We experiment with this idea using PAPER data in Section \ref{sec:Weight}.
+eigenspectrum with $1$'s (equal weights). Again, avoiding the overfitting of EoR-dominated modes which are coupled to the data results in negligible signal loss. While this case is illuminating for the toy model, in practice it is not obvious which eigenmodes are foreground or EoR dominated (and they could be mixed as well), so determining which subset of modes to down-weight is not trivial. We experiment with this idea using PAPER data in Section \ref{sec:Weight}.
 
 The last regularization scheme we are highlighting here is setting $\widehat{\textbf{C}}_{\rm reg} \equiv \widehat{\textbf{C}} \circ \textbf{I}$ (element-wise multiplication), or inverse variance weighting (i.e., keeping only the diagonal elements of $\widehat{\textbf{C}}$). In the bottom right 
-panel of Figure \ref{fig:toy_sigloss8}, we see that this method does not down-weight the foregrounds at all --- this regularization altered $\widehat{\textbf{C}}$ in a way where it is no longer coupled to \textit{any} of the empirically estimated eigenmodes, including the FG-dominated one. For this toy model, 
-our foregrounds are spread out in frequency and therefore have non-negligible frequency-frequency correlations. Multiplying by 
-the identity, element-wise, results in a diagonal matrix, meaning we do not have any correlation information. Because of this, we do a poor job 
+panel of Figure \ref{fig:toy_sigloss8}, we see that this method does not down-weight the foregrounds at all --- this regularization altered $\widehat{\textbf{C}}$ in a way where it is no longer coupled to \textit{any} of the empirically estimated eigenmodes, including the FG-dominated one. To understand this, we recall that our foregrounds are spread out in frequency and therefore have non-negligible frequency-frequency correlations. Multiplying by 
+the identity matrix, element-wise, results in a diagonal matrix, meaning we do not have any correlation information. Because of this, we do a poor job 
 suppressing the foreground. But because we decoupled the whole eigenspectrum from the data, we also avoid signal loss. Although this method did not successfully recover the EoR signal for this particular simulation, it is important that we show that there 
 are many options for estimating a covariance matrix, and some may down-weight certain eigenmodes more effectively than others based on the spectral nature 
 of the components in a dataset. 
@@ -629,9 +624,7 @@ of the components in a dataset.
 %frequency (such as radio frequency interference or crosstalk). In such a case, preserving only the diagonal elements of $
 %\widehat{\textbf{C}}$ would be an effective way of removing this contamination. 
 
-In summary, we have a choice of how to weight 21\,cm data. Ideally, we want to down-weight bright foregrounds without 
-removing the underlying cosmological signal. However, there are trade-offs between the weighting method 
-used, its foreground-removal effectiveness, the number of independent samples in a dataset, and the amount of resulting signal loss. 
+In summary, we have shown how signal loss is caused by weighting a dataset by itself, and in particular how estimated covariances can overfit EoR modes when they are not converged to their true forms. We have also seen that there are trade-offs between a chosen weighting method, its foreground-removal effectiveness, the number of independent samples in a dataset, and the amount of resulting signal loss. 
 
 
 % SECTION 3 CASE STUDY ---------------------------------------------------------------------------------
@@ -1083,7 +1076,7 @@ we also regard those results as suspect and superseded by those of Kolopanis et 
 Another possible way to regularize $\widehat{\textbf{C}}$ is to use information from different ranges of LST. For example, one could 
 calculate $\widehat{\textbf{C}}$ with data from LSTs where foregrounds are stronger (earlier or later LSTs than the ``foreground-quiet" range typically used in forming power spectra) --- doing so may yield a better description of the foregrounds that we desire to 
 down-weight, especially if residual foreground chromaticity is instrumental in origin and stable in time. Fundamentally, each of these examples are similar in that they rely on a computation of $\widehat{\textbf{C}}$ from 
-data that is similar but not exactly the same as the data that is being down-weighted. Ideally this would be effective in down-weighting shared contaminants yet avoid signal loss from over-fitting EoR modes in the power spectrum dataset itself. 
+data that is similar but not exactly the same as the data that is being down-weighted. Ideally this would be effective in down-weighting shared contaminants yet avoid signal loss from overfitting EoR modes in the power spectrum dataset itself. 
 
 In Section \ref{sec:CaseStudy}, we have detailed several aspects of signal loss in PAPER-64: how the loss arises, how it can be estimated from an injection framework, and ways it can be minimized. We again emphasize that these lessons learned about signal loss are largely responsible for shaping our revised analysis of PAPER data. In the remainder of this paper, we will transition to other new aspects of our analysis, framed within the context of error estimation and (non-EoR) bias in PAPER-64.
 
