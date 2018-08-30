@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  29 AUG 2018 17:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  29 AUG 2018 17:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1064,57 +1064,39 @@ ise_add.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps2_noise_add.pdf): 
 PDF inclusion: multiple pdfs with page group included in a single page
->] [24] [25] [26] <plots/jeffrey_fits.pdf, id=2179, 712.62593pt x 269.77654pt>
-File: plots/jeffrey_fits.pdf Graphic file (type pdf)
+>] [24] [25] [26] <plots/jeffrey_prior.pdf, id=2181, 385.0541pt x 267.8211pt>
+File: plots/jeffrey_prior.pdf Graphic file (type pdf)
 
-<use plots/jeffrey_fits.pdf>
-Package pdftex.def Info: plots/jeffrey_fits.pdf used on input line 1522.
-(pdftex.def)             Requested size: 513.11743pt x 194.26364pt.
+<use plots/jeffrey_prior.pdf>
+Package pdftex.def Info: plots/jeffrey_prior.pdf used on input line 1524.
+(pdftex.def)             Requested size: 284.52756pt x 197.91069pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1523 ...or $\bar y$ and $\sigma$, respectively.}
+l.1525 ...rm prior would be an informative prior.}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{figure.1}) has been already used, duplicat
 e ignored
 <to be read again> 
                    \relax 
-l.1523 ...or $\bar y$ and $\sigma$, respectively.}
-                                                  
-<plots/jeffrey_prior.pdf, id=2185, 385.0541pt x 267.8211pt>
-File: plots/jeffrey_prior.pdf Graphic file (type pdf)
-
-<use plots/jeffrey_prior.pdf>
-Package pdftex.def Info: plots/jeffrey_prior.pdf used on input line 1531.
-(pdftex.def)             Requested size: 284.52756pt x 197.91069pt.
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1532 ...rm prior would be an informative prior.}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{figure.2}) has been already used, duplicat
-e ignored
-<to be read again> 
-                   \relax 
-l.1532 ...rm prior would be an informative prior.}
+l.1525 ...rm prior would be an informative prior.}
                                                    (./PAPER.bbl [27 <./plots/je
-ffrey_fits.pdf>] [28 <./plots/jeffrey_prior.pdf>])
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1539.
- [29]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1539.
+ffrey_prior.pdf>])
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1532.
+ [28]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1532.
  (./PAPER.aux)
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1539.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1532.
  ) 
 Here is how much of TeX's memory you used:
- 18605 strings out of 492995
- 311141 string characters out of 6132704
- 455550 words of memory out of 5000000
- 21715 multiletter control sequences out of 15000+600000
+ 18597 strings out of 492995
+ 310983 string characters out of 6132704
+ 487526 words of memory out of 5000000
+ 21710 multiletter control sequences out of 15000+600000
  19448 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,11n,53p,10370b,684s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,11n,53p,10370b,571s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></u
@@ -1142,10 +1124,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017/texmf
 ist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (29 pages, 3383216 bytes).
+Output written on PAPER.pdf (28 pages, 3357805 bytes).
 PDF statistics:
- 2478 PDF objects out of 2487 (max. 8388607)
- 1239 compressed objects within 13 object streams
- 225 named destinations out of 1000 (max. 500000)
- 201 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2406 PDF objects out of 2487 (max. 8388607)
+ 1211 compressed objects within 13 object streams
+ 223 named destinations out of 1000 (max. 500000)
+ 196 words of extra memory for PDF output out of 10000 (max. 10000000)
 
