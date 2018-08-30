@@ -1159,14 +1159,12 @@ effects of bootstrapping from signal loss. The bootstrapping method used in \cit
 \subsection{Theoretical Error Estimation}
 \label{sec:Error}
 
-In addition to bootstrapping, another method of error estimation is to compute a theoretical estimation of thermal noise based on observational parameters. Although a theoretical model often differs from true errors, it is helpful to understand the ideal case and the factors that affect its sensitivity.
+One useful way of cross-checking measured power spectrum values and errors is to compute a theoretical estimation of thermal noise based on observational parameters. Although a theoretical model often differs from true errors, it is helpful to understand the ideal case and the factors that affect its sensitivity. Upon re-analysis of PAPER-64, we have discovered that this estimate was also underestimated in previous analyses. 
 
-Re-analysis of the PAPER-64 data included a detailed study using several independently generated noise simulations, and what was 
-found was that these simulations all agreed but were discrepant with the previous analytic sensitivity calculations. The analytic 
-calculation is only an approximation; however, the differences were large enough (factors of $10$ in some cases) to warrant a 
-careful investigation. This calculation attempts to combine a large number of pieces of information in an approximate 
-way, and when re-considering some of the approximations, we have found there to be large effects. What follows here is an 
-accounting of the differences which have been discovered. Our revised theoretical error estimation, which is plotted as the solid green curve in many of the previous power spectrum plots, is computed with these changes accounted for.
+To compute our theoretical noise estimate, we use an analytic sensitivity calculation. Through detailed studies using several independently generated noise simulations, what we found was that our simulations all agreed but were discrepant with the previous calculations. The analytic 
+calculation is only an approximation and attempts to combine a large number of pieces of information in an approximate way; however, when re-considering some of the approximations, the differences were large enough (factors of $10$ in some cases) to warrant a 
+careful investigation. What follows here is an 
+accounting of the differences which have been discovered. We note that our theoretical error estimate, which is plotted as the solid green curve in many of the previous power spectrum plots, is computed with these changes accounted for.
 
 The noise prediction $n(k)$ (\citealt{parsons_et_al2012a}; \citealt{pober_et_al2013}) for a power spectral analysis of 
 interferometric 21\,cm data, in temperature-units, is:
@@ -1194,7 +1192,7 @@ where $\nu$ are frequencies in GHz (\citealt{thompson_et_al2001}). We use a rece
 This is lower than the $T_{\rm sys}$ of $500$\,K used in \citetalias{ali_et_al2015} because of several small miscalculation errors that were 
 identified\footnote{For example, there was a missing a square root in going from a variance to a standard deviation.}.
 \item $\sqrt{2}$: This factor in the denominator of the sensitivity equation comes from taking the real part of the power spectrum 
-estimates after cross-multiplying independent ``even" and ``odd" visibility measurements (this cross-multiplication is done principally to avoid a noise bias). In \citetalias{ali_et_al2015}, a factor of $2$ was mistakenly used.
+estimates after cross-multiplying two independent visibility measurements. In \citetalias{ali_et_al2015}, a factor of $2$ was mistakenly used.
 \item $N_{\rm lst}$: The number of independent LST bins that go into a power spectrum estimation. The sensitivity scales as the square root 
 because we integrate incoherently over time. For PAPER-64, $N_{\rm lst} = 8$.
 \item $N_{\rm seps}$: The number of baseline separation types (where baselines of a unique separation type have the same orientation and length) averaged incoherently in a final power spectrum estimate. For the 
@@ -1258,7 +1256,7 @@ particular time and frequency that went into our LST-binned set, and $N_{\rm pol
 I). This temperature sets the variance of the Gaussian random noise.
 
 Power spectrum results for the noise simulation, which uses our full power spectrum pipeline, are shown in Figure 
-\ref{fig:ps_noise}. We highlight that the bootstrapped data (black and gray points, with $2\sigma$ error bars) and thermal noise prediction (solid green) show good agreement, as bootstrapping provides an accurate estimate of the noise variance. However, the limits from the full signal loss framework (weighted and unweighted in red and blue, respectively) are inflated, likely due to the additional inclusion of sample variance that comes from the EoR simulations. While the noise simulation provides an indicator about the accuracy of our theoretical noise calculation, we note that the calculation did not take into account additional sources of error associated with earlier analysis steps (for example, \citet{trott_wayth_2017} show how calibration specifically can add errors to visibilities). We therefore interpret our noise prediction as the sensitivity floor for our measurements.
+\ref{fig:ps_noise}. We highlight that the bootstrapped data (black and gray points, with $2\sigma$ error bars) and thermal noise prediction (solid green) show good agreement, as bootstrapping provides an accurate estimate of the noise variance. However, the limits from the full signal loss framework (weighted and unweighted in red and blue, respectively) are inflated, likely due to the additional inclusion of sample variance that comes from the EoR simulations. While the noise simulation provides an important indicator about the accuracy of our theoretical noise calculation, we note that the calculation did not take into account additional sources of error associated with earlier analysis steps (for example, \citet{trott_wayth_2017} show how calibration specifically can add errors to visibilities). We therefore interpret our noise prediction as the sensitivity floor for our measurements.
 
 \begin{figure*}
 	\centering
@@ -1296,13 +1294,13 @@ failing to account for correlations between the data and signal which can be lar
 simple and accurate way of estimating errors.
 \end{itemize}
 
-As a consequence of our investigations, we have also used a subset of PAPER-64 data to make a new power spectrum analysis. This serves as an illustrative example of using a signal injection framework, correctly computing errors via bootstrapping, and accurately estimating thermal noise. Our revised PAPER-64 limits are presented in Kolopanis et al. (\textit{in prep.}), which supersede all previously published PAPER limits. Because of the many challenges associated with signal loss and its estimation as described in this paper, Kolopanis et al. (\textit{in prep.}) uses a straightforward power spectrum estimation approach that is not lossy. However, the main reasons for a previously underestimated limit and 
+As a consequence of our investigations, we have also used a subset of PAPER-64 data to make a new power spectrum analysis. This serves as an illustrative example of using a signal injection framework, correctly computing errors via bootstrapping, and accurately estimating thermal noise. Our revised PAPER-64 limits are presented in Kolopanis et al. (\textit{in prep.}), which supersede all previously published PAPER limits. Because of the many challenges associated with signal loss and its estimation as described in this paper, Kolopanis et al. (\textit{in prep.}) use a straightforward power spectrum estimation approach that is not lossy. However, the main reasons for a previously underestimated limit and 
 ways in which our new analysis differs can still be summarized by the following:
 
 \begin{itemize}
 \item Signal loss, previously found to be $<2\%$ in \citetalias{ali_et_al2015}, was underestimated by a factor of $>$$1000$ for the case of empirically estimated inverse 
 covariance weighting. Using a regularized covariance weighting method can minimize loss (Section 
-\ref{sec:Weight}), however, because a regularized weighting method is not as aggressive as the former, it produces limits that are still higher than the lossy empirical inverse covariance limits. underestimated signal loss therefore represents the bulk of our revision. 
+\ref{sec:Weight}), however, because a regularized weighting method is not as aggressive as the former, it produces limits that are still higher than the lossy empirical inverse covariance limits. Underestimated signal loss therefore represents the bulk of our revision. 
 \item Power spectrum errors, originally computed by bootstrapping, were underestimated for the data by a factor of $\sim2$ in mK due to oversampling data whose effective number of independent samples was reduced from fringe-rate filtering (Section \ref{sec:Boot}). Several other errors were also found regarding error estimation, though with smaller effects.
 \item Several factors used in an analytic expression to predict the noise-level in PAPER-64 data were revised, yielding a 
 decrease in predicted sensitivity level by a factor of $\sim3$ in mK (Section \ref{sec:Error}). We note that our sensitivity prediction is revised by a factor less than our overall
