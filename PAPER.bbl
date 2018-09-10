@@ -1,4 +1,4 @@
-\begin{thebibliography}{100}
+\begin{thebibliography}{101}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Ade {et~al.}(2008)Ade, Bock, Bowden, Brown, Cahill, Carlstrom,
@@ -254,6 +254,9 @@ Jacobs, D.~C., {et~al.} 2015, \apj, 801, 51
   {Wu}, \& {Wyithe}}]{Jacobs2016}
 {Jacobs}, D.~C., {et~al.} 2016, \apj, 825, 114
 
+\bibitem[{Jaynes(1968)}]{jaynes1968}
+Jaynes, E. 1968, IEEE Transactions on Systems Science and Cybernetics, 4, 227
+
 \bibitem[{{Jeli{\'c}} {et~al.}(2008){Jeli{\'c}}, {Zaroubi}, {Labropoulos},
   {Thomas}, {Bernardi}, {Brentjens}, {de Bruyn}, {Ciardi}, {Harker},
   {Koopmans}, {Pandey}, {Schaye}, \& {Yatawatta}}]{jelic_et_al2008}
@@ -445,10 +448,6 @@ Quenouille, M.~H. 1949, Ann. Math. Statist., 20, 355
   {Knox}}]{santos_et_al2005}
 {Santos}, M.~G., {Cooray}, A., \& {Knox}, L. 2005, \apj, 625, 575
 
-\bibitem[{Scott(2008)}]{scott2008kernel}
-Scott, D.~W. 2008, Multivariate Density Estimation: Theory, Practice, and
-  Visualization, 125
-
 \bibitem[{{Sellentin} \& {Heavens}(2016)}]{sellentin_heavens2016}
 {Sellentin}, E., \& {Heavens}, A.~F. 2016, \mnras, 456, L132
 
@@ -503,6 +502,10 @@ Sherwin, B.~D., {et~al.} 2017, Phys. Rev. D, 95, 123529
   {Mitchell}, {Morales}, {Booler}, {Crosse}, {Wayth},
   {et~al.}}]{tingay_et_al2013}
 {Tingay}, S.~J., {et~al.} 2013, \pasa, 30, 7
+
+\bibitem[{Trott \& Wayth(2017)}]{trott_wayth_2017}
+Trott, C.~M., \& Wayth, R.~B. 2017, Publications of the Astronomical Society of
+  Australia, 34, e061
 
 \bibitem[{{Trott} {et~al.}(2012){Trott}, {Wayth}, \&
   {Tingay}}]{trott_et_al2012}
