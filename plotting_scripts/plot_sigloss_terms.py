@@ -68,13 +68,17 @@ black_ind_pos = n.where(Pouts>=0)[0] # where positive Pouts
 black_ind_neg = n.where(Pouts<0)[0] # where negative Pouts
 Pins_black_pos = Pins[black_ind_pos] # adjust Pins
 Pins_black_neg = Pins[black_ind_neg]
-poly_Pouts_pos = n.polyfit(n.log10(Pins_black_pos),n.log10(Pouts[black_ind_pos]),poly_dim)
-poly_Pouts_neg = n.polyfit(n.log10(Pins_black_neg),n.log10(-Pouts[black_ind_neg]),poly_dim)
+Pins_black_neg = n.append(10,Pins_black_neg) # XXX hack to add first point to extend curve back
+Pouts_black_pos = Pouts[black_ind_pos]
+Pouts_black_neg = -Pouts[black_ind_neg]
+Pouts_black_neg = n.append(1e5,Pouts_black_neg)*3 # XXX hack to add first point to extend curve back and drag the curve down just a tad (otherwise the polynomial fit drags it up due to some outliers)
+poly_Pouts_pos = n.polyfit(n.log10(Pins_black_pos),n.log10(Pouts_black_pos),poly_dim)
+poly_Pouts_neg = n.polyfit(n.log10(Pins_black_neg),n.log10(Pouts_black_neg),poly_dim)
 black_neg = -10**n.polyval(poly_Pouts_neg,n.log10(Pins_black_neg))
 black_pos = 10**n.polyval(poly_Pouts_pos,n.log10(Pins_black_pos))
 
 black_ind_pos_I = n.where(Pouts_I>=0)[0] # where positive Pouts_I
-black_ind_neg_I = n.where(Pouts_I<0)[0][:-1] # where negative Pouts_I # XXX remove last entry (outlier in some cases that cause the curve to look weird)
+black_ind_neg_I = n.where(Pouts_I<0)[0]#[:-1] # where negative Pouts_I # XXX remove last entry (outlier in some cases that cause the curve to look weird)
 Pins_black_pos_I = Pins[black_ind_pos_I] # adjust Pins
 Pins_black_neg_I = Pins[black_ind_neg_I]
 poly_Pouts_pos_I = n.polyfit(n.log10(Pins_black_pos_I),n.log10(Pouts_I[black_ind_pos_I]),poly_dim)

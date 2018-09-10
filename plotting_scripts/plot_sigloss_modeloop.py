@@ -28,7 +28,7 @@ if True: # added identity parameters in LOG space
     loop_add = n.logspace(startmode_add,endmode_add,nmodes_add)
 
 # Read files
-sense=14419782.9029*2 / n.sqrt(2) # XXX from plotting one of the "project_#_modes" directories (divide by sqrt(2) for folded case)
+sense=14419782.9029*2 #/ n.sqrt(2) # XXX from plotting one of the "project_#_modes" directories (divide by sqrt(2) for folded case)
 #sense=14419782.9029*2  # unfolded version
 PS_i_up = []
 PS_f_up = []
@@ -42,17 +42,17 @@ for mode_num in loop:
     print 'Reading', filename
     print mode_num
     f = n.load(filename+'/pspec_final_sep0,1_full.npz')
-    kpl = f['kpl_fold'] # folded version
-    #kpl = f['kpl'] # unfolded version
+    #kpl = f['kpl_fold'] # folded version
+    kpl = f['kpl'] # unfolded version
     k = kpl[k_ind] 
-    PS_i_up.append(2*n.array(f['pCv_fold_err_old'])[k_ind]) # folded version
-    PS_f_up.append(2*n.array(f['pCv_fold_err'])[k_ind])
-    PS_i.append(n.abs(f['pCv_fold_old'])[k_ind])
-    PS_f.append(n.abs(f['pCv_fold'])[k_ind])
-    #PS_i_up.append(2*n.array(f['pCv_err_old'])[k_ind]) # unfolded version
-    #PS_f_up.append(2*n.array(f['pCv_err'])[k_ind])
-    #PS_i.append(n.abs(f['pCv_old'])[k_ind])
-    #PS_f.append(n.abs(f['pCv'])[k_ind])
+    #PS_i_up.append(2*n.array(f['pCv_fold_err_old'])[k_ind]) # folded version
+    #PS_f_up.append(2*n.array(f['pCv_fold_err'])[k_ind])
+    #PS_i.append(n.abs(f['pCv_fold_old'])[k_ind])
+    #PS_f.append(n.abs(f['pCv_fold'])[k_ind])
+    PS_i_up.append(2*n.array(f['pCv_err_old'])[k_ind]) # unfolded version
+    PS_f_up.append(2*n.array(f['pCv_err'])[k_ind])
+    PS_i.append(n.abs(f['pCv_old'])[k_ind])
+    PS_f.append(n.abs(f['pCv'])[k_ind])
 
 # Read in added identity case as a second curve being plotted
 PS_i_up_add = []
@@ -64,17 +64,17 @@ for mode_num in loop_add:
     print 'Reading', filename
     print mode_num
     f = n.load(filename + '/pspec_final_sep0,1_full.npz')
-    kpl = f['kpl_fold'] # folded version
-    #kpl = f['kpl']
+    #kpl = f['kpl_fold'] # folded version
+    kpl = f['kpl']
     k = kpl[k_ind] 
-    PS_i_up_add.append(2*n.array(f['pCv_fold_err_old'])[k_ind]) # folded version
-    PS_f_up_add.append(2*n.array(f['pCv_fold_err'])[k_ind])
-    PS_i_add.append(n.abs(f['pCv_fold_old'])[k_ind])
-    PS_f_add.append(n.abs(f['pCv_fold'])[k_ind])
-    #PS_i_up_add.append(2*n.array(f['pCv_err_old'])[k_ind]) # unfolded version
-    #PS_f_up_add.append(2*n.array(f['pCv_err'])[k_ind])
-    #PS_i_add.append(n.abs(f['pCv_old'])[k_ind])
-    #PS_f_add.append(n.abs(f['pCv'])[k_ind])
+    #PS_i_up_add.append(2*n.array(f['pCv_fold_err_old'])[k_ind]) # folded version
+    #PS_f_up_add.append(2*n.array(f['pCv_fold_err'])[k_ind])
+    #PS_i_add.append(n.abs(f['pCv_fold_old'])[k_ind])
+    #PS_f_add.append(n.abs(f['pCv_fold'])[k_ind])
+    PS_i_up_add.append(2*n.array(f['pCv_err_old'])[k_ind]) # unfolded version
+    PS_f_up_add.append(2*n.array(f['pCv_err'])[k_ind])
+    PS_i_add.append(n.abs(f['pCv_old'])[k_ind])
+    PS_f_add.append(n.abs(f['pCv'])[k_ind])
 
 
 """
@@ -107,8 +107,8 @@ if True:
 # Best PS (Identity Mult)
 f = n.load('plot_sigloss_modeloop_identitymult.npz')
 #ps_mult = n.abs(f['pCv'][k_ind]) + 2*f['pCv_err'][k_ind] # point + 2err
-ps_mult = 2*f['pCv_fold_err'][k_ind] # 2sigma upper limit
-#ps_mult = 2*f['pCv_err'][k_ind] # unfolded case
+#ps_mult = 2*f['pCv_fold_err'][k_ind] # 2sigma upper limit
+ps_mult = 2*f['pCv_err'][k_ind] # unfolded case
 
 # Plot
 p.figure(figsize=(8,10))    
@@ -119,8 +119,8 @@ p.plot(loop, n.array(PS_f_up), 'r-', linewidth=2, label='Post-signal loss estima
 p.xlim(loop[0], loop[-1])
      # plot unweighted
 #p.axhline(f['pIv_old'][k_ind]+2*f['pIv_err_old'][k_ind],color='b',linestyle='-',linewidth=2)
-p.axhline(2*f['pIv_fold_err'][k_ind],color='b',linestyle='-',linewidth=2)
-#p.axhline(2*f['pIv_err'][k_ind],color='b',linestyle='-',linewidth=2)
+#p.axhline(2*f['pIv_fold_err'][k_ind],color='b',linestyle='-',linewidth=2)
+p.axhline(2*f['pIv_err'][k_ind],color='b',linestyle='-',linewidth=2)
     # plot inverse variance
 p.axhline(ps_mult,color='k',linestyle='-',linewidth=2)
     # plot analytic
@@ -142,8 +142,8 @@ p.xlim(loop_add[0], loop_add[-1])
 p.gca().invert_xaxis()
     # plot unweighted
 #p.axhline(f['pIv_old'][k_ind]+2*f['pIv_err_old'][k_ind],color='b',linestyle='-',linewidth=2,label='Uniform weighting')
-p.axhline(2*f['pIv_fold_err'][k_ind],color='b',linestyle='-',linewidth=2,label='Uniform weighting')
-#p.axhline(2*f['pIv_err'][k_ind],color='b',linestyle='-',linewidth=2,label='Uniform weighting')
+#p.axhline(2*f['pIv_fold_err'][k_ind],color='b',linestyle='-',linewidth=2,label='Uniform weighting')
+p.axhline(2*f['pIv_err'][k_ind],color='b',linestyle='-',linewidth=2,label='Uniform weighting')
     # plot inverse variance
 p.axhline(ps_mult,color='k',linestyle='-',linewidth=2,label='$\hat{C} = \hat{C} \circ I$')
     # plot analytic

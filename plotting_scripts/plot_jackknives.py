@@ -28,8 +28,8 @@ mask = n.ma.masked_where(mask==0, mask)
 horizon = 0.06272882578029243 # computed using hera_pspec.conversions.Cosmo_Conversions.tau_to_kpara
 
 # Plot range
-ymin=-6e9
-ymax=6e9
+ymin=-1e9
+ymax=1e9
 
 #------------------------
 
