@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  20 SEP 2018 12:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  21 SEP 2018 11:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -885,28 +885,28 @@ Package pdftex.def Info: plots/toy_sigloss4.pdf used on input line 386.
 (pdftex.def)             Requested size: 240.33635pt x 169.32968pt.
  [5 <./plots/toy_sigloss1.pdf> <./plots/toy_sigloss12.pdf> <./plots/toy_sigloss
 13.pdf>] [6 <./plots/toy_sigloss3.pdf> <./plots/toy_sigloss4.pdf>] [7]
-<plots/toy_sigloss16.pdf, id=666, 407.72327pt x 283.7068pt>
+<plots/toy_sigloss16.pdf, id=667, 407.72327pt x 283.7068pt>
 File: plots/toy_sigloss16.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss16.pdf>
 Package pdftex.def Info: plots/toy_sigloss16.pdf used on input line 516.
 (pdftex.def)             Requested size: 242.26653pt x 168.57603pt.
 
-<plots/toy_sigloss17.pdf, id=669, 406.1574pt x 277.5168pt>
+<plots/toy_sigloss17.pdf, id=670, 406.1574pt x 277.5168pt>
 File: plots/toy_sigloss17.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss17.pdf>
 Package pdftex.def Info: plots/toy_sigloss17.pdf used on input line 523.
 (pdftex.def)             Requested size: 242.26653pt x 165.53317pt.
 
-<plots/toy_sigloss5.pdf, id=673, 608.28194pt x 346.42862pt>
+<plots/toy_sigloss5.pdf, id=674, 608.28194pt x 346.42862pt>
 File: plots/toy_sigloss5.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss5.pdf>
 Package pdftex.def Info: plots/toy_sigloss5.pdf used on input line 530.
 (pdftex.def)             Requested size: 242.26653pt x 137.97694pt.
 
-<plots/toy_sigloss7.pdf, id=674, 412.19308pt x 278.29753pt>
+<plots/toy_sigloss7.pdf, id=675, 412.19308pt x 278.29753pt>
 File: plots/toy_sigloss7.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss7.pdf>
@@ -932,35 +932,35 @@ LaTeX Warning: A float is stuck (cannot be placed) on input line 573.
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
-<plots/toy_sigloss10.pdf, id=802, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss10.pdf, id=803, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss10.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss10.pdf>
 Package pdftex.def Info: plots/toy_sigloss10.pdf used on input line 585.
 (pdftex.def)             Requested size: 218.48643pt x 153.93678pt.
 
-<plots/toy_sigloss8.pdf, id=804, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss8.pdf, id=805, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss8.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss8.pdf>
 Package pdftex.def Info: plots/toy_sigloss8.pdf used on input line 586.
 (pdftex.def)             Requested size: 218.48643pt x 153.93678pt.
 
-<plots/toy_sigloss9.pdf, id=806, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss9.pdf, id=807, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss9.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss9.pdf>
 Package pdftex.def Info: plots/toy_sigloss9.pdf used on input line 587.
 (pdftex.def)             Requested size: 218.48643pt x 153.93678pt.
 
-<plots/toy_sigloss11.pdf, id=808, 412.19308pt x 290.41939pt>
+<plots/toy_sigloss11.pdf, id=809, 412.19308pt x 290.41939pt>
 File: plots/toy_sigloss11.pdf Graphic file (type pdf)
 
 <use plots/toy_sigloss11.pdf>
 Package pdftex.def Info: plots/toy_sigloss11.pdf used on input line 588.
 (pdftex.def)             Requested size: 218.48643pt x 153.93678pt.
  [9 <./plots/toy_sigloss7.pdf>]
-<plots/ant_layout_aspect.pdf, id=872, 568.5636pt x 218.67085pt>
+<plots/ant_layout_aspect.pdf, id=873, 568.5636pt x 218.67085pt>
 File: plots/ant_layout_aspect.pdf Graphic file (type pdf)
 
 <use plots/ant_layout_aspect.pdf>
@@ -968,21 +968,21 @@ Package pdftex.def Info: plots/ant_layout_aspect.pdf used on input line 641.
 (pdftex.def)             Requested size: 242.26653pt x 93.17578pt.
  [10 <./plots/toy_sigloss10.pdf> <./plots/toy_sigloss8.pdf> <./plots/toy_siglos
 s9.pdf> <./plots/toy_sigloss11.pdf> <./plots/ant_layout_aspect.pdf>] <plots/frp
-.pdf, id=1074, 498.216pt x 353.21333pt>
+.pdf, id=1075, 498.216pt x 353.21333pt>
 File: plots/frp.pdf Graphic file (type pdf)
 
 <use plots/frp.pdf>
 Package pdftex.def Info: plots/frp.pdf used on input line 672.
 (pdftex.def)             Requested size: 242.26653pt x 171.75558pt.
  [11 <./plots/frp.pdf>]
-<plots/sigloss_terms.pdf, id=1142, 1011.78pt x 578.16pt>
+<plots/sigloss_terms.pdf, id=1143, 1011.78pt x 578.16pt>
 File: plots/sigloss_terms.pdf Graphic file (type pdf)
 
 <use plots/sigloss_terms.pdf>
 Package pdftex.def Info: plots/sigloss_terms.pdf used on input line 836.
 (pdftex.def)             Requested size: 513.11743pt x 293.2168pt.
  [12] [13 <./plots/sigloss_terms.pdf>]
-<plots/sigloss_transfercurve_posneg.pdf, id=1265, 867.24pt x 433.62pt>
+<plots/sigloss_transfercurve_posneg.pdf, id=1266, 867.24pt x 433.62pt>
 File: plots/sigloss_transfercurve_posneg.pdf Graphic file (type pdf)
 
 <use plots/sigloss_transfercurve_posneg.pdf>
@@ -990,20 +990,20 @@ Package pdftex.def Info: plots/sigloss_transfercurve_posneg.pdf used on input l
 ine 967.
 (pdftex.def)             Requested size: 513.11743pt x 256.56801pt.
 
-<plots/ps1_data.pdf, id=1273, 361.35pt x 433.62pt>
+<plots/ps1_data.pdf, id=1274, 361.35pt x 433.62pt>
 File: plots/ps1_data.pdf Graphic file (type pdf)
  <use plots/ps1_data.pdf>
 Package pdftex.def Info: plots/ps1_data.pdf used on input line 996.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_data.pdf, id=1274, 361.35pt x 433.62pt>
+<plots/ps2_data.pdf, id=1275, 361.35pt x 433.62pt>
 File: plots/ps2_data.pdf Graphic file (type pdf)
  <use plots/ps2_data.pdf>
 Package pdftex.def Info: plots/ps2_data.pdf used on input line 997.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
 [14] [15 <./plots/sigloss_transfercurve_posneg.pdf>]
-<plots/sigloss_modeloop_2panel.pdf, id=1417, 578.16pt x 609.77812pt>
+<plots/sigloss_modeloop_2panel.pdf, id=1418, 578.16pt x 609.77812pt>
 File: plots/sigloss_modeloop_2panel.pdf Graphic file (type pdf)
 
 <use plots/sigloss_modeloop_2panel.pdf>
@@ -1015,14 +1015,14 @@ Package pdftex.def Info: plots/sigloss_modeloop_2panel.pdf used on input line 1
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps2_data.pdf): PDF i
 nclusion: multiple pdfs with page group included in a single page
 >] [17 <./plots/sigloss_modeloop_2panel.pdf>]
-<plots/ps1_data_add.pdf, id=1639, 361.35pt x 433.62pt>
+<plots/ps1_data_add.pdf, id=1640, 361.35pt x 433.62pt>
 File: plots/ps1_data_add.pdf Graphic file (type pdf)
 
 <use plots/ps1_data_add.pdf>
 Package pdftex.def Info: plots/ps1_data_add.pdf used on input line 1052.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_data_add.pdf, id=1640, 361.35pt x 433.62pt>
+<plots/ps2_data_add.pdf, id=1641, 361.35pt x 433.62pt>
 File: plots/ps2_data_add.pdf Graphic file (type pdf)
 
 <use plots/ps2_data_add.pdf>
@@ -1032,28 +1032,28 @@ Package pdftex.def Info: plots/ps2_data_add.pdf used on input line 1053.
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps2_data_add.pdf): P
 DF inclusion: multiple pdfs with page group included in a single page
->] <plots/noise_errors.pdf, id=1789, 578.16pt x 433.62pt>
+>] <plots/noise_errors.pdf, id=1790, 578.16pt x 433.62pt>
 File: plots/noise_errors.pdf Graphic file (type pdf)
 
 <use plots/noise_errors.pdf>
 Package pdftex.def Info: plots/noise_errors.pdf used on input line 1152.
 (pdftex.def)             Requested size: 242.26653pt x 183.54149pt.
  [20 <./plots/noise_errors.pdf>] [21]
-<plots/sense_check.pdf, id=1909, 299.71976pt x 347.88719pt>
+<plots/sense_check.pdf, id=1910, 299.71976pt x 347.88719pt>
 File: plots/sense_check.pdf Graphic file (type pdf)
 
 <use plots/sense_check.pdf>
 Package pdftex.def Info: plots/sense_check.pdf used on input line 1236.
 (pdftex.def)             Requested size: 242.26653pt x 281.19785pt.
 
-<plots/ps1_noise_add.pdf, id=1920, 361.35pt x 433.62pt>
+<plots/ps1_noise_add.pdf, id=1921, 361.35pt x 433.62pt>
 File: plots/ps1_noise_add.pdf Graphic file (type pdf)
 
 <use plots/ps1_noise_add.pdf>
 Package pdftex.def Info: plots/ps1_noise_add.pdf used on input line 1263.
 (pdftex.def)             Requested size: 205.24384pt x 246.29259pt.
 
-<plots/ps2_noise_add.pdf, id=1921, 361.35pt x 433.62pt>
+<plots/ps2_noise_add.pdf, id=1922, 361.35pt x 433.62pt>
 File: plots/ps2_noise_add.pdf Graphic file (type pdf)
 
 <use plots/ps2_noise_add.pdf>
@@ -1064,7 +1064,7 @@ ise_add.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/ps2_noise_add.pdf): 
 PDF inclusion: multiple pdfs with page group included in a single page
->] [24] [25] [26] <plots/jeffrey_prior.pdf, id=2190, 385.0541pt x 267.8211pt>
+>] [24] [25] [26] <plots/jeffrey_prior.pdf, id=2191, 385.0541pt x 267.8211pt>
 File: plots/jeffrey_prior.pdf Graphic file (type pdf)
 
 <use plots/jeffrey_prior.pdf>
@@ -1124,9 +1124,9 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017/texmf
 ist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PAPER.pdf (28 pages, 3357235 bytes).
+Output written on PAPER.pdf (28 pages, 3357489 bytes).
 PDF statistics:
- 2380 PDF objects out of 2487 (max. 8388607)
+ 2381 PDF objects out of 2487 (max. 8388607)
  1183 compressed objects within 12 object streams
  198 named destinations out of 1000 (max. 500000)
  196 words of extra memory for PDF output out of 10000 (max. 10000000)
