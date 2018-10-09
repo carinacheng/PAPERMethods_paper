@@ -1,0 +1,12 @@
+This directory contains files for the PSA64 methods paper titled "Characterizing Signal Loss in the 21cm Reionization Power Spectrum: A Revised Study of PAPER-64"
+
+-PAPER.*:                   most recent version of paper
+-PAPER_submit_version*:     the original version submitted to ApJ in June 2018
+-PAPER_submit_version2*:    the second version submitted to ApJ in response to first-round referee report in Sept 2018
+-PAPER_submit_version3*:    the third version submitted to ApJ in response to second-round referee report in Oct 2018
+-Memo*:                     three memos corresponding to the three appendices in the paper
+-Cheng_v1*:                 draft sent to collaboration in Dec 2017
+-Cheng_v2*:                 draft sent to collaboration in March 2018
+-Cheng_v3*:                 draft sent to collaboration in June 2018
+-Cheng_v4*:                 differenced versions sent to collaboration in Sept 2018
+-Cheng_v5*:                 second-round differenced version sent to collaboration in Oct 2018
