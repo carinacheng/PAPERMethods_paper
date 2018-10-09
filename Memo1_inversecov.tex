@@ -1,0 +1,133 @@
+\documentclass[12pt,preprint]{aastex}
+\usepackage[margin=1in]{geometry}
+\usepackage{float,amsmath,bm,natbib,graphicx}
+\citestyle{aa}
+
+\defcitealias{ali_et_al2015}{A15}
+
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\f}{\mathbf{f}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\p}{\mathbf{p}}
+\newcommand{\phat}{\widehat{\mathbf{p}}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\Chat}{\mathbf{\widehat{C}}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\Fhat}{\mathbf{\widehat{F}}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\invC}{\ensuremath{\C^{-1}}}
+\newcommand{\dC}[1]{\ensuremath{\C_{,#1}}}
+\DeclareMathOperator{\Tr}{tr}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\PDeriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+
+\begin{document}
+
+\title{A Toy Model for Inverse Covariance Weighting} 
+\author{James Aguirre, Carina Cheng, and the PAPER Collaboration}
+\maketitle
+\vspace{1cm}
+%\section{A Toy Model for Signal Loss}
+
+In this memo, we focus on the optimal quadratic estimator, defined as:
+
+\begin{equation}
+\label{eq:OQE}
+\widehat{P}^{\alpha}  = \sum_\beta ({\F^{-1}})^{\alpha\beta} (\widehat{q}^{\beta} - \widehat{b}^{\beta} )
+\end{equation}
+where $\F$ is the Fisher matrix (which determines errors on the power spectrum estimate)
+\begin{equation}
+F^{\alpha \beta} \equiv \frac{1}{2} \textrm{tr} \left( \C^{-1} \textbf{Q}^{\alpha} \C^{-1} \textbf{Q}^{\beta} \right),
+\end{equation}
+$\widehat{q}$ is the un-normalized power spectrum estimate
+\begin{equation}
+\label{eq:OQEQuadratic}
+\widehat{q}^\alpha =  \half \textbf{x}^\dagger \invC \textbf{Q}^{\alpha}  \invC \textbf{x},
+\end{equation}
+and $\widehat{b}$ is the additive bias
+\begin{equation}
+\label{eq:OQELinear}
+\widehat{b}^{\alpha} = \half \Tr\left( \mathbf{U} \invC \textbf{Q}^{\alpha} \invC \right).
+\end{equation}
+
+
+We will mathematically illustrate its role in estimating the power spectrum of EoR. While there exists detailed literature about quadratic estimators in general (e.g., \citealt{liu_tegmark2011}; \citealt{trott_et_al2012}; \citealt{liu_et_al2014b}; \citealt{dillon_et_al2014}), here we focus on two simple cases in order to outline one situation where the estimator successfully suppresses contamination and one where it does not. By describing these two cases, we hope to clarify and motivate the desire to use OQE while also understanding its limitations.
+
+We specifically choose toy models where the data covariance is diagonal, as indeed we expect the EoR signal to be. We assume we have $N$ data points $\Delta_i$ which are the sum of a desired signal $\sigma_i$ and an undesired contaminant $\upsilon_i$
+\begin{equation}
+\Delta_i = \sigma_i + \upsilon_i
+\end{equation}
+with 
+\begin{equation}
+\langle \sigma_i \rangle = 0; \; \langle \sigma^2_i \rangle = s; \; {\rm and}~\langle \bm{\sigma \sigma}^T \rangle = s \mathbf{I}_{N \times N} \equiv \mathbf{S},
+\end{equation}
+where we wish to estimate $s$.  The contaminant in this first case has a similar structure (as the EoR) for its covariance, and is assumed uncorrelated with the signal
+\begin{equation}
+\label{eq:IdealToyModelCovariance}
+\langle \upsilon_i \rangle = 0; \; 
+\langle \upsilon^2_i \rangle = u; \; 
+\langle \bm{\upsilon \upsilon}^T \rangle = u \mathbf{I}_{N \times N} \equiv \mathbf{U}; {\rm and}~ 
+\langle \sigma_i \upsilon_j \rangle = 0.
+\end{equation}
+With the covariance matrix given by $\C = \mathbf{S} + \mathbf{U}$, the estimator for $s$ using only the quadratic part of Equation \eqref{eq:OQE} is
+\begin{equation}
+\label{eq:IdealToyModelEstimator}
+\hat{s} = \frac{ \bm{\Delta^T \Delta}}{N} 
+\end{equation}
+and its expectation is
+\begin{equation}
+\langle \hat{s} \rangle = s + u.
+\end{equation}
+Thus, {\it when the covariance structure of the contaminant is identical to the signal} ($\PDeriv{\mathbf{S}}{s} = \PDeriv{\mathbf{U}}{u} =  \PDeriv{\C}{s}$), the information available to the quadratic portion of the estimator to distinguish between the two is degenerate, and knowledge only of $\C$ and $\PDeriv{\C}{s}$ is inadequate.  In order to obtain an unbiased estimate of $s$, one must also use knowledge of $\mathbf{U}$.  Indeed, computing the linear bias from Equation \eqref{eq:OQELinear}, one finds $b = u$.   
+
+Now consider a case, chosen to be very similar to the toy model in \ref{sec:toymodel},  in which the data again have an additive contaminant, now given by
+\begin{equation}
+\Delta_i = \sigma_i + \upsilon m_i
+\end{equation}
+where the properties of $\sigma_i$ are as before, but now $\upsilon$ is a random variable and $m_i$ is a fixed function of $i$ with
+\begin{equation}
+\langle \upsilon \rangle = 0; \;
+\langle \upsilon^2 \rangle = u; \; 
+ \langle \bm{\upsilon \upsilon}^T \rangle = u \mathbf{m m}^T \equiv \mathbf{U}; \;
+ \mathbf{m}^T \mathbf{m} = 1; \; {\rm and}~ 
+\langle \sigma_i \upsilon \rangle = 0.
+\end{equation}
+Here $\mathbf{m}$ represents a mode which is correlated across many data points (i.e., we are assuming $\mathbf{U}$ need {\it not} be diagonal), with amplitude given by  $\upsilon$.  The normalization of $\mathbf{m}$ is a matter of convention, and can be absorbed in the variance $u$; the choice above will be convenient for understanding the limiting case $u \gg s$.
+
+We can calculate the quadratic portion of the estimator explicitly by using the Sherman-Morrison identity to invert the covariance matrix.  Defining
+\begin{equation}
+\xi \equiv \frac{u/s}{1+u/s},
+\end{equation} 
+we have
+\begin{equation}
+\invC  =   \frac{1}{s} \left(\I - \xi \mathbf{m m}^T \right)
+\end{equation}
+and
+\begin{equation}
+\hat{s} = 
+%\half {\F}^{-1} \left(\bm \Delta^T \invC \PDeriv{\C}{s}  \invC \bm \Delta \right) = 
+\frac{ \bm \Delta^T  (\I +  (\xi^2 - 2 \xi)  \mathbf{m m}^T)  \bm \Delta}{N + \xi^2 - 2 \xi} 
+\end{equation}
+with expectation
+\begin{equation}
+\langle \hat{s} \rangle = 
+s + \frac{1 - 2 \xi + \xi^2}{N + - 2 \xi + \xi^2} u. 
+\end{equation}
+It is worth observing immediately that there is no multiplicative bias on $s$, and that the additive bias is strictly $< u/N$.
+
+An instructive limit is $u \gg s$, $\xi \to 1$, in which case the virtue of weighting by $\invC$ becomes clearer, as it becomes
+\begin{equation}
+\invC  = \frac{1}{s} \left(\I - \mathbf{m m}^T \right)
+\end{equation}
+where $\I - \mathbf{m m}^T$ is the projection operator, projecting out $\mathbf{m}$ from any vector it acts on, and further, the linear bias tends to 0 as $\xi \to 1$ (i.e., the projection is ``perfect'' and not ``undone'' by the Fisher matrix normalization).
+
+This is the ideal case for the inverse covariance weighting performed in the PAPER analysis, where removal of contamination with a known covariance can be suppressed by a kind of projection of the offending modes.  But even in this case, it is worth pointing out that the estimator still has a linear bias for finite $u$.  We have also assumed that the contaminating mode $\mathbf{m}$ is known perfectly; the next appendix takes up the case where the modes are estimated from the data.
+
+
+\bibliographystyle{apj}
+\bibliography{refs}
+
+
+\end{document}
